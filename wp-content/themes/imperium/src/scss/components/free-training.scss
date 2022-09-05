@@ -1,0 +1,247 @@
+#free-training {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    &::before {
+        content: '';
+        width: 100%; height: 100%;
+        position: absolute;
+        top: 0; left: 0;
+        background: linear-gradient(90deg, #4A006D 0.31%, rgba(143, 51, 187, 0) 99.61%);
+        mix-blend-mode: screen;
+    }
+    .adaptive-bg {
+        position: absolute;
+        top: 230px; left: 0;
+        width: 100%; height: 100%;
+        z-index: -1;
+        img {
+            object-fit: cover;
+            width: 100%; height: 100%;
+        }
+    }
+
+    .container {
+        padding: 0;
+        .row {
+            margin-right: 0;
+            margin-left: 0;
+            & > * {
+                padding-right: 0;
+                padding-left: 0;
+            }
+        }
+    }
+    
+    .form-heading {
+        margin-bottom: 2em;
+        margin-top: 2em;
+        width: 60%;
+        h2 {
+            font-size: 6vmin;
+            text-transform: uppercase;
+            text-align: right;
+        }
+    }
+
+    .form-container {
+        padding: 0 1rem;
+    }
+
+    .form-control-container {
+        margin-bottom: 3rem;
+
+        &:not(:last-child) {
+            margin-bottom: 1.5em;
+        }
+
+        input {
+            padding: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+        }
+    }
+
+    .video-container {
+        picture {
+            img {
+                height: 230px; width: 100%;
+            }
+        }
+    }
+}
+
+.schedule-container {
+    position: relative;
+    padding: 2rem 1rem;
+    text-align: center;
+    
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: $primary;
+        mix-blend-mode: multiply;
+        opacity: 0.7;
+    }
+}
+
+.schedule-button-container {
+    position: relative;
+    z-index: 10;
+    button {
+        width: 100%;
+        padding: 1rem;
+        text-transform: uppercase;
+        font-size: 5vmin;
+    }
+}
+.schedule-info-container {
+    position: relative;
+    p {
+        font-size: 4vmin;
+    }
+    .social-box {
+        margin-bottom: 1rem;
+    }
+}
+.social-icon {
+    border-radius: 50%;
+    transition: box-shadow .3s ease-in-out;
+    &:hover {
+        box-shadow: 0px 0px 30px 15px rgba(143, 51, 187, 1);
+    }
+}
+.schedule-title {
+    h2 {
+        font-size: 6vmin;
+        text-transform: uppercase;
+    }
+}
+
+@media screen and (min-width: $tabletWidth) {
+    #free-training {
+        min-height: 0;
+        .wrapper {
+            margin-top: 20px;
+        }
+        .adaptive-bg {
+            top: 0;
+        }
+        .container {
+            padding: 0 1rem;
+            .row {
+                margin-right: calc(var(--bs-gutter-x) / -2);
+                margin-left: calc(var(--bs-gutter-x) / -2);
+                & > * {
+                    padding-right: calc(var(--bs-gutter-x) / 2);
+                    padding-left: calc(var(--bs-gutter-x) / 2);
+                }
+            }
+        }
+        .free-training__container {
+            margin-bottom: 10px;
+        }
+        .form-heading {
+            margin-top: 0;
+            width: 100%;
+            h2 {
+                font-size: 25px;
+                text-align: left;
+            }
+        }
+        .form-container {
+            padding: 0;
+        }
+        .form-control-container {
+    
+            button {
+                width: 80%;
+                padding: 14px;
+            }
+        }
+        .video-container {
+            picture {
+                img {
+                    height: auto;
+                }
+            }
+        }
+    }
+    .schedule-container {
+        position: relative;
+        padding: 25px 0;
+        text-align: left;
+    }
+    .schedule-button-container {
+        button {
+            width: 100%;
+            padding: 20px;
+            font-size: 18px;
+        }
+    }
+    .schedule-title {
+        h2 {
+            font-size: 25px;
+        }
+    }
+    .schedule-info-container {
+        p {
+            font-size: 16px;
+        }
+        .social-box {
+            margin-bottom: 0;
+            text-align: center;
+        }
+    }
+}
+
+@media screen and (min-width: $smDesktopWidth) {
+    #free-training {
+        min-height: 100vh;
+        .wrapper {
+            margin-top: 180px;
+        }
+
+        .free-training__container {
+            margin-bottom: 140px;
+        }
+
+        .form-heading {
+            h2 {
+                font-size: 35px;
+            }
+        }
+        .form-control-container {
+            button {
+                width: 40%;
+            }
+        }
+        .schedule-container {
+            padding: 50px 0;
+        }
+        .schedule-button-container {
+            button {
+                width: 90%;
+                padding: 25px;
+                font-size: 20px;
+            }
+        }
+
+        .schedule-title {
+            h2 {
+                font-size: 30px;
+            }
+        }
+        .schedule-info-container {
+            p {
+                font-size: 21px;
+            }
+        }
+    }
+}

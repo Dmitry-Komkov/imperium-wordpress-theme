@@ -1,0 +1,138 @@
+#main-box {
+    min-height: 100vh;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 100;
+    background: url('../../assets/images/content/main-screen_bg-mob.jpg') center center / cover no-repeat;
+    padding: 130px 0 2rem;
+}
+
+.main-screen {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: relative;
+}
+
+.title {
+    h1 {
+        position: relative;
+        font-weight: 900;
+        font-size: 12vmin;
+        text-transform: none;
+        z-index: 1;
+        &:before {
+            content: url('../../assets/images/content/tittle-bg-mob.png');
+            position: absolute;
+            top: -10px; left: -15px;
+            z-index: -1;
+        }
+    }
+
+}
+
+.description {
+    text-align: center;
+    p {
+        width: 100%;
+        font-size: 4vmin;
+    }
+}
+
+.main-screen .btn_shine {
+    font-size: 5vmin;
+    width: 80%;
+    padding: 10px;
+}
+
+.main-screen__btn {
+    text-align: center;
+}
+
+.socials {
+    position: absolute;
+    left: 20px; top: 20%;
+
+    .socials__item {
+        border-radius: 50%;
+        &:hover {
+            box-shadow: 0px 0px 30px 15px rgba(143, 51, 187, 1);
+        }
+
+        &:not(:last-child) {
+            margin-bottom: 1.5em;
+        }
+    }
+}
+
+@media screen and (min-width: $tabletWidth) {
+    #main-box {
+        height: 70vh;
+        min-height: 70vh;
+        justify-content: stretch;
+        background: url('../../assets/images/content/main-screen_bg.jpg') center center / cover no-repeat;
+    }
+    .title {
+        h1 {
+            font-size: 5vmin;
+            text-transform: uppercase;
+        }
+    }
+    .description {
+        text-align: left;
+        p {
+            font-size: 3vmin;
+        }
+    }
+    .main-screen .btn_shine {
+        font-size: 3vmin;
+        width: 80%;
+    }
+    
+    .main-screen__btn {
+        text-align: left;
+    }
+}
+
+@media screen and (min-width: $smDesktopWidth) {
+    #main-box {
+        height: 100vh;
+        min-height: 100vh;
+        justify-content: stretch;
+    }
+
+    .main-screen {
+        justify-content: center;
+    }
+
+    .title {
+        h1 {
+            font-size: 65px;
+            &:before {
+                content: url('../../assets/images/content/tittle-bg.png');
+                top: 0; left: -77px;
+            }
+        }
+    
+    }
+    .description {
+        p {
+            width: 80%;
+            font-size: 25px;
+        }
+    }
+
+    .main-screen .btn_shine {
+        font-size: 18px;
+        width: 70%;
+        padding: 20px;
+    }
+
+    .socials {
+        left: 30px; top: 50%;
+    }
+}

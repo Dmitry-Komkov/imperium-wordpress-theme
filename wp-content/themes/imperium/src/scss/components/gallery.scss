@@ -1,0 +1,25 @@
+#gallery {
+    .gallery-button-prev, .gallery-button-next {
+        &:after {
+            background: rgba($primary, .95);
+            padding: 5px;
+            border-radius: 5px;
+        }
+    }
+    .gallery-slide {
+        cursor: pointer;
+        img {
+            width: 100%;
+            object-fit: cover;
+            object-position: center center;
+            border: 4px solid #fff;
+        }
+    }
+}
+@media screen and (min-width: $tabletWidth) {
+    .gallery-slide {
+        img {
+            height: 300px;
+        }
+    }
+}

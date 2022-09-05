@@ -1,0 +1,38 @@
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 300px);
+  justify-content: center;
+  gap: 2rem;
+
+  @media screen and (min-width: $tabletWidth) {
+    justify-content: start;
+  }
+}
+
+.post-card {
+  &__wrapper {
+    overflow: hidden;
+    border-radius: 1rem;
+    box-shadow: 1px 0px 25px 2px rgba(0,0,0,0.47);
+    -webkit-box-shadow: 1px 0px 25px 2px rgba(0,0,0,0.47);
+    -moz-box-shadow: 1px 0px 25px 2px rgba(0,0,0,0.47);
+  }
+
+  .post-thumb {
+    margin-bottom: 1rem;
+
+    img {
+      height: 168px;
+      object-fit: cover;
+      object-position: top center;
+    }
+  }
+
+  &__content {
+    padding: 1rem;
+  }
+
+  &__title {
+    font-size: 1.5rem;
+  }
+}
