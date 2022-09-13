@@ -1,32 +1,49 @@
 .header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 990;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 990;
 
-    .wrapper {
-        position: relative;
-    }
-    
-    .phone__number {
-        margin-bottom: .5em;
-    }
+  .wrapper {
+    position: relative;
+  }
 
-    .menu__list {
-        justify-content: space-between;
-    }
+  .phone__number {
+    margin-bottom: .5em;
+  }
+
+  .menu__list {
+    justify-content: space-between;
+  }
 }
 
-@media screen and (min-width: $xlDesktopWidth) {
-    .header {
-        &:before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(20, 2, 29, 0.8);
-            z-index: 0;
-        }
+@media screen and (min-width: $smDesktopWidth) {
+  .header {
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(20, 2, 29, 0.8);
+      z-index: 0;
     }
+  }
+}
+
+.header.header-secondary {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 990;
+  background: $color-primaryDarkest;
+
+  @media screen and (max-width: $xlDesktopWidth) {
+    .navbar__container {
+      background: rgba($color-primaryDark, 0.95);
+    }
+  }
 }

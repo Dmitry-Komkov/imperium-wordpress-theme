@@ -1,15 +1,23 @@
-const menuToggler = document.querySelector('.menu-toggler');
-menuToggler.addEventListener('click', () => toggleMenu(menuToggler));
+export default class Menu {
+  constructor() {
+    this.menuToggler = document.querySelector('.menu-toggler');
+    this.menuLinks = document.querySelectorAll('.menu__list a');
+    this.navContainer = document.querySelector('.navbar__container');
 
-const menuLinks = document.querySelectorAll('.menu__list a');
-menuLinks.forEach( link => {
-  link.addEventListener('click', () => toggleMenu(menuToggler))
-});
+    this.bindEvents();
+  }
 
-const navContainer = document.querySelector('.navbar__container');
+  toggleMenu(toggler) {
+    let elToToggle = document.querySelector(`.${toggler.dataset.toggle}`);
+    elToToggle.classList.toggle('show');
+    this.navContainer.classList.toggle('active');
+  }
 
-function toggleMenu(toggler) {
-  let elToToggle = document.querySelector(`.${toggler.dataset.toggle}`);
-  elToToggle.classList.toggle('show');
-  navContainer.classList.toggle('active');
+  bindEvents() {
+    this.menuToggler.addEventListener('click', () => this.toggleMenu(this.menuToggler));
+
+    this.menuLinks.forEach( link => {
+      link.addEventListener('click', () => this.toggleMenu(menuToggler))
+    });
+  }
 }

@@ -37,6 +37,31 @@ hr.separator {
   border-radius: 5px;
 }
 
+.title {
+  font-size: 1.7rem;
+  font-weight: 600;
+
+  &--large {
+    font-size: 2rem;
+  }
+
+  &--small {
+    font-size: 1.3rem;
+  }
+
+  @media screen and (min-width: $smDesktopWidth) {
+    font-size: 2.5rem;
+
+    &--large {
+      font-size: 3rem;
+    }
+  
+    &--small {
+      font-size: 1.7rem;
+    }
+  }
+}
+
 .subtitle {
   font-size: 1.5rem;
   line-height: 1.4;

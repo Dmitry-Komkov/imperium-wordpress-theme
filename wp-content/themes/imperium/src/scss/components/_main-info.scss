@@ -1,0 +1,49 @@
+.main-info {
+  color: $color-primaryDark;
+  padding: 5rem 0;
+
+  .text {
+    color: $color-textDarkest;
+    font-size: 1.2rem;
+  }
+
+  .contest-heading {
+    margin-bottom: 5rem;
+  }
+
+  .contest-list {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    gap: 1rem;
+
+    &__item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      min-width: 0px;
+
+      svg {
+        flex: 0 1 20%;
+      }
+
+      p {
+        font-weight: 600;
+      }
+    }
+
+    @media screen and (min-width: $smDesktopWidth) {
+      display: block;
+
+      &__item {
+        &:not(:last-child) {
+          margin-bottom: 1.8rem;
+        }
+  
+        p {
+          font-size: 1.4rem;
+        }
+      }
+    }
+  }
+}

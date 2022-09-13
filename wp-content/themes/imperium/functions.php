@@ -170,6 +170,19 @@ function imperium_widgets_init() {
 			'after_title'   => '</h2>',
 		)
 	);
+
+	register_sidebar(
+		array(
+			'name' => esc_html__( 'Contacts', 'imperium' ),
+			'id' => 'footer-contacts',
+			'description' => esc_html__( 'Добавьте данные виджета'),
+			'before_widget' => '<div id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</div>',
+			'before_sidebar' => '<div id="widget-%1$s" class="widget %2$s">',
+			'after_sidebar' => '</div>',
+			'class' => 'contacts',
+		)
+	);
 }
 add_action( 'widgets_init', 'imperium_widgets_init' );
 
@@ -185,6 +198,13 @@ function imperium_scripts() {
 		wp_style_add_data( 'imperium-style', 'rtl', 'replace' );
 	
 		wp_enqueue_script( 'imperium-scripts', get_template_directory_uri() . '/dist/js/bundle.js', array(), _S_VERSION, true );
+	}
+
+	if ( is_page_template('pages/imperium-cup.php') ) {
+		wp_enqueue_style( 'imperium-style-cup', get_template_directory_uri() . '/dist/css/cup.css', array(), _S_VERSION );
+		wp_style_add_data( 'imperium-style', 'rtl', 'replace' );
+	
+		wp_enqueue_script( 'imperium-scripts-cup', get_template_directory_uri() . '/dist/js/cup.js', array(), _S_VERSION, true );
 	}
 
 	if ( $post_type == 'groups' ) {

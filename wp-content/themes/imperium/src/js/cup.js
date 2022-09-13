@@ -1,4 +1,4 @@
-import '../scss/groups.scss';
+import '../scss/cup.scss';
 import Menu from './menu';
 
 document.addEventListener('DOMContentLoaded', function () {

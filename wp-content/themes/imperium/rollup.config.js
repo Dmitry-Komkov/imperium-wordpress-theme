@@ -66,5 +66,35 @@ export default [
         })]),
       })
     ]
+  },
+  {
+    input: './src/js/cup.js',
+    watch: {
+      exclude: ['node_modules/**']
+    },
+    output: {
+      file: __dirname + '/dist/js/cup.js',
+      format: 'cjs'
+    },
+    plugins: [
+      clear({
+        watch: true
+      }),
+      nodeResolve(),
+      commonjs(),
+      babel({ presets: ['@babel/preset-env'] }),
+      scss({
+        include: ['./src/scss/cup.scss'],
+        watch: ["./src/scss/"],
+        output: __dirname + '/dist/css/cup.css',
+        sass: require('node-sass'),
+        sourceMap: true,
+        failOnError: true,
+        processor: () => postcss([autoprefixer({
+          flexbox: true,
+          grid: 'autoplace',
+        })]),
+      })
+    ]
   }
 ]

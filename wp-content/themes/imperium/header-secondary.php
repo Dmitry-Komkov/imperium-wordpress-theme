@@ -1,20 +1,15 @@
 <?php
-
 /**
- * The header for our theme
- *
- * This is the template that displays all of the <head> section and everything up until <div id="content">
- *
- * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
+ * Secondary, non sticky header, for a theme
  *
  * @package imperiumchekhov
  */
 
-	$contacts = get_field('contacts_group', '8');
-	$phone_1 = $contacts['phone_1'];
-	$phone_2 = $contacts['phone_2'];
-
+$contacts = get_field('contacts_group', '8');
+$phone_1 = $contacts['phone_1'];
+$phone_2 = $contacts['phone_2'];
 ?>
+
 <!doctype html>
 <html <?php language_attributes(); ?>>
 
@@ -29,7 +24,7 @@
 <body <?php body_class(); ?>>
 	<?php wp_body_open(); ?>
 	<div id="page" class="site">
-		<header id="header" class="header py-3">
+		<header id="header" class="header header-secondary py-3">
 			<div class="wrapper container">
 				<div class="row row-cols-auto gx-2 align-items-center justify-content-xl-between justify-content-end">
 					<div class="header__item logo col col-xl-2">

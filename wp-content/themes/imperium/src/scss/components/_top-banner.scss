@@ -1,0 +1,61 @@
+.top-banner {
+  position: relative;
+  color: $white;
+  overflow: hidden;
+
+  .background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: $color-primaryDarkest;
+      z-index: 1;
+      mix-blend-mode: color;
+    }
+  }
+
+  &__content {
+    padding: 2rem 0;
+    position: relative;
+    z-index: 5;
+  }
+
+  &__text {
+    p {
+      margin-bottom: 1rem;
+      
+      @media screen and (min-width: $smDesktopWidth) {
+        font-size: 1.2rem;
+      }
+    }
+
+    .title {
+      font-size: 2rem;
+      font-weight: 800;
+      
+      @media screen and (min-width: $smDesktopWidth) {
+        font-size: 3.5rem;
+      }
+
+      span {
+        color: $color-secondary;
+      }
+    }
+  }
+}
