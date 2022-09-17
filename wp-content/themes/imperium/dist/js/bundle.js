@@ -8057,29 +8057,60 @@ function Zoom(_ref) {
   });
 }
 
+function closeButton() {
+  var $buttons = document.querySelectorAll('.close-button');
+  $buttons.forEach(function (button) {
+    var targetSelector = button.dataset.close;
+    var $target = document.querySelector(targetSelector);
+    button.addEventListener('click', function () {
+      $target.classList.add('closed');
+    });
+  });
+}
+
+var Menu = /*#__PURE__*/function () {
+  function Menu() {
+    _classCallCheck(this, Menu);
+
+    this.menuToggler = document.querySelector('.menu-toggler');
+    this.targetSelector = this.menuToggler.dataset.target;
+    this.$target = document.querySelector("".concat(this.targetSelector));
+    this.menuLinks = document.querySelectorAll('.menu__list a');
+    this.navContainer = document.querySelector('.navigation-box');
+    this.bindEvents();
+  }
+
+  _createClass(Menu, [{
+    key: "toggleMenu",
+    value: function toggleMenu(toggler) {
+      this.$target.classList.toggle('active'); // let elToToggle = document.querySelector(`.${toggler.dataset.toggle}`);
+      // elToToggle.classList.toggle('show');
+      // this.navContainer.classList.toggle('active');
+    }
+  }, {
+    key: "bindEvents",
+    value: function bindEvents() {
+      var _this = this;
+
+      this.menuToggler.addEventListener('click', function () {
+        return _this.toggleMenu(_this.menuToggler);
+      });
+      this.menuLinks.forEach(function (link) {
+        link.addEventListener('click', function () {
+          return _this.toggleMenu(menuToggler);
+        });
+      });
+    }
+  }]);
+
+  return Menu;
+}();
+
 /* eslint-disable */
 Swiper.use([Navigation, Pagination, Zoom]);
 document.addEventListener('DOMContentLoaded', function () {
-  // MENU
-  var menuToggler = document.querySelector('.menu-toggler');
-  menuToggler.addEventListener('click', function () {
-    return toggleMenu(menuToggler);
-  });
-  var menuLinks = document.querySelectorAll('.menu__list a');
-  menuLinks.forEach(function (link) {
-    link.addEventListener('click', function () {
-      return toggleMenu(menuToggler);
-    });
-  });
-  var navContainer = document.querySelector('.navbar__container');
-
-  function toggleMenu(toggler) {
-    var elToToggle = document.querySelector(".".concat(toggler.dataset.toggle));
-    elToToggle.classList.toggle('show');
-    navContainer.classList.toggle('active');
-  } // MENU END
-
-
+  new Menu();
+  closeButton();
   var ua = navigator.userAgent;
   var chromeAgent = ua.indexOf("Chrome") > -1;
   var safariAgent = ua.indexOf("Safari") > -1;

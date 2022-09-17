@@ -1,5 +1,16 @@
 'use strict';
 
+function closeButton() {
+  var $buttons = document.querySelectorAll('.close-button');
+  $buttons.forEach(function (button) {
+    var targetSelector = button.dataset.close;
+    var $target = document.querySelector(targetSelector);
+    button.addEventListener('click', function () {
+      $target.classList.add('closed');
+    });
+  });
+}
+
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
@@ -30,17 +41,19 @@ var Menu = /*#__PURE__*/function () {
     _classCallCheck(this, Menu);
 
     this.menuToggler = document.querySelector('.menu-toggler');
+    this.targetSelector = this.menuToggler.dataset.target;
+    this.$target = document.querySelector("".concat(this.targetSelector));
     this.menuLinks = document.querySelectorAll('.menu__list a');
-    this.navContainer = document.querySelector('.navbar__container');
+    this.navContainer = document.querySelector('.navigation-box');
     this.bindEvents();
   }
 
   _createClass(Menu, [{
     key: "toggleMenu",
     value: function toggleMenu(toggler) {
-      var elToToggle = document.querySelector(".".concat(toggler.dataset.toggle));
-      elToToggle.classList.toggle('show');
-      this.navContainer.classList.toggle('active');
+      this.$target.classList.toggle('active'); // let elToToggle = document.querySelector(`.${toggler.dataset.toggle}`);
+      // elToToggle.classList.toggle('show');
+      // this.navContainer.classList.toggle('active');
     }
   }, {
     key: "bindEvents",
@@ -63,4 +76,5 @@ var Menu = /*#__PURE__*/function () {
 
 document.addEventListener('DOMContentLoaded', function () {
   new Menu();
+  closeButton();
 });

@@ -3,49 +3,20 @@
 }
 
 .menu__link, .phone__link {
-    color: white;
+    color: $white;
     transition-property: font-weight, border-bottom, color;
     transition-duration: .2s;
     text-decoration: none;
     border-bottom: 1px solid transparent;
 
     &:hover {
-        color: white;
+        color: $white;
         font-weight: 600;
         border-bottom: 1px solid $white;
     }
 }
 
-.menu-collapse {
-    display: flex;
-    justify-content: stretch;
-    align-items: center;
-
-    .menu__list {
-        flex: 0 0 70%;
-    }
-    .navbar__phone {
-        flex: 0 0 30%;
-    }
-
-    .btn_shine {
-        width: 75%;
-    }
-}
-
 @media screen and (min-width: $tabletWidth) and (max-width: $lgDesktopWidth) {
-    .navbar__phone {
-        width: 70%;
-    }
-    .menu-collapse {
-        display: none;
-        .btn_shine {
-            width: 100%;
-            background: $white;
-            color: $primary;
-            font-size: 4vmin;
-        }
-    }
     header {
         .menu__link, .phone__link {
             font-size: 4vmin;
@@ -55,15 +26,30 @@
 
 
 @media screen and (max-width: $lgDesktopWidth) {
-    .navbar__container {
-        background: rgba($primary, .95);
-        position: fixed;
-        top: 0; left: 0;
-        border-radius: 0px 0px 20px 0px;
-        z-index: 999;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    .navigation-box {
+        background: rgba($color-primaryDarkest, .95);
+        display: inline-block;
+        border-radius: 0 0 20px 0;
+
+        .nav-menu {
+            display: none;
+
+            &.active {
+                display: block;
+            }
+
+            .menu-box {
+                display: flex;
+                flex-direction: column;
+                align-items: start;
+                justify-content: start;
+                gap: 1rem;
+            }
+
+            &__contacts {
+                padding: 0 0.5rem;
+            }
+        }
     }
 
     .navbar__container.active {
@@ -86,20 +72,22 @@
         }
     }
 
-    .menu-collapse {
-        display: none;
-        .btn_shine {
-            width: 100%;
-            background: $white;
-            color: $primary;
-        }
-    }
-    .menu-collapse.show {
-        display: block;
-        width: 100%;
-    }
-
     .navbar__phone {
         padding: 16px;
+    }
+}
+
+@media screen and (min-width: $lgDesktopWidth) {
+    .navigation-box {
+        background: rgba($color-primaryDarkest, .8);
+
+        .nav-menu {
+            .menu-box {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 2rem;
+            }
+        }
     }
 }

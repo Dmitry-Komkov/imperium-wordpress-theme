@@ -10,9 +10,14 @@
  * @package imperiumchekhov
  */
 
-	$contacts = get_field('contacts_group', '8');
-	$phone_1 = $contacts['phone_1'];
-	$phone_2 = $contacts['phone_2'];
+$contacts = get_field('contacts_group', '8');
+$phone_1 = $contacts['phone_1'];
+$phone_2 = $contacts['phone_2'];
+$promo_bar = true;
+
+if (!empty($args) && !$args['promo_bar']) {
+	$promo_bar = false;
+}
 
 ?>
 <!doctype html>
@@ -29,41 +34,56 @@
 <body <?php body_class(); ?>>
 	<?php wp_body_open(); ?>
 	<div id="page" class="site">
-		<header id="header" class="header py-3">
-			<div class="wrapper container">
-				<div class="row row-cols-auto gx-2 align-items-center justify-content-xl-between justify-content-end">
-					<div class="header__item logo col col-xl-2">
-						<a href="/" class="logo__link"><img src="<?php echo bloginfo('template_url'); ?>/assets/images/content/logo.png" alt="Логотип Империум фитнес клуб" /></a>
+		<header id="header" class="header">
+			<?php if ( $promo_bar ) : ?>
+			<div id="promo-banner-1" class="promo-banner py-2">
+				<div class="container">
+					<div class="promo-banner__box">
+						<div class="promo-banner__col">
+							<p>Турнир по пауэрлифтингу с присвоением разрядов до мастера спорта</p>
+						</div>
+						<div class="promo-banner__col">
+							<a href="/imperium-cup" class="btn btn-white">Подробнее</a>
+						</div>
 					</div>
-					<nav class="header__item menu col-xl-10">
-						<div class="navbar__container">
-							<button class="menu-toggler" type="button" data-toggle="menu-collapse" data-target="#menuItems" aria-label="Toggle navigation">
-								<span></span>
-								<span></span>
-								<span></span>
-							</button>
-							<div class="menu-collapse" id="menuItems">
+				</div>
+				<button class="close-button" data-close="#promo-banner-1" aria-label="Закрыть баннер"><span></span><span></span></button>
+			</div>
+			<?php endif; ?>
+			<div class="wrapper">
+				<div class="navigation-box">
+					<button class="menu-toggler" type="button" data-toggle="menu-collapse" data-target="#menuItems" aria-label="Toggle navigation">
+						<span></span>
+						<span></span>
+						<span></span>
+					</button>
+					<nav id="menuItems" class="nav-menu">
+						<div class="container py-3">
+							<div class="menu-box">
+								<div class="nav-menu__logo">
+									<a href="/" class="logo__link"><img src="<?php echo bloginfo('template_url'); ?>/assets/images/content/logo.png" alt="Логотип Империум фитнес клуб" /></a>
+								</div>
 								<?php
-									wp_nav_menu( [
-										'theme_location'  => '',
-										'menu'            => 'Главное меню',
-										'container'       => '',
-										'container_class' => '',
-										'container_id'    => '',
-										'menu_class'      => 'menu__list nav',
-										'menu_id'         => '',
-										'echo'            => true,
-										'fallback_cb'     => 'wp_page_menu',
-										'before'          => '',
-										'after'           => '',
-										'link_before'     => '',
-										'link_after'      => '',
-										'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-										'depth'           => 1,
-										'walker'          => '',
-									] );
+								wp_nav_menu([
+									'theme_location'  => '',
+									'menu'            => 'Главное меню',
+									'container'       => '',
+									'container_class' => '',
+									'container_id'    => '',
+									'menu_class'      => 'menu__list nav',
+									'menu_id'         => '',
+									'echo'            => true,
+									'fallback_cb'     => 'wp_page_menu',
+									'before'          => '',
+									'after'           => '',
+									'link_before'     => '',
+									'link_after'      => '',
+									'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+									'depth'           => 1,
+									'walker'          => '',
+								]);
 								?>
-								<div class="navbar__phone text-center text-md-left text-xl-center">
+								<div class="nav-menu__contacts">
 									<div class="phone__number">
 										<div>
 											<a href="tel:<?php echo $phone_1; ?>" class="phone__link"><?php echo $phone_1; ?></a>

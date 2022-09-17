@@ -1,7 +1,16 @@
 .top-banner {
   position: relative;
+  padding-top: 120px;
   color: $white;
   overflow: hidden;
+
+  // @media screen and (min-width: $tabletWidth) {
+  //   padding-top: 50px;
+  // }
+
+  // @media screen and (min-width: $xlDesktopWidth) {
+  //   padding-top: 0;
+  // }
 
   .background-image {
     position: absolute;

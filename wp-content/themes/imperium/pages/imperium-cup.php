@@ -8,7 +8,10 @@
  * @package imperiumchekhov
  */
 
-get_header('secondary');
+$header_args = array(
+  'promo_bar' => false,
+);
+get_header('secondary', $header_args);
 
 $banner = get_field('banner');
 $banner_bg = $banner['background'];

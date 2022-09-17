@@ -10,29 +10,15 @@ import Swiper, {
   Pagination,
   Zoom
 } from 'swiper';
+import { closeButton } from './common/promo-bar';
+import Menu from './menu';
 Swiper.use([Navigation, Pagination, Zoom]);
 
 document.addEventListener('DOMContentLoaded', function () {
 
-    // MENU
+      const menu = new Menu();
 
-      const menuToggler = document.querySelector('.menu-toggler');
-      menuToggler.addEventListener('click', () => toggleMenu(menuToggler));
-      
-      const menuLinks = document.querySelectorAll('.menu__list a');
-      menuLinks.forEach( link => {
-        link.addEventListener('click', () => toggleMenu(menuToggler))
-      });
-      
-      const navContainer = document.querySelector('.navbar__container');
-      
-      function toggleMenu(toggler) {
-        let elToToggle = document.querySelector(`.${toggler.dataset.toggle}`);
-        elToToggle.classList.toggle('show');
-        navContainer.classList.toggle('active');
-      }
-  
-      // MENU END
+      closeButton();
   
       const ua = navigator.userAgent;
       let chromeAgent = ua.indexOf("Chrome") > -1;

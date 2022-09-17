@@ -183,6 +183,19 @@ function imperium_widgets_init() {
 			'class' => 'contacts',
 		)
 	);
+
+	register_sidebar(
+		array(
+			'name' => esc_html__( 'Promo', 'imperium' ),
+			'id' => 'promo-banner',
+			'description' => esc_html__( 'Добавьте данные виджета'),
+			'before_widget' => '<div id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</div>',
+			'before_sidebar' => '<div id="widget-%1$s" class="widget %2$s">',
+			'after_sidebar' => '</div>',
+			'class' => 'contacts',
+		)
+	);
 }
 add_action( 'widgets_init', 'imperium_widgets_init' );
 
