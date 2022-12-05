@@ -119,7 +119,7 @@ get_header();
 			<div class="container">
 				<div class="title-two-columns">
 					<div class="title-two-columns__item left left-anim-item">
-						<h2>Для вашего удобства мы разраболи <span class="text-primary font-weight-bold">четыре
+						<h2>Для вашего удобства мы разработали <span class="text-primary font-weight-bold">четыре
 								тарифных плана</span> на посещение клуба</h2>
 					</div>
 					<div class="title-two-columns__item right right-anim-item">
