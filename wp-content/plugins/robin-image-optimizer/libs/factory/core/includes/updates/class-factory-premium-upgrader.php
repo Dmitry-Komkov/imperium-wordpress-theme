@@ -1,12 +1,21 @@
 <?php
 
+<<<<<<< HEAD
 namespace WBCR\Factory_450\Updates;
+=======
+namespace WBCR\Factory_469\Updates;
+>>>>>>> update
 
 use Exception;
 use Plugin_Installer_Skin;
 use Plugin_Upgrader;
+<<<<<<< HEAD
 use Wbcr_Factory450_Plugin;
 use Wbcr_FactoryPages449_ImpressiveThemplate;
+=======
+use Wbcr_Factory469_Plugin;
+use Wbcr_FactoryPages467_ImpressiveThemplate;
+>>>>>>> update
 use WP_Filesystem_Base;
 use WP_Upgrader;
 use WP_Upgrader_Skin;
@@ -45,13 +54,21 @@ class Premium_Upgrader extends Upgrader {
 	 * @param                        $args
 	 * @param bool $is_premium
 	 *
+<<<<<<< HEAD
 	 * @param Wbcr_Factory450_Plugin $plugin
+=======
+	 * @param Wbcr_Factory469_Plugin $plugin
+>>>>>>> update
 	 *
 	 * @throws Exception
 	 * @since 4.1.1
 	 *
 	 */
+<<<<<<< HEAD
 	public function __construct(Wbcr_Factory450_Plugin $plugin)
+=======
+	public function __construct(Wbcr_Factory469_Plugin $plugin)
+>>>>>>> update
 	{
 		parent::__construct($plugin);
 
@@ -242,9 +259,15 @@ class Premium_Upgrader extends Upgrader {
 	/**
 	 * Выводит уведомление внутри интерфейса плагина, на всех страницах плагина.
 	 *
+<<<<<<< HEAD
 	 * @param Wbcr_FactoryPages449_ImpressiveThemplate $obj
 	 *
 	 * @param Wbcr_Factory450_Plugin $plugin
+=======
+	 * @param Wbcr_FactoryPages467_ImpressiveThemplate $obj
+	 *
+	 * @param Wbcr_Factory469_Plugin $plugin
+>>>>>>> update
 	 *
 	 * @return void
 	 * @since 4.1.1
@@ -540,7 +563,11 @@ class Premium_Upgrader extends Upgrader {
 		global $wp_filesystem;
 
 		if( !current_user_can('install_plugins') ) {
+<<<<<<< HEAD
 			throw new Exception('Sorry, you are not allowed to install plugins on this site.', 'not_allowed_install_plugin');
+=======
+			throw new Exception('Sorry, you are not allowed to install plugins on this site.');
+>>>>>>> update
 		}
 
 		if( $this->plugin->premium->is_install_package() ) {
@@ -555,7 +582,11 @@ class Premium_Upgrader extends Upgrader {
 		}
 
 		if( !WP_Filesystem(false, WP_PLUGIN_DIR) ) {
+<<<<<<< HEAD
 			throw new Exception('You are not allowed to edt folders/files on this site', 'not_allowed_edit_filesystem');
+=======
+			throw new Exception('You are not allowed to edt folders/files on this site');
+>>>>>>> update
 		} else {
 
 			$download_url = $this->repository->get_download_url();
@@ -633,7 +664,11 @@ class Premium_Upgrader extends Upgrader {
 			$upgrader = new Plugin_Upgrader($skin);
 
 			if( empty($download_url) ) {
+<<<<<<< HEAD
 				throw new Exception('You must pass the download url to upgrade up premium package.', "not_passed_download_url");
+=======
+				throw new Exception('You must pass the download url to upgrade up premium package.');
+>>>>>>> update
 			}
 
 			$install_result = $upgrader->install($download_url);
@@ -641,6 +676,7 @@ class Premium_Upgrader extends Upgrader {
 			include(ABSPATH . 'wp-admin/admin-footer.php');
 
 			if( is_wp_error($install_result) ) {
+<<<<<<< HEAD
 				throw new Exception($install_result->get_error_message(), $install_result->get_error_code());
 			} else if( is_wp_error($skin->result) ) {
 				throw new Exception($skin->result->get_error_message(), $skin->result->get_error_code());
@@ -648,6 +684,14 @@ class Premium_Upgrader extends Upgrader {
 				global $wp_filesystem;
 
 				$error_code = 'unable_to_connect_to_filesystem';
+=======
+				throw new Exception($install_result->get_error_message());
+			} else if( is_wp_error($skin->result) ) {
+				throw new Exception($skin->result->get_error_message());
+			} else if( is_null($install_result) ) {
+				global $wp_filesystem;
+
+>>>>>>> update
 				$error_message = 'Unable to connect to the filesystem. Please confirm your credentials.';
 
 				// Pass through the error from WP_Filesystem if one was raised.
@@ -655,7 +699,11 @@ class Premium_Upgrader extends Upgrader {
 					$error_message = $wp_filesystem->errors->get_error_message();
 				}
 
+<<<<<<< HEAD
 				throw new Exception($error_message, $error_code);
+=======
+				throw new Exception($error_message);
+>>>>>>> update
 			}
 
 			$this->plugin_basename = $upgrader->plugin_info();
@@ -711,7 +759,11 @@ class Premium_Upgrader extends Upgrader {
 		$result = delete_plugins([$package['basename']]);
 
 		if( is_wp_error($result) ) {
+<<<<<<< HEAD
 			throw new Exception($result->get_error_message(), $result->get_error_code());
+=======
+			throw new Exception($result->get_error_message());
+>>>>>>> update
 		}
 
 		$this->plugin->premium->delete_package();
@@ -809,12 +861,21 @@ class Premium_Upgrader extends Upgrader {
 		$cancel_license_url = $this->get_action_url('cancel_license');
 
 		$texts = [
+<<<<<<< HEAD
 			'need_activate_license' => __('License activation required. A license is required to get premium plugin updates, as well as to get additional services.', 'wbcr_factory_450'),
 			'need_renew_license' => __('Your license has expired. You can no longer get premium plugin updates, premium support and your access to Webcraftic services has been suspended.', 'wbcr_factory_450'),
 			'please_install_premium' => sprintf(__('Congratulations, you have activated a premium license! Please install premium add-on to use pro features now.
         <a href="%s">Install</a> premium add-on or <a href="%s">cancel</a> license.', 'wbcr_factory_450'), $upgrade_url, $cancel_license_url),
 			'please_activate_premium' => sprintf(__('Congratulations, you have activated a premium license! Please activate premium add-on to use pro features now.
         <a href="%s">Activate</a> premium add-on or <a href="%s">cancel</a> license.', 'wbcr_factory_450'), $activate_plugin_url, $cancel_license_url)
+=======
+			'need_activate_license' => __('License activation required. A license is required to get premium plugin updates, as well as to get additional services.', 'wbcr_factory_469'),
+			'need_renew_license' => __('Your license has expired. You can no longer get premium plugin updates, premium support and your access to Webcraftic services has been suspended.', 'wbcr_factory_469'),
+			'please_install_premium' => sprintf(__('Congratulations, you have activated a premium license! Please install premium add-on to use pro features now.
+        <a href="%s">Install</a> premium add-on or <a href="%s">cancel</a> license.', 'wbcr_factory_469'), $upgrade_url, $cancel_license_url),
+			'please_activate_premium' => sprintf(__('Congratulations, you have activated a premium license! Please activate premium add-on to use pro features now.
+        <a href="%s">Activate</a> premium add-on or <a href="%s">cancel</a> license.', 'wbcr_factory_469'), $activate_plugin_url, $cancel_license_url)
+>>>>>>> update
 		];
 
 		if( isset($texts[$type]) ) {

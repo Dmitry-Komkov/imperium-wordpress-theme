@@ -1,5 +1,9 @@
 <?php
 
+<<<<<<< HEAD
+=======
+declare (strict_types=1);
+>>>>>>> update
 namespace YoastSEO_Vendor\GuzzleHttp\Promise;
 
 /**
@@ -12,10 +16,17 @@ class RejectionException extends \RuntimeException
     /** @var mixed Rejection reason. */
     private $reason;
     /**
+<<<<<<< HEAD
      * @param mixed  $reason      Rejection reason.
      * @param string $description Optional description
      */
     public function __construct($reason, $description = null)
+=======
+     * @param mixed       $reason      Rejection reason.
+     * @param string|null $description Optional description.
+     */
+    public function __construct($reason, ?string $description = null)
+>>>>>>> update
     {
         $this->reason = $reason;
         $message = 'The promise was rejected';

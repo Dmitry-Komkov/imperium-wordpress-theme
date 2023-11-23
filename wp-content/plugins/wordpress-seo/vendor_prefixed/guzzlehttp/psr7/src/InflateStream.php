@@ -1,9 +1,14 @@
 <?php
 
+<<<<<<< HEAD
+=======
+declare (strict_types=1);
+>>>>>>> update
 namespace YoastSEO_Vendor\GuzzleHttp\Psr7;
 
 use YoastSEO_Vendor\Psr\Http\Message\StreamInterface;
 /**
+<<<<<<< HEAD
  * Uses PHP's zlib.inflate filter to inflate deflate or gzipped content.
  *
  * This stream decorator skips the first 10 bytes of the given stream to remove
@@ -48,4 +53,31 @@ class InflateStream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInterface
         }
         return $filename_header_length;
     }
+=======
+ * Uses PHP's zlib.inflate filter to inflate zlib (HTTP deflate, RFC1950) or gzipped (RFC1952) content.
+ *
+ * This stream decorator converts the provided stream to a PHP stream resource,
+ * then appends the zlib.inflate filter. The stream is then converted back
+ * to a Guzzle stream resource to be used as a Guzzle stream.
+ *
+ * @see http://tools.ietf.org/html/rfc1950
+ * @see http://tools.ietf.org/html/rfc1952
+ * @see http://php.net/manual/en/filters.compression.php
+ */
+final class InflateStream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInterface
+{
+    use StreamDecoratorTrait;
+    /** @var StreamInterface */
+    private $stream;
+    public function __construct(\YoastSEO_Vendor\Psr\Http\Message\StreamInterface $stream)
+    {
+        $resource = \YoastSEO_Vendor\GuzzleHttp\Psr7\StreamWrapper::getResource($stream);
+        // Specify window=15+32, so zlib will use header detection to both gzip (with header) and zlib data
+        // See http://www.zlib.net/manual.html#Advanced definition of inflateInit2
+        // "Add 32 to windowBits to enable zlib and gzip decoding with automatic header detection"
+        // Default window size is 15.
+        \stream_filter_append($resource, 'zlib.inflate', \STREAM_FILTER_READ, ['window' => 15 + 32]);
+        $this->stream = $stream->isSeekable() ? new \YoastSEO_Vendor\GuzzleHttp\Psr7\Stream($resource) : new \YoastSEO_Vendor\GuzzleHttp\Psr7\NoSeekStream(new \YoastSEO_Vendor\GuzzleHttp\Psr7\Stream($resource));
+    }
+>>>>>>> update
 }

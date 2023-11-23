@@ -5,7 +5,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! class_exists( 'acf_revisions' ) ) :
+<<<<<<< HEAD
 
+=======
+	#[AllowDynamicProperties]
+>>>>>>> update
 	class acf_revisions {
 
 		// vars
@@ -161,7 +165,11 @@ if ( ! class_exists( 'acf_revisions' ) ) :
 				// attempt to find key value
 				$key = acf_maybe_get( $meta, '_' . $name );
 
+<<<<<<< HEAD
 				// bail ealry if no key
+=======
+				// bail early if no key
+>>>>>>> update
 				if ( ! $key ) {
 					continue;
 				}
@@ -244,6 +252,7 @@ if ( ! class_exists( 'acf_revisions' ) ) :
 		*  @param   $direction (string) to / from - not used
 		*  @return  $value (string)
 		*/
+<<<<<<< HEAD
 
 		function wp_post_revision_field( $value, $field_name, $post = null, $direction = false ) {
 
@@ -283,6 +292,35 @@ if ( ! class_exists( 'acf_revisions' ) ) :
 			// return
 			return $value;
 
+=======
+		function wp_post_revision_field( $value, $field_name, $post = null, $direction = false ) {
+
+			// bail early if is empty.
+			if ( empty( $value ) ) {
+				return '';
+			}
+
+			$value   = acf_maybe_unserialize( $value );
+			$post_id = $post->ID;
+
+			// load field.
+			$field = acf_maybe_get_field( $field_name, $post_id );
+
+			// default formatting.
+			if ( is_array( $value ) ) {
+				$value = implode( ', ', $value );
+			} elseif ( is_object( $value ) ) {
+				$value = serialize( $value );
+			}
+
+			// image.
+			if ( is_array( $field ) && isset( $field['type'] ) && ( $field['type'] === 'image' || $field['type'] === 'file' ) ) {
+				$url   = wp_get_attachment_url( $value );
+				$value = $value . ' (' . $url . ')';
+			}
+
+			return $value;
+>>>>>>> update
 		}
 
 
@@ -334,6 +372,10 @@ if ( ! class_exists( 'acf_revisions' ) ) :
 
 		function acf_validate_post_id( $post_id, $_post_id ) {
 
+<<<<<<< HEAD
+=======
+			// phpcs:disable WordPress.Security.NonceVerification.Recommended
+>>>>>>> update
 			// bail early if no preview in URL
 			if ( ! isset( $_GET['preview'] ) ) {
 				return $post_id;
@@ -367,6 +409,10 @@ if ( ! class_exists( 'acf_revisions' ) ) :
 				$preview_id = (int) $_GET['page_id'];
 
 			}
+<<<<<<< HEAD
+=======
+			// phpcs:enable WordPress.Security.NonceVerification.Recommended
+>>>>>>> update
 
 			// bail early id $preview_id does not match $post_id
 			if ( $preview_id != $post_id ) {

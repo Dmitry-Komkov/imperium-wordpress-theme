@@ -67,6 +67,13 @@ class GenericProvider extends \YoastSEO_Vendor\League\OAuth2\Client\Provider\Abs
      */
     private $responseResourceOwnerId = 'id';
     /**
+<<<<<<< HEAD
+=======
+     * @var string|null
+     */
+    private $pkceMethod = null;
+    /**
+>>>>>>> update
      * @param array $options
      * @param array $collaborators
      */
@@ -89,7 +96,11 @@ class GenericProvider extends \YoastSEO_Vendor\League\OAuth2\Client\Provider\Abs
      */
     protected function getConfigurableOptions()
     {
+<<<<<<< HEAD
         return \array_merge($this->getRequiredOptions(), ['accessTokenMethod', 'accessTokenResourceOwnerId', 'scopeSeparator', 'responseError', 'responseCode', 'responseResourceOwnerId', 'scopes']);
+=======
+        return \array_merge($this->getRequiredOptions(), ['accessTokenMethod', 'accessTokenResourceOwnerId', 'scopeSeparator', 'responseError', 'responseCode', 'responseResourceOwnerId', 'scopes', 'pkceMethod']);
+>>>>>>> update
     }
     /**
      * Returns all options that are required.
@@ -166,6 +177,16 @@ class GenericProvider extends \YoastSEO_Vendor\League\OAuth2\Client\Provider\Abs
     /**
      * @inheritdoc
      */
+<<<<<<< HEAD
+=======
+    protected function getPkceMethod()
+    {
+        return $this->pkceMethod ?: parent::getPkceMethod();
+    }
+    /**
+     * @inheritdoc
+     */
+>>>>>>> update
     protected function checkResponse(\YoastSEO_Vendor\Psr\Http\Message\ResponseInterface $response, $data)
     {
         if (!empty($data[$this->responseError])) {

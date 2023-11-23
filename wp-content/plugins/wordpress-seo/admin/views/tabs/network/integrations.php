@@ -46,7 +46,11 @@ $integration_toggles = Yoast_Integration_Toggles::instance()->get_all();
 
 			$feature_help = new WPSEO_Admin_Help_Panel(
 				WPSEO_Option::ALLOW_KEY_PREFIX . $integration->setting,
+<<<<<<< HEAD
 				/* translators: %s expands to an integration's name */
+=======
+				/* translators: Hidden accessibility text; %s expands to an integration's name. */
+>>>>>>> update
 				sprintf( esc_html__( 'Help on: %s', 'wordpress-seo' ), esc_html( $integration->name ) ),
 				$help_text
 			);

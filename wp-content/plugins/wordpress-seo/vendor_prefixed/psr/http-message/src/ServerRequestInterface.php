@@ -51,7 +51,11 @@ interface ServerRequestInterface extends \YoastSEO_Vendor\Psr\Http\Message\Reque
      *
      * @return array
      */
+<<<<<<< HEAD
     public function getServerParams();
+=======
+    public function getServerParams() : array;
+>>>>>>> update
     /**
      * Retrieve cookies.
      *
@@ -62,7 +66,11 @@ interface ServerRequestInterface extends \YoastSEO_Vendor\Psr\Http\Message\Reque
      *
      * @return array
      */
+<<<<<<< HEAD
     public function getCookieParams();
+=======
+    public function getCookieParams() : array;
+>>>>>>> update
     /**
      * Return an instance with the specified cookies.
      *
@@ -80,7 +88,11 @@ interface ServerRequestInterface extends \YoastSEO_Vendor\Psr\Http\Message\Reque
      * @param array $cookies Array of key/value pairs representing cookies.
      * @return static
      */
+<<<<<<< HEAD
     public function withCookieParams(array $cookies);
+=======
+    public function withCookieParams(array $cookies) : \YoastSEO_Vendor\Psr\Http\Message\ServerRequestInterface;
+>>>>>>> update
     /**
      * Retrieve query string arguments.
      *
@@ -93,7 +105,11 @@ interface ServerRequestInterface extends \YoastSEO_Vendor\Psr\Http\Message\Reque
      *
      * @return array
      */
+<<<<<<< HEAD
     public function getQueryParams();
+=======
+    public function getQueryParams() : array;
+>>>>>>> update
     /**
      * Return an instance with the specified query string arguments.
      *
@@ -116,7 +132,11 @@ interface ServerRequestInterface extends \YoastSEO_Vendor\Psr\Http\Message\Reque
      *     $_GET.
      * @return static
      */
+<<<<<<< HEAD
     public function withQueryParams(array $query);
+=======
+    public function withQueryParams(array $query) : \YoastSEO_Vendor\Psr\Http\Message\ServerRequestInterface;
+>>>>>>> update
     /**
      * Retrieve normalized file upload data.
      *
@@ -129,7 +149,11 @@ interface ServerRequestInterface extends \YoastSEO_Vendor\Psr\Http\Message\Reque
      * @return array An array tree of UploadedFileInterface instances; an empty
      *     array MUST be returned if no data is present.
      */
+<<<<<<< HEAD
     public function getUploadedFiles();
+=======
+    public function getUploadedFiles() : array;
+>>>>>>> update
     /**
      * Create a new instance with the specified uploaded files.
      *
@@ -141,7 +165,11 @@ interface ServerRequestInterface extends \YoastSEO_Vendor\Psr\Http\Message\Reque
      * @return static
      * @throws \InvalidArgumentException if an invalid structure is provided.
      */
+<<<<<<< HEAD
     public function withUploadedFiles(array $uploadedFiles);
+=======
+    public function withUploadedFiles(array $uploadedFiles) : \YoastSEO_Vendor\Psr\Http\Message\ServerRequestInterface;
+>>>>>>> update
     /**
      * Retrieve any parameters provided in the request body.
      *
@@ -186,7 +214,11 @@ interface ServerRequestInterface extends \YoastSEO_Vendor\Psr\Http\Message\Reque
      * @throws \InvalidArgumentException if an unsupported argument type is
      *     provided.
      */
+<<<<<<< HEAD
     public function withParsedBody($data);
+=======
+    public function withParsedBody($data) : \YoastSEO_Vendor\Psr\Http\Message\ServerRequestInterface;
+>>>>>>> update
     /**
      * Retrieve attributes derived from the request.
      *
@@ -198,7 +230,11 @@ interface ServerRequestInterface extends \YoastSEO_Vendor\Psr\Http\Message\Reque
      *
      * @return array Attributes derived from the request.
      */
+<<<<<<< HEAD
     public function getAttributes();
+=======
+    public function getAttributes() : array;
+>>>>>>> update
     /**
      * Retrieve a single derived request attribute.
      *
@@ -214,7 +250,11 @@ interface ServerRequestInterface extends \YoastSEO_Vendor\Psr\Http\Message\Reque
      * @param mixed $default Default value to return if the attribute does not exist.
      * @return mixed
      */
+<<<<<<< HEAD
     public function getAttribute($name, $default = null);
+=======
+    public function getAttribute(string $name, $default = null);
+>>>>>>> update
     /**
      * Return an instance with the specified derived request attribute.
      *
@@ -230,7 +270,11 @@ interface ServerRequestInterface extends \YoastSEO_Vendor\Psr\Http\Message\Reque
      * @param mixed $value The value of the attribute.
      * @return static
      */
+<<<<<<< HEAD
     public function withAttribute($name, $value);
+=======
+    public function withAttribute(string $name, $value) : \YoastSEO_Vendor\Psr\Http\Message\ServerRequestInterface;
+>>>>>>> update
     /**
      * Return an instance that removes the specified derived request attribute.
      *
@@ -245,5 +289,9 @@ interface ServerRequestInterface extends \YoastSEO_Vendor\Psr\Http\Message\Reque
      * @param string $name The attribute name.
      * @return static
      */
+<<<<<<< HEAD
     public function withoutAttribute($name);
+=======
+    public function withoutAttribute(string $name) : \YoastSEO_Vendor\Psr\Http\Message\ServerRequestInterface;
+>>>>>>> update
 }

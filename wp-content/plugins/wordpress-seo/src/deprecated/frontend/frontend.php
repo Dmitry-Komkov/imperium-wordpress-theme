@@ -66,7 +66,11 @@ class WPSEO_Frontend {
 	 * @return mixed
 	 */
 	public function __call( $method, $arguments ) {
+<<<<<<< HEAD
 		_deprecated_function( $method, 'WPSEO 14.0' );
+=======
+		_deprecated_function( $method, 'Yoast SEO 14.0' );
+>>>>>>> update
 
 		$title_methods = [
 			'title',
@@ -109,10 +113,18 @@ class WPSEO_Frontend {
 	 * @return string|void
 	 */
 	public function canonical( $echo = true, $un_paged = false, $no_override = false ) {
+<<<<<<< HEAD
 		_deprecated_function( __METHOD__, 'WPSEO 14.0' );
 
 		$presentation = $this->get_current_page_presentation();
 		$presenter    = new Canonical_Presenter();
+=======
+		_deprecated_function( __METHOD__, 'Yoast SEO 14.0' );
+
+		$presentation = $this->get_current_page_presentation();
+		$presenter    = new Canonical_Presenter();
+
+>>>>>>> update
 		/** This filter is documented in src/integrations/front-end-integration.php */
 		$presenter->presentation = $presentation;
 		$presenter->helpers      = $this->helpers;
@@ -131,7 +143,11 @@ class WPSEO_Frontend {
 	 * @return string
 	 */
 	public function get_robots() {
+<<<<<<< HEAD
 		_deprecated_function( __METHOD__, 'WPSEO 14.0' );
+=======
+		_deprecated_function( __METHOD__, 'Yoast SEO 14.0' );
+>>>>>>> update
 
 		$presentation = $this->get_current_page_presentation();
 		return $presentation->robots;
@@ -141,7 +157,11 @@ class WPSEO_Frontend {
 	 * Outputs the meta robots value.
 	 */
 	public function robots() {
+<<<<<<< HEAD
 		_deprecated_function( __METHOD__, 'WPSEO 14.0' );
+=======
+		_deprecated_function( __METHOD__, 'Yoast SEO 14.0' );
+>>>>>>> update
 
 		$presentation            = $this->get_current_page_presentation();
 		$presenter               = new Robots_Presenter();
@@ -160,7 +180,11 @@ class WPSEO_Frontend {
 	 * @return array
 	 */
 	public function robots_for_single_post( $robots, $post_id = 0 ) {
+<<<<<<< HEAD
 		_deprecated_function( __METHOD__, 'WPSEO 14.0' );
+=======
+		_deprecated_function( __METHOD__, 'Yoast SEO 14.0' );
+>>>>>>> update
 
 		$presentation = $this->get_current_page_presentation();
 
@@ -175,7 +199,11 @@ class WPSEO_Frontend {
 	 * @return string The content title.
 	 */
 	private function get_title( $object = null ) {
+<<<<<<< HEAD
 		_deprecated_function( __METHOD__, 'WPSEO 14.0' );
+=======
+		_deprecated_function( __METHOD__, 'Yoast SEO 14.0' );
+>>>>>>> update
 
 		$presentation = $this->get_current_page_presentation();
 		$title        = $presentation->title;
@@ -193,7 +221,11 @@ class WPSEO_Frontend {
 	 * @return string
 	 */
 	public function add_paging_to_title( $sep, $seplocation, $title ) {
+<<<<<<< HEAD
 		_deprecated_function( __METHOD__, 'WPSEO 14.0' );
+=======
+		_deprecated_function( __METHOD__, 'Yoast SEO 14.0' );
+>>>>>>> update
 
 		return $title;
 	}
@@ -209,7 +241,11 @@ class WPSEO_Frontend {
 	 * @return string
 	 */
 	public function add_to_title( $sep, $seplocation, $title, $title_part ) {
+<<<<<<< HEAD
 		_deprecated_function( __METHOD__, 'WPSEO 14.0' );
+=======
+		_deprecated_function( __METHOD__, 'Yoast SEO 14.0' );
+>>>>>>> update
 
 		if ( $seplocation === 'right' ) {
 			return $title . $sep . $title_part;
@@ -224,7 +260,11 @@ class WPSEO_Frontend {
 	 * @link http://googlewebmastercentral.blogspot.com/2011/09/pagination-with-relnext-and-relprev.html
 	 */
 	public function adjacent_rel_links() {
+<<<<<<< HEAD
 		_deprecated_function( __METHOD__, 'WPSEO 14.0' );
+=======
+		_deprecated_function( __METHOD__, 'Yoast SEO 14.0' );
+>>>>>>> update
 
 		$presentation = $this->get_current_page_presentation();
 
@@ -249,7 +289,11 @@ class WPSEO_Frontend {
 	 * @return string
 	 */
 	public function metadesc( $echo = true ) {
+<<<<<<< HEAD
 		_deprecated_function( __METHOD__, 'WPSEO 14.0' );
+=======
+		_deprecated_function( __METHOD__, 'Yoast SEO 14.0' );
+>>>>>>> update
 
 		$presentation            = $this->get_current_page_presentation();
 		$presenter               = new Meta_Description_Presenter();
@@ -270,6 +314,10 @@ class WPSEO_Frontend {
 	 */
 	private function get_current_page_presentation() {
 		$context = $this->context_memoizer->for_current_page();
+<<<<<<< HEAD
+=======
+
+>>>>>>> update
 		/** This filter is documented in src/integrations/front-end-integration.php */
 		return apply_filters( 'wpseo_frontend_presentation', $context->presentation, $context );
 	}

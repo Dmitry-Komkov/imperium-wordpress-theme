@@ -23,8 +23,13 @@ foreach ( $strings as $string ) {
 	$class  = $sentiment->categorise( $string );
 
 	// output:
+<<<<<<< HEAD
 	echo "String: $string\n";
 	echo "Dominant: $class, scores: ";
+=======
+	echo "String: $string\n"; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	echo "Dominant: $class, scores: "; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+>>>>>>> update
 	print_r( $scores );
 	echo "\n";
 }

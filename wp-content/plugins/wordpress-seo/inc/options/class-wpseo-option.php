@@ -6,7 +6,11 @@
  */
 
 /**
+<<<<<<< HEAD
  * This abstract class and it's concrete classes implement defaults and value validation for
+=======
+ * This abstract class and its concrete classes implement defaults and value validation for
+>>>>>>> update
  * all WPSEO options and subkeys within options.
  *
  * Some guidelines:
@@ -22,9 +26,15 @@
  *
  * [Updating/Adding options]
  * - For multisite site_options, please use the WPSEO_Options::update_site_option() method.
+<<<<<<< HEAD
  * - For normal options, use the normal add/update_option() functions. As long a the classes here
  *   are instantiated, validation for all options and their subkeys will be automatic.
  * - On (succesfull) update of a couple of options, certain related actions will be run automatically.
+=======
+ * - For normal options, use the normal add/update_option() functions. As long as the classes here
+ *   are instantiated, validation for all options and their subkeys will be automatic.
+ * - On (successful) update of a couple of options, certain related actions will be run automatically.
+>>>>>>> update
  *   Some examples:
  *   - on change of wpseo[yoast_tracking], the cron schedule will be adjusted accordingly
  *   - on change of wpseo and wpseo_title, some caches will be cleared
@@ -41,7 +51,11 @@
  *   translate_defaults() method.
  * - When you remove an array key from an option: if it's important that the option is really removed,
  *   add the WPSEO_Option::clean_up( $option_name ) method to the upgrade run.
+<<<<<<< HEAD
  *   This will re-save the option and automatically remove the array key no longer in existance.
+=======
+ *   This will re-save the option and automatically remove the array key no longer in existence.
+>>>>>>> update
  * - When you rename a sub-option: add it to the clean_option() routine and run that in the upgrade run.
  * - When you change the default for an option sub-key, make sure you verify that the validation routine will
  *   still work the way it should.
@@ -74,8 +88,13 @@ abstract class WPSEO_Option {
 	 * Option group name for use in settings forms.
 	 *
 	 * Will be set automagically if not set in concrete class (i.e.
+<<<<<<< HEAD
 	 * if it confirm to the normal pattern 'yoast' . $option_name . 'options',
 	 * only set in conrete class if it doesn't).
+=======
+	 * if it conforms to the normal pattern 'yoast' . $option_name . 'options',
+	 * only set in concrete class if it doesn't).
+>>>>>>> update
 	 *
 	 * @var string
 	 */
@@ -107,7 +126,11 @@ abstract class WPSEO_Option {
 	protected $defaults;
 
 	/**
+<<<<<<< HEAD
 	 * Array of variable option name patterns for the option - if any -.
+=======
+	 * Array of variable option name patterns for the option - if any.
+>>>>>>> update
 	 *
 	 * Set this when the option contains array keys which vary based on post_type
 	 * or taxonomy.
@@ -149,7 +172,10 @@ abstract class WPSEO_Option {
 		$this->add_default_filters(); // Return defaults if option not set.
 		$this->add_option_filters(); // Merge with defaults if option *is* set.
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> update
 		if ( $this->multisite_only !== true ) {
 			/**
 			 * The option validation routines remove the default filters to prevent failing
@@ -181,7 +207,10 @@ abstract class WPSEO_Option {
 			add_action( 'update_site_option_' . $this->option_name, [ 'WPSEO_Options', 'clear_cache' ], 1, 0 );
 		}
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> update
 		/*
 		 * Make sure the option will always get validated, independently of register_setting()
 		 * (only available on back-end).
@@ -194,7 +223,10 @@ abstract class WPSEO_Option {
 		/* Register our option for the admin pages */
 		add_action( 'admin_init', [ $this, 'register_setting' ] );
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> update
 		/* Set option group name if not given */
 		if ( ! isset( $this->group_name ) || $this->group_name === '' ) {
 			$this->group_name = 'yoast_' . $this->option_name . '_options';
@@ -233,7 +265,11 @@ abstract class WPSEO_Option {
 	 * ```
 	 * ---------------
 	 *
+<<<<<<< HEAD
 	 * Concrete classes *may* contain a enrich_defaults method to add additional defaults once
+=======
+	 * Concrete classes *may* contain an enrich_defaults method to add additional defaults once
+>>>>>>> update
 	 * all post_types and taxonomies have been registered.
 	 *
 	 * ```
@@ -378,7 +414,11 @@ abstract class WPSEO_Option {
 	public function validate_url( $key, $dirty, $old, &$clean ) {
 		if ( isset( $dirty[ $key ] ) && $dirty[ $key ] !== '' ) {
 
+<<<<<<< HEAD
 			$submitted_url = trim( htmlspecialchars( $dirty[ $key ], ENT_COMPAT, get_bloginfo( 'charset' ), true ) );
+=======
+			$submitted_url = trim( $dirty[ $key ] );
+>>>>>>> update
 			$validated_url = filter_var( WPSEO_Utils::sanitize_url( $submitted_url ), FILTER_VALIDATE_URL );
 
 			if ( $validated_url === false ) {
@@ -392,7 +432,11 @@ abstract class WPSEO_Option {
 						sprintf(
 							/* translators: %s expands to an invalid URL. */
 							__( '%s does not seem to be a valid url. Please correct.', 'wordpress-seo' ),
+<<<<<<< HEAD
 							'<strong>' . esc_html( $submitted_url ) . '</strong>'
+=======
+							'<strong>' . esc_url( $submitted_url ) . '</strong>'
+>>>>>>> update
 						),
 						// Message type.
 						'error'
@@ -422,6 +466,7 @@ abstract class WPSEO_Option {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Validates a Facebook App ID.
 	 *
 	 * @deprecated 15.5
@@ -491,6 +536,8 @@ abstract class WPSEO_Option {
 	}
 
 	/**
+=======
+>>>>>>> update
 	 * Remove the default filters.
 	 * Called from the validate() method to prevent failure to add new options.
 	 *
@@ -569,7 +616,11 @@ abstract class WPSEO_Option {
 		return $filtered;
 	}
 
+<<<<<<< HEAD
 	/* *********** METHODS influencing add_uption(), update_option() and saving from admin pages. *********** */
+=======
+	/* *********** METHODS influencing add_option(), update_option() and saving from admin pages. *********** */
+>>>>>>> update
 
 	/**
 	 * Register (whitelist) the option for the configuration pages.
@@ -595,7 +646,11 @@ abstract class WPSEO_Option {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Validate the option
+=======
+	 * Validate the option.
+>>>>>>> update
 	 *
 	 * @param mixed $option_value The unvalidated new value for the option.
 	 *
@@ -717,7 +772,11 @@ abstract class WPSEO_Option {
 	 *
 	 * @param mixed $value The new value for the option.
 	 *
+<<<<<<< HEAD
 	 * @return bool Whether the update was succesfull.
+=======
+	 * @return bool Whether the update was successful.
+>>>>>>> update
 	 */
 	public function update_site_option( $value ) {
 		if ( $this->multisite_only === true && is_multisite() ) {
@@ -739,7 +798,11 @@ abstract class WPSEO_Option {
 	 * @uses WPSEO_Option::import()
 	 *
 	 * @param string|null $current_version Optional. Version from which to upgrade, if not set,
+<<<<<<< HEAD
 	 *                                     version specific upgrades will be disregarded.
+=======
+	 *                                     version-specific upgrades will be disregarded.
+>>>>>>> update
 	 *
 	 * @return void
 	 */
@@ -764,7 +827,11 @@ abstract class WPSEO_Option {
 	 *
 	 * @param array       $option_value          Option value to be imported.
 	 * @param string|null $current_version       Optional. Version from which to upgrade, if not set,
+<<<<<<< HEAD
 	 *                                           version specific upgrades will be disregarded.
+=======
+	 *                                           version-specific upgrades will be disregarded.
+>>>>>>> update
 	 * @param array|null  $all_old_option_values Optional. Only used when importing old options to
 	 *                                           have access to the real old values, in contrast to
 	 *                                           the saved ones.

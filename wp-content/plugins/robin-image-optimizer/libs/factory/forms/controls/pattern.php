@@ -15,9 +15,15 @@
 		exit;
 	}
 
+<<<<<<< HEAD
 	if( !class_exists('Wbcr_FactoryForms447_PatternControl') ) {
 
 		class Wbcr_FactoryForms447_PatternControl extends Wbcr_FactoryForms447_Control {
+=======
+	if( !class_exists('Wbcr_FactoryForms466_PatternControl') ) {
+
+		class Wbcr_FactoryForms466_PatternControl extends Wbcr_FactoryForms466_Control {
+>>>>>>> update
 
 			public $type = 'pattern';
 
@@ -52,12 +58,21 @@
 				$name = $this->getOption('name');
 
 				// filters to get available patterns for the given background contols
+<<<<<<< HEAD
 				$this->patterns = apply_filters('wbcr_factory_forms_447_patterns', array());
 				$this->patterns = apply_filters('wbcr_factory_forms_447_patterns-' . $name, $this->patterns);
 
 				$this->custom_patterns = $this->getOption('patterns', array());
 
 				$this->color = new Wbcr_FactoryForms447_ColorControl($options['color'], $form, $provider);
+=======
+				$this->patterns = apply_filters('wbcr_factory_forms_466_patterns', array());
+				$this->patterns = apply_filters('wbcr_factory_forms_466_patterns-' . $name, $this->patterns);
+
+				$this->custom_patterns = $this->getOption('patterns', array());
+
+				$this->color = new Wbcr_FactoryForms466_ColorControl($options['color'], $form, $provider);
+>>>>>>> update
 			}
 
 			/**
@@ -97,11 +112,16 @@
 						<div class="factory-preview-wrap">
 							<div <?php echo (!empty($values['url']))
 								? 'style="background:url(' . esc_url($values['url']) . ') repeat; border:0; font-size:0;"'
+<<<<<<< HEAD
 								: ''; ?> class="factory-preview <?php echo $this->getOption('name'); ?>"><span></span>
+=======
+								: ''; ?> class="factory-preview <?php echo esc_html($this->getOption('name')); ?>"><span></span>
+>>>>>>> update
 							</div>
 						</div>
 						<a href="#" class="button button-default factory-button factory-change-color-btn <?php if( $hasColor ) {
 							echo 'button-active';
+<<<<<<< HEAD
 						} ?>" title="<?php _e('Change color', 'wbcr_factory_forms_447') ?>">
 							<i class="fa fa-flask"></i>
 							<span><?php _e('re-color', 'wbcr_factory_forms_447') ?></span>
@@ -115,6 +135,21 @@
 							<?php $this->color->html() ?>
 							<div class="factory-hint">
 								<i><?php _e('Changing the color may takes a minute or more. Please be patient.', 'wbcr_factory_forms_447') ?></i>
+=======
+						} ?>" title="<?php _e('Change color', 'wbcr_factory_forms_466') ?>">
+							<i class="fa fa-flask"></i>
+							<span><?php _e('re-color', 'wbcr_factory_forms_466') ?></span>
+						</a>
+						<input type="hidden" id="<?php echo esc_attr($name[0]); ?>" name="<?php echo esc_attr($name[0]); ?>" value="<?php echo esc_url($values['url']); ?>" class="factory-pattern-result">
+						<input type="hidden" id="<?php echo esc_attr($name[1]); ?>" name="<?php echo esc_attr($name[1]); ?>" value="<?php echo esc_attr($values['color']); ?>" class="factory-color-result">
+					</div>
+					<div class="factory-color-panel">
+						<div class="factory-color-wrap">
+							<span class="factory-color-label"><?php _e('Select color:', 'wbcr_factory_forms_466') ?></span>
+							<?php $this->color->html() ?>
+							<div class="factory-hint">
+								<i><?php _e('Changing the color may takes a minute or more. Please be patient.', 'wbcr_factory_forms_466') ?></i>
+>>>>>>> update
 							</div>
 						</div>
 						<div class="factory-picker-target"></div>
@@ -125,8 +160,13 @@
 						</div>
 						<?php foreach($this->patterns as $key => $group): ?>
 							<?php if( !empty($group['patterns']) ): ?>
+<<<<<<< HEAD
 								<div class="factory-patterns-group factory-patterns-group-<?php echo $key ?>">
 									<div class="factory-patterns-group-title"><?php echo $group['title'] ?></div>
+=======
+								<div class="factory-patterns-group factory-patterns-group-<?php echo esc_attr($key); ?>">
+									<div class="factory-patterns-group-title"><?php echo esc_html($group['title']); ?></div>
+>>>>>>> update
 									<?php $this->printPatterns($group['patterns'], 4) ?>
 								</div>
 							<?php endif; ?>

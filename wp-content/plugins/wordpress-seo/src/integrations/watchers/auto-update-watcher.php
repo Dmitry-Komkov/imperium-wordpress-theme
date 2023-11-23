@@ -3,10 +3,14 @@
 namespace Yoast\WP\SEO\Integrations\Watchers;
 
 use Yoast\WP\SEO\Conditionals\No_Conditionals;
+<<<<<<< HEAD
 use Yoast\WP\SEO\Helpers\Notification_Helper;
 use Yoast\WP\SEO\Integrations\Integration_Interface;
 use Yoast\WP\SEO\Presenters\Admin\Auto_Update_Notification_Presenter;
 use Yoast_Notification;
+=======
+use Yoast\WP\SEO\Integrations\Integration_Interface;
+>>>>>>> update
 use Yoast_Notification_Center;
 
 /**
@@ -29,6 +33,7 @@ class Auto_Update_Watcher implements Integration_Interface {
 	protected $notification_center;
 
 	/**
+<<<<<<< HEAD
 	 * The notification helper.
 	 *
 	 * @var Notification_Helper
@@ -47,6 +52,14 @@ class Auto_Update_Watcher implements Integration_Interface {
 	) {
 		$this->notification_center = $notification_center;
 		$this->notification_helper = $notification_helper;
+=======
+	 * Auto_Update constructor.
+	 *
+	 * @param Yoast_Notification_Center $notification_center The notification center.
+	 */
+	public function __construct( Yoast_Notification_Center $notification_center ) {
+		$this->notification_center = $notification_center;
+>>>>>>> update
 	}
 
 	/**
@@ -59,6 +72,7 @@ class Auto_Update_Watcher implements Integration_Interface {
 	 * @return void
 	 */
 	public function register_hooks() {
+<<<<<<< HEAD
 		\add_action( 'admin_init', [ $this, 'auto_update_notification_not_if_dismissed' ] );
 		\add_action( 'update_site_option_auto_update_core_major', [ $this, 'auto_update_notification_even_if_dismissed' ] );
 		\add_action( 'update_site_option_auto_update_plugins', [ $this, 'auto_update_notification_not_if_dismissed' ] );
@@ -126,6 +140,9 @@ class Auto_Update_Watcher implements Integration_Interface {
 		if ( $notification_dismissed && ! \get_user_option( 'wp_' . self::NOTIFICATION_ID . '_dismissed' ) ) {
 			\update_user_option( \get_current_user_id(), self::NOTIFICATION_ID . '_dismissed', true );
 		}
+=======
+		\add_action( 'admin_init', [ $this, 'remove_notification' ] );
+>>>>>>> update
 	}
 
 	/**
@@ -133,6 +150,7 @@ class Auto_Update_Watcher implements Integration_Interface {
 	 *
 	 * @return void
 	 */
+<<<<<<< HEAD
 	protected function maybe_remove_notification() {
 		$this->notification_center->remove_notification_by_id( self::NOTIFICATION_ID );
 	}
@@ -201,4 +219,9 @@ class Auto_Update_Watcher implements Integration_Interface {
 			]
 		);
 	}
+=======
+	public function remove_notification() {
+		$this->notification_center->remove_notification_by_id( self::NOTIFICATION_ID );
+	}
+>>>>>>> update
 }

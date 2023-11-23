@@ -182,6 +182,7 @@ function wpseo_wpml_config( $config ) {
 
 add_filter( 'icl_wpml_config_array', 'wpseo_wpml_config' );
 
+<<<<<<< HEAD
 /**
  * Yoast SEO breadcrumb shortcode.
  * [wpseo_breadcrumb]
@@ -197,6 +198,8 @@ function wpseo_shortcode_yoast_breadcrumb() {
 	return '';
 }
 
+=======
+>>>>>>> update
 if ( ! function_exists( 'ctype_digit' ) ) {
 	/**
 	 * Emulate PHP native ctype_digit() function for when the ctype extension would be disabled *sigh*.
@@ -250,6 +253,7 @@ function wpseo_get_capabilities() {
 	}
 	return WPSEO_Capability_Manager_Factory::get()->get_capabilities();
 }
+<<<<<<< HEAD
 
 if ( ! function_exists( 'wp_get_environment_type' ) ) {
 	/**
@@ -314,3 +318,5 @@ if ( ! function_exists( 'wp_get_environment_type' ) ) {
 		return $current_env;
 	}
 }
+=======
+>>>>>>> update

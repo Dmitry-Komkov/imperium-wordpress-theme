@@ -5,8 +5,13 @@
 	var plugin_slug = '';
 
 	$(document).ready(function() {
+<<<<<<< HEAD
 		var modal = $('#wbcr-factory-feedback-112-deactivate-form');
 		var deact_button = $('#the-list .deactivate > .wbcr-factory-feedback-112-plugin-slug').prev();
+=======
+		var modal = $('#wbcr-factory-feedback-125-deactivate-form');
+		var deact_button = $('#the-list .deactivate > .wbcr-factory-feedback-125-plugin-slug').prev();
+>>>>>>> update
 		var deact_button_close = modal.find('a.button-close');
 		var selectedReasonID = false;
 
@@ -26,7 +31,11 @@
 			var $target = $(evt.target);
 
 			// If the user has clicked anywhere in the modal dialog, just return.
+<<<<<<< HEAD
 			if( $target.hasClass('wbcr-factory-feedback-112-modal-body') || $target.hasClass('wbcr-factory-feedback-112-modal-footer') ) {
+=======
+			if( $target.hasClass('wbcr-factory-feedback-125-modal-body') || $target.hasClass('wbcr-factory-feedback-125-modal-footer') ) {
+>>>>>>> update
 				return;
 			}
 
@@ -34,7 +43,11 @@
 			// return.
 			if(
 				!$target.hasClass('button-close') &&
+<<<<<<< HEAD
 				($target.parents('.wbcr-factory-feedback-112-modal-body').length > 0 || $target.parents('.wbcr-factory-feedback-112-modal-footer').length > 0)
+=======
+				($target.parents('.wbcr-factory-feedback-125-modal-body').length > 0 || $target.parents('.wbcr-factory-feedback-125-modal-footer').length > 0)
+>>>>>>> update
 			) {
 				return;
 			}
@@ -82,13 +95,21 @@
 
 		//-----------------------------------------------------------
 
+<<<<<<< HEAD
 		modal.on('click', '.wbcr-factory-feedback-112-modal-footer .button', function(evt) {
+=======
+		modal.on('click', '.wbcr-factory-feedback-125-modal-footer .button', function(evt) {
+>>>>>>> update
 			evt.preventDefault();
 			if( $(this).hasClass('disabled') ) {
 				return;
 			}
 
+<<<<<<< HEAD
 			var _parent = $(this).parents('.wbcr-factory-feedback-112-modal:first');
+=======
+			var _parent = $(this).parents('.wbcr-factory-feedback-125-modal:first');
+>>>>>>> update
 			var _this = $(this);
 
 			if( _this.hasClass('allow-deactivate') ) {
@@ -107,18 +128,31 @@
 						url: ajaxurl,
 						method: 'POST',
 						data: {
+<<<<<<< HEAD
 							action: 'wbcr-factory-feedback-112-save_' + plugin_slug,
 							plugin: plugin_slug,
 							reason_id: $radio.val(),
 							reason_more: userReason,
 							anonymous: modal.find('#wbcr-factory-feedback-112-anonymous-checkbox').is(':checked')
+=======
+							action: 'wbcr-factory-feedback-125-save_' + plugin_slug,
+							plugin: plugin_slug,
+							reason_id: $radio.val(),
+							reason_more: userReason,
+							anonymous: modal.find('#wbcr-factory-feedback-125-anonymous-checkbox').is(':checked')
+>>>>>>> update
 							           ? 1
 							           : 0,
 							_wpnonce: modal.data('nonce')
 						},
 						beforeSend: function() {
+<<<<<<< HEAD
 							_parent.find('.wbcr-factory-feedback-112-modal-footer .button').addClass('disabled');
 							_parent.find('.wbcr-factory-feedback-112-modal-footer .button-secondary').text('Processing...');
+=======
+							_parent.find('.wbcr-factory-feedback-125-modal-footer .button').addClass('disabled');
+							_parent.find('.wbcr-factory-feedback-125-modal-footer .button-secondary').text('Processing...');
+>>>>>>> update
 						},
 						error: function() {
 							window.location.href = redirectLink;

@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
+<<<<<<< HEAD
     'Cyr_To_Lat\\ACF' => $baseDir . '/src/php/class-acf.php',
     'Cyr_To_Lat\\Admin_Notices' => $baseDir . '/src/php/class-admin-notices.php',
     'Cyr_To_Lat\\Conversion_Process' => $baseDir . '/src/php/background-processes/class-conversion-process.php',
@@ -27,4 +28,9 @@ return array(
     'Cyr_To_Lat\\Symfony\\Polyfill\\Mbstring\\Mbstring' => $baseDir . '/lib/polyfill-mbstring/Mbstring.php',
     'Cyr_To_Lat\\Term_Conversion_Process' => $baseDir . '/src/php/background-processes/class-term-conversion-process.php',
     'Cyr_To_Lat\\WP_CLI' => $baseDir . '/src/php/class-wp-cli.php',
+=======
+    'CyrToLat\\Symfony\\Polyfill\\Mbstring\\Mbstring' => $baseDir . '/libs/polyfill-mbstring/Mbstring.php',
+    'CyrToLat\\WP_Background_Processing\\WP_Async_Request' => $baseDir . '/libs/wp-background-processing/wp-async-request.php',
+    'CyrToLat\\WP_Background_Processing\\WP_Background_Process' => $baseDir . '/libs/wp-background-processing/wp-background-process.php',
+>>>>>>> update
 );

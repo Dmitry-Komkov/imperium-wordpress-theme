@@ -18,7 +18,11 @@ class UpdraftPlus_Clone extends UpdraftPlus_Login {
 		switch ($code) {
 			case 'generic':
 			default:
+<<<<<<< HEAD
 				return __('An error has occurred while processing your request. The server might be busy or you have lost your connection to the internet at the time of the request. Please try again later.', 'updraftplus');
+=======
+				return __('An error has occurred while processing your request.', 'updraftplus').' '.__('The server might be busy or you have lost your connection to the internet at the time of the request.', 'updraftplus').' '.__('Please try again later.', 'updraftplus');
+>>>>>>> update
 				break;
 		}
 	}
@@ -53,7 +57,11 @@ class UpdraftPlus_Clone extends UpdraftPlus_Login {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Executes login or registration process. Connects and sends request to the UpdraftPlus clone
+=======
+	 * Executes login or registration process. Connects and sends request to the UpdraftClone
+>>>>>>> update
 	 * and returns the response coming from the server
 	 *
 	 * @internal
@@ -93,7 +101,11 @@ class UpdraftPlus_Clone extends UpdraftPlus_Login {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Executes the create clone process. Connects and sends request to the UpdraftPlus clone and returns the response coming from the server
+=======
+	 * Executes the create clone process. Connects and sends request to the UpdraftClone and returns the response coming from the server
+>>>>>>> update
 	 *
 	 * @internal
 	 * @param array $data - The submitted form data
@@ -127,7 +139,11 @@ class UpdraftPlus_Clone extends UpdraftPlus_Login {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Executes the clone status process. Connects and sends request to the UpdraftPlus clone and returns the response coming from the server
+=======
+	 * Executes the clone status process. Connects and sends request to the UpdraftClone and returns the response coming from the server
+>>>>>>> update
 	 *
 	 * @internal
 	 * @param array $data - The submitted form data
@@ -144,7 +160,11 @@ class UpdraftPlus_Clone extends UpdraftPlus_Login {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Executes the clone info poll. Connects and sends request to the UpdraftPlus clone and returns the response coming from the server
+=======
+	 * Executes the clone info poll. Connects and sends request to the UpdraftClone and returns the response coming from the server
+>>>>>>> update
 	 *
 	 * @internal
 	 * @param array $data - The submitted form data
@@ -181,7 +201,11 @@ class UpdraftPlus_Clone extends UpdraftPlus_Login {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Executes the clone failed delete process. Connects and sends request to the UpdraftPlus clone and returns the response coming from the server
+=======
+	 * Executes the clone failed delete process. Connects and sends request to the UpdraftClone and returns the response coming from the server
+>>>>>>> update
 	 *
 	 * @internal
 	 * @param array $data - The submitted form data

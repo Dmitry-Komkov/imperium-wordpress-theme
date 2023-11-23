@@ -412,6 +412,7 @@ function wpcf7_init_captcha() {
 		return $captcha;
 	}
 
+<<<<<<< HEAD
 	if ( wp_mkdir_p( $dir ) ) {
 		$htaccess_file = path_join( $dir, '.htaccess' );
 
@@ -429,6 +430,46 @@ function wpcf7_init_captcha() {
 		}
 	} else {
 		return false;
+=======
+	$result = wp_mkdir_p( $dir );
+
+	if ( ! $result ) {
+		return false;
+	}
+
+	$htaccess_file = path_join( $dir, '.htaccess' );
+
+	if ( file_exists( $htaccess_file ) ) {
+		list( $first_line_comment ) = (array) file(
+			$htaccess_file,
+			FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES
+		);
+
+		if ( '# Apache 2.4+' === $first_line_comment ) {
+			return $captcha;
+		}
+	}
+
+	if ( $handle = @fopen( $htaccess_file, 'w' ) ) {
+		fwrite( $handle, "# Apache 2.4+\n" );
+		fwrite( $handle, "<IfModule authz_core_module>\n" );
+		fwrite( $handle, "    Require all denied\n" );
+		fwrite( $handle, '    <FilesMatch "^\w+\.(jpe?g|gif|png)$">' . "\n" );
+		fwrite( $handle, "        Require all granted\n" );
+		fwrite( $handle, "    </FilesMatch>\n" );
+		fwrite( $handle, "</IfModule>\n" );
+		fwrite( $handle, "\n" );
+		fwrite( $handle, "# Apache 2.2\n" );
+		fwrite( $handle, "<IfModule !authz_core_module>\n" );
+		fwrite( $handle, "    Order deny,allow\n" );
+		fwrite( $handle, "    Deny from all\n" );
+		fwrite( $handle, '    <FilesMatch "^\w+\.(jpe?g|gif|png)$">' . "\n" );
+		fwrite( $handle, "        Allow from all\n" );
+		fwrite( $handle, "    </FilesMatch>\n" );
+		fwrite( $handle, "</IfModule>\n" );
+
+		fclose( $handle );
+>>>>>>> update
 	}
 
 	return $captcha;
@@ -472,7 +513,11 @@ function wpcf7_captcha_url( $filename ) {
 		$url = 'https:' . substr( $url, 5 );
 	}
 
+<<<<<<< HEAD
 	return apply_filters( 'wpcf7_captcha_url', esc_url_raw( $url ) );
+=======
+	return apply_filters( 'wpcf7_captcha_url', sanitize_url( $url ) );
+>>>>>>> update
 }
 
 function wpcf7_generate_captcha( $options = null ) {

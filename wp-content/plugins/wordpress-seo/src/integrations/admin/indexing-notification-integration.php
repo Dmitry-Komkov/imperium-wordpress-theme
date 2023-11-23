@@ -32,6 +32,7 @@ class Indexing_Notification_Integration implements Integration_Interface {
 	const NOTIFICATION_ID = 'wpseo-reindex';
 
 	/**
+<<<<<<< HEAD
 	 * Represents the reason that the indexing process failed and should be tried again.
 	 *
 	 * @deprecated 15.3
@@ -67,6 +68,8 @@ class Indexing_Notification_Integration implements Integration_Interface {
 	const REASON_HOME_URL_OPTION = Indexing_Reasons::REASON_HOME_URL_OPTION;
 
 	/**
+=======
+>>>>>>> update
 	 * The Yoast notification center.
 	 *
 	 * @var Yoast_Notification_Center
@@ -234,6 +237,12 @@ class Indexing_Notification_Integration implements Integration_Interface {
 			return false;
 		}
 
+<<<<<<< HEAD
+=======
+		// We're about to perform expensive queries, let's inform.
+		\add_filter( 'wpseo_unindexed_count_queries_ran', '__return_true' );
+
+>>>>>>> update
 		// Never show a notification when nothing should be indexed.
 		return $this->indexing_helper->get_limited_filtered_unindexed_count( 1 ) > 0;
 	}

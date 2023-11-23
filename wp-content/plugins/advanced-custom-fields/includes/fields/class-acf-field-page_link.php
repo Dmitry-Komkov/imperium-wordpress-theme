@@ -21,10 +21,20 @@ if ( ! class_exists( 'acf_field_page_link' ) ) :
 		function initialize() {
 
 			// vars
+<<<<<<< HEAD
 			$this->name     = 'page_link';
 			$this->label    = __( 'Page Link', 'acf' );
 			$this->category = 'relational';
 			$this->defaults = array(
+=======
+			$this->name          = 'page_link';
+			$this->label         = __( 'Page Link', 'acf' );
+			$this->category      = 'relational';
+			$this->description   = __( 'An interactive dropdown to select one or more posts, pages, custom post type items or archive URLs, with the option to search.', 'acf' );
+			$this->preview_image = acf_get_url() . '/assets/images/field-type-previews/field-preview-page-link.png';
+			$this->doc_url       = acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/resources/page-link/', 'docs', 'field-type-selection' );
+			$this->defaults      = array(
+>>>>>>> update
 				'post_type'      => array(),
 				'taxonomy'       => array(),
 				'allow_null'     => 0,
@@ -109,6 +119,20 @@ if ( ! class_exists( 'acf_field_page_link' ) ) :
 
 			}
 
+<<<<<<< HEAD
+=======
+			// post status
+			if ( ! empty( $options['post_status'] ) ) {
+
+				$args['post_status'] = acf_get_array( $options['post_status'] );
+
+			} elseif ( ! empty( $field['post_status'] ) ) {
+
+				$args['post_status'] = acf_get_array( $field['post_status'] );
+
+			}
+
+>>>>>>> update
 			// create tax queries
 			if ( ! empty( $field['taxonomy'] ) ) {
 
@@ -440,10 +464,14 @@ if ( ! class_exists( 'acf_field_page_link' ) ) :
 		*
 		*  @param   $field  - an array holding all the field's data
 		*/
+<<<<<<< HEAD
 
 		function render_field_settings( $field ) {
 
 			// post_type
+=======
+		function render_field_settings( $field ) {
+>>>>>>> update
 			acf_render_field_setting(
 				$field,
 				array(
@@ -459,7 +487,25 @@ if ( ! class_exists( 'acf_field_page_link' ) ) :
 				)
 			);
 
+<<<<<<< HEAD
 			// taxonomy
+=======
+			acf_render_field_setting(
+				$field,
+				array(
+					'label'        => __( 'Filter by Post Status', 'acf' ),
+					'instructions' => '',
+					'type'         => 'select',
+					'name'         => 'post_status',
+					'choices'      => acf_get_pretty_post_statuses(),
+					'multiple'     => 1,
+					'ui'           => 1,
+					'allow_null'   => 1,
+					'placeholder'  => __( 'Any post status', 'acf' ),
+				)
+			);
+
+>>>>>>> update
 			acf_render_field_setting(
 				$field,
 				array(
@@ -475,6 +521,7 @@ if ( ! class_exists( 'acf_field_page_link' ) ) :
 				)
 			);
 
+<<<<<<< HEAD
 			// allow_null
 			acf_render_field_setting(
 				$field,
@@ -488,6 +535,8 @@ if ( ! class_exists( 'acf_field_page_link' ) ) :
 			);
 
 			// allow_archives
+=======
+>>>>>>> update
 			acf_render_field_setting(
 				$field,
 				array(
@@ -499,20 +548,53 @@ if ( ! class_exists( 'acf_field_page_link' ) ) :
 				)
 			);
 
+<<<<<<< HEAD
 			// multiple
 			acf_render_field_setting(
 				$field,
 				array(
 					'label'        => __( 'Select multiple values?', 'acf' ),
 					'instructions' => '',
+=======
+			acf_render_field_setting(
+				$field,
+				array(
+					'label'        => __( 'Select Multiple', 'acf' ),
+					'instructions' => 'Allow content editors to select multiple values',
+>>>>>>> update
 					'name'         => 'multiple',
 					'type'         => 'true_false',
 					'ui'           => 1,
 				)
 			);
+<<<<<<< HEAD
 
 		}
 
+=======
+		}
+
+		/**
+		 * Renders the field settings used in the "Validation" tab.
+		 *
+		 * @since 6.0
+		 *
+		 * @param array $field The field settings array.
+		 * @return void
+		 */
+		function render_field_validation_settings( $field ) {
+			acf_render_field_setting(
+				$field,
+				array(
+					'label'        => __( 'Allow Null', 'acf' ),
+					'instructions' => '',
+					'name'         => 'allow_null',
+					'type'         => 'true_false',
+					'ui'           => 1,
+				)
+			);
+		}
+>>>>>>> update
 
 		/*
 		*  format_value()

@@ -210,6 +210,7 @@ class Search_Engines_Discouraged_Watcher implements Integration_Interface {
 	 */
 	protected function show_search_engines_discouraged_notice() {
 		\printf(
+<<<<<<< HEAD
 			'<div id="robotsmessage" class="notice notice-error"> %1$s </div>',
 			\wp_kses(
 				$this->presenter->present(),
@@ -227,6 +228,11 @@ class Search_Engines_Discouraged_Watcher implements Integration_Interface {
 					'p'      => [],
 				]
 			)
+=======
+			'<div id="robotsmessage" class="notice notice-error">%1$s</div>',
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Output from present() is considered safe.
+			$this->presenter->present()
+>>>>>>> update
 		);
 	}
 

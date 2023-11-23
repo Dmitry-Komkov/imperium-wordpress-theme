@@ -14,9 +14,15 @@ if( !defined('ABSPATH') ) {
 	exit;
 }
 
+<<<<<<< HEAD
 if( !class_exists('Wbcr_FactoryPages449_AdminPage') ) {
 
 	class Wbcr_FactoryPages449_AdminPage extends Wbcr_FactoryPages449_Page {
+=======
+if( !class_exists('Wbcr_FactoryPages467_AdminPage') ) {
+
+	class Wbcr_FactoryPages467_AdminPage extends Wbcr_FactoryPages467_Page {
+>>>>>>> update
 
 		/**
 		 * Visible page title.
@@ -209,7 +215,11 @@ if( !class_exists('Wbcr_FactoryPages449_AdminPage') ) {
 		 */
 		public $add_link_to_plugin_actions = false;
 
+<<<<<<< HEAD
 		public function __construct(Wbcr_Factory450_Plugin $plugin)
+=======
+		public function __construct(Wbcr_Factory469_Plugin $plugin)
+>>>>>>> update
 		{
 			parent::__construct($plugin);
 			$this->configure();
@@ -325,13 +335,21 @@ if( !class_exists('Wbcr_FactoryPages449_AdminPage') ) {
 		{
 			$result_id = $this->getResultId();
 
+<<<<<<< HEAD
 			$this->hidden = apply_filters('wbcr_factory_450_page_is_hidden_' . $result_id, $this->hidden);
+=======
+			$this->hidden = apply_filters('wbcr_factory_469_page_is_hidden_' . $result_id, $this->hidden);
+>>>>>>> update
 
 			if( $this->hidden ) {
 				return;
 			}
 
+<<<<<<< HEAD
 			$this->internal = apply_filters('wbcr_factory_450_page_is_internal_' . $result_id, $this->internal);
+=======
+			$this->internal = apply_filters('wbcr_factory_469_page_is_internal_' . $result_id, $this->internal);
+>>>>>>> update
 
 			if( $this->internal ) {
 				$this->menu_target = null;
@@ -370,7 +388,11 @@ if( !class_exists('Wbcr_FactoryPages449_AdminPage') ) {
 				$this->assets($this->scripts, $this->styles);
 
 				if( !$this->scripts->isEmpty('bootstrap') || !$this->styles->isEmpty('bootstrap') ) {
+<<<<<<< HEAD
 					add_action('wbcr_factory_450_bootstrap_enqueue_scripts_' . $this->plugin->getPluginName(), [
+=======
+					add_action('wbcr_factory_469_bootstrap_enqueue_scripts_' . $this->plugin->getPluginName(), [
+>>>>>>> update
 						$this,
 						'actionAdminBootstrapScripts'
 					]);

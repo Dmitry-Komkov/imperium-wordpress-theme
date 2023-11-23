@@ -2,7 +2,11 @@
 
 if (!defined('UPDRAFTPLUS_DIR')) die('No direct access allowed.');
 
+<<<<<<< HEAD
 if (!class_exists('UpdraftPlus_BackupModule')) require_once(UPDRAFTPLUS_DIR.'/methods/backup-module.php');
+=======
+if (!class_exists('UpdraftPlus_BackupModule')) updraft_try_include_file('methods/backup-module.php', 'require_once');
+>>>>>>> update
 
 class UpdraftPlus_BackupModule_insufficientphp extends UpdraftPlus_BackupModule {
 
@@ -34,7 +38,11 @@ class UpdraftPlus_BackupModule_insufficientphp extends UpdraftPlus_BackupModule 
 	 * @param  array $backup_array An array backups
 	 * @return Array
 	 */
+<<<<<<< HEAD
 	public function backup($backup_array) {// phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable
+=======
+	public function backup($backup_array) {// phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- Unused variable is present because the function to perform backup for specific storage is not exist.
+>>>>>>> update
 		return $this->log_error();
 	}
 
@@ -72,7 +80,11 @@ class UpdraftPlus_BackupModule_insufficientphp extends UpdraftPlus_BackupModule 
 	 * @param  String $match THis will specify which match is used for the SQL but by default it is set to 'backup_' unless specified
 	 * @return Array
 	 */
+<<<<<<< HEAD
 	public function listfiles($match = 'backup_') {// phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable
+=======
+	public function listfiles($match = 'backup_') {// phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- Unused variable is present because the function to perform listfiles for specific storage is not exist.
+>>>>>>> update
 		return new WP_Error('insufficient_php', $this->error_msg_trans);
 	}
 
@@ -84,7 +96,11 @@ class UpdraftPlus_BackupModule_insufficientphp extends UpdraftPlus_BackupModule 
 	 * @param  array   $sizeinfo This is the size info on the file.
 	 * @return Array
 	 */
+<<<<<<< HEAD
 	public function delete($files, $data = false, $sizeinfo = array()) {// phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable
+=======
+	public function delete($files, $data = false, $sizeinfo = array()) {// phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- Unused variable is present because the function to perform delete for specific storage is not exist.
+>>>>>>> update
 		return $this->log_error();
 	}
 
@@ -95,7 +111,11 @@ class UpdraftPlus_BackupModule_insufficientphp extends UpdraftPlus_BackupModule 
 	 * @param  String $file List of files
 	 * @return Array
 	 */
+<<<<<<< HEAD
 	public function download($file) {// phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable
+=======
+	public function download($file) {// phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- Unused variable is present because the function to perform download for specific storage is not exist.
+>>>>>>> update
 		return $this->log_error();
 	}
 

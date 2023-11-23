@@ -1,5 +1,10 @@
 <?php
 
+<<<<<<< HEAD
+=======
+declare(strict_types=1);
+
+>>>>>>> update
 namespace Psr\Http\Message;
 
 /**
@@ -224,7 +229,11 @@ interface ServerRequestInterface extends RequestInterface
      * @param mixed $default Default value to return if the attribute does not exist.
      * @return mixed
      */
+<<<<<<< HEAD
     public function getAttribute($name, $default = null);
+=======
+    public function getAttribute(string $name, $default = null);
+>>>>>>> update
 
     /**
      * Return an instance with the specified derived request attribute.
@@ -241,7 +250,11 @@ interface ServerRequestInterface extends RequestInterface
      * @param mixed $value The value of the attribute.
      * @return static
      */
+<<<<<<< HEAD
     public function withAttribute($name, $value);
+=======
+    public function withAttribute(string $name, $value);
+>>>>>>> update
 
     /**
      * Return an instance that removes the specified derived request attribute.
@@ -257,5 +270,9 @@ interface ServerRequestInterface extends RequestInterface
      * @param string $name The attribute name.
      * @return static
      */
+<<<<<<< HEAD
     public function withoutAttribute($name);
+=======
+    public function withoutAttribute(string $name);
+>>>>>>> update
 }

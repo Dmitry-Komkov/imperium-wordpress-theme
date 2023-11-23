@@ -23,6 +23,7 @@ class Integrations_Route implements Route_Interface {
 	const INTEGRATIONS_ROUTE = '/integrations';
 
 	/**
+<<<<<<< HEAD
 	 * Represents a route to set the state of Semrush integration.
 	 *
 	 * @var string
@@ -63,6 +64,13 @@ class Integrations_Route implements Route_Interface {
 	 * @var string
 	 */
 	const SET_ALGOLIA_ACTIVE_ROUTE = '/set_algolia_active';
+=======
+	 * Represents a route to set the state of an integration.
+	 *
+	 * @var string
+	 */
+	const SET_ACTIVE_ROUTE = '/set_active';
+>>>>>>> update
 
 	/**
 	 *  The integrations action.
@@ -88,15 +96,22 @@ class Integrations_Route implements Route_Interface {
 	 * @return void
 	 */
 	public function register_routes() {
+<<<<<<< HEAD
 		$set_semrush_active_route = [
 			'methods'             => 'POST',
 			'callback'            => [ $this, 'set_semrush_active' ],
+=======
+		$set_active_route = [
+			'methods'             => 'POST',
+			'callback'            => [ $this, 'set_integration_active' ],
+>>>>>>> update
 			'permission_callback' => [ $this, 'can_manage_options' ],
 			'args'                => [
 				'active' => [
 					'type'     => 'boolean',
 					'required' => true,
 				],
+<<<<<<< HEAD
 			],
 		];
 		\register_rest_route( Main::API_V1_NAMESPACE, self::INTEGRATIONS_ROUTE . self::SET_SEMRUSH_ACTIVE_ROUTE, $set_semrush_active_route );
@@ -108,10 +123,15 @@ class Integrations_Route implements Route_Interface {
 			'args'                => [
 				'active' => [
 					'type'     => 'boolean',
+=======
+				'integration' => [
+					'type'     => 'string',
+>>>>>>> update
 					'required' => true,
 				],
 			],
 		];
+<<<<<<< HEAD
 		\register_rest_route( Main::API_V1_NAMESPACE, self::INTEGRATIONS_ROUTE . self::SET_WINCHER_ACTIVE_ROUTE, $set_wincher_active_route );
 
 		$set_ryte_active_route = [
@@ -165,6 +185,9 @@ class Integrations_Route implements Route_Interface {
 			],
 		];
 		\register_rest_route( Main::API_V1_NAMESPACE, self::INTEGRATIONS_ROUTE . self::SET_ALGOLIA_ACTIVE_ROUTE, $set_algolia_active_route );
+=======
+		\register_rest_route( Main::API_V1_NAMESPACE, self::INTEGRATIONS_ROUTE . self::SET_ACTIVE_ROUTE, $set_active_route );
+>>>>>>> update
 	}
 
 	/**
@@ -177,12 +200,17 @@ class Integrations_Route implements Route_Interface {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Sets Semrush integration state.
+=======
+	 * Sets integration state.
+>>>>>>> update
 	 *
 	 * @param WP_REST_Request $request The request.
 	 *
 	 * @return WP_REST_Response
 	 */
+<<<<<<< HEAD
 	public function set_semrush_active( WP_REST_Request $request ) {
 		$data = $this
 			->integrations_action
@@ -272,6 +300,16 @@ class Integrations_Route implements Route_Interface {
 		$data = $this
 			->integrations_action
 			->set_integration_active( 'algolia', $request->get_json_params() );
+=======
+	public function set_integration_active( WP_REST_Request $request ) {
+		$params           = $request->get_json_params();
+		$integration_name = $params['integration'];
+		$value            = $params['active'];
+
+		$data = $this
+			->integrations_action
+			->set_integration_active( $integration_name, $value );
+>>>>>>> update
 
 		return new WP_REST_Response(
 			[ 'json' => $data ]

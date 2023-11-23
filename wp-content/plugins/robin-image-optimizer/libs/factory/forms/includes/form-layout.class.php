@@ -14,12 +14,20 @@
 		exit;
 	}
 
+<<<<<<< HEAD
 	if( !class_exists('Wbcr_FactoryForms447_FormLayout') ) {
+=======
+	if( !class_exists('Wbcr_FactoryForms466_FormLayout') ) {
+>>>>>>> update
 
 		/**
 		 * The base class for all form layouts.
 		 */
+<<<<<<< HEAD
 		abstract class Wbcr_FactoryForms447_FormLayout extends Wbcr_FactoryForms447_Holder {
+=======
+		abstract class Wbcr_FactoryForms466_FormLayout extends Wbcr_FactoryForms466_Holder {
+>>>>>>> update
 
 			/**
 			 * A form layout name.
@@ -42,7 +50,11 @@
 			 *
 			 * @since 1.0.0
 			 * @param mixed[] $options A holder options.
+<<<<<<< HEAD
 			 * @param Wbcr_FactoryForms447_Form $form A parent form.
+=======
+			 * @param Wbcr_FactoryForms466_Form $form A parent form.
+>>>>>>> update
 			 */
 			public function __construct($options, $form)
 			{
@@ -52,8 +64,13 @@
 
 				parent::__construct($options, $form);
 
+<<<<<<< HEAD
 				$this->addCssClass('factory-forms-447-' . $this->type);
 				$this->addCssClass('factory-forms-447-' . $this->name);
+=======
+				$this->addCssClass('factory-forms-466-' . $this->type);
+				$this->addCssClass('factory-forms-466-' . $this->name);
+>>>>>>> update
 			}
 
 			/**

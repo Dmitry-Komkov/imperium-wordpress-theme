@@ -2,7 +2,10 @@
 
 namespace Yoast\WP\SEO\Integrations\Blocks;
 
+<<<<<<< HEAD
 use Yoast\WP\SEO\Helpers\Wordpress_Helper;
+=======
+>>>>>>> update
 use Yoast\WP\SEO\Integrations\Integration_Interface;
 
 /**
@@ -11,6 +14,7 @@ use Yoast\WP\SEO\Integrations\Integration_Interface;
 class Internal_Linking_Category implements Integration_Interface {
 
 	/**
+<<<<<<< HEAD
 	 * Represents the WordPress helper.
 	 *
 	 * @var Wordpress_Helper
@@ -27,6 +31,8 @@ class Internal_Linking_Category implements Integration_Interface {
 	}
 
 	/**
+=======
+>>>>>>> update
 	 * {@inheritDoc}
 	 */
 	public static function get_conditionals() {
@@ -37,6 +43,7 @@ class Internal_Linking_Category implements Integration_Interface {
 	 * {@inheritDoc}
 	 */
 	public function register_hooks() {
+<<<<<<< HEAD
 		$wordpress_version = $this->wordpress_helper->get_wordpress_version();
 
 		// The 'block_categories' filter has been deprecated in WordPress 5.8 and replaced by 'block_categories_all'.
@@ -46,6 +53,9 @@ class Internal_Linking_Category implements Integration_Interface {
 		else {
 			\add_filter( 'block_categories_all', [ $this, 'add_block_categories' ] );
 		}
+=======
+		\add_filter( 'block_categories_all', [ $this, 'add_block_categories' ] );
+>>>>>>> update
 	}
 
 	/**

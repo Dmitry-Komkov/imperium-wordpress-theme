@@ -83,7 +83,11 @@ class MonsterInsights_Dashboard_Widget {
 		add_action( 'wp_ajax_monsterinsights_save_widget_state', array( $this, 'save_widget_state' ) );
 
 		// Reminder notice.
+<<<<<<< HEAD
 		add_action( 'admin_footer', array( $this, 'load_notice' ) );
+=======
+//		add_action( 'admin_footer', array( $this, 'load_notice' ) );
+>>>>>>> update
 
 		add_action( 'wp_ajax_monsterinsights_mark_notice_closed', array( $this, 'mark_notice_closed' ) );
 	}
@@ -143,7 +147,11 @@ class MonsterInsights_Dashboard_Widget {
 				'</a>'
 			);
 			?>
+<<<<<<< HEAD
 			<h2><?php echo $message; ?></h2>
+=======
+			<h2><?php echo $message; // phpcs:ignore ?></h2>
+>>>>>>> update
 			<?php if ( current_user_can( 'monsterinsights_save_settings' ) ) { ?>
 				<p><?php esc_html_e( 'To see your website stats, please connect MonsterInsights to Google Analytics.', 'google-analytics-for-wordpress' ); ?></p>
 				<a href="<?php echo esc_url( $url ); ?>"
@@ -212,7 +220,10 @@ class MonsterInsights_Dashboard_Widget {
 					'wpforms_installed'   => $wpforms_installed,
 					'wpforms_url'         => $wp_forms_url,
 					'authed'              => $is_authed,
+<<<<<<< HEAD
 					'auth_connected_type' => $auth->get_connected_type(),
+=======
+>>>>>>> update
 					// Used to add notices for future deprecations.
 					'versions'            => monsterinsights_get_php_wp_version_warning_data(),
 					'plugin_version'      => MONSTERINSIGHTS_VERSION,
@@ -283,6 +294,12 @@ class MonsterInsights_Dashboard_Widget {
 			$this->options = self::wp_parse_args_recursive( get_user_meta( get_current_user_id(), 'monsterinsights_user_preferences', true ), self::$default_options );
 		}
 
+<<<<<<< HEAD
+=======
+        // Set interval fixed to last30days on lite plugin.
+		$this->options['interval'] = 'last30days';
+
+>>>>>>> update
 		return apply_filters( 'monsterinsights_dashboard_widget_options', $this->options );
 
 	}
@@ -316,8 +333,13 @@ class MonsterInsights_Dashboard_Widget {
 	public function load_notice() {
 
 		$screen = get_current_screen();
+<<<<<<< HEAD
 		$ua     = monsterinsights_get_ua();
 		if ( isset( $screen->id ) && 'dashboard' === $screen->id && ! empty( $ua ) ) {
+=======
+		$tracking_id     = monsterinsights_get_v4_id();
+		if ( isset( $screen->id ) && 'dashboard' === $screen->id && ! empty( $tracking_id ) ) {
+>>>>>>> update
 			?>
 			<div id="monsterinsights-reminder-notice"></div>
 			<?php

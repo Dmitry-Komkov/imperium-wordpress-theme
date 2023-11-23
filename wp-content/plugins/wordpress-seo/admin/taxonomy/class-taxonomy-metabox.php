@@ -46,6 +46,16 @@ class WPSEO_Taxonomy_Metabox {
 	protected $readability_analysis;
 
 	/**
+<<<<<<< HEAD
+=======
+	 * Helper to determine whether or not the inclusive language analysis is enabled.
+	 *
+	 * @var WPSEO_Metabox_Analysis_Inclusive_Language
+	 */
+	protected $inclusive_language_analysis;
+
+	/**
+>>>>>>> update
 	 * The constructor.
 	 *
 	 * @param string   $taxonomy The taxonomy.
@@ -56,8 +66,14 @@ class WPSEO_Taxonomy_Metabox {
 		$this->taxonomy          = $taxonomy;
 		$this->is_social_enabled = WPSEO_Options::get( 'opengraph', false ) || WPSEO_Options::get( 'twitter', false );
 
+<<<<<<< HEAD
 		$this->seo_analysis         = new WPSEO_Metabox_Analysis_SEO();
 		$this->readability_analysis = new WPSEO_Metabox_Analysis_Readability();
+=======
+		$this->seo_analysis                = new WPSEO_Metabox_Analysis_SEO();
+		$this->readability_analysis        = new WPSEO_Metabox_Analysis_Readability();
+		$this->inclusive_language_analysis = new WPSEO_Metabox_Analysis_Inclusive_Language();
+>>>>>>> update
 	}
 
 	/**
@@ -140,6 +156,13 @@ class WPSEO_Taxonomy_Metabox {
 			$tabs[] = new WPSEO_Metabox_Section_Readability();
 		}
 
+<<<<<<< HEAD
+=======
+		if ( $this->inclusive_language_analysis->is_enabled() ) {
+			$tabs[] = new WPSEO_Metabox_Section_Inclusive_Language();
+		}
+
+>>>>>>> update
 		if ( $this->is_social_enabled ) {
 			$tabs[] = new WPSEO_Metabox_Section_React(
 				'social',

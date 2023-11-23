@@ -4,7 +4,11 @@ namespace Yoast\WP\SEO\Integrations\Admin;
 
 use WPSEO_Admin_Asset_Manager;
 use Yoast\WP\SEO\Conditionals\Admin_Conditional;
+<<<<<<< HEAD
 use Yoast\WP\SEO\Helpers\Indexing_Helper;
+=======
+use Yoast\WP\SEO\Helpers\First_Time_Configuration_Notice_Helper;
+>>>>>>> update
 use Yoast\WP\SEO\Helpers\Options_Helper;
 use Yoast\WP\SEO\Integrations\Integration_Interface;
 use Yoast\WP\SEO\Presenters\Admin\Notice_Presenter;
@@ -22,6 +26,7 @@ class First_Time_Configuration_Notice_Integration implements Integration_Interfa
 	private $options_helper;
 
 	/**
+<<<<<<< HEAD
 	 * The indexing helper.
 	 *
 	 * @var Indexing_Helper
@@ -29,6 +34,8 @@ class First_Time_Configuration_Notice_Integration implements Integration_Interfa
 	private $indexing_helper;
 
 	/**
+=======
+>>>>>>> update
 	 * The admin asset manager.
 	 *
 	 * @var WPSEO_Admin_Asset_Manager
@@ -36,11 +43,19 @@ class First_Time_Configuration_Notice_Integration implements Integration_Interfa
 	private $admin_asset_manager;
 
 	/**
+<<<<<<< HEAD
 	 * Whether we show the alternate mesage.
 	 *
 	 * @var bool
 	 */
 	private $show_alternate_message;
+=======
+	 * The first time configuration notice helper.
+	 *
+	 * @var First_Time_Configuration_Notice_Helper
+	 */
+	private $first_time_configuration_notice_helper;
+>>>>>>> update
 
 	/**
 	 * {@inheritDoc}
@@ -52,6 +67,7 @@ class First_Time_Configuration_Notice_Integration implements Integration_Interfa
 	/**
 	 * First_Time_Configuration_Notice_Integration constructor.
 	 *
+<<<<<<< HEAD
 	 * @param Options_Helper            $options_helper      The options helper.
 	 * @param Indexing_Helper           $indexing_helper     The indexing helper.
 	 * @param WPSEO_Admin_Asset_Manager $admin_asset_manager The admin asset manager.
@@ -65,6 +81,20 @@ class First_Time_Configuration_Notice_Integration implements Integration_Interfa
 		$this->indexing_helper        = $indexing_helper;
 		$this->admin_asset_manager    = $admin_asset_manager;
 		$this->show_alternate_message = false;
+=======
+	 * @param Options_Helper                         $options_helper                         The options helper.
+	 * @param First_Time_Configuration_Notice_Helper $first_time_configuration_notice_helper The first time configuration notice helper.
+	 * @param WPSEO_Admin_Asset_Manager              $admin_asset_manager                    The admin asset manager.
+	 */
+	public function __construct(
+		Options_Helper $options_helper,
+		First_Time_Configuration_Notice_Helper $first_time_configuration_notice_helper,
+		WPSEO_Admin_Asset_Manager $admin_asset_manager
+	) {
+		$this->options_helper                         = $options_helper;
+		$this->admin_asset_manager                    = $admin_asset_manager;
+		$this->first_time_configuration_notice_helper = $first_time_configuration_notice_helper;
+>>>>>>> update
 	}
 
 	/**
@@ -81,6 +111,13 @@ class First_Time_Configuration_Notice_Integration implements Integration_Interfa
 	 * @return bool
 	 */
 	public function dismiss_first_time_configuration_notice() {
+<<<<<<< HEAD
+=======
+		// Check for nonce.
+		if ( ! \check_ajax_referer( 'wpseo-dismiss-first-time-configuration-notice', 'nonce', false ) ) {
+			return false;
+		}
+>>>>>>> update
 		return $this->options_helper->set( 'dismiss_configuration_workout_notice', true );
 	}
 
@@ -90,6 +127,7 @@ class First_Time_Configuration_Notice_Integration implements Integration_Interfa
 	 * @return bool Whether the "First-time SEO Configuration" admin notice should be displayed.
 	 */
 	public function should_display_first_time_configuration_notice() {
+<<<<<<< HEAD
 		if ( ! $this->options_helper->get( 'dismiss_configuration_workout_notice', false ) === false ) {
 			return false;
 		}
@@ -121,6 +159,9 @@ class First_Time_Configuration_Notice_Integration implements Integration_Interfa
 		$this->show_alternate_message = true;
 
 		return ! $this->are_site_representation_name_and_logo_set();
+=======
+		return $this->first_time_configuration_notice_helper->should_display_first_time_configuration_notice();
+>>>>>>> update
 	}
 
 	/**
@@ -135,12 +176,23 @@ class First_Time_Configuration_Notice_Integration implements Integration_Interfa
 
 		$this->admin_asset_manager->enqueue_style( 'monorepo' );
 
+<<<<<<< HEAD
 		$title = ( ! $this->show_alternate_message ) ? \__( 'First-time SEO configuration', 'wordpress-seo' ) : \__( 'SEO configuration', 'wordpress-seo' );
 		if ( ! $this->show_alternate_message ) {
 			$content = \sprintf(
 				/* translators: 1: Link start tag to the first-time configuration, 2: Yoast SEO, 3: Link closing tag. */
 				\__( 'Get started quickly with the %1$s%2$s First-time configuration%3$s and configure Yoast SEO with the optimal SEO settings for your site!', 'wordpress-seo' ),
 				'<a href="' . \esc_url( \self_admin_url( 'admin.php?page=wpseo_dashboard#top#first-time-configuration' ) ) . '">',
+=======
+		$title    = $this->first_time_configuration_notice_helper->get_first_time_configuration_title();
+		$link_url = \esc_url( \self_admin_url( 'admin.php?page=wpseo_dashboard#top#first-time-configuration' ) );
+
+		if ( ! $this->first_time_configuration_notice_helper->should_show_alternate_message() ) {
+			$content = \sprintf(
+				/* translators: 1: Link start tag to the first-time configuration, 2: Yoast SEO, 3: Link closing tag. */
+				\__( 'Get started quickly with the %1$s%2$s First-time configuration%3$s and configure Yoast SEO with the optimal SEO settings for your site!', 'wordpress-seo' ),
+				'<a href="' . $link_url . '">',
+>>>>>>> update
 				'Yoast SEO',
 				'</a>'
 			);
@@ -149,7 +201,11 @@ class First_Time_Configuration_Notice_Integration implements Integration_Interfa
 			$content = \sprintf(
 				/* translators: 1: Link start tag to the first-time configuration, 2: Link closing tag. */
 				\__( 'We noticed that you haven\'t fully configured Yoast SEO yet. Optimize your SEO settings even further by using our improved %1$s First-time configuration%2$s.', 'wordpress-seo' ),
+<<<<<<< HEAD
 				'<a href="' . \esc_url( \self_admin_url( 'admin.php?page=wpseo_dashboard#top#first-time-configuration' ) ) . '">',
+=======
+				'<a href="' . $link_url . '">',
+>>>>>>> update
 				'</a>'
 			);
 		}
@@ -167,6 +223,7 @@ class First_Time_Configuration_Notice_Integration implements Integration_Interfa
 		echo $notice->present();
 
 		// Enable permanently dismissing the notice.
+<<<<<<< HEAD
 		echo "<script>
 			function dismiss_first_time_configuration_notice(){
 				var data = {
@@ -255,5 +312,20 @@ class First_Time_Configuration_Notice_Integration implements Integration_Interfa
 
 		return ! empty( $this->options_helper->get( 'company_or_person_user_id' ) )
 				&& ! empty( $this->options_helper->get( 'person_logo', '' ) );
+=======
+		echo '<script>
+				jQuery( document ).ready( function() {
+					jQuery( "body" ).on( "click", "#yoast-first-time-configuration-notice .notice-dismiss", function() {
+						const data = {
+							"action": "dismiss_first_time_configuration_notice",
+							"nonce": "' . \esc_js( \wp_create_nonce( 'wpseo-dismiss-first-time-configuration-notice' ) ) . '"
+						};
+						jQuery.post( ajaxurl, data, function( response ) {
+							jQuery( this ).parent( "#yoast-first-time-configuration-notice" ).hide();
+						});
+					} );
+				} );
+				</script>';
+>>>>>>> update
 	}
 }

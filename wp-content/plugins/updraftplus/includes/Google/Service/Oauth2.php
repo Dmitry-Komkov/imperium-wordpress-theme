@@ -45,6 +45,11 @@ class UDP_Google_Service_Oauth2 extends UDP_Google_Service
 
   public $userinfo;
   public $userinfo_v2_me;
+<<<<<<< HEAD
+=======
+
+  private $serviceName;
+>>>>>>> update
   private $base_methods;
 
   /**

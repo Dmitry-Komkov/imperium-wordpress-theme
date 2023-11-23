@@ -2,7 +2,15 @@
 
 namespace Yoast\WP\SEO\Builders;
 
+<<<<<<< HEAD
 use Yoast\WP\SEO\Helpers\Image_Helper;
+=======
+use DOMDocument;
+use WP_HTML_Tag_Processor;
+use WPSEO_Image_Utils;
+use Yoast\WP\SEO\Helpers\Image_Helper;
+use Yoast\WP\SEO\Helpers\Options_Helper;
+>>>>>>> update
 use Yoast\WP\SEO\Helpers\Post_Helper;
 use Yoast\WP\SEO\Helpers\Url_Helper;
 use Yoast\WP\SEO\Models\Indexable;
@@ -44,6 +52,16 @@ class Indexable_Link_Builder {
 	protected $post_helper;
 
 	/**
+<<<<<<< HEAD
+=======
+	 * The options helper.
+	 *
+	 * @var Options_Helper
+	 */
+	protected $options_helper;
+
+	/**
+>>>>>>> update
 	 * The indexable repository.
 	 *
 	 * @var Indexable_Repository
@@ -56,15 +74,28 @@ class Indexable_Link_Builder {
 	 * @param SEO_Links_Repository $seo_links_repository The SEO links repository.
 	 * @param Url_Helper           $url_helper           The URL helper.
 	 * @param Post_Helper          $post_helper          The post helper.
+<<<<<<< HEAD
+=======
+	 * @param Options_Helper       $options_helper       The options helper.
+>>>>>>> update
 	 */
 	public function __construct(
 		SEO_Links_Repository $seo_links_repository,
 		Url_Helper $url_helper,
+<<<<<<< HEAD
 		Post_Helper $post_helper
+=======
+		Post_Helper $post_helper,
+		Options_Helper $options_helper
+>>>>>>> update
 	) {
 		$this->seo_links_repository = $seo_links_repository;
 		$this->url_helper           = $url_helper;
 		$this->post_helper          = $post_helper;
+<<<<<<< HEAD
+=======
+		$this->options_helper       = $options_helper;
+>>>>>>> update
 	}
 
 	/**
@@ -139,13 +170,49 @@ class Indexable_Link_Builder {
 
 		$linked_indexable_ids = [];
 		foreach ( $links as $link ) {
+<<<<<<< HEAD
 			$linked_indexable_ids[] = $link->target_indexable_id;
+=======
+			if ( $link->target_indexable_id ) {
+				$linked_indexable_ids[] = $link->target_indexable_id;
+			}
+>>>>>>> update
 		}
 
 		$this->update_incoming_links_for_related_indexables( $linked_indexable_ids );
 	}
 
 	/**
+<<<<<<< HEAD
+=======
+	 * Fixes existing SEO links that are supposed to have a target indexable but don't, because of prior indexable cleanup.
+	 *
+	 * @param Indexable $indexable The indexable to be the target of SEO Links.
+	 *
+	 * @return void
+	 */
+	public function patch_seo_links( Indexable $indexable ) {
+		if ( ! empty( $indexable->id ) && ! empty( $indexable->object_id ) ) {
+			$links = $this->seo_links_repository->find_all_by_target_post_id( $indexable->object_id );
+
+			$updated_indexable = false;
+			foreach ( $links as $link ) {
+				if ( \is_a( $link, SEO_Links::class ) && empty( $link->target_indexable_id ) ) {
+					// Since that post ID exists in an SEO link but has no target_indexable_id, it's probably because of prior indexable cleanup.
+					$this->seo_links_repository->update_target_indexable_id( $link->id, $indexable->id );
+					$updated_indexable = true;
+				}
+			}
+
+			if ( $updated_indexable ) {
+				$updated_indexable_id = [ $indexable->id ];
+				$this->update_incoming_links_for_related_indexables( $updated_indexable_id );
+			}
+		}
+	}
+
+	/**
+>>>>>>> update
 	 * Gathers all links from content.
 	 *
 	 * @param string $content The content.
@@ -171,13 +238,154 @@ class Indexable_Link_Builder {
 	}
 
 	/**
+<<<<<<< HEAD
+=======
+	 * Gathers all images from content with WP's WP_HTML_Tag_Processor() and returns them along with their IDs, if possible.
+	 *
+	 * @param string $content The content.
+	 *
+	 * @return int[] An associated array of image IDs, keyed by their URL.
+	 */
+	protected function gather_images_wp( $content ) {
+		$processor = new WP_HTML_Tag_Processor( $content );
+		$images    = [];
+
+		$query = [
+			'tag_name' => 'img',
+		];
+
+		/**
+		 * Filter 'wpseo_image_attribute_containing_id' - Allows filtering what attribute will be used to extract image IDs from.
+		 *
+		 * Defaults to "class", which is where WP natively stores the image IDs, in a `wp-image-<ID>` format.
+		 *
+		 * @api string The attribute to be used to extract image IDs from.
+		 */
+		$attribute = \apply_filters( 'wpseo_image_attribute_containing_id', 'class' );
+
+		while ( $processor->next_tag( $query ) ) {
+			$src     = \htmlentities( $processor->get_attribute( 'src' ), ( ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML401 ), \get_bloginfo( 'charset' ) );
+			$classes = $processor->get_attribute( $attribute );
+			$id      = $this->extract_id_of_classes( $classes );
+
+			$images[ $src ] = $id;
+		}
+
+		return $images;
+	}
+
+	/**
+	 * Gathers all images from content with DOMDocument() and returns them along with their IDs, if possible.
+	 *
+	 * @param string $content The content.
+	 *
+	 * @return int[] An associated array of image IDs, keyed by their URL.
+	 */
+	protected function gather_images_domdocument( $content ) {
+		$images  = [];
+		$charset = \get_bloginfo( 'charset' );
+
+		/**
+		 * Filter 'wpseo_image_attribute_containing_id' - Allows filtering what attribute will be used to extract image IDs from.
+		 *
+		 * Defaults to "class", which is where WP natively stores the image IDs, in a `wp-image-<ID>` format.
+		 *
+		 * @api string The attribute to be used to extract image IDs from.
+		 */
+		$attribute = \apply_filters( 'wpseo_image_attribute_containing_id', 'class' );
+
+		libxml_use_internal_errors( true );
+		$post_dom = new DOMDocument();
+		$post_dom->loadHTML( '<?xml encoding="' . $charset . '">' . $content );
+		libxml_clear_errors();
+
+		foreach ( $post_dom->getElementsByTagName( 'img' ) as $img ) {
+			$src     = \htmlentities( $img->getAttribute( 'src' ), ( ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML401 ), $charset );
+			$classes = $img->getAttribute( $attribute );
+			$id      = $this->extract_id_of_classes( $classes );
+
+			$images[ $src ] = $id;
+		}
+
+		return $images;
+	}
+
+	/**
+	 * Extracts image ID out of the image's classes.
+	 *
+	 * @param string $classes The classes assigned to the image.
+	 *
+	 * @return int The ID that's extracted from the classes.
+	 */
+	protected function extract_id_of_classes( $classes ) {
+		if ( ! $classes ) {
+			return 0;
+		}
+
+		/**
+		 * Filter 'wpseo_extract_id_pattern' - Allows filtering the regex patern to be used to extract image IDs from class/attribute names.
+		 *
+		 * Defaults to the pattern that extracts image IDs from core's `wp-image-<ID>` native format in image classes.
+		 *
+		 * @api string The regex pattern to be used to extract image IDs from class names. Empty string if the whole class/attribute should be returned.
+		 */
+		$pattern = \apply_filters( 'wpseo_extract_id_pattern', '/(?<!\S)wp-image-(\d+)(?!\S)/i' );
+
+		if ( $pattern === '' ) {
+			return (int) $classes;
+		}
+
+		$matches = [];
+
+		if ( preg_match( $pattern, $classes, $matches ) ) {
+			return (int) $matches[1];
+		}
+
+		return 0;
+	}
+
+	/**
+>>>>>>> update
 	 * Gathers all images from content.
 	 *
 	 * @param string $content The content.
 	 *
+<<<<<<< HEAD
 	 * @return string[] An array of urls.
 	 */
 	protected function gather_images( $content ) {
+=======
+	 * @return int[] An associated array of image IDs, keyed by their URLs.
+	 */
+	protected function gather_images( $content ) {
+
+		/**
+		 * Filter 'wpseo_force_creating_and_using_attachment_indexables' - Filters if we should use attachment indexables to find all content images. Instead of scanning the content.
+		 *
+		 * The default value is false.
+		 *
+		 * @since 21.1
+		 */
+		$should_not_parse_content = \apply_filters( 'wpseo_force_creating_and_using_attachment_indexables', false );
+
+		/**
+		 * Filter 'wpseo_force_skip_image_content_parsing' - Filters if we should force skip scanning the content to parse images.
+		 * This filter can be used if the regex gives a faster result than scanning the code.
+		 *
+		 * The default value is false.
+		 *
+		 * @since 21.1
+		 */
+		$should_not_parse_content = \apply_filters( 'wpseo_force_skip_image_content_parsing', $should_not_parse_content );
+		if ( ! $should_not_parse_content && class_exists( WP_HTML_Tag_Processor::class ) ) {
+			return $this->gather_images_wp( $content );
+		}
+
+		if ( ! $should_not_parse_content && class_exists( DOMDocument::class ) ) {
+			return $this->gather_images_DOMDocument( $content );
+		}
+
+>>>>>>> update
 		if ( \strpos( $content, 'src' ) === false ) {
 			// Nothing to do.
 			return [];
@@ -188,7 +396,11 @@ class Indexable_Link_Builder {
 		// Used modifiers iU to match case insensitive and make greedy quantifiers lazy.
 		if ( \preg_match_all( "/$regexp/iU", $content, $matches, \PREG_SET_ORDER ) ) {
 			foreach ( $matches as $match ) {
+<<<<<<< HEAD
 				$images[] = \trim( $match[2], "'" );
+=======
+				$images[ $match[2] ] = 0;
+>>>>>>> update
 			}
 		}
 
@@ -200,7 +412,11 @@ class Indexable_Link_Builder {
 	 *
 	 * @param Indexable $indexable The indexable.
 	 * @param string[]  $links     The link URLs.
+<<<<<<< HEAD
 	 * @param string[]  $images    The image sources.
+=======
+	 * @param int[]     $images    The image sources.
+>>>>>>> update
 	 *
 	 * @return SEO_Links[] The link models.
 	 */
@@ -221,6 +437,7 @@ class Indexable_Link_Builder {
 			}
 		);
 
+<<<<<<< HEAD
 		$images = \array_map(
 			function( $link ) use ( $home_url, $indexable ) {
 				return $this->create_internal_link( $link, $home_url, $indexable, true );
@@ -228,6 +445,14 @@ class Indexable_Link_Builder {
 			$images
 		);
 		return \array_merge( $links, $images );
+=======
+		$image_links = [];
+		foreach ( $images as $image_url => $image_id ) {
+			$image_links[] = $this->create_internal_link( $image_url, $home_url, $indexable, true, $image_id );
+		}
+
+		return \array_merge( $links, $image_links );
+>>>>>>> update
 	}
 
 	/**
@@ -253,10 +478,18 @@ class Indexable_Link_Builder {
 	 * @param array     $home_url  The home url, as parsed by wp_parse_url.
 	 * @param Indexable $indexable The indexable of the post containing the link.
 	 * @param bool      $is_image  Whether or not the link is an image.
+<<<<<<< HEAD
 	 *
 	 * @return SEO_Links The created link.
 	 */
 	protected function create_internal_link( $url, $home_url, $indexable, $is_image = false ) {
+=======
+	 * @param int       $image_id  The ID of the internal image.
+	 *
+	 * @return SEO_Links The created link.
+	 */
+	protected function create_internal_link( $url, $home_url, $indexable, $is_image = false, $image_id = 0 ) {
+>>>>>>> update
 		$parsed_url = \wp_parse_url( $url );
 		$link_type  = $this->url_helper->get_link_type( $parsed_url, $home_url, $is_image );
 
@@ -276,6 +509,7 @@ class Indexable_Link_Builder {
 
 		$model->parsed_url = $parsed_url;
 
+<<<<<<< HEAD
 		if ( $model->type === SEO_Links::TYPE_INTERNAL || $model->type === SEO_Links::TYPE_INTERNAL_IMAGE ) {
 			$permalink = $this->get_permalink( $url, $home_url );
 			if ( $this->url_helper->is_relative( $permalink ) ) {
@@ -318,6 +552,83 @@ class Indexable_Link_Builder {
 			}
 		}
 
+=======
+		if ( $model->type === SEO_Links::TYPE_INTERNAL ) {
+			$permalink = $this->build_permalink( $url, $home_url );
+
+			return $this->enhance_link_from_indexable( $model, $permalink );
+		}
+
+		if ( $model->type === SEO_Links::TYPE_INTERNAL_IMAGE ) {
+			$permalink = $this->build_permalink( $url, $home_url );
+
+			/** The `wpseo_force_creating_and_using_attachment_indexables` filter is documented in indexable-link-builder.php */
+			if ( ! $this->options_helper->get( 'disable-attachment' ) || \apply_filters( 'wpseo_force_creating_and_using_attachment_indexables', false ) ) {
+				$model = $this->enhance_link_from_indexable( $model, $permalink );
+			}
+			else {
+				$target_post_id = ( $image_id !== 0 ) ? $image_id : WPSEO_Image_Utils::get_attachment_by_url( $permalink );
+
+				if ( ! empty( $target_post_id ) ) {
+					$model->target_post_id = $target_post_id;
+				}
+			}
+
+			if ( $model->target_post_id ) {
+				$file = \get_attached_file( $model->target_post_id );
+
+				if ( $file ) {
+					if ( \file_exists( $file ) ) {
+						$model->size = \filesize( $file );
+					}
+					else {
+						$model->size = null;
+					}
+
+					list( , $width, $height ) = \wp_get_attachment_image_src( $model->target_post_id, 'full' );
+					$model->width             = $width;
+					$model->height            = $height;
+				}
+				else {
+					$model->width  = 0;
+					$model->height = 0;
+					$model->size   = 0;
+				}
+			}
+		}
+
+		return $model;
+	}
+
+	/**
+	 * Enhances the link model with information from its indexable.
+	 *
+	 * @param SEO_Links $model     The link's model.
+	 * @param string    $permalink The link's permalink.
+	 *
+	 * @return SEO_Links The enhanced link model.
+	 */
+	protected function enhance_link_from_indexable( $model, $permalink ) {
+		$target = $this->indexable_repository->find_by_permalink( $permalink );
+
+		if ( ! $target ) {
+			// If target indexable cannot be found, create one based on the post's post ID.
+			$post_id = $this->get_post_id( $model->type, $permalink );
+			if ( $post_id && $post_id !== 0 ) {
+				$target = $this->indexable_repository->find_by_id_and_type( $post_id, 'post' );
+			}
+		}
+
+		if ( ! $target ) {
+			return $model;
+		}
+
+		$model->target_indexable_id = $target->id;
+		if ( $target->object_type === 'post' ) {
+			$model->target_post_id = $target->object_id;
+		}
+
+>>>>>>> update
 		if ( $model->target_indexable_id ) {
 			$model->language = $target->language;
 			$model->region   = $target->region;
@@ -327,6 +638,28 @@ class Indexable_Link_Builder {
 	}
 
 	/**
+<<<<<<< HEAD
+=======
+	 * Builds the link's permalink.
+	 *
+	 * @param string $url      The url of the link.
+	 * @param array  $home_url The home url, as parsed by wp_parse_url.
+	 *
+	 * @return string The link's permalink.
+	 */
+	protected function build_permalink( $url, $home_url ) {
+		$permalink = $this->get_permalink( $url, $home_url );
+
+		if ( $this->url_helper->is_relative( $permalink ) ) {
+			// Make sure we're checking against the absolute URL, and add a trailing slash if the site has a trailing slash in its permalink settings.
+			$permalink = $this->url_helper->ensure_absolute_url( \user_trailingslashit( $permalink ) );
+		}
+
+		return $permalink;
+	}
+
+	/**
+>>>>>>> update
 	 * Filters out links that point to the same page with a fragment or query.
 	 *
 	 * @param SEO_Links $link        The link.
@@ -386,7 +719,13 @@ class Indexable_Link_Builder {
 			}
 		}
 		foreach ( $links_to_remove as $link ) {
+<<<<<<< HEAD
 			$updated_indexable_ids[] = $link->target_indexable_id;
+=======
+			if ( $link->target_indexable_id ) {
+				$updated_indexable_ids[] = $link->target_indexable_id;
+			}
+>>>>>>> update
 		}
 
 		$this->update_incoming_links_for_related_indexables( $updated_indexable_ids );
@@ -476,6 +815,10 @@ class Indexable_Link_Builder {
 
 		$counts = $this->seo_links_repository->get_incoming_link_counts_for_indexable_ids( $related_indexable_ids );
 		foreach ( $counts as $count ) {
+<<<<<<< HEAD
+=======
+
+>>>>>>> update
 			$this->indexable_repository->update_incoming_link_count( $count['target_indexable_id'], $count['incoming'] );
 		}
 	}

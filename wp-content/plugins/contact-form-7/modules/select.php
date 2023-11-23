@@ -36,6 +36,13 @@ function wpcf7_select_form_tag_handler( $tag ) {
 	$atts['id'] = $tag->get_id_option();
 	$atts['tabindex'] = $tag->get_option( 'tabindex', 'signed_int', true );
 
+<<<<<<< HEAD
+=======
+	$atts['autocomplete'] = $tag->get_option(
+		'autocomplete', '[-0-9a-zA-Z]+', true
+	);
+
+>>>>>>> update
 	if ( $tag->is_required() ) {
 		$atts['aria-required'] = 'true';
 	}
@@ -79,7 +86,14 @@ function wpcf7_select_form_tag_handler( $tag ) {
 
 	if ( $include_blank
 	or empty( $values ) ) {
+<<<<<<< HEAD
 		array_unshift( $labels, '---' );
+=======
+		array_unshift(
+			$labels,
+			__( '&#8212;Please choose an option&#8212;', 'contact-form-7' )
+		);
+>>>>>>> update
 		array_unshift( $values, '' );
 	} elseif ( $first_as_label ) {
 		$values[0] = '';
@@ -97,24 +111,38 @@ function wpcf7_select_form_tag_handler( $tag ) {
 
 		$item_atts = array(
 			'value' => $value,
+<<<<<<< HEAD
 			'selected' => $selected ? 'selected' : '',
 		);
 
 		$item_atts = wpcf7_format_atts( $item_atts );
 
+=======
+			'selected' => $selected,
+		);
+
+>>>>>>> update
 		$label = isset( $labels[$key] ) ? $labels[$key] : $value;
 
 		$html .= sprintf(
 			'<option %1$s>%2$s</option>',
+<<<<<<< HEAD
 			$item_atts,
+=======
+			wpcf7_format_atts( $item_atts ),
+>>>>>>> update
 			esc_html( $label )
 		);
 	}
 
+<<<<<<< HEAD
 	if ( $multiple ) {
 		$atts['multiple'] = 'multiple';
 	}
 
+=======
+	$atts['multiple'] = (bool) $multiple;
+>>>>>>> update
 	$atts['name'] = $tag->name . ( $multiple ? '[]' : '' );
 
 	$html = sprintf(

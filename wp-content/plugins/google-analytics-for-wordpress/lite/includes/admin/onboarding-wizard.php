@@ -40,6 +40,10 @@ class MonsterInsights_Onboarding_Wizard {
 
 		add_action( 'monsterinsights_after_ajax_activate_addon', array( $this, 'disable_aioseo_onboarding_wizard' ) );
 		add_action( 'monsterinsights_after_ajax_activate_addon', array( $this, 'disable_wpforms_onboarding_wizard' ) );
+<<<<<<< HEAD
+=======
+		add_action( 'monsterinsights_after_ajax_activate_addon', array( $this, 'disable_optin_monster_onboarding_wizard' ) );
+>>>>>>> update
 
 		// This will only be called in the Onboarding Wizard context because of previous checks.
 		add_filter( 'monsterinsights_maybe_authenticate_siteurl', array( $this, 'change_return_url' ) );
@@ -157,6 +161,18 @@ class MonsterInsights_Onboarding_Wizard {
 	 * Outputs the simplified header used for the Onboarding Wizard.
 	 */
 	public function onboarding_wizard_header() {
+<<<<<<< HEAD
+=======
+		/**
+		 * Since WordPress 6.4 print_emoji_styles() and wp_admin_bar_header() have been deprecated.
+		 */
+		if ( has_action( 'admin_head', 'wp_admin_bar_header') ) {
+			remove_action( 'admin_head', 'wp_admin_bar_header' );
+		}
+		if ( has_action( 'admin_print_styles', 'print_emoji_styles') ) {
+			remove_action( 'admin_print_styles', 'print_emoji_styles' );
+		}
+>>>>>>> update
 		?>
 		<!DOCTYPE html>
 		<html <?php language_attributes(); ?>>
@@ -469,6 +485,25 @@ class MonsterInsights_Onboarding_Wizard {
 		delete_transient( 'wpforms_activation_redirect' );
 	}
 
+<<<<<<< HEAD
+=======
+	public function disable_optin_monster_onboarding_wizard( $plugin ) {
+		if ( empty( $plugin ) ) {
+			return;
+		}
+
+		if ( 'optinmonster/optin-monster-wp-api.php' !== $plugin ) {
+			return;
+		}
+
+		if ( false === get_transient( 'optin_monster_api_activation_redirect' ) ){
+			return;
+		}
+
+		delete_transient( 'optin_monster_api_activation_redirect' );
+	}
+
+>>>>>>> update
 }
 
 new MonsterInsights_Onboarding_Wizard();

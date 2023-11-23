@@ -19,6 +19,10 @@
 				$updraftplus_admin->include_template('/wp-admin/advanced/updraftcentral.php');
 				$updraftplus_admin->include_template('/wp-admin/advanced/search-replace.php');
 				$updraftplus_admin->include_template('/wp-admin/advanced/total-size.php');
+<<<<<<< HEAD
+=======
+				$updraftplus_admin->include_template('/wp-admin/advanced/db-size.php');
+>>>>>>> update
 				$updraftplus_admin->include_template('/wp-admin/advanced/export-settings.php');
 				$updraftplus_admin->include_template('/wp-admin/advanced/wipe-settings.php');
 			?>

@@ -36,9 +36,25 @@ if ( ! class_exists( 'ACF_Local_JSON' ) ) :
 			add_action( 'acf/untrash_field_group', array( $this, 'update_field_group' ) );
 			add_action( 'acf/trash_field_group', array( $this, 'delete_field_group' ) );
 			add_action( 'acf/delete_field_group', array( $this, 'delete_field_group' ) );
+<<<<<<< HEAD
 
 			// Include fields.
 			add_action( 'acf/include_fields', array( $this, 'include_fields' ) );
+=======
+			add_action( 'acf/update_post_type', array( $this, 'update_internal_post_type' ) );
+			add_action( 'acf/untrash_post_type', array( $this, 'update_internal_post_type' ) );
+			add_action( 'acf/trash_post_type', array( $this, 'delete_internal_post_type' ) );
+			add_action( 'acf/delete_post_type', array( $this, 'delete_internal_post_type' ) );
+			add_action( 'acf/update_taxonomy', array( $this, 'update_internal_post_type' ) );
+			add_action( 'acf/untrash_taxonomy', array( $this, 'update_internal_post_type' ) );
+			add_action( 'acf/trash_taxonomy', array( $this, 'delete_internal_post_type' ) );
+			add_action( 'acf/delete_taxonomy', array( $this, 'delete_internal_post_type' ) );
+
+			// Include fields.
+			add_action( 'acf/include_fields', array( $this, 'include_fields' ) );
+			add_action( 'acf/include_post_types', array( $this, 'include_post_types' ) );
+			add_action( 'acf/include_taxonomies', array( $this, 'include_taxonomies' ) );
+>>>>>>> update
 		}
 
 		/**
@@ -55,6 +71,63 @@ if ( ! class_exists( 'ACF_Local_JSON' ) ) :
 		}
 
 		/**
+<<<<<<< HEAD
+=======
+		 * Gets the path(s) to load JSON from.
+		 *
+		 * @since 6.2
+		 *
+		 * @return array
+		 */
+		public function get_load_paths() {
+			$paths = (array) acf_get_setting( 'load_json' );
+
+			/**
+			 * Filters the path(s) used to load JSON from.
+			 *
+			 * @since 6.2
+			 *
+			 * @param array $paths An array of potential paths to load JSON from.
+			 * @return array
+			 */
+			return (array) apply_filters( 'acf/json/load_paths', $paths );
+		}
+
+		/**
+		 * Gets the path(s) to save JSON to.
+		 *
+		 * @since 6.2
+		 *
+		 * @param string $key  The key to get paths for (optional).
+		 * @param array  $post The main ACF post array (optional).
+		 * @return array
+		 */
+		public function get_save_paths( $key = '', $post = array() ) {
+			$name      = ! empty( $post['title'] ) ? (string) $post['title'] : '';
+			$post_type = acf_determine_internal_post_type( $key );
+			$paths     = array();
+
+			// Paths are sorted by priority, with key overriding name, etc.
+			$paths[] = acf_get_setting( "save_json/key={$key}" );
+			$paths[] = acf_get_setting( "save_json/name={$name}" );
+			$paths[] = acf_get_setting( "save_json/type={$post_type}" );
+			$paths[] = acf_get_setting( 'save_json' );
+			$paths   = array_values( array_filter( $paths ) );
+
+			/**
+			 * Filters the paths used to save JSON.
+			 *
+			 * @since 6.2
+			 *
+			 * @param array $paths An array of the potential paths to save JSON to.
+			 * @param array $post  The ACF field group, post type, or taxonomy array.
+			 * @return array
+			 */
+			return (array) apply_filters( 'acf/json/save_paths', $paths, $post );
+		}
+
+		/**
+>>>>>>> update
 		 * Writes field group data to JSON file.
 		 *
 		 * @date    14/4/20
@@ -78,6 +151,7 @@ if ( ! class_exists( 'ACF_Local_JSON' ) ) :
 		}
 
 		/**
+<<<<<<< HEAD
 		 * Deletes a field group JSON file.
 		 *
 		 * @date    14/4/20
@@ -89,15 +163,70 @@ if ( ! class_exists( 'ACF_Local_JSON' ) ) :
 		public function delete_field_group( $field_group ) {
 
 			// Bail early if disabled.
+=======
+		 * Writes ACF posts to the JSON file.
+		 *
+		 * @since 6.1
+		 *
+		 * @param array $post The main ACF post array.
+		 * @return bool
+		 */
+		public function update_internal_post_type( $post ) {
+>>>>>>> update
 			if ( ! $this->is_enabled() ) {
 				return false;
 			}
 
+<<<<<<< HEAD
 			// WP appends '__trashed' to end of 'key' (post_name).
 			$key = str_replace( '__trashed', '', $field_group['key'] );
 
 			// Delete file.
 			$this->delete_file( $key );
+=======
+			/**
+			 * Filters the ACF post before saving it to the file.
+			 *
+			 * @since 6.1
+			 *
+			 * @param array $post The main ACF post array
+			 */
+			$post = apply_filters( 'acf/pre_save_json_file', $post );
+
+			return $this->save_file( $post['key'], $post );
+		}
+
+		/**
+		 * Deletes a field group JSON file.
+		 *
+		 * @date 14/4/20
+		 * @since 5.9.0
+		 *
+		 * @param  array $field_group The field group.
+		 * @return bool
+		 */
+		public function delete_field_group( $field_group ) {
+			return $this->delete_internal_post_type( $field_group );
+		}
+
+		/**
+		 * Deletes an ACF JSON file.
+		 *
+		 * @since 6.1
+		 *
+		 * @param array $post The main ACF post array.
+		 * @return bool
+		 */
+		public function delete_internal_post_type( $post ) {
+			if ( ! $this->is_enabled() ) {
+				return false;
+			}
+
+			// WP appends '__trashed' to the end of 'key' (post_name).
+			$key = str_replace( '__trashed', '', $post['key'] );
+
+			return $this->delete_file( $key, $post );
+>>>>>>> update
 		}
 
 		/**
@@ -117,7 +246,11 @@ if ( ! class_exists( 'ACF_Local_JSON' ) ) :
 			}
 
 			// Get load paths.
+<<<<<<< HEAD
 			$files = $this->scan_field_groups();
+=======
+			$files = $this->scan_files( 'acf-field-group' );
+>>>>>>> update
 			foreach ( $files as $key => $file ) {
 				$json               = json_decode( file_get_contents( $file ), true );
 				$json['local']      = 'json';
@@ -127,11 +260,61 @@ if ( ! class_exists( 'ACF_Local_JSON' ) ) :
 		}
 
 		/**
+<<<<<<< HEAD
+=======
+		 * Includes all local JSON post types.
+		 *
+		 * @since 6.1
+		 *
+		 * @return void
+		 */
+		public function include_post_types() {
+			// Bail early if disabled.
+			if ( ! $this->is_enabled() ) {
+				return false;
+			}
+
+			// Get load paths.
+			$files = $this->scan_files( 'acf-post-type' );
+			foreach ( $files as $key => $file ) {
+				$json               = json_decode( file_get_contents( $file ), true );
+				$json['local']      = 'json';
+				$json['local_file'] = $file;
+				acf_add_local_internal_post_type( $json, 'acf-post-type' );
+			}
+		}
+
+		/**
+		 * Includes all local JSON taxonomies.
+		 *
+		 * @since 6.1
+		 *
+		 * @return void
+		 */
+		public function include_taxonomies() {
+			// Bail early if disabled.
+			if ( ! $this->is_enabled() ) {
+				return false;
+			}
+
+			// Get load paths.
+			$files = $this->scan_files( 'acf-taxonomy' );
+			foreach ( $files as $key => $file ) {
+				$json               = json_decode( file_get_contents( $file ), true );
+				$json['local']      = 'json';
+				$json['local_file'] = $file;
+				acf_add_local_internal_post_type( $json, 'acf-taxonomy' );
+			}
+		}
+
+		/**
+>>>>>>> update
 		 * Scans for JSON field groups.
 		 *
 		 * @date    14/4/20
 		 * @since   5.9.0
 		 *
+<<<<<<< HEAD
 		 * @param   void
 		 * @return  array
 		 */
@@ -141,6 +324,27 @@ if ( ! class_exists( 'ACF_Local_JSON' ) ) :
 			// Loop over "local_json" paths and parse JSON files.
 			$paths = (array) acf_get_setting( 'load_json' );
 			foreach ( $paths as $path ) {
+=======
+		 * @return  array
+		 */
+		function scan_field_groups() {
+			return $this->scan_files( 'acf-field-group' );
+		}
+
+		/**
+		 * Scans for JSON files.
+		 *
+		 * @since 6.1
+		 *
+		 * @param string $post_type The ACF post type to scan for.
+		 * @return array
+		 */
+		function scan_files( $post_type = 'acf-field-group' ) {
+			$json_files = array();
+
+			// Loop over "local_json" paths and parse JSON files.
+			foreach ( $this->get_load_paths() as $path ) {
+>>>>>>> update
 				if ( is_dir( $path ) ) {
 					$files = scandir( $path );
 					if ( $files ) {
@@ -178,6 +382,7 @@ if ( ! class_exists( 'ACF_Local_JSON' ) ) :
 
 			// Store data and return.
 			$this->files = $json_files;
+<<<<<<< HEAD
 			return $json_files;
 		}
 
@@ -208,10 +413,118 @@ if ( ! class_exists( 'ACF_Local_JSON' ) ) :
 			$path = acf_get_setting( 'save_json' );
 			$file = untrailingslashit( $path ) . '/' . $key . '.json';
 			if ( ! is_writable( $path ) ) {
+=======
+			return $this->get_files( $post_type );
+		}
+
+		/**
+		 * Returns an array of found JSON files.
+		 *
+		 * @date 14/4/20
+		 * @since 5.9.0
+		 *
+		 * @param string $post_type The ACF post type to get files for.
+		 * @return array
+		 */
+		public function get_files( $post_type = 'acf-field-group' ) {
+			$files = array();
+
+			foreach ( $this->files as $key => $path ) {
+				$internal_post_type = acf_determine_internal_post_type( $key );
+
+				if ( $internal_post_type === $post_type ) {
+					$files[ $key ] = $path;
+				} elseif ( 'acf-field-group' === $post_type ) {
+					// If we can't figure out the ACF post type, make an educated guess that it's a field group.
+					$json = json_decode( file_get_contents( $path ), true );
+					if ( ! is_array( $json ) ) {
+						continue;
+					}
+
+					if ( isset( $json['fields'] ) ) {
+						$files[ $key ] = $path;
+					}
+				}
+			}
+
+			return $files;
+		}
+
+		/**
+		 * Saves an ACF JSON file.
+		 *
+		 * @date 17/4/20
+		 * @since 5.9.0
+		 *
+		 * @param string $key  The ACF post key.
+		 * @param array  $post The main ACF post array.
+		 * @return bool
+		 */
+		public function save_file( $key, $post ) {
+			$paths          = $this->get_save_paths( $key, $post );
+			$file           = false;
+			$first_writable = false;
+			$load_path      = '';
+
+			if ( is_array( $this->files ) && isset( $this->files[ $key ] ) ) {
+				$load_path = $this->files[ $key ];
+			}
+
+			/**
+			 * Filters the filename used when saving JSON.
+			 *
+			 * @since 6.2
+			 *
+			 * @param string $filename  The default filename.
+			 * @param array  $post      The main post array for the item being saved.
+			 * @param string $load_path The path that the item was loaded from.
+			 */
+			$filename = apply_filters( 'acf/json/save_file_name', $key . '.json', $post, $load_path );
+
+			if ( ! is_string( $filename ) ) {
+				return false;
+			}
+
+			$filename = sanitize_file_name( $filename );
+
+			// sanitize_file_name() can potentially remove all characters.
+			if ( empty( $filename ) ) {
+				return false;
+			}
+
+			foreach ( $paths as $path ) {
+				if ( ! is_writable( $path ) ) {
+					continue;
+				}
+
+				if ( false === $first_writable ) {
+					$first_writable = $path;
+				}
+
+				$file_to_check = trailingslashit( $path ) . $filename;
+
+				if ( is_file( $file_to_check ) ) {
+					$file = $file_to_check;
+				}
+			}
+
+			if ( ! $file ) {
+				if ( $first_writable ) {
+					$file = trailingslashit( $first_writable ) . $filename;
+				} else {
+					return false;
+				}
+			}
+
+			// Make sure this is a valid ACF post type.
+			$post_type = acf_determine_internal_post_type( $key );
+			if ( ! $post_type ) {
+>>>>>>> update
 				return false;
 			}
 
 			// Append modified time.
+<<<<<<< HEAD
 			if ( $field_group['ID'] ) {
 				$field_group['modified'] = get_post_modified_time( 'U', true, $field_group['ID'] );
 			} else {
@@ -223,10 +536,24 @@ if ( ! class_exists( 'ACF_Local_JSON' ) ) :
 
 			// Save and return true if bytes were written.
 			$result = file_put_contents( $file, acf_json_encode( $field_group ) );
+=======
+			if ( $post['ID'] ) {
+				$post['modified'] = get_post_modified_time( 'U', true, $post['ID'] );
+			} else {
+				$post['modified'] = strtotime( 'now' );
+			}
+
+			// Prepare for export and save the file.
+			$post   = acf_prepare_internal_post_type_for_export( $post, $post_type );
+			$result = file_put_contents( $file, acf_json_encode( $post ) . apply_filters( 'acf/json/eof_newline', PHP_EOL ) );
+
+			// Return true if bytes were written.
+>>>>>>> update
 			return is_int( $result );
 		}
 
 		/**
+<<<<<<< HEAD
 		 * Deletes a field group JSON file.
 		 *
 		 * @date    17/4/20
@@ -243,6 +570,29 @@ if ( ! class_exists( 'ACF_Local_JSON' ) ) :
 				return true;
 			}
 			return false;
+=======
+		 * Deletes an ACF JSON file.
+		 *
+		 * @date 17/4/20
+		 * @since 5.9.0
+		 *
+		 * @param string $key  The ACF post key.
+		 * @param array  $post The main ACF post array.
+		 * @return bool
+		 */
+		public function delete_file( $key, $post = array() ) {
+			$paths = $this->get_save_paths( $key, $post );
+
+			foreach ( $paths as $path_to_check ) {
+				$file = untrailingslashit( $path_to_check ) . '/' . $key . '.json';
+
+				if ( is_writable( $file ) ) {
+					wp_delete_file( $file );
+				}
+			}
+
+			return true;
+>>>>>>> update
 		}
 
 		/**
@@ -287,11 +637,19 @@ endif; // class_exists check
  * @date    14/4/20
  * @since   5.9.0
  *
+<<<<<<< HEAD
  * @param   type $var Description. Default.
  * @return  type Description.
  */
 function acf_get_local_json_files() {
 	return acf_get_instance( 'ACF_Local_JSON' )->get_files();
+=======
+ * @param string $post_type The ACF post type to get files for.
+ * @return array
+ */
+function acf_get_local_json_files( $post_type = 'acf-field-group' ) {
+	return acf_get_instance( 'ACF_Local_JSON' )->get_files( $post_type );
+>>>>>>> update
 }
 
 /**

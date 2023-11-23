@@ -12,6 +12,10 @@
 
 if ( ! class_exists( 'acf_form_widget' ) ) :
 
+<<<<<<< HEAD
+=======
+	#[AllowDynamicProperties]
+>>>>>>> update
 	class acf_form_widget {
 
 
@@ -97,12 +101,18 @@ if ( ! class_exists( 'acf_form_widget' ) ) :
 
 		function acf_validate_save_post() {
 
+<<<<<<< HEAD
 			// bail ealry if not widget
+=======
+			// phpcs:disable WordPress.Security.NonceVerification.Missing -- Verified elsewhere.
+			// bail early if not widget
+>>>>>>> update
 			if ( ! isset( $_POST['_acf_widget_id'] ) ) {
 				return;
 			}
 
 			// vars
+<<<<<<< HEAD
 			$id     = $_POST['_acf_widget_id'];
 			$number = $_POST['_acf_widget_number'];
 			$prefix = $_POST['_acf_widget_prefix'];
@@ -110,6 +120,16 @@ if ( ! class_exists( 'acf_form_widget' ) ) :
 			// validate
 			acf_validate_values( $_POST[ $id ][ $number ]['acf'], $prefix );
 
+=======
+			$id     = sanitize_text_field( $_POST['_acf_widget_id'] );
+			$number = sanitize_text_field( $_POST['_acf_widget_number'] );
+			$prefix = sanitize_text_field( $_POST['_acf_widget_prefix'] );
+			$values = acf_sanitize_request_args( $_POST[ $id ][ $number ]['acf'] );
+
+			// validate
+			acf_validate_values( $values, $prefix );
+			// phpcs:enable WordPress.Security.NonceVerification.Missing
+>>>>>>> update
 		}
 
 

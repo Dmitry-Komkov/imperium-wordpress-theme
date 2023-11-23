@@ -140,11 +140,18 @@ final class MonsterInsights_API_Request {
 	 * Primary class constructor.
 	 *
 	 * @param string $route The API route to target.
+<<<<<<< HEAD
 	 * @param array $args Array of API credentials.
 	 * @param string $method The API method.
 	 *
 	 * @since 7.0.0
 	 *
+=======
+	 * @param array  $args Array of API credentials.
+	 * @param string $method The API method.
+	 *
+	 * @since 7.0.0
+>>>>>>> update
 	 */
 	public function __construct( $route, $args, $method = 'POST' ) {
 
@@ -167,7 +174,11 @@ final class MonsterInsights_API_Request {
 		$this->end    = ! empty( $args['end'] ) ? $args['end'] : '';
 
 		// We need to do this hack so that the network panel + the site_url of the main site are distinct
+<<<<<<< HEAD
 		$this->site_url = is_network_admin() ? network_admin_url() : site_url();
+=======
+		$this->site_url = is_network_admin() ? network_admin_url() : home_url();
+>>>>>>> update
 
 		if ( monsterinsights_is_pro_version() ) {
 			$this->license = $this->network ? MonsterInsights()->license->get_network_license_key() : MonsterInsights()->license->get_site_license_key();
@@ -183,9 +194,14 @@ final class MonsterInsights_API_Request {
 	 *
 	 * @return mixed $value The response to the API call.
 	 * @since 7.0.0
+<<<<<<< HEAD
 	 *
 	 */
 	public function request() {
+=======
+	 */
+	public function request( $extra_params = [] ) {
+>>>>>>> update
 		// Make sure we're not blocked
 		$blocked = $this->is_blocked( $this->url );
 		if ( $blocked || is_wp_error( $blocked ) ) {
@@ -255,11 +271,20 @@ final class MonsterInsights_API_Request {
 
 		$body['network'] = $this->network ? 'network' : 'site';
 
+<<<<<<< HEAD
 		$body['ip'] = ! empty( $_SERVER['SERVER_ADDR'] ) ? $_SERVER['SERVER_ADDR'] : '';
+=======
+		$body['ip'] = ! empty( $_SERVER['SERVER_ADDR'] ) ? sanitize_text_field(wp_unslash($_SERVER['SERVER_ADDR'])) : '';
+>>>>>>> update
 
 		// This filter will be removed in the future.
 		$body = apply_filters( 'monsterinsights_api_request_body', $body );
 
+<<<<<<< HEAD
+=======
+        $body = array_merge($body, $extra_params);
+
+>>>>>>> update
 		$string = http_build_query( $body, '', '&' );
 
 		// Build the headers of the request.
@@ -272,9 +297,15 @@ final class MonsterInsights_API_Request {
 			'MIAPI-Sender'  => 'WordPress',
 		);
 
+<<<<<<< HEAD
 		//if ( $this->apikey ) {
 		//	$headers['X-MonsterInsights-ApiKey'] = $this->apikey;
 		//}
+=======
+		// if ( $this->apikey ) {
+		// $headers['X-MonsterInsights-ApiKey'] = $this->apikey;
+		// }
+>>>>>>> update
 
 		// Setup data to be sent to the API.
 		$data = array(
@@ -282,13 +313,21 @@ final class MonsterInsights_API_Request {
 			'body'       => $body,
 			'timeout'    => 3000,
 			'user-agent' => 'MI/' . MONSTERINSIGHTS_VERSION . '; ' . $this->site_url,
+<<<<<<< HEAD
 			'sslverify'  => false
+=======
+			'sslverify'  => false,
+>>>>>>> update
 		);
 
 		// Perform the query and retrieve the response.
 		$response = 'GET' == $this->method ? wp_remote_get( esc_url_raw( $this->url ) . '?' . $string, $data ) : wp_remote_post( esc_url_raw( $this->url ), $data );
 
+<<<<<<< HEAD
 		//return new WP_Error( 'debug', '<pre>' . var_export( $response, true ) . '</pre>' );
+=======
+		// return new WP_Error( 'debug', '<pre>' . var_export( $response, true ) . '</pre>' );
+>>>>>>> update
 
 		if ( is_wp_error( $response ) ) {
 			return $response;
@@ -296,8 +335,13 @@ final class MonsterInsights_API_Request {
 
 		$response_code = wp_remote_retrieve_response_code( $response );
 		$response_body = json_decode( wp_remote_retrieve_body( $response ), true );
+<<<<<<< HEAD
 		//return new WP_Error( 'debug', '<pre>' . var_export( $response_body, true ) . '</pre>' );
 		//var_dump( $response_body );
+=======
+		// return new WP_Error( 'debug', '<pre>' . var_export( $response_body, true ) . '</pre>' );
+		// var_dump( $response_body );
+>>>>>>> update
 		// Bail out early if there are any errors.
 		if ( is_wp_error( $response_body ) ) {
 			return $response_body;
@@ -321,10 +365,19 @@ final class MonsterInsights_API_Request {
 			if ( empty( $response_body ) || ( empty( $response_body['message'] ) && empty( $response_body['error'] ) ) ) {
 				// Translators: Support link tag starts with url, Support link tag ends and placeholder adds the response code.
 				$message = sprintf(
+<<<<<<< HEAD
 					esc_html__( 'Oops! We ran into a problem. Please try again in a few minutes. If the issue persists please %1$scontact our support%2$s team. Error: API returned a <strong>%3$s</strong> response.', 'google-analytics-for-wordpress' ),
 					'<a target="_blank" href="' . monsterinsights_get_url( 'notice', 'unknown-api-error', 'https://www.monsterinsights.com/my-account/support/' ) . '">',
 					'</a>',
 					$response_code
+=======
+					esc_html__( 'Oops! We ran into a problem. Please try again in a few minutes. If the issue persists please %1$scontact our support%2$s team. Error: API returned a %3$s%4$s%5$s response.', 'google-analytics-for-wordpress' ),
+					'<a target="_blank" href="' . monsterinsights_get_url( 'notice', 'unknown-api-error', 'https://www.monsterinsights.com/my-account/support/' ) . '">',
+					'</a>',
+					'<strong>',
+					$response_code,
+					'</strong>'
+>>>>>>> update
 				);
 
 				return new WP_Error( $type, $message );
@@ -333,11 +386,21 @@ final class MonsterInsights_API_Request {
 			if ( ! empty( $response_body['message'] ) ) {
 				// Translators: Support link tag starts with url, Support link tag ends, placeholder adds the response code and response message.
 				$message = sprintf(
+<<<<<<< HEAD
 					esc_html__( 'Oops! We ran into a problem. Please try again in a few minutes. If the issue persists please %1$scontact our support%2$s team. Error: API returned a <strong>%3$d: %4$s</strong>.', 'google-analytics-for-wordpress' ),
 					'<a target="_blank" href="' . monsterinsights_get_url( 'notice', 'unknown-api-error', 'https://www.monsterinsights.com/my-account/support/' ) . '">',
 					'</a>',
 					$response_code,
 					stripslashes( $response_body['message'] )
+=======
+					esc_html__( 'Oops! We ran into a problem. Please try again in a few minutes. If the issue persists please %1$scontact our support%2$s team. Error: API returned a %3$s%4$d: %5$s%6$s', 'google-analytics-for-wordpress' ),
+					'<a target="_blank" href="' . monsterinsights_get_url( 'notice', 'unknown-api-error', 'https://www.monsterinsights.com/my-account/support/' ) . '">',
+					'</a>',
+					'<strong>',
+					$response_code,
+					stripslashes( $response_body['message'] ),
+					'</strong>'
+>>>>>>> update
 				);
 
 				return new WP_Error( $type, $message );
@@ -346,11 +409,21 @@ final class MonsterInsights_API_Request {
 			if ( ! empty( $response_body['error'] ) ) {
 				// Translators: Support link tag starts with url, Support link tag ends, placeholder adds the response code and response message.
 				$message = sprintf(
+<<<<<<< HEAD
 					esc_html__( 'Oops! We ran into a problem. Please try again in a few minutes. If the issue persists please %1$scontact our support%2$s team. Error: API returned a <strong>%3$d: %4$s</strong>.', 'google-analytics-for-wordpress' ),
 					'<a target="_blank" href="' . monsterinsights_get_url( 'notice', 'unknown-api-error', 'https://www.monsterinsights.com/my-account/support/' ) . '">',
 					'</a>',
 					$response_code,
 					stripslashes( $response_body['error'] )
+=======
+					esc_html__( 'Oops! We ran into a problem. Please try again in a few minutes. If the issue persists please %1$scontact our support%2$s team. Error: API returned a %3$s%4$d: %5$s%6$s', 'google-analytics-for-wordpress' ),
+					'<a target="_blank" href="' . monsterinsights_get_url( 'notice', 'unknown-api-error', 'https://www.monsterinsights.com/my-account/support/' ) . '">',
+					'</a>',
+					'<strong>',
+					$response_code,
+					stripslashes( $response_body['error'] ),
+					'</strong>'
+>>>>>>> update
 				);
 
 				return new WP_Error( $type, $message );
@@ -384,7 +457,10 @@ final class MonsterInsights_API_Request {
 	 *
 	 * @return mixed $value The response to the API call.
 	 * @since 7.0.0
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> update
 	 */
 	public function set( $key, $val ) {
 		$this->{$key} = $val;
@@ -397,7 +473,10 @@ final class MonsterInsights_API_Request {
 	 * return void
 	 *
 	 * @since 7.0.0
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> update
 	 */
 	public function set_additional_data( array $data ) {
 		$this->additional_data = array_merge( $this->additional_data, $data );
@@ -414,10 +493,17 @@ final class MonsterInsights_API_Request {
 		// Use the base is_ssl check first.
 		if ( is_ssl() ) {
 			return true;
+<<<<<<< HEAD
 		} else if ( isset( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) && 'https' == $_SERVER['HTTP_X_FORWARDED_PROTO'] ) {
 			// Also catch proxies and load balancers.
 			return true;
 		} else if ( defined( 'FORCE_SSL_ADMIN' ) && FORCE_SSL_ADMIN ) {
+=======
+		} elseif ( isset( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) && 'https' == $_SERVER['HTTP_X_FORWARDED_PROTO'] ) {
+			// Also catch proxies and load balancers.
+			return true;
+		} elseif ( defined( 'FORCE_SSL_ADMIN' ) && FORCE_SSL_ADMIN ) {
+>>>>>>> update
 			return true;
 		}
 
@@ -448,7 +534,11 @@ final class MonsterInsights_API_Request {
 						'sslverify'  => false,
 						'timeout'    => 2,
 						'user-agent' => 'MonsterInsights/' . MONSTERINSIGHTS_VERSION,
+<<<<<<< HEAD
 						'body'       => ''
+=======
+						'body'       => '',
+>>>>>>> update
 					);
 					$response = wp_remote_get( $testurl, $params );
 					if ( ! is_wp_error( $response ) && $response['response']['code'] >= 200 && $response['response']['code'] < 300 ) {
@@ -469,7 +559,11 @@ final class MonsterInsights_API_Request {
 				'sslverify'  => false,
 				'timeout'    => 2,
 				'user-agent' => 'MonsterInsights/' . MONSTERINSIGHTS_VERSION,
+<<<<<<< HEAD
 				'body'       => ''
+=======
+				'body'       => '',
+>>>>>>> update
 			);
 			$response = wp_remote_get( $testurl, $params );
 

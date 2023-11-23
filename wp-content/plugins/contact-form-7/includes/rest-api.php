@@ -2,7 +2,11 @@
 
 add_action(
 	'rest_api_init',
+<<<<<<< HEAD
 	function () {
+=======
+	static function () {
+>>>>>>> update
 		$controller = new WPCF7_REST_Controller;
 		$controller->register_routes();
 	},
@@ -22,7 +26,11 @@ class WPCF7_REST_Controller {
 				array(
 					'methods' => WP_REST_Server::READABLE,
 					'callback' => array( $this, 'get_contact_forms' ),
+<<<<<<< HEAD
 					'permission_callback' => function () {
+=======
+					'permission_callback' => static function () {
+>>>>>>> update
 						if ( current_user_can( 'wpcf7_read_contact_forms' ) ) {
 							return true;
 						} else {
@@ -36,7 +44,11 @@ class WPCF7_REST_Controller {
 				array(
 					'methods' => WP_REST_Server::CREATABLE,
 					'callback' => array( $this, 'create_contact_form' ),
+<<<<<<< HEAD
 					'permission_callback' => function () {
+=======
+					'permission_callback' => static function () {
+>>>>>>> update
 						if ( current_user_can( 'wpcf7_edit_contact_forms' ) ) {
 							return true;
 						} else {
@@ -56,7 +68,11 @@ class WPCF7_REST_Controller {
 				array(
 					'methods' => WP_REST_Server::READABLE,
 					'callback' => array( $this, 'get_contact_form' ),
+<<<<<<< HEAD
 					'permission_callback' => function ( WP_REST_Request $request ) {
+=======
+					'permission_callback' => static function ( WP_REST_Request $request ) {
+>>>>>>> update
 						$id = (int) $request->get_param( 'id' );
 
 						if ( current_user_can( 'wpcf7_edit_contact_form', $id ) ) {
@@ -72,7 +88,11 @@ class WPCF7_REST_Controller {
 				array(
 					'methods' => WP_REST_Server::EDITABLE,
 					'callback' => array( $this, 'update_contact_form' ),
+<<<<<<< HEAD
 					'permission_callback' => function ( WP_REST_Request $request ) {
+=======
+					'permission_callback' => static function ( WP_REST_Request $request ) {
+>>>>>>> update
 						$id = (int) $request->get_param( 'id' );
 
 						if ( current_user_can( 'wpcf7_edit_contact_form', $id ) ) {
@@ -88,7 +108,11 @@ class WPCF7_REST_Controller {
 				array(
 					'methods' => WP_REST_Server::DELETABLE,
 					'callback' => array( $this, 'delete_contact_form' ),
+<<<<<<< HEAD
 					'permission_callback' => function ( WP_REST_Request $request ) {
+=======
+					'permission_callback' => static function ( WP_REST_Request $request ) {
+>>>>>>> update
 						$id = (int) $request->get_param( 'id' );
 
 						if ( current_user_can( 'wpcf7_delete_contact_form', $id ) ) {
@@ -179,6 +203,10 @@ class WPCF7_REST_Controller {
 		foreach ( $items as $item ) {
 			$response[] = array(
 				'id' => $item->id(),
+<<<<<<< HEAD
+=======
+				'hash' => $item->hash(),
+>>>>>>> update
 				'slug' => $item->name(),
 				'title' => $item->title(),
 				'locale' => $item->locale(),
@@ -452,7 +480,11 @@ class WPCF7_REST_Controller {
 		$properties['form'] = array(
 			'content' => (string) $properties['form'],
 			'fields' => array_map(
+<<<<<<< HEAD
 				function ( WPCF7_FormTag $form_tag ) {
+=======
+				static function ( WPCF7_FormTag $form_tag ) {
+>>>>>>> update
 					return array(
 						'type' => $form_tag->type,
 						'basetype' => $form_tag->basetype,
@@ -474,7 +506,11 @@ class WPCF7_REST_Controller {
 		$properties['additional_settings'] = array(
 			'content' => (string) $properties['additional_settings'],
 			'settings' => array_filter( array_map(
+<<<<<<< HEAD
 				function ( $setting ) {
+=======
+				static function ( $setting ) {
+>>>>>>> update
 					$pattern = '/^([a-zA-Z0-9_]+)[\t ]*:(.*)$/';
 
 					if ( preg_match( $pattern, $setting, $matches ) ) {

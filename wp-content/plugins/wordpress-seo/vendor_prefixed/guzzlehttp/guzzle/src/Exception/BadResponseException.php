@@ -9,6 +9,7 @@ use YoastSEO_Vendor\Psr\Http\Message\ResponseInterface;
  */
 class BadResponseException extends \YoastSEO_Vendor\GuzzleHttp\Exception\RequestException
 {
+<<<<<<< HEAD
     public function __construct($message, \YoastSEO_Vendor\Psr\Http\Message\RequestInterface $request, \YoastSEO_Vendor\Psr\Http\Message\ResponseInterface $response = null, \Exception $previous = null, array $handlerContext = [])
     {
         if (null === $response) {
@@ -16,4 +17,25 @@ class BadResponseException extends \YoastSEO_Vendor\GuzzleHttp\Exception\Request
         }
         parent::__construct($message, $request, $response, $previous, $handlerContext);
     }
+=======
+    public function __construct(string $message, \YoastSEO_Vendor\Psr\Http\Message\RequestInterface $request, \YoastSEO_Vendor\Psr\Http\Message\ResponseInterface $response, \Throwable $previous = null, array $handlerContext = [])
+    {
+        parent::__construct($message, $request, $response, $previous, $handlerContext);
+    }
+    /**
+     * Current exception and the ones that extend it will always have a response.
+     */
+    public function hasResponse() : bool
+    {
+        return \true;
+    }
+    /**
+     * This function narrows the return type from the parent class and does not allow it to be nullable.
+     */
+    public function getResponse() : \YoastSEO_Vendor\Psr\Http\Message\ResponseInterface
+    {
+        /** @var ResponseInterface */
+        return parent::getResponse();
+    }
+>>>>>>> update
 }

@@ -11,25 +11,46 @@ if ( ! class_exists( 'acf_field__accordion' ) ) :
 		 *
 		 *  This function will setup the field type data
 		 *
+<<<<<<< HEAD
 		 *  @date    30/10/17
 		 *  @since   5.6.3
 		 *
 		 *  @param   n/a
 		 *  @return  n/a
+=======
+		 * @date  30/10/17
+		 * @since 5.6.3
+		 *
+		 * @param  n/a
+		 * @return n/a
+>>>>>>> update
 		 */
 
 		function initialize() {
 
 			// vars
+<<<<<<< HEAD
 			$this->name     = 'accordion';
 			$this->label    = __( 'Accordion', 'acf' );
 			$this->category = 'layout';
 			$this->defaults = array(
+=======
+			$this->name          = 'accordion';
+			$this->label         = __( 'Accordion', 'acf' );
+			$this->category      = 'layout';
+			$this->description   = __( 'Allows you to group and organize custom fields into collapsable panels that are shown while editing content. Useful for keeping large datasets tidy.', 'acf' );
+			$this->preview_image = acf_get_url() . '/assets/images/field-type-previews/field-preview-accordion.png';
+			$this->doc_url       = acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/resources/accordion/', 'docs', 'field-type-selection' );
+			$this->defaults      = array(
+>>>>>>> update
 				'open'         => 0,
 				'multi_expand' => 0,
 				'endpoint'     => 0,
 			);
+<<<<<<< HEAD
 
+=======
+>>>>>>> update
 		}
 
 
@@ -38,11 +59,19 @@ if ( ! class_exists( 'acf_field__accordion' ) ) :
 		 *
 		 *  Create the HTML interface for your field
 		 *
+<<<<<<< HEAD
 		 *  @date    30/10/17
 		 *  @since   5.6.3
 		 *
 		 *  @param   array $field
 		 *  @return  n/a
+=======
+		 * @date  30/10/17
+		 * @since 5.6.3
+		 *
+		 * @param  array $field
+		 * @return n/a
+>>>>>>> update
 		 */
 
 		function render_field( $field ) {
@@ -56,7 +85,11 @@ if ( ! class_exists( 'acf_field__accordion' ) ) :
 			);
 
 			?>
+<<<<<<< HEAD
 		<div <?php acf_esc_attr_e( $atts ); ?>></div>
+=======
+		<div <?php echo acf_esc_attrs( $atts ); ?>></div>
+>>>>>>> update
 			<?php
 
 		}
@@ -75,6 +108,7 @@ if ( ! class_exists( 'acf_field__accordion' ) ) :
 		*  @since   3.6
 		*  @date    23/01/13
 		*/
+<<<<<<< HEAD
 
 		function render_field_settings( $field ) {
 
@@ -96,6 +130,9 @@ if ( ! class_exists( 'acf_field__accordion' ) ) :
 			*/
 
 			// active
+=======
+		function render_field_settings( $field ) {
+>>>>>>> update
 			acf_render_field_setting(
 				$field,
 				array(
@@ -107,11 +144,18 @@ if ( ! class_exists( 'acf_field__accordion' ) ) :
 				)
 			);
 
+<<<<<<< HEAD
 			// multi_expand
 			acf_render_field_setting(
 				$field,
 				array(
 					'label'        => __( 'Multi-expand', 'acf' ),
+=======
+			acf_render_field_setting(
+				$field,
+				array(
+					'label'        => __( 'Multi-Expand', 'acf' ),
+>>>>>>> update
 					'instructions' => __( 'Allow this accordion to open without closing others.', 'acf' ),
 					'name'         => 'multi_expand',
 					'type'         => 'true_false',
@@ -119,7 +163,10 @@ if ( ! class_exists( 'acf_field__accordion' ) ) :
 				)
 			);
 
+<<<<<<< HEAD
 			// endpoint
+=======
+>>>>>>> update
 			acf_render_field_setting(
 				$field,
 				array(
@@ -130,7 +177,10 @@ if ( ! class_exists( 'acf_field__accordion' ) ) :
 					'ui'           => 1,
 				)
 			);
+<<<<<<< HEAD
 
+=======
+>>>>>>> update
 		}
 
 
@@ -161,7 +211,10 @@ if ( ! class_exists( 'acf_field__accordion' ) ) :
 
 			// return
 			return $field;
+<<<<<<< HEAD
 
+=======
+>>>>>>> update
 		}
 
 	}
@@ -169,7 +222,10 @@ if ( ! class_exists( 'acf_field__accordion' ) ) :
 
 	// initialize
 	acf_register_field_type( 'acf_field__accordion' );
+<<<<<<< HEAD
 
+=======
+>>>>>>> update
 endif; // class_exists check
 
 ?>

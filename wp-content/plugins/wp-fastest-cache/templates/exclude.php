@@ -90,6 +90,7 @@
 													<td class="" width="95">
 														<select name="wpfc-exclude-rule-prefix" style="width: 98px !important;">
 															<option selected="" value=""></option>
+<<<<<<< HEAD
 															<option value="homepage"><?php _e("Home Page", "wp-fastest-cache"); ?></option>
 															<option value="category"><?php _e("Categories", "wp-fastest-cache"); ?></option>
 															<option value="tag"><?php _e("Tags", "wp-fastest-cache"); ?></option>
@@ -104,6 +105,33 @@
 										    				<option value="exact"><?php _e("Is Equal To", "wp-fastest-cache"); ?></option>
 										    				<option value="googleanalytics"><?php _e("has Google Analytics Parameters", "wp-fastest-cache"); ?></option>
 										    				<option value="woocommerce_items_in_cart"><?php _e("has Woocommerce Items in Cart", "wp-fastest-cache"); ?></option>
+=======
+
+															<optgroup label="Content Types">
+																<option value="homepage"><?php _e("Home Page", "wp-fastest-cache"); ?></option>
+																<option value="category"><?php _e("Categories", "wp-fastest-cache"); ?></option>
+																<option value="tag"><?php _e("Tags", "wp-fastest-cache"); ?></option>
+																<option value="post"><?php _e("Posts", "wp-fastest-cache"); ?></option>
+																<option value="page"><?php _e("Pages", "wp-fastest-cache"); ?></option>
+																<option value="archive"><?php _e("Archives", "wp-fastest-cache"); ?></option>
+																<option value="attachment"><?php _e("Attachments", "wp-fastest-cache"); ?></option>
+															</optgroup>
+
+															<optgroup label="Methods">
+											    				<option value="startwith"><?php _e("Starts With", "wp-fastest-cache"); ?></option>
+											    				<option value="contain"><?php _e("Contains", "wp-fastest-cache"); ?></option>
+											    				<option value="exact"><?php _e("Is Equal To", "wp-fastest-cache"); ?></option>
+
+											    				<option value="regex">Regular Expression</option>
+										    				</optgroup>
+
+										    				<optgroup label="Special">
+										    					<option value="googleanalytics"><?php _e("has Google Analytics Parameters", "wp-fastest-cache"); ?></option>
+										    					<option value="yandexclickid"><?php _e("has Yandex Click ID Parameters", "wp-fastest-cache"); ?></option>		
+										    					<option value="woocommerce_items_in_cart"><?php _e("has Woocommerce Items in Cart", "wp-fastest-cache"); ?></option>
+										    				</optgroup>
+
+>>>>>>> update
 										    			</select>
 										    		</td>
 										    		<td width="300">
@@ -184,7 +212,11 @@
 				var clone_modal_id = "wpfc-modal-exclude-" + new Date().getTime();
 
 				clone_modal.find("select").change(function(e){
+<<<<<<< HEAD
 					if(jQuery(this).val().match(/^(homepage|category|tag|archive|post|page|attachment|googleanalytics|woocommerce_items_in_cart)$/)){
+=======
+					if(jQuery(this).val().match(/^(homepage|category|tag|archive|post|page|attachment|googleanalytics|yandexclickid|woocommerce_items_in_cart)$/)){
+>>>>>>> update
 						clone_modal.find("input[name='wpfc-exclude-rule-content']").closest("td").hide();
 						clone_modal.find("input[name='wpfc-exclude-rule-content']").val(jQuery(this).val());
 
@@ -200,7 +232,11 @@
 				});
 
 
+<<<<<<< HEAD
 				if(e.prefix.match(/^(homepage|category|tag|archive|post|page|attachment|googleanalytics|woocommerce_items_in_cart)$/)){
+=======
+				if(e.prefix.match(/^(homepage|category|tag|archive|post|page|attachment|googleanalytics|yandexclickid|woocommerce_items_in_cart)$/)){
+>>>>>>> update
 					clone_modal.find("input[name='wpfc-exclude-rule-content']").closest("td").hide();
 
 					clone_modal.find("select").closest("td").width(395);
@@ -212,6 +248,7 @@
 				clone_modal.find("input[name='wpfc-exclude-rule-content']").val(jQuery(this).attr("content"));
 				clone_modal.find("input[name='wpfc-exclude-rule-type']").val(jQuery(this).attr("type"));
 
+<<<<<<< HEAD
 
 				clone_modal.find("select[name='wpfc-exclude-rule-prefix'] option").each(function(){
 					if(this.value == "woocommerce_items_in_cart"){
@@ -232,6 +269,9 @@
 
 
 				});
+=======
+				self.modify_select(clone_modal, e.type);
+>>>>>>> update
 
 
 				if(e.type != "page"){
@@ -292,6 +332,38 @@
 
 			this.reorder();
 		},
+<<<<<<< HEAD
+=======
+		modify_select: function(clone_modal, type){
+			clone_modal.find("select[name='wpfc-exclude-rule-prefix'] option").each(function(){
+
+				if(this.value == "woocommerce_items_in_cart"){
+					if(type == "cookie"){
+						return;
+					}else{
+						jQuery(this).remove();
+					}
+				}else{
+					if(type != "page"){
+						if(this.value != "contain"){
+							jQuery(this).remove();
+							
+						}
+					}
+
+				}
+
+			});
+
+			clone_modal.find("select[name='wpfc-exclude-rule-prefix'] optgroup").each(function(){
+				if(jQuery(this).find("option").length == 0){
+					jQuery(this).remove();
+				}
+
+			});
+
+		},
+>>>>>>> update
 		create_title: function(prefix, content){
 			var title = "";
 
@@ -301,6 +373,13 @@
 				title = "Start With: " + content;
 			}else if(prefix == "contain"){
 				title = "Contains: " + content;
+<<<<<<< HEAD
+=======
+
+			}else if(prefix == "regex"){
+				title = "Regex: /" + content + "/i";
+
+>>>>>>> update
 			}else if(prefix == "homepage"){
 				title = "Home Page";
 			}else if(prefix == "tag"){
@@ -317,6 +396,13 @@
 				title = "Attachments";
 			}else if(prefix == "googleanalytics"){
 				title = "Google Analytics Parameters";
+<<<<<<< HEAD
+=======
+
+			}else if(prefix == "yandexclickid"){
+				title = "Yandex Click ID";
+
+>>>>>>> update
 			}else if(prefix == "woocommerce_items_in_cart"){
 				title = "Woocommerce Items in Cart";
 			}
@@ -339,13 +425,24 @@
 				}
 
 				if(type == "page" || type == "css" || type == "js"){
+<<<<<<< HEAD
 					if(prefix.match(/^(homepage|category|tag|archive|post|page|attachment|googleanalytics|woocommerce_items_in_cart)$/)){
+=======
+					if(prefix.match(/^(homepage|category|tag|archive|post|page|attachment|googleanalytics|yandexclickid|woocommerce_items_in_cart)$/)){
+>>>>>>> update
 						if(prefix == "homepage"){
 							return "The " + b_start + "homepage" + b_end + " has been excluded";
 						}else{
 							return "All" + " " + b_start + this.create_title(prefix).toLowerCase() + b_end + " " + "have been excluded";
 						}
 					}else{
+<<<<<<< HEAD
+=======
+						if(content == "wp-login.php" || content == "wp-admin"){
+							return "<?php echo home_url(); ?>" + "/" + request_uri;
+						}
+
+>>>>>>> update
 						return "<?php echo preg_replace("/(https?\:\/\/[^\/]+).*/", "$1", site_url());?>" + "/" + request_uri;
 					}
 				}else if(type == "useragent"){
@@ -385,6 +482,7 @@
 				clone_modal.attr("id", clone_modal_id);
 				clone_modal.find("input[name='wpfc-exclude-rule-type']").val(clone_modal_type);
 				
+<<<<<<< HEAD
 				clone_modal.find("select[name='wpfc-exclude-rule-prefix'] option").each(function(){
 					if(this.value == "woocommerce_items_in_cart"){
 						if(clone_modal_type == "cookie"){
@@ -403,6 +501,11 @@
 
 
 				});
+=======
+
+				self.modify_select(clone_modal, clone_modal_type);
+
+>>>>>>> update
 
 				if(clone_modal_type != "page"){
 					if(clone_modal_type == "useragent"){
@@ -420,7 +523,11 @@
 
 
 				clone_modal.find("select").change(function(){
+<<<<<<< HEAD
 					if(jQuery(this).val().match(/^(homepage|category|tag|archive|post|page|attachment|googleanalytics|woocommerce_items_in_cart)$/)){
+=======
+					if(jQuery(this).val().match(/^(homepage|category|tag|archive|post|page|attachment|googleanalytics|yandexclickid|woocommerce_items_in_cart)$/)){
+>>>>>>> update
 						clone_modal.find("input[name='wpfc-exclude-rule-content']").closest("td").hide();
 						clone_modal.find("input[name='wpfc-exclude-rule-content']").val(jQuery(this).val());
 

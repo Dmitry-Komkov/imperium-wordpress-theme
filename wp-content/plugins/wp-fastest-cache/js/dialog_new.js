@@ -5,9 +5,15 @@ var Wpfc_New_Dialog = {
 	clone: "",
 	current_page_number: 1,
 	total_page_number: 0,
+<<<<<<< HEAD
 	interval : false,
 	enable_button: function(button_type){
 		clearInterval(this.interval);
+=======
+	interval : {},
+	enable_button: function(button_type){
+		clearInterval(this.interval[this.id]);
+>>>>>>> update
 
 		let self = this;
 		let modal = jQuery("#" + self.id);
@@ -27,12 +33,24 @@ var Wpfc_New_Dialog = {
 
 		button.text(text + ".");
 
+<<<<<<< HEAD
 		self.interval = setInterval(function(){
 			text = button.text();
 			dot = text.match(/\./g);
 
 			console.log(dot);
 			console.log(button);
+=======
+		self.interval[self.id] = setInterval(function(){
+			if(jQuery("#" + self.id).length === 0){
+				clearInterval(self.interval);
+			}
+
+			text = button.text();
+			dot = text.match(/\./g);
+
+			console.log(self.interval);
+>>>>>>> update
 
 			if(dot){
 				if(dot.length < 3){
@@ -188,6 +206,7 @@ var Wpfc_New_Dialog = {
 			}
 		});
 	},
+<<<<<<< HEAD
 	add_new_keyword_keypress: function(){
 		Wpfc_New_Dialog.clone.find(".wpfc-textbox-con .fixed-search input").keypress(function(e){
 			if(e.keyCode == 13){
@@ -200,6 +219,34 @@ var Wpfc_New_Dialog = {
 				});
 			}
 		});
+=======
+	add_new_keyword_keypress: function() {
+	    const $clone = Wpfc_New_Dialog.clone;
+	    const $input = $clone.find(".wpfc-textbox-con .fixed-search input");
+	    const $textboxCon = $clone.find(".wpfc-textbox-con");
+
+	    $input.keydown(function(e) {
+	        if (e.keyCode === 8) {
+	            let keyword = $input.val().replace(/[\s,]/g, "");
+
+	            if (keyword.length === 0) {
+	                $textboxCon.hide();
+	            }
+	        } else if (e.keyCode === 13) {
+	            let keyword = $input.val().replace(/[\s,]/g, "");
+
+	            $textboxCon.hide();
+	            $input.val("");
+
+	            if (keyword.length > 0) {
+	                const $newKeywordItem = jQuery('<li class="keyword-item"><a class="keyword-label">' + keyword + '</a></li>').click(function() {
+	                    jQuery(this).remove();
+	                });
+	                $newKeywordItem.insertBefore($clone.find(".wpfc-add-new-keyword").closest(".keyword-item"));
+	            }
+	        }
+	    });
+>>>>>>> update
 	},
 	click_event_add_new_keyword_button: function(){
 		Wpfc_New_Dialog.clone.find(".wpfc-add-new-keyword").click(function(){

@@ -1,5 +1,9 @@
 <?php
 
+<<<<<<< HEAD
+=======
+declare (strict_types=1);
+>>>>>>> update
 namespace YoastSEO_Vendor\GuzzleHttp\Psr7;
 
 use YoastSEO_Vendor\Psr\Http\Message\UriInterface;
@@ -8,13 +12,18 @@ use YoastSEO_Vendor\Psr\Http\Message\UriInterface;
  *
  * @author Tobias Schultze
  *
+<<<<<<< HEAD
  * @link https://tools.ietf.org/html/rfc3986#section-5
+=======
+ * @see https://tools.ietf.org/html/rfc3986#section-5
+>>>>>>> update
  */
 final class UriResolver
 {
     /**
      * Removes dot segments from a path and returns the new path.
      *
+<<<<<<< HEAD
      * @param string $path
      *
      * @return string
@@ -22,6 +31,11 @@ final class UriResolver
      * @link http://tools.ietf.org/html/rfc3986#section-5.2.4
      */
     public static function removeDotSegments($path)
+=======
+     * @see http://tools.ietf.org/html/rfc3986#section-5.2.4
+     */
+    public static function removeDotSegments(string $path) : string
+>>>>>>> update
     {
         if ($path === '' || $path === '/') {
             return $path;
@@ -49,6 +63,7 @@ final class UriResolver
     /**
      * Converts the relative URI into a new URI that is resolved against the base URI.
      *
+<<<<<<< HEAD
      * @param UriInterface $base Base URI
      * @param UriInterface $rel  Relative URI
      *
@@ -57,6 +72,11 @@ final class UriResolver
      * @link http://tools.ietf.org/html/rfc3986#section-5.2
      */
     public static function resolve(\YoastSEO_Vendor\Psr\Http\Message\UriInterface $base, \YoastSEO_Vendor\Psr\Http\Message\UriInterface $rel)
+=======
+     * @see http://tools.ietf.org/html/rfc3986#section-5.2
+     */
+    public static function resolve(\YoastSEO_Vendor\Psr\Http\Message\UriInterface $base, \YoastSEO_Vendor\Psr\Http\Message\UriInterface $rel) : \YoastSEO_Vendor\Psr\Http\Message\UriInterface
+>>>>>>> update
     {
         if ((string) $rel === '') {
             // we can simply return the same base URI instance for this same-document reference
@@ -115,6 +135,7 @@ final class UriResolver
      * relative-path reference will be returned as-is.
      *
      *    echo UriResolver::relativize($base, new Uri('/a/b/c'));  // prints 'c' as well
+<<<<<<< HEAD
      *
      * @param UriInterface $base   Base URI
      * @param UriInterface $target Target URI
@@ -122,6 +143,10 @@ final class UriResolver
      * @return UriInterface The relative URI reference
      */
     public static function relativize(\YoastSEO_Vendor\Psr\Http\Message\UriInterface $base, \YoastSEO_Vendor\Psr\Http\Message\UriInterface $target)
+=======
+     */
+    public static function relativize(\YoastSEO_Vendor\Psr\Http\Message\UriInterface $base, \YoastSEO_Vendor\Psr\Http\Message\UriInterface $target) : \YoastSEO_Vendor\Psr\Http\Message\UriInterface
+>>>>>>> update
     {
         if ($target->getScheme() !== '' && ($base->getScheme() !== $target->getScheme() || $target->getAuthority() === '' && $base->getAuthority() !== '')) {
             return $target;
@@ -150,12 +175,20 @@ final class UriResolver
         // inherit the base query component when resolving.
         if ($target->getQuery() === '') {
             $segments = \explode('/', $target->getPath());
+<<<<<<< HEAD
+=======
+            /** @var string $lastSegment */
+>>>>>>> update
             $lastSegment = \end($segments);
             return $emptyPathUri->withPath($lastSegment === '' ? './' : $lastSegment);
         }
         return $emptyPathUri;
     }
+<<<<<<< HEAD
     private static function getRelativePath(\YoastSEO_Vendor\Psr\Http\Message\UriInterface $base, \YoastSEO_Vendor\Psr\Http\Message\UriInterface $target)
+=======
+    private static function getRelativePath(\YoastSEO_Vendor\Psr\Http\Message\UriInterface $base, \YoastSEO_Vendor\Psr\Http\Message\UriInterface $target) : string
+>>>>>>> update
     {
         $sourceSegments = \explode('/', $base->getPath());
         $targetSegments = \explode('/', $target->getPath());

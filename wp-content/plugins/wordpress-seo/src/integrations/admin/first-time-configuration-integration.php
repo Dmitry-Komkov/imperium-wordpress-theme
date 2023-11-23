@@ -2,6 +2,7 @@
 
 namespace Yoast\WP\SEO\Integrations\Admin;
 
+<<<<<<< HEAD
 use WPSEO_Addon_Manager;
 use WPSEO_Admin_Asset_Manager;
 use WPSEO_Shortlinker;
@@ -13,6 +14,20 @@ use Yoast\WP\SEO\Helpers\Product_Helper;
 use Yoast\WP\SEO\Integrations\Integration_Interface;
 use Yoast\WP\SEO\Routes\Indexing_Route;
 use Yoast\WP\SEO\Context\Meta_Tags_Context;
+=======
+use WP_User;
+use WPSEO_Addon_Manager;
+use WPSEO_Admin_Asset_Manager;
+use WPSEO_Option_Tab;
+use WPSEO_Shortlinker;
+use Yoast\WP\SEO\Conditionals\Admin_Conditional;
+use Yoast\WP\SEO\Context\Meta_Tags_Context;
+use Yoast\WP\SEO\Helpers\Options_Helper;
+use Yoast\WP\SEO\Helpers\Product_Helper;
+use Yoast\WP\SEO\Helpers\Social_Profiles_Helper;
+use Yoast\WP\SEO\Integrations\Integration_Interface;
+use Yoast\WP\SEO\Routes\Indexing_Route;
+>>>>>>> update
 
 /**
  * First_Time_Configuration_Integration class
@@ -64,7 +79,11 @@ class First_Time_Configuration_Integration implements Integration_Interface {
 	/**
 	 * The meta tags context helper.
 	 *
+<<<<<<< HEAD
 	 * @var \Yoast\WP\SEO\Context\Meta_Tags_Context
+=======
+	 * @var Meta_Tags_Context
+>>>>>>> update
 	 */
 	private $meta_tags_context;
 
@@ -121,7 +140,11 @@ class First_Time_Configuration_Integration implements Integration_Interface {
 		$dashboard_tabs->add_tab(
 			new WPSEO_Option_Tab(
 				'first-time-configuration',
+<<<<<<< HEAD
 				__( 'First-time configuration', 'wordpress-seo' ),
+=======
+				\__( 'First-time configuration', 'wordpress-seo' ),
+>>>>>>> update
 				[ 'save_button' => false ]
 			)
 		);
@@ -138,8 +161,13 @@ class First_Time_Configuration_Integration implements Integration_Interface {
 
 		$this->admin_asset_manager->enqueue_script( 'indexation' );
 		$this->admin_asset_manager->enqueue_script( 'first-time-configuration' );
+<<<<<<< HEAD
 		$this->admin_asset_manager->enqueue_style( 'admin-css' );
 		$this->admin_asset_manager->enqueue_style( 'tailwind' );
+=======
+		$this->admin_asset_manager->enqueue_style( 'first-time-configuration' );
+		$this->admin_asset_manager->enqueue_style( 'admin-css' );
+>>>>>>> update
 		$this->admin_asset_manager->enqueue_style( 'monorepo' );
 
 		$data = [
@@ -183,6 +211,7 @@ class First_Time_Configuration_Integration implements Integration_Interface {
 			$selected_option_label = $selected_option['label'];
 		}
 
+<<<<<<< HEAD
 		$this->admin_asset_manager->add_inline_script(
 			'first-time-configuration',
 			\sprintf(
@@ -251,6 +280,46 @@ class First_Time_Configuration_Integration implements Integration_Interface {
 			),
 			'before'
 		);
+=======
+		$data_ftc = [
+			'canEditUser'                => $this->can_edit_profile( $person_id ),
+			'companyOrPerson'            => $this->is_company_or_person(),
+			'companyOrPersonLabel'       => $selected_option_label,
+			'companyName'                => $this->get_company_name(),
+			'fallbackCompanyName'        => $this->get_fallback_company_name( $this->get_company_name() ),
+			'websiteName'                => $this->get_website_name(),
+			'fallbackWebsiteName'        => $this->get_fallback_website_name( $this->get_website_name() ),
+			'companyLogo'                => $this->get_company_logo(),
+			'companyLogoFallback'        => $this->get_company_fallback_logo( $this->get_company_logo() ),
+			'companyLogoId'              => $this->get_person_logo_id(),
+			'finishedSteps'              => $finished_steps,
+			'personId'                   => (int) $person_id,
+			'personName'                 => $this->get_person_name(),
+			'personLogo'                 => $this->get_person_logo(),
+			'personLogoFallback'         => $this->get_person_fallback_logo( $this->get_person_logo() ),
+			'personLogoId'               => $this->get_person_logo_id(),
+			'siteTagline'                => $this->get_site_tagline(),
+			'socialProfiles'             => [
+				'facebookUrl'     => $social_profiles['facebook_site'],
+				'twitterUsername' => $social_profiles['twitter_site'],
+				'otherSocialUrls' => $social_profiles['other_social_urls'],
+			],
+			'isPremium'                  => $this->product_helper->is_premium(),
+			'tracking'                   => $this->has_tracking_enabled(),
+			'isTrackingAllowedMultisite' => $this->is_tracking_enabled_multisite(),
+			'isMainSite'                 => $this->is_main_site(),
+			'companyOrPersonOptions'     => $options,
+			'shouldForceCompany'         => $this->should_force_company(),
+			'knowledgeGraphMessage'      => $knowledge_graph_message,
+			'shortlinks'                 => [
+				'gdpr'                     => $this->shortlinker->build_shortlink( 'https://yoa.st/gdpr-config-workout' ),
+				'configIndexables'         => $this->shortlinker->build_shortlink( 'https://yoa.st/config-indexables' ),
+				'configIndexablesBenefits' => $this->shortlinker->build_shortlink( 'https://yoa.st/config-indexables-benefits' ),
+			],
+		];
+
+		$this->admin_asset_manager->localize_script( 'first-time-configuration', 'wpseoFirstTimeConfigurationData', $data_ftc );
+>>>>>>> update
 	}
 
 	/**
@@ -311,7 +380,11 @@ class First_Time_Configuration_Integration implements Integration_Interface {
 	 *
 	 * @param string $company_name The given company name by the user, default empty string.
 	 *
+<<<<<<< HEAD
 	 * @return string The company name.
+=======
+	 * @return string|false The company name.
+>>>>>>> update
 	 */
 	private function get_fallback_company_name( $company_name ) {
 		if ( $company_name ) {
@@ -322,6 +395,33 @@ class First_Time_Configuration_Integration implements Integration_Interface {
 	}
 
 	/**
+<<<<<<< HEAD
+=======
+	 * Gets the website name from the option in the database.
+	 *
+	 * @return string The website name.
+	 */
+	private function get_website_name() {
+		return $this->options_helper->get( 'website_name', '' );
+	}
+
+	/**
+	 * Gets the fallback website name from the option in the database if there is no website name.
+	 *
+	 * @param string $website_name The given website name by the user, default empty string.
+	 *
+	 * @return string|false The website name.
+	 */
+	private function get_fallback_website_name( $website_name ) {
+		if ( $website_name ) {
+			return false;
+		}
+
+		return \get_bloginfo( 'name' );
+	}
+
+	/**
+>>>>>>> update
 	 * Gets the company logo from the option in the database.
 	 *
 	 * @return string The company logo.
@@ -344,7 +444,11 @@ class First_Time_Configuration_Integration implements Integration_Interface {
 	 *
 	 * @param string $company_logo The given company logo by the user, default empty.
 	 *
+<<<<<<< HEAD
 	 * @return {boolean | string} The company logo URL.
+=======
+	 * @return string|false The company logo URL.
+>>>>>>> update
 	 */
 	private function get_company_fallback_logo( $company_logo ) {
 		if ( $company_logo ) {
@@ -352,7 +456,11 @@ class First_Time_Configuration_Integration implements Integration_Interface {
 		}
 		$logo_id = $this->meta_tags_context->fallback_to_site_logo();
 
+<<<<<<< HEAD
 		return esc_url( wp_get_attachment_url( $logo_id ) );
+=======
+		return \esc_url( \wp_get_attachment_url( $logo_id ) );
+>>>>>>> update
 	}
 
 	/**
@@ -371,7 +479,11 @@ class First_Time_Configuration_Integration implements Integration_Interface {
 	 */
 	private function get_person_name() {
 		$user = \get_userdata( $this->get_person_id() );
+<<<<<<< HEAD
 		if ( $user instanceof \WP_User ) {
+=======
+		if ( $user instanceof WP_User ) {
+>>>>>>> update
 			return $user->get( 'display_name' );
 		}
 
@@ -392,7 +504,11 @@ class First_Time_Configuration_Integration implements Integration_Interface {
 	 *
 	 * @param string $person_logo The given person logo by the user, default empty.
 	 *
+<<<<<<< HEAD
 	 * @return {boolean | string} The person logo URL.
+=======
+	 * @return string|false The person logo URL.
+>>>>>>> update
 	 */
 	private function get_person_fallback_logo( $person_logo ) {
 		if ( $person_logo ) {
@@ -400,7 +516,11 @@ class First_Time_Configuration_Integration implements Integration_Interface {
 		}
 		$logo_id = $this->meta_tags_context->fallback_to_site_logo();
 
+<<<<<<< HEAD
 		return esc_url( wp_get_attachment_url( $logo_id ) );
+=======
+		return \esc_url( \wp_get_attachment_url( $logo_id ) );
+>>>>>>> update
 	}
 
 	/**
@@ -427,11 +547,15 @@ class First_Time_Configuration_Integration implements Integration_Interface {
 	 * @return string[] The social profiles.
 	 */
 	private function get_social_profiles() {
+<<<<<<< HEAD
 		return [
 			'facebook_url'      => $this->options_helper->get( 'facebook_site', '' ),
 			'twitter_username'  => $this->options_helper->get( 'twitter_site', '' ),
 			'other_social_urls' => $this->options_helper->get( 'other_social_urls', [] ),
 		];
+=======
+		return $this->social_profiles_helper->get_organization_social_profiles();
+>>>>>>> update
 	}
 
 	/**
@@ -513,4 +637,18 @@ class First_Time_Configuration_Integration implements Integration_Interface {
 	private function should_force_company() {
 		return $this->addon_manager->is_installed( WPSEO_Addon_Manager::LOCAL_SLUG );
 	}
+<<<<<<< HEAD
+=======
+
+	/**
+	 * Checks if the current user has the capability to edit a specific user.
+	 *
+	 * @param int $person_id The id of the person to edit.
+	 *
+	 * @return bool
+	 */
+	private function can_edit_profile( $person_id ) {
+		return \current_user_can( 'edit_user', $person_id );
+	}
+>>>>>>> update
 }

@@ -49,19 +49,33 @@ if ( $ao_options || $ao_trans ) {
                 ?>
                 <tr>
                     <th scope="row">
+<<<<<<< HEAD
                         <?php echo $option['name']; ?>
+=======
+                        <?php echo wp_strip_all_tags( $option['name'] ); ?>
+>>>>>>> update
                     </th>
                     <td>
                         <?php
                         if ( 'autoptimize_ccss_queue' == $option['name'] || 'autoptimize_ccss_rules' == $option['name'] ) {
+<<<<<<< HEAD
                             $value = print_r( json_decode( $option['value'], true ), true );
                             if ( $value ) {
                                 echo "Raw JSON:\n<pre>" . $option['value'] . "</pre>\n\nDecoded JSON:\n<pre>" . $value . '</pre>';
+=======
+                            $value = print_r( json_decode( wp_strip_all_tags( $option['value'] ), true ), true );
+                            if ( $value ) {
+                                echo "Raw JSON:\n<pre>" . wp_strip_all_tags( $option['value'] ) . "</pre>\n\nDecoded JSON:\n<pre>" . wp_strip_all_tags( $value ) . '</pre>';
+>>>>>>> update
                             } else {
                                 echo 'Empty';
                             }
                         } else {
+<<<<<<< HEAD
                             echo $option['value'];
+=======
+                            echo wp_strip_all_tags( $option['value'] );
+>>>>>>> update
                         }
                         ?>
                     </td>

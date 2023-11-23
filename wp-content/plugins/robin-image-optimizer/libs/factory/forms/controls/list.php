@@ -21,9 +21,15 @@
 		exit;
 	}
 
+<<<<<<< HEAD
 	if( !class_exists('Wbcr_FactoryForms447_ListControl') ) {
 
 		class Wbcr_FactoryForms447_ListControl extends Wbcr_FactoryForms447_Control {
+=======
+	if( !class_exists('Wbcr_FactoryForms466_ListControl') ) {
+
+		class Wbcr_FactoryForms466_ListControl extends Wbcr_FactoryForms466_Control {
+>>>>>>> update
 
 			public $type = 'list';
 
@@ -88,12 +94,21 @@
 					?>
 					<div class="factory-ajax-loader <?php echo $ajax_id . '-loader'; ?>"></div>
 					<script>
+<<<<<<< HEAD
 						window['<?php echo $ajax_id ?>'] = {
 							'loader': '.<?php echo $ajax_id . '-loader' ?>',
 							'url': '<?php echo $data['url'] ?>',
 							'data': <?php echo json_encode( $data['data'] ) ?>,
 							'selected': <?php echo json_encode( $value ) ?>,
 							'emptyList': '<?php echo $this->getOption('empty', __('The list is empty.', 'wbcr_factory_forms_447') ) ?>'
+=======
+						window['<?php echo esc_attr($ajax_id); ?>'] = {
+							'loader': '.<?php echo esc_attr($ajax_id) . '-loader' ?>',
+							'url': '<?php echo esc_url($data['url']); ?>',
+							'data': <?php echo json_encode( $data['data'] ) ?>,
+							'selected': <?php echo json_encode( $value ) ?>,
+							'emptyList': '<?php echo esc_html($this->getOption('empty', __('The list is empty.', 'wbcr_factory_forms_466') )); ?>'
+>>>>>>> update
 						};
 					</script>
 					<?php
@@ -136,7 +151,11 @@
 					: array();
 
 				$is_empty = $this->isAjax() || empty($items);
+<<<<<<< HEAD
 				$emptyList = $this->getOption('empty', __('The list is empty.', 'wbcr_factory_forms_447'));
+=======
+				$emptyList = $this->getOption('empty', __('The list is empty.', 'wbcr_factory_forms_466'));
+>>>>>>> update
 
 				if( $is_empty ) {
 					$this->addCssClass('factory-empty');
@@ -145,32 +164,54 @@
 				?>
 				<ul <?php $this->attrs() ?>>
 					<?php if( $is_empty ) { ?>
+<<<<<<< HEAD
 						<li><?php echo $emptyList ?></li>
 					<?php } else { ?>
 						<?php foreach($items as $item) { ?>
 							<li>
 								<label for="factory-checklist-<?php echo $name_on_form ?>-<?php echo $item[0] ?>" class="<?php if( !empty($errors[$item[0]]) ) {
+=======
+						<li><?php echo esc_html($emptyList); ?></li>
+					<?php } else { ?>
+						<?php foreach($items as $item) { ?>
+							<li>
+								<label for="factory-checklist-<?php echo esc_attr($name_on_form); ?>-<?php echo esc_attr($item[0]); ?>" class="<?php if( !empty($errors[$item[0]]) ) {
+>>>>>>> update
 									echo 'factory-has-error';
 								} ?>">
 									<?php if( !empty($errors[$item[0]]) ) { ?>
 										<span class="factory-error">
                             <i class="fa fa-exclamation-triangle"></i>
+<<<<<<< HEAD
                             <div class='factory-error-text'><?php echo $errors[$item[0]] ?></div>
+=======
+                            <div class='factory-error-text'><?php echo esc_html($errors[$item[0]]); ?></div>
+>>>>>>> update
                         </span>
 									<?php } else { ?>
 										<span>
                             <input
 	                            type="checkbox"
+<<<<<<< HEAD
 	                            name="<?php echo $name_on_form ?>[]"
 	                            value="<?php echo $item[0] ?>"
 	                            id="factory-checklist-<?php echo $name_on_form ?>-<?php echo $item[0] ?>"
+=======
+	                            name="<?php echo esc_attr($name_on_form); ?>[]"
+	                            value="<?php echo esc_attr($item[0]); ?>"
+	                            id="factory-checklist-<?php echo esc_attr($name_on_form); ?>-<?php echo esc_attr($item[0]); ?>"
+>>>>>>> update
 	                            <?php if( in_array($item[0], $value) ) {
 		                            echo 'checked="checked"';
 	                            } ?> />
                         </span>
 									<?php } ?>
 
+<<<<<<< HEAD
 									<span><?php echo $item[1] ?></span>
+=======
+									<span><?php echo esc_html($item[1]); ?></span>
+>>>>>>> update
 								</label>
 							</li>
 						<?php } ?>
@@ -202,13 +243,22 @@
         <?php foreach($items as $item) {
 				if( count($item) == 3 ) {
 					?>
+<<<<<<< HEAD
 					<optgroup label="<?php echo $item[1] ?>">
+=======
+					<optgroup label="<?php echo esc_attr($item[1]); ?>">
+>>>>>>> update
 						<?php foreach($item[2] as $subitem) { ?>
 							<?php $selected = ($subitem[0] == $value)
 								? 'selected="selected"'
 								: ''; ?>
+<<<<<<< HEAD
 							<option value='<?php echo $subitem[0] ?>' <?php echo $selected ?>>
 								<?php echo $subitem[1] ?>
+=======
+							<option value='<?php echo esc_attr($subitem[0]); ?>' <?php echo $selected ?>>
+								<?php echo esc_html($subitem[1]); ?>
+>>>>>>> update
 							</option>
 						<?php } ?>
 					</optgroup>
@@ -218,8 +268,13 @@
 						? 'selected="selected"'
 						: '';
 					?>
+<<<<<<< HEAD
 					<option value='<?php echo $item[0] ?>' <?php echo $selected ?>>
 						<?php echo $item[1] ?>
+=======
+					<option value='<?php echo esc_attr($item[0]); ?>' <?php echo $selected ?>>
+						<?php echo esc_html($item[1]); ?>
+>>>>>>> update
 					</option>
 				<?php } ?>
 			<?php } ?>

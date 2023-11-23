@@ -1,7 +1,11 @@
 <?php
 
 if ( ! class_exists( 'acf_field_oembed' ) ) :
+<<<<<<< HEAD
 
+=======
+	#[AllowDynamicProperties]
+>>>>>>> update
 	class acf_field_oembed extends acf_field {
 
 
@@ -21,6 +25,7 @@ if ( ! class_exists( 'acf_field_oembed' ) ) :
 		function initialize() {
 
 			// vars
+<<<<<<< HEAD
 			$this->name     = 'oembed';
 			$this->label    = __( 'oEmbed', 'acf' );
 			$this->category = 'content';
@@ -30,6 +35,20 @@ if ( ! class_exists( 'acf_field_oembed' ) ) :
 			);
 			$this->width    = 640;
 			$this->height   = 390;
+=======
+			$this->name          = 'oembed';
+			$this->label         = __( 'oEmbed', 'acf' );
+			$this->category      = 'content';
+			$this->description   = __( 'An interactive component for embedding videos, images, tweets, audio and other content by making use of the native WordPress oEmbed functionality.', 'acf' );
+			$this->preview_image = acf_get_url() . '/assets/images/field-type-previews/field-preview-oembed.png';
+			$this->doc_url       = acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/resources/oembed/', 'docs', 'field-type-selection' );
+			$this->defaults      = array(
+				'width'  => '',
+				'height' => '',
+			);
+			$this->width         = 640;
+			$this->height        = 390;
+>>>>>>> update
 
 			// extra
 			add_action( 'wp_ajax_acf/fields/oembed/search', array( $this, 'ajax_query' ) );
@@ -66,6 +85,7 @@ if ( ! class_exists( 'acf_field_oembed' ) ) :
 
 		}
 
+<<<<<<< HEAD
 
 		/*
 		*  wp_oembed_get
@@ -84,11 +104,27 @@ if ( ! class_exists( 'acf_field_oembed' ) ) :
 
 			// vars
 			$embed = '';
+=======
+		/**
+		 * Attempts to fetch the HTML for the provided URL using oEmbed.
+		 *
+		 * @date    24/01/2014
+		 * @since   5.0.0
+		 *
+		 * @param string     $url    The URL that should be embedded.
+		 * @param int|string $width  Optional maxwidth value passed to the provider URL.
+		 * @param int|string $height Optional maxheight value passed to the provider URL.
+		 * @return string|false The embedded HTML on success, false on failure.
+		 */
+		function wp_oembed_get( $url = '', $width = 0, $height = 0 ) {
+			$embed = false;
+>>>>>>> update
 			$res   = array(
 				'width'  => $width,
 				'height' => $height,
 			);
 
+<<<<<<< HEAD
 			// get emebed
 			$embed = @wp_oembed_get( $url, $res );
 
@@ -108,6 +144,21 @@ if ( ! class_exists( 'acf_field_oembed' ) ) :
 		}
 
 
+=======
+			if ( function_exists( 'wp_oembed_get' ) ) {
+				$embed = wp_oembed_get( $url, $res );
+			}
+
+			// try shortcode
+			if ( ! $embed ) {
+				global $wp_embed;
+				$embed = $wp_embed->shortcode( $res, $url );
+			}
+
+			return $embed;
+		}
+
+>>>>>>> update
 		/*
 		*  ajax_query
 		*
@@ -209,7 +260,11 @@ if ( ! class_exists( 'acf_field_oembed' ) ) :
 			}
 
 			?>
+<<<<<<< HEAD
 <div <?php acf_esc_attr_e( $atts ); ?>>
+=======
+<div <?php echo acf_esc_attrs( $atts ); ?>>
+>>>>>>> update
 	
 			<?php
 			acf_hidden_input(
@@ -266,10 +321,14 @@ if ( ! class_exists( 'acf_field_oembed' ) ) :
 		*  @since   3.6
 		*  @date    23/01/13
 		*/
+<<<<<<< HEAD
 
 		function render_field_settings( $field ) {
 
 			// width
+=======
+		function render_field_settings( $field ) {
+>>>>>>> update
 			acf_render_field_setting(
 				$field,
 				array(
@@ -282,7 +341,10 @@ if ( ! class_exists( 'acf_field_oembed' ) ) :
 				)
 			);
 
+<<<<<<< HEAD
 			// height
+=======
+>>>>>>> update
 			acf_render_field_setting(
 				$field,
 				array(
@@ -295,10 +357,15 @@ if ( ! class_exists( 'acf_field_oembed' ) ) :
 					'_append'     => 'width',
 				)
 			);
+<<<<<<< HEAD
 
 		}
 
 
+=======
+		}
+
+>>>>>>> update
 		/**
 		 *  format_value()
 		 *
@@ -309,7 +376,11 @@ if ( ! class_exists( 'acf_field_oembed' ) ) :
 		 *  @date    23/01/13
 		 *
 		 *  @param   $value (mixed) the value which was loaded from the database
+<<<<<<< HEAD
 		 *  @param   $post_id (mixed) the $post_id from which the value was loaded
+=======
+		 *  @param   $post_id (mixed) the post_id from which the value was loaded
+>>>>>>> update
 		 *  @param   $field (array) the field array holding all the field options
 		 *
 		 *  @return  $value (mixed) the modified value

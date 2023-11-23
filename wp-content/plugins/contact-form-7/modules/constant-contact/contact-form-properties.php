@@ -155,7 +155,11 @@ function wpcf7_constant_contact_editor_panels( $panels ) {
 		)
 	);
 
+<<<<<<< HEAD
 	$editor_panel = function () use ( $prop, $service ) {
+=======
+	$editor_panel = static function () use ( $prop, $service ) {
+>>>>>>> update
 
 		$description = sprintf(
 			esc_html(
@@ -228,9 +232,13 @@ function wpcf7_constant_contact_editor_panels( $panels ) {
 						'type' => 'checkbox',
 						'name' => 'wpcf7-ctct[contact_lists][]',
 						'value' => $list['list_id'],
+<<<<<<< HEAD
 						'checked' => in_array( $list['list_id'], $prop['contact_lists'] )
 							? 'checked'
 							: '',
+=======
+						'checked' => in_array( $list['list_id'], $prop['contact_lists'] ),
+>>>>>>> update
 					) ),
 					esc_html( $list['name'] )
 				);

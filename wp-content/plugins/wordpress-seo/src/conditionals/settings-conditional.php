@@ -8,6 +8,7 @@ namespace Yoast\WP\SEO\Conditionals;
 class Settings_Conditional implements Conditional {
 
 	/**
+<<<<<<< HEAD
 	 * Holds New_Settings_Ui_Conditional.
 	 *
 	 * @var New_Settings_Ui_Conditional
@@ -22,6 +23,8 @@ class Settings_Conditional implements Conditional {
 	protected $premium_active_conditional;
 
 	/**
+=======
+>>>>>>> update
 	 * Holds User_Can_Manage_Wpseo_Options_Conditional.
 	 *
 	 * @var User_Can_Manage_Wpseo_Options_Conditional
@@ -31,6 +34,7 @@ class Settings_Conditional implements Conditional {
 	/**
 	 * Constructs Settings_Conditional.
 	 *
+<<<<<<< HEAD
 	 * @param New_Settings_Ui_Conditional               $new_settings_ui_conditional               The
 	 *                                                                                             New_Settings_Ui_Conditional.
 	 * @param Premium_Active_Conditional                $premium_active_conditional                The
@@ -45,6 +49,13 @@ class Settings_Conditional implements Conditional {
 	) {
 		$this->new_settings_ui_conditional               = $new_settings_ui_conditional;
 		$this->premium_active_conditional                = $premium_active_conditional;
+=======
+	 * @param User_Can_Manage_Wpseo_Options_Conditional $user_can_manage_wpseo_options_conditional The User_Can_Manage_Wpseo_Options_Conditional.
+	 */
+	public function __construct(
+		User_Can_Manage_Wpseo_Options_Conditional $user_can_manage_wpseo_options_conditional
+	) {
+>>>>>>> update
 		$this->user_can_manage_wpseo_options_conditional = $user_can_manage_wpseo_options_conditional;
 	}
 
@@ -54,12 +65,15 @@ class Settings_Conditional implements Conditional {
 	 * @return bool Whether or not the conditional is met.
 	 */
 	public function is_met() {
+<<<<<<< HEAD
 		if ( ! $this->new_settings_ui_conditional->is_met() ) {
 			return false;
 		}
 		if ( ! $this->premium_active_conditional->is_met() ) {
 			return false;
 		}
+=======
+>>>>>>> update
 		if ( ! $this->user_can_manage_wpseo_options_conditional->is_met() ) {
 			return false;
 		}

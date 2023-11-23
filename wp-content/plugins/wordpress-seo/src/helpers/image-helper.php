@@ -5,6 +5,10 @@ namespace Yoast\WP\SEO\Helpers;
 use WPSEO_Image_Utils;
 use Yoast\WP\SEO\Models\SEO_Links;
 use Yoast\WP\SEO\Repositories\Indexable_Repository;
+<<<<<<< HEAD
+=======
+use Yoast\WP\SEO\Repositories\SEO_Links_Repository;
+>>>>>>> update
 
 /**
  * A helper object for images.
@@ -33,6 +37,16 @@ class Image_Helper {
 	protected $indexable_repository;
 
 	/**
+<<<<<<< HEAD
+=======
+	 * Represents the SEO Links repository.
+	 *
+	 * @var SEO_Links_Repository
+	 */
+	protected $seo_links_repository;
+
+	/**
+>>>>>>> update
 	 * The options helper.
 	 *
 	 * @var Options_Helper
@@ -50,15 +64,27 @@ class Image_Helper {
 	 * Image_Helper constructor.
 	 *
 	 * @param Indexable_Repository $indexable_repository The indexable repository.
+<<<<<<< HEAD
+=======
+	 * @param SEO_Links_Repository $seo_links_repository The SEO Links repository.
+>>>>>>> update
 	 * @param Options_Helper       $options              The options helper.
 	 * @param Url_Helper           $url_helper           The URL helper.
 	 */
 	public function __construct(
 		Indexable_Repository $indexable_repository,
+<<<<<<< HEAD
+=======
+		SEO_Links_Repository $seo_links_repository,
+>>>>>>> update
 		Options_Helper $options,
 		Url_Helper $url_helper
 	) {
 		$this->indexable_repository = $indexable_repository;
+<<<<<<< HEAD
+=======
+		$this->seo_links_repository = $seo_links_repository;
+>>>>>>> update
 		$this->options_helper       = $options;
 		$this->url_helper           = $url_helper;
 	}
@@ -286,6 +312,7 @@ class Image_Helper {
 	/**
 	 * Find an attachment ID for a given URL.
 	 *
+<<<<<<< HEAD
 	 * @param string $url The URL to find the attachment for.
 	 *
 	 * @return int The found attachment ID, or 0 if none was found.
@@ -294,11 +321,20 @@ class Image_Helper {
 		// Strip out the size part of an image URL.
 		$url = \preg_replace( '/(.*)-\d+x\d+\.(jpeg|jpg|png|gif)$/', '$1.$2', $url );
 
+=======
+	 * @param string $url            The URL to find the attachment for.
+	 * @param bool   $use_link_table Whether the SEO Links table will be used to retrieve the id.
+	 *
+	 * @return int The found attachment ID, or 0 if none was found.
+	 */
+	public function get_attachment_by_url( $url, $use_link_table = true ) {
+>>>>>>> update
 		// Don't try to do this for external URLs.
 		if ( $this->url_helper->get_link_type( $url ) === SEO_Links::TYPE_EXTERNAL ) {
 			return 0;
 		}
 
+<<<<<<< HEAD
 		$indexable = $this->indexable_repository->find_by_permalink( $url );
 
 		if ( $indexable && $indexable->object_type === 'post' && $indexable->object_sub_type === 'attachment' ) {
@@ -313,6 +349,39 @@ class Image_Helper {
 		}
 
 		return $post_id;
+=======
+		/** The `wpseo_force_creating_and_using_attachment_indexables` filter is documented in indexable-link-builder.php */
+		if ( ! $this->options_helper->get( 'disable-attachment' ) || \apply_filters( 'wpseo_force_creating_and_using_attachment_indexables', false ) ) {
+			// Strip out the size part of an image URL.
+			$url = \preg_replace( '/(.*)-\d+x\d+\.(jpeg|jpg|png|gif)$/', '$1.$2', $url );
+
+			$indexable = $this->indexable_repository->find_by_permalink( $url );
+
+			if ( $indexable && $indexable->object_type === 'post' && $indexable->object_sub_type === 'attachment' ) {
+				return $indexable->object_id;
+			}
+
+			$post_id = WPSEO_Image_Utils::get_attachment_by_url( $url );
+
+			if ( $post_id !== 0 ) {
+				// Find the indexable, this triggers creating it so it can be found next time.
+				$this->indexable_repository->find_by_id_and_type( $post_id, 'post' );
+			}
+
+			return $post_id;
+		}
+
+		if ( ! $use_link_table ) {
+			return WPSEO_Image_Utils::get_attachment_by_url( $url );
+		}
+
+		$link = $this->seo_links_repository->find_one_by_url( $url );
+		if ( ! \is_a( $link, SEO_Links::class ) ) {
+			return WPSEO_Image_Utils::get_attachment_by_url( $url );
+		}
+
+		return $link->target_post_id;
+>>>>>>> update
 	}
 
 	/**

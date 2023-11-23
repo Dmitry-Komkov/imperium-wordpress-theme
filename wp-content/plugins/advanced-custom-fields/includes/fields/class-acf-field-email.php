@@ -21,9 +21,18 @@ if ( ! class_exists( 'acf_field_email' ) ) :
 		function initialize() {
 
 			// vars
+<<<<<<< HEAD
 			$this->name     = 'email';
 			$this->label    = __( 'Email', 'acf' );
 			$this->defaults = array(
+=======
+			$this->name          = 'email';
+			$this->label         = __( 'Email', 'acf' );
+			$this->description   = __( 'A text input specifically designed for storing email addresses.', 'acf' );
+			$this->preview_image = acf_get_url() . '/assets/images/field-type-previews/field-preview-email.png';
+			$this->doc_url       = acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/resources/email/', 'docs', 'field-type-selection' );
+			$this->defaults      = array(
+>>>>>>> update
 				'default_value' => '',
 				'placeholder'   => '',
 				'prepend'       => '',
@@ -107,10 +116,14 @@ if ( ! class_exists( 'acf_field_email' ) ) :
 		*
 		*  @param   $field  - an array holding all the field's data
 		*/
+<<<<<<< HEAD
 
 		function render_field_settings( $field ) {
 
 			// default_value
+=======
+		function render_field_settings( $field ) {
+>>>>>>> update
 			acf_render_field_setting(
 				$field,
 				array(
@@ -120,8 +133,22 @@ if ( ! class_exists( 'acf_field_email' ) ) :
 					'name'         => 'default_value',
 				)
 			);
+<<<<<<< HEAD
 
 			// placeholder
+=======
+		}
+
+		/**
+		 * Renders the field settings used in the "Presentation" tab.
+		 *
+		 * @since 6.0
+		 *
+		 * @param array $field The field settings array.
+		 * @return void
+		 */
+		function render_field_presentation_settings( $field ) {
+>>>>>>> update
 			acf_render_field_setting(
 				$field,
 				array(
@@ -132,7 +159,10 @@ if ( ! class_exists( 'acf_field_email' ) ) :
 				)
 			);
 
+<<<<<<< HEAD
 			// prepend
+=======
+>>>>>>> update
 			acf_render_field_setting(
 				$field,
 				array(
@@ -143,7 +173,10 @@ if ( ! class_exists( 'acf_field_email' ) ) :
 				)
 			);
 
+<<<<<<< HEAD
 			// append
+=======
+>>>>>>> update
 			acf_render_field_setting(
 				$field,
 				array(
@@ -153,7 +186,10 @@ if ( ! class_exists( 'acf_field_email' ) ) :
 					'name'         => 'append',
 				)
 			);
+<<<<<<< HEAD
 
+=======
+>>>>>>> update
 		}
 
 		/**

@@ -19,7 +19,11 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 1.0.0
  */
+<<<<<<< HEAD
 class Wbcr_Factory450_AssetsList {
+=======
+class Wbcr_Factory469_AssetsList {
+>>>>>>> update
 
 	protected $all = [];
 	public $header_place = [];
@@ -29,15 +33,26 @@ class Wbcr_Factory450_AssetsList {
 	protected $default_place;
 
 	/**
+<<<<<<< HEAD
 	 * @var Wbcr_Factory450_Plugin
+=======
+	 * @var Wbcr_Factory469_Plugin
+>>>>>>> update
 	 */
 	protected $plugin;
 
 	/**
+<<<<<<< HEAD
 	 * @param Wbcr_Factory450_Plugin $plugin
 	 * @param bool                   $defaultIsFooter
 	 */
 	public function __construct( Wbcr_Factory450_Plugin $plugin, $defaultIsFooter = true ) {
+=======
+	 * @param Wbcr_Factory469_Plugin $plugin
+	 * @param bool                   $defaultIsFooter
+	 */
+	public function __construct( Wbcr_Factory469_Plugin $plugin, $defaultIsFooter = true ) {
+>>>>>>> update
 		$this->plugin = $plugin;
 
 		if ( $defaultIsFooter ) {

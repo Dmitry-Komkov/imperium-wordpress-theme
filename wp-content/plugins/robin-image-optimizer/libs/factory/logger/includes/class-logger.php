@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 namespace WBCR\Factory_Logger_115;
+=======
+namespace WBCR\Factory_Logger_133;
+>>>>>>> update
 
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) {
@@ -48,7 +52,11 @@ class Logger {
 	const LEVEL_DEBUG = 'debug';
 
 	/**
+<<<<<<< HEAD
 	 * @var \Wbcr_Factory450_Plugin Plugin class.
+=======
+	 * @var \Wbcr_Factory469_Plugin Plugin class.
+>>>>>>> update
 	 */
 	public $plugin;
 
@@ -92,7 +100,11 @@ class Logger {
 	/**
 	 * Logger constructor.
 	 *
+<<<<<<< HEAD
 	 * @param \Wbcr_Factory450_Plugin $plugin
+=======
+	 * @param \Wbcr_Factory469_Plugin $plugin
+>>>>>>> update
 	 * @param array $settings
 	 */
 	public function __construct( $plugin, $settings = [] ) {
@@ -351,7 +363,11 @@ class Logger {
 			return null;
 		}
 
+<<<<<<< HEAD
 		return @file_get_contents( $this->get_dir() );
+=======
+		return htmlspecialchars( @file_get_contents( $this->get_dir() ) );
+>>>>>>> update
 	}
 
 	/**
@@ -373,6 +389,7 @@ class Logger {
 	 */
 	public function add( $level, $message ) {
 
+<<<<<<< HEAD
 		//if ( $level === $this->LEVEL_DEBUG ) {
 		//$log_debug = defined( 'WP_DEBUG' ) && WP_DEBUG;
 
@@ -382,6 +399,9 @@ class Logger {
 		//}
 
 		$this->_logs[] = $this->get_format( $level, htmlspecialchars( $message ) );
+=======
+		$this->_logs[] = $this->get_format( $level, $message );
+>>>>>>> update
 
 		if ( count( $this->_logs ) >= $this->flush_interval ) {
 			$this->flush();

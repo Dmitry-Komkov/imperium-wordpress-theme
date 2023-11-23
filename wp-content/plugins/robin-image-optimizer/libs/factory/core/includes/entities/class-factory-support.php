@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 namespace WBCR\Factory_450\Entities;
+=======
+namespace WBCR\Factory_469\Entities;
+>>>>>>> update
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

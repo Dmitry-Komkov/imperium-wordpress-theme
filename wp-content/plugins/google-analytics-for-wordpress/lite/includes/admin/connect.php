@@ -64,16 +64,28 @@ class MonsterInsights_Connect {
 			// Deactivate plugin.
 			deactivate_plugins( plugin_basename( MONSTERINSIGHTS_PLUGIN_FILE ), false, false );
 			wp_send_json_error( array(
+<<<<<<< HEAD
 				'message' => esc_html__( 'You already have MonsterInsights Pro installed. .', 'google-analytics-for-wordpress' ),
+=======
+				'message' => esc_html__( 'You already have MonsterInsights Pro installed.', 'google-analytics-for-wordpress' ),
+>>>>>>> update
 				'reload'  => true,
 			) );
 		}
 
 		// Network?
+<<<<<<< HEAD
 		$network = ! empty( $_POST['network'] ) && $_POST['network'];
 
 		// Redirect.
 		$oth = hash( 'sha512', wp_rand() );
+=======
+		$network = ! empty( $_POST['network'] ) && $_POST['network']; // phpcs:ignore
+
+		// Redirect.
+		$oth = hash( 'sha512', wp_rand() );
+		$hashed_oth = hash_hmac( 'sha512', $oth, wp_salt() );
+>>>>>>> update
 		update_option( 'monsterinsights_connect', array(
 			'key'     => $key,
 			'time'    => time(),
@@ -87,7 +99,11 @@ class MonsterInsights_Connect {
 
 		$url = add_query_arg( array(
 			'key'      => $key,
+<<<<<<< HEAD
 			'oth'      => $oth,
+=======
+			'oth'      => $hashed_oth,
+>>>>>>> update
 			'endpoint' => $endpoint,
 			'version'  => $version,
 			'siteurl'  => $siteurl,
@@ -113,8 +129,13 @@ class MonsterInsights_Connect {
 		);
 
 		// verify params present (oth & download link).
+<<<<<<< HEAD
 		$post_oth = ! empty( $_REQUEST['oth'] ) ? sanitize_text_field( $_REQUEST['oth'] ) : '';
 		$post_url = ! empty( $_REQUEST['file'] ) ? $_REQUEST['file'] : '';
+=======
+		$post_oth = ! empty( $_REQUEST['oth'] ) ? sanitize_text_field($_REQUEST['oth']) : '';
+		$post_url = ! empty( $_REQUEST['file'] ) ? sanitize_url($_REQUEST['file']) : '';
+>>>>>>> update
 		$license  = get_option( 'monsterinsights_connect', false );
 		$network  = ! empty( $license['network'] ) ? (bool) $license['network'] : false;
 		if ( empty( $post_oth ) || empty( $post_url ) ) {
@@ -125,7 +146,11 @@ class MonsterInsights_Connect {
 		if ( empty( $oth ) ) {
 			wp_send_json_error( $error );
 		}
+<<<<<<< HEAD
 		if ( ! hash_equals( $oth, $post_oth ) ) {
+=======
+		if ( hash_hmac( 'sha512', $oth, wp_salt() ) !== $post_oth ) {
+>>>>>>> update
 			wp_send_json_error( $error );
 		}
 		// Delete so cannot replay.

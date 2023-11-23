@@ -44,7 +44,15 @@
 					if(!preg_match("/<script[^>]+json[^>]+>.+/", $script_tag) && !preg_match("/<script[^>]+text\/template[^>]+>.+/", $script_tag)){
 						if($href = $this->checkInternal($script_tag)){
 							if(strpos($this->jsLinksExcept, $href) === false){
+<<<<<<< HEAD
 								if(($key + 1) && $this->check_exclude($href)){
+=======
+								if($key == 0 && $this->check_exclude($href)){
+									continue;
+								}
+
+								if($key > 0 && $this->check_exclude($href)){
+>>>>>>> update
 									$this->mergeJs($prev_content, $this->jsLinks[$key - 1]);
 									$prev_content = "";
 									continue;
@@ -63,7 +71,11 @@
 
 										if($jsContent = $this->file_get_contents_curl($minifiedJs["url"]."/".$jsFiles[0]."?v=".time())){
 
+<<<<<<< HEAD
 											if(preg_match("/^[\"\']use strict[\"\']/i", $jsContent)){
+=======
+											if($key > 0 && preg_match("/^[\"\']use strict[\"\']/i", $jsContent)){
+>>>>>>> update
 												$this->mergeJs($prev_content, $this->jsLinks[$key - 1]);
 												$prev_content = "";
 											}else{

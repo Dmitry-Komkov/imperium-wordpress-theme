@@ -1,8 +1,14 @@
 <?php
 
+<<<<<<< HEAD
 namespace WBCR\Factory_450;
 
 use Wbcr_Factory450_Plugin;
+=======
+namespace WBCR\Factory_469;
+
+use Wbcr_Factory469_Plugin;
+>>>>>>> update
 
 // Exit if accessed directly
 if( !defined('ABSPATH') ) {
@@ -27,7 +33,11 @@ if( !defined('ABSPATH') ) {
 class Notices {
 
 	/**
+<<<<<<< HEAD
 	 * @var Wbcr_Factory450_Plugin
+=======
+	 * @var Wbcr_Factory469_Plugin
+>>>>>>> update
 	 */
 	protected $plugin;
 	/**
@@ -58,7 +68,11 @@ class Notices {
 	/**
 	 * Инициализируем уведомлений сразу после загрузки модуля уведомлений
 	 *
+<<<<<<< HEAD
 	 * @param Wbcr_Factory450_Plugin $plugin
+=======
+	 * @param Wbcr_Factory469_Plugin $plugin
+>>>>>>> update
 	 */
 	public function __construct($plugin)
 	{
@@ -86,7 +100,11 @@ class Notices {
 	public function currentScreenAction()
 	{
 		/**
+<<<<<<< HEAD
 		 * @since 2.1.2 - Добавлен, модуль factory_notices_000 был удален. Поэтому в этому хуке мы заменили префикс на factory_450
+=======
+		 * @since 2.1.2 - Добавлен, модуль factory_notices_000 был удален. Поэтому в этому хуке мы заменили префикс на factory_469
+>>>>>>> update
 		 */
 		$this->notices = apply_filters('wbcr/factory/admin_notices', $this->notices, $this->plugin->getPluginName());
 
@@ -202,8 +220,13 @@ class Notices {
 			$classes[] = $plugin_name . '-factory-notice-dismiss';
 		}
 		?>
+<<<<<<< HEAD
 		<div data-name="wbcr_factory_notice_<?php echo esc_attr($data['id']) ?>" data-expires="<?= esc_attr($settings['dismiss_expires']) ?>" data-nonce="<?php echo wp_create_nonce($this->plugin->getPluginName() . '_factory_dismiss_notice'); ?>" class="<?php echo esc_attr(implode(' ', $classes)) ?>">
 			<?= $data['text'] ?>
+=======
+		<div data-name="wbcr_factory_notice_<?php echo esc_attr($data['id']) ?>" data-expires="<?php echo esc_attr($settings['dismiss_expires']) ?>" data-nonce="<?php echo wp_create_nonce($this->plugin->getPluginName() . '_factory_dismiss_notice'); ?>" class="<?php echo esc_attr(implode(' ', $classes)) ?>">
+			<?php echo $data['text'] ?>
+>>>>>>> update
 		</div>
 		<?php
 	}

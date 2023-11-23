@@ -1,7 +1,11 @@
 {
     "name": "jquery",
     "description": "JavaScript library for DOM operations",
+<<<<<<< HEAD
     "version": "3.5.1",
+=======
+    "version": "3.7.1",
+>>>>>>> update
     "homepage": "http://jquery.com",
     "author": {
         "name": "jQuery Foundation and other contributors",

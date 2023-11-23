@@ -20,7 +20,11 @@ jQuery(function($) {
 			licenseAction = $(this).data('action');
 
 		for( i = 0; i < allNotices.length; i++ ) {
+<<<<<<< HEAD
 			$.wbcr_factory_templates_102.app.hideNotice(allNotices[i]);
+=======
+			$.wbcr_factory_templates_118.app.hideNotice(allNotices[i]);
+>>>>>>> update
 		}
 
 		$('.wcl-control-btn').hide();
@@ -53,7 +57,11 @@ jQuery(function($) {
 
 					if( response.data ) {
 						console.log(response.data.error_message);
+<<<<<<< HEAD
 						noticeId = $.wbcr_factory_templates_102.app.showNotice('Error: [' + response.data.error_message + ']', 'danger');
+=======
+						noticeId = $.wbcr_factory_templates_118.app.showNotice('Error: [' + response.data.error_message + ']', 'danger');
+>>>>>>> update
 						allNotices.push(noticeId);
 					} else {
 						console.log(response);
@@ -63,7 +71,11 @@ jQuery(function($) {
 				}
 
 				if( response.data && response.data.message ) {
+<<<<<<< HEAD
 					noticeId = $.wbcr_factory_templates_102.app.showNotice(response.data.message, 'success');
+=======
+					noticeId = $.wbcr_factory_templates_118.app.showNotice(response.data.message, 'success');
+>>>>>>> update
 					allNotices.push(noticeId);
 
 					// todo: доработать генерацию формы, вместо перезагрузки страницы
@@ -80,7 +92,11 @@ jQuery(function($) {
 				console.log(xhr.responseText);
 				console.log(thrownError);
 
+<<<<<<< HEAD
 				var noticeId = $.wbcr_factory_templates_102.app.showNotice('Error: [' + thrownError + '] Status: [' + xhr.status + '] Error massage: [' + xhr.responseText + ']', 'danger');
+=======
+				var noticeId = $.wbcr_factory_templates_118.app.showNotice('Error: [' + thrownError + '] Status: [' + xhr.status + '] Error massage: [' + xhr.responseText + ']', 'danger');
+>>>>>>> update
 
 				allNotices.push(noticeId);
 			}

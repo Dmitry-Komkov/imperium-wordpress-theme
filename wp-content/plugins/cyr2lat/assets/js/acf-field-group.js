@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /**
  * ACF support.
  *
@@ -13,6 +14,28 @@
 			function( k, v ) {
 				var regex = new RegExp( k, 'g' );
 				str       = str.replace( regex, v );
+=======
+/* global acf, CyrToLatAcfFieldGroup */
+
+/**
+ * ACF support.
+ *
+ * @param {window.jQuery} $        jQuery.
+ * @param {Window}        window   Window.
+ * @param {document}      document
+ * @package
+ */
+( function( $, window, document ) {
+	'use strict';
+
+	const table = CyrToLatAcfFieldGroup.table;
+	const convert = function( str ) {
+		$.each(
+			table,
+			function( k, v ) {
+				const regex = new RegExp( k, 'g' );
+				str = str.replace( regex, v );
+>>>>>>> update
 			}
 		);
 		str = str.replace( /[^\w\d\-_]/g, '' );
@@ -22,7 +45,12 @@
 
 		return str;
 	};
+<<<<<<< HEAD
 	window.acf.addFilter(
+=======
+
+	acf.addFilter(
+>>>>>>> update
 		'generate_field_object_name',
 		function( val ) {
 			return convert( val );
@@ -33,6 +61,7 @@
 		'change',
 		'.acf-field .field-name',
 		function() {
+<<<<<<< HEAD
 			var $this = $( this );
 			var str   = '';
 
@@ -49,3 +78,19 @@
 		}
 	);
 } )( window.jQuery, window, document );
+=======
+			if ( $( this ).is( ':focus' ) ) {
+				return false;
+			}
+
+			const $this = $( this );
+			let str = $this.val();
+			str = convert( str );
+
+			if ( str !== $this.val() ) {
+				$this.val( str );
+			}
+		}
+	);
+}( window.jQuery, window, document ) );
+>>>>>>> update

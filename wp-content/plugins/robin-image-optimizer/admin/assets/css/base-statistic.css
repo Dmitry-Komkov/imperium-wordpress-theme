@@ -29,11 +29,19 @@
     }
   }*/
 }
+<<<<<<< HEAD
 #WBCR .factory-bootstrap-450 select.form-control {
   background: #efefef url(data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%206l5%205%205-5%202%201-7%207-7-7%202-1z%22%20fill%3D%22%23555%22%2F%3E%3C%2Fsvg%3E) no-repeat right 5px top 55% !important;
 }
 #WBCR .factory-bootstrap-450 .btn-default.active,
 #WBCR .factory-bootstrap-450 .factory-bootstrap-450 .btn-default:active {
+=======
+#WBCR .factory-bootstrap-470 select.form-control {
+  background: #efefef url(data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%206l5%205%205-5%202%201-7%207-7-7%202-1z%22%20fill%3D%22%23555%22%2F%3E%3C%2Fsvg%3E) no-repeat right 5px top 55% !important;
+}
+#WBCR .factory-bootstrap-470 .btn-default.active,
+#WBCR .factory-bootstrap-470 .factory-bootstrap-470 .btn-default:active {
+>>>>>>> update
   text-shadow: none;
   color: #fff;
   background-color: #33aad5;
@@ -43,7 +51,11 @@
   border-bottom: 1px solid #0074a2;
   border-left: 1px solid #0074a2;
 }
+<<<<<<< HEAD
 #WBCR .factory-bootstrap-450 .btn-group > .btn:last-of-type {
+=======
+#WBCR .factory-bootstrap-470 .btn-group > .btn:last-of-type {
+>>>>>>> update
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
 }
@@ -427,6 +439,7 @@
   float: right;
   margin-left: 20px;
 }
+<<<<<<< HEAD
 #WBCR .wio-chart-percent {
   position: absolute;
   left: 0;
@@ -438,6 +451,24 @@
   font-size: 45px;
   font-weight: bold;
   color: #afafaf;
+=======
+#WBCR .wio-chart-wrapper {
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+#WBCR .wio-chart-percent {
+  color: #afafaf;
+  position: absolute;
+  font-size: 45px;
+  font-weight: 600;
+  left: 50%;
+  bottom: 180px;
+  z-index: 100;
+  transform: translateX(-45%);
+  -webkit-transform: translateX(-45%);
+  -ms-transform: translateX(-45%);
+>>>>>>> update
 }
 #WBCR .wio-chart-percent span {
   font-size: 20px;
@@ -521,9 +552,12 @@
 #WBCR .wio-page-statistic {
   padding: 20px;
 }
+<<<<<<< HEAD
 #WBCR .wio-page-statistic .wio-chart-percent {
   margin-top: -1.2em;
 }
+=======
+>>>>>>> update
 #WBCR .wio-page-statistic .wio-optimize-statistic {
   display: flex;
   justify-content: space-between;

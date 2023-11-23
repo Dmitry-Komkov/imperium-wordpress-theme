@@ -29,17 +29,30 @@ class Integrations_Action {
 	 * Sets an integration state.
 	 *
 	 * @param string $integration_name The name of the integration to activate/deactivate.
+<<<<<<< HEAD
 	 * @param array  $params           The values to store.
 	 *
 	 * @return object The response object.
 	 */
 	public function set_integration_active( $integration_name, $params ) {
+=======
+	 * @param bool   $value            The value to store.
+	 *
+	 * @return object The response object.
+	 */
+	public function set_integration_active( $integration_name, $value ) {
+>>>>>>> update
 		$option_name  = $integration_name . '_integration_active';
 		$success      = true;
 		$option_value = $this->options_helper->get( $option_name );
 
+<<<<<<< HEAD
 		if ( $option_value !== $params['active'] ) {
 			$success = $this->options_helper->set( $option_name, $params['active'] );
+=======
+		if ( $option_value !== $value ) {
+			$success = $this->options_helper->set( $option_name, $value );
+>>>>>>> update
 		}
 
 		if ( $success ) {

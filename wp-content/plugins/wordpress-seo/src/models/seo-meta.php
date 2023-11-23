@@ -30,6 +30,7 @@ class SEO_Meta extends Model {
 		'internal_link_count',
 		'incoming_link_count',
 	];
+<<<<<<< HEAD
 
 	/**
 	 * SEO_Meta constructor.
@@ -40,4 +41,6 @@ class SEO_Meta extends Model {
 	public function __construct() {
 		\_deprecated_function( __METHOD__, '14.8' );
 	}
+=======
+>>>>>>> update
 }

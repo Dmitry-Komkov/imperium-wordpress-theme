@@ -2,6 +2,10 @@
 
 namespace Yoast\WP\SEO\Surfaces;
 
+<<<<<<< HEAD
+=======
+use Yoast\WP\SEO\Exceptions\Forbidden_Property_Mutation_Exception;
+>>>>>>> update
 use Yoast\WP\SEO\Helpers\Twitter;
 use YoastSEO_Vendor\Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -46,13 +50,49 @@ class Twitter_Helpers_Surface {
 	 *
 	 * @param string $helper The helper to get.
 	 *
+<<<<<<< HEAD
 	 * @return bool The helper class.
+=======
+	 * @return bool Whether the helper exists.
+>>>>>>> update
 	 */
 	public function __isset( $helper ) {
 		return $this->container->has( $this->get_helper_class( $helper ) );
 	}
 
 	/**
+<<<<<<< HEAD
+=======
+	 * Prevents setting dynamic properties and unsetting declared properties
+	 * from an inaccessible context.
+	 *
+	 * @param string $name  The property name.
+	 * @param mixed  $value The property value.
+	 *
+	 * @return void
+	 *
+	 * @throws Forbidden_Property_Mutation_Exception Set is never meant to be called.
+	 */
+	public function __set( $name, $value ) { // @phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed -- __set must have a name and value - PHPCS #3715.
+		throw Forbidden_Property_Mutation_Exception::cannot_set_because_property_is_immutable( $name );
+	}
+
+	/**
+	 * Prevents unsetting dynamic properties and unsetting declared properties
+	 * from an inaccessible context.
+	 *
+	 * @param string $name The property name.
+	 *
+	 * @return void
+	 *
+	 * @throws Forbidden_Property_Mutation_Exception Unset is never meant to be called.
+	 */
+	public function __unset( $name ) {
+		throw Forbidden_Property_Mutation_Exception::cannot_unset_because_property_is_immutable( $name );
+	}
+
+	/**
+>>>>>>> update
 	 * Get the class name from a helper slug
 	 *
 	 * @param string $helper The name of the helper.

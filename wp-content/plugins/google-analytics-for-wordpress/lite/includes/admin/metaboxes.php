@@ -33,7 +33,10 @@ if ( ! class_exists( 'MonsterInsights_MetaBoxes' ) ) {
 		}
 
 		public function print_dummy_page_insights_metabox_html() {
+<<<<<<< HEAD
 			$is_v4 = 'ua' !== MonsterInsights()->auth->get_connected_type();
+=======
+>>>>>>> update
 			?>
 			<div class="monsterinsights-metabox lite" id="monsterinsights-metabox-page-insights">
 				<a class="button" href="#" id="monsterinsights_show_page_insights">
@@ -56,6 +59,7 @@ if ( ! class_exists( 'MonsterInsights_MetaBoxes' ) ) {
 							 id="monsterinsights-last-30-days-content">
 							<div class="monsterinsights-page-insights-tabs-content__tab-items">
 
+<<<<<<< HEAD
 								<?php if ( ! $is_v4 ) { ?>
 									<div class="monsterinsights-page-insights-tabs-content__tab-item">
 										<div class="monsterinsights-page-insights-tabs-content__tab-item__result">
@@ -67,6 +71,8 @@ if ( ! class_exists( 'MonsterInsights_MetaBoxes' ) ) {
 									</div>
 								<?php } ?>
 
+=======
+>>>>>>> update
 								<div class="monsterinsights-page-insights-tabs-content__tab-item">
 									<div class="monsterinsights-page-insights-tabs-content__tab-item__result">
 										<span>1m 43s</span>
@@ -76,6 +82,7 @@ if ( ! class_exists( 'MonsterInsights_MetaBoxes' ) ) {
 									</div>
 								</div>
 
+<<<<<<< HEAD
 								<?php if ( ! $is_v4 ) { ?>
 									<div class="monsterinsights-page-insights-tabs-content__tab-item">
 										<div class="monsterinsights-page-insights-tabs-content__tab-item__result">
@@ -87,6 +94,8 @@ if ( ! class_exists( 'MonsterInsights_MetaBoxes' ) ) {
 									</div>
 								<?php } ?>
 
+=======
+>>>>>>> update
 								<div class="monsterinsights-page-insights-tabs-content__tab-item">
 									<div class="monsterinsights-page-insights-tabs-content__tab-item__result">
 										<span>19056</span>
@@ -118,6 +127,7 @@ if ( ! class_exists( 'MonsterInsights_MetaBoxes' ) ) {
 							 id="monsterinsights-yesterday-content">
 							<div class="monsterinsights-page-insights-tabs-content__tab-items">
 
+<<<<<<< HEAD
 								<?php if ( ! $is_v4 ) { ?>
 									<div class="monsterinsights-page-insights-tabs-content__tab-item">
 										<div class="monsterinsights-page-insights-tabs-content__tab-item__result">
@@ -129,6 +139,8 @@ if ( ! class_exists( 'MonsterInsights_MetaBoxes' ) ) {
 									</div>
 								<?php } ?>
 
+=======
+>>>>>>> update
 								<div class="monsterinsights-page-insights-tabs-content__tab-item">
 									<div class="monsterinsights-page-insights-tabs-content__tab-item__result">
 										<span>1m 43s</span>
@@ -138,6 +150,7 @@ if ( ! class_exists( 'MonsterInsights_MetaBoxes' ) ) {
 									</div>
 								</div>
 
+<<<<<<< HEAD
 								<?php if ( ! $is_v4 ) { ?>
 									<div class="monsterinsights-page-insights-tabs-content__tab-item">
 										<div class="monsterinsights-page-insights-tabs-content__tab-item__result">
@@ -149,6 +162,8 @@ if ( ! class_exists( 'MonsterInsights_MetaBoxes' ) ) {
 									</div>
 								<?php } ?>
 
+=======
+>>>>>>> update
 								<div class="monsterinsights-page-insights-tabs-content__tab-item">
 									<div class="monsterinsights-page-insights-tabs-content__tab-item__result">
 										<span>19056</span>

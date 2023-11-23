@@ -40,7 +40,11 @@ class UpdraftPlus_Temporary_Clone_User_Notice {
 	 *
 	 * @param object $user - the user login object
 	 *
+<<<<<<< HEAD
 	 * @return object|WP_Error - retruns the logged in user or a WP_Error stopping non admin logins
+=======
+	 * @return object|WP_Error - returns the logged in user or a WP_Error stopping non admin logins
+>>>>>>> update
 	 */
 	public function wp_authenticate_user($user) {
 		// The WP_User object does not exist in WP 3.2, so we don't check for that
@@ -57,7 +61,11 @@ class UpdraftPlus_Temporary_Clone_User_Notice {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * This function will perform security checks before allowing the ajax calls for the UpdraftPlus clone VPS mu-plugin be processed.
+=======
+	 * This function will perform security checks before allowing the ajax calls for the UpdraftClone VPS mu-plugin be processed.
+>>>>>>> update
 	 *
 	 * @return void
 	 */
@@ -69,7 +77,11 @@ class UpdraftPlus_Temporary_Clone_User_Notice {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * This function will handle the ajax calls for the UpdraftPlus clone user notice mu-plugin.
+=======
+	 * This function will handle the ajax calls for the UpdraftClone user notice mu-plugin.
+>>>>>>> update
 	 *
 	 * @return void
 	 */

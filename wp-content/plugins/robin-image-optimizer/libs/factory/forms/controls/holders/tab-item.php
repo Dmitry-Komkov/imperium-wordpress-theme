@@ -13,13 +13,21 @@
 		exit;
 	}
 
+<<<<<<< HEAD
 	if( !class_exists('Wbcr_FactoryForms447_TabItemHolder') ) {
+=======
+	if( !class_exists('Wbcr_FactoryForms466_TabItemHolder') ) {
+>>>>>>> update
 		/**
 		 * Tab Item Control Holder
 		 *
 		 * @since 1.0.0
 		 */
+<<<<<<< HEAD
 		class Wbcr_FactoryForms447_TabItemHolder extends Wbcr_FactoryForms447_Holder {
+=======
+		class Wbcr_FactoryForms466_TabItemHolder extends Wbcr_FactoryForms466_Holder {
+>>>>>>> update
 
 			/**
 			 * A holder type.

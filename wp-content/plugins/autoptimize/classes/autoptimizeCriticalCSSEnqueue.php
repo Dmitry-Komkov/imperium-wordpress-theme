@@ -20,7 +20,14 @@ class autoptimizeCriticalCSSEnqueue {
         $enqueue = true;
 
         // ... which are not the ones below.
+<<<<<<< HEAD
         if ( 'nokey' == $key['status'] || 'invalid' == $key['status'] ) {
+=======
+        if ( true === autoptimizeUtils::is_local_server() ) {
+            $enqueue = false;
+            $this->criticalcss->log('cant enqueue as local/ private', 3 );
+        } elseif ( 'nokey' == $key['status'] || 'invalid' == $key['status'] ) {
+>>>>>>> update
             $enqueue = false;
             $this->criticalcss->log( 'Job queuing is not available: no valid API key found.', 3 );
         } elseif ( ! empty( $hash ) && ( is_user_logged_in() || is_feed() || is_404() || ( defined( 'DOING_AJAX' ) && DOING_AJAX ) || $this->ao_ccss_ua() || false === apply_filters( 'autoptimize_filter_ccss_enqueue_should_enqueue', true ) ) ) {
@@ -228,7 +235,11 @@ class autoptimizeCriticalCSSEnqueue {
                 // identify frontpage immediately to avoid it also matching a CPT or template.
                 $page_type = 'is_front_page';
                 break;
+<<<<<<< HEAD
             } elseif ( strpos( $type, 'custom_post_' ) !== false && ( ! $forcepath || ! is_page() ) ) {
+=======
+            } elseif ( strpos( $type, 'custom_post_' ) !== false && ( ! $forcepath || ! is_page() ) && is_singular() )  {
+>>>>>>> update
                 // Match custom post types and not page or page not forced to path-based.
                 if ( get_post_type( get_the_ID() ) === substr( $type, 12 ) ) {
                     $page_type = $type;

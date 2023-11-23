@@ -246,11 +246,19 @@ class Google_Model implements ArrayAccess
     }
   }
 
+<<<<<<< HEAD
+=======
+  #[\ReturnTypeWillChange]
+>>>>>>> update
   public function offsetExists($offset)
   {
     return isset($this->$offset) || isset($this->modelData[$offset]);
   }
 
+<<<<<<< HEAD
+=======
+  #[\ReturnTypeWillChange]
+>>>>>>> update
   public function offsetGet($offset)
   {
     return isset($this->$offset) ?
@@ -258,6 +266,10 @@ class Google_Model implements ArrayAccess
         $this->__get($offset);
   }
 
+<<<<<<< HEAD
+=======
+  #[\ReturnTypeWillChange]
+>>>>>>> update
   public function offsetSet($offset, $value)
   {
     if (property_exists($this, $offset)) {
@@ -268,6 +280,10 @@ class Google_Model implements ArrayAccess
     }
   }
 
+<<<<<<< HEAD
+=======
+  #[\ReturnTypeWillChange]
+>>>>>>> update
   public function offsetUnset($offset)
   {
     unset($this->modelData[$offset]);

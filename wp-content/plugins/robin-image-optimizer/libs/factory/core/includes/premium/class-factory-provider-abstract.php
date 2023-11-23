@@ -1,9 +1,16 @@
 <?php
 
+<<<<<<< HEAD
 namespace WBCR\Factory_450\Premium;
 
 use Exception;
 use Wbcr_Factory450_Plugin;
+=======
+namespace WBCR\Factory_469\Premium;
+
+use Exception;
+use Wbcr_Factory469_Plugin;
+>>>>>>> update
 
 // Exit if accessed directly
 if( !defined('ABSPATH') ) {
@@ -21,7 +28,11 @@ if( !defined('ABSPATH') ) {
 abstract class Provider {
 
 	/**
+<<<<<<< HEAD
 	 * @var Wbcr_Factory450_Plugin
+=======
+	 * @var Wbcr_Factory469_Plugin
+>>>>>>> update
 	 */
 	protected $plugin;
 
@@ -38,10 +49,17 @@ abstract class Provider {
 	/**
 	 * Provider constructor.
 	 *
+<<<<<<< HEAD
 	 * @param Wbcr_Factory450_Plugin $plugin
 	 * @param array $settings
 	 */
 	public function __construct(Wbcr_Factory450_Plugin $plugin, array $settings)
+=======
+	 * @param Wbcr_Factory469_Plugin $plugin
+	 * @param array $settings
+	 */
+	public function __construct(Wbcr_Factory469_Plugin $plugin, array $settings)
+>>>>>>> update
 	{
 		$this->plugin = $plugin;
 		$this->settings = $settings;
@@ -244,7 +262,11 @@ abstract class Provider {
 	abstract public function get_billing_cycle();
 
 	/**
+<<<<<<< HEAD
 	 * @return \WBCR\Factory_450\Premium\Interfaces\License
+=======
+	 * @return \WBCR\Factory_469\Premium\Interfaces\License
+>>>>>>> update
 	 */
 	abstract public function get_license();
 

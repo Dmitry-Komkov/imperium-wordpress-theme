@@ -72,10 +72,22 @@ class MonsterInsights_Tracking {
 			$usesauth = 'Network';
 		}
 
+<<<<<<< HEAD
 		$data['php_version']    = phpversion();
 		$data['mi_version']     = MONSTERINSIGHTS_VERSION;
 		$data['wp_version']     = get_bloginfo( 'version' );
 		$data['server']         = isset( $_SERVER['SERVER_SOFTWARE'] ) ? $_SERVER['SERVER_SOFTWARE'] : '';
+=======
+        //  Get auth connection type
+        $auth = MonsterInsights()->auth;
+
+        $auth_mode = 'v4';
+
+		$data['php_version']    = phpversion();
+		$data['mi_version']     = MONSTERINSIGHTS_VERSION;
+		$data['wp_version']     = get_bloginfo( 'version' );
+		$data['server']         = isset( $_SERVER['SERVER_SOFTWARE'] ) ? $_SERVER['SERVER_SOFTWARE'] : ''; // phpcs:ignore
+>>>>>>> update
 		$data['over_time']      = get_option( 'monsterinsights_over_time', array() );
 		$data['multisite']      = is_multisite();
 		$data['url']            = home_url();
@@ -94,6 +106,10 @@ class MonsterInsights_Tracking {
 		$data['usercount']      = function_exists( 'get_user_count' ) ? get_user_count() : 'Not Set';
 		$data['usesauth']       = $usesauth;
 		$data['timezoneoffset'] = date( 'P' );
+<<<<<<< HEAD
+=======
+        $data['ga_auth_mode']   = $auth_mode;
+>>>>>>> update
 
 		// Retrieve current plugin information
 		if ( ! function_exists( 'get_plugins' ) ) {

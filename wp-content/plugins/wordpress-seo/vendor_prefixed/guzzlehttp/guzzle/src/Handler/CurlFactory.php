@@ -4,6 +4,7 @@ namespace YoastSEO_Vendor\GuzzleHttp\Handler;
 
 use YoastSEO_Vendor\GuzzleHttp\Exception\ConnectException;
 use YoastSEO_Vendor\GuzzleHttp\Exception\RequestException;
+<<<<<<< HEAD
 use YoastSEO_Vendor\GuzzleHttp\Promise\FulfilledPromise;
 use YoastSEO_Vendor\GuzzleHttp\Psr7;
 use YoastSEO_Vendor\GuzzleHttp\Psr7\LazyOpenStream;
@@ -19,15 +20,51 @@ class CurlFactory implements \YoastSEO_Vendor\GuzzleHttp\Handler\CurlFactoryInte
     /** @var array */
     private $handles = [];
     /** @var int Total number of idle handles to keep in cache */
+=======
+use YoastSEO_Vendor\GuzzleHttp\Promise as P;
+use YoastSEO_Vendor\GuzzleHttp\Promise\FulfilledPromise;
+use YoastSEO_Vendor\GuzzleHttp\Promise\PromiseInterface;
+use YoastSEO_Vendor\GuzzleHttp\Psr7\LazyOpenStream;
+use YoastSEO_Vendor\GuzzleHttp\TransferStats;
+use YoastSEO_Vendor\GuzzleHttp\Utils;
+use YoastSEO_Vendor\Psr\Http\Message\RequestInterface;
+/**
+ * Creates curl resources from a request
+ *
+ * @final
+ */
+class CurlFactory implements \YoastSEO_Vendor\GuzzleHttp\Handler\CurlFactoryInterface
+{
+    public const CURL_VERSION_STR = 'curl_version';
+    /**
+     * @deprecated
+     */
+    public const LOW_CURL_VERSION_NUMBER = '7.21.2';
+    /**
+     * @var resource[]|\CurlHandle[]
+     */
+    private $handles = [];
+    /**
+     * @var int Total number of idle handles to keep in cache
+     */
+>>>>>>> update
     private $maxHandles;
     /**
      * @param int $maxHandles Maximum number of idle handles.
      */
+<<<<<<< HEAD
     public function __construct($maxHandles)
     {
         $this->maxHandles = $maxHandles;
     }
     public function create(\YoastSEO_Vendor\Psr\Http\Message\RequestInterface $request, array $options)
+=======
+    public function __construct(int $maxHandles)
+    {
+        $this->maxHandles = $maxHandles;
+    }
+    public function create(\YoastSEO_Vendor\Psr\Http\Message\RequestInterface $request, array $options) : \YoastSEO_Vendor\GuzzleHttp\Handler\EasyHandle
+>>>>>>> update
     {
         if (isset($options['curl']['body_as_string'])) {
             $options['_body_as_string'] = $options['curl']['body_as_string'];
@@ -50,7 +87,11 @@ class CurlFactory implements \YoastSEO_Vendor\GuzzleHttp\Handler\CurlFactoryInte
         \curl_setopt_array($easy->handle, $conf);
         return $easy;
     }
+<<<<<<< HEAD
     public function release(\YoastSEO_Vendor\GuzzleHttp\Handler\EasyHandle $easy)
+=======
+    public function release(\YoastSEO_Vendor\GuzzleHttp\Handler\EasyHandle $easy) : void
+>>>>>>> update
     {
         $resource = $easy->handle;
         unset($easy->handle);
@@ -73,6 +114,7 @@ class CurlFactory implements \YoastSEO_Vendor\GuzzleHttp\Handler\CurlFactoryInte
      * Completes a cURL transaction, either returning a response promise or a
      * rejected promise.
      *
+<<<<<<< HEAD
      * @param callable             $handler
      * @param EasyHandle           $easy
      * @param CurlFactoryInterface $factory Dictates how the handle is released
@@ -80,6 +122,12 @@ class CurlFactory implements \YoastSEO_Vendor\GuzzleHttp\Handler\CurlFactoryInte
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public static function finish(callable $handler, \YoastSEO_Vendor\GuzzleHttp\Handler\EasyHandle $easy, \YoastSEO_Vendor\GuzzleHttp\Handler\CurlFactoryInterface $factory)
+=======
+     * @param callable(RequestInterface, array): PromiseInterface $handler
+     * @param CurlFactoryInterface                                $factory Dictates how the handle is released
+     */
+    public static function finish(callable $handler, \YoastSEO_Vendor\GuzzleHttp\Handler\EasyHandle $easy, \YoastSEO_Vendor\GuzzleHttp\Handler\CurlFactoryInterface $factory) : \YoastSEO_Vendor\GuzzleHttp\Promise\PromiseInterface
+>>>>>>> update
     {
         if (isset($easy->options['on_stats'])) {
             self::invokeStats($easy);
@@ -96,14 +144,27 @@ class CurlFactory implements \YoastSEO_Vendor\GuzzleHttp\Handler\CurlFactoryInte
         }
         return new \YoastSEO_Vendor\GuzzleHttp\Promise\FulfilledPromise($easy->response);
     }
+<<<<<<< HEAD
     private static function invokeStats(\YoastSEO_Vendor\GuzzleHttp\Handler\EasyHandle $easy)
+=======
+    private static function invokeStats(\YoastSEO_Vendor\GuzzleHttp\Handler\EasyHandle $easy) : void
+>>>>>>> update
     {
         $curlStats = \curl_getinfo($easy->handle);
         $curlStats['appconnect_time'] = \curl_getinfo($easy->handle, \CURLINFO_APPCONNECT_TIME);
         $stats = new \YoastSEO_Vendor\GuzzleHttp\TransferStats($easy->request, $easy->response, $curlStats['total_time'], $easy->errno, $curlStats);
+<<<<<<< HEAD
         \call_user_func($easy->options['on_stats'], $stats);
     }
     private static function finishError(callable $handler, \YoastSEO_Vendor\GuzzleHttp\Handler\EasyHandle $easy, \YoastSEO_Vendor\GuzzleHttp\Handler\CurlFactoryInterface $factory)
+=======
+        $easy->options['on_stats']($stats);
+    }
+    /**
+     * @param callable(RequestInterface, array): PromiseInterface $handler
+     */
+    private static function finishError(callable $handler, \YoastSEO_Vendor\GuzzleHttp\Handler\EasyHandle $easy, \YoastSEO_Vendor\GuzzleHttp\Handler\CurlFactoryInterface $factory) : \YoastSEO_Vendor\GuzzleHttp\Promise\PromiseInterface
+>>>>>>> update
     {
         // Get error information and release the handle to the factory.
         $ctx = ['errno' => $easy->errno, 'error' => \curl_error($easy->handle), 'appconnect_time' => \curl_getinfo($easy->handle, \CURLINFO_APPCONNECT_TIME)] + \curl_getinfo($easy->handle);
@@ -115,6 +176,7 @@ class CurlFactory implements \YoastSEO_Vendor\GuzzleHttp\Handler\CurlFactoryInte
         }
         return self::createRejection($easy, $ctx);
     }
+<<<<<<< HEAD
     private static function createRejection(\YoastSEO_Vendor\GuzzleHttp\Handler\EasyHandle $easy, array $ctx)
     {
         static $connectionErrors = [\CURLE_OPERATION_TIMEOUTED => \true, \CURLE_COULDNT_RESOLVE_HOST => \true, \CURLE_COULDNT_CONNECT => \true, \CURLE_SSL_CONNECT_ERROR => \true, \CURLE_GOT_NOTHING => \true];
@@ -135,6 +197,34 @@ class CurlFactory implements \YoastSEO_Vendor\GuzzleHttp\Handler\CurlFactoryInte
     private function getDefaultConf(\YoastSEO_Vendor\GuzzleHttp\Handler\EasyHandle $easy)
     {
         $conf = ['_headers' => $easy->request->getHeaders(), \CURLOPT_CUSTOMREQUEST => $easy->request->getMethod(), \CURLOPT_URL => (string) $easy->request->getUri()->withFragment(''), \CURLOPT_RETURNTRANSFER => \false, \CURLOPT_HEADER => \false, \CURLOPT_CONNECTTIMEOUT => 150];
+=======
+    private static function createRejection(\YoastSEO_Vendor\GuzzleHttp\Handler\EasyHandle $easy, array $ctx) : \YoastSEO_Vendor\GuzzleHttp\Promise\PromiseInterface
+    {
+        static $connectionErrors = [\CURLE_OPERATION_TIMEOUTED => \true, \CURLE_COULDNT_RESOLVE_HOST => \true, \CURLE_COULDNT_CONNECT => \true, \CURLE_SSL_CONNECT_ERROR => \true, \CURLE_GOT_NOTHING => \true];
+        if ($easy->createResponseException) {
+            return \YoastSEO_Vendor\GuzzleHttp\Promise\Create::rejectionFor(new \YoastSEO_Vendor\GuzzleHttp\Exception\RequestException('An error was encountered while creating the response', $easy->request, $easy->response, $easy->createResponseException, $ctx));
+        }
+        // If an exception was encountered during the onHeaders event, then
+        // return a rejected promise that wraps that exception.
+        if ($easy->onHeadersException) {
+            return \YoastSEO_Vendor\GuzzleHttp\Promise\Create::rejectionFor(new \YoastSEO_Vendor\GuzzleHttp\Exception\RequestException('An error was encountered during the on_headers event', $easy->request, $easy->response, $easy->onHeadersException, $ctx));
+        }
+        $message = \sprintf('cURL error %s: %s (%s)', $ctx['errno'], $ctx['error'], 'see https://curl.haxx.se/libcurl/c/libcurl-errors.html');
+        $uriString = (string) $easy->request->getUri();
+        if ($uriString !== '' && \false === \strpos($ctx['error'], $uriString)) {
+            $message .= \sprintf(' for %s', $uriString);
+        }
+        // Create a connection exception if it was a specific error code.
+        $error = isset($connectionErrors[$easy->errno]) ? new \YoastSEO_Vendor\GuzzleHttp\Exception\ConnectException($message, $easy->request, null, $ctx) : new \YoastSEO_Vendor\GuzzleHttp\Exception\RequestException($message, $easy->request, $easy->response, null, $ctx);
+        return \YoastSEO_Vendor\GuzzleHttp\Promise\Create::rejectionFor($error);
+    }
+    /**
+     * @return array<int|string, mixed>
+     */
+    private function getDefaultConf(\YoastSEO_Vendor\GuzzleHttp\Handler\EasyHandle $easy) : array
+    {
+        $conf = ['_headers' => $easy->request->getHeaders(), \CURLOPT_CUSTOMREQUEST => $easy->request->getMethod(), \CURLOPT_URL => (string) $easy->request->getUri()->withFragment(''), \CURLOPT_RETURNTRANSFER => \false, \CURLOPT_HEADER => \false, \CURLOPT_CONNECTTIMEOUT => 300];
+>>>>>>> update
         if (\defined('CURLOPT_PROTOCOLS')) {
             $conf[\CURLOPT_PROTOCOLS] = \CURLPROTO_HTTP | \CURLPROTO_HTTPS;
         }
@@ -148,7 +238,11 @@ class CurlFactory implements \YoastSEO_Vendor\GuzzleHttp\Handler\CurlFactoryInte
         }
         return $conf;
     }
+<<<<<<< HEAD
     private function applyMethod(\YoastSEO_Vendor\GuzzleHttp\Handler\EasyHandle $easy, array &$conf)
+=======
+    private function applyMethod(\YoastSEO_Vendor\GuzzleHttp\Handler\EasyHandle $easy, array &$conf) : void
+>>>>>>> update
     {
         $body = $easy->request->getBody();
         $size = $body->getSize();
@@ -158,7 +252,11 @@ class CurlFactory implements \YoastSEO_Vendor\GuzzleHttp\Handler\CurlFactoryInte
         }
         $method = $easy->request->getMethod();
         if ($method === 'PUT' || $method === 'POST') {
+<<<<<<< HEAD
             // See http://tools.ietf.org/html/rfc7230#section-3.3.2
+=======
+            // See https://tools.ietf.org/html/rfc7230#section-3.3.2
+>>>>>>> update
             if (!$easy->request->hasHeader('Content-Length')) {
                 $conf[\CURLOPT_HTTPHEADER][] = 'Content-Length: 0';
             }
@@ -167,7 +265,11 @@ class CurlFactory implements \YoastSEO_Vendor\GuzzleHttp\Handler\CurlFactoryInte
             unset($conf[\CURLOPT_WRITEFUNCTION], $conf[\CURLOPT_READFUNCTION], $conf[\CURLOPT_FILE], $conf[\CURLOPT_INFILE]);
         }
     }
+<<<<<<< HEAD
     private function applyBody(\YoastSEO_Vendor\Psr\Http\Message\RequestInterface $request, array $options, array &$conf)
+=======
+    private function applyBody(\YoastSEO_Vendor\Psr\Http\Message\RequestInterface $request, array $options, array &$conf) : void
+>>>>>>> update
     {
         $size = $request->hasHeader('Content-Length') ? (int) $request->getHeaderLine('Content-Length') : null;
         // Send the body as a string if the size is less than 1MB OR if the
@@ -187,7 +289,11 @@ class CurlFactory implements \YoastSEO_Vendor\GuzzleHttp\Handler\CurlFactoryInte
             if ($body->isSeekable()) {
                 $body->rewind();
             }
+<<<<<<< HEAD
             $conf[\CURLOPT_READFUNCTION] = function ($ch, $fd, $length) use($body) {
+=======
+            $conf[\CURLOPT_READFUNCTION] = static function ($ch, $fd, $length) use($body) {
+>>>>>>> update
                 return $body->read($length);
             };
         }
@@ -200,7 +306,11 @@ class CurlFactory implements \YoastSEO_Vendor\GuzzleHttp\Handler\CurlFactoryInte
             $conf[\CURLOPT_HTTPHEADER][] = 'Content-Type:';
         }
     }
+<<<<<<< HEAD
     private function applyHeaders(\YoastSEO_Vendor\GuzzleHttp\Handler\EasyHandle $easy, array &$conf)
+=======
+    private function applyHeaders(\YoastSEO_Vendor\GuzzleHttp\Handler\EasyHandle $easy, array &$conf) : void
+>>>>>>> update
     {
         foreach ($conf['_headers'] as $name => $values) {
             foreach ($values as $value) {
@@ -225,7 +335,11 @@ class CurlFactory implements \YoastSEO_Vendor\GuzzleHttp\Handler\CurlFactoryInte
      * @param string $name    Case-insensitive header to remove
      * @param array  $options Array of options to modify
      */
+<<<<<<< HEAD
     private function removeHeader($name, array &$options)
+=======
+    private function removeHeader(string $name, array &$options) : void
+>>>>>>> update
     {
         foreach (\array_keys($options['_headers']) as $key) {
             if (!\strcasecmp($key, $name)) {
@@ -234,7 +348,11 @@ class CurlFactory implements \YoastSEO_Vendor\GuzzleHttp\Handler\CurlFactoryInte
             }
         }
     }
+<<<<<<< HEAD
     private function applyHandlerOptions(\YoastSEO_Vendor\GuzzleHttp\Handler\EasyHandle $easy, array &$conf)
+=======
+    private function applyHandlerOptions(\YoastSEO_Vendor\GuzzleHttp\Handler\EasyHandle $easy, array &$conf) : void
+>>>>>>> update
     {
         $options = $easy->options;
         if (isset($options['verify'])) {
@@ -252,7 +370,11 @@ class CurlFactory implements \YoastSEO_Vendor\GuzzleHttp\Handler\CurlFactoryInte
                     }
                     // If it's a directory or a link to a directory use CURLOPT_CAPATH.
                     // If not, it's probably a file, or a link to a file, so use CURLOPT_CAINFO.
+<<<<<<< HEAD
                     if (\is_dir($options['verify']) || \is_link($options['verify']) && \is_dir(\readlink($options['verify']))) {
+=======
+                    if (\is_dir($options['verify']) || \is_link($options['verify']) === \true && ($verifyLink = \readlink($options['verify'])) !== \false && \is_dir($verifyLink)) {
+>>>>>>> update
                         $conf[\CURLOPT_CAPATH] = $options['verify'];
                     } else {
                         $conf[\CURLOPT_CAINFO] = $options['verify'];
@@ -260,11 +382,16 @@ class CurlFactory implements \YoastSEO_Vendor\GuzzleHttp\Handler\CurlFactoryInte
                 }
             }
         }
+<<<<<<< HEAD
         if (!empty($options['decode_content'])) {
+=======
+        if (!isset($options['curl'][\CURLOPT_ENCODING]) && !empty($options['decode_content'])) {
+>>>>>>> update
             $accept = $easy->request->getHeaderLine('Accept-Encoding');
             if ($accept) {
                 $conf[\CURLOPT_ENCODING] = $accept;
             } else {
+<<<<<<< HEAD
                 $conf[\CURLOPT_ENCODING] = '';
                 // Don't let curl send the header over the wire
                 $conf[\CURLOPT_HTTPHEADER][] = 'Accept-Encoding:';
@@ -289,6 +416,33 @@ class CurlFactory implements \YoastSEO_Vendor\GuzzleHttp\Handler\CurlFactoryInte
             $conf[\CURLOPT_FILE] = \fopen('php://temp', 'w+');
             $easy->sink = \YoastSEO_Vendor\GuzzleHttp\Psr7\stream_for($conf[\CURLOPT_FILE]);
         }
+=======
+                // The empty string enables all available decoders and implicitly
+                // sets a matching 'Accept-Encoding' header.
+                $conf[\CURLOPT_ENCODING] = '';
+                // But as the user did not specify any acceptable encodings we need
+                // to overwrite this implicit header with an empty one.
+                $conf[\CURLOPT_HTTPHEADER][] = 'Accept-Encoding:';
+            }
+        }
+        if (!isset($options['sink'])) {
+            // Use a default temp stream if no sink was set.
+            $options['sink'] = \YoastSEO_Vendor\GuzzleHttp\Psr7\Utils::tryFopen('php://temp', 'w+');
+        }
+        $sink = $options['sink'];
+        if (!\is_string($sink)) {
+            $sink = \YoastSEO_Vendor\GuzzleHttp\Psr7\Utils::streamFor($sink);
+        } elseif (!\is_dir(\dirname($sink))) {
+            // Ensure that the directory exists before failing in curl.
+            throw new \RuntimeException(\sprintf('Directory %s does not exist for sink value of %s', \dirname($sink), $sink));
+        } else {
+            $sink = new \YoastSEO_Vendor\GuzzleHttp\Psr7\LazyOpenStream($sink, 'w+');
+        }
+        $easy->sink = $sink;
+        $conf[\CURLOPT_WRITEFUNCTION] = static function ($ch, $write) use($sink) : int {
+            return $sink->write($write);
+        };
+>>>>>>> update
         $timeoutRequiresNoSignal = \false;
         if (isset($options['timeout'])) {
             $timeoutRequiresNoSignal |= $options['timeout'] < 1;
@@ -316,12 +470,46 @@ class CurlFactory implements \YoastSEO_Vendor\GuzzleHttp\Handler\CurlFactoryInte
                 $scheme = $easy->request->getUri()->getScheme();
                 if (isset($options['proxy'][$scheme])) {
                     $host = $easy->request->getUri()->getHost();
+<<<<<<< HEAD
                     if (!isset($options['proxy']['no']) || !\YoastSEO_Vendor\GuzzleHttp\is_host_in_noproxy($host, $options['proxy']['no'])) {
+=======
+                    if (isset($options['proxy']['no']) && \YoastSEO_Vendor\GuzzleHttp\Utils::isHostInNoProxy($host, $options['proxy']['no'])) {
+                        unset($conf[\CURLOPT_PROXY]);
+                    } else {
+>>>>>>> update
                         $conf[\CURLOPT_PROXY] = $options['proxy'][$scheme];
                     }
                 }
             }
         }
+<<<<<<< HEAD
+=======
+        if (isset($options['crypto_method'])) {
+            if (\STREAM_CRYPTO_METHOD_TLSv1_0_CLIENT === $options['crypto_method']) {
+                if (!\defined('CURL_SSLVERSION_TLSv1_0')) {
+                    throw new \InvalidArgumentException('Invalid crypto_method request option: TLS 1.0 not supported by your version of cURL');
+                }
+                $conf[\CURLOPT_SSLVERSION] = \CURL_SSLVERSION_TLSv1_0;
+            } elseif (\STREAM_CRYPTO_METHOD_TLSv1_1_CLIENT === $options['crypto_method']) {
+                if (!\defined('CURL_SSLVERSION_TLSv1_1')) {
+                    throw new \InvalidArgumentException('Invalid crypto_method request option: TLS 1.1 not supported by your version of cURL');
+                }
+                $conf[\CURLOPT_SSLVERSION] = \CURL_SSLVERSION_TLSv1_1;
+            } elseif (\STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT === $options['crypto_method']) {
+                if (!\defined('CURL_SSLVERSION_TLSv1_2')) {
+                    throw new \InvalidArgumentException('Invalid crypto_method request option: TLS 1.2 not supported by your version of cURL');
+                }
+                $conf[\CURLOPT_SSLVERSION] = \CURL_SSLVERSION_TLSv1_2;
+            } elseif (\defined('STREAM_CRYPTO_METHOD_TLSv1_3_CLIENT') && \STREAM_CRYPTO_METHOD_TLSv1_3_CLIENT === $options['crypto_method']) {
+                if (!\defined('CURL_SSLVERSION_TLSv1_3')) {
+                    throw new \InvalidArgumentException('Invalid crypto_method request option: TLS 1.3 not supported by your version of cURL');
+                }
+                $conf[\CURLOPT_SSLVERSION] = \CURL_SSLVERSION_TLSv1_3;
+            } else {
+                throw new \InvalidArgumentException('Invalid crypto_method request option: unknown version provided');
+            }
+        }
+>>>>>>> update
         if (isset($options['cert'])) {
             $cert = $options['cert'];
             if (\is_array($cert)) {
@@ -331,17 +519,35 @@ class CurlFactory implements \YoastSEO_Vendor\GuzzleHttp\Handler\CurlFactoryInte
             if (!\file_exists($cert)) {
                 throw new \InvalidArgumentException("SSL certificate not found: {$cert}");
             }
+<<<<<<< HEAD
+=======
+            // OpenSSL (versions 0.9.3 and later) also support "P12" for PKCS#12-encoded files.
+            // see https://curl.se/libcurl/c/CURLOPT_SSLCERTTYPE.html
+            $ext = \pathinfo($cert, \PATHINFO_EXTENSION);
+            if (\preg_match('#^(der|p12)$#i', $ext)) {
+                $conf[\CURLOPT_SSLCERTTYPE] = \strtoupper($ext);
+            }
+>>>>>>> update
             $conf[\CURLOPT_SSLCERT] = $cert;
         }
         if (isset($options['ssl_key'])) {
             if (\is_array($options['ssl_key'])) {
                 if (\count($options['ssl_key']) === 2) {
+<<<<<<< HEAD
                     list($sslKey, $conf[\CURLOPT_SSLKEYPASSWD]) = $options['ssl_key'];
                 } else {
                     list($sslKey) = $options['ssl_key'];
                 }
             }
             $sslKey = isset($sslKey) ? $sslKey : $options['ssl_key'];
+=======
+                    [$sslKey, $conf[\CURLOPT_SSLKEYPASSWD]] = $options['ssl_key'];
+                } else {
+                    [$sslKey] = $options['ssl_key'];
+                }
+            }
+            $sslKey = $sslKey ?? $options['ssl_key'];
+>>>>>>> update
             if (!\file_exists($sslKey)) {
                 throw new \InvalidArgumentException("SSL private key not found: {$sslKey}");
             }
@@ -353,6 +559,7 @@ class CurlFactory implements \YoastSEO_Vendor\GuzzleHttp\Handler\CurlFactoryInte
                 throw new \InvalidArgumentException('progress client option must be callable');
             }
             $conf[\CURLOPT_NOPROGRESS] = \false;
+<<<<<<< HEAD
             $conf[\CURLOPT_PROGRESSFUNCTION] = function () use($progress) {
                 $args = \func_get_args();
                 // PHP 5.5 pushed the handle onto the start of the args
@@ -364,6 +571,14 @@ class CurlFactory implements \YoastSEO_Vendor\GuzzleHttp\Handler\CurlFactoryInte
         }
         if (!empty($options['debug'])) {
             $conf[\CURLOPT_STDERR] = \YoastSEO_Vendor\GuzzleHttp\debug_resource($options['debug']);
+=======
+            $conf[\CURLOPT_PROGRESSFUNCTION] = static function ($resource, int $downloadSize, int $downloaded, int $uploadSize, int $uploaded) use($progress) {
+                $progress($downloadSize, $downloaded, $uploadSize, $uploaded);
+            };
+        }
+        if (!empty($options['debug'])) {
+            $conf[\CURLOPT_STDERR] = \YoastSEO_Vendor\GuzzleHttp\Utils::debugResource($options['debug']);
+>>>>>>> update
             $conf[\CURLOPT_VERBOSE] = \true;
         }
     }
@@ -375,8 +590,15 @@ class CurlFactory implements \YoastSEO_Vendor\GuzzleHttp\Handler\CurlFactoryInte
      * stream, and then encountered a "necessary data rewind wasn't possible"
      * error, causing the request to be sent through curl_multi_info_read()
      * without an error status.
+<<<<<<< HEAD
      */
     private static function retryFailedRewind(callable $handler, \YoastSEO_Vendor\GuzzleHttp\Handler\EasyHandle $easy, array $ctx)
+=======
+     *
+     * @param callable(RequestInterface, array): PromiseInterface $handler
+     */
+    private static function retryFailedRewind(callable $handler, \YoastSEO_Vendor\GuzzleHttp\Handler\EasyHandle $easy, array $ctx) : \YoastSEO_Vendor\GuzzleHttp\Promise\PromiseInterface
+>>>>>>> update
     {
         try {
             // Only rewind if the body has been read from.
@@ -395,11 +617,19 @@ class CurlFactory implements \YoastSEO_Vendor\GuzzleHttp\Handler\CurlFactoryInte
             $ctx['error'] = 'The cURL request was retried 3 times ' . 'and did not succeed. The most likely reason for the failure ' . 'is that cURL was unable to rewind the body of the request ' . 'and subsequent retries resulted in the same error. Turn on ' . 'the debug option to see what went wrong. See ' . 'https://bugs.php.net/bug.php?id=47204 for more information.';
             return self::createRejection($easy, $ctx);
         } else {
+<<<<<<< HEAD
             $easy->options['_curl_retries']++;
         }
         return $handler($easy->request, $easy->options);
     }
     private function createHeaderFn(\YoastSEO_Vendor\GuzzleHttp\Handler\EasyHandle $easy)
+=======
+            ++$easy->options['_curl_retries'];
+        }
+        return $handler($easy->request, $easy->options);
+    }
+    private function createHeaderFn(\YoastSEO_Vendor\GuzzleHttp\Handler\EasyHandle $easy) : callable
+>>>>>>> update
     {
         if (isset($easy->options['on_headers'])) {
             $onHeaders = $easy->options['on_headers'];
@@ -409,11 +639,24 @@ class CurlFactory implements \YoastSEO_Vendor\GuzzleHttp\Handler\CurlFactoryInte
         } else {
             $onHeaders = null;
         }
+<<<<<<< HEAD
         return function ($ch, $h) use($onHeaders, $easy, &$startingResponse) {
             $value = \trim($h);
             if ($value === '') {
                 $startingResponse = \true;
                 $easy->createResponse();
+=======
+        return static function ($ch, $h) use($onHeaders, $easy, &$startingResponse) {
+            $value = \trim($h);
+            if ($value === '') {
+                $startingResponse = \true;
+                try {
+                    $easy->createResponse();
+                } catch (\Exception $e) {
+                    $easy->createResponseException = $e;
+                    return -1;
+                }
+>>>>>>> update
                 if ($onHeaders !== null) {
                     try {
                         $onHeaders($easy->response);
@@ -433,4 +676,14 @@ class CurlFactory implements \YoastSEO_Vendor\GuzzleHttp\Handler\CurlFactoryInte
             return \strlen($h);
         };
     }
+<<<<<<< HEAD
+=======
+    public function __destruct()
+    {
+        foreach ($this->handles as $id => $handle) {
+            \curl_close($handle);
+            unset($this->handles[$id]);
+        }
+    }
+>>>>>>> update
 }

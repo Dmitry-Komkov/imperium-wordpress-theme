@@ -106,6 +106,10 @@ class WPSEO_Option_MS extends WPSEO_Option {
 			"{$allow_prefix}remove_feed_global_comments"        => true,
 			"{$allow_prefix}remove_feed_post_comments"          => true,
 			"{$allow_prefix}enable_index_now"                   => true,
+<<<<<<< HEAD
+=======
+			"{$allow_prefix}enable_ai_generator"                => true,
+>>>>>>> update
 			"{$allow_prefix}remove_feed_authors"                => true,
 			"{$allow_prefix}remove_feed_categories"             => true,
 			"{$allow_prefix}remove_feed_tags"                   => true,
@@ -126,6 +130,10 @@ class WPSEO_Option_MS extends WPSEO_Option {
 			"{$allow_prefix}search_cleanup"                     => true,
 			"{$allow_prefix}search_cleanup_emoji"               => true,
 			"{$allow_prefix}search_cleanup_patterns"            => true,
+<<<<<<< HEAD
+=======
+			"{$allow_prefix}redirect_search_pretty_urls"        => true,
+>>>>>>> update
 			"{$allow_prefix}wordproof_integration_active"       => false,
 			"{$allow_prefix}algolia_integration_active"         => true,
 		];
@@ -211,7 +219,10 @@ class WPSEO_Option_MS extends WPSEO_Option {
 					}
 					break;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> update
 				case 'defaultblog':
 					if ( isset( $dirty[ $key ] ) && ( $dirty[ $key ] !== '' && $dirty[ $key ] !== '-' ) ) {
 						$int = WPSEO_Utils::validate_int( $dirty[ $key ] );

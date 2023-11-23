@@ -38,7 +38,11 @@ if ( true === $multisite ) {
     $ao_cache_dir      = $ao_root_cache_dir . $child_site_id[1] . '/';
 }
 
+<<<<<<< HEAD
 $fallback_path = $ao_cache_dir . $js_or_css . '/<!--ao-cachefile-prefix-->_fallback.' . $js_or_css;
+=======
+$fallback_path = $ao_cache_dir . $js_or_css . '/<!--ao-cachefile-prefix-->fallback.' . $js_or_css;
+>>>>>>> update
 
 if ( $original_request !== $fallback_target && file_exists( $fallback_path ) ) {
     // error_log( 'Autoptimize file ' . $original_request . ' not found, using fallback instead.' );

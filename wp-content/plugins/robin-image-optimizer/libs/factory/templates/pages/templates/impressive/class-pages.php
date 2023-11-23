@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 namespace WBCR\Factory_Templates_102\Pages;
+=======
+namespace WBCR\Factory_Templates_118\Pages;
+>>>>>>> update
 
 /**
  * Общий класс прослойка для страниц Clearfy и его компоннетов.
@@ -18,7 +22,11 @@ if( !defined('ABSPATH') ) {
 //global $ssssdfsfsdf;
 
 /**
+<<<<<<< HEAD
  * Class Wbcr_FactoryPages449_ImpressiveThemplate
+=======
+ * Class Wbcr_FactoryPages467_ImpressiveThemplate
+>>>>>>> update
  *
  * @method string getInfoWidget() - get widget content information
  * @method string getRatingWidget(array $args = []) - get widget content rating
@@ -27,7 +35,11 @@ if( !defined('ABSPATH') ) {
  * @method string getBusinessSuggetionWidget()
  * @method string getSupportWidget
  */
+<<<<<<< HEAD
 class PageBase extends \WBCR\Factory_Templates_102\Impressive {
+=======
+class PageBase extends \WBCR\Factory_Templates_118\Impressive {
+>>>>>>> update
 
 	/**
 	 * {@inheritDoc}
@@ -62,9 +74,15 @@ class PageBase extends \WBCR\Factory_Templates_102\Impressive {
 	public $show_search_options_form;
 
 	/**
+<<<<<<< HEAD
 	 * @param \Wbcr_Factory450_Plugin $plugin
 	 */
 	public function __construct(\Wbcr_Factory450_Plugin $plugin)
+=======
+	 * @param \Wbcr_Factory469_Plugin $plugin
+	 */
+	public function __construct(\Wbcr_Factory469_Plugin $plugin)
+>>>>>>> update
 	{
 		parent::__construct($plugin);
 
@@ -112,18 +130,30 @@ class PageBase extends \WBCR\Factory_Templates_102\Impressive {
 	/**
 	 * Requests assets (js and css) for the page.
 	 *
+<<<<<<< HEAD
 	 * @param \Wbcr_Factory450_ScriptList $scripts
 	 * @param \Wbcr_Factory450_StyleList $styles
 	 *
 	 * @return void
 	 * @see Wbcr_FactoryPages449_AdminPage
+=======
+	 * @param \Wbcr_Factory469_ScriptList $scripts
+	 * @param \Wbcr_Factory469_StyleList $styles
+	 *
+	 * @return void
+	 * @see Wbcr_FactoryPages467_AdminPage
+>>>>>>> update
 	 *
 	 */
 	public function assets($scripts, $styles)
 	{
 		parent::assets($scripts, $styles);
 
+<<<<<<< HEAD
 		$this->styles->add(FACTORY_TEMPLATES_102_URL . '/assets/css/clearfy-base.css');
+=======
+		$this->styles->add(FACTORY_TEMPLATES_118_URL . '/assets/css/clearfy-base.css');
+>>>>>>> update
 
 		// todo: вынести все общие скрипты и стили фреймворка, продумать совместимость с другими плагинами
 		if( defined('WCL_PLUGIN_URL') ) {
@@ -131,19 +161,34 @@ class PageBase extends \WBCR\Factory_Templates_102\Impressive {
 		}
 
 		if( !($this->plugin->has_premium() && $this->plugin->premium->is_active()) ) {
+<<<<<<< HEAD
 			$this->scripts->add(FACTORY_TEMPLATES_102_URL . '/assets/js/clearfy-widgets.js', [
 				'jquery',
 				'wfactory-450-core-general',
 				'wbcr-factory-templates-102-global'
 			], 'wbcr-factory-templates-102-widgets');
+=======
+			$this->scripts->add(FACTORY_TEMPLATES_118_URL . '/assets/js/clearfy-widgets.js', [
+				'jquery',
+				'wfactory-469-core-general',
+				'wbcr-factory-templates-118-global'
+			], 'wbcr-factory-templates-118-widgets');
+>>>>>>> update
 		}
 
 		// Script for search form on plugin options
 		if( $this->show_search_options_form ) {
+<<<<<<< HEAD
 			$this->styles->add(FACTORY_TEMPLATES_102_URL . '/assets/css/libs/autocomplete.css');
 
 			$this->scripts->add(FACTORY_TEMPLATES_102_URL . '/assets/js/libs/jquery.autocomplete.min.js');
 			$this->scripts->add(FACTORY_TEMPLATES_102_URL . '/assets/js/clearfy-search-options.js');
+=======
+			$this->styles->add(FACTORY_TEMPLATES_118_URL . '/assets/css/libs/autocomplete.css');
+
+			$this->scripts->add(FACTORY_TEMPLATES_118_URL . '/assets/js/libs/jquery.autocomplete.min.js');
+			$this->scripts->add(FACTORY_TEMPLATES_118_URL . '/assets/js/clearfy-search-options.js');
+>>>>>>> update
 		}
 
 		/**
@@ -162,11 +207,19 @@ class PageBase extends \WBCR\Factory_Templates_102\Impressive {
 	 */
 	public function subsribe_widget_ajax_handler()
 	{
+<<<<<<< HEAD
 		wbcr_factory_templates_102_subscribe($this->plugin);
 	}
 
 	/**
 	 * @return \Wbcr_Factory450_Request
+=======
+		wbcr_factory_templates_118_subscribe($this->plugin);
+	}
+
+	/**
+	 * @return \Wbcr_Factory469_Request
+>>>>>>> update
 	 */
 	public function request()
 	{
@@ -265,7 +318,11 @@ class PageBase extends \WBCR\Factory_Templates_102\Impressive {
 		/**
 		 * @since 4.0.9 - является устаревшим
 		 */
+<<<<<<< HEAD
 		$widgets = wbcr_factory_450_apply_filters_deprecated('wbcr_factory_pages_449_imppage_get_widgets', [
+=======
+		$widgets = wbcr_factory_469_apply_filters_deprecated('wbcr_factory_pages_467_imppage_get_widgets', [
+>>>>>>> update
 			$widgets,
 			$position,
 			$this->plugin,
@@ -294,24 +351,41 @@ class PageBase extends \WBCR\Factory_Templates_102\Impressive {
 		$purchase_url = $this->plugin->get_support()->get_pricing_url(true, 'right_sidebar_ads');
 
 		$default_features = [
+<<<<<<< HEAD
 			'4_premium' => __('4 premium components now;', 'wbcr_factory_templates_102'),
 			'40_premium' => __('40 new premium components within a year for the single price;', 'wbcr_factory_templates_102'),
 			'multisite_support' => __('Multisite support;', 'wbcr_factory_templates_102'),
 			'advance_settings' => __('Advanced settings;', 'wbcr_factory_templates_102'),
 			'no_ads' => __('No ads;', 'wbcr_factory_templates_102'),
 			'perfect_support' => __('Perfect support.', 'wbcr_factory_templates_102')
+=======
+			'4_premium' => __('4 premium components now;', 'wbcr_factory_templates_118'),
+			'40_premium' => __('40 new premium components within a year for the single price;', 'wbcr_factory_templates_118'),
+			'multisite_support' => __('Multisite support;', 'wbcr_factory_templates_118'),
+			'advance_settings' => __('Advanced settings;', 'wbcr_factory_templates_118'),
+			'no_ads' => __('No ads;', 'wbcr_factory_templates_118'),
+			'perfect_support' => __('Perfect support.', 'wbcr_factory_templates_118')
+>>>>>>> update
 		];
 
 		/**
 		 * @since 2.0.8 - added
 		 */
+<<<<<<< HEAD
 		$suggetion_title = __('MORE IN CLEARFY <span>BUSINESS</span>', 'wbcr_factory_templates_102');
+=======
+		$suggetion_title = __('MORE IN CLEARFY <span>BUSINESS</span>', 'wbcr_factory_templates_118');
+>>>>>>> update
 		$suggetion_title = apply_filters('wbcr/clearfy/pages/suggetion_title', $suggetion_title, $plugin_name, $this->id);
 
 		/**
 		 * @since 2.0.8 - deprecated
 		 */
+<<<<<<< HEAD
 		$suggetion_features = wbcr_factory_450_apply_filters_deprecated('wbcr/clearfy/page_bussines_suggetion_features', [
+=======
+		$suggetion_features = wbcr_factory_469_apply_filters_deprecated('wbcr/clearfy/page_bussines_suggetion_features', [
+>>>>>>> update
 			$default_features,
 			$this->plugin->getPluginName(),
 			$this->id
@@ -327,7 +401,11 @@ class PageBase extends \WBCR\Factory_Templates_102\Impressive {
 			$suggetion_features = $default_features;
 		}
 		?>
+<<<<<<< HEAD
 		<div class="wbcr-factory-sidebar-widget wbcr-factory-templates-102-pro-suggettion">
+=======
+		<div class="wbcr-factory-sidebar-widget wbcr-factory-templates-118-pro-suggettion">
+>>>>>>> update
 			<h3><?php echo $suggetion_title; ?></h3>
 			<ul>
 				<?php if( !empty($suggetion_features) ): ?>
@@ -338,7 +416,11 @@ class PageBase extends \WBCR\Factory_Templates_102\Impressive {
 			</ul>
 			<a href="<?php echo $purchase_url ?>" class="wbcr-factory-purchase-premium" target="_blank"
 			   rel="noopener">
+<<<<<<< HEAD
 				<?php printf(__('Upgrade for $%s', 'wbcr_factory_templates_102'), $upgrade_price) ?>
+=======
+				<?php printf(__('Upgrade for $%s', 'wbcr_factory_templates_118'), $upgrade_price) ?>
+>>>>>>> update
 			</a>
 		</div>
 		<?php
@@ -360,25 +442,41 @@ class PageBase extends \WBCR\Factory_Templates_102\Impressive {
 							<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAJCAQAAABKmM6bAAAAUUlEQVQIHU3BsQ1AQABA0X/komIrnQHYwyhqQ1hBo9KZRKL9CBfeAwy2ri42JA4mPQ9rJ6OVt0BisFM3Po7qbEliru7m/FkY+TN64ZVxEzh4ndrMN7+Z+jXCAAAAAElFTkSuQmCC"
 							     alt=""/>
 						</span>
+<<<<<<< HEAD
 					- <?php _e('A neutral setting that can not harm your site, but you must be sure that you need to use it.', 'wbcr_factory_templates_102'); ?>
+=======
+					- <?php _e('A neutral setting that can not harm your site, but you must be sure that you need to use it.', 'wbcr_factory_templates_118'); ?>
+>>>>>>> update
 				</li>
 				<li>
 						<span class="wbcr-factory-hint-icon-simple wbcr-factory-simple-grey">
 							<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAJCAQAAABKmM6bAAAAUUlEQVQIHU3BsQ1AQABA0X/komIrnQHYwyhqQ1hBo9KZRKL9CBfeAwy2ri42JA4mPQ9rJ6OVt0BisFM3Po7qbEliru7m/FkY+TN64ZVxEzh4ndrMN7+Z+jXCAAAAAElFTkSuQmCC"
 							     alt=""/>
 						</span>
+<<<<<<< HEAD
 					- <?php _e('When set this option, you must be careful. Plugins and themes may depend on this function. You must be sure that you can disable this feature for the site.', 'wbcr_factory_templates_102'); ?>
+=======
+					- <?php _e('When set this option, you must be careful. Plugins and themes may depend on this function. You must be sure that you can disable this feature for the site.', 'wbcr_factory_templates_118'); ?>
+>>>>>>> update
 				</li>
 				<li>
 						<span class="wbcr-factory-hint-icon-simple wbcr-factory-simple-green">
 							<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAJCAQAAABKmM6bAAAAUUlEQVQIHU3BsQ1AQABA0X/komIrnQHYwyhqQ1hBo9KZRKL9CBfeAwy2ri42JA4mPQ9rJ6OVt0BisFM3Po7qbEliru7m/FkY+TN64ZVxEzh4ndrMN7+Z+jXCAAAAAElFTkSuQmCC"
 							     alt=""/>
 						</span>
+<<<<<<< HEAD
 					- <?php _e('Absolutely safe setting, We recommend to use.', 'wbcr_factory_templates_102'); ?>
 				</li>
 			</ul>
 			----------<br>
 			<p><?php _e('Hover to the icon to get help for the feature you selected.', 'wbcr_factory_templates_102'); ?></p>
+=======
+					- <?php _e('Absolutely safe setting, We recommend to use.', 'wbcr_factory_templates_118'); ?>
+				</li>
+			</ul>
+			----------<br>
+			<p><?php _e('Hover to the icon to get help for the feature you selected.', 'wbcr_factory_templates_118'); ?></p>
+>>>>>>> update
 		</div>
 		<?php
 	}
@@ -395,16 +493,25 @@ class PageBase extends \WBCR\Factory_Templates_102\Impressive {
 	public function showRatingWidget(array $args)
 	{
 		if( !isset($args[0]) || empty($args[0]) ) {
+<<<<<<< HEAD
 			$page_url = "https://goo.gl/tETE2X";
+=======
+			$page_url = "https://wordpress.org/support/plugin/clearfy/reviews";
+>>>>>>> update
 		} else {
 			$page_url = $args[0];
 		}
 
+<<<<<<< HEAD
 		$page_url = apply_filters('wbcr_factory_pages_449_imppage_rating_widget_url', $page_url, $this->plugin->getPluginName(), $this->getResultId());
+=======
+		$page_url = apply_filters('wbcr_factory_pages_467_imppage_rating_widget_url', $page_url, $this->plugin->getPluginName(), $this->getResultId());
+>>>>>>> update
 
 		?>
 		<div class="wbcr-factory-sidebar-widget">
 			<p>
+<<<<<<< HEAD
 				<strong><?php _e('Do you want the plugin to improved and update?', 'wbcr_factory_templates_102'); ?></strong>
 			</p>
 			<p><?php _e('Help the author, leave a review on wordpress.org. Thanks to feedback, I will know that the plugin is really useful to you and is needed.', 'wbcr_factory_templates_102'); ?></p>
@@ -413,6 +520,16 @@ class PageBase extends \WBCR\Factory_Templates_102\Impressive {
 				<i class="wbcr-factory-icon-5stars"></i>
 				<a href="<?php echo $page_url; ?>" title="Go rate us" target="_blank">
 					<strong><?php _e('Go rate us and push ideas', 'wbcr_factory_templates_102'); ?></strong>
+=======
+				<strong><?php _e('Do you want the plugin to improved and update?', 'wbcr_factory_templates_118'); ?></strong>
+			</p>
+			<p><?php _e('Help the author, leave a review on wordpress.org. Thanks to feedback, I will know that the plugin is really useful to you and is needed.', 'wbcr_factory_templates_118'); ?></p>
+			<p><?php _e('And also write your ideas on how to extend or improve the plugin.', 'wbcr_factory_templates_118'); ?></p>
+			<p>
+				<i class="wbcr-factory-icon-5stars"></i>
+				<a href="<?php echo $page_url; ?>" title="Go rate us" target="_blank">
+					<strong><?php _e('Go rate us and push ideas', 'wbcr_factory_templates_118'); ?></strong>
+>>>>>>> update
 				</a>
 			</p>
 		</div>
@@ -430,7 +547,11 @@ class PageBase extends \WBCR\Factory_Templates_102\Impressive {
 		?>
 		<div class="wbcr-factory-sidebar-widget">
 			<p>
+<<<<<<< HEAD
 				<strong><?php _e('Donation for plugin development', 'wbcr_factory_templates_102'); ?></strong>
+=======
+				<strong><?php _e('Donation for plugin development', 'wbcr_factory_templates_118'); ?></strong>
+>>>>>>> update
 			</p>
 			<?php if( get_locale() !== 'ru_RU' ): ?>
 				<form id="wbcr-factory-paypal-donation-form" action="https://www.paypal.com/cgi-bin/webscr"
@@ -438,7 +559,11 @@ class PageBase extends \WBCR\Factory_Templates_102\Impressive {
 					<input type="hidden" name="cmd" value="_s-xclick">
 					<input type="hidden" name="hosted_button_id" value="VDX7JNTQPNPFW">
 					<div class="wbcr-factory-donation-price">5$</div>
+<<<<<<< HEAD
 					<input type="image" src="<?php echo FACTORY_TEMPLATES_102_URL ?>/templates/assets/img/paypal-donate.png"
+=======
+					<input type="image" src="<?php echo FACTORY_TEMPLATES_118_URL ?>/templates/assets/img/paypal-donate.png"
+>>>>>>> update
 					       border="0" name="submit" alt="PayPal – The safer, easier way to pay online!">
 				</form>
 			<?php else: ?>
@@ -463,19 +588,34 @@ class PageBase extends \WBCR\Factory_Templates_102\Impressive {
 
 		?>
 		<div id="wbcr-clr-support-widget" class="wbcr-factory-sidebar-widget">
+<<<<<<< HEAD
 			<p><strong><?php _e('Having Issues?', 'wbcr_factory_templates_102'); ?></strong></p>
 			<div class="wbcr-clr-support-widget-body">
 				<p>
 					<?php _e('We provide free support for this plugin. If you are pushed with a problem, just create a new ticket. We will definitely help you!', 'wbcr_factory_templates_102'); ?>
+=======
+			<p><strong><?php _e('Having Issues?', 'wbcr_factory_templates_118'); ?></strong></p>
+			<div class="wbcr-clr-support-widget-body">
+				<p>
+					<?php _e('We provide free support for this plugin. If you are pushed with a problem, just create a new ticket. We will definitely help you!', 'wbcr_factory_templates_118'); ?>
+>>>>>>> update
 				</p>
 				<ul>
 					<li><span class="dashicons dashicons-sos"></span>
 						<a href="<?php echo $free_support_url; ?>" target="_blank"
+<<<<<<< HEAD
 						   rel="noopener"><?php _e('Get starting free support', 'wbcr_factory_templates_102'); ?></a>
 					</li>
 					<li style="margin-top: 15px;background: #fff4f1;padding: 10px;color: #a58074;">
 						<span class="dashicons dashicons-warning"></span>
 						<?php printf(__('If you find a php error or a vulnerability in plugin, you can <a href="%s" target="_blank" rel="noopener">create ticket</a> in hot support that we responded instantly.', 'wbcr_factory_templates_102'), $hot_support_url); ?>
+=======
+						   rel="noopener"><?php _e('Get starting free support', 'wbcr_factory_templates_118'); ?></a>
+					</li>
+					<li style="margin-top: 15px;background: #fff4f1;padding: 10px;color: #a58074;">
+						<span class="dashicons dashicons-warning"></span>
+						<?php printf(__('If you find a php error or a vulnerability in plugin, you can <a href="%s" target="_blank" rel="noopener">create ticket</a> in hot support that we responded instantly.', 'wbcr_factory_templates_118'), $hot_support_url); ?>
+>>>>>>> update
 					</li>
 				</ul>
 			</div>
@@ -490,19 +630,31 @@ class PageBase extends \WBCR\Factory_Templates_102\Impressive {
 		$terms = "https://cm-wp.com/?bizpanda=privacy-policy";
 		?>
 		<div id="wbcr-clr-subscribe-widget" class="wbcr-factory-sidebar-widget wbcr-factory-subscribe-widget">
+<<<<<<< HEAD
 			<p><strong><?php _e('Subscribe to plugin’s newsletter', 'wbcr_factory_templates_102'); ?></strong></p>
+=======
+			<p><strong><?php _e('Subscribe to plugin’s newsletter', 'wbcr_factory_templates_118'); ?></strong></p>
+>>>>>>> update
 			<div class="wbcr-clr-subscribe-widget-body">
 
 				<div class="wbcr-factory-subscribe-widget__message-contanier">
 					<div class="wbcr-factory-subscribe-widget__text wbcr-factory-subscribe-widget__text--success">
+<<<<<<< HEAD
 						<?php _e("Thank you, you have successfully subscribed!", 'wbcr_factory_templates_102') ?>
 					</div>
 					<div class="wbcr-factory-subscribe-widget__text wbcr-factory-subscribe-widget__text--success2">
 						<?php _e("Thank you for your subscription, a confirmation email has been sent to you. You need to confirm your subscription to complete this process.", 'wbcr_factory_templates_102'); ?>
+=======
+						<?php _e("Thank you, you have successfully subscribed!", 'wbcr_factory_templates_118') ?>
+					</div>
+					<div class="wbcr-factory-subscribe-widget__text wbcr-factory-subscribe-widget__text--success2">
+						<?php _e("Thank you for your subscription, a confirmation email has been sent to you. You need to confirm your subscription to complete this process.", 'wbcr_factory_templates_118'); ?>
+>>>>>>> update
 					</div>
 				</div>
 
 				<form id="wbcr-factory-subscribe-widget__subscribe-form" method="post" data-nonce="<?php echo wp_create_nonce('clearfy_subscribe_for_' . $this->plugin->getPluginName()) ?>">
+<<<<<<< HEAD
 					<input id="wbcr-factory-subscribe-widget__email" class="wbcr-factory-subscribe-widget__field" type="email" name="email" placeholder="<?php _e('Enter your email address', 'wbcr_factory_templates_102'); ?>" required>
 					<label class="wbcr-factory-subscribe-widget__checkbox-label">
 						<input class="wbcr-factory-subscribe-widget__checkbox" type="checkbox" name="agree_terms" required>
@@ -511,6 +663,16 @@ class PageBase extends \WBCR\Factory_Templates_102\Impressive {
 					<input type="hidden" id="wbcr-factory-subscribe-widget__group-id" value="<?php echo esc_attr($group_id); ?>">
 					<input type="hidden" id="wbcr-factory-subscribe-widget__plugin-name" value="<?php echo esc_attr($this->plugin->getPluginName()); ?>">
 					<input type="submit" class="btn wbcr-factory-subscribe-widget__button" value="<?php _e('Subscribe', 'wbcr_factory_templates_102'); ?>">
+=======
+					<input id="wbcr-factory-subscribe-widget__email" class="wbcr-factory-subscribe-widget__field" type="email" name="email" placeholder="<?php _e('Enter your email address', 'wbcr_factory_templates_118'); ?>" required>
+					<label class="wbcr-factory-subscribe-widget__checkbox-label">
+						<input class="wbcr-factory-subscribe-widget__checkbox" type="checkbox" name="agree_terms" required>
+						<?php echo sprintf(__("I confirm to subscribe to the CreativeMotion newsletter to receive the latest news. You can find how we use your information on our %s Privacy Policy %s", 'wbcr_factory_templates_118'), '<a href="' . $terms . '" target="_blank">', '</a>'); ?>
+					</label>
+					<input type="hidden" id="wbcr-factory-subscribe-widget__group-id" value="<?php echo esc_attr($group_id); ?>">
+					<input type="hidden" id="wbcr-factory-subscribe-widget__plugin-name" value="<?php echo esc_attr($this->plugin->getPluginName()); ?>">
+					<input type="submit" class="btn wbcr-factory-subscribe-widget__button" value="<?php _e('Subscribe', 'wbcr_factory_templates_118'); ?>">
+>>>>>>> update
 				</form>
 			</div>
 		</div>
@@ -525,13 +687,21 @@ class PageBase extends \WBCR\Factory_Templates_102\Impressive {
 	 */
 	public function register_options_to_search()
 	{
+<<<<<<< HEAD
 		require_once FACTORY_TEMPLATES_102_DIR . '/includes/class-search-options.php';
+=======
+		require_once FACTORY_TEMPLATES_118_DIR . '/includes/class-search-options.php';
+>>>>>>> update
 
 		$options = $this->getPageOptions();
 		$page_url = $this->getBaseUrl();
 		$page_id = $this->getResultId();
 
+<<<<<<< HEAD
 		\WBCR\Factory_Templates_102\Search_Options::register_options($options, $page_url, $page_id);
+=======
+		\WBCR\Factory_Templates_118\Search_Options::register_options($options, $page_url, $page_id);
+>>>>>>> update
 	}
 
 	/**
@@ -545,11 +715,19 @@ class PageBase extends \WBCR\Factory_Templates_102\Impressive {
 			return;
 		}
 		?>
+<<<<<<< HEAD
 		<div id="wbcr-factory-templates-102__search_options_form" class="wbcr-factory-templates-102__autocomplete-wrap">
 			<label for="autocomplete" class="wbcr-factory-templates-102__autocomplete-label">
 				<?php _e('Can\'t find the settings you need? Use the search by the plugin options:', 'wbcr_factory_templates_102'); ?>
 			</label>
 			<input type="text" placeholder="<?php _e('Enter the option name to search...', 'wbcr_factory_templates_102'); ?>" name="country" id="wbcr-factory-templates-102__autocomplete"/>
+=======
+		<div id="wbcr-factory-templates-118__search_options_form" class="wbcr-factory-templates-118__autocomplete-wrap">
+			<label for="autocomplete" class="wbcr-factory-templates-118__autocomplete-label">
+				<?php _e('Can\'t find the settings you need? Use the search by the plugin options:', 'wbcr_factory_templates_118'); ?>
+			</label>
+			<input type="text" placeholder="<?php _e('Enter the option name to search...', 'wbcr_factory_templates_118'); ?>" name="country" id="wbcr-factory-templates-118__autocomplete"/>
+>>>>>>> update
 
 		</div>
 		<?php

@@ -5,7 +5,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! class_exists( 'acf_admin_tools' ) ) :
+<<<<<<< HEAD
 
+=======
+	#[AllowDynamicProperties]
+>>>>>>> update
 	class acf_admin_tools {
 
 
@@ -32,11 +36,18 @@ if ( ! class_exists( 'acf_admin_tools' ) ) :
 		function __construct() {
 
 			// actions
+<<<<<<< HEAD
 			add_action( 'admin_menu', array( $this, 'admin_menu' ) );
 
 		}
 
 
+=======
+			add_action( 'admin_menu', array( $this, 'admin_menu' ), 15 );
+
+		}
+
+>>>>>>> update
 		/**
 		 *  register_tool
 		 *
@@ -138,6 +149,11 @@ if ( ! class_exists( 'acf_admin_tools' ) ) :
 
 		function load() {
 
+<<<<<<< HEAD
+=======
+			add_action( 'admin_body_class', array( $this, 'admin_body_class' ) );
+
+>>>>>>> update
 			// disable filters (default to raw data)
 			acf_disable_filters();
 
@@ -152,6 +168,21 @@ if ( ! class_exists( 'acf_admin_tools' ) ) :
 
 		}
 
+<<<<<<< HEAD
+=======
+		/**
+		 * Modifies the admin body class.
+		 *
+		 * @since 6.0.0
+		 *
+		 * @param string $classes Space-separated list of CSS classes.
+		 * @return string
+		 */
+		public function admin_body_class( $classes ) {
+			$classes .= ' acf-admin-page';
+			return $classes;
+		}
+>>>>>>> update
 
 		/**
 		 *  include_tools
@@ -245,12 +276,17 @@ if ( ! class_exists( 'acf_admin_tools' ) ) :
 			}
 
 			// view
+<<<<<<< HEAD
 			acf_get_view( 'html-admin-tools', $view );
+=======
+			acf_get_view( 'tools/tools', $view );
+>>>>>>> update
 
 		}
 
 
 		/**
+<<<<<<< HEAD
 		 *  meta_box_html
 		 *
 		 *  description
@@ -274,6 +310,29 @@ if ( ! class_exists( 'acf_admin_tools' ) ) :
 		</form>
 			<?php
 
+=======
+		 * Output the metabox HTML for specific tools
+		 *
+		 * @since 5.6.3
+		 *
+		 * @param mixed $post    The post this metabox is being displayed on, should be an empty string always for us on a tools page.
+		 * @param array $metabox An array of the metabox attributes.
+		 *
+		 * @return void
+		 */
+		public function metabox_html( $post, $metabox ) {
+			$tool       = $this->get_tool( $metabox['args']['tool'] );
+			$form_attrs = array( 'method' => 'post' );
+
+			if ( $metabox['args']['tool'] === 'import' ) {
+				$form_attrs['onsubmit'] = 'acf.disableForm(event)';
+			}
+
+			printf( '<form %s>', acf_esc_attrs( $form_attrs ) );
+			$tool->html();
+			acf_nonce_input( $tool->name );
+			echo '</form>';
+>>>>>>> update
 		}
 
 	}
@@ -342,6 +401,9 @@ function acf_get_admin_tool_url( $tool = '' ) {
 	return acf_get_admin_tools_url() . '&tool=' . $tool;
 
 }
+<<<<<<< HEAD
 
 
 ?>
+=======
+>>>>>>> update

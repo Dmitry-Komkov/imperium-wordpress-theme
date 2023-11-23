@@ -5,7 +5,11 @@
  *
  * @author        Webcraftic <wordpress.webraftic@gmail.com>
  * @copyright (c) 09.09.2017, Webcraftic
+<<<<<<< HEAD
  * @see           Factory450_Activator
+=======
+ * @see           Factory469_Activator
+>>>>>>> update
  * @version       1.0
  */
 
@@ -14,7 +18,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+<<<<<<< HEAD
 class WIO_Activation extends Wbcr_Factory450_Activator {
+=======
+class WIO_Activation extends Wbcr_Factory469_Activator {
+>>>>>>> update
 
 	/**
 	 * Runs activation actions.
@@ -49,7 +57,11 @@ class WIO_Activation extends Wbcr_Factory450_Activator {
 
 		RIO_Process_Queue::try_create_plugin_tables();
 
+<<<<<<< HEAD
 		WBCR\Factory_Templates_102\Helpers::flushPageCache();
+=======
+		WBCR\Factory_Templates_118\Helpers::flushPageCache();
+>>>>>>> update
 
 		WRIO_Plugin::app()->logger->info( 'Parent plugin installation complete!' );
 	}

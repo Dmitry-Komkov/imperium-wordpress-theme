@@ -9963,6 +9963,10 @@ hr.separator {
 
 .top-banner {
   position: relative;
+<<<<<<< HEAD
+=======
+  padding-top: 120px;
+>>>>>>> update
   color: #fff;
   overflow: hidden; }
   .top-banner .background-image {
@@ -9988,19 +9992,29 @@ hr.separator {
       z-index: 1;
       mix-blend-mode: color; }
   .top-banner__content {
+<<<<<<< HEAD
     padding: 1rem 0 2rem;
     position: relative;
     z-index: 5; }
     @media screen and (min-width: 992px) {
       .top-banner__content {
         padding-top: 120px; } }
+=======
+    padding: 2rem 0;
+    position: relative;
+    z-index: 5; }
+>>>>>>> update
   .top-banner__text p {
     margin-bottom: 1rem; }
     @media screen and (min-width: 992px) {
       .top-banner__text p {
         font-size: 1.2rem; } }
   .top-banner__text .title {
+<<<<<<< HEAD
     font-size: 2.2rem;
+=======
+    font-size: 2rem;
+>>>>>>> update
     font-weight: 800; }
     @media screen and (min-width: 992px) {
       .top-banner__text .title {

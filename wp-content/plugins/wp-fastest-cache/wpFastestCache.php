@@ -3,9 +3,15 @@
 Plugin Name: WP Fastest Cache
 Plugin URI: http://wordpress.org/plugins/wp-fastest-cache/
 Description: The simplest and fastest WP Cache system
+<<<<<<< HEAD
 Version: 1.0.4
 Author: Emre Vona
 Author URI: http://tr.linkedin.com/in/emrevona
+=======
+Version: 1.2.2
+Author: Emre Vona
+Author URI: https://www.wpfastestcache.com/
+>>>>>>> update
 Text Domain: wp-fastest-cache
 Domain Path: /languages/
 
@@ -125,6 +131,21 @@ GNU General Public License for more details.
 			add_action( 'profile_update', array($this, 'modify_htaccess_for_new_user'), 10, 1);
 			add_action( 'edit_terms', array($this, 'delete_cache_of_term'), 10, 1);
 
+<<<<<<< HEAD
+=======
+			add_action( 'wp_ajax_wpfc_save_csp', array($this, 'wpfc_save_csp_callback'));
+			add_action( 'wp_ajax_wpfc_remove_csp', array($this, 'wpfc_remove_csp_callback'));
+			add_action( 'wp_ajax_wpfc_get_list_csp', array($this, 'wpfc_get_list_csp_callback'));
+
+
+			add_action( 'wp_ajax_wpfc_save_varnish', array($this, 'wpfc_save_varnish_callback'));
+			add_action( 'wp_ajax_wpfc_remove_varnish', array($this, 'wpfc_remove_varnish_callback'));
+			add_action( 'wp_ajax_wpfc_pause_varnish', array($this, 'wpfc_pause_varnish_callback'));
+			add_action( 'wp_ajax_wpfc_start_varnish', array($this, 'wpfc_start_varnish_callback'));
+			add_action( 'wp_ajax_wpfc_purgecache_varnish', array($this, 'wpfc_purgecache_varnish_callback'));
+
+
+>>>>>>> update
 			if(defined("WPFC_CLEAR_CACHE_AFTER_SWITCH_THEME") && WPFC_CLEAR_CACHE_AFTER_SWITCH_THEME){
 				add_action('after_switch_theme', array($this, 'clear_cache_after_switch_theme'));
 			}
@@ -158,6 +179,12 @@ GNU General Public License for more details.
 			add_action("wpfc_clear_all_site_cache", array($this, 'wpfc_clear_cache_of_allsites_callback'));
 			add_action("wpfc_clear_post_cache_by_id", array($this, 'singleDeleteCache'), 10, 2);
 
+<<<<<<< HEAD
+=======
+			// create cache by id hook
+			add_action("wpfc_create_post_cache_by_id", array($this, 'create_post_cache_by_id'), 10, 1);
+
+>>>>>>> update
 			// to enable Auto Cache Panel for the classic editor
 			add_action( 'admin_init', array($this, 'enable_auto_cache_settings_panel'));
 
@@ -363,6 +390,7 @@ GNU General Public License for more details.
 		}
 
 		public function clear_cache_after_update_plugin($upgrader_object, $options){
+<<<<<<< HEAD
 			if($options['action'] == 'update'){
 				if($options['type'] == 'plugin' && (isset($options['plugins']) || isset($options['plugin']))){
 
@@ -374,12 +402,28 @@ GNU General Public License for more details.
 
 					if(defined("WPFC_CLEAR_CACHE_AFTER_PLUGIN_UPDATE") && WPFC_CLEAR_CACHE_AFTER_PLUGIN_UPDATE){
 						$this->deleteCache(true);
+=======
+			if(isset($options['action']) && isset($options['type'])){
+				if($options['action'] == 'update'){
+					if($options['type'] == 'plugin' && (isset($options['plugins']) || isset($options['plugin']))){
+
+						$options_json = json_encode($options);
+
+						if(preg_match("/elementor\\\\\/elementor\.php/i", $options_json)){
+							$this->deleteCache(true);
+						}
+
+						if(defined("WPFC_CLEAR_CACHE_AFTER_PLUGIN_UPDATE") && WPFC_CLEAR_CACHE_AFTER_PLUGIN_UPDATE){
+							$this->deleteCache(true);
+						}
+>>>>>>> update
 					}
 				}
 			}
 		}
 
 		public function clear_cache_after_update_theme($upgrader_object, $options){
+<<<<<<< HEAD
 			if($options['action'] == 'update'){
 				if($options['type'] == 'theme' && isset($options['themes'])){
 
@@ -387,6 +431,17 @@ GNU General Public License for more details.
 						$this->deleteCache(true);
 					}
 
+=======
+			if(isset($options['action']) && isset($options['type'])){
+				if($options['action'] == 'update'){
+					if($options['type'] == 'theme' && isset($options['themes'])){
+
+						if(defined("WPFC_CLEAR_CACHE_AFTER_THEME_UPDATE") && WPFC_CLEAR_CACHE_AFTER_THEME_UPDATE){
+							$this->deleteCache(true);
+						}
+
+					}
+>>>>>>> update
 				}
 			}
 		}
@@ -397,10 +452,28 @@ GNU General Public License for more details.
 		}
 
 		public function wpfc_preload_single_callback(){
+<<<<<<< HEAD
+=======
+			if(!wp_verify_nonce($_REQUEST["nonce"], 'wpfc')){
+				die( 'Security check' );
+			}
+
+>>>>>>> update
 			include_once('inc/single-preload.php');
 			SinglePreloadWPFC::create_cache();
 		}
 
+<<<<<<< HEAD
+=======
+		public function create_post_cache_by_id($id){
+			include_once('inc/single-preload.php');
+			SinglePreloadWPFC::init($id);
+			$res = SinglePreloadWPFC::create_cache_for_all_urls();
+
+			return $res;
+		}
+
+>>>>>>> update
 		public function single_preload_inline_js(){
 			include_once('inc/single-preload.php');
 			SinglePreloadWPFC::init();
@@ -412,6 +485,13 @@ GNU General Public License for more details.
 		}
 
 		public function wpfc_preload_single_save_settings_callback(){
+<<<<<<< HEAD
+=======
+			if(!wp_verify_nonce($_REQUEST["nonce"], 'wpfc')){
+				die( 'Security check' );
+			}
+
+>>>>>>> update
 			include_once('inc/single-preload.php');
 			SinglePreloadWPFC::save_settings();
 		}
@@ -438,7 +518,11 @@ GNU General Public License for more details.
 			}
 
 			// to change content url if a different url is used for other langs
+<<<<<<< HEAD
 			if($this->isPluginActive('polylang/polylang.php')){
+=======
+			if($this->isPluginActive('polylang/polylang.php') || $this->isPluginActive('polylang-pro/polylang.php')){
+>>>>>>> update
 				$url =  parse_url($content_url);
 
 				if($url["host"] != $_SERVER['HTTP_HOST']){
@@ -490,6 +574,13 @@ GNU General Public License for more details.
 		}
 
 		public function wpfc_db_statics_callback(){
+<<<<<<< HEAD
+=======
+			if(!wp_verify_nonce($_REQUEST["nonce"], 'wpfc')){
+				die( 'Security check' );
+			}
+			
+>>>>>>> update
 			global $wpdb;
 
             $statics = array("all_warnings" => 0,
@@ -514,7 +605,11 @@ GNU General Public License for more details.
             $statics["all_warnings"] = $statics["all_warnings"] + $statics["trackback_pingback"];
 
             $element = "SELECT COUNT(*) FROM `$wpdb->options` WHERE option_name LIKE '%\_transient\_%' ;";
+<<<<<<< HEAD
             $statics["transient_options"] = $wpdb->get_var( $element ) > 30 ? $wpdb->get_var( $element ) : 0;
+=======
+            $statics["transient_options"] = $wpdb->get_var( $element ) > 100 ? $wpdb->get_var( $element ) : 0;
+>>>>>>> update
             $statics["all_warnings"] = $statics["all_warnings"] + $statics["transient_options"];
 
             die(json_encode($statics));
@@ -549,6 +644,13 @@ GNU General Public License for more details.
 		}
 
 		public function wpfc_check_url_ajax_request_callback(){
+<<<<<<< HEAD
+=======
+			if(!wp_verify_nonce($_REQUEST["nonce"], 'cdn-nonce')){
+				die( 'Security check' );
+			}
+			
+>>>>>>> update
 			include_once('inc/cdn.php');
 			CdnWPFC::check_url();
 		}
@@ -559,21 +661,49 @@ GNU General Public License for more details.
 		}
 
 		public function wpfc_save_cdn_integration_ajax_request_callback(){
+<<<<<<< HEAD
+=======
+			if(!wp_verify_nonce($_REQUEST["nonce"], 'cdn-nonce')){
+				die( 'Security check' );
+			}
+
+>>>>>>> update
 			include_once('inc/cdn.php');
 			CdnWPFC::save_cdn_integration();
 		}
 
 		public function wpfc_start_cdn_integration_ajax_request_callback(){
+<<<<<<< HEAD
+=======
+			if(!wp_verify_nonce($_REQUEST["nonce"], 'cdn-nonce')){
+				die( 'Security check' );
+			}
+
+>>>>>>> update
 			include_once('inc/cdn.php');
 			CdnWPFC::start_cdn_integration();
 		}
 
 		public function wpfc_pause_cdn_integration_ajax_request_callback(){
+<<<<<<< HEAD
+=======
+			if(!wp_verify_nonce($_REQUEST["nonce"], 'cdn-nonce')){
+				die( 'Security check' );
+			}
+
+>>>>>>> update
 			include_once('inc/cdn.php');
 			CdnWPFC::pause_cdn_integration();
 		}
 
 		public function wpfc_remove_cdn_integration_ajax_request_callback(){
+<<<<<<< HEAD
+=======
+			if(!wp_verify_nonce($_REQUEST["nonce"], 'cdn-nonce')){
+				die( 'Security check' );
+			}
+			
+>>>>>>> update
 			include_once('inc/cdn.php');
 			CdnWPFC::remove_cdn_integration();
 		}
@@ -595,11 +725,23 @@ GNU General Public License for more details.
 						$value["content"] = strip_tags($value["content"]);
 
 						$value["prefix"] = preg_replace("/\'|\"/", "", $value["prefix"]);
+<<<<<<< HEAD
 						$value["content"] = preg_replace("/\'|\"/", "", $value["content"]);
 
 						//$value["content"] = trim($value["content"], "/");
 
 						$value["content"] = preg_replace("/(\#|\s|\(|\)|\*)/", "", $value["content"]);
+=======
+
+						if($value["prefix"] == "regex"){
+							$value["content"] = stripslashes($value["content"]);
+
+							$value["content"] = esc_attr($value["content"]);
+						}else{
+							$value["content"] = preg_replace("/\'|\"/", "", $value["content"]);
+							$value["content"] = preg_replace("/(\#|\s|\(|\)|\*)/", "", $value["content"]);
+						}
+>>>>>>> update
 
 						if($value["prefix"] == "homepage"){
 							$this->deleteHomePageCache(false);
@@ -644,6 +786,62 @@ GNU General Public License for more details.
 			@file_put_contents($path.".htaccess", $htaccess);
 		}
 
+<<<<<<< HEAD
+=======
+		public function wpfc_purgecache_varnish_callback(){
+			if(!wp_verify_nonce($_REQUEST["security"], 'wpfc-varnish-ajax-nonce')){
+				die( 'Security check' );
+			}
+
+			if($varnish_datas = get_option("WpFastestCacheVarnish")){
+				include_once('inc/varnish.php');
+				$res_arr = VarnishWPFC::purge_cache($varnish_datas["server"]);
+				
+				wp_send_json($res_arr);
+			}
+		}
+
+		public function wpfc_save_varnish_callback(){
+			include_once('inc/varnish.php');
+			VarnishWPFC::save();
+		}
+
+		public function wpfc_remove_varnish_callback(){
+			include_once('inc/varnish.php');
+			VarnishWPFC::remove();
+		}
+
+		public function wpfc_start_varnish_callback(){
+			include_once('inc/varnish.php');
+			VarnishWPFC::start();
+		}
+
+		public function wpfc_pause_varnish_callback(){
+			include_once('inc/varnish.php');
+			VarnishWPFC::pause();
+		}
+
+		public function wpfc_status_varnish(){
+			include_once('inc/varnish.php');
+			VarnishWPFC::status();
+		}
+
+		public function wpfc_get_list_csp_callback(){
+			include_once('inc/clearing-specific-pages.php');
+			ClearingSpecificPagesWPFC::get_list();
+		}
+
+		public function wpfc_save_csp_callback(){
+			include_once('inc/clearing-specific-pages.php');
+			ClearingSpecificPagesWPFC::save();
+		}
+
+		public function wpfc_remove_csp_callback(){
+			include_once('inc/clearing-specific-pages.php');
+			ClearingSpecificPagesWPFC::remove();
+		}
+
+>>>>>>> update
 		public function wpfc_save_timeout_pages_callback(){
 			if(!wp_verify_nonce($_POST["security"], 'wpfc-save-timeout-ajax-nonce')){
 				die( 'Security check' );
@@ -784,8 +982,19 @@ GNU General Public License for more details.
 		}
 
 		public function register_my_custom_menu_page(){
+<<<<<<< HEAD
 			if(function_exists('add_menu_page')){ 
 				add_menu_page("WP Fastest Cache Settings", "WP Fastest Cache", 'manage_options', "wpfastestcacheoptions", array($this, 'optionsPage'), plugins_url("wp-fastest-cache/images/icon.svg"));
+=======
+			if(function_exists('add_menu_page')){
+
+				if(defined("WPFC_MOVE_MENU_ITEM_UNDER_SETTINGS") && WPFC_MOVE_MENU_ITEM_UNDER_SETTINGS){
+					add_options_page("WP Fastest Cache Settings", "WP Fastest Cache", 'manage_options', 'wpfastestcacheoptions', array($this, 'optionsPage'));
+				}else{
+					add_menu_page("WP Fastest Cache Settings", "WP Fastest Cache", 'manage_options', "wpfastestcacheoptions", array($this, 'optionsPage'), plugins_url("wp-fastest-cache/images/icon.svg"));
+				}
+
+>>>>>>> update
 				add_action('admin_init', array($this, 'register_mysettings'));
 
 				wp_enqueue_style("wp-fastest-cache", plugins_url("wp-fastest-cache/css/style.css"), array(), time(), "all");
@@ -799,10 +1008,24 @@ GNU General Public License for more details.
 		}
 
 		public function deleteCacheToolbar(){
+<<<<<<< HEAD
+=======
+			if(!wp_verify_nonce($_REQUEST["nonce"], 'wpfc')){
+				die( 'Security check' );
+			}
+
+>>>>>>> update
 			$this->deleteCache();
 		}
 
 		public function deleteCssAndJsCacheToolbar(){
+<<<<<<< HEAD
+=======
+			if(!wp_verify_nonce($_REQUEST["nonce"], 'wpfc')){
+				die( 'Security check' );
+			}
+			
+>>>>>>> update
 			$this->deleteCache(true);
 		}
 
@@ -845,8 +1068,17 @@ GNU General Public License for more details.
 		}
 
 		public function wpfc_toolbar_save_settings_callback(){
+<<<<<<< HEAD
 			if(current_user_can('manage_options')){
 				if(is_array($_GET["roles"]) && !empty($_GET["roles"])){
+=======
+			if(!wp_verify_nonce($_REQUEST["nonce"], 'wpfc')){
+				die( 'Security check' );
+			}
+
+			if(current_user_can('manage_options')){
+				if(isset($_GET["roles"]) && is_array($_GET["roles"]) && !empty($_GET["roles"])){
+>>>>>>> update
 					$roles_arr = array();
 
 					foreach($_GET["roles"] as $key => $value){
@@ -873,6 +1105,16 @@ GNU General Public License for more details.
 		}
 
 		public function wpfc_clear_cache_of_allsites_callback(){
+<<<<<<< HEAD
+=======
+
+			if(defined('DOING_AJAX') && DOING_AJAX){
+				if(!wp_verify_nonce($_REQUEST["nonce"], 'wpfc')){
+					die( 'Security check' );
+				}
+			}
+
+>>>>>>> update
 			include_once('inc/cdn.php');
 			CdnWPFC::cloudflare_clear_cache();
 
@@ -900,6 +1142,14 @@ GNU General Public License for more details.
 				die(json_encode(array("Security Error!", "error", "alert")));
 			}
 
+<<<<<<< HEAD
+=======
+			if($varnish_datas = get_option("WpFastestCacheVarnish")){
+				include_once('inc/varnish.php');
+				VarnishWPFC::purge_cache($varnish_datas);
+			}
+
+>>>>>>> update
 			include_once('inc/cdn.php');
 			CdnWPFC::cloudflare_clear_cache();
 
@@ -1019,7 +1269,19 @@ GNU General Public License for more details.
 					}
 
 					if($this->isPluginActive('polylang/polylang.php')){
+<<<<<<< HEAD
 						$path = preg_replace("/\/cache\/(all|wpfc-minified|wpfc-widget-cache|wpfc-mobile-cache)/", "/cache/".$_SERVER['HTTP_HOST']."/$1", $path);
+=======
+						$polylang_settings = get_option("polylang");
+
+						if(isset($polylang_settings["force_lang"])){
+							if($polylang_settings["force_lang"] == 2 || $polylang_settings["force_lang"] == 3){
+								// The language is set from the subdomain name in pretty permalinks
+								// The language is set from different domains
+								$path = preg_replace("/\/cache\/(all|wpfc-minified|wpfc-widget-cache|wpfc-mobile-cache)/", "/cache/".$_SERVER['HTTP_HOST']."/$1", $path);
+							}
+						}
+>>>>>>> update
 					}
 
 					if($this->isPluginActive('multiple-domain/multiple-domain.php')){
@@ -1087,8 +1349,16 @@ GNU General Public License for more details.
 					}
 				}
 
+<<<<<<< HEAD
 				if(isset($this->options->wpFastestCacheNewPost) && isset($this->options->wpFastestCacheStatus)){
 					if($new_status == "publish" && $old_status != "publish"){
+=======
+				if($new_status == "publish" && $old_status != "publish"){
+					
+					$this->specificDeleteCache();
+					
+					if(isset($this->options->wpFastestCacheNewPost) && isset($this->options->wpFastestCacheStatus)){
+>>>>>>> update
 						if(isset($this->options->wpFastestCacheNewPost_type) && $this->options->wpFastestCacheNewPost_type){
 							if($this->options->wpFastestCacheNewPost_type == "all"){
 								$this->deleteCache();
@@ -1119,6 +1389,11 @@ GNU General Public License for more details.
 						
 					// }
 
+<<<<<<< HEAD
+=======
+					$this->specificDeleteCache();
+
+>>>>>>> update
 					if(isset($this->options->wpFastestCacheUpdatePost)){
 
 						if($this->options->wpFastestCacheUpdatePost_type == "post"){
@@ -1165,9 +1440,58 @@ GNU General Public License for more details.
 			}
 		}
 
+<<<<<<< HEAD
 		public function singleDeleteCache($comment_id = false, $post_id = false, $to_clear_parents = true){
 			include_once('inc/cdn.php');
 
+=======
+		public function specificDeleteCache(){
+			$urls = get_option("WpFastestCacheCSP");
+			$files = array();
+
+			if(!empty($urls)){
+				foreach ($urls as $key => $value) {
+
+					if(preg_match("/https?:\/\/[^\/]+\/(.+)/", $value->url, $out)){
+
+						if(preg_match("/\/\(\.\*\)/", $out[1])){
+							$out[1] = str_replace("(.*)", "", $out[1]);
+
+							$path = $this->getWpContentDir("/cache/all/").$out[1];
+							$mobile_path = $this->getWpContentDir("/cache/wpfc-mobile-cache/").$out[1];
+						}else{
+							$out[1] = $out[1]."index.html";
+
+							$path = $this->getWpContentDir("/cache/all/").$out[1];
+							$mobile_path = $this->getWpContentDir("/cache/wpfc-mobile-cache/").$out[1];
+						}
+
+						if(!is_dir($this->getWpContentDir("/cache/tmpWpfc"))){
+							@mkdir($this->getWpContentDir("/cache/tmpWpfc"), 0755, true);
+						}
+
+						if(is_dir($path)){
+							rename($path, $this->getWpContentDir("/cache/tmpWpfc/").time());
+						}
+
+						if(is_dir($mobile_path)){
+							rename($mobile_path, $this->getWpContentDir("/cache/tmpWpfc/mobile_").time());
+						}
+						
+					}
+
+				}
+			}
+		}
+
+		public function singleDeleteCache($comment_id = false, $post_id = false, $to_clear_parents = true){
+			if($varnish_datas = get_option("WpFastestCacheVarnish")){
+				include_once('inc/varnish.php');
+				VarnishWPFC::purge_cache($varnish_datas);
+			}
+
+			include_once('inc/cdn.php');
+>>>>>>> update
 			CdnWPFC::cloudflare_clear_cache();
 
 			$to_clear_feed = true;
@@ -1292,6 +1616,12 @@ GNU General Public License for more details.
 					// to clear sitemap cache
 					$this->delete_sitemap_cache();
 
+<<<<<<< HEAD
+=======
+					// to clear cache of next post and cache of prev post
+					$this->delete_next_prev_cache($post_id);
+
+>>>>>>> update
 					// to clear cache of cats and  tags which contains the post (only first page)
 					global $wpdb;
 					$terms = $wpdb->get_results("SELECT * FROM `".$wpdb->prefix."term_relationships` WHERE `object_id`=".$post_id, ARRAY_A);
@@ -1305,6 +1635,43 @@ GNU General Public License for more details.
 			}
 		}
 
+<<<<<<< HEAD
+=======
+		public function delete_next_prev_cache($post_id){
+			global $wpdb;
+			
+			$post = get_post($post_id);
+
+			$next_post_query = "SELECT * FROM `".$wpdb->prefix."posts` WHERE ID = (SELECT min(ID) FROM `".$wpdb->prefix."posts` where ID > ".$post_id." AND `post_type` = '".$post->post_type."' AND `post_status` = 'publish')";
+			$prev_post_query = "SELECT * FROM `".$wpdb->prefix."posts` WHERE ID = (SELECT max(ID) FROM `".$wpdb->prefix."posts` where ID < ".$post_id." AND `post_type` = '".$post->post_type."' AND `post_status` = 'publish')";
+
+			$res = $wpdb->get_results($next_post_query." UNION ".$prev_post_query);
+
+			if(isset($res[0])){
+
+				foreach ($res as $key => $value) {
+					$permalink = urldecode(get_permalink($value->ID));
+
+					if(preg_match("/https?:\/\/[^\/]+\/(.+)/", $permalink, $out)){
+						$path = $this->getWpContentDir("/cache/all/").$out[1];
+						$mobile_path = $this->getWpContentDir("/cache/wpfc-mobile-cache/").$out[1];
+
+						if(is_dir($path)){
+							$this->rm_folder_recursively($path);
+						}
+
+						if(is_dir($mobile_path)){
+							$this->rm_folder_recursively($mobile_path);
+						}
+					}
+				}
+
+			}
+
+
+		}
+
+>>>>>>> update
 		public function delete_sitemap_cache(){
 			//to clear sitemap.xml and sitemap-(.+).xml
 			$files = array_merge(glob($this->getWpContentDir("/cache/all/")."sitemap*.xml"), glob($this->getWpContentDir("/cache/wpfc-mobile-cache/")."sitemap*.xml"));
@@ -1347,8 +1714,41 @@ GNU General Public License for more details.
 				$path = $this->getWpContentDir("/cache/all/").$out[1];
 				$mobile_path = $this->getWpContentDir("/cache/wpfc-mobile-cache/").$out[1];
 					
+<<<<<<< HEAD
 				$this->rm_folder_recursively($path);
 				$this->rm_folder_recursively($mobile_path);
+=======
+				$this->move_folder_to_tmpWpfc($path);
+				$this->move_folder_to_tmpWpfc($mobile_path);
+			}
+		}
+
+		public function move_folder_to_tmpWpfc($path = false){
+			if(!is_dir($this->getWpContentDir("/cache/tmpWpfc"))){
+				@mkdir($this->getWpContentDir("/cache/tmpWpfc"), 0755, true);
+			}
+
+			if(!$path){
+				return false;
+			}
+
+			if(!is_dir($this->getWpContentDir("/cache/tmpWpfc"))){
+				return false;
+			}
+
+			if(is_dir($path)){
+				preg_match("/\/([^\/]+)\/?$/", $path, $type);
+
+				if(isset($type[1])){
+					if(preg_match("/\/cache\/wpfc-mobile-cache\//", $path)){
+						$type[1] = "m_".$type[1];
+					}
+
+					$move_to = $this->getWpContentDir("/cache/tmpWpfc/").$type[1]."_".time();
+
+					rename($path, $move_to);
+				}
+>>>>>>> update
 			}
 		}
 
@@ -1389,6 +1789,7 @@ GNU General Public License for more details.
 
 			if($term->parent > 0){
 				$parent = get_term_by("id", $term->parent, $term->taxonomy);
+<<<<<<< HEAD
 				$this->delete_cache_of_term($parent->term_taxonomy_id);
 			}
 
@@ -1397,6 +1798,27 @@ GNU General Public License for more details.
 		}
 
 		public function deleteHomePageCache($log = true){
+=======
+
+				if(isset($parent->term_taxonomy_id)){
+					$this->delete_cache_of_term($parent->term_taxonomy_id);
+				}
+			}
+		}
+
+		public function unlink($path){
+			if(file_exists($path)){
+				unlink($path);
+			}
+		}
+
+		public function deleteHomePageCache($log = true){
+			if($varnish_datas = get_option("WpFastestCacheVarnish")){
+				include_once('inc/varnish.php');
+				VarnishWPFC::purge_cache($varnish_datas);
+			}
+
+>>>>>>> update
 			include_once('inc/cdn.php');
 			CdnWPFC::cloudflare_clear_cache();
 
@@ -1407,8 +1829,13 @@ GNU General Public License for more details.
 				$site_url_path = trim($site_url_path, "/");
 
 				if($site_url_path){
+<<<<<<< HEAD
 					@unlink($this->getWpContentDir("/cache/all/").$site_url_path."/index.html");
 					@unlink($this->getWpContentDir("/cache/wpfc-mobile-cache/").$site_url_path."/index.html");
+=======
+					$this->unlink($this->getWpContentDir("/cache/all/").$site_url_path."/index.html");
+					$this->unlink($this->getWpContentDir("/cache/wpfc-mobile-cache/").$site_url_path."/index.html");
+>>>>>>> update
 
 					//to clear pagination of homepage cache
 					$this->rm_folder_recursively($this->getWpContentDir("/cache/all/").$site_url_path."/page");
@@ -1420,8 +1847,13 @@ GNU General Public License for more details.
 				$home_url_path = trim($home_url_path, "/");
 
 				if($home_url_path){
+<<<<<<< HEAD
 					@unlink($this->getWpContentDir("/cache/all/").$home_url_path."/index.html");
 					@unlink($this->getWpContentDir("/cache/wpfc-mobile-cache/").$home_url_path."/index.html");
+=======
+					$this->unlink($this->getWpContentDir("/cache/all/").$home_url_path."/index.html");
+					$this->unlink($this->getWpContentDir("/cache/wpfc-mobile-cache/").$home_url_path."/index.html");
+>>>>>>> update
 
 					//to clear pagination of homepage cache
 					$this->rm_folder_recursively($this->getWpContentDir("/cache/all/").$home_url_path."/page");
@@ -1453,6 +1885,7 @@ GNU General Public License for more details.
 				}
 			}
 
+<<<<<<< HEAD
 			if(file_exists($this->getWpContentDir("/cache/all/index.html"))){
 				@unlink($this->getWpContentDir("/cache/all/index.html"));
 			}
@@ -1460,6 +1893,10 @@ GNU General Public License for more details.
 			if(file_exists($this->getWpContentDir("/cache/wpfc-mobile-cache/index.html"))){
 				@unlink($this->getWpContentDir("/cache/wpfc-mobile-cache/index.html"));
 			}
+=======
+			$this->unlink($this->getWpContentDir("/cache/all/index.html"));
+			$this->unlink($this->getWpContentDir("/cache/wpfc-mobile-cache/index.html"));
+>>>>>>> update
 
 			//to clear pagination of homepage cache
 			$this->rm_folder_recursively($this->getWpContentDir("/cache/all/page"));
@@ -1495,6 +1932,14 @@ GNU General Public License for more details.
 		}
 
 		public function deleteCache($minified = false){
+<<<<<<< HEAD
+=======
+			if($varnish_datas = get_option("WpFastestCacheVarnish")){
+				include_once('inc/varnish.php');
+				VarnishWPFC::purge_cache($varnish_datas);
+			}
+
+>>>>>>> update
 			include_once('inc/cdn.php');
 			CdnWPFC::cloudflare_clear_cache();
 
@@ -1620,7 +2065,11 @@ GNU General Public License for more details.
 			PreloadWPFC::create_preload_cache($this->options);
 		}
 
+<<<<<<< HEAD
 		public function wpfc_remote_get($url, $user_agent){
+=======
+		public function wpfc_remote_get($url, $user_agent, $return_content = false){
+>>>>>>> update
 			//$response = wp_remote_get($url, array('timeout' => 10, 'sslverify' => false, 'headers' => array("cache-control" => array("no-store, no-cache, must-revalidate", "post-check=0, pre-check=0"),'user-agent' => $user_agent)));
 			$response = wp_remote_get($url, array('user-agent' => $user_agent, 'timeout' => 10, 'sslverify' => false, 'headers' => array("cache-control" => "no-store, no-cache, must-revalidate, post-check=0, pre-check=0")));
 
@@ -1632,6 +2081,17 @@ GNU General Public License for more details.
 				if(wp_remote_retrieve_response_code($response) != 200){
 					return false;
 				}
+<<<<<<< HEAD
+=======
+
+				if($return_content){
+					if(wp_remote_retrieve_response_code($response) == 200){
+						$data = wp_remote_retrieve_body($response);
+
+						return $data;
+					}
+				}
+>>>>>>> update
 			}
 
 			return true;
@@ -1644,8 +2104,12 @@ GNU General Public License for more details.
 				if($rule->prefix == "all"){
 					$this->deleteCache();
 				}else if($rule->prefix == "homepage"){
+<<<<<<< HEAD
 					@unlink($this->getWpContentDir("/cache/all/index.html"));
 					@unlink($this->getWpContentDir("/cache/wpfc-mobile-cache/index.html"));
+=======
+					$this->deleteHomePageCache();
+>>>>>>> update
 
 					if(isset($this->options->wpFastestCachePreload_homepage) && $this->options->wpFastestCachePreload_homepage){
 						$this->wpfc_remote_get(get_option("home"), "WP Fastest Cache Preload Bot - After Cache Timeout");
@@ -1705,6 +2169,7 @@ GNU General Public License for more details.
 		}
 
 		public function excludeAdminCookie(){
+<<<<<<< HEAD
 			$rules = "";
 			$users_groups = array_chunk(get_users(array("role" => "administrator", "fields" => array("user_login"))), 5);
 
@@ -1735,6 +2200,36 @@ GNU General Public License for more details.
 			}
 
 			return "# Start_WPFC_Exclude_Admin_Cookie\n".$rules."\n# End_WPFC_Exclude_Admin_Cookie\n";
+=======
+			$usernames = array();
+			$users_groups = array_chunk(get_users(array("role" => "administrator", "fields" => array("user_login"))), 5);
+
+			foreach ($users_groups as $group_key => $group) {
+				$tmp_user = "";
+				$tmp_rule = "";
+
+				foreach ($group as $key => $value) {
+					$tmp_user = sanitize_user(wp_unslash($value->user_login), true);
+
+					/*
+						to replace spaces with %20
+
+						1. Empty space character causes 500 internal server error
+						2. "\s" is not detected by htaccess so we added "%20"
+					*/
+
+					$tmp_user = preg_replace("/\s/", "%20", $tmp_user);
+					
+					array_push($usernames, $tmp_user);
+				}
+			}
+
+			$rule = "# Start_WPFC_Exclude_Admin_Cookie\n"; 
+			$rule = $rule."RewriteCond %{HTTP:Cookie} !wordpress_logged_in_[^\=]+\=".implode("|", $usernames);
+			$rule = $rule."\n# End_WPFC_Exclude_Admin_Cookie\n";
+
+			return $rule;
+>>>>>>> update
 		}
 
 		public function excludeRules(){
@@ -2139,6 +2634,7 @@ GNU General Public License for more details.
 					$path = preg_replace("/.+\/wp-includes\/(.+)/", ABSPATH."wp-includes/"."$1", $url);
 				}
 
+<<<<<<< HEAD
 				if(@file_exists($path)){
 					$filesize = filesize($path);
 
@@ -2152,6 +2648,25 @@ GNU General Public License for more details.
 						return false;
 					}
 				}
+=======
+				if(isset($path)){
+					if(@file_exists($path)){
+						$filesize = filesize($path);
+
+						if($filesize > 0){
+							$myfile = fopen($path, "r") or die("Unable to open file!");
+							$data = fread($myfile, $filesize);
+							fclose($myfile);
+
+							return $data;
+						}else{
+							return false;
+						}
+					}
+				}
+
+
+>>>>>>> update
 			}
 
 			return false;
@@ -2214,10 +2729,24 @@ GNU General Public License for more details.
 	}
 
 	function wpfc_clear_all_site_cache(){
+<<<<<<< HEAD
+=======
+		if(defined('WPFC_DISABLE_HOOK_CLEAR_ALL_CACHE') && WPFC_DISABLE_HOOK_CLEAR_ALL_CACHE){
+			return array("success" => false, "message" => "Clearing Cache Hook system has been disabled");
+		}
+
+>>>>>>> update
 		do_action("wpfc_clear_all_cache");
 	}
 
 	function wpfc_clear_all_cache($minified = false){
+<<<<<<< HEAD
+=======
+		if(defined('WPFC_DISABLE_HOOK_CLEAR_ALL_CACHE') && WPFC_DISABLE_HOOK_CLEAR_ALL_CACHE){
+			return array("success" => false, "message" => "Clearing Cache Hook system has been disabled");
+		}
+
+>>>>>>> update
 		do_action("wpfc_clear_all_cache", $minified);
 	}
 
@@ -2231,5 +2760,20 @@ GNU General Public License for more details.
 		}
 	}
 
+<<<<<<< HEAD
 	$GLOBALS["wp_fastest_cache"] = new WpFastestCache();
+=======
+	function wpfc_create_post_cache_by_id($post_id = false){
+		if($post_id){
+			do_action("wpfc_create_post_cache_by_id", $post_id);
+		}
+	}
+
+
+
+	$GLOBALS["wp_fastest_cache"] = new WpFastestCache();
+
+
+
+>>>>>>> update
 ?>

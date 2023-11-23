@@ -107,7 +107,11 @@ class Indexable_Repository {
 	 * This may be the result of the indexable not existing or of being unable to determine what type of page the
 	 * current page is.
 	 *
+<<<<<<< HEAD
 	 * @return bool|Indexable The indexable, false if none could be found.
+=======
+	 * @return bool|Indexable The indexable. If no indexable is found returns an empty indexable. Returns false if there is a database error.
+>>>>>>> update
 	 */
 	public function for_current_page() {
 		$indexable = false;
@@ -489,7 +493,11 @@ class Indexable_Repository {
 	public function ensure_permalink( $indexable ) {
 		// @phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- self::class is safe.
 		// @phpcs:ignore Squiz.PHP.CommentedOutCode.Found
+<<<<<<< HEAD
 		// _deprecated_function( __METHOD__, 'WPSEO 17.3', self::class . '::upgrade_indexable' );
+=======
+		// _deprecated_function( __METHOD__, 'Yoast SEO 17.3', self::class . '::upgrade_indexable' );
+>>>>>>> update
 
 		return $this->upgrade_indexable( $indexable );
 	}
@@ -535,4 +543,16 @@ class Indexable_Repository {
 
 		return $query->update_many();
 	}
+<<<<<<< HEAD
+=======
+
+	/**
+	 * Gets the total number of stored indexables.
+	 *
+	 * @return int The total number of stored indexables.
+	 */
+	public function get_total_number_of_indexables() {
+		return $this->query()->count();
+	}
+>>>>>>> update
 }

@@ -6,6 +6,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( ! class_exists( 'ACF_Data' ) ) :
 
+<<<<<<< HEAD
+=======
+	#[AllowDynamicProperties]
+>>>>>>> update
 	class ACF_Data {
 
 		/** @var string Unique identifier. */

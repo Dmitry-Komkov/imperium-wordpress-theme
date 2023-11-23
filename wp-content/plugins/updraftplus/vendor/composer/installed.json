@@ -1,6 +1,7 @@
 {
     "packages": [
         {
+<<<<<<< HEAD
             "name": "aws/aws-crt-php",
             "version": "v1.0.2",
             "version_normalized": "1.0.2.0",
@@ -163,6 +164,23 @@
                 "shasum": ""
             },
             "time": "2021-03-20T19:13:42+00:00",
+=======
+            "name": "components/jquery",
+            "version": "v3.7.1",
+            "version_normalized": "3.7.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/components/jquery.git",
+                "reference": "8edc7785239bb8c2ad2b83302b856a1d61de60e7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/components/jquery/zipball/8edc7785239bb8c2ad2b83302b856a1d61de60e7",
+                "reference": "8edc7785239bb8c2ad2b83302b856a1d61de60e7",
+                "shasum": ""
+            },
+            "time": "2023-09-22T01:43:46+00:00",
+>>>>>>> update
             "type": "component",
             "extra": {
                 "component": {
@@ -465,6 +483,7 @@
         },
         {
             "name": "guzzlehttp/promises",
+<<<<<<< HEAD
             "version": "1.5.2",
             "version_normalized": "1.5.2.0",
             "source": {
@@ -476,6 +495,19 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/guzzle/promises/zipball/b94b2807d85443f9719887892882d0329d1e2598",
                 "reference": "b94b2807d85443f9719887892882d0329d1e2598",
+=======
+            "version": "1.5.3",
+            "version_normalized": "1.5.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/promises.git",
+                "reference": "67ab6e18aaa14d753cc148911d273f6e6cb6721e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guzzle/promises/zipball/67ab6e18aaa14d753cc148911d273f6e6cb6721e",
+                "reference": "67ab6e18aaa14d753cc148911d273f6e6cb6721e",
+>>>>>>> update
                 "shasum": ""
             },
             "require": {
@@ -484,6 +516,7 @@
             "require-dev": {
                 "symfony/phpunit-bridge": "^4.4 || ^5.1"
             },
+<<<<<<< HEAD
             "time": "2022-08-28T14:55:35+00:00",
             "type": "library",
             "extra": {
@@ -491,6 +524,10 @@
                     "dev-master": "1.5-dev"
                 }
             },
+=======
+            "time": "2023-05-21T12:31:43+00:00",
+            "type": "library",
+>>>>>>> update
             "installation-source": "dist",
             "autoload": {
                 "files": [
@@ -532,7 +569,11 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/promises/issues",
+<<<<<<< HEAD
                 "source": "https://github.com/guzzle/promises/tree/1.5.2"
+=======
+                "source": "https://github.com/guzzle/promises/tree/1.5.3"
+>>>>>>> update
             },
             "funding": [
                 {
@@ -552,6 +593,7 @@
         },
         {
             "name": "guzzlehttp/psr7",
+<<<<<<< HEAD
             "version": "1.9.0",
             "version_normalized": "1.9.0.0",
             "source": {
@@ -563,6 +605,19 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/guzzle/psr7/zipball/e98e3e6d4f86621a9b75f623996e6bbdeb4b9318",
                 "reference": "e98e3e6d4f86621a9b75f623996e6bbdeb4b9318",
+=======
+            "version": "1.9.1",
+            "version_normalized": "1.9.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/psr7.git",
+                "reference": "e4490cabc77465aaee90b20cfc9a770f8c04be6b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/e4490cabc77465aaee90b20cfc9a770f8c04be6b",
+                "reference": "e4490cabc77465aaee90b20cfc9a770f8c04be6b",
+>>>>>>> update
                 "shasum": ""
             },
             "require": {
@@ -580,6 +635,7 @@
             "suggest": {
                 "laminas/laminas-httphandlerrunner": "Emit PSR-7 responses"
             },
+<<<<<<< HEAD
             "time": "2022-06-20T21:43:03+00:00",
             "type": "library",
             "extra": {
@@ -587,6 +643,10 @@
                     "dev-master": "1.9-dev"
                 }
             },
+=======
+            "time": "2023-04-17T16:00:37+00:00",
+            "type": "library",
+>>>>>>> update
             "installation-source": "dist",
             "autoload": {
                 "files": [
@@ -645,7 +705,11 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/psr7/issues",
+<<<<<<< HEAD
                 "source": "https://github.com/guzzle/psr7/tree/1.9.0"
+=======
+                "source": "https://github.com/guzzle/psr7/tree/1.9.1"
+>>>>>>> update
             },
             "funding": [
                 {
@@ -698,6 +762,7 @@
             "install-path": "../mikemccabe/json-patch-php"
         },
         {
+<<<<<<< HEAD
             "name": "mtdowling/jmespath.php",
             "version": "2.6.1",
             "version_normalized": "2.6.1.0",
@@ -762,6 +827,8 @@
             "install-path": "../mtdowling/jmespath.php"
         },
         {
+=======
+>>>>>>> update
             "name": "paragonie/random_compat",
             "version": "v2.0.21",
             "version_normalized": "2.0.21.0",
@@ -820,6 +887,7 @@
         },
         {
             "name": "phpseclib/phpseclib",
+<<<<<<< HEAD
             "version": "1.0.20",
             "version_normalized": "1.0.20.0",
             "source": {
@@ -835,6 +903,23 @@
             },
             "require": {
                 "php": ">=5.0.0"
+=======
+            "version": "2.0.45",
+            "version_normalized": "2.0.45.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpseclib/phpseclib.git",
+                "reference": "28d8f438a0064c9de80857e3270d071495544640"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/28d8f438a0064c9de80857e3270d071495544640",
+                "reference": "28d8f438a0064c9de80857e3270d071495544640",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+>>>>>>> update
             },
             "require-dev": {
                 "phing/phing": "~2.7",
@@ -843,14 +928,24 @@
             },
             "suggest": {
                 "ext-gmp": "Install the GMP (GNU Multiple Precision) extension in order to speed up arbitrary precision integer arithmetic operations.",
+<<<<<<< HEAD
                 "ext-mcrypt": "Install the Mcrypt extension in order to speed up a wide variety of cryptographic operations.",
                 "pear-pear/PHP_Compat": "Install PHP_Compat to get phpseclib working on PHP < 5.0.0."
             },
             "time": "2021-12-28T06:26:23+00:00",
+=======
+                "ext-libsodium": "SSH2/SFTP can make use of some algorithms provided by the libsodium-php extension.",
+                "ext-mcrypt": "Install the Mcrypt extension in order to speed up a few other cryptographic operations.",
+                "ext-openssl": "Install the OpenSSL extension in order to speed up a wide variety of cryptographic operations.",
+                "ext-xml": "Install the XML extension to load XML formatted public keys."
+            },
+            "time": "2023-09-15T20:55:47+00:00",
+>>>>>>> update
             "type": "library",
             "installation-source": "dist",
             "autoload": {
                 "files": [
+<<<<<<< HEAD
                     "phpseclib/bootstrap.php",
                     "phpseclib/Crypt/Random.php"
                 ],
@@ -866,6 +961,15 @@
             "include-path": [
                 "phpseclib/"
             ],
+=======
+                    "phpseclib/bootstrap.php"
+                ],
+                "psr-4": {
+                    "phpseclib\\": "phpseclib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+>>>>>>> update
             "license": [
                 "MIT"
             ],
@@ -919,7 +1023,11 @@
             ],
             "support": {
                 "issues": "https://github.com/phpseclib/phpseclib/issues",
+<<<<<<< HEAD
                 "source": "https://github.com/phpseclib/phpseclib/tree/1.0.20"
+=======
+                "source": "https://github.com/phpseclib/phpseclib/tree/2.0.45"
+>>>>>>> update
             },
             "funding": [
                 {
@@ -939,6 +1047,7 @@
         },
         {
             "name": "psr/http-message",
+<<<<<<< HEAD
             "version": "1.0.1",
             "version_normalized": "1.0.1.0",
             "source": {
@@ -960,6 +1069,29 @@
             "extra": {
                 "branch-alias": {
                     "dev-master": "1.0.x-dev"
+=======
+            "version": "1.1",
+            "version_normalized": "1.1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/http-message.git",
+                "reference": "cb6ce4845ce34a8ad9e68117c10ee90a29919eba"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/http-message/zipball/cb6ce4845ce34a8ad9e68117c10ee90a29919eba",
+                "reference": "cb6ce4845ce34a8ad9e68117c10ee90a29919eba",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2 || ^8.0"
+            },
+            "time": "2023-04-04T09:50:52+00:00",
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1.x-dev"
+>>>>>>> update
                 }
             },
             "installation-source": "dist",
@@ -989,7 +1121,11 @@
                 "response"
             ],
             "support": {
+<<<<<<< HEAD
                 "source": "https://github.com/php-fig/http-message/tree/master"
+=======
+                "source": "https://github.com/php-fig/http-message/tree/1.1"
+>>>>>>> update
             },
             "install-path": "../psr/http-message"
         },
@@ -1657,7 +1793,11 @@
             "version_normalized": "3.0.3.0",
             "source": {
                 "type": "git",
+<<<<<<< HEAD
                 "url": "https://source.updraftplus.com/team-updraft/common-libs.git",
+=======
+                "url": "git@source.updraftplus.com:team-updraft/common-libs.git",
+>>>>>>> update
                 "reference": "cd30bf3b65e2cadcea1cca01deb32f5cd21a0b63"
             },
             "dist": {
@@ -1689,6 +1829,7 @@
         },
         {
             "name": "vakata/jstree",
+<<<<<<< HEAD
             "version": "3.3.12",
             "version_normalized": "3.3.12.0",
             "source": {
@@ -1700,6 +1841,19 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/vakata/jstree/zipball/7a03954015eaea2467956dc05e6be78f4d1a1ff0",
                 "reference": "7a03954015eaea2467956dc05e6be78f4d1a1ff0",
+=======
+            "version": "3.3.16",
+            "version_normalized": "3.3.16.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vakata/jstree.git",
+                "reference": "b3135cfc65eba90d4c670e6959273ef92cd1b447"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vakata/jstree/zipball/b3135cfc65eba90d4c670e6959273ef92cd1b447",
+                "reference": "b3135cfc65eba90d4c670e6959273ef92cd1b447",
+>>>>>>> update
                 "shasum": ""
             },
             "require": {
@@ -1708,7 +1862,11 @@
             "suggest": {
                 "robloach/component-installer": "Allows installation of Components via Composer"
             },
+<<<<<<< HEAD
             "time": "2021-09-03T12:55:53+00:00",
+=======
+            "time": "2023-09-19T10:32:25+00:00",
+>>>>>>> update
             "type": "component",
             "extra": {
                 "component": {
@@ -1752,10 +1910,13 @@
             },
             "funding": [
                 {
+<<<<<<< HEAD
                     "url": "https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=paypal@vakata.com&currency_code=USD&amount=&return=http://jstree.com/donation&item_name=Buy+me+a+coffee+for+jsTree",
                     "type": "custom"
                 },
                 {
+=======
+>>>>>>> update
                     "url": "https://github.com/vakata",
                     "type": "github"
                 }

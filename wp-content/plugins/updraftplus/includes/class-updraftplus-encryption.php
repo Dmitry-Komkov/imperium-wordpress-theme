@@ -244,7 +244,11 @@ class UpdraftPlus_Encryption {
 			if (!$resumption) {
 				$updraftplus->log("Could not resume the encryption will now try to start again");
 				// remove the existing encrypted file as it's no good to us now
+<<<<<<< HEAD
 				@unlink($encrypted_path);// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
+=======
+				@unlink($encrypted_path);// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged -- Silenced to suppress errors that may arise if the file doesn't exist.
+>>>>>>> update
 				// reset the data encrypted so that the loop can be entered
 				$data_encrypted = 0;
 				// setup encryption to reset the IV
@@ -333,7 +337,11 @@ class UpdraftPlus_Encryption {
 		
 		if ('' == $encryption) {
 			header('Content-type: text/plain');
+<<<<<<< HEAD
 			_e("Decryption failed. The database file is encrypted, but you have no encryption key entered.", 'updraftplus');
+=======
+			echo __('Decryption failed.', 'updraftplus').' '.__('The database file is encrypted, but you have no encryption key entered.', 'updraftplus');
+>>>>>>> update
 			$updraftplus->log('Decryption of database failed: the database file is encrypted, but you have no encryption key entered.', 'error');
 		} else {
 
@@ -351,7 +359,11 @@ class UpdraftPlus_Encryption {
 				unlink($decrypted_file['fullpath']);
 			} else {
 				header('Content-type: text/plain');
+<<<<<<< HEAD
 				echo __("Decryption failed. The most likely cause is that you used the wrong key.", 'updraftplus')." ".__('The decryption key used:', 'updraftplus').' '.$encryption;
+=======
+				echo __('Decryption failed.', 'updraftplus').' '.__('The most likely cause is that you used the wrong key.', 'updraftplus').' '.__('The decryption key used:', 'updraftplus').' '.$encryption;
+>>>>>>> update
 				
 			}
 		}

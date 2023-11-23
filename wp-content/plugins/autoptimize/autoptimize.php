@@ -1,11 +1,19 @@
 <?php
 /**
  * Plugin Name: Autoptimize
+<<<<<<< HEAD
  * Plugin URI: https://autoptimize.com/
  * Description: Makes your site faster by optimizing CSS, JS, Images, Google fonts and more.
  * Version: 3.1.1.1
  * Author: Frank Goossens (futtta)
  * Author URI: https://autoptimize.com/
+=======
+ * Plugin URI: https://autoptimize.com/pro/
+ * Description: Makes your site faster by optimizing CSS, JS, Images, Google fonts and more.
+ * Version: 3.1.10
+ * Author: Frank Goossens (futtta)
+ * Author URI: https://autoptimize.com/pro/
+>>>>>>> update
  * Text Domain: autoptimize
  * License: GPLv2
  * Released under the GNU General Public License (GPL)
@@ -21,7 +29,11 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
+<<<<<<< HEAD
 define( 'AUTOPTIMIZE_PLUGIN_VERSION', '3.1.1.1' );
+=======
+define( 'AUTOPTIMIZE_PLUGIN_VERSION', '3.1.10' );
+>>>>>>> update
 
 // plugin_dir_path() returns the trailing slash!
 define( 'AUTOPTIMIZE_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
@@ -79,6 +91,14 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
     require AUTOPTIMIZE_PLUGIN_DIR . 'classes/autoptimizeCLI.php';
 }
 
+<<<<<<< HEAD
+=======
+// filter to disable AO both on front- and backend.
+if ( apply_filters( 'autoptimize_filter_disable_plugin', false ) ) {
+    return;
+}
+
+>>>>>>> update
 /**
  * Retrieve the instance of the main plugin class.
  *

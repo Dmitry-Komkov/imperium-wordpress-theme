@@ -2,13 +2,20 @@
 
 namespace YoastSEO_Vendor\GuzzleHttp\Exception;
 
+<<<<<<< HEAD
 use YoastSEO_Vendor\GuzzleHttp\Promise\PromiseInterface;
+=======
+use YoastSEO_Vendor\GuzzleHttp\BodySummarizer;
+use YoastSEO_Vendor\GuzzleHttp\BodySummarizerInterface;
+use YoastSEO_Vendor\Psr\Http\Client\RequestExceptionInterface;
+>>>>>>> update
 use YoastSEO_Vendor\Psr\Http\Message\RequestInterface;
 use YoastSEO_Vendor\Psr\Http\Message\ResponseInterface;
 use YoastSEO_Vendor\Psr\Http\Message\UriInterface;
 /**
  * HTTP Request exception
  */
+<<<<<<< HEAD
 class RequestException extends \YoastSEO_Vendor\GuzzleHttp\Exception\TransferException
 {
     /** @var RequestInterface */
@@ -21,6 +28,26 @@ class RequestException extends \YoastSEO_Vendor\GuzzleHttp\Exception\TransferExc
     {
         // Set the code of the exception if the response is set and not future.
         $code = $response && !$response instanceof \YoastSEO_Vendor\GuzzleHttp\Promise\PromiseInterface ? $response->getStatusCode() : 0;
+=======
+class RequestException extends \YoastSEO_Vendor\GuzzleHttp\Exception\TransferException implements \YoastSEO_Vendor\Psr\Http\Client\RequestExceptionInterface
+{
+    /**
+     * @var RequestInterface
+     */
+    private $request;
+    /**
+     * @var ResponseInterface|null
+     */
+    private $response;
+    /**
+     * @var array
+     */
+    private $handlerContext;
+    public function __construct(string $message, \YoastSEO_Vendor\Psr\Http\Message\RequestInterface $request, \YoastSEO_Vendor\Psr\Http\Message\ResponseInterface $response = null, \Throwable $previous = null, array $handlerContext = [])
+    {
+        // Set the code of the exception if the response is set and not future.
+        $code = $response ? $response->getStatusCode() : 0;
+>>>>>>> update
         parent::__construct($message, $code, $previous);
         $this->request = $request;
         $this->response = $response;
@@ -28,6 +55,7 @@ class RequestException extends \YoastSEO_Vendor\GuzzleHttp\Exception\TransferExc
     }
     /**
      * Wrap non-RequestExceptions with a RequestException
+<<<<<<< HEAD
      *
      * @param RequestInterface $request
      * @param \Exception       $e
@@ -35,12 +63,17 @@ class RequestException extends \YoastSEO_Vendor\GuzzleHttp\Exception\TransferExc
      * @return RequestException
      */
     public static function wrapException(\YoastSEO_Vendor\Psr\Http\Message\RequestInterface $request, \Exception $e)
+=======
+     */
+    public static function wrapException(\YoastSEO_Vendor\Psr\Http\Message\RequestInterface $request, \Throwable $e) : \YoastSEO_Vendor\GuzzleHttp\Exception\RequestException
+>>>>>>> update
     {
         return $e instanceof \YoastSEO_Vendor\GuzzleHttp\Exception\RequestException ? $e : new \YoastSEO_Vendor\GuzzleHttp\Exception\RequestException($e->getMessage(), $request, null, $e);
     }
     /**
      * Factory method to create a new exception with a normalized error message
      *
+<<<<<<< HEAD
      * @param RequestInterface  $request  Request
      * @param ResponseInterface $response Response received
      * @param \Exception        $previous Previous exception
@@ -52,6 +85,18 @@ class RequestException extends \YoastSEO_Vendor\GuzzleHttp\Exception\TransferExc
     {
         if (!$response) {
             return new self('Error completing request', $request, null, $previous, $ctx);
+=======
+     * @param RequestInterface             $request        Request sent
+     * @param ResponseInterface            $response       Response received
+     * @param \Throwable|null              $previous       Previous exception
+     * @param array                        $handlerContext Optional handler context
+     * @param BodySummarizerInterface|null $bodySummarizer Optional body summarizer
+     */
+    public static function create(\YoastSEO_Vendor\Psr\Http\Message\RequestInterface $request, \YoastSEO_Vendor\Psr\Http\Message\ResponseInterface $response = null, \Throwable $previous = null, array $handlerContext = [], \YoastSEO_Vendor\GuzzleHttp\BodySummarizerInterface $bodySummarizer = null) : self
+    {
+        if (!$response) {
+            return new self('Error completing request', $request, null, $previous, $handlerContext);
+>>>>>>> update
         }
         $level = (int) \floor($response->getStatusCode() / 100);
         if ($level === 4) {
@@ -68,6 +113,7 @@ class RequestException extends \YoastSEO_Vendor\GuzzleHttp\Exception\TransferExc
         $uri = static::obfuscateUri($uri);
         // Client Error: `GET /` resulted in a `404 Not Found` response:
         // <html> ... (truncated)
+<<<<<<< HEAD
         $message = \sprintf('%s: `%s %s` resulted in a `%s %s` response', $label, $request->getMethod(), $uri, $response->getStatusCode(), $response->getReasonPhrase());
         $summary = static::getResponseBodySummary($response);
         if ($summary !== null) {
@@ -96,6 +142,19 @@ class RequestException extends \YoastSEO_Vendor\GuzzleHttp\Exception\TransferExc
      * @return UriInterface
      */
     private static function obfuscateUri(\YoastSEO_Vendor\Psr\Http\Message\UriInterface $uri)
+=======
+        $message = \sprintf('%s: `%s %s` resulted in a `%s %s` response', $label, $request->getMethod(), $uri->__toString(), $response->getStatusCode(), $response->getReasonPhrase());
+        $summary = ($bodySummarizer ?? new \YoastSEO_Vendor\GuzzleHttp\BodySummarizer())->summarize($response);
+        if ($summary !== null) {
+            $message .= ":\n{$summary}\n";
+        }
+        return new $className($message, $request, $response, $previous, $handlerContext);
+    }
+    /**
+     * Obfuscates URI if there is a username and a password present
+     */
+    private static function obfuscateUri(\YoastSEO_Vendor\Psr\Http\Message\UriInterface $uri) : \YoastSEO_Vendor\Psr\Http\Message\UriInterface
+>>>>>>> update
     {
         $userInfo = $uri->getUserInfo();
         if (\false !== ($pos = \strpos($userInfo, ':'))) {
@@ -105,28 +164,43 @@ class RequestException extends \YoastSEO_Vendor\GuzzleHttp\Exception\TransferExc
     }
     /**
      * Get the request that caused the exception
+<<<<<<< HEAD
      *
      * @return RequestInterface
      */
     public function getRequest()
+=======
+     */
+    public function getRequest() : \YoastSEO_Vendor\Psr\Http\Message\RequestInterface
+>>>>>>> update
     {
         return $this->request;
     }
     /**
      * Get the associated response
+<<<<<<< HEAD
      *
      * @return ResponseInterface|null
      */
     public function getResponse()
+=======
+     */
+    public function getResponse() : ?\YoastSEO_Vendor\Psr\Http\Message\ResponseInterface
+>>>>>>> update
     {
         return $this->response;
     }
     /**
      * Check if a response was received
+<<<<<<< HEAD
      *
      * @return bool
      */
     public function hasResponse()
+=======
+     */
+    public function hasResponse() : bool
+>>>>>>> update
     {
         return $this->response !== null;
     }
@@ -137,10 +211,15 @@ class RequestException extends \YoastSEO_Vendor\GuzzleHttp\Exception\TransferExc
      * using. It may also be just an empty array. Relying on this data will
      * couple you to a specific handler, but can give more debug information
      * when needed.
+<<<<<<< HEAD
      *
      * @return array
      */
     public function getHandlerContext()
+=======
+     */
+    public function getHandlerContext() : array
+>>>>>>> update
     {
         return $this->handlerContext;
     }

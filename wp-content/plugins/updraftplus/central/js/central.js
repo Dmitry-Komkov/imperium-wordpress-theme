@@ -27,8 +27,13 @@ function updraftcentral_send_command(action, data, callback, options) {
 		type: 'POST'
 	}
 
+<<<<<<< HEAD
 	if ('undefined' !== typeof uclion.updraftcentral_credentialtest_nonce && uclion.updraftcentral_credentialtest_nonce) {
 		default_options.nonce = uclion.updraftcentral_credentialtest_nonce;
+=======
+	if ('undefined' !== typeof uclion.updraftcentral_request_nonce && uclion.updraftcentral_request_nonce) {
+		default_options.nonce = uclion.updraftcentral_request_nonce;
+>>>>>>> update
 	}
 	
 	if ('undefined' === typeof options) options = {};
@@ -343,7 +348,11 @@ jQuery(function($) {
 
 					if (resp.hasOwnProperty('bundle') && resp.hasOwnProperty('keys_guide')) {
 						jQuery('#updraftcentral_keys_content').html(resp.keys_guide);
+<<<<<<< HEAD
 						jQuery('#updraftcentral_keys_content').append('<div class="updraftcentral_wizard_success">'+resp.r+'<br><textarea onclick="this.select();" style="width:620px; height:165px; word-wrap:break-word; border: 1px solid #aaa; border-radius: 3px; padding:4px;">'+resp.bundle+'</textarea></div>');
+=======
+						jQuery('#updraftcentral_keys_content').append('<div class="updraftcentral_wizard_success">'+resp.r+'<br><textarea id="updraftcentral-key" onclick="this.select();" style="width:620px; height:165px; word-wrap:break-word; border: 1px solid #aaa; border-radius: 3px; padding:4px;">'+resp.bundle+'</textarea><button id="updraftplus-copy" class="button button-secondary" style="display: block;">'+uclion.copy_to_clipboard+'</button></div>');
+>>>>>>> update
 					} else {
 						console.log(resp);
 					}
@@ -376,6 +385,36 @@ jQuery(function($) {
 			console.log(err);
 		}
 	});
+<<<<<<< HEAD
+=======
+
+
+	var updraft_copy_modal_buttons = {};
+	updraft_copy_modal_buttons[updraftlion.close] = function() {
+		jQuery(this).dialog("close");
+	};
+
+	jQuery("#updraft-copy-modal").dialog({
+		autoOpen: false,
+		resizeOnWindowResize: true,
+		scrollWithViewport: true,
+		resizeAccordingToViewport: true,
+		modal: true,
+		buttons: updraft_copy_modal_buttons,
+	});
+
+	jQuery('#updraftcentral_keys_content').on('click', '#updraftplus-copy', function(e) {
+		e.preventDefault();
+		var ele = jQuery('#updraftcentral-key');
+		if (ele[0].value) {
+			navigator.clipboard.writeText(ele[0].value).then(function() {
+				alert(uclion.key_copied);
+					}, function(err) {
+					jQuery('#updraft-copy-modal').dialog('open');
+			});
+		}
+	});
+>>>>>>> update
 	
 	jQuery('#updraftcentral_keys').on('click', '.updraftcentral_key_delete', function(e) {
 		e.preventDefault();

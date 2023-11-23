@@ -190,6 +190,7 @@ class MonsterInsights_Notifications {
 				continue;
 			}
 
+<<<<<<< HEAD
 			// Ignore if notification existed before installing MonsterInsights.
 			// Prevents bombarding the user with notifications after activation.
 			$over_time = get_option( 'monsterinsights_over_time', array() );
@@ -202,6 +203,8 @@ class MonsterInsights_Notifications {
 				continue;
 			}
 
+=======
+>>>>>>> update
 			$data[] = $notification;
 		}
 

@@ -21,10 +21,20 @@ if ( ! class_exists( 'acf_field_true_false' ) ) :
 		function initialize() {
 
 			// vars
+<<<<<<< HEAD
 			$this->name     = 'true_false';
 			$this->label    = __( 'True / False', 'acf' );
 			$this->category = 'choice';
 			$this->defaults = array(
+=======
+			$this->name          = 'true_false';
+			$this->label         = __( 'True / False', 'acf' );
+			$this->category      = 'choice';
+			$this->description   = __( 'A toggle that allows you to pick a value of 1 or 0 (on or off, true or false, etc). Can be presented as a stylized switch or checkbox.', 'acf' );
+			$this->preview_image = acf_get_url() . '/assets/images/field-type-previews/field-preview-true-false.png';
+			$this->doc_url       = acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/resources/true-false/', 'docs', 'field-type-selection' );
+			$this->defaults      = array(
+>>>>>>> update
 				'default_value' => 0,
 				'message'       => '',
 				'ui'            => 0,
@@ -127,10 +137,14 @@ if ( ! class_exists( 'acf_field_true_false' ) ) :
 		*
 		*  @param   $field  - an array holding all the field's data
 		*/
+<<<<<<< HEAD
 
 		function render_field_settings( $field ) {
 
 			// message
+=======
+		function render_field_settings( $field ) {
+>>>>>>> update
 			acf_render_field_setting(
 				$field,
 				array(
@@ -141,7 +155,10 @@ if ( ! class_exists( 'acf_field_true_false' ) ) :
 				)
 			);
 
+<<<<<<< HEAD
 			// default_value
+=======
+>>>>>>> update
 			acf_render_field_setting(
 				$field,
 				array(
@@ -151,6 +168,7 @@ if ( ! class_exists( 'acf_field_true_false' ) ) :
 					'name'         => 'default_value',
 				)
 			);
+<<<<<<< HEAD
 
 			// ui
 			acf_render_field_setting(
@@ -166,6 +184,19 @@ if ( ! class_exists( 'acf_field_true_false' ) ) :
 			);
 
 			// on_text
+=======
+		}
+
+		/**
+		 * Renders the field settings used in the "Presentation" tab.
+		 *
+		 * @since 6.0
+		 *
+		 * @param array $field The field settings array.
+		 * @return void
+		 */
+		function render_field_presentation_settings( $field ) {
+>>>>>>> update
 			acf_render_field_setting(
 				$field,
 				array(
@@ -182,7 +213,10 @@ if ( ! class_exists( 'acf_field_true_false' ) ) :
 				)
 			);
 
+<<<<<<< HEAD
 			// on_text
+=======
+>>>>>>> update
 			acf_render_field_setting(
 				$field,
 				array(
@@ -199,9 +233,25 @@ if ( ! class_exists( 'acf_field_true_false' ) ) :
 				)
 			);
 
+<<<<<<< HEAD
 		}
 
 
+=======
+			acf_render_field_setting(
+				$field,
+				array(
+					'label'        => __( 'Stylized UI', 'acf' ),
+					'instructions' => __( 'Use a stylized checkbox using select2', 'acf' ),
+					'type'         => 'true_false',
+					'name'         => 'ui',
+					'ui'           => 1,
+					'class'        => 'acf-field-object-true-false-ui',
+				)
+			);
+		}
+
+>>>>>>> update
 		/*
 		*  format_value()
 		*

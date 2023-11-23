@@ -2,7 +2,11 @@
 /**
  * Custom Exceptions for the CloudFiles API
  *
+<<<<<<< HEAD
  * Requres PHP 5.x (for Exceptions and OO syntax)
+=======
+ * Requires PHP 5.x (for Exceptions and OO syntax)
+>>>>>>> update
  *
  * See COPYING for license information.
  *

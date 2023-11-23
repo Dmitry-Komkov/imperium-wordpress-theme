@@ -12,7 +12,13 @@ use YoastSEO_Vendor\Psr\Http\Message\ResponseInterface;
  * necessary. Subclasses are also responsible for storing and retrieving
  * cookies from a file, database, etc.
  *
+<<<<<<< HEAD
  * @link http://docs.python.org/2/library/cookielib.html Inspiration
+=======
+ * @see https://docs.python.org/2/library/cookielib.html Inspiration
+ *
+ * @extends \IteratorAggregate<SetCookie>
+>>>>>>> update
  */
 interface CookieJarInterface extends \Countable, \IteratorAggregate
 {
@@ -26,14 +32,22 @@ interface CookieJarInterface extends \Countable, \IteratorAggregate
      *
      * @return RequestInterface returns the modified request.
      */
+<<<<<<< HEAD
     public function withCookieHeader(\YoastSEO_Vendor\Psr\Http\Message\RequestInterface $request);
+=======
+    public function withCookieHeader(\YoastSEO_Vendor\Psr\Http\Message\RequestInterface $request) : \YoastSEO_Vendor\Psr\Http\Message\RequestInterface;
+>>>>>>> update
     /**
      * Extract cookies from an HTTP response and store them in the CookieJar.
      *
      * @param RequestInterface  $request  Request that was sent
      * @param ResponseInterface $response Response that was received
      */
+<<<<<<< HEAD
     public function extractCookies(\YoastSEO_Vendor\Psr\Http\Message\RequestInterface $request, \YoastSEO_Vendor\Psr\Http\Message\ResponseInterface $response);
+=======
+    public function extractCookies(\YoastSEO_Vendor\Psr\Http\Message\RequestInterface $request, \YoastSEO_Vendor\Psr\Http\Message\ResponseInterface $response) : void;
+>>>>>>> update
     /**
      * Sets a cookie in the cookie jar.
      *
@@ -41,7 +55,11 @@ interface CookieJarInterface extends \Countable, \IteratorAggregate
      *
      * @return bool Returns true on success or false on failure
      */
+<<<<<<< HEAD
     public function setCookie(\YoastSEO_Vendor\GuzzleHttp\Cookie\SetCookie $cookie);
+=======
+    public function setCookie(\YoastSEO_Vendor\GuzzleHttp\Cookie\SetCookie $cookie) : bool;
+>>>>>>> update
     /**
      * Remove cookies currently held in the cookie jar.
      *
@@ -55,10 +73,15 @@ interface CookieJarInterface extends \Countable, \IteratorAggregate
      * @param string|null $domain Clears cookies matching a domain
      * @param string|null $path   Clears cookies matching a domain and path
      * @param string|null $name   Clears cookies matching a domain, path, and name
+<<<<<<< HEAD
      *
      * @return CookieJarInterface
      */
     public function clear($domain = null, $path = null, $name = null);
+=======
+     */
+    public function clear(string $domain = null, string $path = null, string $name = null) : void;
+>>>>>>> update
     /**
      * Discard all sessions cookies.
      *
@@ -66,6 +89,7 @@ interface CookieJarInterface extends \Countable, \IteratorAggregate
      * field set to true. To be called when the user agent shuts down according
      * to RFC 2965.
      */
+<<<<<<< HEAD
     public function clearSessionCookies();
     /**
      * Converts the cookie jar to an array.
@@ -73,4 +97,11 @@ interface CookieJarInterface extends \Countable, \IteratorAggregate
      * @return array
      */
     public function toArray();
+=======
+    public function clearSessionCookies() : void;
+    /**
+     * Converts the cookie jar to an array.
+     */
+    public function toArray() : array;
+>>>>>>> update
 }

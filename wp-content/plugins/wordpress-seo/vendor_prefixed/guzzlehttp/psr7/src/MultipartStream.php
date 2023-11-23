@@ -1,11 +1,16 @@
 <?php
 
+<<<<<<< HEAD
+=======
+declare (strict_types=1);
+>>>>>>> update
 namespace YoastSEO_Vendor\GuzzleHttp\Psr7;
 
 use YoastSEO_Vendor\Psr\Http\Message\StreamInterface;
 /**
  * Stream that when read returns bytes for a streaming multipart or
  * multipart/form-data stream.
+<<<<<<< HEAD
  *
  * @final
  */
@@ -13,6 +18,16 @@ class MultipartStream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInterfa
 {
     use StreamDecoratorTrait;
     private $boundary;
+=======
+ */
+final class MultipartStream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInterface
+{
+    use StreamDecoratorTrait;
+    /** @var string */
+    private $boundary;
+    /** @var StreamInterface */
+    private $stream;
+>>>>>>> update
     /**
      * @param array  $elements Array of associative arrays, each containing a
      *                         required "name" key mapping to the form field,
@@ -25,6 +40,7 @@ class MultipartStream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInterfa
      *
      * @throws \InvalidArgumentException
      */
+<<<<<<< HEAD
     public function __construct(array $elements = [], $boundary = null)
     {
         $this->boundary = $boundary ?: \sha1(\uniqid('', \true));
@@ -40,13 +56,32 @@ class MultipartStream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInterfa
         return $this->boundary;
     }
     public function isWritable()
+=======
+    public function __construct(array $elements = [], string $boundary = null)
+    {
+        $this->boundary = $boundary ?: \bin2hex(\random_bytes(20));
+        $this->stream = $this->createStream($elements);
+    }
+    public function getBoundary() : string
+    {
+        return $this->boundary;
+    }
+    public function isWritable() : bool
+>>>>>>> update
     {
         return \false;
     }
     /**
      * Get the headers needed before transferring the content of a POST file
+<<<<<<< HEAD
      */
     private function getHeaders(array $headers)
+=======
+     *
+     * @param array<string, string> $headers
+     */
+    private function getHeaders(array $headers) : string
+>>>>>>> update
     {
         $str = '';
         foreach ($headers as $key => $value) {
@@ -57,17 +92,31 @@ class MultipartStream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInterfa
     /**
      * Create the aggregate stream that will be used to upload the POST data
      */
+<<<<<<< HEAD
     protected function createStream(array $elements)
     {
         $stream = new \YoastSEO_Vendor\GuzzleHttp\Psr7\AppendStream();
         foreach ($elements as $element) {
+=======
+    protected function createStream(array $elements = []) : \YoastSEO_Vendor\Psr\Http\Message\StreamInterface
+    {
+        $stream = new \YoastSEO_Vendor\GuzzleHttp\Psr7\AppendStream();
+        foreach ($elements as $element) {
+            if (!\is_array($element)) {
+                throw new \UnexpectedValueException('An array is expected');
+            }
+>>>>>>> update
             $this->addElement($stream, $element);
         }
         // Add the trailing boundary with CRLF
         $stream->addStream(\YoastSEO_Vendor\GuzzleHttp\Psr7\Utils::streamFor("--{$this->boundary}--\r\n"));
         return $stream;
     }
+<<<<<<< HEAD
     private function addElement(\YoastSEO_Vendor\GuzzleHttp\Psr7\AppendStream $stream, array $element)
+=======
+    private function addElement(\YoastSEO_Vendor\GuzzleHttp\Psr7\AppendStream $stream, array $element) : void
+>>>>>>> update
     {
         foreach (['contents', 'name'] as $key) {
             if (!\array_key_exists($key, $element)) {
@@ -77,19 +126,31 @@ class MultipartStream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInterfa
         $element['contents'] = \YoastSEO_Vendor\GuzzleHttp\Psr7\Utils::streamFor($element['contents']);
         if (empty($element['filename'])) {
             $uri = $element['contents']->getMetadata('uri');
+<<<<<<< HEAD
             if (\substr($uri, 0, 6) !== 'php://') {
                 $element['filename'] = $uri;
             }
         }
         list($body, $headers) = $this->createElement($element['name'], $element['contents'], isset($element['filename']) ? $element['filename'] : null, isset($element['headers']) ? $element['headers'] : []);
+=======
+            if ($uri && \is_string($uri) && \substr($uri, 0, 6) !== 'php://' && \substr($uri, 0, 7) !== 'data://') {
+                $element['filename'] = $uri;
+            }
+        }
+        [$body, $headers] = $this->createElement($element['name'], $element['contents'], $element['filename'] ?? null, $element['headers'] ?? []);
+>>>>>>> update
         $stream->addStream(\YoastSEO_Vendor\GuzzleHttp\Psr7\Utils::streamFor($this->getHeaders($headers)));
         $stream->addStream($body);
         $stream->addStream(\YoastSEO_Vendor\GuzzleHttp\Psr7\Utils::streamFor("\r\n"));
     }
+<<<<<<< HEAD
     /**
      * @return array
      */
     private function createElement($name, \YoastSEO_Vendor\Psr\Http\Message\StreamInterface $stream, $filename, array $headers)
+=======
+    private function createElement(string $name, \YoastSEO_Vendor\Psr\Http\Message\StreamInterface $stream, ?string $filename, array $headers) : array
+>>>>>>> update
     {
         // Set a default content-disposition header if one was no provided
         $disposition = $this->getHeader($headers, 'content-disposition');
@@ -106,6 +167,7 @@ class MultipartStream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInterfa
         // Set a default Content-Type if one was not supplied
         $type = $this->getHeader($headers, 'content-type');
         if (!$type && ($filename === '0' || $filename)) {
+<<<<<<< HEAD
             if ($type = \YoastSEO_Vendor\GuzzleHttp\Psr7\MimeType::fromFilename($filename)) {
                 $headers['Content-Type'] = $type;
             }
@@ -113,6 +175,13 @@ class MultipartStream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInterfa
         return [$stream, $headers];
     }
     private function getHeader(array $headers, $key)
+=======
+            $headers['Content-Type'] = \YoastSEO_Vendor\GuzzleHttp\Psr7\MimeType::fromFilename($filename) ?? 'application/octet-stream';
+        }
+        return [$stream, $headers];
+    }
+    private function getHeader(array $headers, string $key)
+>>>>>>> update
     {
         $lowercaseHeader = \strtolower($key);
         foreach ($headers as $k => $v) {

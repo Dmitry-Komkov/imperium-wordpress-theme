@@ -24,6 +24,7 @@ function acf_new_instance( $class = '' ) {
 }
 
 /**
+<<<<<<< HEAD
  * acf_get_instance
  *
  * Returns an instance for the given class.
@@ -33,6 +34,15 @@ function acf_new_instance( $class = '' ) {
  *
  * @param   string $class The class name.
  * @return  object The instance.
+=======
+ * Returns an instance for the given class.
+ *
+ * @date  9/1/19
+ * @since 5.7.10
+ *
+ * @param string $class The class name.
+ * @return object The instance.
+>>>>>>> update
  */
 function acf_get_instance( $class = '' ) {
 	global $acf_instances;

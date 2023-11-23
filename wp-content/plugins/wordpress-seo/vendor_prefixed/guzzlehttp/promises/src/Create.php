@@ -1,5 +1,9 @@
 <?php
 
+<<<<<<< HEAD
+=======
+declare (strict_types=1);
+>>>>>>> update
 namespace YoastSEO_Vendor\GuzzleHttp\Promise;
 
 final class Create
@@ -8,10 +12,15 @@ final class Create
      * Creates a promise for a value if the value is not a promise.
      *
      * @param mixed $value Promise or value.
+<<<<<<< HEAD
      *
      * @return PromiseInterface
      */
     public static function promiseFor($value)
+=======
+     */
+    public static function promiseFor($value) : \YoastSEO_Vendor\GuzzleHttp\Promise\PromiseInterface
+>>>>>>> update
     {
         if ($value instanceof \YoastSEO_Vendor\GuzzleHttp\Promise\PromiseInterface) {
             return $value;
@@ -31,10 +40,15 @@ final class Create
      * If the provided reason is a promise, then it is returned as-is.
      *
      * @param mixed $reason Promise or reason.
+<<<<<<< HEAD
      *
      * @return PromiseInterface
      */
     public static function rejectionFor($reason)
+=======
+     */
+    public static function rejectionFor($reason) : \YoastSEO_Vendor\GuzzleHttp\Promise\PromiseInterface
+>>>>>>> update
     {
         if ($reason instanceof \YoastSEO_Vendor\GuzzleHttp\Promise\PromiseInterface) {
             return $reason;
@@ -45,12 +59,19 @@ final class Create
      * Create an exception for a rejected promise value.
      *
      * @param mixed $reason
+<<<<<<< HEAD
      *
      * @return \Exception|\Throwable
      */
     public static function exceptionFor($reason)
     {
         if ($reason instanceof \Exception || $reason instanceof \Throwable) {
+=======
+     */
+    public static function exceptionFor($reason) : \Throwable
+    {
+        if ($reason instanceof \Throwable) {
+>>>>>>> update
             return $reason;
         }
         return new \YoastSEO_Vendor\GuzzleHttp\Promise\RejectionException($reason);
@@ -59,10 +80,15 @@ final class Create
      * Returns an iterator for the given value.
      *
      * @param mixed $value
+<<<<<<< HEAD
      *
      * @return \Iterator
      */
     public static function iterFor($value)
+=======
+     */
+    public static function iterFor($value) : \Iterator
+>>>>>>> update
     {
         if ($value instanceof \Iterator) {
             return $value;

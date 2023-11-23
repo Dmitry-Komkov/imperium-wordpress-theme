@@ -5,7 +5,11 @@ Plugin Name: UpdraftPlus - Backup/Restore
 Plugin URI: https://updraftplus.com
 Description: Backup and restore: take backups locally, or backup to Amazon S3, Dropbox, Google Drive, Rackspace, (S)FTP, WebDAV & email, on automatic schedules.
 Author: UpdraftPlus.Com, DavidAnderson
+<<<<<<< HEAD
 Version: 1.22.19
+=======
+Version: 1.23.12
+>>>>>>> update
 Update URI: https://wordpress.org/plugins/updraftplus/
 Donate link: https://david.dw-perspective.org.uk/donate
 License: GPLv3 or later
@@ -16,7 +20,11 @@ Author URI: https://updraftplus.com
 // @codingStandardsIgnoreEnd
 
 /*
+<<<<<<< HEAD
 Portions copyright 2011-22 David Anderson
+=======
+Portions copyright 2011-23 David Anderson
+>>>>>>> update
 Portions copyright 2010 Paul Kehrer
 Other portions copyright as indicated by authors in the relevant files
 
@@ -37,10 +45,18 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 if (!defined('ABSPATH')) die('No direct access allowed');
 
+<<<<<<< HEAD
 if ((isset($updraftplus) && is_object($updraftplus) && is_a($updraftplus, 'UpdraftPlus')) || function_exists('updraftplus_modify_cron_schedules')) return; // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UndefinedVariable
 
 define('UPDRAFTPLUS_DIR', dirname(__FILE__));
 define('UPDRAFTPLUS_URL', plugins_url('', __FILE__));
+=======
+if ((isset($updraftplus) && is_object($updraftplus) && is_a($updraftplus, 'UpdraftPlus')) || function_exists('updraftplus_modify_cron_schedules')) return; // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UndefinedVariable -- There is a possibility that the $updraftplus variable is already defined from previous process.
+
+define('UPDRAFTPLUS_DIR', dirname(__FILE__));
+define('UPDRAFTPLUS_URL', plugins_url('', __FILE__));
+define('UPDRAFTPLUS_PLUGIN_SLUG', plugin_basename(__FILE__));
+>>>>>>> update
 define('UPDRAFT_DEFAULT_OTHERS_EXCLUDE', 'upgrade,cache,updraft,backup*,*backups,mysql.sql,debug.log');
 define('UPDRAFT_DEFAULT_UPLOADS_EXCLUDE', 'backup*,*backups,backwpup*,wp-clone,snapshots');
 
@@ -83,14 +99,94 @@ if (!defined('UPDRAFTPLUS_BINZIP_OPTS')) {
 	define('UPDRAFTPLUS_BINZIP_OPTS', $zip_binzip_opts);
 }
 
+<<<<<<< HEAD
 // Load add-ons and files that may or may not be present, depending on where the plugin was distributed
 if (is_file(UPDRAFTPLUS_DIR.'/autoload.php')) require_once(UPDRAFTPLUS_DIR.'/autoload.php');
+=======
+/**
+ * A wrapper for (require|include)(_once)? that will first check for existence, and direct the user what to do (since the traditional PHP error messages aren't clear enough for all users)
+ *
+ * @param String $path   the file path to check
+ * @param String $method the method to load the file
+ */
+function updraft_try_include_file($path, $method = 'include') {
+
+	$file_to_include = UPDRAFTPLUS_DIR.'/'.$path;
+
+	if (!file_exists($file_to_include)) {
+		trigger_error(sprintf(__('The expected file %s is missing from your UpdraftPlus installation.', 'updraftplus').' '.__('Most likely, WordPress did not correctly unpack the plugin when installing it.', 'updraftplus').' '.__('You should de-install and then re-install the plugin (your settings and data will be retained).'), $file_to_include), E_USER_WARNING);
+	}
+
+	if ('include' === $method) {
+		include($file_to_include);
+	} elseif ('include_once' === $method) {
+		include_once($file_to_include);
+	} elseif ('require' === $method) {
+		require($file_to_include); // phpcs:ignore PEAR.Files.IncludingFile.UseInclude -- File required intentionally.
+	} else {
+		require_once($file_to_include);
+	}
+	
+}
+
+// Load add-ons and files that may or may not be present, depending on where the plugin was distributed
+if (is_file(UPDRAFTPLUS_DIR.'/autoload.php')) updraft_try_include_file('autoload.php', 'require_once');
+
+/**
+ * Get cron schedules list of our own
+ * DEVELOPER NOTES: Intervals should be presented in chronological order of time because we also use this list for ordering purpose especially when merging WP default intervals to ours
+ *
+ * @return Boolean The list of our own schedules
+ */
+function updraftplus_list_cron_schedules() {
+	$every_particular_hour_label = __('Every %s hours', 'updraftplus');
+	return array(
+		'everyhour' => array(
+			'interval' => 3600,
+			'display' => apply_filters('updraftplus_cron_schedule_description', __('Every hour', 'updraftplus'), 'everyhour'),
+		),
+		'every2hours' => array(
+			'interval' => 7200,
+			'display' => apply_filters('updraftplus_cron_schedule_description', sprintf($every_particular_hour_label, '2'), 'every2hours'),
+		),
+		'every4hours' => array(
+			'interval' => 14400,
+			'display' => apply_filters('updraftplus_cron_schedule_description', sprintf($every_particular_hour_label, '4'), 'every4hours'),
+		),
+		'every8hours' => array(
+			'interval' => 28800,
+			'display' => apply_filters('updraftplus_cron_schedule_description', sprintf($every_particular_hour_label, '8'), 'every8hours'),
+		),
+		'twicedaily' => array(
+			'interval' => 43200,
+			'display'  => apply_filters('updraftplus_cron_schedule_description', sprintf($every_particular_hour_label, '12'), 'twicedaily'),
+		),
+		'daily' => array(
+			'interval' => 86400,
+			'display'  => apply_filters('updraftplus_cron_schedule_description', __('Daily'), 'daily'),
+		),
+		'weekly' => array(
+			'interval' => 604800,
+			'display' => apply_filters('updraftplus_cron_schedule_description', __('Weekly'), 'weekly'),
+		),
+		'fortnightly' => array(
+			'interval' => 1209600,
+			'display' => apply_filters('updraftplus_cron_schedule_description', __('Fortnightly'), 'fortnightly'),
+		),
+		'monthly' => array(
+			'interval' => 2592000,
+			'display' => apply_filters('updraftplus_cron_schedule_description', __('Monthly'), 'monthly'),
+		),
+	);
+}
+>>>>>>> update
 
 if (!function_exists('updraftplus_modify_cron_schedules')) :
 /**
  * wp-cron only has hourly, daily and twicedaily, so we need to add some of our own
  *
  * @param  array $schedules an array of schedule types
+<<<<<<< HEAD
  * @return array
  */
 function updraftplus_modify_cron_schedules($schedules) {
@@ -102,6 +198,12 @@ function updraftplus_modify_cron_schedules($schedules) {
 		$schedules['every4hours'] = array('interval' => 14400, 'display' => sprintf(__('Every %s hours', 'updraftplus'), 4));
 		$schedules['every8hours'] = array('interval' => 28800, 'display' => sprintf(__('Every %s hours', 'updraftplus'), 8));
 		return $schedules;
+=======
+ * @return array cron schedules which contains schedules of our own
+ */
+function updraftplus_modify_cron_schedules($schedules) {
+		return array_merge($schedules, updraftplus_list_cron_schedules());
+>>>>>>> update
 }
 endif;
 // http://codex.wordpress.org/Plugin_API/Filter_Reference/cron_schedules. Raised priority because some plugins wrongly over-write all prior schedule changes (including BackupBuddy!)
@@ -140,6 +242,7 @@ if (is_dir(UPDRAFTPLUS_DIR.'/addons') && $dir_handle = opendir(UPDRAFTPLUS_DIR.'
 			$phpinclude = preg_match("/IncludePHP: (\S+)/", $header, $matches) ? $matches[1] : false;
 			if (false === $phprequires || version_compare(PHP_VERSION, $phprequires, '>=')) {
 				$updraftplus_have_addons++;
+<<<<<<< HEAD
 				if ($phpinclude) include_once(UPDRAFTPLUS_DIR.'/'.$phpinclude);
 				include_once(UPDRAFTPLUS_DIR.'/addons/'.$e);
 			}
@@ -149,18 +252,38 @@ if (is_dir(UPDRAFTPLUS_DIR.'/addons') && $dir_handle = opendir(UPDRAFTPLUS_DIR.'
 }
 
 if (is_file(UPDRAFTPLUS_DIR.'/udaddons/updraftplus-addons.php')) require_once(UPDRAFTPLUS_DIR.'/udaddons/updraftplus-addons.php');
+=======
+				if ($phpinclude) updraft_try_include_file(''.$phpinclude, 'include_once');
+				updraft_try_include_file('addons/'.$e, 'include_once');
+			}
+			unset($header);
+		}
+	}
+	@closedir($dir_handle);// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged -- Silenced to suppress errors that may arise because of the function.
+}
+
+if (is_file(UPDRAFTPLUS_DIR.'/udaddons/updraftplus-addons.php')) updraft_try_include_file('udaddons/updraftplus-addons.php', 'require_once');
+>>>>>>> update
 
 if (!file_exists(UPDRAFTPLUS_DIR.'/class-updraftplus.php') || !file_exists(UPDRAFTPLUS_DIR.'/options.php')) {
 	/**
 	 * Warn if they've not got the whole plugin - can happen if WP crashes (e.g. out of disk space) when upgrading the plugin
 	 */
 	function updraftplus_incomplete_install_warning() {
+<<<<<<< HEAD
 		echo '<div class="updraftmessage error"><p><strong>'.__('Error', 'updraftplus').':</strong> '.__("You do not have UpdraftPlus completely installed - please de-install and install it again. Most likely, WordPress malfunctioned when copying the plugin files.", 'updraftplus').' <a href="https://updraftplus.com/faqs/wordpress-crashed-when-updating-updraftplus-what-can-i-do/">'.__('Go here for more information.', 'updraftplus').'</a></p></div>';
+=======
+		echo '<div class="updraftmessage error"><p><strong>'.__('Error', 'updraftplus').':</strong> '.__('You do not have UpdraftPlus completely installed - please de-install and install it again.', 'updraftplus').' '.__('Most likely, WordPress malfunctioned when copying the plugin files.', 'updraftplus').' <a href="https://updraftplus.com/faqs/wordpress-crashed-when-updating-updraftplus-what-can-i-do/">'.__('Go here for more information.', 'updraftplus').'</a></p></div>';
+>>>>>>> update
 	}
 	add_action('all_admin_notices', 'updraftplus_incomplete_install_warning');
 } else {
 
+<<<<<<< HEAD
 	include_once(UPDRAFTPLUS_DIR.'/class-updraftplus.php');
+=======
+	updraft_try_include_file('class-updraftplus.php', 'include_once');
+>>>>>>> update
 	$updraftplus = new UpdraftPlus();
 	$GLOBALS['updraftplus'] = $updraftplus;
 	$updraftplus->have_addons = $updraftplus_have_addons;
@@ -171,7 +294,11 @@ if (!file_exists(UPDRAFTPLUS_DIR.'/class-updraftplus.php') || !file_exists(UPDRA
 		if (!$updraftplus->memory_check($updraftplus->memory_check_current(WP_MAX_MEMORY_LIMIT))) {
 			$new = absint($updraftplus->memory_check_current(WP_MAX_MEMORY_LIMIT));
 			if ($new>32 && $new<100000) {
+<<<<<<< HEAD
 				@ini_set('memory_limit', $new.'M');// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
+=======
+				@ini_set('memory_limit', $new.'M');// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged -- Silenced to suppress errors that may arise because of the function.
+>>>>>>> update
 			}
 		}
 	}
@@ -216,4 +343,8 @@ function updraftplus_build_mysqldump_list() {
 }
 
 // Do this even if the missing files detection above fired, as the "missing files" detection above has a greater chance of showing the user useful info
+<<<<<<< HEAD
 if (!class_exists('UpdraftPlus_Options')) require_once(UPDRAFTPLUS_DIR.'/options.php');
+=======
+if (!class_exists('UpdraftPlus_Options')) updraft_try_include_file('options.php', 'require_once');
+>>>>>>> update

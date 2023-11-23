@@ -4,11 +4,16 @@
 
 namespace Composer\Autoload;
 
+<<<<<<< HEAD
 class ComposerStaticInit1d54c25eb9fb90563ac5f00bf081daa2
+=======
+class ComposerStaticInit554f9dde1bffb706a5fac30c710c2ab5
+>>>>>>> update
 {
     public static $files = array (
         '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
+<<<<<<< HEAD
         'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         'e69f7f6ee287b969198c3c9d6777bd38' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/bootstrap.php',
@@ -24,6 +29,24 @@ class ComposerStaticInit1d54c25eb9fb90563ac5f00bf081daa2
     );
 
     public static $prefixLengthsPsr4 = array (
+=======
+        'e69f7f6ee287b969198c3c9d6777bd38' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/bootstrap.php',
+        '023d27dca8066ef29e6739335ea73bad' => __DIR__ . '/..' . '/symfony/polyfill-php70/bootstrap.php',
+        '25072dd6e2470089de65ae7bf11d3109' => __DIR__ . '/..' . '/symfony/polyfill-php72/bootstrap.php',
+        'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
+        'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
+        'f598d06aa772fa33d905e87be6398fb1' => __DIR__ . '/..' . '/symfony/polyfill-intl-idn/bootstrap.php',
+        '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
+        'decc78cc4436b1292c6c0d151b19445c' => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib/bootstrap.php',
+        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
+    );
+
+    public static $prefixLengthsPsr4 = array (
+        'p' => 
+        array (
+            'phpseclib\\' => 10,
+        ),
+>>>>>>> update
         'm' => 
         array (
             'mikemccabe\\JsonPatch\\' => 21,
@@ -42,16 +65,20 @@ class ComposerStaticInit1d54c25eb9fb90563ac5f00bf081daa2
             'Psr\\Log\\' => 8,
             'Psr\\Http\\Message\\' => 17,
         ),
+<<<<<<< HEAD
         'J' => 
         array (
             'JmesPath\\' => 9,
         ),
+=======
+>>>>>>> update
         'G' => 
         array (
             'GuzzleHttp\\Psr7\\' => 16,
             'GuzzleHttp\\Promise\\' => 19,
             'GuzzleHttp\\' => 11,
         ),
+<<<<<<< HEAD
         'A' => 
         array (
             'Aws\\' => 4,
@@ -59,6 +86,15 @@ class ComposerStaticInit1d54c25eb9fb90563ac5f00bf081daa2
     );
 
     public static $prefixDirsPsr4 = array (
+=======
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'phpseclib\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib',
+        ),
+>>>>>>> update
         'mikemccabe\\JsonPatch\\' => 
         array (
             0 => __DIR__ . '/..' . '/mikemccabe/json-patch-php/src',
@@ -95,10 +131,13 @@ class ComposerStaticInit1d54c25eb9fb90563ac5f00bf081daa2
         array (
             0 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
+<<<<<<< HEAD
         'JmesPath\\' => 
         array (
             0 => __DIR__ . '/..' . '/mtdowling/jmespath.php/src',
         ),
+=======
+>>>>>>> update
         'GuzzleHttp\\Psr7\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
@@ -111,6 +150,7 @@ class ComposerStaticInit1d54c25eb9fb90563ac5f00bf081daa2
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/guzzle/src',
         ),
+<<<<<<< HEAD
         'Aws\\' => 
         array (
             0 => __DIR__ . '/..' . '/aws/aws-sdk-php/src',
@@ -125,6 +165,11 @@ class ComposerStaticInit1d54c25eb9fb90563ac5f00bf081daa2
                 0 => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib',
             ),
         ),
+=======
+    );
+
+    public static $prefixesPsr0 = array (
+>>>>>>> update
         'O' => 
         array (
             'OpenCloud' => 
@@ -132,6 +177,7 @@ class ComposerStaticInit1d54c25eb9fb90563ac5f00bf081daa2
                 0 => __DIR__ . '/..' . '/rackspace/php-opencloud/lib',
             ),
         ),
+<<<<<<< HEAD
         'N' => 
         array (
             'Net' => 
@@ -146,6 +192,8 @@ class ComposerStaticInit1d54c25eb9fb90563ac5f00bf081daa2
                 0 => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib',
             ),
         ),
+=======
+>>>>>>> update
         'G' => 
         array (
             'Guzzle\\Tests' => 
@@ -157,6 +205,7 @@ class ComposerStaticInit1d54c25eb9fb90563ac5f00bf081daa2
                 0 => __DIR__ . '/..' . '/guzzle/guzzle/src',
             ),
         ),
+<<<<<<< HEAD
         'F' => 
         array (
             'File' => 
@@ -164,6 +213,8 @@ class ComposerStaticInit1d54c25eb9fb90563ac5f00bf081daa2
                 0 => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib',
             ),
         ),
+=======
+>>>>>>> update
         'E' => 
         array (
             'Eher\\OAuth' => 
@@ -171,6 +222,7 @@ class ComposerStaticInit1d54c25eb9fb90563ac5f00bf081daa2
                 0 => __DIR__ . '/..' . '/eher/oauth/src',
             ),
         ),
+<<<<<<< HEAD
         'C' => 
         array (
             'Crypt' => 
@@ -204,6 +256,11 @@ class ComposerStaticInit1d54c25eb9fb90563ac5f00bf081daa2
         'AWS\\CRT\\NativeResource' => __DIR__ . '/..' . '/aws/aws-crt-php/src/AWS/CRT/NativeResource.php',
         'AWS\\CRT\\OptionValue' => __DIR__ . '/..' . '/aws/aws-crt-php/src/AWS/CRT/Options.php',
         'AWS\\CRT\\Options' => __DIR__ . '/..' . '/aws/aws-crt-php/src/AWS/CRT/Options.php',
+=======
+    );
+
+    public static $classMap = array (
+>>>>>>> update
         'ArithmeticError' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/ArithmeticError.php',
         'AssertionError' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/AssertionError.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
@@ -240,10 +297,17 @@ class ComposerStaticInit1d54c25eb9fb90563ac5f00bf081daa2
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+<<<<<<< HEAD
             $loader->prefixLengthsPsr4 = ComposerStaticInit1d54c25eb9fb90563ac5f00bf081daa2::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit1d54c25eb9fb90563ac5f00bf081daa2::$prefixDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInit1d54c25eb9fb90563ac5f00bf081daa2::$prefixesPsr0;
             $loader->classMap = ComposerStaticInit1d54c25eb9fb90563ac5f00bf081daa2::$classMap;
+=======
+            $loader->prefixLengthsPsr4 = ComposerStaticInit554f9dde1bffb706a5fac30c710c2ab5::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit554f9dde1bffb706a5fac30c710c2ab5::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit554f9dde1bffb706a5fac30c710c2ab5::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit554f9dde1bffb706a5fac30c710c2ab5::$classMap;
+>>>>>>> update
 
         }, null, ClassLoader::class);
     }

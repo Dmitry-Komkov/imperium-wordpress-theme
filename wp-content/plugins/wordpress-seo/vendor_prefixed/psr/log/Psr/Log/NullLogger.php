@@ -20,6 +20,11 @@ class NullLogger extends \YoastSEO_Vendor\Psr\Log\AbstractLogger
      * @param array  $context
      *
      * @return void
+<<<<<<< HEAD
+=======
+     *
+     * @throws \Psr\Log\InvalidArgumentException
+>>>>>>> update
      */
     public function log($level, $message, array $context = array())
     {

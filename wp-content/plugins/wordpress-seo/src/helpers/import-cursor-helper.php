@@ -8,6 +8,16 @@ namespace Yoast\WP\SEO\Helpers;
 class Import_Cursor_Helper {
 
 	/**
+<<<<<<< HEAD
+=======
+	 * The Options_Helper.
+	 *
+	 * @var Options_Helper
+	 */
+	public $options;
+
+	/**
+>>>>>>> update
 	 * Class constructor.
 	 *
 	 * @param Options_Helper $options The options helper.

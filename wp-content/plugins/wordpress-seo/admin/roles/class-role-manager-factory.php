@@ -19,6 +19,7 @@ class WPSEO_Role_Manager_Factory {
 		static $manager = null;
 
 		if ( $manager === null ) {
+<<<<<<< HEAD
 			if ( function_exists( 'wpcom_vip_add_role' ) ) {
 				$manager = new WPSEO_Role_Manager_VIP();
 			}
@@ -26,6 +27,9 @@ class WPSEO_Role_Manager_Factory {
 			if ( ! function_exists( 'wpcom_vip_add_role' ) ) {
 				$manager = new WPSEO_Role_Manager_WP();
 			}
+=======
+			$manager = new WPSEO_Role_Manager_WP();
+>>>>>>> update
 		}
 
 		return $manager;

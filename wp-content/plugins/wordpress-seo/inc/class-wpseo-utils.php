@@ -207,7 +207,11 @@ class WPSEO_Utils {
 		if ( isset( $parts['path'] ) && strpos( $parts['path'], '/' ) === 0 ) {
 			$path = explode( '/', wp_strip_all_tags( $parts['path'] ) );
 			$path = self::sanitize_encoded_text_field( $path );
+<<<<<<< HEAD
 			$url .= implode( '/', $path );
+=======
+			$url .= str_replace( '%40', '@', implode( '/', $path ) );
+>>>>>>> update
 		}
 
 		if ( ! $url ) {
@@ -660,9 +664,12 @@ class WPSEO_Utils {
 	public static function is_yoast_seo_free_page( $current_page ) {
 		$yoast_seo_free_pages = [
 			'wpseo_dashboard',
+<<<<<<< HEAD
 			'wpseo_titles',
 			'wpseo_social',
 			'wpseo_advanced',
+=======
+>>>>>>> update
 			'wpseo_tools',
 			'wpseo_search_console',
 			'wpseo_licenses',
@@ -672,6 +679,7 @@ class WPSEO_Utils {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Checks if we are in the premium or free plugin.
 	 *
 	 * @deprecated 16.0
@@ -685,6 +693,8 @@ class WPSEO_Utils {
 	}
 
 	/**
+=======
+>>>>>>> update
 	 * Determine if Yoast SEO is in development mode?
 	 *
 	 * Inspired by JetPack (https://github.com/Automattic/jetpack/blob/master/class.jetpack.php#L1383-L1406).
@@ -806,7 +816,11 @@ class WPSEO_Utils {
 	/**
 	 * Determines whether the plugin is active for the entire network.
 	 *
+<<<<<<< HEAD
 	 * @return bool Whether or not the plugin is network-active.
+=======
+	 * @return bool Whether the plugin is network-active.
+>>>>>>> update
 	 */
 	public static function is_plugin_network_active() {
 		return YoastSEO()->helpers->url->is_plugin_network_active();
@@ -818,6 +832,7 @@ class WPSEO_Utils {
 	 * @return string The post type, or an empty string.
 	 */
 	public static function get_post_type() {
+<<<<<<< HEAD
 		global $post;
 
 		if ( isset( $post->post_type ) ) {
@@ -827,6 +842,13 @@ class WPSEO_Utils {
 			return sanitize_text_field( wp_unslash( $_GET['post_type'] ) );
 		}
 
+=======
+		$wp_screen = \get_current_screen();
+
+		if ( $wp_screen !== null && ! empty( $wp_screen->post_type ) ) {
+			return $wp_screen->post_type;
+		}
+>>>>>>> update
 		return '';
 	}
 
@@ -863,8 +885,17 @@ class WPSEO_Utils {
 		else {
 			$label_object = WPSEO_Taxonomy::get_labels();
 
+<<<<<<< HEAD
 			$taxonomy_slug = filter_input( INPUT_GET, 'taxonomy', FILTER_DEFAULT, [ 'options' => [ 'default' => '' ] ] );
 			$no_index      = WPSEO_Options::get( 'noindex-tax-' . $taxonomy_slug, false );
+=======
+			$wp_screen = \get_current_screen();
+
+			if ( $wp_screen !== null && ! empty( $wp_screen->taxonomy ) ) {
+				$taxonomy_slug = $wp_screen->taxonomy;
+				$no_index      = WPSEO_Options::get( 'noindex-tax-' . $taxonomy_slug, false );
+			}
+>>>>>>> update
 		}
 
 		$wpseo_admin_l10n = [
@@ -1115,6 +1146,7 @@ class WPSEO_Utils {
 	/* ********************* DEPRECATED METHODS ********************* */
 
 	/**
+<<<<<<< HEAD
 	 * List all the available user roles.
 	 *
 	 * @since      1.8.0
@@ -1400,6 +1432,8 @@ SVG;
 	}
 
 	/**
+=======
+>>>>>>> update
 	 * Translates a decimal analysis score into a textual one.
 	 *
 	 * @since 1.8.0
@@ -1412,7 +1446,11 @@ SVG;
 	 * @return string
 	 */
 	public static function translate_score( $val, $css_value = true ) {
+<<<<<<< HEAD
 		_deprecated_function( __METHOD__, 'WPSEO 19.5', 'YoastSEO()->helpers->score_icon' );
+=======
+		_deprecated_function( __METHOD__, 'Yoast SEO 19.5', 'YoastSEO()->helpers->score_icon' );
+>>>>>>> update
 
 		$seo_rank = WPSEO_Rank::from_numeric_score( $val );
 

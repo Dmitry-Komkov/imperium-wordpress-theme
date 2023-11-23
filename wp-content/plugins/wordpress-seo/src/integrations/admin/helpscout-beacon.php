@@ -9,7 +9,14 @@ use WPSEO_Utils;
 use Yoast\WP\SEO\Conditionals\Admin_Conditional;
 use Yoast\WP\SEO\Config\Migration_Status;
 use Yoast\WP\SEO\Helpers\Options_Helper;
+<<<<<<< HEAD
 use Yoast\WP\SEO\Integrations\Integration_Interface;
+=======
+use Yoast\WP\SEO\Integrations\Academy_Integration;
+use Yoast\WP\SEO\Integrations\Integration_Interface;
+use Yoast\WP\SEO\Integrations\Settings_Integration;
+use Yoast\WP\SEO\Integrations\Support_Integration;
+>>>>>>> update
 
 /**
  * Class WPSEO_HelpScout
@@ -38,7 +45,11 @@ class HelpScout_Beacon implements Integration_Interface {
 	protected $products = [];
 
 	/**
+<<<<<<< HEAD
 	 * Whether to asks the user's consent before loading in HelpScout.
+=======
+	 * Whether to ask the user's consent before loading in HelpScout.
+>>>>>>> update
 	 *
 	 * @var bool
 	 */
@@ -65,18 +76,33 @@ class HelpScout_Beacon implements Integration_Interface {
 	 */
 	protected $base_pages = [
 		'wpseo_dashboard',
+<<<<<<< HEAD
 		'wpseo_titles',
 		'wpseo_search_console',
 		'wpseo_social',
 		'wpseo_tools',
 		'wpseo_licenses',
 		'wpseo_workouts',
+=======
+		Settings_Integration::PAGE,
+		Academy_Integration::PAGE,
+		Support_Integration::PAGE,
+		'wpseo_search_console',
+		'wpseo_tools',
+		'wpseo_licenses',
+		'wpseo_workouts',
+		'wpseo_integrations',
+>>>>>>> update
 	];
 
 	/**
 	 * The current admin page
 	 *
+<<<<<<< HEAD
 	 * @var string
+=======
+	 * @var string|null
+>>>>>>> update
 	 */
 	protected $page;
 
@@ -102,10 +128,24 @@ class HelpScout_Beacon implements Integration_Interface {
 	 * @param Migration_Status          $migration_status The migrations status.
 	 */
 	public function __construct( Options_Helper $options, WPSEO_Admin_Asset_Manager $asset_manager, Migration_Status $migration_status ) {
+<<<<<<< HEAD
 		$this->options          = $options;
 		$this->asset_manager    = $asset_manager;
 		$this->ask_consent      = ! $this->options->get( 'tracking' );
 		$this->page             = \filter_input( \INPUT_GET, 'page', \FILTER_SANITIZE_STRING );
+=======
+		$this->options       = $options;
+		$this->asset_manager = $asset_manager;
+		$this->ask_consent   = ! $this->options->get( 'tracking' );
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Reason: We are not processing form information.
+		if ( isset( $_GET['page'] ) && \is_string( $_GET['page'] ) ) {
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Reason: We are not processing form information.
+			$this->page = \sanitize_text_field( \wp_unslash( $_GET['page'] ) );
+		}
+		else {
+			$this->page = null;
+		}
+>>>>>>> update
 		$this->migration_status = $migration_status;
 
 		foreach ( $this->base_pages as $page ) {

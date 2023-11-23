@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 .wbcr-factory-feedback-112-modal {
+=======
+.wbcr-factory-feedback-125-modal {
+>>>>>>> update
     position: fixed;
     overflow: auto;
     height: 100%;
@@ -9,7 +13,11 @@
     background: rgba(0, 0, 0, 0.6)
 }
 
+<<<<<<< HEAD
 .wbcr-factory-feedback-112-modal .wbcr-factory-feedback-112-modal-dialog {
+=======
+.wbcr-factory-feedback-125-modal .wbcr-factory-feedback-125-modal-dialog {
+>>>>>>> update
     background: transparent;
     position: absolute;
     left: 50%;
@@ -21,7 +29,11 @@
 }
 
 @media (max-width: 650px) {
+<<<<<<< HEAD
     .wbcr-factory-feedback-112-modal .wbcr-factory-feedback-112-modal-dialog {
+=======
+    .wbcr-factory-feedback-125-modal .wbcr-factory-feedback-125-modal-dialog {
+>>>>>>> update
         margin-left: -50%;
         box-sizing: border-box;
         padding-left: 10px;
@@ -29,11 +41,16 @@
         width: 100%
     }
 
+<<<<<<< HEAD
     .wbcr-factory-feedback-112-modal .wbcr-factory-feedback-112-modal-dialog .wbcr-factory-feedback-112-modal-panel > h3 > strong {
+=======
+    .wbcr-factory-feedback-125-modal .wbcr-factory-feedback-125-modal-dialog .wbcr-factory-feedback-125-modal-panel > h3 > strong {
+>>>>>>> update
         font-size: 1.3em
     }
 }
 
+<<<<<<< HEAD
 .wbcr-factory-feedback-112-modal.active {
     display: block
 }
@@ -71,12 +88,55 @@
 }
 
 .wbcr-factory-feedback-112-modal .wbcr-factory-feedback-112-modal-body, .wbcr-factory-feedback-112-modal .wbcr-factory-feedback-112-modal-footer {
+=======
+.wbcr-factory-feedback-125-modal.active {
+    display: block
+}
+
+.wbcr-factory-feedback-125-modal.active:before {
+    display: block
+}
+
+.wbcr-factory-feedback-125-modal.active .wbcr-factory-feedback-125-modal-dialog {
+    top: 10%
+}
+
+.wbcr-factory-feedback-125-modal.wbcr-factory-feedback-125-success .wbcr-factory-feedback-125-modal-header {
+    border-bottom-color: #46b450
+}
+
+.wbcr-factory-feedback-125-modal.wbcr-factory-feedback-125-success .wbcr-factory-feedback-125-modal-body {
+    background-color: #f7fff7
+}
+
+.wbcr-factory-feedback-125-modal.wbcr-factory-feedback-125-warn .wbcr-factory-feedback-125-modal-header {
+    border-bottom-color: #ffb900
+}
+
+.wbcr-factory-feedback-125-modal.wbcr-factory-feedback-125-warn .wbcr-factory-feedback-125-modal-body {
+    background-color: #fff8e5
+}
+
+.wbcr-factory-feedback-125-modal.wbcr-factory-feedback-125-error .wbcr-factory-feedback-125-modal-header {
+    border-bottom-color: #dc3232
+}
+
+.wbcr-factory-feedback-125-modal.wbcr-factory-feedback-125-error .wbcr-factory-feedback-125-modal-body {
+    background-color: #ffeaea
+}
+
+.wbcr-factory-feedback-125-modal .wbcr-factory-feedback-125-modal-body, .wbcr-factory-feedback-125-modal .wbcr-factory-feedback-125-modal-footer {
+>>>>>>> update
     border: 0;
     background: #fefefe;
     padding: 20px
 }
 
+<<<<<<< HEAD
 .wbcr-factory-feedback-112-modal .wbcr-factory-feedback-112-modal-header {
+=======
+.wbcr-factory-feedback-125-modal .wbcr-factory-feedback-125-modal-header {
+>>>>>>> update
     border-bottom: #eeeeee solid 1px;
     background: #fbfbfb;
     padding: 15px 20px;
@@ -84,7 +144,11 @@
     margin-bottom: -10px
 }
 
+<<<<<<< HEAD
 .wbcr-factory-feedback-112-modal .wbcr-factory-feedback-112-modal-header h4 {
+=======
+.wbcr-factory-feedback-125-modal .wbcr-factory-feedback-125-modal-header h4 {
+>>>>>>> update
     margin: 0;
     padding: 0;
     text-transform: uppercase;
@@ -96,7 +160,11 @@
     -webkit-font-smoothing: antialiased
 }
 
+<<<<<<< HEAD
 .wbcr-factory-feedback-112-modal .wbcr-factory-feedback-112-modal-header .wbcr-factory-feedback-112-close {
+=======
+.wbcr-factory-feedback-125-modal .wbcr-factory-feedback-125-modal-header .wbcr-factory-feedback-125-close {
+>>>>>>> update
     position: absolute;
     right: 10px;
     top: 12px;
@@ -113,11 +181,16 @@
     transition: all 0.2s ease-in-out
 }
 
+<<<<<<< HEAD
 .wbcr-factory-feedback-112-modal .wbcr-factory-feedback-112-modal-header .wbcr-factory-feedback-112-close:hover {
+=======
+.wbcr-factory-feedback-125-modal .wbcr-factory-feedback-125-modal-header .wbcr-factory-feedback-125-close:hover {
+>>>>>>> update
     color: #fff;
     background: #aaa
 }
 
+<<<<<<< HEAD
 .wbcr-factory-feedback-112-modal .wbcr-factory-feedback-112-modal-header .wbcr-factory-feedback-112-close .dashicons, .wbcr-factory-feedback-112-modal .wbcr-factory-feedback-112-modal-header .wbcr-factory-feedback-112-close:hover .dashicons {
     text-decoration: none
 }
@@ -131,25 +204,53 @@
 }
 
 .wbcr-factory-feedback-112-modal .wbcr-factory-feedback-112-modal-body h2 {
+=======
+.wbcr-factory-feedback-125-modal .wbcr-factory-feedback-125-modal-header .wbcr-factory-feedback-125-close .dashicons, .wbcr-factory-feedback-125-modal .wbcr-factory-feedback-125-modal-header .wbcr-factory-feedback-125-close:hover .dashicons {
+    text-decoration: none
+}
+
+.wbcr-factory-feedback-125-modal .wbcr-factory-feedback-125-modal-body {
+    border-bottom: 0
+}
+
+.wbcr-factory-feedback-125-modal .wbcr-factory-feedback-125-modal-body p {
+    font-size: 14px
+}
+
+.wbcr-factory-feedback-125-modal .wbcr-factory-feedback-125-modal-body h2 {
+>>>>>>> update
     font-size: 20px;
     line-height: 1.5em
 }
 
+<<<<<<< HEAD
 .wbcr-factory-feedback-112-modal .wbcr-factory-feedback-112-modal-body > div {
     margin-top: 10px
 }
 
 .wbcr-factory-feedback-112-modal .wbcr-factory-feedback-112-modal-body > div h2 {
+=======
+.wbcr-factory-feedback-125-modal .wbcr-factory-feedback-125-modal-body > div {
+    margin-top: 10px
+}
+
+.wbcr-factory-feedback-125-modal .wbcr-factory-feedback-125-modal-body > div h2 {
+>>>>>>> update
     font-weight: bold;
     font-size: 20px;
     margin-top: 0
 }
 
+<<<<<<< HEAD
 .wbcr-factory-feedback-112-modal .wbcr-factory-feedback-112-modal-footer {
+=======
+.wbcr-factory-feedback-125-modal .wbcr-factory-feedback-125-modal-footer {
+>>>>>>> update
     border-top: #eeeeee solid 1px;
     text-align: right
 }
 
+<<<<<<< HEAD
 .wbcr-factory-feedback-112-modal .wbcr-factory-feedback-112-modal-footer > .button {
     margin: 0 7px
 }
@@ -159,19 +260,39 @@
 }
 
 .wbcr-factory-feedback-112-modal .wbcr-factory-feedback-112-modal-panel > .notice.inline {
+=======
+.wbcr-factory-feedback-125-modal .wbcr-factory-feedback-125-modal-footer > .button {
+    margin: 0 7px
+}
+
+.wbcr-factory-feedback-125-modal .wbcr-factory-feedback-125-modal-footer > .button:first-child {
+    margin: 0
+}
+
+.wbcr-factory-feedback-125-modal .wbcr-factory-feedback-125-modal-panel > .notice.inline {
+>>>>>>> update
     margin: 0;
     display: none
 }
 
+<<<<<<< HEAD
 .wbcr-factory-feedback-112-modal .wbcr-factory-feedback-112-modal-panel:not(.active) {
     display: none
 }
 
 .rtl .wbcr-factory-feedback-112-modal .wbcr-factory-feedback-112-modal-header .wbcr-factory-feedback-112-close {
+=======
+.wbcr-factory-feedback-125-modal .wbcr-factory-feedback-125-modal-panel:not(.active) {
+    display: none
+}
+
+.rtl .wbcr-factory-feedback-125-modal .wbcr-factory-feedback-125-modal-header .wbcr-factory-feedback-125-close {
+>>>>>>> update
     right: auto;
     left: 20px
 }
 
+<<<<<<< HEAD
 body.has-wbcr-factory-feedback-112-modal {
     overflow: hidden
 }
@@ -185,12 +306,28 @@ body.has-wbcr-factory-feedback-112-modal {
 }
 
 .wbcr-factory-feedback-112-modal.wbcr-factory-feedback-112-modal-deactivation-feedback li.reason.has-internal-message .internal-message {
+=======
+body.has-wbcr-factory-feedback-125-modal {
+    overflow: hidden
+}
+
+.wbcr-factory-feedback-125-modal.wbcr-factory-feedback-125-modal-deactivation-feedback .reason-input, .wbcr-factory-feedback-125-modal.wbcr-factory-feedback-125-modal-deactivation-feedback .internal-message {
+    margin: 3px 0 3px 22px
+}
+
+.wbcr-factory-feedback-125-modal.wbcr-factory-feedback-125-modal-deactivation-feedback .reason-input input, .wbcr-factory-feedback-125-modal.wbcr-factory-feedback-125-modal-deactivation-feedback .reason-input textarea, .wbcr-factory-feedback-125-modal.wbcr-factory-feedback-125-modal-deactivation-feedback .internal-message input, .wbcr-factory-feedback-125-modal.wbcr-factory-feedback-125-modal-deactivation-feedback .internal-message textarea {
+    width: 100%
+}
+
+.wbcr-factory-feedback-125-modal.wbcr-factory-feedback-125-modal-deactivation-feedback li.reason.has-internal-message .internal-message {
+>>>>>>> update
     border: 1px solid #ccc;
     padding: 7px;
     display: none
 }
 
 @media (max-width: 650px) {
+<<<<<<< HEAD
     .wbcr-factory-feedback-112-modal.wbcr-factory-feedback-112-modal-deactivation-feedback li.reason li.reason {
         margin-bottom: 10px
     }
@@ -204,11 +341,27 @@ body.has-wbcr-factory-feedback-112-modal {
     }
 
     .wbcr-factory-feedback-112-modal.wbcr-factory-feedback-112-modal-deactivation-feedback li.reason li.reason label > span {
+=======
+    .wbcr-factory-feedback-125-modal.wbcr-factory-feedback-125-modal-deactivation-feedback li.reason li.reason {
+        margin-bottom: 10px
+    }
+
+    .wbcr-factory-feedback-125-modal.wbcr-factory-feedback-125-modal-deactivation-feedback li.reason li.reason .reason-input, .wbcr-factory-feedback-125-modal.wbcr-factory-feedback-125-modal-deactivation-feedback li.reason li.reason .internal-message {
+        margin-left: 29px
+    }
+
+    .wbcr-factory-feedback-125-modal.wbcr-factory-feedback-125-modal-deactivation-feedback li.reason li.reason label {
+        display: table
+    }
+
+    .wbcr-factory-feedback-125-modal.wbcr-factory-feedback-125-modal-deactivation-feedback li.reason li.reason label > span {
+>>>>>>> update
         display: table-cell;
         font-size: 1.3em
     }
 }
 
+<<<<<<< HEAD
 .wbcr-factory-feedback-112-modal.wbcr-factory-feedback-112-modal-deactivation-feedback .wbcr-factory-feedback-112-anonymous-feedback-label {
     float: left
 }
@@ -218,41 +371,77 @@ body.has-wbcr-factory-feedback-112-modal {
 }
 
 .wbcr-factory-feedback-112-modal.wbcr-factory-feedback-112-modal-deactivation-feedback .wbcr-factory-feedback-112-modal-panel h3 {
+=======
+.wbcr-factory-feedback-125-modal.wbcr-factory-feedback-125-modal-deactivation-feedback .wbcr-factory-feedback-125-anonymous-feedback-label {
+    float: left
+}
+
+.wbcr-factory-feedback-125-modal.wbcr-factory-feedback-125-modal-deactivation-feedback .wbcr-factory-feedback-125-modal-panel {
+    margin-top: 0 !important
+}
+
+.wbcr-factory-feedback-125-modal.wbcr-factory-feedback-125-modal-deactivation-feedback .wbcr-factory-feedback-125-modal-panel h3 {
+>>>>>>> update
     margin-top: 0;
     line-height: 1.5em
 }
 
+<<<<<<< HEAD
 #the-list .deactivate > .wbcr-factory-feedback-112-slug {
     display: none
 }
 
 .wbcr-factory-feedback-112-modal.wbcr-factory-feedback-112-modal-subscription-cancellation .wbcr-factory-feedback-112-price-increase-warning {
+=======
+#the-list .deactivate > .wbcr-factory-feedback-125-slug {
+    display: none
+}
+
+.wbcr-factory-feedback-125-modal.wbcr-factory-feedback-125-modal-subscription-cancellation .wbcr-factory-feedback-125-price-increase-warning {
+>>>>>>> update
     color: red;
     font-weight: bold;
     padding: 0 25px;
     margin-bottom: 0
 }
 
+<<<<<<< HEAD
 .wbcr-factory-feedback-112-modal.wbcr-factory-feedback-112-modal-subscription-cancellation ul.subscription-actions label input {
+=======
+.wbcr-factory-feedback-125-modal.wbcr-factory-feedback-125-modal-subscription-cancellation ul.subscription-actions label input {
+>>>>>>> update
     float: left;
     top: 5px;
     position: relative
 }
 
+<<<<<<< HEAD
 .rtl .wbcr-factory-feedback-112-modal.wbcr-factory-feedback-112-modal-subscription-cancellation ul.subscription-actions label input {
     float: right
 }
 
 .wbcr-factory-feedback-112-modal.wbcr-factory-feedback-112-modal-subscription-cancellation ul.subscription-actions label span {
+=======
+.rtl .wbcr-factory-feedback-125-modal.wbcr-factory-feedback-125-modal-subscription-cancellation ul.subscription-actions label input {
+    float: right
+}
+
+.wbcr-factory-feedback-125-modal.wbcr-factory-feedback-125-modal-subscription-cancellation ul.subscription-actions label span {
+>>>>>>> update
     display: block;
     margin-left: 24px
 }
 
+<<<<<<< HEAD
 .rtl .wbcr-factory-feedback-112-modal.wbcr-factory-feedback-112-modal-subscription-cancellation ul.subscription-actions label span {
+=======
+.rtl .wbcr-factory-feedback-125-modal.wbcr-factory-feedback-125-modal-subscription-cancellation ul.subscription-actions label span {
+>>>>>>> update
     margin-left: 0;
     margin-right: 24px
 }
 
+<<<<<<< HEAD
 .wbcr-factory-feedback-112-modal.wbcr-factory-feedback-112-modal-license-activation .wbcr-factory-feedback-112-modal-body input.wbcr-factory-feedback-112-license-key {
     width: 100%
 }
@@ -266,13 +455,32 @@ body.has-wbcr-factory-feedback-112-modal {
 }
 
 .wbcr-factory-feedback-112-license-options-container table .wbcr-factory-feedback-112-other-license-key-container label {
+=======
+.wbcr-factory-feedback-125-modal.wbcr-factory-feedback-125-modal-license-activation .wbcr-factory-feedback-125-modal-body input.wbcr-factory-feedback-125-license-key {
+    width: 100%
+}
+
+.wbcr-factory-feedback-125-license-options-container table, .wbcr-factory-feedback-125-license-options-container table select, .wbcr-factory-feedback-125-license-options-container table .wbcr-factory-feedback-125-available-license-key {
+    width: 100%
+}
+
+.wbcr-factory-feedback-125-license-options-container table td:first-child {
+    width: 1%
+}
+
+.wbcr-factory-feedback-125-license-options-container table .wbcr-factory-feedback-125-other-license-key-container label {
+>>>>>>> update
     position: relative;
     top: 6px;
     float: left;
     margin-right: 5px
 }
 
+<<<<<<< HEAD
 .wbcr-factory-feedback-112-license-options-container table .wbcr-factory-feedback-112-other-license-key-container div {
+=======
+.wbcr-factory-feedback-125-license-options-container table .wbcr-factory-feedback-125-other-license-key-container div {
+>>>>>>> update
     overflow: hidden;
     width: auto;
     height: 30px;
@@ -281,6 +489,7 @@ body.has-wbcr-factory-feedback-112-modal {
     position: relative
 }
 
+<<<<<<< HEAD
 .wbcr-factory-feedback-112-license-options-container table .wbcr-factory-feedback-112-other-license-key-container div input {
     margin: 0
 }
@@ -290,11 +499,23 @@ body.has-wbcr-factory-feedback-112-modal {
 }
 
 .wbcr-factory-feedback-112-multisite-options-container {
+=======
+.wbcr-factory-feedback-125-license-options-container table .wbcr-factory-feedback-125-other-license-key-container div input {
+    margin: 0
+}
+
+.wbcr-factory-feedback-125-sites-list-container td {
+    cursor: pointer
+}
+
+.wbcr-factory-feedback-125-multisite-options-container {
+>>>>>>> update
     margin-top: 10px;
     border: 1px solid #ccc;
     padding: 5px
 }
 
+<<<<<<< HEAD
 .wbcr-factory-feedback-112-multisite-options-container a {
     text-decoration: none
 }
@@ -308,10 +529,26 @@ body.has-wbcr-factory-feedback-112-modal {
 }
 
 .wbcr-factory-feedback-112-multisite-options-container.wbcr-factory-feedback-112-apply-on-all-sites {
+=======
+.wbcr-factory-feedback-125-multisite-options-container a {
+    text-decoration: none
+}
+
+.wbcr-factory-feedback-125-multisite-options-container a:focus {
+    box-shadow: none
+}
+
+.wbcr-factory-feedback-125-multisite-options-container a.selected {
+    font-weight: bold
+}
+
+.wbcr-factory-feedback-125-multisite-options-container.wbcr-factory-feedback-125-apply-on-all-sites {
+>>>>>>> update
     border: 0 none;
     padding: 0
 }
 
+<<<<<<< HEAD
 .wbcr-factory-feedback-112-multisite-options-container.wbcr-factory-feedback-112-apply-on-all-sites .wbcr-factory-feedback-112-all-sites-options {
     border-spacing: 0
 }
@@ -321,50 +558,97 @@ body.has-wbcr-factory-feedback-112-modal {
 }
 
 .wbcr-factory-feedback-112-multisite-options-container .wbcr-factory-feedback-112-sites-list-container {
+=======
+.wbcr-factory-feedback-125-multisite-options-container.wbcr-factory-feedback-125-apply-on-all-sites .wbcr-factory-feedback-125-all-sites-options {
+    border-spacing: 0
+}
+
+.wbcr-factory-feedback-125-multisite-options-container.wbcr-factory-feedback-125-apply-on-all-sites .wbcr-factory-feedback-125-all-sites-options td:not(:first-child) {
+    display: none
+}
+
+.wbcr-factory-feedback-125-multisite-options-container .wbcr-factory-feedback-125-sites-list-container {
+>>>>>>> update
     display: none;
     overflow: auto
 }
 
+<<<<<<< HEAD
 .wbcr-factory-feedback-112-multisite-options-container .wbcr-factory-feedback-112-sites-list-container table td {
+=======
+.wbcr-factory-feedback-125-multisite-options-container .wbcr-factory-feedback-125-sites-list-container table td {
+>>>>>>> update
     border-top: 1px solid #ccc;
     padding: 4px 2px
 }
 
+<<<<<<< HEAD
 .wbcr-factory-feedback-112-modal.wbcr-factory-feedback-112-modal-license-key-resend .email-address-container {
+=======
+.wbcr-factory-feedback-125-modal.wbcr-factory-feedback-125-modal-license-key-resend .email-address-container {
+>>>>>>> update
     overflow: hidden;
     padding-right: 2px
 }
 
+<<<<<<< HEAD
 .wbcr-factory-feedback-112-modal.wbcr-factory-feedback-112-modal-license-key-resend.wbcr-factory-feedback-112-freemium input.email-address {
     width: 300px
 }
 
 .wbcr-factory-feedback-112-modal.wbcr-factory-feedback-112-modal-license-key-resend.wbcr-factory-feedback-112-freemium label {
+=======
+.wbcr-factory-feedback-125-modal.wbcr-factory-feedback-125-modal-license-key-resend.wbcr-factory-feedback-125-freemium input.email-address {
+    width: 300px
+}
+
+.wbcr-factory-feedback-125-modal.wbcr-factory-feedback-125-modal-license-key-resend.wbcr-factory-feedback-125-freemium label {
+>>>>>>> update
     display: block;
     margin-bottom: 10px
 }
 
+<<<<<<< HEAD
 .wbcr-factory-feedback-112-modal.wbcr-factory-feedback-112-modal-license-key-resend.wbcr-factory-feedback-112-premium input.email-address {
     width: 100%
 }
 
 .wbcr-factory-feedback-112-modal.wbcr-factory-feedback-112-modal-license-key-resend.wbcr-factory-feedback-112-premium .button-container {
+=======
+.wbcr-factory-feedback-125-modal.wbcr-factory-feedback-125-modal-license-key-resend.wbcr-factory-feedback-125-premium input.email-address {
+    width: 100%
+}
+
+.wbcr-factory-feedback-125-modal.wbcr-factory-feedback-125-modal-license-key-resend.wbcr-factory-feedback-125-premium .button-container {
+>>>>>>> update
     float: right;
     margin-left: 7px
 }
 
 @media (max-width: 650px) {
+<<<<<<< HEAD
     .wbcr-factory-feedback-112-modal.wbcr-factory-feedback-112-modal-license-key-resend.wbcr-factory-feedback-112-premium .button-container {
+=======
+    .wbcr-factory-feedback-125-modal.wbcr-factory-feedback-125-modal-license-key-resend.wbcr-factory-feedback-125-premium .button-container {
+>>>>>>> update
         margin-top: 2px
     }
 }
 
+<<<<<<< HEAD
 .rtl .wbcr-factory-feedback-112-modal.wbcr-factory-feedback-112-modal-license-key-resend .wbcr-factory-feedback-112-modal-body .input-container > .email-address-container {
+=======
+.rtl .wbcr-factory-feedback-125-modal.wbcr-factory-feedback-125-modal-license-key-resend .wbcr-factory-feedback-125-modal-body .input-container > .email-address-container {
+>>>>>>> update
     padding-left: 2px;
     padding-right: 0
 }
 
+<<<<<<< HEAD
 .rtl .wbcr-factory-feedback-112-modal.wbcr-factory-feedback-112-modal-license-key-resend .wbcr-factory-feedback-112-modal-body .button-container {
+=======
+.rtl .wbcr-factory-feedback-125-modal.wbcr-factory-feedback-125-modal-license-key-resend .wbcr-factory-feedback-125-modal-body .button-container {
+>>>>>>> update
     float: left;
     margin-right: 7px;
     margin-left: 0
@@ -375,14 +659,22 @@ a.show-license-resend-modal {
     display: inline-block
 }
 
+<<<<<<< HEAD
 .wbcr-factory-feedback-112-ajax-loader {
+=======
+.wbcr-factory-feedback-125-ajax-loader {
+>>>>>>> update
     position: relative;
     width: 170px;
     height: 20px;
     margin: auto
 }
 
+<<<<<<< HEAD
 .wbcr-factory-feedback-112-ajax-loader .wbcr-factory-feedback-112-ajax-loader-bar {
+=======
+.wbcr-factory-feedback-125-ajax-loader .wbcr-factory-feedback-125-ajax-loader-bar {
+>>>>>>> update
     position: absolute;
     top: 0;
     background-color: #0074a3;
@@ -415,7 +707,11 @@ a.show-license-resend-modal {
     transform: 0.3
 }
 
+<<<<<<< HEAD
 .wbcr-factory-feedback-112-ajax-loader .wbcr-factory-feedback-112-ajax-loader-bar-1 {
+=======
+.wbcr-factory-feedback-125-ajax-loader .wbcr-factory-feedback-125-ajax-loader-bar-1 {
+>>>>>>> update
     left: 0px;
     animation-delay: 0.6s;
     -o-animation-delay: 0.6s;
@@ -424,7 +720,11 @@ a.show-license-resend-modal {
     -moz-animation-delay: 0.6s
 }
 
+<<<<<<< HEAD
 .wbcr-factory-feedback-112-ajax-loader .wbcr-factory-feedback-112-ajax-loader-bar-2 {
+=======
+.wbcr-factory-feedback-125-ajax-loader .wbcr-factory-feedback-125-ajax-loader-bar-2 {
+>>>>>>> update
     left: 19px;
     animation-delay: 0.75s;
     -o-animation-delay: 0.75s;
@@ -433,7 +733,11 @@ a.show-license-resend-modal {
     -moz-animation-delay: 0.75s
 }
 
+<<<<<<< HEAD
 .wbcr-factory-feedback-112-ajax-loader .wbcr-factory-feedback-112-ajax-loader-bar-3 {
+=======
+.wbcr-factory-feedback-125-ajax-loader .wbcr-factory-feedback-125-ajax-loader-bar-3 {
+>>>>>>> update
     left: 38px;
     animation-delay: 0.9s;
     -o-animation-delay: 0.9s;
@@ -442,7 +746,11 @@ a.show-license-resend-modal {
     -moz-animation-delay: 0.9s
 }
 
+<<<<<<< HEAD
 .wbcr-factory-feedback-112-ajax-loader .wbcr-factory-feedback-112-ajax-loader-bar-4 {
+=======
+.wbcr-factory-feedback-125-ajax-loader .wbcr-factory-feedback-125-ajax-loader-bar-4 {
+>>>>>>> update
     left: 57px;
     animation-delay: 1.05s;
     -o-animation-delay: 1.05s;
@@ -451,7 +759,11 @@ a.show-license-resend-modal {
     -moz-animation-delay: 1.05s
 }
 
+<<<<<<< HEAD
 .wbcr-factory-feedback-112-ajax-loader .wbcr-factory-feedback-112-ajax-loader-bar-5 {
+=======
+.wbcr-factory-feedback-125-ajax-loader .wbcr-factory-feedback-125-ajax-loader-bar-5 {
+>>>>>>> update
     left: 76px;
     animation-delay: 1.2s;
     -o-animation-delay: 1.2s;
@@ -460,7 +772,11 @@ a.show-license-resend-modal {
     -moz-animation-delay: 1.2s
 }
 
+<<<<<<< HEAD
 .wbcr-factory-feedback-112-ajax-loader .wbcr-factory-feedback-112-ajax-loader-bar-6 {
+=======
+.wbcr-factory-feedback-125-ajax-loader .wbcr-factory-feedback-125-ajax-loader-bar-6 {
+>>>>>>> update
     left: 95px;
     animation-delay: 1.35s;
     -o-animation-delay: 1.35s;
@@ -469,7 +785,11 @@ a.show-license-resend-modal {
     -moz-animation-delay: 1.35s
 }
 
+<<<<<<< HEAD
 .wbcr-factory-feedback-112-ajax-loader .wbcr-factory-feedback-112-ajax-loader-bar-7 {
+=======
+.wbcr-factory-feedback-125-ajax-loader .wbcr-factory-feedback-125-ajax-loader-bar-7 {
+>>>>>>> update
     left: 114px;
     animation-delay: 1.5s;
     -o-animation-delay: 1.5s;
@@ -478,7 +798,11 @@ a.show-license-resend-modal {
     -moz-animation-delay: 1.5s
 }
 
+<<<<<<< HEAD
 .wbcr-factory-feedback-112-ajax-loader .wbcr-factory-feedback-112-ajax-loader-bar-8 {
+=======
+.wbcr-factory-feedback-125-ajax-loader .wbcr-factory-feedback-125-ajax-loader-bar-8 {
+>>>>>>> update
     left: 133px;
     animation-delay: 1.65s;
     -o-animation-delay: 1.65s;
@@ -582,18 +906,30 @@ a.show-license-resend-modal {
     }
 }
 
+<<<<<<< HEAD
 .wbcr-factory-feedback-112-modal-auto-install #request-filesystem-credentials-form h2, .wbcr-factory-feedback-112-modal-auto-install #request-filesystem-credentials-form .request-filesystem-credentials-action-buttons {
     display: none
 }
 
 .wbcr-factory-feedback-112-modal-auto-install #request-filesystem-credentials-form input[type=password], .wbcr-factory-feedback-112-modal-auto-install #request-filesystem-credentials-form input[type=email], .wbcr-factory-feedback-112-modal-auto-install #request-filesystem-credentials-form input[type=text] {
+=======
+.wbcr-factory-feedback-125-modal-auto-install #request-filesystem-credentials-form h2, .wbcr-factory-feedback-125-modal-auto-install #request-filesystem-credentials-form .request-filesystem-credentials-action-buttons {
+    display: none
+}
+
+.wbcr-factory-feedback-125-modal-auto-install #request-filesystem-credentials-form input[type=password], .wbcr-factory-feedback-125-modal-auto-install #request-filesystem-credentials-form input[type=email], .wbcr-factory-feedback-125-modal-auto-install #request-filesystem-credentials-form input[type=text] {
+>>>>>>> update
     -webkit-appearance: none;
     padding: 10px 10px 5px 10px;
     width: 300px;
     max-width: 100%
 }
 
+<<<<<<< HEAD
 .wbcr-factory-feedback-112-modal-auto-install #request-filesystem-credentials-form > div, .wbcr-factory-feedback-112-modal-auto-install #request-filesystem-credentials-form label, .wbcr-factory-feedback-112-modal-auto-install #request-filesystem-credentials-form fieldset {
+=======
+.wbcr-factory-feedback-125-modal-auto-install #request-filesystem-credentials-form > div, .wbcr-factory-feedback-125-modal-auto-install #request-filesystem-credentials-form label, .wbcr-factory-feedback-125-modal-auto-install #request-filesystem-credentials-form fieldset {
+>>>>>>> update
     width: 300px;
     max-width: 100%;
     margin: 0 auto;
@@ -629,21 +965,37 @@ a.show-license-resend-modal {
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.1) !important
 }
 
+<<<<<<< HEAD
 .wbcr-factory-feedback-112-modal .wbcr-factory-feedback-112-modal-header {
+=======
+.wbcr-factory-feedback-125-modal .wbcr-factory-feedback-125-modal-header {
+>>>>>>> update
     background: black;
     color: #fff;
 }
 
+<<<<<<< HEAD
 .wbcr-factory-feedback-112-modal .wbcr-factory-feedback-112-modal-header h4 {
+=======
+.wbcr-factory-feedback-125-modal .wbcr-factory-feedback-125-modal-header h4 {
+>>>>>>> update
     text-shadow: none;
     color: #fff;
 }
 
+<<<<<<< HEAD
 .wbcr-factory-feedback-112-modal .wbcr-factory-feedback-112-modal-body {
     padding-top: 35px;
 }
 
 .wbcr-factory-feedback-112-modal a.button-primary {
+=======
+.wbcr-factory-feedback-125-modal .wbcr-factory-feedback-125-modal-body {
+    padding-top: 35px;
+}
+
+.wbcr-factory-feedback-125-modal a.button-primary {
+>>>>>>> update
     background-color: #9fbb1a !important;
     color: #fff !important;
     border: none !important;
@@ -659,7 +1011,11 @@ a.show-license-resend-modal {
     font-family: Lato, sans-serif;
 }
 
+<<<<<<< HEAD
 .wbcr-factory-feedback-112-modal a.button-secondary {
+=======
+.wbcr-factory-feedback-125-modal a.button-secondary {
+>>>>>>> update
     border: none !important;
     box-shadow: none !important;
     text-shadow: none !important;

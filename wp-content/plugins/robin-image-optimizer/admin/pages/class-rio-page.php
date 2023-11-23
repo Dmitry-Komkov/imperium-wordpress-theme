@@ -18,7 +18,11 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @copyright (c) 2018, Webcraftic
  * @version       1.0
  */
+<<<<<<< HEAD
 class WRIO_Page extends WBCR\Factory_Templates_102\Impressive {
+=======
+class WRIO_Page extends WBCR\Factory_Templates_118\Impressive {
+>>>>>>> update
 
 	/**
 	 * {@inheritdoc}

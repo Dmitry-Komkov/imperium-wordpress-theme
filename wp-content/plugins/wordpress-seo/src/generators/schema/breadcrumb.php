@@ -15,6 +15,13 @@ class Breadcrumb extends Abstract_Schema_Piece {
 	 * @return bool
 	 */
 	public function is_needed() {
+<<<<<<< HEAD
+=======
+		if ( $this->context->indexable->object_type === 'unknown' ) {
+			return false;
+		}
+
+>>>>>>> update
 		if ( $this->context->indexable->object_type === 'system-page' && $this->context->indexable->object_sub_type === '404' ) {
 			return false;
 		}
@@ -82,6 +89,12 @@ class Breadcrumb extends Abstract_Schema_Piece {
 			}
 		}
 
+<<<<<<< HEAD
+=======
+		$breadcrumbs = \array_filter( $breadcrumbs, [ $this, 'not_empty_text' ] );
+		$breadcrumbs = \array_values( $breadcrumbs );
+
+>>>>>>> update
 		// Create intermediate breadcrumbs.
 		foreach ( $breadcrumbs as $index => $breadcrumb ) {
 			$list_elements[] = $this->create_breadcrumb( $index, $breadcrumb );
@@ -165,4 +178,18 @@ class Breadcrumb extends Abstract_Schema_Piece {
 	private function not_hidden( $breadcrumb ) {
 		return empty( $breadcrumb['hide_in_schema'] );
 	}
+<<<<<<< HEAD
+=======
+
+	/**
+	 * Checks whether the breadcrumb has a not empty text.
+	 *
+	 * @param array $breadcrumb The breadcrumb array.
+	 *
+	 * @return bool If the breadcrumb has a not empty text.
+	 */
+	private function not_empty_text( $breadcrumb ) {
+		return ! empty( $breadcrumb['text'] );
+	}
+>>>>>>> update
 }

@@ -11,6 +11,10 @@
 				add_action('wp_before_admin_bar_render', array($this, "wpfc_tweaked_toolbar_on_admin_panel"));
 				add_action('admin_enqueue_scripts', array($this, 'load_toolbar_js'));
 				add_action('admin_enqueue_scripts', array($this, 'load_toolbar_css'));
+<<<<<<< HEAD
+=======
+				add_action('wp_print_scripts', array($this, 'print_my_inline_script'));
+>>>>>>> update
 			}else{
 				if(is_admin_bar_showing()){
 					add_action('wp_before_admin_bar_render', array($this, "wpfc_tweaked_toolbar_on_frontpage"));
@@ -106,6 +110,7 @@
 					'parent'=> 'wpfc-toolbar-parent',
 					'meta' => array("class" => "wpfc-toolbar-child")
 				));
+<<<<<<< HEAD
 			}else{
 				if(isset($_GET["page"]) && $_GET["page"] == "wpfastestcacheoptions"){
 					$wp_admin_bar->add_menu( array(
@@ -115,6 +120,17 @@
 						'meta' => array("class" => "wpfc-toolbar-child")
 					));
 				}
+=======
+			}
+
+			if(isset($_GET["page"]) && $_GET["page"] == "wpfastestcacheoptions"){
+				$wp_admin_bar->add_menu( array(
+					'id'    => 'wpfc-toolbar-parent-settings',
+					'title' => __("Settings", "wp-fastest-cache"),
+					'parent'=> 'wpfc-toolbar-parent',
+					'meta' => array("class" => "wpfc-toolbar-child")
+				));
+>>>>>>> update
 			}
 		}
 	}

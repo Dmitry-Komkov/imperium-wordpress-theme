@@ -63,7 +63,11 @@ class WPSEO_Suggested_Plugins implements WPSEO_WordPress_Integration {
 
 			$notification = $this->get_yoast_seo_suggested_plugins_notification( $plugin_name, $plugin );
 
+<<<<<<< HEAD
 			if ( ! $checker->is_installed( $plugin ) || ! $checker->is_active( $plugin['slug'] ) ) {
+=======
+			if ( ! $checker->is_installed( $plugin ) ) {
+>>>>>>> update
 				$this->notification_center->add_notification( $notification );
 
 				continue;
@@ -85,7 +89,11 @@ class WPSEO_Suggested_Plugins implements WPSEO_WordPress_Integration {
 		$message = $this->create_install_suggested_plugin_message( $plugin );
 
 		if ( $this->availability_checker->is_installed( $plugin ) && ! $this->availability_checker->is_active( $plugin['slug'] ) ) {
+<<<<<<< HEAD
 			$message = $this->create_activate_suggested_plugin_message( $plugin );
+=======
+			$message = '';
+>>>>>>> update
 		}
 
 		return new Yoast_Notification(
@@ -132,6 +140,7 @@ class WPSEO_Suggested_Plugins implements WPSEO_WordPress_Integration {
 		return sprintf(
 			'<a href="%s" aria-label="%s" target="_blank" rel="noopener noreferrer">',
 			$url,
+<<<<<<< HEAD
 			/* translators: %1$s expands to the dependency name. */
 			sprintf( __( 'More information about %1$s', 'wordpress-seo' ), $name )
 		);
@@ -158,4 +167,10 @@ class WPSEO_Suggested_Plugins implements WPSEO_WordPress_Integration {
 			'</a>'
 		);
 	}
+=======
+			/* translators: Hidden accessibility text; %1$s expands to the dependency name */
+			sprintf( __( 'More information about %1$s', 'wordpress-seo' ), $name )
+		);
+	}
+>>>>>>> update
 }

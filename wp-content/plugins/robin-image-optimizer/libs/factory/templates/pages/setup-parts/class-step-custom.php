@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 namespace WBCR\Factory_Templates_102\Pages;
+=======
+namespace WBCR\Factory_Templates_118\Pages;
+>>>>>>> update
 
 /**
  * Step
@@ -18,10 +22,17 @@ class Step_Custom extends Step {
 	public function render_button($continue = true, $skip = false, $custom_title = null, $align = 'right')
 	{
 		$this->set_button_handler();
+<<<<<<< HEAD
 		$button_title = !empty($custom_title) ? $custom_title : __('Continue', 'wbcr_factory_templates_102');
 
 		if( !$this->get_next_id() ) {
 			$button_title = __('Finish', 'wbcr_factory_templates_102');
+=======
+		$button_title = !empty($custom_title) ? $custom_title : __('Continue', 'wbcr_factory_templates_118');
+
+		if( !$this->get_next_id() ) {
+			$button_title = __('Finish', 'wbcr_factory_templates_118');
+>>>>>>> update
 		}
 
 		if( !in_array($align, ['center', 'left', 'right']) ) {
@@ -29,6 +40,7 @@ class Step_Custom extends Step {
 		}
 
 		?>
+<<<<<<< HEAD
 		<form method="post" id="w-factory-templates-102__setup-form-<?php echo $this->get_id() ?>" class="form-horizontal">
 			<div class="w-factory-templates-102__form-buttons" style="text-align: <?php echo esc_attr($align); ?>">
 				<?php if( $skip ): ?>
@@ -36,6 +48,15 @@ class Step_Custom extends Step {
 				<?php endif; ?>
 				<?php if( $continue ): ?>
 					<input type="submit" name="continue_button_<?php echo $this->get_id() ?>" class="button-primary button button-large w-factory-templates-102__continue-button" value="<?php echo $button_title; ?>">
+=======
+		<form method="post" id="w-factory-templates-118__setup-form-<?php echo $this->get_id() ?>" class="form-horizontal">
+			<div class="w-factory-templates-118__form-buttons" style="text-align: <?php echo esc_attr($align); ?>">
+				<?php if( $skip ): ?>
+					<input type="submit" name="skip_button_<?php echo $this->get_id() ?>" class="button-primary button button-large w-factory-templates-118__skip-button" value="<?php _e('Skip', 'wbcr_factory_templates_118') ?>">
+				<?php endif; ?>
+				<?php if( $continue ): ?>
+					<input type="submit" name="continue_button_<?php echo $this->get_id() ?>" class="button-primary button button-large w-factory-templates-118__continue-button" value="<?php echo $button_title; ?>">
+>>>>>>> update
 				<?php endif; ?>
 			</div>
 		</form>

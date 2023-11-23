@@ -9,7 +9,11 @@ require_once WPCF7_PLUGIN_DIR . '/admin/includes/config-validator.php';
 
 add_action(
 	'admin_init',
+<<<<<<< HEAD
 	function () {
+=======
+	static function () {
+>>>>>>> update
 		do_action( 'wpcf7_admin_init' );
 	},
 	10, 0
@@ -135,7 +139,11 @@ function wpcf7_admin_enqueue_scripts( $hook_suffix ) {
 
 	$args = array(
 		'apiSettings' => array(
+<<<<<<< HEAD
 			'root' => esc_url_raw( rest_url( 'contact-form-7/v1' ) ),
+=======
+			'root' => sanitize_url( rest_url( 'contact-form-7/v1' ) ),
+>>>>>>> update
 			'namespace' => 'contact-form-7/v1',
 			'nonce' => ( wp_installing() && ! is_multisite() )
 				? '' : wp_create_nonce( 'wp_rest' ),
@@ -183,7 +191,11 @@ function wpcf7_admin_enqueue_scripts( $hook_suffix ) {
 
 add_filter(
 	'set_screen_option_wpcf7_contact_forms_per_page',
+<<<<<<< HEAD
 	function ( $result, $option, $value ) {
+=======
+	static function ( $result, $option, $value ) {
+>>>>>>> update
 		$wpcf7_screens = array(
 			'wpcf7_contact_forms_per_page',
 		);
@@ -677,3 +689,22 @@ function wpcf7_not_allowed_to_edit( $page, $action, $object ) {
 		esc_html( $message )
 	);
 }
+<<<<<<< HEAD
+=======
+
+
+add_action( 'wpcf7_admin_warnings', 'wpcf7_outdated_php_warning', 10, 3 );
+
+function wpcf7_outdated_php_warning( $page, $action, $object ) {
+	if ( ! version_compare( PHP_VERSION, '7.4', '<' ) ) {
+		return;
+	}
+
+	$message = __( "The next major release of Contact Form 7 will discontinue support for outdated PHP versions. If you don't upgrade PHP, you will not be able to upgrade the plugin.", 'contact-form-7' );
+
+	echo sprintf(
+		'<div class="notice notice-warning"><p>%s</p></div>',
+		esc_html( $message )
+	);
+}
+>>>>>>> update

@@ -18,7 +18,11 @@ if ( ! class_exists( 'ACF_Admin_Tool' ) ) :
 
 
 		/** @var string Dashicon slug */
+<<<<<<< HEAD
 		// var $icon = '';
+=======
+		var $icon = '';
+>>>>>>> update
 
 
 		/** @var boolean Redirect form to single */

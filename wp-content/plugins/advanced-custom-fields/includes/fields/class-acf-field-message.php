@@ -22,10 +22,19 @@ if ( ! class_exists( 'acf_field_message' ) ) :
 		function initialize() {
 
 			// vars
+<<<<<<< HEAD
 			$this->name     = 'message';
 			$this->label    = __( 'Message', 'acf' );
 			$this->category = 'layout';
 			$this->defaults = array(
+=======
+			$this->name          = 'message';
+			$this->label         = __( 'Message', 'acf' );
+			$this->category      = 'layout';
+			$this->description   = __( 'Used to display a message to editors alongside other fields. Useful for providing additional context or instructions around your fields.', 'acf' );
+			$this->preview_image = acf_get_url() . '/assets/images/field-type-previews/field-preview-message.png';
+			$this->defaults      = array(
+>>>>>>> update
 				'message'   => '',
 				'esc_html'  => 0,
 				'new_lines' => 'wpautop',
@@ -90,10 +99,14 @@ if ( ! class_exists( 'acf_field_message' ) ) :
 		*  @since   3.6
 		*  @date    23/01/13
 		*/
+<<<<<<< HEAD
 
 		function render_field_settings( $field ) {
 
 			// default_value
+=======
+		function render_field_settings( $field ) {
+>>>>>>> update
 			acf_render_field_setting(
 				$field,
 				array(
@@ -104,7 +117,10 @@ if ( ! class_exists( 'acf_field_message' ) ) :
 				)
 			);
 
+<<<<<<< HEAD
 			// formatting
+=======
+>>>>>>> update
 			acf_render_field_setting(
 				$field,
 				array(
@@ -120,7 +136,10 @@ if ( ! class_exists( 'acf_field_message' ) ) :
 				)
 			);
 
+<<<<<<< HEAD
 			// HTML
+=======
+>>>>>>> update
 			acf_render_field_setting(
 				$field,
 				array(
@@ -131,10 +150,15 @@ if ( ! class_exists( 'acf_field_message' ) ) :
 					'ui'           => 1,
 				)
 			);
+<<<<<<< HEAD
 
 		}
 
 
+=======
+		}
+
+>>>>>>> update
 		/*
 		*  translate_field
 		*

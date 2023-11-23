@@ -36,6 +36,21 @@ function wpcf7_flamingo_submit( $contact_form, $result ) {
 		return;
 	}
 
+<<<<<<< HEAD
+=======
+	// Exclude do-not-store form-tag values.
+	$posted_data = array_filter(
+		$posted_data,
+		static function ( $name ) use ( $contact_form ) {
+			return ! $contact_form->scan_form_tags( array(
+				'name' => $name,
+				'feature' => 'do-not-store',
+			) );
+		},
+		ARRAY_FILTER_USE_KEY
+	);
+
+>>>>>>> update
 	$email = wpcf7_flamingo_get_value( 'email', $contact_form );
 	$name = wpcf7_flamingo_get_value( 'name', $contact_form );
 	$subject = wpcf7_flamingo_get_value( 'subject', $contact_form );
@@ -63,9 +78,12 @@ function wpcf7_flamingo_submit( $contact_form, $result ) {
 		);
 	}
 
+<<<<<<< HEAD
 	$akismet = isset( $submission->akismet )
 		? (array) $submission->akismet : null;
 
+=======
+>>>>>>> update
 	$timestamp = $submission->get_meta( 'timestamp' );
 
 	if ( $timestamp and $datetime = date_create( '@' . $timestamp ) ) {
@@ -125,7 +143,11 @@ function wpcf7_flamingo_submit( $contact_form, $result ) {
 		'from_email' => $email,
 		'fields' => $posted_data,
 		'meta' => $meta,
+<<<<<<< HEAD
 		'akismet' => $akismet,
+=======
+		'akismet' => $submission->pull( 'akismet' ),
+>>>>>>> update
 		'spam' => ( 'spam' == $result['status'] ),
 		'consent' => $submission->collect_consent(),
 		'timestamp' => $timestamp,
@@ -136,9 +158,13 @@ function wpcf7_flamingo_submit( $contact_form, $result ) {
 		$args['spam_log'] = $submission->get_spam_log();
 	}
 
+<<<<<<< HEAD
 	if ( isset( $submission->recaptcha ) ) {
 		$args['recaptcha'] = $submission->recaptcha;
 	}
+=======
+	$args['recaptcha'] = $submission->pull( 'recaptcha' );
+>>>>>>> update
 
 	$args = apply_filters( 'wpcf7_flamingo_inbound_message_parameters', $args );
 

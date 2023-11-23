@@ -74,6 +74,7 @@ class Yoast_Integration_Toggles {
 				'order'           => 10,
 			],
 			(object) [
+<<<<<<< HEAD
 				/* translators: %s: Zapier. */
 				'name'               => \sprintf( \esc_html__( '%s integration', 'wordpress-seo' ), 'Zapier' ),
 				'premium'            => true,
@@ -92,6 +93,8 @@ class Yoast_Integration_Toggles {
 				'order'              => 20,
 			],
 			(object) [
+=======
+>>>>>>> update
 				/* translators: %s: Algolia. */
 				'name'               => \sprintf( \esc_html__( '%s integration', 'wordpress-seo' ), 'Algolia' ),
 				'premium'            => true,

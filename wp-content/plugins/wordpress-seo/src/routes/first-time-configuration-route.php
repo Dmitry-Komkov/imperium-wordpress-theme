@@ -39,6 +39,10 @@ class First_Time_Configuration_Route implements Route_Interface {
 	/**
 	 * Represents a person's social profiles route.
 	 *
+<<<<<<< HEAD
+=======
+	 * @deprecated 20.2
+>>>>>>> update
 	 * @var string
 	 */
 	const PERSON_SOCIAL_PROFILES_ROUTE = '/person_social_profiles';
@@ -151,6 +155,7 @@ class First_Time_Configuration_Route implements Route_Interface {
 		];
 		\register_rest_route( Main::API_V1_NAMESPACE, self::CONFIGURATION_ROUTE . self::SOCIAL_PROFILES_ROUTE, $social_profiles_route );
 
+<<<<<<< HEAD
 		$person_social_profiles_route = [
 			[
 				'methods'             => 'GET',
@@ -205,6 +210,8 @@ class First_Time_Configuration_Route implements Route_Interface {
 		];
 		\register_rest_route( Main::API_V1_NAMESPACE, self::CONFIGURATION_ROUTE . self::PERSON_SOCIAL_PROFILES_ROUTE, $person_social_profiles_route );
 
+=======
+>>>>>>> update
 		$check_capability_route = [
 			'methods'             => 'GET',
 			'callback'            => [ $this, 'check_capability' ],
@@ -286,6 +293,7 @@ class First_Time_Configuration_Route implements Route_Interface {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Gets a person's social profiles values.
 	 *
 	 * @param WP_REST_Request $request The request.
@@ -318,6 +326,8 @@ class First_Time_Configuration_Route implements Route_Interface {
 	}
 
 	/**
+=======
+>>>>>>> update
 	 * Checks if the current user has the correct capability to edit a specific user.
 	 *
 	 * @param WP_REST_Request $request The request.
@@ -404,4 +414,51 @@ class First_Time_Configuration_Route implements Route_Interface {
 
 		return new WP_REST_Response( $data, $data->status );
 	}
+<<<<<<< HEAD
+=======
+
+	/* DEPRECATED METHODS */
+
+	/**
+	 * Gets a person's social profiles values.
+	 *
+	 * @deprecated 20.2
+	 * @codeCoverageIgnore
+	 *
+	 * @param WP_REST_Request $request The request.
+	 *
+	 * @return WP_REST_Response
+	 */
+	public function get_person_social_profiles( WP_REST_Request $request ) {
+		\_deprecated_function( __METHOD__, 'Yoast SEO 20.2' );
+
+		$data = $this
+			->first_time_configuration_action
+			->get_person_social_profiles( $request->get_param( 'user_id' ) );
+
+		return new WP_REST_Response( $data, $data->status );
+	}
+
+	/**
+	 * Sets a person's social profiles values.
+	 *
+	 * @deprecated 20.2
+	 * @codeCoverageIgnore
+	 *
+	 * @param WP_REST_Request $request The request.
+	 *
+	 * @return WP_REST_Response
+	 */
+	public function set_person_social_profiles( WP_REST_Request $request ) {
+		\_deprecated_function( __METHOD__, 'Yoast SEO 20.2' );
+
+		$data = $this
+			->first_time_configuration_action
+			->set_person_social_profiles( $request->get_json_params() );
+
+		return new WP_REST_Response(
+			[ 'json' => $data ]
+		);
+	}
+>>>>>>> update
 }

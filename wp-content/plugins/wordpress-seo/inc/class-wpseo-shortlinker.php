@@ -11,6 +11,7 @@
 class WPSEO_Shortlinker {
 
 	/**
+<<<<<<< HEAD
 	 * Collects the additional data necessary for the shortlink.
 	 *
 	 * @return array The shortlink data.
@@ -35,6 +36,8 @@ class WPSEO_Shortlinker {
 	}
 
 	/**
+=======
+>>>>>>> update
 	 * Builds a URL to use in the plugin as shortlink.
 	 *
 	 * @param string $url The URL to build upon.
@@ -42,7 +45,11 @@ class WPSEO_Shortlinker {
 	 * @return string The final URL.
 	 */
 	public function build_shortlink( $url ) {
+<<<<<<< HEAD
 		return add_query_arg( $this->collect_additional_shortlink_data(), $url );
+=======
+		return YoastSEO()->helpers->short_link->build( $url );
+>>>>>>> update
 	}
 
 	/**
@@ -53,9 +60,13 @@ class WPSEO_Shortlinker {
 	 * @return string The final URL.
 	 */
 	public static function get( $url ) {
+<<<<<<< HEAD
 		$shortlinker = new self();
 
 		return $shortlinker->build_shortlink( $url );
+=======
+		return YoastSEO()->helpers->short_link->get( $url );
+>>>>>>> update
 	}
 
 	/**
@@ -64,7 +75,11 @@ class WPSEO_Shortlinker {
 	 * @param string $url The URL to build upon.
 	 */
 	public static function show( $url ) {
+<<<<<<< HEAD
 		echo esc_url( self::get( $url ) );
+=======
+		YoastSEO()->helpers->short_link->show( $url );
+>>>>>>> update
 	}
 
 	/**
@@ -73,6 +88,7 @@ class WPSEO_Shortlinker {
 	 * @return array The shortlink's query params.
 	 */
 	public static function get_query_params() {
+<<<<<<< HEAD
 		$shortlinker = new self();
 
 		return $shortlinker->collect_additional_shortlink_data();
@@ -158,5 +174,8 @@ class WPSEO_Shortlinker {
 		}
 
 		return false;
+=======
+		return YoastSEO()->helpers->short_link->get_query_params();
+>>>>>>> update
 	}
 }

@@ -57,6 +57,18 @@ class UpdraftPlus_Host extends UpdraftCentral_Host {
 	}
 
 	/**
+<<<<<<< HEAD
+=======
+	 * Whether the current user can perform key control AJAX actions
+	 *
+	 * @return Boolean
+	 */
+	public function current_user_can_ajax() {
+		return UpdraftPlus_Options::user_can_manage();
+	}
+	
+	/**
+>>>>>>> update
 	 * Below are interface methods' implementations that are required by UpdraftCentral to function properly. Please
 	 * see the "interface.php" to check all the required interface methods.
 	 */
@@ -156,7 +168,11 @@ class UpdraftPlus_Host extends UpdraftCentral_Host {
 			return $updraftplus_admin;
 		} else {
 			if (defined('UPDRAFTPLUS_DIR') && file_exists(UPDRAFTPLUS_DIR.'/admin.php')) {
+<<<<<<< HEAD
 				include_once(UPDRAFTPLUS_DIR.'/admin.php');
+=======
+				updraft_try_include_file('admin.php', 'include_once');
+>>>>>>> update
 				$updraftplus_admin = new UpdraftPlus_Admin();
 				return $updraftplus_admin;
 			}
@@ -168,6 +184,7 @@ class UpdraftPlus_Host extends UpdraftCentral_Host {
 	/**
 	 * Logs the given line
 	 *
+<<<<<<< HEAD
 	 * @param  string  $line 	   the log line
 	 * @param  string  $level      the log level: notice, warning, error. If suffixed with a hyphen and a destination, then the default destination is changed too.
 	 * @param  boolean $uniq_id    each of these will only be logged once
@@ -176,11 +193,24 @@ class UpdraftPlus_Host extends UpdraftCentral_Host {
 	 * @return void
 	 */
 	public function log($line, $level = 'notice', $uniq_id = false, $skip_dblog = false) {
+=======
+	 * @param string         $line    The log line
+	 * @param string         $level   The log level: notice, warning, error, etc.
+	 * @param boolean|string $uniq_id Each of these will only be logged once
+	 *
+	 * @return void
+	 */
+	public function log($line, $level = 'notice', $uniq_id = false) {
+>>>>>>> update
 		global $updraftplus;
 
 		if ($updraftplus) {
 			if (is_callable(array($updraftplus, 'log'))) {
+<<<<<<< HEAD
 				call_user_func(array($updraftplus, 'log'), $line, $level, $uniq_id, $skip_dblog);
+=======
+				call_user_func(array($updraftplus, 'log'), $line, $level, $uniq_id);
+>>>>>>> update
 			}
 		}
 	}
@@ -241,7 +271,11 @@ class UpdraftPlus_Host extends UpdraftCentral_Host {
 
 		if (!class_exists('UpdraftPlus')) {
 			if (defined('UPDRAFTPLUS_DIR') && file_exists(UPDRAFTPLUS_DIR.'/class-updraftplus.php')) {
+<<<<<<< HEAD
 				include_once(UPDRAFTPLUS_DIR.'/class-updraftplus.php');
+=======
+				updraft_try_include_file('class-updraftplus.php', 'include_once');
+>>>>>>> update
 				if (empty($updraftplus) || !is_a($updraftplus, 'UpdraftPlus')) {
 					$updraftplus = new UpdraftPlus();
 				}
@@ -250,13 +284,21 @@ class UpdraftPlus_Host extends UpdraftCentral_Host {
 
 		if (!class_exists('UpdraftPlus_Options')) {
 			if (defined('UPDRAFTPLUS_DIR') && file_exists(UPDRAFTPLUS_DIR.'/options.php')) {
+<<<<<<< HEAD
 				require_once(UPDRAFTPLUS_DIR.'/options.php');
+=======
+				updraft_try_include_file('options.php', 'require_once');
+>>>>>>> update
 			}
 		}
 
 		if (!class_exists('UpdraftPlus_Filesystem_Functions')) {
 			if (defined('UPDRAFTPLUS_DIR') && file_exists(UPDRAFTPLUS_DIR.'/includes/class-filesystem-functions.php')) {
+<<<<<<< HEAD
 				require_once(UPDRAFTPLUS_DIR.'/includes/class-filesystem-functions.php');
+=======
+				updraft_try_include_file('includes/class-filesystem-functions.php', 'require_once');
+>>>>>>> update
 			}
 		}
 

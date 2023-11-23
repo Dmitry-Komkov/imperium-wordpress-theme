@@ -12,10 +12,17 @@ return array(
 	'unknown_key' => __('The key referred to was unknown.', 'updraftplus'),
 	'not_logged_in' => __('You are not logged into this WordPress site in your web browser.', 'updraftplus'),
 	'must_visit_url' => __('You must visit this URL in the same browser and login session as you created the key in.', 'updraftplus'),
+<<<<<<< HEAD
 	'security_check' => __('Security check. ', 'updraftplus'),
 	'must_visit_link' => __('You must visit this link in the same browser and login session as you created the key in.', 'updraftplus'),
 	'connection_already_made' => __('This connection appears to already have been made.', 'updraftplus'),
 	'close' => __('Close...', 'updraftplus'),
+=======
+	'security_check' => __('Security check.', 'updraftplus'),
+	'must_visit_link' => __('You must visit this link in the same browser and login session as you created the key in.', 'updraftplus'),
+	'connection_already_made' => __('This connection appears to already have been made.', 'updraftplus'),
+	'close' => __('Close', 'updraftplus'),
+>>>>>>> update
 	'nothing_yet_logged' => __('(Nothing yet logged)', 'updraftplus'),
 	'invalid_url' => __('An invalid URL was entered', 'updraftplus'),
 	'updraftcentral_key_created' => __('UpdraftCentral key created successfully', 'updraftplus'),
@@ -23,7 +30,11 @@ return array(
 	'press_add_site_button' => __('At your UpdraftCentral dashboard you should press the "Add Site" button then paste the key in the input box.', 'updraftplus'),
 	'detailed_instructions' => __('Detailed instructions for this can be found at %s', 'updraftplus'),
 	'control_this_site' => __('You can now control this site via your UpdraftCentral dashboard at %s.', 'updraftplus'),
+<<<<<<< HEAD
 	'attempt_to_register_failed' => __('A key was created, but the attempt to register it with %s was unsuccessful - please try again later.', 'updraftplus'),
+=======
+	'attempt_to_register_failed' => __('A key was created, but the attempt to register it with %1$s was unsuccessful.', 'updraftplus').' '.__('You can try again, or try using the alternative connection method if the problem persists.', 'updraftplus').' '.__('For more information visit %2$s', 'updraftplus'),
+>>>>>>> update
 	'key_created_successfully' => __('Key created successfully.', 'updraftplus'),
 	'copy_paste_key' => __('You must copy and paste this key now - it cannot be shown again.', 'updraftplus'),
 	'no_updraftcentral_dashboards' => __('There are no UpdraftCentral dashboards that can currently control this site.', 'updraftplus'),
@@ -69,8 +80,13 @@ return array(
 	'read_more' => __('Read more about it here.', 'updraftplus'),
 	'create_another_key' => __('Create another key', 'updraftplus'),
 	'unable_to_connect' => __('Unable to connect to the filesystem', 'updraftplus'),
+<<<<<<< HEAD
 	'unable_to_activate' => __('Unable to activate %s successfully. Make sure that this %s is compatible with your remote WordPress version. WordPress version currently installed in your remote website is %s.', 'updraftplus'),
 	'unable_to_install' => __('Unable to install %s. Make sure that the zip file is a valid %s file and a previous version of this %s does not exist. If you wish to overwrite an existing %s then you will have to manually delete it from the %s folder on the remote website and try uploading the file again.', 'updraftplus'),
+=======
+	'unable_to_activate' => __('Unable to activate %s successfully.', 'updraftplus').' '.__('Make sure that this %s is compatible with your remote WordPress version.', 'updraftplus').' '.__('WordPress version currently installed in your remote website is %s.', 'updraftplus'),
+	'unable_to_install' => __('Unable to install %s.', 'updraftplus').' '.__('Make sure you upload the correct file and that the zip file is a valid %s file (not corrupted) and try uploading the file again.', 'updraftplus'),
+>>>>>>> update
 	'failed_to_attach_media' => __('Failed to attach media.', 'updraftplus'),
 	'media_attached' => __('Media has been attached to post.', 'updraftplus'),
 	'failed_to_detach_media' => __('Failed to detach media.', 'updraftplus'),
@@ -87,4 +103,11 @@ return array(
 	'unexpectedresponse' => __('Unexpected response:', 'updraftplus'),
 	'updraftcentral_wizard_empty_url' => __('Please enter the URL where your UpdraftCentral dashboard is hosted.', 'updraftplus'),
 	'updraftcentral_wizard_invalid_url' => __('Please enter a valid URL e.g http://example.com', 'updraftplus'),
+<<<<<<< HEAD
+=======
+	'insufficient_privilege' => __('Sorry, you do not have enough privilege to execute the requested action.', 'updraftplus'),
+	'copy_to_clipboard' => __('Copy to clipboard', 'updraftplus'),
+	'key_copied' => __('The key was copied to the clipboard.', 'updraftplus'),
+	'unable_to_copy' => __('The attempt to copy to the clipboard failed.', 'updraftplus'),
+>>>>>>> update
 );

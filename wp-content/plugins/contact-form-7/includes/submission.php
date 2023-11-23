@@ -5,6 +5,11 @@
  */
 class WPCF7_Submission {
 
+<<<<<<< HEAD
+=======
+	use WPCF7_PocketHolder;
+
+>>>>>>> update
 	private static $instance;
 
 	private $contact_form;
@@ -70,6 +75,7 @@ class WPCF7_Submission {
 	 * The main logic of submission.
 	 */
 	private function proceed() {
+<<<<<<< HEAD
 		$contact_form = $this->contact_form;
 
 		switch_to_locale( $contact_form->locale() );
@@ -126,6 +132,65 @@ class WPCF7_Submission {
 		restore_previous_locale();
 
 		$this->remove_uploaded_files();
+=======
+
+		$callback = function () {
+			$contact_form = $this->contact_form;
+
+			$this->setup_meta_data();
+			$this->setup_posted_data();
+
+			if ( $this->is( 'init' ) and ! $this->validate() ) {
+				$this->set_status( 'validation_failed' );
+				$this->set_response( $contact_form->message( 'validation_error' ) );
+			}
+
+			if ( $this->is( 'init' ) and ! $this->accepted() ) {
+				$this->set_status( 'acceptance_missing' );
+				$this->set_response( $contact_form->message( 'accept_terms' ) );
+			}
+
+			if ( $this->is( 'init' ) and $this->spam() ) {
+				$this->set_status( 'spam' );
+				$this->set_response( $contact_form->message( 'spam' ) );
+			}
+
+			if ( $this->is( 'init' ) and ! $this->unship_uploaded_files() ) {
+				$this->set_status( 'validation_failed' );
+				$this->set_response( $contact_form->message( 'validation_error' ) );
+			}
+
+			if ( $this->is( 'init' ) ) {
+				$abort = ! $this->before_send_mail();
+
+				if ( $abort ) {
+					if ( $this->is( 'init' ) ) {
+						$this->set_status( 'aborted' );
+					}
+
+					if ( '' === $this->get_response() ) {
+						$this->set_response( $contact_form->filter_message(
+							__( "Sending mail has been aborted.", 'contact-form-7' ) )
+						);
+					}
+				} elseif ( $this->mail() ) {
+					$this->set_status( 'mail_sent' );
+					$this->set_response( $contact_form->message( 'mail_sent_ok' ) );
+
+					do_action( 'wpcf7_mail_sent', $contact_form );
+				} else {
+					$this->set_status( 'mail_failed' );
+					$this->set_response( $contact_form->message( 'mail_sent_ng' ) );
+
+					do_action( 'wpcf7_mail_failed', $contact_form );
+				}
+			}
+
+			$this->remove_uploaded_files();
+		};
+
+		wpcf7_switch_locale( $this->contact_form->locale(), $callback );
+>>>>>>> update
 	}
 
 
@@ -368,7 +433,11 @@ class WPCF7_Submission {
 	 * Constructs posted data property based on user input values.
 	 */
 	private function setup_posted_data() {
+<<<<<<< HEAD
 		$posted_data = array_filter( (array) $_POST, function( $key ) {
+=======
+		$posted_data = array_filter( (array) $_POST, static function ( $key ) {
+>>>>>>> update
 			return '_' !== substr( $key, 0, 1 );
 		}, ARRAY_FILTER_USE_KEY );
 
@@ -386,11 +455,14 @@ class WPCF7_Submission {
 			$name = $tag->name;
 			$pipes = $tag->pipes;
 
+<<<<<<< HEAD
 			if ( wpcf7_form_tag_supports( $type, 'do-not-store' ) ) {
 				unset( $posted_data[$name] );
 				continue;
 			}
 
+=======
+>>>>>>> update
 			$value_orig = $value = '';
 
 			if ( isset( $posted_data[$name] ) ) {
@@ -424,7 +496,11 @@ class WPCF7_Submission {
 					);
 
 					list( $last_val, $tied_item ) = array_map(
+<<<<<<< HEAD
 						function ( $item ) {
+=======
+						static function ( $item ) {
+>>>>>>> update
 							return wpcf7_canonicalize( $item, array(
 								'strto' => 'as-is',
 							) );
@@ -596,7 +672,11 @@ class WPCF7_Submission {
 
 			if ( $referer
 			and 0 === strpos( $referer, $home_url ) ) {
+<<<<<<< HEAD
 				return esc_url_raw( $referer );
+=======
+				return sanitize_url( $referer );
+>>>>>>> update
 			}
 		}
 

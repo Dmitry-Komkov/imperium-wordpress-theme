@@ -19,6 +19,7 @@ class Article_Helper {
 			$post_type = \get_post_type();
 		}
 
+<<<<<<< HEAD
 		/**
 		 * Filter: 'wpseo_schema_article_post_types' - Allow changing for which post types we output Article schema.
 		 *
@@ -28,6 +29,8 @@ class Article_Helper {
 		 */
 		\apply_filters_deprecated( 'wpseo_schema_article_post_types', [ [ 'post' ] ], 'WPSEO 17.6', '', 'Every post type supporting authors will automatically have the Article schema enabled.' );
 
+=======
+>>>>>>> update
 		return $this->is_author_supported( $post_type );
 	}
 

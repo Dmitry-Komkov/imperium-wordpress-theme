@@ -60,7 +60,11 @@ class Installation_Success_Integration implements Integration_Interface {
 	 * @return void
 	 */
 	public function maybe_redirect() {
+<<<<<<< HEAD
 		if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+=======
+		if ( \defined( 'DOING_AJAX' ) && \DOING_AJAX ) {
+>>>>>>> update
 			return;
 		}
 
@@ -100,9 +104,15 @@ class Installation_Success_Integration implements Integration_Interface {
 	 */
 	public function add_submenu_page( $submenu_pages ) {
 		\add_submenu_page(
+<<<<<<< HEAD
 			null,
 			\__( 'Installation Successful', 'wordpress-seo' ),
 			null,
+=======
+			'',
+			\__( 'Installation Successful', 'wordpress-seo' ),
+			'',
+>>>>>>> update
 			'manage_options',
 			'wpseo_installation_successful_free',
 			[ $this, 'render_page' ]

@@ -53,17 +53,28 @@ if ( ! function_exists( 'get_user_locale' ) ) {
  * @param string $message       Optional. A message regarding the change.
  *
  * @return mixed
+<<<<<<< HEAD
  * @see   wbcr_factory_450_deprecated_hook()
  *
  */
 function wbcr_factory_450_apply_filters_deprecated( $tag, $args, $version, $replacement = false, $message = null ) {
+=======
+ * @see   wbcr_factory_469_deprecated_hook()
+ *
+ */
+function wbcr_factory_469_apply_filters_deprecated( $tag, $args, $version, $replacement = false, $message = null ) {
+>>>>>>> update
 	if ( function_exists( 'apply_filters_deprecated' ) ) {
 		return apply_filters_deprecated( $tag, $args, $version, $replacement, $message );
 	}
 	if ( ! has_filter( $tag ) ) {
 		return $args[0];
 	}
+<<<<<<< HEAD
 	wbcr_factory_450_deprecated_hook( $tag, $version, $replacement, $message );
+=======
+	wbcr_factory_469_deprecated_hook( $tag, $version, $replacement, $message );
+>>>>>>> update
 
 	return apply_filters_ref_array( $tag, $args );
 }
@@ -89,7 +100,11 @@ function wbcr_factory_450_apply_filters_deprecated( $tag, $args, $version, $repl
  * @see   _deprecated_hook()
  *
  */
+<<<<<<< HEAD
 function wbcr_factory_450_do_action_deprecated( $tag, $args, $version, $replacement = false, $message = null ) {
+=======
+function wbcr_factory_469_do_action_deprecated( $tag, $args, $version, $replacement = false, $message = null ) {
+>>>>>>> update
 	if ( function_exists( 'do_action_deprecated' ) ) {
 		do_action_deprecated( $tag, $args, $version, $replacement, $message );
 
@@ -98,14 +113,22 @@ function wbcr_factory_450_do_action_deprecated( $tag, $args, $version, $replacem
 	if ( ! has_action( $tag ) ) {
 		return;
 	}
+<<<<<<< HEAD
 	wbcr_factory_450_deprecated_hook( $tag, $version, $replacement, $message );
+=======
+	wbcr_factory_469_deprecated_hook( $tag, $version, $replacement, $message );
+>>>>>>> update
 	do_action_ref_array( $tag, $args );
 }
 
 /**
  * Marks a deprecated action or filter hook as deprecated and throws a notice.
  *
+<<<<<<< HEAD
  * Use the 'wbcr_factory_450_deprecated_hook_run' action to get the backtrace describing where the
+=======
+ * Use the 'wbcr_factory_469_deprecated_hook_run' action to get the backtrace describing where the
+>>>>>>> update
  * deprecated hook was called.
  *
  * Default behavior is to trigger a user error if WP_DEBUG is true.
@@ -123,7 +146,11 @@ function wbcr_factory_450_do_action_deprecated( $tag, $args, $version, $replacem
  * @param string $replacement   Optional. The hook that should have been used.
  * @param string $message       Optional. A message regarding the change.
  */
+<<<<<<< HEAD
 function wbcr_factory_450_deprecated_hook( $hook, $version, $replacement = null, $message = null ) {
+=======
+function wbcr_factory_469_deprecated_hook( $hook, $version, $replacement = null, $message = null ) {
+>>>>>>> update
 	/**
 	 * Fires when a deprecated hook is called.
 	 *

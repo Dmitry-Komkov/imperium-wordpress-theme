@@ -1,5 +1,9 @@
 <?php
 
+<<<<<<< HEAD
+=======
+declare (strict_types=1);
+>>>>>>> update
 namespace YoastSEO_Vendor\GuzzleHttp\Psr7;
 
 use YoastSEO_Vendor\Psr\Http\Message\StreamInterface;
@@ -10,17 +14,27 @@ use YoastSEO_Vendor\Psr\Http\Message\StreamInterface;
  * This stream returns a "hwm" metadata value that tells upstream consumers
  * what the configured high water mark of the stream is, or the maximum
  * preferred size of the buffer.
+<<<<<<< HEAD
  *
  * @final
  */
 class BufferStream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInterface
 {
     private $hwm;
+=======
+ */
+final class BufferStream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInterface
+{
+    /** @var int */
+    private $hwm;
+    /** @var string */
+>>>>>>> update
     private $buffer = '';
     /**
      * @param int $hwm High water mark, representing the preferred maximum
      *                 buffer size. If the size of the buffer exceeds the high
      *                 water mark, then calls to write will continue to succeed
+<<<<<<< HEAD
      *                 but will return false to inform writers to slow down
      *                 until the buffer has been drained by reading from it.
      */
@@ -33,12 +47,30 @@ class BufferStream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInterface
         return $this->getContents();
     }
     public function getContents()
+=======
+     *                 but will return 0 to inform writers to slow down
+     *                 until the buffer has been drained by reading from it.
+     */
+    public function __construct(int $hwm = 16384)
+    {
+        $this->hwm = $hwm;
+    }
+    public function __toString() : string
+    {
+        return $this->getContents();
+    }
+    public function getContents() : string
+>>>>>>> update
     {
         $buffer = $this->buffer;
         $this->buffer = '';
         return $buffer;
     }
+<<<<<<< HEAD
     public function close()
+=======
+    public function close() : void
+>>>>>>> update
     {
         $this->buffer = '';
     }
@@ -47,6 +79,7 @@ class BufferStream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInterface
         $this->close();
         return null;
     }
+<<<<<<< HEAD
     public function getSize()
     {
         return \strlen($this->buffer);
@@ -76,13 +109,48 @@ class BufferStream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInterface
         return \strlen($this->buffer) === 0;
     }
     public function tell()
+=======
+    public function getSize() : ?int
+    {
+        return \strlen($this->buffer);
+    }
+    public function isReadable() : bool
+    {
+        return \true;
+    }
+    public function isWritable() : bool
+    {
+        return \true;
+    }
+    public function isSeekable() : bool
+    {
+        return \false;
+    }
+    public function rewind() : void
+    {
+        $this->seek(0);
+    }
+    public function seek($offset, $whence = \SEEK_SET) : void
+    {
+        throw new \RuntimeException('Cannot seek a BufferStream');
+    }
+    public function eof() : bool
+    {
+        return \strlen($this->buffer) === 0;
+    }
+    public function tell() : int
+>>>>>>> update
     {
         throw new \RuntimeException('Cannot determine the position of a BufferStream');
     }
     /**
      * Reads data from the buffer.
      */
+<<<<<<< HEAD
     public function read($length)
+=======
+    public function read($length) : string
+>>>>>>> update
     {
         $currentLength = \strlen($this->buffer);
         if ($length >= $currentLength) {
@@ -99,6 +167,7 @@ class BufferStream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInterface
     /**
      * Writes data to the buffer.
      */
+<<<<<<< HEAD
     public function write($string)
     {
         $this->buffer .= $string;
@@ -111,6 +180,22 @@ class BufferStream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInterface
     public function getMetadata($key = null)
     {
         if ($key == 'hwm') {
+=======
+    public function write($string) : int
+    {
+        $this->buffer .= $string;
+        if (\strlen($this->buffer) >= $this->hwm) {
+            return 0;
+        }
+        return \strlen($string);
+    }
+    /**
+     * @return mixed
+     */
+    public function getMetadata($key = null)
+    {
+        if ($key === 'hwm') {
+>>>>>>> update
             return $this->hwm;
         }
         return $key ? null : [];

@@ -15,7 +15,11 @@
 	 * @package core
 	 * @since 1.0.0
 	 */
+<<<<<<< HEAD
 	class Wbcr_FactoryForms447_GoogleFontControl extends Wbcr_FactoryForms447_FontControl {
+=======
+	class Wbcr_FactoryForms466_GoogleFontControl extends Wbcr_FactoryForms466_FontControl {
+>>>>>>> update
 
 		public $type = 'google-font';
 		const APIKEY = 'AIzaSyB-3vazYv7Q-5QZA04bmSKFrWcw_VhC40w';
@@ -30,7 +34,11 @@
 				'cssClass' => 'factory-google-font-data'
 			);
 
+<<<<<<< HEAD
 			$this->google_font_data = new Wbcr_FactoryForms447_HiddenControl($option_google_font_data, $form, $provider);
+=======
+			$this->google_font_data = new Wbcr_FactoryForms466_HiddenControl($option_google_font_data, $form, $provider);
+>>>>>>> update
 			$this->inner_controls[] = $this->google_font_data;
 		}
 
@@ -49,12 +57,20 @@
 			$google_fonts = $this->getGoogleFonts();
 
 			$fonts = array(
+<<<<<<< HEAD
 				array('inherit', __('(use default website font)', 'wbcr_factory_forms_447'))
+=======
+				array('inherit', __('(use default website font)', 'wbcr_factory_forms_466'))
+>>>>>>> update
 			);
 
 			$fontsCommon = array(
 				'group',
+<<<<<<< HEAD
 				__('Standard:', 'wbcr_factory_forms_447'),
+=======
+				__('Standard:', 'wbcr_factory_forms_466'),
+>>>>>>> update
 				array(
 
 					array('Arial, "Helvetica Neue", Helvetica, sans-serif', 'Arial'),
@@ -65,7 +81,11 @@
 				)
 			);
 
+<<<<<<< HEAD
 			$fontsGoogleFonts = array('group', __('Google Fonts:', 'wbcr_factory_forms_447'), array());
+=======
+			$fontsGoogleFonts = array('group', __('Google Fonts:', 'wbcr_factory_forms_466'), array());
+>>>>>>> update
 
 			foreach($google_fonts->items as $item) {
 
@@ -115,7 +135,11 @@
 
 			if( is_wp_error($response) ) {
 
+<<<<<<< HEAD
 				$this->error = __('Unable to retrieve the list of Google Fonts.', 'wbcr_factory_forms_447');
+=======
+				$this->error = __('Unable to retrieve the list of Google Fonts.', 'wbcr_factory_forms_466');
+>>>>>>> update
 				$this->defailed_error = $response->get_error_message();
 
 				return $body;
@@ -123,7 +147,11 @@
 
 			if( !isset($response['body']) ) {
 
+<<<<<<< HEAD
 				$this->error = __('Invalide response from the Google Fonts API.', 'wbcr_factory_forms_447');
+=======
+				$this->error = __('Invalide response from the Google Fonts API.', 'wbcr_factory_forms_466');
+>>>>>>> update
 				$this->defailed_error = $response['body'];
 
 				return $body;
@@ -133,7 +161,11 @@
 
 			if( empty($body->items) ) {
 
+<<<<<<< HEAD
 				$this->error = __('Unexpected error. The list of Google Fonts are empty.', 'wbcr_factory_forms_447');
+=======
+				$this->error = __('Unexpected error. The list of Google Fonts are empty.', 'wbcr_factory_forms_466');
+>>>>>>> update
 
 				return $body;
 			}

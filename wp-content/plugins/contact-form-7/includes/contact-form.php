@@ -18,6 +18,10 @@ class WPCF7_ContactForm {
 	private $responses_count = 0;
 	private $scanned_form_tags;
 	private $shortcode_atts = array();
+<<<<<<< HEAD
+=======
+	private $hash = '';
+>>>>>>> update
 
 
 	/**
@@ -33,7 +37,11 @@ class WPCF7_ContactForm {
 	/**
 	 * Returns the contact form that is currently processed.
 	 *
+<<<<<<< HEAD
 	 * @return WPCF7_ContactForm Current contact form object.
+=======
+	 * @return WPCF7_ContactForm|null Current contact form object. Null if unset.
+>>>>>>> update
 	 */
 	public static function get_current() {
 		return self::$current;
@@ -108,6 +116,7 @@ class WPCF7_ContactForm {
 	 */
 	public static function get_template( $args = '' ) {
 		$args = wp_parse_args( $args, array(
+<<<<<<< HEAD
 			'locale' => '',
 			'title' => __( 'Untitled', 'contact-form-7' ),
 		) );
@@ -146,10 +155,52 @@ class WPCF7_ContactForm {
 		self::$current = $contact_form;
 
 		return $contact_form;
+=======
+			'locale' => null,
+			'title' => __( 'Untitled', 'contact-form-7' ),
+		) );
+
+		if ( ! isset( $args['locale'] ) ) {
+			$args['locale'] = determine_locale();
+		}
+
+		$callback = static function ( $args ) {
+			$contact_form = new self;
+			$contact_form->title = $args['title'];
+			$contact_form->locale = $args['locale'];
+
+			$properties = $contact_form->get_properties();
+
+			foreach ( $properties as $key => $value ) {
+				$default_template = WPCF7_ContactFormTemplate::get_default( $key );
+
+				if ( isset( $default_template ) ) {
+					$properties[$key] = $default_template;
+				}
+			}
+
+			$contact_form->properties = $properties;
+
+			return $contact_form;
+		};
+
+		$contact_form = wpcf7_switch_locale(
+			$args['locale'],
+			$callback,
+			$args
+		);
+
+		self::$current = apply_filters( 'wpcf7_contact_form_default_pack',
+			$contact_form, $args
+		);
+
+		return self::$current;
+>>>>>>> update
 	}
 
 
 	/**
+<<<<<<< HEAD
 	 * Returns an instance of WPCF7_ContactForm.
 	 *
 	 * @return WPCF7_ContactForm A new contact form object.
@@ -163,6 +214,27 @@ class WPCF7_ContactForm {
 		}
 
 		return self::$current = new self( $post );
+=======
+	 * Creates a WPCF7_ContactForm object and sets it as the current instance.
+	 *
+	 * @param WPCF7_ContactForm|WP_Post|int $post Object or post ID.
+	 * @return WPCF7_ContactForm|null Contact form object. Null if unset.
+	 */
+	public static function get_instance( $post ) {
+		$contact_form = null;
+
+		if ( $post instanceof self ) {
+			$contact_form = $post;
+		} elseif ( ! empty( $post ) ) {
+			$post = get_post( $post );
+
+			if ( isset( $post ) and self::post_type === get_post_type( $post ) ) {
+				$contact_form = new self( $post );
+			}
+		}
+
+		return self::$current = $contact_form;
+>>>>>>> update
 	}
 
 
@@ -200,11 +272,19 @@ class WPCF7_ContactForm {
 		$post = get_post( $post );
 
 		if ( $post
+<<<<<<< HEAD
 		and self::post_type == get_post_type( $post ) ) {
+=======
+		and self::post_type === get_post_type( $post ) ) {
+>>>>>>> update
 			$this->id = $post->ID;
 			$this->name = $post->post_name;
 			$this->title = $post->post_title;
 			$this->locale = get_post_meta( $post->ID, '_locale', true );
+<<<<<<< HEAD
+=======
+			$this->hash = get_post_meta( $post->ID, '_hash', true );
+>>>>>>> update
 
 			$this->construct_properties( $post );
 			$this->upgrade();
@@ -282,7 +362,11 @@ class WPCF7_ContactForm {
 		// Filtering out properties with invalid name
 		$properties = array_filter(
 			$properties,
+<<<<<<< HEAD
 			function ( $key ) {
+=======
+			static function ( $key ) {
+>>>>>>> update
 				$sanitized_key = sanitize_key( $key );
 				return $key === $sanitized_key;
 			},
@@ -465,6 +549,20 @@ class WPCF7_ContactForm {
 
 
 	/**
+<<<<<<< HEAD
+=======
+	 * Retrieves the random hash string tied to this contact form.
+	 *
+	 * @param int $length Length of hash string.
+	 * @return string Hash string unique to this contact form.
+	 */
+	public function hash( $length = 7 ) {
+		return substr( $this->hash, 0, absint( $length ) );
+	}
+
+
+	/**
+>>>>>>> update
 	 * Returns the specified shortcode attribute value.
 	 *
 	 * @param string $name Shortcode attribute name.
@@ -503,6 +601,10 @@ class WPCF7_ContactForm {
 		$args = wp_parse_args( $args, array(
 			'html_id' => '',
 			'html_name' => '',
+<<<<<<< HEAD
+=======
+			'html_title' => '',
+>>>>>>> update
 			'html_class' => '',
 			'output' => 'form',
 		) );
@@ -539,10 +641,16 @@ class WPCF7_ContactForm {
 			$lang_tag = $matches[1];
 		}
 
+<<<<<<< HEAD
 		$html = sprintf( '<div %s>',
 			wpcf7_format_atts( array(
 				'role' => 'form',
 				'class' => 'wpcf7',
+=======
+		$html = "\n" . sprintf( '<div %s>',
+			wpcf7_format_atts( array(
+				'class' => 'wpcf7 no-js',
+>>>>>>> update
 				'id' => $this->unit_tag(),
 				( get_option( 'html_type' ) == 'text/html' ) ? 'lang' : 'xml:lang'
 					=> $lang_tag,
@@ -570,6 +678,11 @@ class WPCF7_ContactForm {
 			preg_replace( '/[^A-Za-z0-9:._-]/', '', $args['html_name'] )
 		);
 
+<<<<<<< HEAD
+=======
+		$title_attr = apply_filters( 'wpcf7_form_title_attr', $args['html_title'] );
+
+>>>>>>> update
 		$class = 'wpcf7-form';
 
 		if ( $this->is_posted() ) {
@@ -600,6 +713,7 @@ class WPCF7_ContactForm {
 		$class = implode( ' ', $class );
 		$class = apply_filters( 'wpcf7_form_class_attr', $class );
 
+<<<<<<< HEAD
 		$enctype = apply_filters( 'wpcf7_form_enctype', '' );
 		$autocomplete = apply_filters( 'wpcf7_form_autocomplete', '' );
 
@@ -628,6 +742,28 @@ class WPCF7_ContactForm {
 		$atts = wpcf7_format_atts( $atts );
 
 		$html .= sprintf( '<form %s>', $atts ) . "\n";
+=======
+		$enctype = wpcf7_enctype_value( apply_filters( 'wpcf7_form_enctype', '' ) );
+		$autocomplete = apply_filters( 'wpcf7_form_autocomplete', '' );
+
+		$atts = array(
+			'action' => esc_url( $url ),
+			'method' => 'post',
+			'class' => ( '' !== $class ) ? $class : null,
+			'id' => ( '' !== $id_attr ) ? $id_attr : null,
+			'name' => ( '' !== $name_attr ) ? $name_attr : null,
+			'aria-label' => ( '' !== $title_attr )
+				? $title_attr : __( 'Contact form', 'contact-form-7' ),
+			'enctype' => ( '' !== $enctype ) ? $enctype : null,
+			'autocomplete' => ( '' !== $autocomplete ) ? $autocomplete : null,
+			'novalidate' => true,
+			'data-status' => $data_status_attr,
+		);
+
+		$atts += (array) apply_filters( 'wpcf7_form_additional_atts', array() );
+
+		$html .= sprintf( '<form %s>', wpcf7_format_atts( $atts ) ) . "\n";
+>>>>>>> update
 		$html .= $this->form_hidden_fields();
 		$html .= $this->form_elements();
 
@@ -635,10 +771,17 @@ class WPCF7_ContactForm {
 			$html .= $this->form_response_output();
 		}
 
+<<<<<<< HEAD
 		$html .= '</form>';
 		$html .= '</div>';
 
 		return $html;
+=======
+		$html .= "\n" . '</form>';
+		$html .= "\n" . '</div>';
+
+		return $html . "\n";
+>>>>>>> update
 	}
 
 
@@ -858,8 +1001,14 @@ class WPCF7_ContactForm {
 		$form = $this->prop( 'form' );
 
 		if ( wpcf7_autop_or_not() ) {
+<<<<<<< HEAD
 			$form = $manager->normalize( $form );
 			$form = wpcf7_autop( $form );
+=======
+			$form = $manager->replace_with_placeholders( $form );
+			$form = wpcf7_autop( $form );
+			$form = $manager->restore_from_placeholders( $form );
+>>>>>>> update
 		}
 
 		$form = $manager->replace_all( $form );
@@ -1261,6 +1410,14 @@ class WPCF7_ContactForm {
 				update_post_meta( $post_id, '_locale', $this->locale );
 			}
 
+<<<<<<< HEAD
+=======
+			add_post_meta( $post_id, '_hash',
+				wpcf7_generate_contact_form_hash( $post_id ),
+				true // Unique
+			);
+
+>>>>>>> update
 			if ( $this->initial() ) {
 				$this->id = $post_id;
 				do_action( 'wpcf7_after_create', $this );
@@ -1331,8 +1488,13 @@ class WPCF7_ContactForm {
 			}
 		} else {
 			$shortcode = sprintf(
+<<<<<<< HEAD
 				'[contact-form-7 id="%1$d" title="%2$s"]',
 				$this->id,
+=======
+				'[contact-form-7 id="%1$s" title="%2$s"]',
+				$this->hash(),
+>>>>>>> update
 				$title
 			);
 		}

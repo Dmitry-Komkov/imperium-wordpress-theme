@@ -1,11 +1,19 @@
 <?php
 /*
+<<<<<<< HEAD
 Plugin Name: Advanced Editor Tools (previously TinyMCE Advanced)
 Plugin URI: https://wordpress.org/plugins/tinymce-advanced/
 Description: Extends and enhances the block editor (Gutenberg) and the classic editor (TinyMCE).
 Version: 5.6.0
 Requires at least: 5.6
 Tested up to: 5.7
+=======
+Plugin Name: Advanced Editor Tools
+Plugin URI: https://wordpress.org/plugins/tinymce-advanced/
+Description: Extends and enhances the block editor (Gutenberg) and the classic editor (TinyMCE).
+Version: 5.9.2
+Requires at least: 5.9
+>>>>>>> update
 Requires PHP: 5.6
 Author: Automattic
 Author URI: https://automattic.com
@@ -27,7 +35,11 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License along
 with Advanced Editor Tools or WordPress. If not, see https://www.gnu.org/licenses/gpl-2.0.html.
 
+<<<<<<< HEAD
 Copyright (c) 2007-2020 Automattic, Inc. All rights reserved.
+=======
+Copyright (c) 2007-2023 Automattic, Inc. All rights reserved.
+>>>>>>> update
 */
 
 /**
@@ -43,8 +55,13 @@ if ( ! class_exists( 'Advanced_Editor_Tools' ) ) :
 
 class Advanced_Editor_Tools {
 
+<<<<<<< HEAD
 	private $required_wp_version = '5.6-alpha';
 	private $plugin_version = 5600;
+=======
+	private $required_wp_version = '5.9';
+	private $plugin_version = 5900;
+>>>>>>> update
 
 	private $user_settings;
 	private $admin_settings;
@@ -61,7 +78,13 @@ class Advanced_Editor_Tools {
 	private $used_buttons = array();
 	private $all_buttons = array();
 	private $buttons_filter = array();
+<<<<<<< HEAD
 	private $fontsize_formats = '8px 10px 12px 14px 16px 20px 24px 28px 32px 36px 48px 60px 72px 96px';
+=======
+	private $toolbar_classic_block = array();
+	private $fontsize_formats = '8px 10px 12px 14px 16px 20px 24px 28px 32px 36px 48px 60px 72px 96px';
+	
+>>>>>>> update
 	private $required_menubar_plugins = array(
 		'anchor',
 		'code',
@@ -85,10 +108,13 @@ class Advanced_Editor_Tools {
 
 			'toolbar_classic_block' => 'formatselect,bold,italic,blockquote,bullist,numlist,alignleft,aligncenter,alignright,' .
 				'link,forecolor,backcolor,table,wp_help',
+<<<<<<< HEAD
 
 			'toolbar_block'      => 'core/code,core/image,core/strikethrough,tadv/mark,tadv/removeformat',
 			'toolbar_block_side' => 'core/superscript,core/subscript,core/underline',
 			'panels_block'       => 'tadv/color-panel,tadv/background-color-panel',
+=======
+>>>>>>> update
 		);
 	}
 
@@ -118,6 +144,10 @@ class Advanced_Editor_Tools {
 		);
 	}
 
+<<<<<<< HEAD
+=======
+	// Options are only "boolean"", array element exists or not.
+>>>>>>> update
 	private function get_all_user_options() {
 		return array(
 			'advlist',
@@ -127,6 +157,10 @@ class Advanced_Editor_Tools {
 			'menubar_block',
 			'fontsize_formats',
 			'merge_toolbars',
+<<<<<<< HEAD
+=======
+			'disable_richtext_buttons',
+>>>>>>> update
 		);
 	}
 
@@ -153,6 +187,7 @@ class Advanced_Editor_Tools {
 		);
 	}
 
+<<<<<<< HEAD
 	private function get_all_block_buttons() {
 		$inline_img_icon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true" focusable="false">' .
 			'<path d="M4 16h10c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v9c0 1.1.9 2 2 2zM4 5h10v9H4V5zm14 9v2h4v-2h-4zM2 20h20v-2H2v2zm6.4-8.8L7 9.4 5 12h8l-2.6-3.4-2 2.6z"></path>' .
@@ -188,6 +223,8 @@ class Advanced_Editor_Tools {
 		);
 	}
 
+=======
+>>>>>>> update
 	public function __construct() {
 		if ( is_admin() ) {
 			add_action( 'admin_menu', array( $this, 'add_menu' ) );
@@ -334,16 +371,20 @@ class Advanced_Editor_Tools {
 			$this->user_settings['toolbar_classic_block'] = $default_user_settings['toolbar_classic_block'];
 		}
 
+<<<<<<< HEAD
 		if ( empty( $this->user_settings['toolbar_block'] ) ) {
 			$this->user_settings['toolbar_block'] = $default_user_settings['toolbar_block'];
 		}
 
+=======
+>>>>>>> update
 		$this->options   = ! empty( $this->user_settings['options'] )   ? explode( ',', $this->user_settings['options'] )   : array();
 		$this->plugins   = ! empty( $this->user_settings['plugins'] )   ? explode( ',', $this->user_settings['plugins'] )   : array();
 		$this->toolbar_1 = ! empty( $this->user_settings['toolbar_1'] ) ? explode( ',', $this->user_settings['toolbar_1'] ) : array();
 		$this->toolbar_2 = ! empty( $this->user_settings['toolbar_2'] ) ? explode( ',', $this->user_settings['toolbar_2'] ) : array();
 		$this->toolbar_3 = ! empty( $this->user_settings['toolbar_3'] ) ? explode( ',', $this->user_settings['toolbar_3'] ) : array();
 		$this->toolbar_4 = ! empty( $this->user_settings['toolbar_4'] ) ? explode( ',', $this->user_settings['toolbar_4'] ) : array();
+<<<<<<< HEAD
 		$this->toolbar_classic_block = ! empty( $this->user_settings['toolbar_classic_block'] ) ? explode( ',', $this->user_settings['toolbar_classic_block'] ) : array();
 
 		$this->toolbar_block =      ! empty( $this->user_settings['toolbar_block'] )      ? explode( ',', $this->user_settings['toolbar_block'] )      : array();
@@ -352,6 +393,12 @@ class Advanced_Editor_Tools {
 
 		$this->used_buttons = array_merge( $this->toolbar_1, $this->toolbar_2, $this->toolbar_3, $this->toolbar_4, $this->toolbar_classic_block );
 		$this->used_block_buttons = array_merge( $this->toolbar_block, $this->toolbar_block_side );
+=======
+
+		$this->toolbar_classic_block = ! empty( $this->user_settings['toolbar_classic_block'] ) ? explode( ',', $this->user_settings['toolbar_classic_block'] ) : array();
+
+		$this->used_buttons = array_merge( $this->toolbar_1, $this->toolbar_2, $this->toolbar_3, $this->toolbar_4, $this->toolbar_classic_block );
+>>>>>>> update
 		$this->get_all_buttons();
 
 		// Force refresh after activation.
@@ -455,12 +502,15 @@ class Advanced_Editor_Tools {
 				$user_5000 .= ',menubar_block,merge_toolbars';
 			}
 
+<<<<<<< HEAD
 			if ( empty( $user_settings['toolbar_block'] ) ) {
 				$user_settings['toolbar_block'] = $user_defaults['toolbar_block'];
 				$user_settings['toolbar_block_side'] = $user_defaults['toolbar_block_side'];
 				$user_settings['panels_block'] = $user_defaults['panels_block'];
 			}
 
+=======
+>>>>>>> update
 			$admin_settings['options'] = $admin_5000;
 			$user_settings['options'] = $user_5000;
 		}
@@ -476,6 +526,7 @@ class Advanced_Editor_Tools {
 			} else {
 				$admin_settings['options'] .= ',table_resize_bars,table_grid,table_tab_navigation,table_advtab';
 			}
+<<<<<<< HEAD
 
 			if ( ! empty( $user_settings['toolbar_block'] ) ) {
 				// Remove previously manageable buttons...
@@ -527,6 +578,8 @@ class Advanced_Editor_Tools {
 			if ( ! empty( $user_settings['toolbar_block_side'] ) ) {
 				$user_settings['toolbar_block_side'] = str_replace( $replace, $with, $user_settings['toolbar_block_side'] );
 			}
+=======
+>>>>>>> update
 		}
 
 		update_option( 'tadv_admin_settings', $admin_settings );
@@ -676,6 +729,7 @@ class Advanced_Editor_Tools {
 			return true;
 		}
 
+<<<<<<< HEAD
 		if ( $setting === 'selected_text_color' ) {
 			return in_array( 'tadv/color-panel', $this->panels_block, true );
 		}
@@ -684,6 +738,8 @@ class Advanced_Editor_Tools {
 			return in_array( 'tadv/background-color-panel', $this->panels_block, true );
 		}
 
+=======
+>>>>>>> update
 		return in_array( $setting, $this->options, true );
 	}
 
@@ -913,6 +969,7 @@ class Advanced_Editor_Tools {
 		}
 
 		// Block editor toolbars
+<<<<<<< HEAD
 		if ( ! empty( $this->toolbar_block ) || ! empty( $this->toolbar_block_side ) || ! empty( $this->panels_block ) ) {
 			$dependencies = array( 'wp-element', 'wp-components', 'wp-i18n', 'wp-editor', 'wp-rich-text' );
 			wp_enqueue_script( 'tadv-block-buttons', $plugin_url . '/richtext-buttons.js', $dependencies, $this->plugin_version );
@@ -939,6 +996,15 @@ class Advanced_Editor_Tools {
 				'strTextColorLabel' => __( 'Selected text color', 'tinymce-advanced' ),
 				'strBackgroundColor' => __( 'Text Background Color', 'tinymce-advanced' ),
 				'strBackgroundColorLabel' => __( 'Selected text background color', 'tinymce-advanced' ),
+=======
+		if ( ! $this->check_user_setting( 'disable_richtext_buttons' ) ) {
+			$dependencies = array( 'wp-element', 'wp-components', 'wp-i18n', 'wp-editor', 'wp-rich-text' );
+			wp_enqueue_script( 'tadv-block-buttons', $plugin_url . '/richtext-buttons.js', $dependencies, $this->plugin_version );
+
+			$strings = array(
+				'strRemoveFormatting' => __( 'Clear formatting', 'tinymce-advanced' ),
+				'strMark' => __( 'Mark', 'tinymce-advanced' ),
+>>>>>>> update
 			);
 
 			wp_localize_script( 'tadv-block-buttons', 'tadvBlockButtons', $strings );
@@ -1121,6 +1187,7 @@ class Advanced_Editor_Tools {
 			$settings[ $toolbar_name ] = $this->validate_settings( $toolbar, $this->buttons_filter );
 		}
 
+<<<<<<< HEAD
 		// Block editor toolbar
 		if ( empty( $this->block_buttons_filter ) ) {
 			$this->get_all_block_buttons();
@@ -1169,17 +1236,29 @@ class Advanced_Editor_Tools {
 
 		$settings[ 'panels_block' ] = $panels_block;
 
+=======
+>>>>>>> update
 		if ( ! empty( $user_settings['options'] ) ) {
 			$options = explode( ',', $user_settings['options'] );
 		} elseif ( ! empty( $_POST['options'] ) && is_array( $_POST['options'] ) ) {
 			$options = $_POST['options'];
+<<<<<<< HEAD
+=======
+
+			if ( ! empty( $_POST['richtext_buttons'] ) && $_POST['richtext_buttons'] === 'no' ) {
+				$options[] = 'disable_richtext_buttons';
+			}
+>>>>>>> update
 		} else {
 			$options = array();
 		}
 
 		$settings['options'] = $this->validate_settings( $options, $this->get_all_user_options() );
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> update
 		if ( ! empty( $user_settings['plugins'] ) ) {
 			$plugins = explode( ',', $user_settings['plugins'] );
 		} else {
@@ -1329,7 +1408,11 @@ class Advanced_Editor_Tools {
 
 	public function add_menu() {
 		$page_title      = __( 'Advanced Editor Tools', 'tinymce-advanced' );
+<<<<<<< HEAD
 		$menu_item_label = __( 'Advanced Editor Tools (TinyMCE Advanced)', 'tinymce-advanced' );
+=======
+		$menu_item_label = __( 'Advanced Editor Tools', 'tinymce-advanced' );
+>>>>>>> update
 		add_options_page( $page_title, $menu_item_label, 'manage_options', 'tinymce-advanced', array( $this, 'settings_page' ) );
 	}
 

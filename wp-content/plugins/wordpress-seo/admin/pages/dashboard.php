@@ -35,6 +35,7 @@ $dashboard_tabs->add_tab(
 		]
 	)
 );
+<<<<<<< HEAD
 $dashboard_tabs->add_tab(
 	new WPSEO_Option_Tab(
 		'features',
@@ -56,6 +57,8 @@ $dashboard_tabs->add_tab(
 		__( 'Webmaster Tools', 'wordpress-seo' )
 	)
 );
+=======
+>>>>>>> update
 
 /**
  * Allows the addition of tabs to the dashboard by calling $dashboard_tabs->add_tab().

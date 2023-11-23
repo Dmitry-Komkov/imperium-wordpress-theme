@@ -1,8 +1,11 @@
 <?php
 
+<<<<<<< HEAD
 // Register store.
 acf_register_store( 'field-groups' )->prop( 'multisite', true );
 
+=======
+>>>>>>> update
 /**
  * acf_get_field_group
  *
@@ -15,6 +18,7 @@ acf_register_store( 'field-groups' )->prop( 'multisite', true );
  * @return  (array|false) The field group array.
  */
 function acf_get_field_group( $id = 0 ) {
+<<<<<<< HEAD
 
 	// Allow WP_Post to be passed.
 	if ( is_object( $id ) ) {
@@ -60,6 +64,9 @@ function acf_get_field_group( $id = 0 ) {
 
 	// Return.
 	return $field_group;
+=======
+	return acf_get_internal_post_type( $id, 'acf-field-group' );
+>>>>>>> update
 }
 
 /**
@@ -74,6 +81,7 @@ function acf_get_field_group( $id = 0 ) {
  * @return  (array|false) The field group array.
  */
 function acf_get_raw_field_group( $id = 0 ) {
+<<<<<<< HEAD
 
 	// Get raw field group from database.
 	$post = acf_get_field_group_post( $id );
@@ -98,6 +106,9 @@ function acf_get_raw_field_group( $id = 0 ) {
 
 	// Return field.
 	return $field_group;
+=======
+	return acf_get_raw_internal_post_type( $id, 'acf-field-group' );
+>>>>>>> update
 }
 
 /**
@@ -112,6 +123,7 @@ function acf_get_raw_field_group( $id = 0 ) {
  * @return  (array|false) The field group's array.
  */
 function acf_get_field_group_post( $id = 0 ) {
+<<<<<<< HEAD
 
 	// Get post if numeric.
 	if ( is_numeric( $id ) ) {
@@ -156,6 +168,9 @@ function acf_get_field_group_post( $id = 0 ) {
 
 	// Return false by default.
 	return false;
+=======
+	return acf_get_internal_post_type_post( $id, 'acf-field-group' );
+>>>>>>> update
 }
 
 /**
@@ -170,6 +185,7 @@ function acf_get_field_group_post( $id = 0 ) {
  * @return  bool
  */
 function acf_is_field_group_key( $id = '' ) {
+<<<<<<< HEAD
 
 	// Check if $id is a string starting with "group_".
 	if ( is_string( $id ) && substr( $id, 0, 6 ) === 'group_' ) {
@@ -191,11 +207,18 @@ function acf_is_field_group_key( $id = '' ) {
 /**
  * acf_validate_field_group
  *
+=======
+	return acf_is_internal_post_type_key( $id, 'acf-field-group' );
+}
+
+/**
+>>>>>>> update
  * Ensures the given field group is valid.
  *
  * @date    18/1/19
  * @since   5.7.10
  *
+<<<<<<< HEAD
  * @param   array $field The field group array.
  * @return  array
  */
@@ -247,6 +270,13 @@ function acf_validate_field_group( $field_group = array() ) {
 
 	// return
 	return $field_group;
+=======
+ * @param array $field_group The field group array.
+ * @return array
+ */
+function acf_validate_field_group( $field_group = array() ) {
+	return acf_validate_internal_post_type( $field_group, 'acf-field-group' );
+>>>>>>> update
 }
 
 /**
@@ -276,6 +306,7 @@ function acf_get_valid_field_group( $field_group = false ) {
  * @return  array
  */
 function acf_translate_field_group( $field_group = array() ) {
+<<<<<<< HEAD
 
 	// Get settings.
 	$l10n            = acf_get_setting( 'l10n' );
@@ -305,6 +336,11 @@ function acf_translate_field_group( $field_group = array() ) {
 add_action( 'acf/validate_field_group', 'acf_translate_field_group' );
 
 
+=======
+	return acf_translate_internal_post_type( $field_group, 'acf-field-group' );
+}
+
+>>>>>>> update
 /**
  * acf_get_field_groups
  *
@@ -317,6 +353,7 @@ add_action( 'acf/validate_field_group', 'acf_translate_field_group' );
  * @return  array
  */
 function acf_get_field_groups( $filter = array() ) {
+<<<<<<< HEAD
 
 	// Vars.
 	$field_groups = array();
@@ -346,6 +383,9 @@ function acf_get_field_groups( $filter = array() ) {
 
 	// Return field groups.
 	return $field_groups;
+=======
+	return acf_get_internal_post_type_posts( 'acf-field-group', $filter );
+>>>>>>> update
 }
 
 /**
@@ -360,6 +400,7 @@ function acf_get_field_groups( $filter = array() ) {
  * @return  array
  */
 function acf_get_raw_field_groups() {
+<<<<<<< HEAD
 
 	// Try cache.
 	$cache_key = acf_cache_key( 'acf_get_field_group_posts' );
@@ -399,6 +440,9 @@ function acf_get_raw_field_groups() {
 
 	// Return field groups.
 	return $field_groups;
+=======
+	return acf_get_raw_internal_post_type_posts( 'acf-field-group' );
+>>>>>>> update
 }
 
 /**
@@ -414,6 +458,7 @@ function acf_get_raw_field_groups() {
  * @return  array
  */
 function acf_filter_field_groups( $field_groups, $args = array() ) {
+<<<<<<< HEAD
 
 	// Loop over field groups and check visibility.
 	$filtered = array();
@@ -427,6 +472,9 @@ function acf_filter_field_groups( $field_groups, $args = array() ) {
 
 	// Return filtered.
 	return $filtered;
+=======
+	return acf_filter_internal_post_type_posts( $field_groups, $args, 'acf-field-group' );
+>>>>>>> update
 }
 
 /**
@@ -494,6 +542,7 @@ function acf_get_field_group_visibility( $field_group, $args = array() ) {
  * @return  array
  */
 function acf_update_field_group( $field_group ) {
+<<<<<<< HEAD
 
 	// Validate field group.
 	$field_group = acf_get_valid_field_group( $field_group );
@@ -561,6 +610,9 @@ function acf_update_field_group( $field_group ) {
 
 	// Return field group.
 	return $field_group;
+=======
+	return acf_update_internal_post_type( $field_group, 'acf-field-group' );
+>>>>>>> update
 }
 
 /**
@@ -589,9 +641,12 @@ function _acf_apply_unique_field_group_slug( $slug, $post_ID, $post_status, $pos
 	return $slug;
 }
 
+<<<<<<< HEAD
 // Hook into filter.
 add_filter( 'wp_unique_post_slug', '_acf_apply_unique_field_group_slug', 999, 6 );
 
+=======
+>>>>>>> update
 /**
  * acf_flush_field_group_cache
  *
@@ -604,6 +659,7 @@ add_filter( 'wp_unique_post_slug', '_acf_apply_unique_field_group_slug', 999, 6 
  * @return  void
  */
 function acf_flush_field_group_cache( $field_group ) {
+<<<<<<< HEAD
 
 	// Delete stored data.
 	acf_get_store( 'field-groups' )->remove( $field_group['key'] );
@@ -613,6 +669,9 @@ function acf_flush_field_group_cache( $field_group ) {
 
 	// Flush cached array of post_ids for collection of field groups.
 	wp_cache_delete( acf_cache_key( 'acf_get_field_group_posts' ), 'acf' );
+=======
+	acf_flush_internal_post_type_cache( $field_group, 'acf-field-group' );
+>>>>>>> update
 }
 
 /**
@@ -627,6 +686,7 @@ function acf_flush_field_group_cache( $field_group ) {
  * @return  bool True if field group was deleted.
  */
 function acf_delete_field_group( $id = 0 ) {
+<<<<<<< HEAD
 
 	// Disable filters to ensure ACF loads data from DB.
 	acf_disable_filters();
@@ -665,6 +725,9 @@ function acf_delete_field_group( $id = 0 ) {
 
 	// Return true.
 	return true;
+=======
+	return acf_delete_internal_post_type( $id, 'acf-field-group' );
+>>>>>>> update
 }
 
 /**
@@ -679,6 +742,7 @@ function acf_delete_field_group( $id = 0 ) {
  * @return  bool True if field group was trashed.
  */
 function acf_trash_field_group( $id = 0 ) {
+<<<<<<< HEAD
 
 	// Disable filters to ensure ACF loads data from DB.
 	acf_disable_filters();
@@ -717,6 +781,9 @@ function acf_trash_field_group( $id = 0 ) {
 
 	// Return true.
 	return true;
+=======
+	return acf_trash_internal_post_type( $id, 'acf-field-group' );
+>>>>>>> update
 }
 
 /**
@@ -731,6 +798,7 @@ function acf_trash_field_group( $id = 0 ) {
  * @return  bool True if field_group was trashed.
  */
 function acf_untrash_field_group( $id = 0 ) {
+<<<<<<< HEAD
 
 	// Disable filters to ensure ACF loads data from DB.
 	acf_disable_filters();
@@ -769,6 +837,9 @@ function acf_untrash_field_group( $id = 0 ) {
 
 	// Return true.
 	return true;
+=======
+	return acf_untrash_internal_post_type( $id, 'acf-field-group' );
+>>>>>>> update
 }
 
 /**
@@ -787,8 +858,11 @@ function _acf_untrash_field_group_post_status( $new_status, $post_id, $previous_
 	return ( get_post_type( $post_id ) === 'acf-field-group' ) ? $previous_status : $new_status;
 }
 
+<<<<<<< HEAD
 add_action( 'wp_untrash_post_status', '_acf_untrash_field_group_post_status', 10, 3 );
 
+=======
+>>>>>>> update
 /**
  * acf_is_field_group
  *
@@ -802,11 +876,15 @@ add_action( 'wp_untrash_post_status', '_acf_untrash_field_group_post_status', 10
  * @return  bool
  */
 function acf_is_field_group( $field_group = false ) {
+<<<<<<< HEAD
 	return (
 		is_array( $field_group )
 		&& isset( $field_group['key'] )
 		&& isset( $field_group['title'] )
 	);
+=======
+	return acf_is_internal_post_type( $field_group, 'acf-field-group' );
+>>>>>>> update
 }
 
 /**
@@ -822,6 +900,7 @@ function acf_is_field_group( $field_group = false ) {
  * @return  array The new field group.
  */
 function acf_duplicate_field_group( $id = 0, $new_post_id = 0 ) {
+<<<<<<< HEAD
 
 	// Disable filters to ensure ACF loads data from DB.
 	acf_disable_filters();
@@ -870,6 +949,20 @@ function acf_duplicate_field_group( $id = 0, $new_post_id = 0 ) {
 
 	// return
 	return $field_group;
+=======
+	return acf_duplicate_internal_post_type( $id, $new_post_id, 'acf-field-group' );
+}
+
+/**
+ * Activates or deactivates a field group.
+ *
+ * @param int|string $id       The field_group ID, key or name.
+ * @param bool       $activate True if the post should be activated.
+ * @return bool
+ */
+function acf_update_field_group_active_status( $id, $activate = true ) {
+	return acf_update_internal_post_type_active_status( $id, $activate, 'acf-field-group' );
+>>>>>>> update
 }
 
 /**
@@ -942,10 +1035,14 @@ function acf_get_field_group_style( $field_group ) {
  * @return  string
  */
 function acf_get_field_group_edit_link( $post_id ) {
+<<<<<<< HEAD
 	if ( $post_id && acf_current_user_can_admin() ) {
 		return admin_url( 'post.php?post=' . $post_id . '&action=edit' );
 	}
 	return '';
+=======
+	return acf_get_internal_post_type_edit_link( $post_id, 'acf-field-group' );
+>>>>>>> update
 }
 
 /**
@@ -960,6 +1057,7 @@ function acf_get_field_group_edit_link( $post_id ) {
  * @return  array
  */
 function acf_prepare_field_group_for_export( $field_group = array() ) {
+<<<<<<< HEAD
 
 	// Remove args.
 	acf_extract_vars( $field_group, array( 'ID', 'local', '_valid' ) );
@@ -976,6 +1074,9 @@ function acf_prepare_field_group_for_export( $field_group = array() ) {
 	 * @param   array $field_group The $field group array.
 	 */
 	return apply_filters( 'acf/prepare_field_group_for_export', $field_group );
+=======
+	return acf_prepare_internal_post_type_for_export( $field_group, 'acf-field-group' );
+>>>>>>> update
 }
 
 /**
@@ -990,6 +1091,7 @@ function acf_prepare_field_group_for_export( $field_group = array() ) {
  * @return  array
  */
 function acf_prepare_field_group_for_import( $field_group ) {
+<<<<<<< HEAD
 
 	// Update parent and menu_order properties for all fields.
 	if ( $field_group['fields'] ) {
@@ -1008,6 +1110,9 @@ function acf_prepare_field_group_for_import( $field_group ) {
 	 * @param   array $field_group The field group array.
 	 */
 	return apply_filters( 'acf/prepare_field_group_for_import', $field_group );
+=======
+	return acf_prepare_internal_post_type_for_import( $field_group, 'acf-field-group' );
+>>>>>>> update
 }
 
 /**
@@ -1022,6 +1127,7 @@ function acf_prepare_field_group_for_import( $field_group ) {
  * @return  array The new field group.
  */
 function acf_import_field_group( $field_group ) {
+<<<<<<< HEAD
 
 	// Disable filters to ensure data is not modified by local, clone, etc.
 	$filters = acf_disable_filters();
@@ -1107,4 +1213,38 @@ function acf_import_field_group( $field_group ) {
 
 	// return new field group.
 	return $field_group;
+=======
+	return acf_import_internal_post_type( $field_group, 'acf-field-group' );
+}
+
+/**
+ *  Returns an array of tabs for the field group settings.
+ *  We combine a list of default tabs with filtered tabs.
+ *  I.E. Default tabs should be static and should not be changed by the
+ *  filtered tabs.
+ *
+ *  @since 6.1
+ *
+ *  @return array Key/value array of the default settings tabs for field group settings.
+ */
+function acf_get_combined_field_group_settings_tabs() {
+	$default_field_group_settings_tabs = array(
+		'location_rules' => __( 'Location Rules', 'acf' ),
+		'presentation'   => __( 'Presentation', 'acf' ),
+		'group_settings' => __( 'Group Settings', 'acf' ),
+	);
+
+	$field_group_settings_tabs = (array) apply_filters( 'acf/field_group/additional_group_settings_tabs', array() );
+
+	// remove any default tab values from the filter tabs.
+	foreach ( $field_group_settings_tabs as $key => $tab ) {
+		if ( isset( $default_field_group_settings_tabs[ $key ] ) ) {
+			unset( $field_group_settings_tabs[ $key ] );
+		}
+	}
+
+	$combined_field_group_settings_tabs = array_merge( $default_field_group_settings_tabs, $field_group_settings_tabs );
+
+	return $combined_field_group_settings_tabs;
+>>>>>>> update
 }

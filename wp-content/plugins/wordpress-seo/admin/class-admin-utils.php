@@ -75,6 +75,10 @@ class WPSEO_Admin_Utils {
 	public static function get_new_tab_message() {
 		return sprintf(
 			'<span class="screen-reader-text">%s</span>',
+<<<<<<< HEAD
+=======
+			/* translators: Hidden accessibility text. */
+>>>>>>> update
 			esc_html__( '(Opens in a new browser tab)', 'wordpress-seo' )
 		);
 	}

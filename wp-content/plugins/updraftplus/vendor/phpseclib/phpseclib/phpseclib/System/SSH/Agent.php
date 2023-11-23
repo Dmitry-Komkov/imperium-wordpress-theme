@@ -3,17 +3,29 @@
 /**
  * Pure-PHP ssh-agent client.
  *
+<<<<<<< HEAD
  * PHP versions 4 and 5
+=======
+ * PHP version 5
+>>>>>>> update
  *
  * Here are some examples of how to use this library:
  * <code>
  * <?php
+<<<<<<< HEAD
  *    include 'System/SSH/Agent.php';
  *    include 'Net/SSH2.php';
  *
  *    $agent = new System_SSH_Agent();
  *
  *    $ssh = new Net_SSH2('www.domain.tld');
+=======
+ *    include 'vendor/autoload.php';
+ *
+ *    $agent = new \phpseclib\System\SSH\Agent();
+ *
+ *    $ssh = new \phpseclib\Net\SSH2('www.domain.tld');
+>>>>>>> update
  *    if (!$ssh->login('username', $agent)) {
  *        exit('Login Failed');
  *    }
@@ -23,6 +35,7 @@
  * ?>
  * </code>
  *
+<<<<<<< HEAD
  * LICENSE: Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -43,6 +56,10 @@
  *
  * @category  System
  * @package   System_SSH_Agent
+=======
+ * @category  System
+ * @package   SSH\Agent
+>>>>>>> update
  * @author    Jim Wigginton <terrafrost@php.net>
  * @copyright 2014 Jim Wigginton
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
@@ -50,6 +67,7 @@
  * @internal  See http://api.libssh.org/rfc/PROTOCOL.agent
  */
 
+<<<<<<< HEAD
 /**#@+
  * Message numbers
  *
@@ -316,10 +334,17 @@ class System_SSH_Agent_Identity
         return $substr;
     }
 }
+=======
+namespace phpseclib\System\SSH;
+
+use phpseclib\Crypt\RSA;
+use phpseclib\System\SSH\Agent\Identity;
+>>>>>>> update
 
 /**
  * Pure-PHP ssh-agent client identity factory
  *
+<<<<<<< HEAD
  * requestIdentities() method pumps out System_SSH_Agent_Identity objects
  *
  * @package System_SSH_Agent
@@ -328,6 +353,49 @@ class System_SSH_Agent_Identity
  */
 class System_SSH_Agent
 {
+=======
+ * requestIdentities() method pumps out \phpseclib\System\SSH\Agent\Identity objects
+ *
+ * @package SSH\Agent
+ * @author  Jim Wigginton <terrafrost@php.net>
+ * @access  public
+ */
+class Agent
+{
+    /**#@+
+     * Message numbers
+     *
+     * @access private
+     */
+    // to request SSH1 keys you have to use SSH_AGENTC_REQUEST_RSA_IDENTITIES (1)
+    const SSH_AGENTC_REQUEST_IDENTITIES = 11;
+    // this is the SSH2 response; the SSH1 response is SSH_AGENT_RSA_IDENTITIES_ANSWER (2).
+    const SSH_AGENT_IDENTITIES_ANSWER = 12;
+    // the SSH1 request is SSH_AGENTC_RSA_CHALLENGE (3)
+    const SSH_AGENTC_SIGN_REQUEST = 13;
+    // the SSH1 response is SSH_AGENT_RSA_RESPONSE (4)
+    const SSH_AGENT_SIGN_RESPONSE = 14;
+    /**#@-*/
+
+    /**@+
+     * Agent forwarding status
+     *
+     * @access private
+     */
+    // no forwarding requested and not active
+    const FORWARD_NONE = 0;
+    // request agent forwarding when opportune
+    const FORWARD_REQUEST = 1;
+    // forwarding has been request and is active
+    const FORWARD_ACTIVE = 2;
+    /**#@-*/
+
+    /**
+     * Unused
+     */
+    const SSH_AGENT_FAILURE = 5;
+
+>>>>>>> update
     /**
      * Socket Resource
      *
@@ -341,7 +409,11 @@ class System_SSH_Agent
      *
      * @access private
      */
+<<<<<<< HEAD
     var $forward_status = SYSTEM_SSH_AGENT_FORWARD_NONE;
+=======
+    var $forward_status = self::FORWARD_NONE;
+>>>>>>> update
 
     /**
      * Buffer for accumulating forwarded authentication
@@ -362,7 +434,11 @@ class System_SSH_Agent
     /**
      * Default Constructor
      *
+<<<<<<< HEAD
      * @return System_SSH_Agent
+=======
+     * @return \phpseclib\System\SSH\Agent
+>>>>>>> update
      * @access public
      */
     function __construct($address = null)
@@ -381,13 +457,31 @@ class System_SSH_Agent
             }
         }
 
+<<<<<<< HEAD
         $this->fsock = fsockopen('unix://' . $address, 0, $errno, $errstr);
         if (!$this->fsock) {
             user_error("Unable to connect to ssh-agent (Error $errno: $errstr)");
+=======
+        if (in_array('unix', stream_get_transports())) {
+            $this->fsock = fsockopen('unix://' . $address, 0, $errno, $errstr);
+            if (!$this->fsock) {
+                user_error("Unable to connect to ssh-agent (Error $errno: $errstr)");
+            }
+        } else {
+            if (substr($address, 0, 9) != '\\\\.\\pipe\\' || strpos(substr($address, 9), '\\') !== false) {
+                user_error('Address is not formatted as a named pipe should be');
+            } else {
+                $this->fsock = fopen($address, 'r+b');
+                if (!$this->fsock) {
+                    user_error('Unable to open address');
+                }
+            }
+>>>>>>> update
         }
     }
 
     /**
+<<<<<<< HEAD
      * PHP4 compatible Default Constructor.
      *
      * @see self::__construct()
@@ -403,6 +497,12 @@ class System_SSH_Agent
      *
      * See "2.5.2 Requesting a list of protocol 2 keys"
      * Returns an array containing zero or more System_SSH_Agent_Identity objects
+=======
+     * Request Identities
+     *
+     * See "2.5.2 Requesting a list of protocol 2 keys"
+     * Returns an array containing zero or more \phpseclib\System\SSH\Agent\Identity objects
+>>>>>>> update
      *
      * @return array
      * @access public
@@ -413,7 +513,11 @@ class System_SSH_Agent
             return array();
         }
 
+<<<<<<< HEAD
         $packet = pack('NC', 1, SYSTEM_SSH_AGENTC_REQUEST_IDENTITIES);
+=======
+        $packet = pack('NC', 1, self::SSH_AGENTC_REQUEST_IDENTITIES);
+>>>>>>> update
         if (strlen($packet) != fputs($this->fsock, $packet)) {
             user_error('Connection closed while requesting identities');
             return array();
@@ -426,7 +530,11 @@ class System_SSH_Agent
         }
         $length = current(unpack('N', $temp));
         $type = ord(fread($this->fsock, 1));
+<<<<<<< HEAD
         if ($type != SYSTEM_SSH_AGENT_IDENTITIES_ANSWER) {
+=======
+        if ($type != self::SSH_AGENT_IDENTITIES_ANSWER) {
+>>>>>>> update
             user_error('Unable to request identities');
             return array();
         }
@@ -469,10 +577,14 @@ class System_SSH_Agent
             $key_type = substr($key_blob, 4, $length);
             switch ($key_type) {
                 case 'ssh-rsa':
+<<<<<<< HEAD
                     if (!class_exists('Crypt_RSA')) {
                         include_once 'Crypt/RSA.php';
                     }
                     $key = new Crypt_RSA();
+=======
+                    $key = new RSA();
+>>>>>>> update
                     $key->loadKey($key_str);
                     break;
                 case 'ssh-dss':
@@ -481,7 +593,11 @@ class System_SSH_Agent
             }
             // resources are passed by reference by default
             if (isset($key)) {
+<<<<<<< HEAD
                 $identity = new System_SSH_Agent_Identity($this->fsock);
+=======
+                $identity = new Identity($this->fsock);
+>>>>>>> update
                 $identity->setPublicKey($key);
                 $identity->setPublicKeyBlob($key_blob);
                 $identities[] = $identity;
@@ -496,6 +612,7 @@ class System_SSH_Agent
      * Signal that agent forwarding should
      * be requested when a channel is opened
      *
+<<<<<<< HEAD
      * @param Net_SSH2 $ssh
      * @return bool
      * @access public
@@ -504,6 +621,15 @@ class System_SSH_Agent
     {
         if ($this->forward_status == SYSTEM_SSH_AGENT_FORWARD_NONE) {
             $this->forward_status = SYSTEM_SSH_AGENT_FORWARD_REQUEST;
+=======
+     * @return bool
+     * @access public
+     */
+    function startSSHForwarding()
+    {
+        if ($this->forward_status == self::FORWARD_NONE) {
+            $this->forward_status = self::FORWARD_REQUEST;
+>>>>>>> update
         }
     }
 
@@ -542,7 +668,11 @@ class System_SSH_Agent
         }
 
         $ssh->channel_status[$request_channel] = NET_SSH2_MSG_CHANNEL_OPEN;
+<<<<<<< HEAD
         $this->forward_status = SYSTEM_SSH_AGENT_FORWARD_ACTIVE;
+=======
+        $this->forward_status = self::FORWARD_ACTIVE;
+>>>>>>> update
 
         return true;
     }
@@ -559,7 +689,11 @@ class System_SSH_Agent
      */
     function _on_channel_open($ssh)
     {
+<<<<<<< HEAD
         if ($this->forward_status == SYSTEM_SSH_AGENT_FORWARD_REQUEST) {
+=======
+        if ($this->forward_status == self::FORWARD_REQUEST) {
+>>>>>>> update
             $this->_request_forwarding($ssh);
         }
     }

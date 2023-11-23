@@ -8,6 +8,12 @@
  * @since      7.0.7
  * @license    GPL-2.0+
  * @copyright  Copyright (c) 2018, MonsterInsights LLC
+<<<<<<< HEAD
+=======
+ * TODO:
+ *  Go through this file and remove UA references/usages
+ *  Check if this class is actually working
+>>>>>>> update
  */
 class MonsterInsights_Review {
 	/**
@@ -32,7 +38,11 @@ class MonsterInsights_Review {
 			return;
 		}
 
+<<<<<<< HEAD
 		// If the user has opted out of product annoucement notifications, don't
+=======
+		// If the user has opted out of product announcement notifications, don't
+>>>>>>> update
 		// display the review request.
 		if ( monsterinsights_get_option( 'hide_am_notices', false ) || monsterinsights_get_option( 'network_hide_am_notices', false ) ) {
 			return;
@@ -71,7 +81,11 @@ class MonsterInsights_Review {
 	public function review() {
 		// Fetch when plugin was initially installed.
 		$activated = get_option( 'monsterinsights_over_time', array() );
+<<<<<<< HEAD
 		$ua_code   = monsterinsights_get_ua();
+=======
+		$v4_code   = monsterinsights_get_v4_id();
+>>>>>>> update
 
 		if ( ! empty( $activated['connected_date'] ) ) {
 			// Only continue if plugin has been tracking for at least 14 days.
@@ -93,7 +107,11 @@ class MonsterInsights_Review {
 				$data = $activated;
 			}
 			// If already has a UA code mark as connected now.
+<<<<<<< HEAD
 			if ( ! empty( $ua_code ) ) {
+=======
+			if ( ! empty( $v4_code ) ) {
+>>>>>>> update
 				$data['connected_date'] = time();
 			}
 
@@ -103,7 +121,11 @@ class MonsterInsights_Review {
 		}
 
 		// Only proceed with displaying if the user is tracking.
+<<<<<<< HEAD
 		if ( empty( $ua_code ) ) {
+=======
+		if ( empty( $v4_code ) ) {
+>>>>>>> update
 			return;
 		}
 

@@ -18,7 +18,11 @@ do_credentials_test_deletefile($testfile, $posted_settings)
 // Uses job options: Yes
 // Uses single-array storage: Yes
 
+<<<<<<< HEAD
 if (!class_exists('UpdraftPlus_BackupModule')) require_once(UPDRAFTPLUS_DIR.'/methods/backup-module.php');
+=======
+if (!class_exists('UpdraftPlus_BackupModule')) updraft_try_include_file('methods/backup-module.php', 'require_once');
+>>>>>>> update
 
 /**
  * Note that the naming of this class is historical. There is nothing inherent which restricts it to add-ons, or requires add-ons to use it. It is just an abstraction layer that results in needing to write less code for the storage module.
@@ -33,6 +37,16 @@ abstract class UpdraftPlus_RemoteStorage_Addons_Base_v2 extends UpdraftPlus_Back
 
 	private $chunked;
 
+<<<<<<< HEAD
+=======
+	/**
+	 * Decides whether to print the test button
+	 *
+	 * @var Boolean
+	 */
+	protected $test_button;
+
+>>>>>>> update
 	public function __construct($method, $description, $chunked = true, $test_button = true) {
 
 		$this->method = $method;
@@ -63,7 +77,11 @@ abstract class UpdraftPlus_RemoteStorage_Addons_Base_v2 extends UpdraftPlus_Back
 	protected function required_configuration_keys() {
 	}
 
+<<<<<<< HEAD
 	public function upload_files($ret, $backup_array) {// phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.Found
+=======
+	public function upload_files($ret, $backup_array) {// phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.Found -- Unused parameter is present because the caller from this class uses 2 arguments.
+>>>>>>> update
 
 		global $updraftplus;
 
@@ -136,8 +154,13 @@ abstract class UpdraftPlus_RemoteStorage_Addons_Base_v2 extends UpdraftPlus_Back
 	/**
 	 * This function handles bootstrapping and calling the remote methods delete function
 	 *
+<<<<<<< HEAD
 	 * @param Boolean $ret       - A boolean value
 	 * @param Array   $files     - An array of files to delete.
+=======
+	 * @param Boolean $ret   - A boolean value
+	 * @param Array   $files - An array of files to delete.
+>>>>>>> update
 	 *
 	 * @return - On success returns true, false or WordPress Error on failure
 	 */

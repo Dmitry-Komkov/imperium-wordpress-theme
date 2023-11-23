@@ -5,7 +5,10 @@ namespace Yoast\WP\SEO\Integrations\Admin;
 use WPSEO_Addon_Manager;
 use WPSEO_Admin_Asset_Manager;
 use Yoast\WP\SEO\Conditionals\Admin_Conditional;
+<<<<<<< HEAD
 use Yoast\WP\SEO\Helpers\Indexing_Helper;
+=======
+>>>>>>> update
 use Yoast\WP\SEO\Helpers\Options_Helper;
 use Yoast\WP\SEO\Helpers\Product_Helper;
 use Yoast\WP\SEO\Integrations\Integration_Interface;
@@ -208,6 +211,10 @@ class Workouts_Integration implements Integration_Interface {
 			);
 			$button = '<a class="yoast-button yoast-button-upsell yoast-button--small" href="' . \esc_url( $url ) . '" target="_blank">'
 					. \esc_html__( 'Renew your subscription', 'wordpress-seo' )
+<<<<<<< HEAD
+=======
+					/* translators: Hidden accessibility text. */
+>>>>>>> update
 					. '<span class="screen-reader-text">' . \__( '(Opens in a new browser tab)', 'wordpress-seo' ) . '</span>'
 					. '<span aria-hidden="true" class="yoast-button-upsell__caret"></span>'
 					. '</a>';
@@ -237,6 +244,10 @@ class Workouts_Integration implements Integration_Interface {
 			);
 			$button = '<a class="yoast-button yoast-button--primary yoast-button--small" href="' . \esc_url( $url_button ) . '" target="_blank">'
 					. \esc_html__( 'Get help activating your subscription', 'wordpress-seo' )
+<<<<<<< HEAD
+=======
+					/* translators: Hidden accessibility text. */
+>>>>>>> update
 					. '<span class="screen-reader-text">' . \__( '(Opens in a new browser tab)', 'wordpress-seo' ) . '</span>'
 					. '</a>';
 		}
@@ -244,7 +255,11 @@ class Workouts_Integration implements Integration_Interface {
 		$notice = new Notice_Presenter(
 			$title,
 			$copy,
+<<<<<<< HEAD
 			'Assistent_Time_bubble_500x570.png',
+=======
+			null,
+>>>>>>> update
 			$button
 		);
 

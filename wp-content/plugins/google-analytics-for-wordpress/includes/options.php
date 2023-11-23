@@ -56,6 +56,7 @@ function monsterinsights_get_option( $key = '', $default = false ) {
 }
 
 /**
+<<<<<<< HEAD
  * Helper method for getting the UA string.
  *
  * @return string The UA to use.
@@ -160,6 +161,8 @@ function monsterinsights_get_ua_to_output( $args = array() ) {
 }
 
 /**
+=======
+>>>>>>> update
  * Helper method for getting the V4 string.
  *
  * @return string The V4 ID to use.
@@ -210,13 +213,21 @@ function monsterinsights_get_network_v4_id() {
 		return '';
 	}
 
+<<<<<<< HEAD
 	// First try network auth UA
+=======
+	// First try network auth V4
+>>>>>>> update
 	$v4_id = MonsterInsights()->auth->get_network_v4_id();
 	if ( ! empty( $v4_id ) ) {
 		return $v4_id;
 	}
 
+<<<<<<< HEAD
 	// Then try manual network UA
+=======
+	// Then try manual network V4
+>>>>>>> update
 	$v4_id = MonsterInsights()->auth->get_network_manual_v4_id();
 	if ( ! empty( $v4_id ) ) {
 		return $v4_id;
@@ -439,6 +450,7 @@ function monsterinsights_is_valid_gt( $gt_code = '' ) {
 	return (bool) preg_match( '/^GT-[a-zA-Z0-9]{5,}$/', $gt_code );
 }
 
+<<<<<<< HEAD
 /**
  * Is valid ua code.
  *
@@ -463,6 +475,8 @@ function monsterinsights_is_valid_ua( $ua_code = '' ) {
 	return '';
 }
 
+=======
+>>>>>>> update
 function monsterinsights_is_valid_v4_id( $v4_code = '' ) {
 	$v4_code = monsterinsights_sanitize_tracking_id( $v4_code );
 
@@ -526,6 +540,14 @@ function monsterinsights_get_option_name() {
 	//}
 }
 
+<<<<<<< HEAD
+=======
+/**
+ * Export necessary settings to export as JSON.
+ *
+ * @return string
+ */
+>>>>>>> update
 function monsterinsights_export_settings() {
 	$settings = monsterinsights_get_options();
 	$exclude  = array(
@@ -543,6 +565,12 @@ function monsterinsights_export_settings() {
 		}
 	}
 
+<<<<<<< HEAD
+=======
+	// Get site notes.
+	$settings['site_notes'] = monsterinsights_get_site_notes_to_export();
+
+>>>>>>> update
 	return wp_json_encode( $settings );
 }
 
@@ -571,3 +599,54 @@ function monsterinsights_force_events_mode( $value ) {
 }
 
 add_filter( 'monsterinsights_get_option_events_mode', 'monsterinsights_force_events_mode' );
+<<<<<<< HEAD
+=======
+
+/**
+ * Prepare site notes to export.
+ */
+function monsterinsights_get_site_notes_to_export() {
+	$notes_db = new MonsterInsights_Site_Notes_DB_Base();
+
+	$note_items = $notes_db->get_items( array(
+		'per_page' => -1,
+		'orderby'  => 'id',
+		'order'    => 'asc',
+		'page'     => 1,
+	) );
+
+	$notes = array();
+
+	foreach ( $note_items['items'] as $note_item ) {
+		$notes[] = array(
+			'note_title'    => $note_item['note_title'],
+			'note_date'     => $note_item['note_date_ymd'],
+			'important'     => $note_item['important'],
+			'category_name' => empty( $note_item['category']['name'] ) ? '' : html_entity_decode( $note_item['category']['name'] ),
+		);
+	}
+
+	$categories = $notes_db->get_categories( array(
+		'per_page' => -1,
+		'page'     => 1,
+		'orderby'  => 'term_id',
+		'order'    => 'asc',
+	) );
+
+	$note_categories = array();
+
+	if ( is_array( $categories ) && ! empty( $categories ) ) {
+		foreach ( $categories as $category ) {
+			$note_categories[] = array(
+				'name'  => html_entity_decode( $category['name'] ),
+				'color' => $category['background_color'],
+			);
+		}
+	}
+
+	return array(
+		'notes'      => $notes,
+		'categories' => $note_categories,
+	);
+}
+>>>>>>> update

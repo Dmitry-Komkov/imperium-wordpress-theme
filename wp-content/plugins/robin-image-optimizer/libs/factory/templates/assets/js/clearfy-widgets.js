@@ -25,9 +25,15 @@ jQuery(function($) {
 				if( !response || !response.success ) {
 					if( response.data ) {
 						console.log(response.data.error_message);
+<<<<<<< HEAD
 						noticeId = $.wbcr_factory_templates_102.app.showNotice('Error: [' + response.data.error_message + ']', 'danger');
 						setTimeout(function() {
 							$.wbcr_factory_templates_102.app.hideNotice(noticeId);
+=======
+						noticeId = $.wbcr_factory_templates_118.app.showNotice('Error: [' + response.data.error_message + ']', 'danger');
+						setTimeout(function() {
+							$.wbcr_factory_templates_118.app.hideNotice(noticeId);
+>>>>>>> update
 						}, 5000);
 					} else {
 						console.log(response);
@@ -52,9 +58,15 @@ jQuery(function($) {
 				console.log(xhr.responseText);
 				console.log(thrownError);
 
+<<<<<<< HEAD
 				var noticeId = $.wbcr_factory_templates_102.app.showNotice('Error: [' + thrownError + '] Status: [' + xhr.status + '] Error massage: [' + xhr.responseText + ']', 'danger');
 				setTimeout(function() {
 					$.wbcr_factory_templates_102.app.hideNotice(noticeId);
+=======
+				var noticeId = $.wbcr_factory_templates_118.app.showNotice('Error: [' + thrownError + '] Status: [' + xhr.status + '] Error massage: [' + xhr.responseText + ']', 'danger');
+				setTimeout(function() {
+					$.wbcr_factory_templates_118.app.hideNotice(noticeId);
+>>>>>>> update
 				}, 5000);
 			}
 		});

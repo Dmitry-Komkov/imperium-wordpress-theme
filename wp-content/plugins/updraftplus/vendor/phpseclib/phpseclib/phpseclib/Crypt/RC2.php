@@ -5,7 +5,11 @@
  *
  * Uses mcrypt, if available, and an internal implementation, otherwise.
  *
+<<<<<<< HEAD
  * PHP versions 4 and 5
+=======
+ * PHP version 5
+>>>>>>> update
  *
  * Useful resources are as follows:
  *
@@ -14,9 +18,15 @@
  * Here's a short example of how to use this library:
  * <code>
  * <?php
+<<<<<<< HEAD
  *    include 'Crypt/RC2.php';
  *
  *    $rc2 = new Crypt_RC2();
+=======
+ *    include 'vendor/autoload.php';
+ *
+ *    $rc2 = new \phpseclib\Crypt\RC2();
+>>>>>>> update
  *
  *    $rc2->setKey('abcdefgh');
  *
@@ -26,6 +36,7 @@
  * ?>
  * </code>
  *
+<<<<<<< HEAD
  * LICENSE: Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -46,11 +57,16 @@
  *
  * @category Crypt
  * @package  Crypt_RC2
+=======
+ * @category Crypt
+ * @package  RC2
+>>>>>>> update
  * @author   Patrick Monnerat <pm@datasphere.ch>
  * @license  http://www.opensource.org/licenses/mit-license.html  MIT License
  * @link     http://phpseclib.sourceforge.net
  */
 
+<<<<<<< HEAD
 /**
  * Include Crypt_Base
  *
@@ -98,19 +114,33 @@ define('CRYPT_RC2_MODE_CFB', CRYPT_MODE_CFB);
  */
 define('CRYPT_RC2_MODE_OFB', CRYPT_MODE_OFB);
 /**#@-*/
+=======
+namespace phpseclib\Crypt;
+>>>>>>> update
 
 /**
  * Pure-PHP implementation of RC2.
  *
+<<<<<<< HEAD
  * @package Crypt_RC2
  * @access  public
  */
 class Crypt_RC2 extends Crypt_Base
+=======
+ * @package RC2
+ * @access  public
+ */
+class RC2 extends Base
+>>>>>>> update
 {
     /**
      * Block Length of the cipher
      *
+<<<<<<< HEAD
      * @see Crypt_Base::block_size
+=======
+     * @see \phpseclib\Crypt\Base::block_size
+>>>>>>> update
      * @var int
      * @access private
      */
@@ -119,7 +149,11 @@ class Crypt_RC2 extends Crypt_Base
     /**
      * The Key
      *
+<<<<<<< HEAD
      * @see Crypt_Base::key
+=======
+     * @see \phpseclib\Crypt\Base::key
+>>>>>>> update
      * @see self::setKey()
      * @var string
      * @access private
@@ -129,19 +163,31 @@ class Crypt_RC2 extends Crypt_Base
     /**
      * The Original (unpadded) Key
      *
+<<<<<<< HEAD
      * @see Crypt_Base::key
+=======
+     * @see \phpseclib\Crypt\Base::key
+>>>>>>> update
      * @see self::setKey()
      * @see self::encrypt()
      * @see self::decrypt()
      * @var string
      * @access private
      */
+<<<<<<< HEAD
     var $orig_key;
+=======
+    var $orig_key = '';
+>>>>>>> update
 
     /**
      * Don't truncate / null pad key
      *
+<<<<<<< HEAD
      * @see Crypt_Base::_clearBuffers()
+=======
+     * @see \phpseclib\Crypt\Base::_clearBuffers()
+>>>>>>> update
      * @var bool
      * @access private
      */
@@ -150,13 +196,18 @@ class Crypt_RC2 extends Crypt_Base
     /**
      * Key Length (in bytes)
      *
+<<<<<<< HEAD
      * @see Crypt_RC2::setKeyLength()
+=======
+     * @see \phpseclib\Crypt\RC2::setKeyLength()
+>>>>>>> update
      * @var int
      * @access private
      */
     var $key_length = 16; // = 128 bits
 
     /**
+<<<<<<< HEAD
      * The namespace used by the cipher for its constants.
      *
      * @see Crypt_Base::const_namespace
@@ -169,6 +220,11 @@ class Crypt_RC2 extends Crypt_Base
      * The mcrypt specific name of the cipher
      *
      * @see Crypt_Base::cipher_name_mcrypt
+=======
+     * The mcrypt specific name of the cipher
+     *
+     * @see \phpseclib\Crypt\Base::cipher_name_mcrypt
+>>>>>>> update
      * @var string
      * @access private
      */
@@ -177,7 +233,11 @@ class Crypt_RC2 extends Crypt_Base
     /**
      * Optimizing value while CFB-encrypting
      *
+<<<<<<< HEAD
      * @see Crypt_Base::cfb_init_len
+=======
+     * @see \phpseclib\Crypt\Base::cfb_init_len
+>>>>>>> update
      * @var int
      * @access private
      */
@@ -335,9 +395,15 @@ class Crypt_RC2 extends Crypt_Base
     /**
      * Test for engine validity
      *
+<<<<<<< HEAD
      * This is mainly just a wrapper to set things up for Crypt_Base::isValidEngine()
      *
      * @see Crypt_Base::Crypt_Base()
+=======
+     * This is mainly just a wrapper to set things up for \phpseclib\Crypt\Base::isValidEngine()
+     *
+     * @see \phpseclib\Crypt\Base::__construct()
+>>>>>>> update
      * @param int $engine
      * @access public
      * @return bool
@@ -345,7 +411,17 @@ class Crypt_RC2 extends Crypt_Base
     function isValidEngine($engine)
     {
         switch ($engine) {
+<<<<<<< HEAD
             case CRYPT_ENGINE_OPENSSL:
+=======
+            case self::ENGINE_OPENSSL:
+                // quoting https://www.openssl.org/news/openssl-3.0-notes.html, OpenSSL 3.0.1
+                // "Moved all variations of the EVP ciphers CAST5, BF, IDEA, SEED, RC2, RC4, RC5, and DES to the legacy provider"
+                // in theory openssl_get_cipher_methods() should catch this but, on GitHub Actions, at least, it does not
+                if (defined('OPENSSL_VERSION_TEXT') && version_compare(preg_replace('#OpenSSL (\d+\.\d+\.\d+) .*#', '$1', OPENSSL_VERSION_TEXT), '3.0.1', '>=')) {
+                    return false;
+                }
+>>>>>>> update
                 if ($this->current_key_length != 128 || strlen($this->orig_key) < 16) {
                     return false;
                 }
@@ -361,7 +437,11 @@ class Crypt_RC2 extends Crypt_Base
      *
      * Valid key lengths are 8 to 1024.
      * Calling this function after setting the key has no effect until the next
+<<<<<<< HEAD
      *  Crypt_RC2::setKey() call.
+=======
+     *  \phpseclib\Crypt\RC2::setKey() call.
+>>>>>>> update
      *
      * @access public
      * @param int $length in bits
@@ -402,7 +482,11 @@ class Crypt_RC2 extends Crypt_Base
      * If the key is not explicitly set, it'll be assumed to be a single
      * null byte.
      *
+<<<<<<< HEAD
      * @see Crypt_Base::setKey()
+=======
+     * @see \phpseclib\Crypt\Base::setKey()
+>>>>>>> update
      * @access public
      * @param string $key
      * @param int $t1 optional Effective key length in bits.
@@ -453,7 +537,11 @@ class Crypt_RC2 extends Crypt_Base
     /**
      * Encrypts a message.
      *
+<<<<<<< HEAD
      * Mostly a wrapper for Crypt_Base::encrypt, with some additional OpenSSL handling code
+=======
+     * Mostly a wrapper for \phpseclib\Crypt\Base::encrypt, with some additional OpenSSL handling code
+>>>>>>> update
      *
      * @see self::decrypt()
      * @access public
@@ -462,7 +550,11 @@ class Crypt_RC2 extends Crypt_Base
      */
     function encrypt($plaintext)
     {
+<<<<<<< HEAD
         if ($this->engine == CRYPT_ENGINE_OPENSSL) {
+=======
+        if ($this->engine == self::ENGINE_OPENSSL) {
+>>>>>>> update
             $temp = $this->key;
             $this->key = $this->orig_key;
             $result = parent::encrypt($plaintext);
@@ -476,7 +568,11 @@ class Crypt_RC2 extends Crypt_Base
     /**
      * Decrypts a message.
      *
+<<<<<<< HEAD
      * Mostly a wrapper for Crypt_Base::decrypt, with some additional OpenSSL handling code
+=======
+     * Mostly a wrapper for \phpseclib\Crypt\Base::decrypt, with some additional OpenSSL handling code
+>>>>>>> update
      *
      * @see self::encrypt()
      * @access public
@@ -485,7 +581,11 @@ class Crypt_RC2 extends Crypt_Base
      */
     function decrypt($ciphertext)
     {
+<<<<<<< HEAD
         if ($this->engine == CRYPT_ENGINE_OPENSSL) {
+=======
+        if ($this->engine == self::ENGINE_OPENSSL) {
+>>>>>>> update
             $temp = $this->key;
             $this->key = $this->orig_key;
             $result = parent::decrypt($ciphertext);
@@ -499,8 +599,13 @@ class Crypt_RC2 extends Crypt_Base
     /**
      * Encrypts a block
      *
+<<<<<<< HEAD
      * @see Crypt_Base::_encryptBlock()
      * @see Crypt_Base::encrypt()
+=======
+     * @see \phpseclib\Crypt\Base::_encryptBlock()
+     * @see \phpseclib\Crypt\Base::encrypt()
+>>>>>>> update
      * @access private
      * @param string $in
      * @return string
@@ -544,8 +649,13 @@ class Crypt_RC2 extends Crypt_Base
     /**
      * Decrypts a block
      *
+<<<<<<< HEAD
      * @see Crypt_Base::_decryptBlock()
      * @see Crypt_Base::decrypt()
+=======
+     * @see \phpseclib\Crypt\Base::_decryptBlock()
+     * @see \phpseclib\Crypt\Base::decrypt()
+>>>>>>> update
      * @access private
      * @param string $in
      * @return string
@@ -587,9 +697,15 @@ class Crypt_RC2 extends Crypt_Base
     }
 
     /**
+<<<<<<< HEAD
      * Setup the CRYPT_ENGINE_MCRYPT $engine
      *
      * @see Crypt_Base::_setupMcrypt()
+=======
+     * Setup the \phpseclib\Crypt\Base::ENGINE_MCRYPT $engine
+     *
+     * @see \phpseclib\Crypt\Base::_setupMcrypt()
+>>>>>>> update
      * @access private
      */
     function _setupMcrypt()
@@ -604,7 +720,11 @@ class Crypt_RC2 extends Crypt_Base
     /**
      * Creates the key schedule
      *
+<<<<<<< HEAD
      * @see Crypt_Base::_setupKey()
+=======
+     * @see \phpseclib\Crypt\Base::_setupKey()
+>>>>>>> update
      * @access private
      */
     function _setupKey()
@@ -613,7 +733,11 @@ class Crypt_RC2 extends Crypt_Base
             $this->setKey('');
         }
 
+<<<<<<< HEAD
         // Key has already been expanded in Crypt_RC2::setKey():
+=======
+        // Key has already been expanded in \phpseclib\Crypt\RC2::setKey():
+>>>>>>> update
         // Only the first value must be altered.
         $l = unpack('Ca/Cb/v*', $this->key);
         array_unshift($l, $this->pitable[$l['a']] | ($l['b'] << 8));
@@ -625,12 +749,20 @@ class Crypt_RC2 extends Crypt_Base
     /**
      * Setup the performance-optimized function for de/encrypt()
      *
+<<<<<<< HEAD
      * @see Crypt_Base::_setupInlineCrypt()
+=======
+     * @see \phpseclib\Crypt\Base::_setupInlineCrypt()
+>>>>>>> update
      * @access private
      */
     function _setupInlineCrypt()
     {
+<<<<<<< HEAD
         $lambda_functions = &Crypt_RC2::_getLambdaFunctions();
+=======
+        $lambda_functions =& self::_getLambdaFunctions();
+>>>>>>> update
 
         // The first 10 generated $lambda_functions will use the $keys hardcoded as integers
         // for the mixing rounds, for better inline crypt performance [~20% faster].

@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 use WBCR\Factory_Processing_101;
+=======
+use WBCR\Factory_Processing_107;
+>>>>>>> update
 
 /**
  * WP-Background Processing

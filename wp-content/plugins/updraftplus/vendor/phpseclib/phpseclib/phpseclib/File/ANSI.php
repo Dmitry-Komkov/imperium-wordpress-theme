@@ -3,6 +3,7 @@
 /**
  * Pure-PHP ANSI Decoder
  *
+<<<<<<< HEAD
  * PHP versions 4 and 5
  *
  * If you call read() in Net_SSH2 you may get {@link http://en.wikipedia.org/wiki/ANSI_escape_code ANSI escape codes} back.
@@ -30,12 +31,24 @@
  *
  * @category  File
  * @package   File_ANSI
+=======
+ * PHP version 5
+ *
+ * If you call read() in \phpseclib\Net\SSH2 you may get {@link http://en.wikipedia.org/wiki/ANSI_escape_code ANSI escape codes} back.
+ * They'd look like chr(0x1B) . '[00m' or whatever (0x1B = ESC).  They tell a
+ * {@link http://en.wikipedia.org/wiki/Terminal_emulator terminal emulator} how to format the characters, what
+ * color to display them in, etc. \phpseclib\File\ANSI is a {@link http://en.wikipedia.org/wiki/VT100 VT100} terminal emulator.
+ *
+ * @category  File
+ * @package   ANSI
+>>>>>>> update
  * @author    Jim Wigginton <terrafrost@php.net>
  * @copyright 2012 Jim Wigginton
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
  * @link      http://phpseclib.sourceforge.net
  */
 
+<<<<<<< HEAD
 /**
  * Pure-PHP ANSI Decoder
  *
@@ -44,6 +57,18 @@
  * @access  public
  */
 class File_ANSI
+=======
+namespace phpseclib\File;
+
+/**
+ * Pure-PHP ANSI Decoder
+ *
+ * @package ANSI
+ * @author  Jim Wigginton <terrafrost@php.net>
+ * @access  public
+ */
+class ANSI
+>>>>>>> update
 {
     /**
      * Max Width
@@ -176,26 +201,40 @@ class File_ANSI
     /**
      * Default Constructor.
      *
+<<<<<<< HEAD
      * @return File_ANSI
+=======
+     * @return \phpseclib\File\ANSI
+>>>>>>> update
      * @access public
      */
     function __construct()
     {
+<<<<<<< HEAD
         $attr_cell = new stdClass();
+=======
+        $attr_cell = new \stdClass();
+>>>>>>> update
         $attr_cell->bold = false;
         $attr_cell->underline = false;
         $attr_cell->blink = false;
         $attr_cell->background = 'black';
         $attr_cell->foreground = 'white';
         $attr_cell->reverse = false;
+<<<<<<< HEAD
         $this->base_attr_cell = clone($attr_cell);
         $this->attr_cell = clone($attr_cell);
+=======
+        $this->base_attr_cell = clone $attr_cell;
+        $this->attr_cell = clone $attr_cell;
+>>>>>>> update
 
         $this->setHistory(200);
         $this->setDimensions(80, 24);
     }
 
     /**
+<<<<<<< HEAD
      * PHP4 compatible Default Constructor.
      *
      * @see self::__construct()
@@ -207,6 +246,8 @@ class File_ANSI
     }
 
     /**
+=======
+>>>>>>> update
      * Set terminal width and height
      *
      * Resets the screen as well
@@ -344,7 +385,11 @@ class File_ANSI
                                     switch ($mod) {
                                         case '':
                                         case '0': // Turn off character attributes
+<<<<<<< HEAD
                                             $attr_cell = clone($this->base_attr_cell);
+=======
+                                            $attr_cell = clone $this->base_attr_cell;
+>>>>>>> update
                                             break;
                                         case '1': // Turn bold mode on
                                             $attr_cell->bold = true;
@@ -414,7 +459,11 @@ class File_ANSI
                 case "\x08": // backspace
                     if ($this->x) {
                         $this->x--;
+<<<<<<< HEAD
                         $this->attrs[$this->y][$this->x] = clone($this->base_attr_cell);
+=======
+                        $this->attrs[$this->y][$this->x] = clone $this->base_attr_cell;
+>>>>>>> update
                         $this->screen[$this->y] = substr_replace(
                             $this->screen[$this->y],
                             $source[$i],
@@ -433,7 +482,11 @@ class File_ANSI
                     $this->ansi.= "\x1B";
                     break;
                 default:
+<<<<<<< HEAD
                     $this->attrs[$this->y][$this->x] = clone($this->attr_cell);
+=======
+                    $this->attrs[$this->y][$this->x] = clone $this->attr_cell;
+>>>>>>> update
                     if ($this->x > strlen($this->screen[$this->y])) {
                         $this->screen[$this->y] = str_repeat(' ', $this->x);
                     }

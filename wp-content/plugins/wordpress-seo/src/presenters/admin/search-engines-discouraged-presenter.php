@@ -37,7 +37,11 @@ class Search_Engines_Discouraged_Presenter extends Abstract_Presenter {
 				'<a href="' . \esc_url( \admin_url( 'options-reading.php' ) ) . '">',
 				'</a>'
 			),
+<<<<<<< HEAD
 			\esc_js( wp_create_nonce( 'wpseo-ignore' ) ),
+=======
+			\esc_js( \wp_create_nonce( 'wpseo-ignore' ) ),
+>>>>>>> update
 			\esc_html__( 'I don\'t want this site to show in the search results.', 'wordpress-seo' )
 		);
 	}

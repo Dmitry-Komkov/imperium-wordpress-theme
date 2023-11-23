@@ -13,6 +13,10 @@ class Google_Collection extends Google_Model implements Iterator, Countable
 {
   protected $collection_key = 'items';
 
+<<<<<<< HEAD
+=======
+  #[\ReturnTypeWillChange]
+>>>>>>> update
   public function rewind()
   {
     if (isset($this->modelData[$this->collection_key])
@@ -21,6 +25,10 @@ class Google_Collection extends Google_Model implements Iterator, Countable
     }
   }
 
+<<<<<<< HEAD
+=======
+  #[\ReturnTypeWillChange]
+>>>>>>> update
   public function current()
   {
     $this->coerceType($this->key());
@@ -29,6 +37,10 @@ class Google_Collection extends Google_Model implements Iterator, Countable
     }
   }
 
+<<<<<<< HEAD
+=======
+  #[\ReturnTypeWillChange]
+>>>>>>> update
   public function key()
   {
     if (isset($this->modelData[$this->collection_key])
@@ -37,17 +49,29 @@ class Google_Collection extends Google_Model implements Iterator, Countable
     }
   }
 
+<<<<<<< HEAD
+=======
+  #[\ReturnTypeWillChange]
+>>>>>>> update
   public function next()
   {
     return next($this->modelData[$this->collection_key]);
   }
 
+<<<<<<< HEAD
+=======
+  #[\ReturnTypeWillChange]
+>>>>>>> update
   public function valid()
   {
     $key = $this->key();
     return $key !== null && $key !== false;
   }
 
+<<<<<<< HEAD
+=======
+  #[\ReturnTypeWillChange]
+>>>>>>> update
   public function count()
   {
     if (!isset($this->modelData[$this->collection_key])) {

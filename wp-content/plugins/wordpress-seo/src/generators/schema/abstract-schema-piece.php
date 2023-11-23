@@ -25,6 +25,18 @@ abstract class Abstract_Schema_Piece {
 	public $helpers;
 
 	/**
+<<<<<<< HEAD
+=======
+	 * Optional identifier for this schema piece.
+	 *
+	 * Used in the `Schema_Generator::filter_graph_pieces_to_generate()` method.
+	 *
+	 * @var string
+	 */
+	public $identifier;
+
+	/**
+>>>>>>> update
 	 * Generates the schema piece.
 	 *
 	 * @return mixed

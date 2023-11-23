@@ -13,7 +13,11 @@
 		exit;
 	}
 
+<<<<<<< HEAD
 	if( !class_exists('Wbcr_FactoryForms447_OptionsValueProvider') ) {
+=======
+	if( !class_exists('Wbcr_FactoryForms466_OptionsValueProvider') ) {
+>>>>>>> update
 
 		/**
 		 * Factory Options Value Provider
@@ -22,7 +26,11 @@
 		 *
 		 * @since 1.0.0
 		 */
+<<<<<<< HEAD
 		class Wbcr_FactoryForms447_OptionsValueProvider implements Wbcr_IFactoryForms447_ValueProvider {
+=======
+		class Wbcr_FactoryForms466_OptionsValueProvider implements Wbcr_IFactoryForms466_ValueProvider {
+>>>>>>> update
 
 			/**
 			 * A prefix that will be added to all option names.
@@ -43,7 +51,11 @@
 			/**
 			 * Creates a new instance of an options value provider.
 			 */
+<<<<<<< HEAD
 			public function __construct(Wbcr_Factory450_Plugin $plugin)
+=======
+			public function __construct(Wbcr_Factory469_Plugin $plugin)
+>>>>>>> update
 			{
 				$this->plugin = $plugin;
 			}

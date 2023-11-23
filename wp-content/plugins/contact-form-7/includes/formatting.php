@@ -3,6 +3,7 @@
 /**
  * Replaces double line breaks with paragraph elements.
  *
+<<<<<<< HEAD
  * This is a variant of wpautop() that is specifically tuned for
  * form content uses.
  *
@@ -92,12 +93,63 @@ function wpcf7_autop( $text, $br = 1 ) {
 	$text = preg_replace( "|\n</p>$|", '</p>', $text );
 
 	return $text;
+=======
+ * @param string $input The text which has to be formatted.
+ * @param bool $br Optional. If set, this will convert all remaining
+ *             line breaks after paragraphing. Default true.
+ * @return string Text which has been converted into correct paragraph tags.
+ */
+function wpcf7_autop( $input, $br = true ) {
+	$placeholders = array();
+
+	// Replace non-HTML embedded elements with placeholders.
+	$input = preg_replace_callback(
+		'/<(math|svg).*?<\/\1>/is',
+		static function ( $matches ) use ( &$placeholders ) {
+			$placeholder = sprintf(
+				'<%1$s id="%2$s" />',
+				WPCF7_HTMLFormatter::placeholder_inline,
+				sha1( $matches[0] )
+			);
+
+			list( $placeholder ) =
+				WPCF7_HTMLFormatter::normalize_start_tag( $placeholder );
+
+			$placeholders[$placeholder] = $matches[0];
+
+			return $placeholder;
+		},
+		$input
+	);
+
+	$formatter = new WPCF7_HTMLFormatter( array(
+		'auto_br' => $br,
+	) );
+
+	$chunks = $formatter->separate_into_chunks( $input );
+
+	$output = $formatter->format( $chunks );
+
+	// Restore from placeholders.
+	$output = str_replace(
+		array_keys( $placeholders ),
+		array_values( $placeholders ),
+		$output
+	);
+
+	return $output;
+>>>>>>> update
 }
 
 
 /**
  * Newline preservation help function for wpcf7_autop().
  *
+<<<<<<< HEAD
+=======
+ * @deprecated 5.7 Unnecessary to use any more.
+ *
+>>>>>>> update
  * @param array $matches preg_replace_callback() matches array.
  * @return string Text including newline placeholders.
  */
@@ -487,7 +539,11 @@ function wpcf7_kses_allowed_html( $context = 'form' ) {
 		);
 
 		$additional_tags_for_form = array_map(
+<<<<<<< HEAD
 			function ( $elm ) {
+=======
+			static function ( $elm ) {
+>>>>>>> update
 				$global_attributes = array(
 					'aria-atomic' => true,
 					'aria-checked' => true,
@@ -546,3 +602,59 @@ function wpcf7_kses( $input, $context = 'form' ) {
 
 	return $output;
 }
+<<<<<<< HEAD
+=======
+
+
+/**
+ * Returns a formatted string of HTML attributes.
+ *
+ * @param array $atts Associative array of attribute name and value pairs.
+ * @return string Formatted HTML attributes.
+ */
+function wpcf7_format_atts( $atts ) {
+	$atts_filtered = array();
+
+	foreach ( $atts as $name => $value ) {
+		$name = strtolower( trim( $name ) );
+
+		if ( ! preg_match( '/^[a-z_:][a-z_:.0-9-]*$/', $name ) ) {
+			continue;
+		}
+
+		static $boolean_attributes = array(
+			'checked',
+			'disabled',
+			'inert',
+			'multiple',
+			'readonly',
+			'required',
+			'selected',
+		);
+
+		if ( in_array( $name, $boolean_attributes ) and '' === $value ) {
+			$value = false;
+		}
+
+		if ( is_numeric( $value ) ) {
+			$value = (string) $value;
+		}
+
+		if ( null === $value or false === $value ) {
+			unset( $atts_filtered[$name] );
+		} elseif ( true === $value ) {
+			$atts_filtered[$name] = $name; // boolean attribute
+		} elseif ( is_string( $value ) ) {
+			$atts_filtered[$name] = trim( $value );
+		}
+	}
+
+	$output = '';
+
+	foreach ( $atts_filtered as $name => $value ) {
+		$output .= sprintf( ' %1$s="%2$s"', $name, esc_attr( $value ) );
+	}
+
+	return trim( $output );
+}
+>>>>>>> update

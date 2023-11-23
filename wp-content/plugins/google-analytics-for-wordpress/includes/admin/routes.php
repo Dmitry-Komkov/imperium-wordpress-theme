@@ -21,9 +21,13 @@ class MonsterInsights_Rest_Routes {
 		add_action( 'wp_ajax_monsterinsights_vue_update_settings', array( $this, 'update_settings' ) );
 		add_action( 'wp_ajax_monsterinsights_vue_update_settings_bulk', array( $this, 'update_settings_bulk' ) );
 		add_action( 'wp_ajax_monsterinsights_vue_get_addons', array( $this, 'get_addons' ) );
+<<<<<<< HEAD
 		add_action( 'wp_ajax_monsterinsights_update_manual_ua', array( $this, 'update_manual_ua' ) );
 		add_action( 'wp_ajax_monsterinsights_update_manual_v4', array( $this, 'update_manual_v4' ) );
 		add_action( 'wp_ajax_monsterinsights_update_dual_tracking_id', array( $this, 'update_dual_tracking_id' ) );
+=======
+		add_action( 'wp_ajax_monsterinsights_update_manual_v4', array( $this, 'update_manual_v4' ) );
+>>>>>>> update
 		add_action( 'wp_ajax_monsterinsights_update_measurement_protocol_secret', array(
 			$this,
 			'update_measurement_protocol_secret'
@@ -41,7 +45,10 @@ class MonsterInsights_Rest_Routes {
 			'update_popular_posts_theme_setting'
 		) );
 
+<<<<<<< HEAD
 		// TODO: remove function from Google Optimize Addon.
+=======
+>>>>>>> update
 		add_action( 'wp_ajax_monsterinsights_get_posts', array( $this, 'get_posts' ) );
 
 		// Search for taxonomies.
@@ -107,6 +114,7 @@ class MonsterInsights_Rest_Routes {
 		$auth = MonsterInsights()->auth;
 
 		wp_send_json( array(
+<<<<<<< HEAD
 			'ua'                                  => $auth->get_ua(),
 			'v4'                                  => $auth->get_v4_id(),
 			'viewname'                            => $auth->get_viewname(),
@@ -120,6 +128,16 @@ class MonsterInsights_Rest_Routes {
 			'network_manual_v4'                   => $auth->get_network_manual_v4_id(),
 			'network_measurement_protocol_secret' => $auth->get_network_measurement_protocol_secret(),
 			'connected_type'                      => $auth->get_connected_type(),
+=======
+			'v4'                                  => $auth->get_v4_id(),
+			'viewname'                            => $auth->get_viewname(),
+			'manual_v4'                           => $auth->get_manual_v4_id(),
+			'measurement_protocol_secret'         => $auth->get_measurement_protocol_secret(),
+			'network_v4'                          => $auth->get_network_v4_id(),
+			'network_viewname'                    => $auth->get_network_viewname(),
+			'network_manual_v4'                   => $auth->get_network_manual_v4_id(),
+			'network_measurement_protocol_secret' => $auth->get_network_measurement_protocol_secret(),
+>>>>>>> update
 		) );
 
 	}
@@ -198,7 +216,11 @@ class MonsterInsights_Rest_Routes {
 		if ( isset( $_POST['setting'] ) ) {
 			$setting = sanitize_text_field( wp_unslash( $_POST['setting'] ) );
 			if ( isset( $_POST['value'] ) ) {
+<<<<<<< HEAD
 				$value = $this->handle_sanitization( $setting, $_POST['value'] );
+=======
+				$value = $this->handle_sanitization( $setting, $_POST['value'] ); // phpcs:ignore
+>>>>>>> update
 				monsterinsights_update_option( $setting, $value );
 				do_action( 'monsterinsights_after_update_settings', $setting, $value );
 			} else {
@@ -290,10 +312,17 @@ class MonsterInsights_Rest_Routes {
 	 * Return the state of the addons ( installed, activated )
 	 */
 	public function get_addons() {
+<<<<<<< HEAD
 
 		check_ajax_referer( 'mi-admin-nonce', 'nonce' );
 
 		if ( ! current_user_can( 'monsterinsights_save_settings' ) ) {
+=======
+		global $current_user;
+		check_ajax_referer( 'mi-admin-nonce', 'nonce' );
+
+		if ( ! current_user_can( 'monsterinsights_view_dashboard' ) ) {
+>>>>>>> update
 			return;
 		}
 
@@ -336,8 +365,13 @@ class MonsterInsights_Rest_Routes {
 			'icon'      => plugin_dir_url( MONSTERINSIGHTS_PLUGIN_FILE ) . 'assets/images/plugin-edd.png',
 			'title'     => 'Easy Digital Downloads',
 			'excerpt'   => __( 'Easy digital downloads plugin.', 'google-analytics-for-wordpress' ),
+<<<<<<< HEAD
 			'installed' => array_key_exists( 'easy-digital-downloads/easy-digital-downloads.php', $installed_plugins ),
 			'basename'  => 'easy-digital-downloads/easy-digital-downloads.php',
+=======
+			'installed' => array_key_exists( 'easy-digital-downloads/easy-digital-downloads.php', $installed_plugins ) || array_key_exists( 'easy-digital-downloads-pro/easy-digital-downloads.php', $installed_plugins ),
+			'basename'  => array_key_exists( 'easy-digital-downloads-pro/easy-digital-downloads.php', $installed_plugins ) ? 'easy-digital-downloads-pro/easy-digital-downloads.php' : 'easy-digital-downloads/easy-digital-downloads.php',
+>>>>>>> update
 			'slug'      => 'easy-digital-downloads',
 			'settings'  => admin_url( 'edit.php?post_type=download' ),
 		);
@@ -345,6 +379,13 @@ class MonsterInsights_Rest_Routes {
 		$parsed_addons['memberpress'] = array(
 			'active' => defined( 'MEPR_VERSION' ) && version_compare( MEPR_VERSION, '1.3.43', '>' ),
 		);
+<<<<<<< HEAD
+=======
+		// MemberMouse.
+		$parsed_addons['membermouse'] = array(
+			'active' => class_exists( 'MemberMouse' ),
+		);
+>>>>>>> update
 		// LifterLMS.
 		$parsed_addons['lifterlms'] = array(
 			'active' => function_exists( 'LLMS' ) && version_compare( LLMS()->version, '3.32.0', '>=' ),
@@ -357,13 +398,28 @@ class MonsterInsights_Rest_Routes {
 		$parsed_addons['givewp'] = array(
 			'active' => function_exists( 'Give' ),
 		);
+<<<<<<< HEAD
+=======
+		// Charitable WP.
+		$parsed_addons['charitable'] = array(
+			'active' => class_exists( 'Charitable' ),
+		);
+		// WishList Member.
+		$parsed_addons['wishlist_member'] = array(
+			'active' => function_exists( 'wishlistmember_instance' ),
+		);
+>>>>>>> update
 		// GiveWP Analytics.
 		$parsed_addons['givewp_google_analytics'] = array(
 			'active' => function_exists( 'Give_Google_Analytics' ),
 		);
 		// Cookiebot.
 		$parsed_addons['cookiebot'] = array(
+<<<<<<< HEAD
 			'active' => function_exists( 'cookiebot_active' ) && cookiebot_active(),
+=======
+			'active' => function_exists( 'monsterinsights_is_cookiebot_active' ) && monsterinsights_is_cookiebot_active(),
+>>>>>>> update
 		);
 		// Cookie Notice.
 		$parsed_addons['cookie_notice'] = array(
@@ -377,10 +433,13 @@ class MonsterInsights_Rest_Routes {
 		$parsed_addons['cookie_yes'] = array(
 			'active' => defined( 'CLI_SETTINGS_FIELD' ),
 		);
+<<<<<<< HEAD
 		// Fb Instant Articles.
 		$parsed_addons['instant_articles'] = array(
 			'active' => defined( 'IA_PLUGIN_VERSION' ) && version_compare( IA_PLUGIN_VERSION, '3.3.4', '>' ),
 		);
+=======
+>>>>>>> update
 		// Google AMP.
 		$parsed_addons['google_amp'] = array(
 			'active' => defined( 'AMP__FILE__' ),
@@ -396,24 +455,52 @@ class MonsterInsights_Rest_Routes {
 		$parsed_addons['affiliate_wp']   = array(
 			'active' => function_exists( 'affiliate_wp' ) && defined( 'AFFILIATEWP_VERSION' ),
 		);
+<<<<<<< HEAD
+=======
+
+>>>>>>> update
 		// WPForms.
 		$parsed_addons['wpforms-lite'] = array(
 			'active'    => function_exists( 'wpforms' ),
 			'icon'      => plugin_dir_url( MONSTERINSIGHTS_PLUGIN_FILE ) . 'assets/images/plugin-wpforms.png',
 			'title'     => 'WPForms',
 			'excerpt'   => __( 'The best drag & drop WordPress form builder. Easily create beautiful contact forms, surveys, payment forms, and more with our 150+ form templates. Trusted by over 5 million websites as the best forms plugin. We also have 400+ form templates and over 100 million downloads for WPForms Lite.', 'google-analytics-for-wordpress' ),
+<<<<<<< HEAD
 			'installed' => array_key_exists( 'wpforms-lite/wpforms.php', $installed_plugins ),
+=======
+			'installed' => array_key_exists( 'wpforms-lite/wpforms.php', $installed_plugins ) || array_key_exists( 'wpforms/wpforms.php', $installed_plugins ),
+>>>>>>> update
 			'basename'  => 'wpforms-lite/wpforms.php',
 			'slug'      => 'wpforms-lite',
 			'settings'  => admin_url( 'admin.php?page=wpforms-overview' ),
 		);
+<<<<<<< HEAD
+=======
+
+		// UserFeedback.
+		$parsed_addons['userfeedback-lite'] = array(
+			'active'    => function_exists( 'userfeedback' ),
+			'icon'      => plugin_dir_url( MONSTERINSIGHTS_PLUGIN_FILE ) . 'assets/images/plugin-userfeedback.png',
+			'title'     => 'UserFeedback',
+			'excerpt'   => __( 'Ask visitors questions about how they use your website or what features can make you more money.', 'google-analytics-for-wordpress' ),
+			'installed' => array_key_exists( 'userfeedback-lite/userfeedback.php', $installed_plugins ) || array_key_exists( 'userfeedback/userfeedback.php', $installed_plugins ),
+			'basename'  => 'userfeedback-lite/userfeedback.php',
+			'slug'      => 'userfeedback-lite',
+			'settings'  => admin_url( 'admin.php?page=userfeedback_settings' ),
+		);
+
+>>>>>>> update
 		// AIOSEO.
 		$parsed_addons['aioseo'] = array(
 			'active'    => function_exists( 'aioseo' ),
 			'icon'      => plugin_dir_url( MONSTERINSIGHTS_PLUGIN_FILE ) . 'assets/images/plugin-all-in-one-seo.png',
 			'title'     => 'AIOSEO',
 			'excerpt'   => __( 'The original WordPress SEO plugin and toolkit that improves your website’s search rankings. Comes with all the SEO features like Local SEO, WooCommerce SEO, sitemaps, SEO optimizer, schema, and more.', 'google-analytics-for-wordpress' ),
+<<<<<<< HEAD
 			'installed' => array_key_exists( 'all-in-one-seo-pack/all_in_one_seo_pack.php', $installed_plugins ),
+=======
+			'installed' => array_key_exists( 'all-in-one-seo-pack/all_in_one_seo_pack.php', $installed_plugins ) || array_key_exists( 'all-in-one-seo-pack-pro/all_in_one_seo_pack.php', $installed_plugins ),
+>>>>>>> update
 			'basename'  => ( monsterinsights_is_installed_aioseo_pro() ) ? 'all-in-one-seo-pack-pro/all_in_one_seo_pack.php' : 'all-in-one-seo-pack/all_in_one_seo_pack.php',
 			'slug'      => 'all-in-one-seo-pack',
 			'settings'  => admin_url( 'admin.php?page=aioseo' ),
@@ -549,6 +636,24 @@ class MonsterInsights_Rest_Routes {
 				'settings'  => admin_url( 'edit.php?post_type=shop_coupon&acfw' ),
 			);
 		}
+<<<<<<< HEAD
+=======
+
+		// UserFeedback.
+		$parsed_addons['userfeedback-lite'] = array(
+			'active'    => function_exists( 'userfeedback' ),
+			'icon'      => plugin_dir_url( MONSTERINSIGHTS_PLUGIN_FILE ) . 'assets/images/plugin-userfeedback.png',
+			'title'     => 'UserFeedback',
+			'excerpt'   => __( 'See what your analytics software isn’t telling you with powerful UserFeedback surveys.', 'google-analytics-for-wordpress' ),
+			'installed' => array_key_exists( 'userfeedback-lite/userfeedback.php', $installed_plugins ) || array_key_exists( 'userfeedback/userfeedback.php', $installed_plugins ),
+			'basename'  => 'userfeedback-lite/userfeedback.php',
+			'slug'      => 'userfeedback-lite',
+			'settings'  => admin_url( 'admin.php?page=userfeedback_onboarding' ),
+			'surveys'  => admin_url( 'admin.php?page=userfeedback_surveys' ),
+			'setup_complete'  => (get_option('userfeedback_onboarding_complete', 0) == 1),
+		);
+
+>>>>>>> update
 		// Gravity Forms.
 		$parsed_addons['gravity_forms'] = array(
 			'active' => class_exists( 'GFCommon' ),
@@ -564,12 +669,23 @@ class MonsterInsights_Rest_Routes {
 			);
 		}
 
+<<<<<<< HEAD
+=======
+        $parsed_addons = apply_filters('monsterinsights_parsed_addons', $parsed_addons);
+
+>>>>>>> update
 		wp_send_json( $parsed_addons );
 	}
 
 	public function get_addon( $installed_plugins, $addons_type, $addon, $slug ) {
 		$active          = false;
 		$installed       = false;
+<<<<<<< HEAD
+=======
+
+        $slug = apply_filters( 'monsterinsights_addon_slug', $slug );
+
+>>>>>>> update
 		$plugin_basename = monsterinsights_get_plugin_basename_from_slug( $slug );
 
 		if ( isset( $installed_plugins[ $plugin_basename ] ) ) {
@@ -626,6 +742,7 @@ class MonsterInsights_Rest_Routes {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Update manual ua.
 	 */
 	public function update_manual_ua() {
@@ -679,6 +796,8 @@ class MonsterInsights_Rest_Routes {
 	}
 
 	/**
+=======
+>>>>>>> update
 	 * Update manual v4.
 	 */
 	public function update_manual_v4() {
@@ -737,6 +856,7 @@ class MonsterInsights_Rest_Routes {
 		wp_send_json_success();
 	}
 
+<<<<<<< HEAD
 	public function update_dual_tracking_id() {
 		check_ajax_referer( 'mi-admin-nonce', 'nonce' );
 
@@ -775,6 +895,8 @@ class MonsterInsights_Rest_Routes {
 		wp_send_json_success();
 	}
 
+=======
+>>>>>>> update
 	public function update_measurement_protocol_secret() {
 		check_ajax_referer( 'mi-admin-nonce', 'nonce' );
 
@@ -820,7 +942,11 @@ class MonsterInsights_Rest_Routes {
 
 
 	/**
+<<<<<<< HEAD
 	 *
+=======
+	 * Import exported JSON file.
+>>>>>>> update
 	 */
 	public function handle_settings_import() {
 
@@ -834,7 +960,13 @@ class MonsterInsights_Rest_Routes {
 			return;
 		}
 
+<<<<<<< HEAD
 		$extension = explode( '.', sanitize_text_field( wp_unslash( $_FILES['import_file']['name'] ) ) );
+=======
+		$import_file = $_FILES['import_file']; // phpcs:ignore
+
+		$extension = explode( '.', sanitize_text_field( wp_unslash( $import_file['name'] ) ) ); // phpcs:ignore
+>>>>>>> update
 		$extension = end( $extension );
 
 		if ( 'json' !== $extension ) {
@@ -843,9 +975,14 @@ class MonsterInsights_Rest_Routes {
 			) );
 		}
 
+<<<<<<< HEAD
 		$import_file = sanitize_text_field( wp_unslash( $_FILES['import_file']['tmp_name'] ) );
 
 		$file = file_get_contents( $import_file );
+=======
+		$file = file_get_contents( $import_file['tmp_name'] );
+
+>>>>>>> update
 		if ( empty( $file ) ) {
 			wp_send_json_error( array(
 				'message' => esc_html__( 'Please select a valid file to upload.', 'google-analytics-for-wordpress' ),
@@ -864,6 +1001,12 @@ class MonsterInsights_Rest_Routes {
 			'monsterinsights_oauth_status',
 		);
 
+<<<<<<< HEAD
+=======
+		$this->import_site_notes( $new_settings['site_notes'] );
+		unset( $new_settings['site_notes'] );
+
+>>>>>>> update
 		foreach ( $exclude as $e ) {
 			if ( ! empty( $new_settings[ $e ] ) ) {
 				unset( $new_settings[ $e ] );
@@ -1013,6 +1156,10 @@ class MonsterInsights_Rest_Routes {
 				array(
 					'message' => $data['error'],
 					'footer'  => isset( $data['data']['footer'] ) ? $data['data']['footer'] : '',
+<<<<<<< HEAD
+=======
+					'type'    => isset( $data['data']['type'] ) ? $data['data']['type'] : '',
+>>>>>>> update
 				)
 			);
 		}
@@ -1171,11 +1318,31 @@ class MonsterInsights_Rest_Routes {
 
 		$post_type = isset( $_POST['post_type'] ) ? sanitize_text_field( wp_unslash( $_POST['post_type'] ) ) : 'any';
 
+<<<<<<< HEAD
 		$args = array(
 			's'              => isset( $_POST['keyword'] ) ? sanitize_text_field( wp_unslash( $_POST['keyword'] ) ) : '',
 			'post_type'      => $post_type,
 			'posts_per_page' => isset( $_POST['numberposts'] ) ? sanitize_text_field( wp_unslash( $_POST['numberposts'] ) ) : 10,
 			'orderby'        => 'relevance',
+=======
+		$already_added = monsterinsights_get_option('popular_posts_inline_curated', []);
+		$exclude = array();
+		if( is_array( $already_added ) && !empty( $already_added ) ){
+			foreach ( $already_added as $key => $value ) {
+				$exclude[$value['id']] = $value['id'];
+			}
+		}
+
+		$exclude = array_unique(array_values($exclude));
+
+		$args = array(
+			's'              => isset( $_POST['keyword'] ) ? sanitize_text_field( wp_unslash( $_POST['keyword'] ) ) : '',
+			'post_type'      => $post_type,
+			'posts_per_page' => isset( $_POST['numberposts'] ) ? sanitize_text_field( wp_unslash( $_POST['numberposts'] ) ) : 25,
+			'orderby'        => 'post_title',
+			'order'          => 'ASC',
+			'post__not_in'   => $exclude,
+>>>>>>> update
 		);
 
 		$array = array();
@@ -1449,4 +1616,33 @@ class MonsterInsights_Rest_Routes {
 		wp_send_json_error();
 
 	}
+<<<<<<< HEAD
+=======
+
+	/**
+	 * Import site notes from exported file.
+	 */
+	private function import_site_notes( $site_notes ) {
+		$notes_db = new MonsterInsights_Site_Notes_DB_Base();
+
+		// Import site-notes category.
+		foreach ( $site_notes['categories'] as $category ) {
+			$notes_db->create_category( array(
+				'name'             => $category['name'],
+				'background_color' => $category['color'],
+			) );
+		}
+
+		foreach ( $site_notes['notes'] as $notes ) {
+			$category = get_term_by( 'name', $notes['category_name'], 'monsterinsights_note_category' );
+
+			$notes_db->create( array(
+				'note'      => $notes['note_title'],
+				'date'      => $notes['note_date'],
+				'important' => $notes['important'],
+				'category'  => intval( ( ! empty( $category ) && ! empty( $category->term_id ) ) ? $category->term_id : 0 ),
+			) );
+		}
+	}
+>>>>>>> update
 }

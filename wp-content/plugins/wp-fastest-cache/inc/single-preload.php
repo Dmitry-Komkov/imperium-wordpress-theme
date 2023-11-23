@@ -3,8 +3,18 @@
 		public static $id = 0;
 		public static $urls = array();
 
+<<<<<<< HEAD
 		public static function init(){
 			SinglePreloadWPFC::set_id();
+=======
+		public static function init($id = false){
+			if($id){
+	            self::set_id($id);
+	        }else if(isset($_GET["post"]) && $_GET["post"]){
+	            self::set_id($_GET["post"]);
+	        }
+
+>>>>>>> update
 			SinglePreloadWPFC::set_urls();
 			SinglePreloadWPFC::set_urls_with_terms();
 		}
@@ -67,7 +77,11 @@
 	                    jQuery.ajax({
 	                      type: 'POST',
 	                      url: ajaxurl,
+<<<<<<< HEAD
 	                      data: {"action": "wpfc_preload_single_save_settings", "is_enable": jQuery(this).val()},
+=======
+	                      data: {"action": "wpfc_preload_single_save_settings", "is_enable": jQuery(this).val(), "nonce" : wpfc_nonce},
+>>>>>>> update
 	                      dataType: "json",
 	                      cache: false, 
 	                      success: function(data){
@@ -112,6 +126,7 @@
 	        wp_die("Must be admin");
 	    }
 
+<<<<<<< HEAD
 		public static function set_id(){
 			if(isset($_GET["post"]) && $_GET["post"]){
 				
@@ -122,6 +137,35 @@
 				}
 			}
 		}
+=======
+		public static function set_id($id) {
+	        $id = (int)$id;
+
+	        if(get_post_status($id) === "publish"){
+	            self::$id = $id;
+	        }
+	    }
+	    
+	    public static function create_cache_for_all_urls(){
+	    	if(preg_match("/include\s*\(\s*[\'\"]\/themes\//i", wp_debug_backtrace_summary())){
+	    		return array("success" => false, "error_message" => "You cannot call this function in any theme file");
+	    	}
+
+	    	if(empty(self::$urls)){
+	    		return false;
+	    	}
+
+	    	$res_arr = array();
+
+	    	foreach (self::$urls as $url) {
+	    		$res = $GLOBALS["wp_fastest_cache"]->wpfc_remote_get($url["url"], $url["user-agent"]);
+
+	    		array_push($res_arr, array("url" => $url["url"], "success" => $res));
+	    	}
+
+	    	return $res_arr;
+	    }
+>>>>>>> update
 
 		public static function create_cache(){
 			$res = $GLOBALS["wp_fastest_cache"]->wpfc_remote_get($_GET["url"], $_GET["user_agent"]);
@@ -256,7 +300,11 @@
 			        		jQuery.ajax({
 								type: 'GET',
 								url: ajaxurl,
+<<<<<<< HEAD
 								data: {"action": "wpfc_preload_single", "url": url, "user_agent": user_agent},
+=======
+								data: {"action": "wpfc_preload_single", "url": url, "user_agent": user_agent, "nonce" : wpfc_nonce},
+>>>>>>> update
 								dataType: "html",
 								timeout: 10000,
 								cache: false, 

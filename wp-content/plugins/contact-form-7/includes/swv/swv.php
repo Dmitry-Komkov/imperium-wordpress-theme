@@ -19,13 +19,26 @@ function wpcf7_swv_available_rules() {
 		'tel' => 'WPCF7_SWV_TelRule',
 		'number' => 'WPCF7_SWV_NumberRule',
 		'date' => 'WPCF7_SWV_DateRule',
+<<<<<<< HEAD
 		'file' => 'WPCF7_SWV_FileRule',
+=======
+		'time' => 'WPCF7_SWV_TimeRule',
+		'file' => 'WPCF7_SWV_FileRule',
+		'enum' => 'WPCF7_SWV_EnumRule',
+		'dayofweek' => 'WPCF7_SWV_DayofweekRule',
+		'minitems' => 'WPCF7_SWV_MinItemsRule',
+		'maxitems' => 'WPCF7_SWV_MaxItemsRule',
+>>>>>>> update
 		'minlength' => 'WPCF7_SWV_MinLengthRule',
 		'maxlength' => 'WPCF7_SWV_MaxLengthRule',
 		'minnumber' => 'WPCF7_SWV_MinNumberRule',
 		'maxnumber' => 'WPCF7_SWV_MaxNumberRule',
 		'mindate' => 'WPCF7_SWV_MinDateRule',
 		'maxdate' => 'WPCF7_SWV_MaxDateRule',
+<<<<<<< HEAD
+=======
+		'minfilesize' => 'WPCF7_SWV_MinFileSizeRule',
+>>>>>>> update
 		'maxfilesize' => 'WPCF7_SWV_MaxFileSizeRule',
 	);
 
@@ -164,7 +177,17 @@ abstract class WPCF7_SWV_Rule {
 	 * @return array Array of properties.
 	 */
 	public function to_array() {
+<<<<<<< HEAD
 		return (array) $this->properties;
+=======
+		$properties = (array) $this->properties;
+
+		if ( defined( 'static::rule_name' ) and static::rule_name ) {
+			$properties = array( 'rule' => static::rule_name ) + $properties;
+		}
+
+		return $properties;
+>>>>>>> update
 	}
 
 
@@ -250,7 +273,11 @@ abstract class WPCF7_SWV_CompositeRule extends WPCF7_SWV_Rule {
 	 */
 	public function to_array() {
 		$rules_arrays = array_map(
+<<<<<<< HEAD
 			function ( $rule ) {
+=======
+			static function ( $rule ) {
+>>>>>>> update
 				return $rule->to_array();
 			},
 			$this->rules
@@ -272,7 +299,11 @@ abstract class WPCF7_SWV_CompositeRule extends WPCF7_SWV_Rule {
  */
 class WPCF7_SWV_Schema extends WPCF7_SWV_CompositeRule {
 
+<<<<<<< HEAD
 	const version = 'Contact Form 7 SWV Schema 2022-03';
+=======
+	const version = 'Contact Form 7 SWV Schema 2023-07';
+>>>>>>> update
 
 	public function __construct( $properties = '' ) {
 		$this->properties = wp_parse_args( $properties, array(

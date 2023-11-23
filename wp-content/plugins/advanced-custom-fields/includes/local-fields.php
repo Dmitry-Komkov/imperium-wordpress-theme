@@ -1,9 +1,19 @@
 <?php
 
+<<<<<<< HEAD
 // Register notices stores.
 acf_register_store( 'local-fields' );
 acf_register_store( 'local-groups' );
 acf_register_store( 'local-empty' );
+=======
+// Register local stores.
+acf_register_store( 'local-fields' );
+acf_register_store( 'local-groups' );
+acf_register_store( 'local-empty' );
+acf_register_store( 'local-post-types' );
+acf_register_store( 'local-taxonomies' );
+acf_register_store( 'local-ui-options-pages' );
+>>>>>>> update
 
 // Register filter.
 acf_enable_filter( 'local' );
@@ -54,6 +64,7 @@ function acf_is_local_enabled() {
 }
 
 /**
+<<<<<<< HEAD
  * acf_get_local_store
  *
  * Returns either local store or a dummy store for the given name.
@@ -72,6 +83,42 @@ function acf_get_local_store( $name = '' ) {
 
 		// Return dummy store if not enabled.
 	} else {
+=======
+ * Returns either local store or a dummy store for the given name or post type.
+ *
+ * @date 23/1/19
+ * @since 5.7.10
+ *
+ * @param string $name      The store name.
+ * @param string $post_type The post type for the desired store.
+ * @return ACF_Data
+ */
+function acf_get_local_store( $name = '', $post_type = '' ) {
+	if ( '' !== $post_type ) {
+		switch ( $post_type ) {
+			case 'acf-post-type':
+				$name = 'post-types';
+				break;
+			case 'acf-taxonomy':
+				$name = 'taxonomies';
+				break;
+			case 'acf-field-group':
+				$name = 'groups';
+				break;
+			case 'acf-field':
+				$name = 'fields';
+				break;
+			case 'acf-ui-options-page':
+				$name = 'ui-options-pages';
+				break;
+		}
+	}
+
+	if ( acf_is_local_enabled() && '' !== $name ) {
+		return acf_get_store( "local-$name" );
+	} else {
+		// Return dummy store if not enabled or no name provided.
+>>>>>>> update
 		return acf_get_store( 'local-empty' );
 	}
 }
@@ -90,6 +137,11 @@ function acf_get_local_store( $name = '' ) {
 function acf_reset_local() {
 	acf_get_local_store( 'fields' )->reset();
 	acf_get_local_store( 'groups' )->reset();
+<<<<<<< HEAD
+=======
+	acf_get_local_store( 'post-types' )->reset();
+	acf_get_local_store( 'taxonomies' )->reset();
+>>>>>>> update
 }
 
 /**
@@ -108,6 +160,21 @@ function acf_get_local_field_groups() {
 }
 
 /**
+<<<<<<< HEAD
+=======
+ * Returns local ACF posts with the provided post type.
+ *
+ * @since 6.1
+ *
+ * @param string $post_type The post type to check for.
+ * @return array|mixed
+ */
+function acf_get_local_internal_posts( $post_type = 'acf-field-group' ) {
+	return acf_get_local_store( '', $post_type )->get();
+}
+
+/**
+>>>>>>> update
  * acf_have_local_field_groups
  *
  * description
@@ -149,7 +216,10 @@ function acf_count_local_field_groups() {
  * @return  bool
  */
 function acf_add_local_field_group( $field_group ) {
+<<<<<<< HEAD
 
+=======
+>>>>>>> update
 	// Apply default properties needed for import.
 	$field_group = wp_parse_args(
 		$field_group,
@@ -163,7 +233,15 @@ function acf_add_local_field_group( $field_group ) {
 
 	// Generate key if only name is provided.
 	if ( ! $field_group['key'] ) {
+<<<<<<< HEAD
 		$field_group['key'] = 'group_' . acf_slugify( $field_group['title'], '_' );
+=======
+		$field_group_key = 'group_' . acf_slugify( $field_group['title'], '_' );
+		if ( $field_group_key === 'group_' ) {
+			$field_group_key = 'group_' . md5( $field_group['title'] );
+		}
+		$field_group['key'] = $field_group_key;
+>>>>>>> update
 	}
 
 	// Bail early if field group already exists.
@@ -190,6 +268,43 @@ function acf_add_local_field_group( $field_group ) {
 }
 
 /**
+<<<<<<< HEAD
+=======
+ * Adds a local ACF internal post type.
+ *
+ * @since 6.1
+ *
+ * @param array  $post      The main ACF post array.
+ * @param string $post_type The post type being added.
+ * @return bool
+ */
+function acf_add_local_internal_post_type( $post, $post_type ) {
+	// Apply default properties needed for import.
+	$post = wp_parse_args(
+		$post,
+		array(
+			'key'   => '',
+			'title' => '',
+			'local' => 'json',
+		)
+	);
+
+	// Bail early if field group already exists.
+	if ( acf_is_local_internal_post_type( $post['key'], $post_type ) ) {
+		return false;
+	}
+
+	// Prepare field group for import (adds menu_order and parent properties to fields).
+	$post = acf_prepare_internal_post_type_for_import( $post, $post_type );
+
+	// Add to store.
+	acf_get_local_store( '', $post_type )->set( $post['key'], $post );
+
+	return true;
+}
+
+/**
+>>>>>>> update
  * register_field_group
  *
  * See acf_add_local_field_group().
@@ -216,7 +331,24 @@ function register_field_group( $field_group ) {
  * @return  bool
  */
 function acf_remove_local_field_group( $key = '' ) {
+<<<<<<< HEAD
 	return acf_get_local_store( 'groups' )->remove( $key );
+=======
+	return acf_remove_local_internal_post_type( $key, 'acf-field-group' );
+}
+
+/**
+ * Removes a local ACF post with the given key and post type.
+ *
+ * @since 6.1
+ *
+ * @param string $key       The ACF key.
+ * @param string $post_type The ACF post type.
+ * @return bool
+ */
+function acf_remove_local_internal_post_type( $key = '', $post_type = 'acf-field-group' ) {
+	return acf_get_local_store( '', $post_type )->remove( $key );
+>>>>>>> update
 }
 
 /**
@@ -234,6 +366,23 @@ function acf_is_local_field_group( $key = '' ) {
 	return acf_get_local_store( 'groups' )->has( $key );
 }
 
+<<<<<<< HEAD
+=======
+
+/**
+ * Returns true if an ACF post exists for the given key.
+ *
+ * @since 6.1
+ *
+ * @param string $key       The ACF key.
+ * @param string $post_type The ACF post type.
+ * @return  bool
+ */
+function acf_is_local_internal_post_type( $key = '', $post_type = 'acf-field-group' ) {
+	return acf_get_local_store( '', $post_type )->has( $key );
+}
+
+>>>>>>> update
 /**
  * acf_is_local_field_group_key
  *
@@ -242,11 +391,32 @@ function acf_is_local_field_group( $key = '' ) {
  * @date    22/1/19
  * @since   5.7.10
  *
+<<<<<<< HEAD
  * @param   string $key The field group group key.
  * @return  bool
  */
 function acf_is_local_field_group_key( $key = '' ) {
 	return acf_get_local_store( 'groups' )->is( $key );
+=======
+ * @param   string $key The field group key.
+ * @return  bool
+ */
+function acf_is_local_field_group_key( $key = '' ) {
+	return acf_is_local_internal_post_type_key( $key, 'acf-field-group' );
+}
+
+/**
+ * Returns true if a local ACF post exists for the given key.
+ *
+ * @since 6.1
+ *
+ * @param string $key       The ACF post key.
+ * @param string $post_type The post type to check.
+ * @return bool
+ */
+function acf_is_local_internal_post_type_key( $key = '', $post_type = '' ) {
+	return acf_get_local_store( '', $post_type )->is( $key );
+>>>>>>> update
 }
 
 /**
@@ -265,6 +435,22 @@ function acf_get_local_field_group( $key = '' ) {
 }
 
 /**
+<<<<<<< HEAD
+=======
+ * Returns an ACF post for the given key.
+ *
+ * @since 6.1
+ *
+ * @param string $key       The field group key.
+ * @param string $post_type The ACF post type.
+ * @return array|null
+ */
+function acf_get_local_internal_post_type( $key = '', $post_type = 'acf-field-group' ) {
+	return acf_get_local_store( '', $post_type )->get( $key );
+}
+
+/**
+>>>>>>> update
  * acf_add_local_fields
  *
  * Adds an array of local fields.
@@ -483,6 +669,7 @@ function acf_get_local_field( $key = '' ) {
  * @return  array
  */
 function _acf_apply_get_local_field_groups( $groups = array() ) {
+<<<<<<< HEAD
 
 	// Get local groups
 	$local = acf_get_local_field_groups();
@@ -525,6 +712,55 @@ function _acf_apply_get_local_field_groups( $groups = array() ) {
 
 // Hook into filter.
 add_filter( 'acf/load_field_groups', '_acf_apply_get_local_field_groups', 20, 1 );
+=======
+	return _acf_apply_get_local_internal_posts( $groups, 'acf-field-group' );
+}
+
+/**
+ * Appends local ACF internal post types to the provided array.
+ *
+ * @since 6.1
+ *
+ * @param array  $posts     An array of ACF posts.
+ * @param string $post_type The ACF internal post type being loaded.
+ * @return array
+ */
+function _acf_apply_get_local_internal_posts( $posts = array(), $post_type = 'acf-field-group' ) {
+	// Get local posts.
+	$local_posts = acf_get_local_internal_posts( $post_type );
+
+	if ( ! $local_posts ) {
+		return $posts;
+	}
+
+	// Generate map of "index" => "key" data.
+	$map = wp_list_pluck( $posts, 'key' );
+
+	// Loop over local posts and update/append local.
+	foreach ( $local_posts as $post ) {
+		$i = array_search( $post['key'], $map, true );
+		if ( $i !== false ) {
+			unset( $post['ID'] );
+			$posts[ $i ] = array_merge( $posts[ $i ], $post );
+		} else {
+			$posts[] = acf_get_internal_post_type( $post['key'], $post_type );
+		}
+	}
+
+	// Sort list via menu_order and title.
+	return wp_list_sort(
+		$posts,
+		array(
+			'menu_order' => 'ASC',
+			'title'      => 'ASC',
+		)
+	);
+}
+add_filter( 'acf/load_field_groups', '_acf_apply_get_local_internal_posts', 20, 2 );
+add_filter( 'acf/load_post_types', '_acf_apply_get_local_internal_posts', 20, 2 );
+add_filter( 'acf/load_taxonomies', '_acf_apply_get_local_internal_posts', 20, 2 );
+add_filter( 'acf/load_ui_options_pages', '_acf_apply_get_local_internal_posts', 20, 2 );
+>>>>>>> update
 
 /**
  * _acf_apply_is_local_field_key
@@ -561,8 +797,29 @@ function _acf_apply_is_local_field_group_key( $bool, $id ) {
 	return acf_is_local_field_group_key( $id );
 }
 
+<<<<<<< HEAD
 // Hook into filter.
 add_filter( 'acf/is_field_group_key', '_acf_apply_is_local_field_group_key', 20, 2 );
+=======
+/**
+ * Returns true if is a local key.
+ *
+ * @since 6.1
+ *
+ * @param bool   $bool      The result.
+ * @param string $id        The identifier.
+ * @param string $post_type The post type.
+ * @return bool
+ */
+function _acf_apply_is_local_internal_post_type_key( $bool, $id, $post_type = 'acf-field-group' ) {
+	return acf_is_local_internal_post_type_key( $id, $post_type );
+}
+
+// Hook into filter.
+add_filter( 'acf/is_field_group_key', '_acf_apply_is_local_internal_post_type_key', 20, 3 );
+add_filter( 'acf/is_post_type_key', '_acf_apply_is_local_internal_post_type_key', 20, 3 );
+add_filter( 'acf/is_taxonomy_key', '_acf_apply_is_local_internal_post_type_key', 20, 3 );
+>>>>>>> update
 
 /**
  * _acf_do_prepare_local_fields

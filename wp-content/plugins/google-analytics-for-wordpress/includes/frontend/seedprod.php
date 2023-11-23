@@ -25,7 +25,11 @@ function monsterinsights_seedprod_tracking( $settings ) {
 
 	require_once plugin_dir_path( MONSTERINSIGHTS_PLUGIN_FILE ) . 'includes/frontend/tracking/class-tracking-gtag.php';
 	$tracking = new MonsterInsights_Tracking_Gtag();
+<<<<<<< HEAD
 	echo $tracking->frontend_output();
+=======
+	echo $tracking->frontend_output(); // phpcs:ignore
+>>>>>>> update
 
 	do_action( 'monsterinsights_tracking_after_gtag' );
 	do_action( 'monsterinsights_tracking_after', 'gtag' );

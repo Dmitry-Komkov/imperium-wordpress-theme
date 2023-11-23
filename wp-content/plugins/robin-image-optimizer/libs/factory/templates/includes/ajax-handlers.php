@@ -15,12 +15,20 @@ if( !defined('ABSPATH') ) {
 /**
  * Обработчик ajax запросов для виджета подписки на новости
  *
+<<<<<<< HEAD
  * @param Wbcr_Factory450_Plugin $plugin_instance
+=======
+ * @param Wbcr_Factory469_Plugin $plugin_instance
+>>>>>>> update
  *
  * @since 2.3.0
  *
  */
+<<<<<<< HEAD
 function wbcr_factory_templates_102_subscribe($plugin_instance)
+=======
+function wbcr_factory_templates_118_subscribe($plugin_instance)
+>>>>>>> update
 {
 	$plugin_name = $plugin_instance->request->post('plugin_name', null, true);
 
@@ -34,11 +42,19 @@ function wbcr_factory_templates_102_subscribe($plugin_instance)
 	check_admin_referer("clearfy_subscribe_for_{$plugin_name}");
 
 	if( empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL) ) {
+<<<<<<< HEAD
 		wp_send_json_error(['error_message' => __('You did not send your email address or it is incorrect!', 'wbcr_factory_templates_102')]);
 	}
 
 	if( empty($group_id) ) {
 		wp_send_json_error(['error_message' => __('Group ID is empty!', 'wbcr_factory_templates_102')]);
+=======
+		wp_send_json_error(['error_message' => __('You did not send your email address or it is incorrect!', 'wbcr_factory_templates_118')]);
+	}
+
+	if( empty($group_id) ) {
+		wp_send_json_error(['error_message' => __('Group ID is empty!', 'wbcr_factory_templates_118')]);
+>>>>>>> update
 	}
 
 	$response = wp_remote_post('https://clearfy.pro/wp-json/mailerlite/v1/subscribe/', [
@@ -63,7 +79,11 @@ function wbcr_factory_templates_102_subscribe($plugin_instance)
 		wp_send_json_success(['subscribed' => $data['subscribed']]);
 	}
 
+<<<<<<< HEAD
 	wp_send_json_error(['error_message' => __('Unknown error while trying to subscribe to newsletter.', 'wbcr_factory_templates_102')]);
+=======
+	wp_send_json_error(['error_message' => __('Unknown error while trying to subscribe to newsletter.', 'wbcr_factory_templates_118')]);
+>>>>>>> update
 
 	die();
 }
@@ -71,12 +91,20 @@ function wbcr_factory_templates_102_subscribe($plugin_instance)
 /**
  * Обработчик ajax запросов для проверки, активации, деактивации лицензионного ключа
  *
+<<<<<<< HEAD
  * @param Wbcr_Factory450_Plugin $plugin_instance
+=======
+ * @param Wbcr_Factory469_Plugin $plugin_instance
+>>>>>>> update
  *
  * @since         2.0.7
  *
  */
+<<<<<<< HEAD
 function wbcr_factory_templates_102_check_license($plugin_instance)
+=======
+function wbcr_factory_templates_118_check_license($plugin_instance)
+>>>>>>> update
 {
 
 	$plugin_name = $plugin_instance->request->post('plugin_name', null, true);
@@ -91,7 +119,11 @@ function wbcr_factory_templates_102_check_license($plugin_instance)
 	check_admin_referer("clearfy_activate_license_for_{$plugin_name}");
 
 	if( empty($action) || !in_array($action, ['activate', 'deactivate', 'sync', 'unsubscribe']) ) {
+<<<<<<< HEAD
 		wp_send_json_error(['error_message' => __('Licensing action not passed or this action is prohibited!', 'wbcr_factory_templates_102')]);
+=======
+		wp_send_json_error(['error_message' => __('Licensing action not passed or this action is prohibited!', 'wbcr_factory_templates_118')]);
+>>>>>>> update
 		die();
 	}
 
@@ -102,14 +134,22 @@ function wbcr_factory_templates_102_check_license($plugin_instance)
 		switch( $action ) {
 			case 'activate':
 				if( empty($license_key) || strlen($license_key) > 32 ) {
+<<<<<<< HEAD
 					wp_send_json_error(['error_message' => __('License key is empty or license key too long (license key is 32 characters long)', 'wbcr_factory_templates_102')]);
 				} else {
 					$plugin_instance->premium->activate($license_key);
 					$success_message = __('Your license has been successfully activated', 'wbcr_factory_templates_102');
+=======
+					wp_send_json_error(['error_message' => __('License key is empty or license key too long (license key is 32 characters long)', 'wbcr_factory_templates_118')]);
+				} else {
+					$plugin_instance->premium->activate($license_key);
+					$success_message = __('Your license has been successfully activated', 'wbcr_factory_templates_118');
+>>>>>>> update
 				}
 				break;
 			case 'deactivate':
 				$plugin_instance->premium->deactivate();
+<<<<<<< HEAD
 				$success_message = __('The license is deactivated', 'wbcr_factory_templates_102');
 				break;
 			case 'sync':
@@ -119,6 +159,17 @@ function wbcr_factory_templates_102_check_license($plugin_instance)
 			case 'unsubscribe':
 				$plugin_instance->premium->cancel_paid_subscription();
 				$success_message = __('Subscription success cancelled', 'wbcr_factory_templates_102');
+=======
+				$success_message = __('The license is deactivated', 'wbcr_factory_templates_118');
+				break;
+			case 'sync':
+				$plugin_instance->premium->sync();
+				$success_message = __('The license has been updated', 'wbcr_factory_templates_118');
+				break;
+			case 'unsubscribe':
+				$plugin_instance->premium->cancel_paid_subscription();
+				$success_message = __('Subscription success cancelled', 'wbcr_factory_templates_118');
+>>>>>>> update
 				break;
 		}
 	} catch( Exception $e ) {

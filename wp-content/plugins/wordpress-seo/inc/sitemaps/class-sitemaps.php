@@ -540,6 +540,7 @@ class WPSEO_Sitemaps {
 		return YoastSEO()->helpers->date->format( self::get_last_modified_gmt( $post_types ) );
 	}
 
+<<<<<<< HEAD
 	// phpcs:disable Generic.CodeAnalysis.UnusedFunctionParameter.Found -- Argument is kept for documentation purposes.
 
 	/**
@@ -560,6 +561,8 @@ class WPSEO_Sitemaps {
 
 	// phpcs:enable
 
+=======
+>>>>>>> update
 	/**
 	 * Get the maximum number of entries per XML sitemap.
 	 *

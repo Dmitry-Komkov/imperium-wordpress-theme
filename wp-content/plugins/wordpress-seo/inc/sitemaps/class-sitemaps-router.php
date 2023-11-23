@@ -5,6 +5,11 @@
  * @package WPSEO\XML_Sitemaps
  */
 
+<<<<<<< HEAD
+=======
+use Yoast\WP\SEO\Conditionals\Deactivating_Yoast_Seo_Conditional;
+
+>>>>>>> update
 /**
  * Rewrite setup and handling for sitemaps functionality.
  */
@@ -14,6 +19,13 @@ class WPSEO_Sitemaps_Router {
 	 * Sets up init logic.
 	 */
 	public function __construct() {
+<<<<<<< HEAD
+=======
+		// If we add rewrite rules during the plugin's deactivation, the flush_rewrite_rules that we perform afterwards won't properly flush those new rules.
+		if ( YoastSEO()->classes->get( Deactivating_Yoast_Seo_Conditional::class )->is_met() ) {
+			return;
+		}
+>>>>>>> update
 
 		add_action( 'init', [ $this, 'init' ], 1 );
 		add_filter( 'redirect_canonical', [ $this, 'redirect_canonical' ] );
@@ -24,7 +36,10 @@ class WPSEO_Sitemaps_Router {
 	 * Sets up rewrite rules.
 	 */
 	public function init() {
+<<<<<<< HEAD
 
+=======
+>>>>>>> update
 		global $wp;
 
 		$wp->add_query_var( 'sitemap' );

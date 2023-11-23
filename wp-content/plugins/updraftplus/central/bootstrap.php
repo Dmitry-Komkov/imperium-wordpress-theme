@@ -20,9 +20,13 @@ class UpdraftCentral_Main {
 	 * Class constructor
 	 */
 	public function __construct() {
+<<<<<<< HEAD
 
 		add_action('admin_enqueue_scripts', array($this, 'enqueue_central_scripts'));
 
+=======
+		
+>>>>>>> update
 		add_action('udrpc_log', array($this, 'udrpc_log'), 10, 3);
 		
 		add_action('wp_ajax_updraftcentral_receivepublickey', array($this, 'wp_ajax_updraftcentral_receivepublickey'));
@@ -73,6 +77,13 @@ class UpdraftCentral_Main {
 	 * @return void
 	 */
 	public function enqueue_central_scripts() {
+<<<<<<< HEAD
+=======
+		
+		// This is an additional check; the caller is assumed to have already run checks before painting its page in general
+		if (!current_user_can('manage_options')) return;
+
+>>>>>>> update
 		global $updraftcentral_host_plugin;
 		$version = $updraftcentral_host_plugin->get_version();
 
@@ -91,7 +102,11 @@ class UpdraftCentral_Main {
 			array(
 				'central_url' => UPDRAFTCENTRAL_CLIENT_URL,
 				'plugin_name' => $updraftcentral_host_plugin->get_plugin_name(),
+<<<<<<< HEAD
 				'updraftcentral_credentialtest_nonce' => wp_create_nonce('updraftcentral-credentialtest-nonce'),
+=======
+				'updraftcentral_request_nonce' => wp_create_nonce('updraftcentral-request-nonce'),
+>>>>>>> update
 			),
 			$updraftcentral_host_plugin->translations
 		);
@@ -130,8 +145,13 @@ class UpdraftCentral_Main {
 	public function get_wordpress_version() {
 		static $got_wp_version = false;
 		if (!$got_wp_version) {
+<<<<<<< HEAD
 			@include(ABSPATH.WPINC.'/version.php');// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
 			$got_wp_version = $wp_version;// phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UndefinedVariable
+=======
+			@include(ABSPATH.WPINC.'/version.php');// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged -- Silenced to suppress errors that may arise because of the function.
+			$got_wp_version = $wp_version;// phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UndefinedVariable -- The variable is defined inside the ABSPATH.WPINC.'/version.php'.
+>>>>>>> update
 		}
 		return $got_wp_version;
 	}
@@ -143,9 +163,15 @@ class UpdraftCentral_Main {
 	 *
 	 * @return Mixed
 	 */
+<<<<<<< HEAD
 	public function get_central_localkeys($default = null) {
 		$option = 'updraft_central_localkeys';
 
+=======
+	private function get_central_localkeys($default = null) {
+
+		$option = 'updraft_central_localkeys';
+>>>>>>> update
 		$ret = get_option($option, $default);
 		return apply_filters('updraftcentral_get_option', $ret, $option, $default);
 	}
@@ -159,7 +185,11 @@ class UpdraftCentral_Main {
 	 *
 	 * @return bool
 	 */
+<<<<<<< HEAD
 	public function update_central_localkeys($value, $use_cache = true, $autoload = 'yes') {
+=======
+	private function update_central_localkeys($value, $use_cache = true, $autoload = 'yes') {
+>>>>>>> update
 		$option = 'updraft_central_localkeys';
 
 		return update_option($option, apply_filters('updraftcentral_update_option', $value, $option, $use_cache), $autoload);
@@ -176,8 +206,15 @@ class UpdraftCentral_Main {
 		
 		$result = $this->receive_public_key();
 		if (!is_array($result) || empty($result['responsetype'])) die;
+<<<<<<< HEAD
 		
 		echo '<html><head><title>UpdraftCentral</title></head><body><h1>'.$updraftcentral_host_plugin->retrieve_show_message('updraftcentral_connection').'</h1><h2>'.htmlspecialchars(network_site_url()).'</h2><p>';
+=======
+
+		$style = 'body {text-align: center;font-family: Helvetica,Arial,Lucida,sans-serif;background-color: #A64C1A;color: #FFF;height: 100%;width: 100%;margin: 0;padding: 0;}#main {height: 100%;width: 100%;display: table;}#wrapper {display: table-cell;height: 100%;vertical-align: middle;}h1 {margin-bottom: 5px;}h2 {margin-top: 0;font-size: 22px;color: #FFF;}#btn-close {color: #FFF;font-size: 20px;font-weight: 500;padding: .3em 1em;line-height: 1.7em !important;background-color: transparent;background-size: cover;background-position: 50%;background-repeat: no-repeat;border: 2px solid;border-radius: 3px;-webkit-transition-duration: .2s;transition-duration: .2s;-webkit-transition-property: all !important;transition-property: all !important;text-decoration: none;}#btn-close:hover {background-color: #DE6726;}';
+
+		echo '<html><head><title>UpdraftCentral</title><style>'.$style.'</style></head><body><div id="main"><div id="wrapper"><img src="'.UPDRAFTCENTRAL_CLIENT_URL.'/images/ud-logo.png" width="60" /> <h1>'.$updraftcentral_host_plugin->retrieve_show_message('updraftcentral_connection').'</h1><h2>'.htmlspecialchars(network_site_url()).'</h2><p>';
+>>>>>>> update
 		
 		if ('ok' == $result['responsetype']) {
 			$updraftcentral_host_plugin->retrieve_show_message('updraftcentral_connection_successful', true);
@@ -197,13 +234,23 @@ class UpdraftCentral_Main {
 				case 'already_have':
 					$updraftcentral_host_plugin->retrieve_show_message('connection_already_made', true);
 					break;
+<<<<<<< HEAD
+=======
+				case 'insufficient_privilege':
+					$updraftcentral_host_plugin->retrieve_show_message('insufficient_privilege', true);
+					break;
+>>>>>>> update
 				default:
 					echo htmlspecialchars(print_r($result, true));
 					break;
 			}
 		}
 		
+<<<<<<< HEAD
 		echo '</p><p><a href="'.esc_url($this->get_current_clean_url()).'" onclick="window.close();">'.$updraftcentral_host_plugin->retrieve_show_message('close').'</a></p>';
+=======
+		echo '</p><p><a id="btn-close" href="'.esc_url($this->get_current_clean_url()).'" onclick="window.close();">'.$updraftcentral_host_plugin->retrieve_show_message('close').'</a></p></div></div>';
+>>>>>>> update
 		die;
 	}
 	
@@ -217,7 +264,11 @@ class UpdraftCentral_Main {
 		if (!is_user_logged_in()) {
 			return array('responsetype' => 'error', 'code' => 'not_logged_in');
 		}
+<<<<<<< HEAD
 		
+=======
+
+>>>>>>> update
 		if (!wp_verify_nonce($_GET['_wpnonce'], 'updraftcentral_receivepublickey')) return array('responsetype' => 'error', 'code' => 'nonce_failure');
 		
 		$updraft_key_index = $_GET['updraft_key_index'];
@@ -247,6 +298,10 @@ class UpdraftCentral_Main {
 	 * @param  string $key_name_indicator This indicates the key name
 	 */
 	public function udrpc_log($message, $level, $key_name_indicator) {
+<<<<<<< HEAD
+=======
+
+>>>>>>> update
 		$udrpc_log = get_site_option('updraftcentral_client_log');
 		if (!is_array($udrpc_log)) $udrpc_log = array();
 		
@@ -278,9 +333,17 @@ class UpdraftCentral_Main {
 	 * Delete UpdraftCentral Key
 	 *
 	 * @param array $key_id key_id of UpdraftCentral
+<<<<<<< HEAD
 	 * @return array which contains deleted flag and key table. If error, Returns array which contains fatal_error flag and fatal_error_message
 	 */
 	public function delete_key($key_id) {
+=======
+	 *
+	 * @return array which contains deleted flag and key table. If error, Returns array which contains fatal_error flag and fatal_error_message
+	 */
+	public function delete_key($key_id) {
+		
+>>>>>>> update
 		$our_keys = $this->get_central_localkeys();
 		if (is_array($key_id) && isset($key_id['key_id'])) {
 			$key_id = $key_id['key_id'];
@@ -300,6 +363,10 @@ class UpdraftCentral_Main {
 	 * @return array which contains log_contents. If error, Returns array which contains fatal_error flag and fatal_error_message
 	 */
 	public function get_log() {
+<<<<<<< HEAD
+=======
+
+>>>>>>> update
 		global $updraftcentral_host_plugin;
 	
 		$udrpc_log = get_site_option('updraftcentral_client_log');
@@ -336,11 +403,22 @@ class UpdraftCentral_Main {
 	}
 	
 	public function create_key($params) {
+<<<<<<< HEAD
+=======
+
+>>>>>>> update
 		global $updraftcentral_host_plugin;
 
 		// Use the site URL - this means that if the site URL changes, communication ends; which is the case anyway
 		$user = wp_get_current_user();
 		
+<<<<<<< HEAD
+=======
+		if (!is_object($user) || empty($user->ID)) return array('error' => $updraftcentral_host_plugin->retrieve_show_message('insufficient_privilege'));
+		
+		if (!current_user_can('manage_options')) return array('error' => $updraftcentral_host_plugin->retrieve_show_message('insufficient_privilege'));
+		
+>>>>>>> update
 		$where_send = empty($params['where_send']) ? '' : (string) $params['where_send'];
 		
 		if ('__updraftpluscom' != $where_send) {
@@ -406,9 +484,17 @@ class UpdraftCentral_Main {
 	 * Gets an RPC object, and sets some defaults on it that we always want
 	 *
 	 * @param  string $indicator_name indicator name
+<<<<<<< HEAD
 	 * @return array
 	 */
 	public function get_udrpc($indicator_name = 'migrator.updraftplus.com') {
+=======
+	 *
+	 * @return array
+	 */
+	public function get_udrpc($indicator_name = 'migrator.updraftplus.com') {
+
+>>>>>>> update
 		global $updraftcentral_host_plugin;
 		
 		if (!class_exists('UpdraftPlus_Remote_Communications')) include_once($updraftcentral_host_plugin->get_host_dir().'/vendor/team-updraft/common-libs/src/updraft-rpc/class-udrpc.php');
@@ -450,7 +536,11 @@ class UpdraftCentral_Main {
 		
 		// Normally, key generation takes seconds, even on a slow machine. However, some Windows machines appear to have a setup in which it takes a minute or more. And then, if you're on a double-localhost setup on slow hardware - even worse. It doesn't hurt to just raise the maximum execution time.
 		
+<<<<<<< HEAD
 		if (function_exists('set_time_limit')) @set_time_limit(UPDRAFTCENTRAL_SET_TIME_LIMIT);// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
+=======
+		if (function_exists('set_time_limit')) @set_time_limit(UPDRAFTCENTRAL_SET_TIME_LIMIT);// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged -- Silenced to suppress errors that may arise because of the function.
+>>>>>>> update
 		
 		$key_size = (empty($extra_info['key_size']) || !is_numeric($extra_info['key_size']) || $extra_info['key_size'] < 512) ? 2048 : (int) $extra_info['key_size'];
 
@@ -493,8 +583,15 @@ class UpdraftCentral_Main {
 				
 				$updraftcentral_host_plugin->register_wp_http_option_hooks(false);
 				
+<<<<<<< HEAD
 				if (is_wp_error($sent_key) || empty($sent_key)) {
 					$err_msg = sprintf($updraftcentral_host_plugin->retrieve_show_message('attempt_to_register_failed'), (string) $post_it_description);
+=======
+				$connection_troubleshooting_url = 'https://updraftplus.com/troubleshooting-updraftcentral-connection-issues/';
+				if (is_wp_error($sent_key) || empty($sent_key)) {
+
+					$err_msg = sprintf($updraftcentral_host_plugin->retrieve_show_message('attempt_to_register_failed'), (string) $post_it_description, $connection_troubleshooting_url);
+>>>>>>> update
 					if (is_wp_error($sent_key)) $err_msg .= ' '.$sent_key->get_error_message().' ('.$sent_key->get_error_code().')';
 					return array(
 						'r' => $err_msg
@@ -505,7 +602,11 @@ class UpdraftCentral_Main {
 
 				if (!is_array($response) || !isset($response['key_id']) || !isset($response['key_public'])) {
 					return array(
+<<<<<<< HEAD
 						'r' => sprintf($updraftcentral_host_plugin->retrieve_show_message('attempt_to_register_failed'), (string) $post_it_description),
+=======
+						'r' => sprintf($updraftcentral_host_plugin->retrieve_show_message('attempt_to_register_failed'), (string) $post_it_description, $connection_troubleshooting_url),
+>>>>>>> update
 						'raw' => wp_remote_retrieve_body($sent_key)
 					);
 				}
@@ -562,6 +663,13 @@ class UpdraftCentral_Main {
 	 * @return String
 	 */
 	public function get_keys_table() {
+<<<<<<< HEAD
+=======
+		
+		// This is an additional check - it implies requirement for a dashboard context
+		if (!current_user_can('manage_options')) return;
+
+>>>>>>> update
 		global $updraftcentral_host_plugin;
 	
 		$ret = '';
@@ -726,6 +834,14 @@ class UpdraftCentral_Main {
 					</tr>
 				</tbody>
 			</table>
+<<<<<<< HEAD
+=======
+			<div id="updraft-copy-modal" title="<?php _e('Copy to clipboard', 'updraftplus');?>">
+				<p>
+					<?php echo __('Your web browser prevented the copy operation.', 'updraftplus').' '.'<a href="https://updraftplus.com/faqs/how-do-i-set-clipboard-permissions-for-different-browsers/" target="__blank">'.' '.__('Follow this link to read about how to set browser permission', 'updraftplus').'</a>'; ?>
+				</p>
+			</div>
+>>>>>>> update
 		</div>
 		<?php
 		return ob_get_clean();
@@ -754,6 +870,7 @@ class UpdraftCentral_Main {
 	 * Echo the debug-tools dashboard HTML. Called by the WP action updraftplus_debugtools_dashboard.
 	 */
 	public function debugtools_dashboard() {
+<<<<<<< HEAD
 		global $updraftcentral_host_plugin;
 
 		$screen = get_current_screen();
@@ -767,6 +884,26 @@ class UpdraftCentral_Main {
 				if (isset($includes[$key])) {
 					$including_desc = $includes[$key];
 					break;
+=======
+		
+		$this->enqueue_central_scripts();
+
+		global $updraftcentral_host_plugin;
+
+		$including_desc = '';
+		if (function_exists('get_current_screen')) {
+			$screen = get_current_screen();
+			$hosts = apply_filters('updraftcentral_host_plugins', array());
+			$includes = $updraftcentral_host_plugin->retrieve_show_message('including_description');
+
+			foreach ($hosts as $plugin) {
+				if (false !== stripos($screen->id, $plugin)) {
+					$key = str_replace('-', '_', strtolower($plugin)).'_desc';
+					if (isset($includes[$key])) {
+						$including_desc = $includes[$key];
+						break;
+					}
+>>>>>>> update
 				}
 			}
 		}

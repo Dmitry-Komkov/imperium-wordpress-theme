@@ -236,11 +236,21 @@ class WPSEO_Admin_Asset_Manager {
 			'classic-editor',
 			'post-edit',
 			'help-scout-beacon',
+<<<<<<< HEAD
+=======
+			'redirect-old-features-tab',
+>>>>>>> update
 		];
 		$additional_dependencies = [
 			'analysis-worker'          => [ self::PREFIX . 'analysis-package' ],
 			'api-client'               => [ 'wp-api' ],
+<<<<<<< HEAD
 			'dashboard-widget'         => [ self::PREFIX . 'api-client' ],
+=======
+			'crawl-settings'           => [ 'jquery' ],
+			'dashboard-widget'         => [ self::PREFIX . 'api-client' ],
+			'wincher-dashboard-widget' => [ self::PREFIX . 'api-client' ],
+>>>>>>> update
 			'editor-modules'           => [ 'jquery' ],
 			'elementor'                => [
 				self::PREFIX . 'api-client',
@@ -270,7 +280,10 @@ class WPSEO_Admin_Asset_Manager {
 				self::PREFIX . 'externals-components',
 				self::PREFIX . 'externals-contexts',
 				self::PREFIX . 'externals-redux',
+<<<<<<< HEAD
 				self::PREFIX . 'select2',
+=======
+>>>>>>> update
 			],
 			'reindex-links'            => [
 				'jquery-ui-core',
@@ -283,7 +296,10 @@ class WPSEO_Admin_Asset_Manager {
 				self::PREFIX . 'externals-components',
 				self::PREFIX . 'externals-contexts',
 				self::PREFIX . 'externals-redux',
+<<<<<<< HEAD
 				self::PREFIX . 'select2',
+=======
+>>>>>>> update
 			],
 			'term-edit'                => [
 				self::PREFIX . 'api-client',
@@ -291,7 +307,10 @@ class WPSEO_Admin_Asset_Manager {
 				self::PREFIX . 'externals-components',
 				self::PREFIX . 'externals-contexts',
 				self::PREFIX . 'externals-redux',
+<<<<<<< HEAD
 				self::PREFIX . 'select2',
+=======
+>>>>>>> update
 			],
 		];
 
@@ -323,14 +342,20 @@ class WPSEO_Admin_Asset_Manager {
 				'header_scripts'  => $header_scripts,
 			]
 		);
+<<<<<<< HEAD
 		$select2_scripts  = $this->load_select2_scripts();
+=======
+>>>>>>> update
 		$renamed_scripts  = $this->load_renamed_scripts();
 
 		$scripts = array_merge(
 			$plugin_scripts,
 			$external_scripts,
 			$language_scripts,
+<<<<<<< HEAD
 			$select2_scripts,
+=======
+>>>>>>> update
 			$renamed_scripts
 		);
 
@@ -460,6 +485,7 @@ class WPSEO_Admin_Asset_Manager {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Loads the select2 scripts.
 	 *
 	 * @return array {
@@ -514,6 +540,8 @@ class WPSEO_Admin_Asset_Manager {
 	}
 
 	/**
+=======
+>>>>>>> update
 	 * Loads the scripts that should be renamed for BC.
 	 *
 	 * @return array {
@@ -604,12 +632,33 @@ class WPSEO_Admin_Asset_Manager {
 				'name' => 'metabox-css',
 				'src'  => 'metabox-' . $flat_version,
 				'deps' => [
+<<<<<<< HEAD
 					self::PREFIX . 'select2',
 					self::PREFIX . 'admin-css',
+=======
+					self::PREFIX . 'admin-css',
+					self::PREFIX . 'tailwind',
+>>>>>>> update
 					'wp-components',
 				],
 			],
 			[
+<<<<<<< HEAD
+=======
+				'name' => 'ai-generator',
+				'src'  => 'ai-generator-' . $flat_version,
+				'deps' => [
+					self::PREFIX . 'tailwind',
+					self::PREFIX . 'introductions',
+				],
+			],
+			[
+				'name' => 'introductions',
+				'src'  => 'introductions-' . $flat_version,
+				'deps' => [ self::PREFIX . 'tailwind' ],
+			],
+			[
+>>>>>>> update
 				'name' => 'wp-dashboard',
 				'src'  => 'dashboard-' . $flat_version,
 			],
@@ -629,6 +678,7 @@ class WPSEO_Admin_Asset_Manager {
 				'src'  => 'metabox-primary-category-' . $flat_version,
 			],
 			[
+<<<<<<< HEAD
 				'name'    => 'select2',
 				'src'     => 'select2/select2',
 				'suffix'  => '.min',
@@ -636,14 +686,19 @@ class WPSEO_Admin_Asset_Manager {
 				'rtl'     => false,
 			],
 			[
+=======
+>>>>>>> update
 				'name' => 'admin-global',
 				'src'  => 'admin-global-' . $flat_version,
 			],
 			[
+<<<<<<< HEAD
 				'name' => 'yoast-components',
 				'src'  => 'yoast-components-' . $flat_version,
 			],
 			[
+=======
+>>>>>>> update
 				'name' => 'extensions',
 				'src'  => 'yoast-extensions-' . $flat_version,
 				'deps' => [
@@ -655,6 +710,7 @@ class WPSEO_Admin_Asset_Manager {
 				'src'  => 'filter-explanation-' . $flat_version,
 			],
 			[
+<<<<<<< HEAD
 				'name' => 'search-appearance',
 				'src'  => 'search-appearance-' . $flat_version,
 				'deps' => [
@@ -662,6 +718,8 @@ class WPSEO_Admin_Asset_Manager {
 				],
 			],
 			[
+=======
+>>>>>>> update
 				'name' => 'monorepo',
 				'src'  => 'monorepo-' . $flat_version,
 			],
@@ -671,10 +729,13 @@ class WPSEO_Admin_Asset_Manager {
 				'deps' => [ 'wp-edit-blocks' ],
 			],
 			[
+<<<<<<< HEAD
 				'name' => 'schema-blocks',
 				'src'  => 'schema-blocks-' . $flat_version,
 			],
 			[
+=======
+>>>>>>> update
 				'name' => 'elementor',
 				'src'  => 'elementor-' . $flat_version,
 			],
@@ -685,6 +746,25 @@ class WPSEO_Admin_Asset_Manager {
 			[
 				'name' => 'new-settings',
 				'src'  => 'new-settings-' . $flat_version,
+<<<<<<< HEAD
+=======
+				'deps' => [ self::PREFIX . 'tailwind' ],
+			],
+			[
+				'name' => 'black-friday-banner',
+				'src'  => 'black-friday-banner-' . $flat_version,
+				'deps' => [ self::PREFIX . 'tailwind' ],
+			],
+			[
+				'name' => 'academy',
+				'src'  => 'academy-' . $flat_version,
+				'deps' => [ self::PREFIX . 'tailwind' ],
+			],
+			[
+				'name' => 'support',
+				'src'  => 'support-' . $flat_version,
+				'deps' => [ self::PREFIX . 'tailwind' ],
+>>>>>>> update
 			],
 			[
 				'name' => 'workouts',
@@ -694,6 +774,14 @@ class WPSEO_Admin_Asset_Manager {
 				],
 			],
 			[
+<<<<<<< HEAD
+=======
+				'name' => 'first-time-configuration',
+				'src'  => 'first-time-configuration-' . $flat_version,
+				'deps' => [ self::PREFIX . 'tailwind' ],
+			],
+			[
+>>>>>>> update
 				'name' => 'inside-editor',
 				'src'  => 'inside-editor-' . $flat_version,
 			],

@@ -14,9 +14,15 @@
 		exit;
 	}
 
+<<<<<<< HEAD
 	if( !class_exists('Wbcr_FactoryForms447_Html') ) {
 
 		class Wbcr_FactoryForms447_Html extends Wbcr_FactoryForms447_CustomElement {
+=======
+	if( !class_exists('Wbcr_FactoryForms466_Html') ) {
+
+		class Wbcr_FactoryForms466_Html extends Wbcr_FactoryForms466_CustomElement {
+>>>>>>> update
 
 			public $type = 'html';
 

@@ -20,7 +20,11 @@
 			 * This event is intended for installation, removal, activation, deactivation of external add-ons
 			 */
 
+<<<<<<< HEAD
 			$(document).on('click', '.wfactory-450-process-button', function() {
+=======
+			$(document).on('click', '.wfactory-469-process-button', function() {
+>>>>>>> update
 				var $this = $(this),
 					button_i18n = $(this).data('i18n'),
 					plugin_slug = $(this).data('slug'),
@@ -30,11 +34,19 @@
 					wpnonce = $(this).data('wpnonce');
 
 				var action = ('creativemotion' === storage)
+<<<<<<< HEAD
 				             ? 'wfactory-450-creativemotion-install-plugin'
 				             : 'install-plugin';
 
 				if( storage === 'freemius' || ((storage === 'wordpress' || storage === 'creativemotion' || storage === 'internal') && (plugin_action === 'activate' || plugin_action === 'deactivate')) ) {
 					action = 'wfactory-450-intall-component';
+=======
+				             ? 'wfactory-469-creativemotion-install-plugin'
+				             : 'install-plugin';
+
+				if( storage === 'freemius' || ((storage === 'wordpress' || storage === 'creativemotion' || storage === 'internal') && (plugin_action === 'activate' || plugin_action === 'deactivate')) ) {
+					action = 'wfactory-469-intall-component';
+>>>>>>> update
 				} else if( storage === 'wordpress' && plugin_action === 'delete' ) {
 					action = 'delete-plugin';
 				}
@@ -54,11 +66,19 @@
 
 				$this.addClass('disabled').text(button_i18n.loading);
 
+<<<<<<< HEAD
 				$.wfactory_450.hooks.run('core/components/pre_update', [$this, data]);
 
 				self.sendRequest(data, function(response) {
 					if( !response || !response.success ) {
 						$.wfactory_450.hooks.run('core/components/update_error', [
+=======
+				$.wfactory_469.hooks.run('core/components/pre_update', [$this, data]);
+
+				self.sendRequest(data, function(response) {
+					if( !response || !response.success ) {
+						$.wfactory_469.hooks.run('core/components/update_error', [
+>>>>>>> update
 							$this,
 							data,
 							response
@@ -80,7 +100,11 @@
 								$this.removeClass('button-default').addClass('button-primary');
 							}
 
+<<<<<<< HEAD
 							$.wfactory_450.hooks.run('core/components/installed', [
+=======
+							$.wfactory_469.hooks.run('core/components/installed', [
+>>>>>>> update
 								$this,
 								data,
 								response
@@ -96,7 +120,11 @@
 								$this.removeClass('button-primary').addClass('button-default');
 							}
 
+<<<<<<< HEAD
 							$.wfactory_450.hooks.run('core/components/pre_activate', [
+=======
+							$.wfactory_469.hooks.run('core/components/pre_activate', [
+>>>>>>> update
 								$this,
 								data,
 								response
@@ -124,7 +152,11 @@
 								$this.removeClass('button-default').addClass('button-primary');
 							}
 
+<<<<<<< HEAD
 							$.wfactory_450.hooks.run('core/components/deactivated', [
+=======
+							$.wfactory_469.hooks.run('core/components/deactivated', [
+>>>>>>> update
 								$this,
 								data,
 								response
@@ -134,7 +166,11 @@
 
 							plugin_action = 'install';
 
+<<<<<<< HEAD
 							$.wfactory_450.hooks.run('core/components/deleted', [$this, data, response]);
+=======
+							$.wfactory_469.hooks.run('core/components/deleted', [$this, data, response]);
+>>>>>>> update
 						}
 					} else {
 						if( plugin_action === 'install' ) {
@@ -144,7 +180,11 @@
 
 					$this.text(button_i18n[plugin_action]);
 
+<<<<<<< HEAD
 					$.wfactory_450.hooks.run('core/components/updated', [$this, data, response]);
+=======
+					$.wfactory_469.hooks.run('core/components/updated', [$this, data, response]);
+>>>>>>> update
 				});
 
 				return false;
@@ -169,7 +209,11 @@
 				.addClass('disabled')
 				.text(button_i18n.preparation);
 
+<<<<<<< HEAD
 			sendData.action = 'wfactory-450-prepare-component';
+=======
+			sendData.action = 'wfactory-469-prepare-component';
+>>>>>>> update
 
 			this.sendRequest(sendData, function(response) {
 				componentButton.removeClass('disabled');
@@ -177,7 +221,11 @@
 				if( !response || !response.success ) {
 					componentButton.text(button_i18n['activate']);
 
+<<<<<<< HEAD
 					$.wfactory_450.hooks.run('core/components/activation_error', [
+=======
+					$.wfactory_469.hooks.run('core/components/activation_error', [
+>>>>>>> update
 						componentButton,
 						sendData,
 						response
@@ -187,7 +235,11 @@
 
 				componentButton.removeClass('button-primary').text(button_i18n['deactivate']);
 
+<<<<<<< HEAD
 				$.wfactory_450.hooks.run('core/components/activated', [
+=======
+				$.wfactory_469.hooks.run('core/components/activated', [
+>>>>>>> update
 					componentButton,
 					sendData,
 					response
@@ -210,7 +262,11 @@
 					console.log(xhr.responseText);
 					console.log(thrownError);
 
+<<<<<<< HEAD
 					$.wfactory_450.hooks.run('core/components/ajax_error', [
+=======
+					$.wfactory_469.hooks.run('core/components/ajax_error', [
+>>>>>>> update
 						xhr,
 						ajaxOptions,
 						thrownError

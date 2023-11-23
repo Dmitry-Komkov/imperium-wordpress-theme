@@ -5,6 +5,7 @@ if (!defined('UPDRAFTPLUS_DIR')) die('No direct access allowed');
 class UpdraftPlus_Search_Replace {
 
 	private $known_incomplete_classes = array();
+<<<<<<< HEAD
 	private $columns = array();
 	private $current_row = 0;
 
@@ -12,12 +13,32 @@ class UpdraftPlus_Search_Replace {
 	private $use_mysqli = false;
 	private $wpdb_obj = null;
 	private $mysql_dbh = null;
+=======
+
+	private $columns = array();
+
+	private $current_row = 0;
+
+	private $use_wpdb = false;
+
+	private $use_mysqli = false;
+
+	private $wpdb_obj = null;
+
+	private $mysql_dbh = null;
+
+	protected $max_recursion = 0;
+>>>>>>> update
 	
 	/**
 	 * Constructor
 	 */
 	public function __construct() {
 		add_action('updraftplus_restore_db_pre', array($this, 'updraftplus_restore_db_pre'));
+<<<<<<< HEAD
+=======
+		$this->max_recursion = apply_filters('updraftplus_search_replace_max_recursion', 20);
+>>>>>>> update
 	}
 
 	/**
@@ -54,10 +75,17 @@ class UpdraftPlus_Search_Replace {
 	/**
 	 * The engine
 	 *
+<<<<<<< HEAD
 	 * @param string|array   $search    - a string or array of things to search for
 	 * @param string|array   $replace   - a string or array of things to replace the search terms with
 	 * @param array          $tables    - an array of tables
 	 * @param integer        $page_size - the page size
+=======
+	 * @param string|array $search    - a string or array of things to search for
+	 * @param string|array $replace   - a string or array of things to replace the search terms with
+	 * @param array        $tables    - an array of tables
+	 * @param integer      $page_size - the page size
+>>>>>>> update
 	 */
 	public function icit_srdb_replacer($search, $replace, $tables, $page_size) {
 
@@ -176,7 +204,11 @@ class UpdraftPlus_Search_Replace {
 							}
 							mysqli_free_result($data);
 						} else {
+<<<<<<< HEAD
 							// phpcs:ignore PHPCompatibility.Extensions.RemovedExtensions.mysql_DeprecatedRemoved
+=======
+							// phpcs:ignore PHPCompatibility.Extensions.RemovedExtensions.mysql_DeprecatedRemoved -- Ignore removed extension compatibility.
+>>>>>>> update
 							while ($row = mysql_fetch_array($data)) {
 								$rowrep = $this->process_row($table, $row, $search, $replace, $stripped_table);
 								$report['rows']++;
@@ -184,8 +216,12 @@ class UpdraftPlus_Search_Replace {
 								$report['change'] += $rowrep['change'];
 								foreach ($rowrep['errors'] as $err) $report['errors'][] = $err;
 							}
+<<<<<<< HEAD
 							// phpcs:ignore PHPCompatibility.Extensions.RemovedExtensions.mysql_DeprecatedRemoved
 							@mysql_free_result($data);
+=======
+							@mysql_free_result($data); // phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged,PHPCompatibility.Extensions.RemovedExtensions.mysql_DeprecatedRemoved -- If an error occurs during mysql free result and it fails to free result, it will not impact anything at all. mysql_* function used in the scenario in which the mysqli extension doesn't exist.
+>>>>>>> update
 						}
 					}
 				}
@@ -224,7 +260,11 @@ class UpdraftPlus_Search_Replace {
 			if ($this->use_mysqli) {
 				$data = mysqli_query($this->mysql_dbh, $sql_line);
 			} else {
+<<<<<<< HEAD
 				// phpcs:ignore PHPCompatibility.Extensions.RemovedExtensions.mysql_DeprecatedRemoved
+=======
+				// phpcs:ignore PHPCompatibility.Extensions.RemovedExtensions.mysql_DeprecatedRemoved -- Ignore removed extension compatibility.
+>>>>>>> update
 				$data = mysql_query($sql_line, $this->mysql_dbh);
 			}
 			if (false !== $data) return array($data, $page_size);
@@ -361,6 +401,7 @@ class UpdraftPlus_Search_Replace {
 	 * unserialising any subordinate arrays and performing the replace on those too.
 	 * N.B. $from and $to can be arrays - they get passed only to str_replace(), which can take an array
 	 *
+<<<<<<< HEAD
 	 * @param string $from       String we're looking to replace.
 	 * @param string $to         What we want it to be replaced with
 	 * @param array  $data       Used to pass any subordinate arrays back to in.
@@ -369,6 +410,18 @@ class UpdraftPlus_Search_Replace {
 	 * @return array	The original array with all elements replaced as needed.
 	 */
 	private function recursive_unserialize_replace($from = '', $to = '', $data = '', $serialised = false) {
+=======
+	 * @param string $from            String we're looking to replace.
+	 * @param string $to              What we want it to be replaced with
+	 * @param array  $data            Used to pass any subordinate arrays back to in.
+	 * @param bool   $serialised      Does the array passed via $data need serialising.
+	 * @param int    $recursion_level Current recursion depth within the original data.
+	 * @param array  $visited_data    Data that has been seen in previous recursion iterations.
+	 *
+	 * @return array	The original array with all elements replaced as needed.
+	 */
+	private function recursive_unserialize_replace($from = '', $to = '', $data = '', $serialised = false, $recursion_level = 0, $visited_data = array()) {
+>>>>>>> update
 
 		global $updraftplus;
 
@@ -378,6 +431,23 @@ class UpdraftPlus_Search_Replace {
 		try {
 			$case_insensitive = false;
 
+<<<<<<< HEAD
+=======
+			// If we've reached the maximum recursion level, short circuit
+			if (0 !== $this->max_recursion && $recursion_level >= $this->max_recursion) {
+				return $data;
+			}
+
+			if (is_array($data) || is_object($data)) {
+				// If we've seen this exact object or array before, short circuit
+				if (in_array($data, $visited_data, true)) {
+					return $data; // Avoid infinite recursions when there's a circular reference
+				}
+				// Add this data to the list of
+				$visited_data[] = $data;
+			}
+
+>>>>>>> update
 			if (is_array($from) && is_array($to)) {
 				$case_insensitive = preg_match('#^https?:#i', implode($from)) && preg_match('#^https?:#i', implode($to)) ? true : false;
 			} else {
@@ -385,8 +455,13 @@ class UpdraftPlus_Search_Replace {
 			}
 
 			// O:8:"DateTime":0:{} : see https://bugs.php.net/bug.php?id=62852
+<<<<<<< HEAD
 			if (is_serialized($data) && false === strpos($data, 'O:8:"DateTime":0:{}') && false !== ($unserialized = @unserialize($data))) {// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
 				$data = $this->recursive_unserialize_replace($from, $to, $unserialized, true);
+=======
+			if (is_serialized($data) && false === strpos($data, 'O:8:"DateTime":0:{}') && false !== ($unserialized = @unserialize($data))) {// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged -- Silenced to suppress errors that may arise because of the function.
+				$data = $this->recursive_unserialize_replace($from, $to, $unserialized, true, $recursion_level + 1);
+>>>>>>> update
 			} elseif (is_array($data)) {
 				$_tmp = array();
 				foreach ($data as $key => $value) {
@@ -399,7 +474,11 @@ class UpdraftPlus_Search_Replace {
 						// return original data
 						$_tmp[$key] = $value;
 					} else {
+<<<<<<< HEAD
 						$_tmp[$key] = $this->recursive_unserialize_replace($from, $to, $value, false);
+=======
+						$_tmp[$key] = $this->recursive_unserialize_replace($from, $to, $value, false, $recursion_level + 1, $visited_data);
+>>>>>>> update
 					}
 				}
 
@@ -415,7 +494,11 @@ class UpdraftPlus_Search_Replace {
 				} else {
 					$props = get_object_vars($data);
 					foreach ($props as $key => $value) {
+<<<<<<< HEAD
 						$_tmp->$key = $this->recursive_unserialize_replace($from, $to, $value, false);
+=======
+						$_tmp->$key = $this->recursive_unserialize_replace($from, $to, $value, false, $recursion_level + 1, $visited_data);
+>>>>>>> update
 					}
 				}
 				$data = $_tmp;
@@ -433,7 +516,11 @@ class UpdraftPlus_Search_Replace {
 							// return original data
 							$_tmp[$key] = $value;
 						} else {
+<<<<<<< HEAD
 							$_tmp[$key] = $this->recursive_unserialize_replace($from, $to, $value, false);
+=======
+							$_tmp[$key] = $this->recursive_unserialize_replace($from, $to, $value, false, $recursion_level + 1, $visited_data);
+>>>>>>> update
 						}
 					}
 
@@ -490,7 +577,11 @@ class UpdraftPlus_Search_Replace {
 		if ($this->use_wpdb) {
 			$last_error = $wpdb->last_error;
 		} else {
+<<<<<<< HEAD
 			// phpcs:ignore PHPCompatibility.Extensions.RemovedExtensions.mysql_DeprecatedRemoved
+=======
+			// phpcs:ignore PHPCompatibility.Extensions.RemovedExtensions.mysql_DeprecatedRemoved -- Ignore removed extension compatibility.
+>>>>>>> update
 			$last_error = ($this->use_mysqli) ? mysqli_error($this->mysql_dbh) : mysql_error($this->mysql_dbh);
 		}
 		$updraftplus->log(__('Error:', 'updraftplus')." ".$last_error." - ".__('the database query being run was:', 'updraftplus').' '.$sql_line, 'warning-restore');

@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 namespace WBCR\Factory_Adverts_128;
+=======
+namespace WBCR\Factory_Adverts_146;
+>>>>>>> update
 
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) {
@@ -35,7 +39,11 @@ class Dashboard_Widget {
 	 *
 	 * @author Alexander Kovalev <alex.kovalevv@gmail.com>
 	 * @since  1.0.1
+<<<<<<< HEAD
 	 * @var \Wbcr_Factory450_Plugin
+=======
+	 * @var \Wbcr_Factory469_Plugin
+>>>>>>> update
 	 */
 	private $plugin;
 
@@ -46,10 +54,17 @@ class Dashboard_Widget {
 	 *
 	 * @since 1.0.0 Added
 	 *
+<<<<<<< HEAD
 	 * @param \Wbcr_Factory450_Plugin $plugin
 	 * @param string                  $content
 	 */
 	public function __construct( \Wbcr_Factory450_Plugin $plugin, $content ) {
+=======
+	 * @param \Wbcr_Factory469_Plugin $plugin
+	 * @param string                  $content
+	 */
+	public function __construct( \Wbcr_Factory469_Plugin $plugin, $content ) {
+>>>>>>> update
 
 		$this->plugin  = $plugin;
 		$this->content = $content;

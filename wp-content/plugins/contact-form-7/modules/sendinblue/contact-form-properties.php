@@ -90,6 +90,7 @@ function wpcf7_sendinblue_editor_panels( $panels ) {
 		)
 	);
 
+<<<<<<< HEAD
 	$editor_panel = function () use ( $prop, $service ) {
 
 		$description = sprintf(
@@ -99,6 +100,17 @@ function wpcf7_sendinblue_editor_panels( $panels ) {
 			wpcf7_link(
 				__( 'https://contactform7.com/sendinblue-integration/', 'contact-form-7' ),
 				__( 'Sendinblue integration', 'contact-form-7' )
+=======
+	$editor_panel = static function () use ( $prop, $service ) {
+
+		$description = sprintf(
+			esc_html(
+				__( "You can set up the Brevo integration here. For details, see %s.", 'contact-form-7' )
+			),
+			wpcf7_link(
+				__( 'https://contactform7.com/sendinblue-integration/', 'contact-form-7' ),
+				__( 'Brevo integration', 'contact-form-7' )
+>>>>>>> update
 			)
 		);
 
@@ -106,7 +118,11 @@ function wpcf7_sendinblue_editor_panels( $panels ) {
 		$templates = $service->get_templates();
 
 ?>
+<<<<<<< HEAD
 <h2><?php echo esc_html( __( 'Sendinblue', 'contact-form-7' ) ); ?></h2>
+=======
+<h2><?php echo esc_html( __( 'Brevo', 'contact-form-7' ) ); ?></h2>
+>>>>>>> update
 
 <fieldset>
 	<legend><?php echo $description; ?></legend>
@@ -164,9 +180,13 @@ function wpcf7_sendinblue_editor_panels( $panels ) {
 						'type' => 'checkbox',
 						'name' => 'wpcf7-sendinblue[contact_lists][]',
 						'value' => $list['id'],
+<<<<<<< HEAD
 						'checked' => in_array( $list['id'], $prop['contact_lists'] )
 							? 'checked'
 							: '',
+=======
+						'checked' => in_array( $list['id'], $prop['contact_lists'] ),
+>>>>>>> update
 					) ),
 					esc_html( $list['name'] )
 				);
@@ -246,9 +266,13 @@ function wpcf7_sendinblue_editor_panels( $panels ) {
 				'<option %1$s>%2$s</option>',
 				wpcf7_format_atts( array(
 					'value' => 0,
+<<<<<<< HEAD
 					'selected' => 0 === $prop['email_template']
 						? 'selected'
 						: '',
+=======
+					'selected' => 0 === $prop['email_template'],
+>>>>>>> update
 				) ),
 				esc_html( __( '&mdash; Select &mdash;', 'contact-form-7' ) )
 			);
@@ -258,9 +282,13 @@ function wpcf7_sendinblue_editor_panels( $panels ) {
 					'<option %1$s>%2$s</option>',
 					wpcf7_format_atts( array(
 						'value' => $template['id'],
+<<<<<<< HEAD
 						'selected' => $prop['email_template'] === $template['id']
 							? 'selected'
 							: '',
+=======
+						'selected' => $prop['email_template'] === $template['id'],
+>>>>>>> update
 					) ),
 					esc_html( $template['name'] )
 				);
@@ -300,7 +328,11 @@ function wpcf7_sendinblue_editor_panels( $panels ) {
 
 	$panels += array(
 		'sendinblue-panel' => array(
+<<<<<<< HEAD
 			'title' => __( 'Sendinblue', 'contact-form-7' ),
+=======
+			'title' => __( 'Brevo', 'contact-form-7' ),
+>>>>>>> update
 			'callback' => $editor_panel,
 		),
 	);

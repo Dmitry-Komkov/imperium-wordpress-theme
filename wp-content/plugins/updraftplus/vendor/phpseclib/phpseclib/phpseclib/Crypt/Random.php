@@ -3,14 +3,19 @@
 /**
  * Random Number Generator
  *
+<<<<<<< HEAD
  * The idea behind this function is that it can be easily replaced with your own crypt_random_string()
  * function. eg. maybe you have a better source of entropy for creating the initial states or whatever.
  *
  * PHP versions 4 and 5
+=======
+ * PHP version 5
+>>>>>>> update
  *
  * Here's a short example of how to use this library:
  * <code>
  * <?php
+<<<<<<< HEAD
  *    include 'Crypt/Random.php';
  *
  *    echo bin2hex(crypt_random_string(8));
@@ -37,12 +42,23 @@
  *
  * @category  Crypt
  * @package   Crypt_Random
+=======
+ *    include 'vendor/autoload.php';
+ *
+ *    echo bin2hex(\phpseclib\Crypt\Random::string(8));
+ * ?>
+ * </code>
+ *
+ * @category  Crypt
+ * @package   Random
+>>>>>>> update
  * @author    Jim Wigginton <terrafrost@php.net>
  * @copyright 2007 Jim Wigginton
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
  * @link      http://phpseclib.sourceforge.net
  */
 
+<<<<<<< HEAD
 // laravel is a PHP framework that utilizes phpseclib. laravel workbenches may, independently,
 // have phpseclib as a requirement as well. if you're developing such a program you may encounter
 // a "Cannot redeclare crypt_random_string()" error.
@@ -54,6 +70,19 @@ if (!function_exists('crypt_random_string')) {
      */
     define('CRYPT_RANDOM_IS_WINDOWS', strtoupper(substr(PHP_OS, 0, 3)) === 'WIN');
 
+=======
+namespace phpseclib\Crypt;
+
+/**
+ * Pure-PHP Random Number Generator
+ *
+ * @package Random
+ * @author  Jim Wigginton <terrafrost@php.net>
+ * @access  public
+ */
+class Random
+{
+>>>>>>> update
     /**
      * Generate a random string.
      *
@@ -63,17 +92,42 @@ if (!function_exists('crypt_random_string')) {
      *
      * @param int $length
      * @return string
+<<<<<<< HEAD
      * @access public
      */
     function crypt_random_string($length)
+=======
+     */
+    static function string($length)
+>>>>>>> update
     {
         if (!$length) {
             return '';
         }
 
+<<<<<<< HEAD
         if (CRYPT_RANDOM_IS_WINDOWS) {
             // method 1. prior to PHP 5.3, mcrypt_create_iv() would call rand() on windows
             if (extension_loaded('mcrypt') && version_compare(PHP_VERSION, '5.3.0', '>=')) {
+=======
+        if (version_compare(PHP_VERSION, '7.0.0', '>=')) {
+            try {
+                return \random_bytes($length);
+            } catch (\Throwable $e) {
+                // If a sufficient source of randomness is unavailable, random_bytes() will throw an
+                // object that implements the Throwable interface (Exception, TypeError, Error).
+                // We don't actually need to do anything here. The string() method should just continue
+                // as normal. Note, however, that if we don't have a sufficient source of randomness for
+                // random_bytes(), most of the other calls here will fail too, so we'll end up using
+                // the PHP implementation.
+            }
+        }
+
+        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+            // method 1. prior to PHP 5.3 this would call rand() on windows hence the function_exists('class_alias') call.
+            // ie. class_alias is a function that was introduced in PHP 5.3
+            if (extension_loaded('mcrypt') && function_exists('class_alias')) {
+>>>>>>> update
                 return @mcrypt_create_iv($length);
             }
             // method 2. openssl_random_pseudo_bytes was introduced in PHP 5.3.0 but prior to PHP 5.3.4 there was,
@@ -94,7 +148,11 @@ if (!function_exists('crypt_random_string')) {
             }
         } else {
             // method 1. the fastest
+<<<<<<< HEAD
             if (extension_loaded('openssl') && version_compare(PHP_VERSION, '5.3.0', '>=')) {
+=======
+            if (extension_loaded('openssl')) {
+>>>>>>> update
                 return openssl_random_pseudo_bytes($length);
             }
             // method 2
@@ -159,7 +217,14 @@ if (!function_exists('crypt_random_string')) {
                 (isset($_POST) ? phpseclib_safe_serialize($_POST) : '') .
                 (isset($_GET) ? phpseclib_safe_serialize($_GET) : '') .
                 (isset($_COOKIE) ? phpseclib_safe_serialize($_COOKIE) : '') .
+<<<<<<< HEAD
                 phpseclib_safe_serialize($GLOBALS) .
+=======
+                // as of PHP 8.1 $GLOBALS can't be accessed by reference, which eliminates
+                // the need for phpseclib_safe_serialize. see https://wiki.php.net/rfc/restrict_globals_usage
+                // for more info
+                (version_compare(PHP_VERSION, '8.1.0', '>=') ? serialize($GLOBALS) : phpseclib_safe_serialize($GLOBALS)) .
+>>>>>>> update
                 phpseclib_safe_serialize($_SESSION) .
                 phpseclib_safe_serialize($_OLD_SESSION)
             ));
@@ -200,6 +265,7 @@ if (!function_exists('crypt_random_string')) {
             //
             // http://en.wikipedia.org/wiki/Cryptographically_secure_pseudorandom_number_generator#Designs_based_on_cryptographic_primitives
             switch (true) {
+<<<<<<< HEAD
                 case phpseclib_resolve_include_path('Crypt/AES.php'):
                     if (!class_exists('Crypt_AES')) {
                         include_once 'AES.php';
@@ -238,6 +304,28 @@ if (!function_exists('crypt_random_string')) {
                     break;
                 default:
                     user_error('crypt_random_string requires at least one symmetric cipher be loaded');
+=======
+                case class_exists('\phpseclib\Crypt\AES'):
+                    $crypto = new AES(Base::MODE_CTR);
+                    break;
+                case class_exists('\phpseclib\Crypt\Twofish'):
+                    $crypto = new Twofish(Base::MODE_CTR);
+                    break;
+                case class_exists('\phpseclib\Crypt\Blowfish'):
+                    $crypto = new Blowfish(Base::MODE_CTR);
+                    break;
+                case class_exists('\phpseclib\Crypt\TripleDES'):
+                    $crypto = new TripleDES(Base::MODE_CTR);
+                    break;
+                case class_exists('\phpseclib\Crypt\DES'):
+                    $crypto = new DES(Base::MODE_CTR);
+                    break;
+                case class_exists('\phpseclib\Crypt\RC4'):
+                    $crypto = new RC4();
+                    break;
+                default:
+                    user_error(__CLASS__ . ' requires at least one symmetric cipher be loaded');
+>>>>>>> update
                     return false;
             }
 
@@ -301,6 +389,7 @@ if (!function_exists('phpseclib_safe_serialize')) {
         return serialize($safearr);
     }
 }
+<<<<<<< HEAD
 
 if (!function_exists('phpseclib_resolve_include_path')) {
     /**
@@ -339,3 +428,5 @@ if (!function_exists('phpseclib_resolve_include_path')) {
         return false;
     }
 }
+=======
+>>>>>>> update

@@ -281,6 +281,7 @@ add_action('wp_enqueue_scripts', 'ya_goals_forms');
  * Send Data to CRM
  */
 
+<<<<<<< HEAD
 // function your_wpcf7_mail_sent_function($contact_form)
 // {
 // 	// Перехватываем данные из Contact Form 7
@@ -315,6 +316,42 @@ add_action('wp_enqueue_scripts', 'ya_goals_forms');
 // 	curl_close($curl);
 // }
 // add_action('wpcf7_mail_sent', 'your_wpcf7_mail_sent_function');
+=======
+function your_wpcf7_mail_sent_function($contact_form)
+{
+	// Перехватываем данные из Contact Form 7
+	$title = $contact_form->title;
+	$posted_data = $contact_form->posted_data;
+	$submission = WPCF7_Submission::get_instance();
+	$posted_data = $submission->get_posted_data();
+	// Далее перехватываем введенные данные в полях Contact Form 7:
+	// 1. Перехватываем поле [your-name]
+	$firstName = $posted_data['client-name'];
+	// 2. Перехватываем поле [your-phone]
+	$phone = $posted_data['client-phone'];
+	// 3. Перехватываем поле [your-mail]
+	$client_email = $posted_data['client-email'];
+
+	$link = 'https://cloud.1c.fitness/api/hs/lead/Webhook/77f2a3a5-d873-4ece-bb0d-356a9b517566';
+	$curl = curl_init($link);
+
+	$data = [
+		'name' => $firstName ? $firstName : 'Заявка с сайта ' . ($phone ? $phone : ''), // имя
+		'phone' => $phone, // телефон
+		'email' => $client_email, // email
+	];
+
+	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($curl, CURLOPT_POST, true);
+	curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($data));
+	curl_setopt($curl, CURLOPT_HEADER, false);
+
+	$out = curl_exec($curl);
+	$code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+	curl_close($curl);
+}
+add_action('wpcf7_mail_sent', 'your_wpcf7_mail_sent_function');
+>>>>>>> update
 
 /**
  * Helper Functions

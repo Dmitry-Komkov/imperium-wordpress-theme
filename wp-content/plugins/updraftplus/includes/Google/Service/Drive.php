@@ -68,6 +68,15 @@ class UDP_Google_Service_Drive extends UDP_Google_Service
   public $realtime;
   public $replies;
   public $revisions;
+<<<<<<< HEAD
+=======
+
+	/**
+	 * Google Drive service name. The default value is drive.
+	 * @var String
+	 */
+	protected $serviceName;
+>>>>>>> update
   
 
   /**
@@ -4035,6 +4044,17 @@ class UDP_Google_Service_Drive_DriveFile extends Google_Collection
   protected $userPermissionDataType = '';
   public $version;
   protected $videoMediaMetadataType = 'UDP_Google_Service_Drive_DriveFileVideoMediaMetadata';
+<<<<<<< HEAD
+=======
+
+	/**
+	 * Parent resource
+	 *
+	 * @var Google_Service_Drive_Parents_Resource
+	 */
+    public $parents;
+
+>>>>>>> update
   protected $videoMediaMetadataDataType = '';
   public $webContentLink;
   public $webViewLink;

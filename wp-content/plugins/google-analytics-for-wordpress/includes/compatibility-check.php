@@ -40,9 +40,15 @@ if ( ! class_exists( 'MonsterInsights_Compatibility_Check' ) ) {
 		 * }
 		 */
 		private $compatible_php_version = array(
+<<<<<<< HEAD
 			'required'    => '5.5',
 			'warning'     => '7.0',
 			'recommended' => '7.2',
+=======
+			'required'    => '7.2',
+			'warning'     => '7.0',
+			'recommended' => false,
+>>>>>>> update
 		);
 
 		/**
@@ -56,8 +62,13 @@ if ( ! class_exists( 'MonsterInsights_Compatibility_Check' ) ) {
 		 * }
 		 */
 		private $compatible_wp_version = array(
+<<<<<<< HEAD
 			'required'    => '4.8',
 			'warning'     => '4.9',
+=======
+			'required'    => '5.6',
+			'warning'     => '6.0',
+>>>>>>> update
 			'recommended' => false,
 		);
 
@@ -262,9 +273,15 @@ if ( ! class_exists( 'MonsterInsights_Compatibility_Check' ) ) {
 				wp_die(
 					sprintf( esc_html__( 'Sorry, but your current version of PHP does not meet the minimum required version %1$s%2$s%3$s or newer to run MonsterInsights properly. For information on how to upgrade your PHP version, contact your web host. %4$sClick here to return to the Dashboard%5$s.', 'google-analytics-for-wordpress' ),
 						'<strong>',
+<<<<<<< HEAD
 						$compatible_php_version['required'],
 						'</strong>',
 						'<a target="_blank" href="' . $url . '">',
+=======
+						$compatible_php_version['required'], // phpcs:ignore
+						'</strong>',
+						'<a target="_blank" href="' . esc_url($url) . '">',
+>>>>>>> update
 						'</a>'
 					)
 				);
@@ -277,9 +294,15 @@ if ( ! class_exists( 'MonsterInsights_Compatibility_Check' ) ) {
 					sprintf(
 						esc_html__( 'Sorry, but your WordPress version is not %1$s%2$s%3$s or newer. Please update your WordPress version and then activate MonsterInsights. For help on how to update your WordPress %4$sclick here%5$s.', 'google-analytics-for-wordpress' ),
 						'<strong>',
+<<<<<<< HEAD
 						$compatible_wp_version['required'],
 						'</strong>',
 						'<a target="_blank" href="' . $url . '">',
+=======
+						$compatible_wp_version['required'], // phpcs:ignore
+						'</strong>',
+						'<a target="_blank" href="' . esc_url($url) . '">',
+>>>>>>> update
 						'</a>'
 					)
 				);
@@ -313,9 +336,15 @@ if ( ! class_exists( 'MonsterInsights_Compatibility_Check' ) ) {
 					echo sprintf(
 						esc_html__( 'Sorry, but your current version of PHP does not meet the minimum required version %1$s%2$s%3$s or newer to run MonsterInsights properly. For information on how to upgrade your PHP version, contact your web host. %4$sClick here to return to the Dashboard%5$s.', 'google-analytics-for-wordpress' ),
 						'<strong>',
+<<<<<<< HEAD
 						$compatible_php_version['required'],
 						'</strong>',
 						'<a target="_blank" href="' . $url . '">',
+=======
+						$compatible_php_version['required'], // phpcs:ignore
+						'</strong>',
+						'<a target="_blank" href="' . $url . '">', // phpcs:ignore
+>>>>>>> update
 						'</a>' );
 					?>
 				</p>
@@ -346,9 +375,15 @@ if ( ! class_exists( 'MonsterInsights_Compatibility_Check' ) ) {
 					echo sprintf(
 						esc_html__( 'Sorry, but your WordPress version is not %1$s%2$s%3$s or newer. Please update your WordPress version and then activate MonsterInsights. For help on how to update your WordPress %4$sclick here%5$s.', 'google-analytics-for-wordpress' ),
 						'<strong>',
+<<<<<<< HEAD
 						$compatible_wp_version['required'],
 						'</strong>',
 						'<a target="_blank" href="' . esc_url( $url ) . '">',
+=======
+						$compatible_wp_version['required'], // phpcs:ignore
+						'</strong>',
+						'<a target="_blank" href="' . $url . '">', // phpcs:ignore
+>>>>>>> update
 						'</a>'
 					);
 					?>

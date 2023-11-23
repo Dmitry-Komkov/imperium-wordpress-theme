@@ -134,7 +134,11 @@ function wpcf7_array_flatten( $input ) {
  */
 function wpcf7_exclude_blank( $input ) {
 	$output = array_filter( $input,
+<<<<<<< HEAD
 		function ( $i ) {
+=======
+		static function ( $i ) {
+>>>>>>> update
 			return isset( $i ) && '' !== $i;
 		}
 	);
@@ -147,9 +151,20 @@ function wpcf7_exclude_blank( $input ) {
  * Creates a comma-separated list from a multi-dimensional array.
  *
  * @param mixed $input Array or item of array.
+<<<<<<< HEAD
  * @return string Comma-separated list.
  */
 function wpcf7_flat_join( $input ) {
+=======
+ * @param string|array $args Optional. Output options.
+ * @return string Comma-separated list.
+ */
+function wpcf7_flat_join( $input, $args = '' ) {
+	$args = wp_parse_args( $args, array(
+		'separator' => ', ',
+	) );
+
+>>>>>>> update
 	$input = wpcf7_array_flatten( $input );
 	$output = array();
 
@@ -159,7 +174,11 @@ function wpcf7_flat_join( $input ) {
 		}
 	}
 
+<<<<<<< HEAD
 	return implode( ', ', $output );
+=======
+	return implode( $args['separator'], $output );
+>>>>>>> update
 }
 
 
@@ -205,7 +224,11 @@ function wpcf7_validate_configuration() {
 
 
 /**
+<<<<<<< HEAD
  * Returns true if wpcf7_autop() is applied to form content.
+=======
+ * Returns true if wpcf7_autop() is applied.
+>>>>>>> update
  */
 function wpcf7_autop_or_not() {
 	return (bool) apply_filters( 'wpcf7_autop_or_not', WPCF7_AUTOP );
@@ -229,6 +252,7 @@ function wpcf7_load_css() {
 
 
 /**
+<<<<<<< HEAD
  * Returns a formatted string of HTML attributes.
  *
  * @param array $atts Associative array of attribute name and value pairs.
@@ -268,6 +292,8 @@ function wpcf7_format_atts( $atts ) {
 
 
 /**
+=======
+>>>>>>> update
  * Builds an HTML anchor element.
  *
  * @param string $url Link URL.
@@ -276,6 +302,7 @@ function wpcf7_format_atts( $atts ) {
  * @return string Formatted anchor element.
  */
 function wpcf7_link( $url, $anchor_text, $args = '' ) {
+<<<<<<< HEAD
 	$defaults = array(
 		'id' => '',
 		'class' => '',
@@ -292,6 +319,22 @@ function wpcf7_link( $url, $anchor_text, $args = '' ) {
 	);
 
 	return $link;
+=======
+	$args = wp_parse_args( $args, array(
+		'id' => null,
+		'class' => null,
+	) );
+
+	$atts = array_merge( $args, array(
+		'href' => esc_url( $url ),
+	) );
+
+	return sprintf(
+		'<a %1$s>%2$s</a>',
+		wpcf7_format_atts( $atts ),
+		esc_html( $anchor_text )
+	);
+>>>>>>> update
 }
 
 
@@ -305,7 +348,11 @@ function wpcf7_get_request_uri() {
 		$request_uri = add_query_arg( array() );
 	}
 
+<<<<<<< HEAD
 	return esc_url_raw( $request_uri );
+=======
+	return sanitize_url( $request_uri );
+>>>>>>> update
 }
 
 

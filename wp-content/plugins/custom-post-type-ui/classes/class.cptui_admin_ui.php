@@ -22,11 +22,26 @@ class cptui_admin_ui {
 	 * Return an opening `<tr>` tag.
 	 *
 	 * @since 1.0.0
+<<<<<<< HEAD
 	 *
 	 * @return string $value Opening `<tr>` tag with attributes.
 	 */
 	public function get_tr_start() {
 		return '<tr valign="top">';
+=======
+	 * @since 1.13.0 Added attributes parameter
+	 *
+	 * @param array $atts Array of custom attributes to add to the tag.
+	 * @return string $value Opening `<tr>` tag with attributes.
+	 */
+	public function get_tr_start( $atts = [] ) {
+
+		$atts_str = '';
+		if ( ! empty( $atts ) ) {
+			$atts_str = ' ' . $this->get_custom_attributes( $atts );
+		}
+		return '<tr' . $atts_str . '>';
+>>>>>>> update
 	}
 
 	/**
@@ -44,11 +59,25 @@ class cptui_admin_ui {
 	 * Return an opening `<th>` tag.
 	 *
 	 * @since 1.0.0
+<<<<<<< HEAD
 	 *
 	 * @return string $value Opening `<th>` tag with attributes.
 	 */
 	public function get_th_start() {
 		return '<th scope="row">';
+=======
+	 * @since 1.13.0 Added attributes parameter.
+	 *
+	 * @param array $atts Array of attributes to add to the tag.
+	 * @return string $value Opening `<th>` tag with attributes.
+	 */
+	public function get_th_start( $atts = [] ) {
+		$atts_str = '';
+		if ( ! empty( $atts ) ) {
+			$atts_str = ' ' . $this->get_custom_attributes( $atts );
+		}
+		return "<th scope=\"row\"{$atts_str}>";
+>>>>>>> update
 	}
 
 	/**
@@ -66,11 +95,25 @@ class cptui_admin_ui {
 	 * Return an opening `<td>` tag.
 	 *
 	 * @since 1.0.0
+<<<<<<< HEAD
 	 *
 	 * @return string $value Opening `<td>` tag.
 	 */
 	public function get_td_start() {
 		return '<td>';
+=======
+	 * @since 1.13.0 Added attributes parameter.
+	 *
+	 * @param array $atts Array of attributes to add to the tag.
+	 * @return string $value Opening `<td>` tag.
+	 */
+	public function get_td_start( $atts = [] ) {
+		$atts_str = '';
+		if ( ! empty( $atts ) ) {
+			$atts_str = ' ' . $this->get_custom_attributes( $atts );
+		}
+		return "<td{$atts_str}>";
+>>>>>>> update
 	}
 
 	/**
@@ -89,11 +132,21 @@ class cptui_admin_ui {
 	 *
 	 * @since 1.2.0
 	 * @since 1.3.0 Added $args parameter.
+<<<<<<< HEAD
 	 *
 	 * @param array $args Array of arguments.
 	 * @return string $value Opening `<fieldset>` tag.
 	 */
 	public function get_fieldset_start( $args = [] ) {
+=======
+	 * @since 1.13.0 Added $atts parameter
+	 *
+	 * @param array $args Array of arguments.
+	 * @param array $atts Array of custom attributes for the tag.
+	 * @return string $value Opening `<fieldset>` tag.
+	 */
+	public function get_fieldset_start( $args = [], $atts = [] ) {
+>>>>>>> update
 		$fieldset = '<fieldset';
 
 		if ( ! empty( $args['id'] ) ) {
@@ -109,6 +162,13 @@ class cptui_admin_ui {
 			$fieldset .= ' aria-expanded="' . $args['aria-expanded'] . '"';
 		}
 
+<<<<<<< HEAD
+=======
+		if ( ! empty( $atts ) ) {
+			$fieldset .= ' ' . $this->get_custom_attributes( $atts );
+		}
+
+>>>>>>> update
 		$fieldset .= ' tabindex="0">';
 
 		return $fieldset;
@@ -132,8 +192,17 @@ class cptui_admin_ui {
 	 *
 	 * @return string
 	 */
+<<<<<<< HEAD
 	public function get_legend_start() {
 		return '<legend class="screen-reader-text">';
+=======
+	public function get_legend_start( $atts = [] ) {
+		$atts_str = '';
+		if ( ! empty( $atts ) ) {
+			$atts_str = ' ' . $this->get_custom_attributes( $atts );
+		}
+		return "<legend class=\"screen-reader-text\"{$atts_str}>";
+>>>>>>> update
 	}
 
 	/**
@@ -294,7 +363,13 @@ class cptui_admin_ui {
 	 */
 	public function get_select_input( $args = [] ) {
 		$defaults = $this->get_default_input_parameters(
+<<<<<<< HEAD
 			[ 'selections' => [] ]
+=======
+			[
+				'selections' => [],
+			]
+>>>>>>> update
 		);
 
 		$args = wp_parse_args( $args, $defaults );
@@ -536,7 +611,11 @@ class cptui_admin_ui {
 	public function get_button( $args = [] ) {
 		$value   = '';
 		$classes = isset( $args['classes'] ) ? $args['classes'] : '';
+<<<<<<< HEAD
 		$value .= '<input id="' . $args['id'] . '" class="button ' . $classes . '" type="button" value="' . $args['textvalue'] . '" />';
+=======
+		$value  .= '<input id="' . $args['id'] . '" class="button ' . $classes . '" type="button" value="' . $args['textvalue'] . '" />';
+>>>>>>> update
 
 		return $value;
 	}
@@ -586,4 +665,26 @@ class cptui_admin_ui {
 			(array) $additions
 		);
 	}
+<<<<<<< HEAD
+=======
+
+	/**
+	 * Return combined attributes string.
+	 *
+	 * @param array $attributes Array of attributes to combine.
+	 *
+	 * @return string
+	 * @since 1.13.0
+	 */
+	public function get_custom_attributes( $attributes = [] ) {
+		$formatted = [];
+		if ( ! empty( $attributes ) ) {
+			foreach ( $attributes as $key => $attribute ) {
+				$formatted[] = "$key=\"$attribute\"";
+			}
+		}
+
+		return implode( ' ', $formatted );
+	}
+>>>>>>> update
 }

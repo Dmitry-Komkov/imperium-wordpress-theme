@@ -1,5 +1,14 @@
 <?php
 
+<<<<<<< HEAD
+=======
+/**
+ * Retrieves an associative array of languages to which
+ * this plugin is translated.
+ *
+ * @return array Array of languages.
+ */
+>>>>>>> update
 function wpcf7_l10n() {
 	static $l10n = array();
 
@@ -33,11 +42,32 @@ function wpcf7_l10n() {
 	return $l10n;
 }
 
+<<<<<<< HEAD
 function wpcf7_is_valid_locale( $locale ) {
+=======
+
+/**
+ * Returns true if the given locale code looks valid.
+ *
+ * @param string $locale Locale code.
+ */
+function wpcf7_is_valid_locale( $locale ) {
+	if ( ! is_string( $locale ) ) {
+		return false;
+	}
+
+>>>>>>> update
 	$pattern = '/^[a-z]{2,3}(?:_[a-zA-Z_]{2,})?$/';
 	return (bool) preg_match( $pattern, $locale );
 }
 
+<<<<<<< HEAD
+=======
+
+/**
+ * Returns true if the given locale is an RTL language.
+ */
+>>>>>>> update
 function wpcf7_is_rtl( $locale = '' ) {
 	static $rtl_locales = array(
 		'ar' => 'Arabic',
@@ -62,6 +92,7 @@ function wpcf7_is_rtl( $locale = '' ) {
 	return isset( $rtl_locales[$locale] );
 }
 
+<<<<<<< HEAD
 function wpcf7_load_textdomain( $locale = '' ) {
 	static $locales = array();
 
@@ -101,4 +132,77 @@ function wpcf7_load_textdomain( $locale = '' ) {
 	}
 
 	return true;
+=======
+
+/**
+ * Loads a translation file into the plugin's text domain.
+ *
+ * @param string $locale Locale code.
+ * @return bool True on success, false on failure.
+ */
+function wpcf7_load_textdomain( $locale = '' ) {
+	$mofile = path_join(
+		WP_LANG_DIR . '/plugins/',
+		sprintf( '%s-%s.mo', WPCF7_TEXT_DOMAIN, $locale )
+	);
+
+	return load_textdomain( WPCF7_TEXT_DOMAIN, $mofile, $locale );
+}
+
+
+/**
+ * Unloads translations for the plugin's text domain.
+ *
+ * @param bool $reloadable Whether the text domain can be loaded
+ *             just-in-time again.
+ * @return bool True on success, false on failure.
+ */
+function wpcf7_unload_textdomain( $reloadable = false ) {
+	return unload_textdomain( WPCF7_TEXT_DOMAIN, $reloadable );
+}
+
+
+/**
+ * Switches translation locale, calls the callback, then switches back
+ * to the original locale.
+ *
+ * @param string $locale Locale code.
+ * @param callable $callback The callable to be called.
+ * @param mixed $args Parameters to be passed to the callback.
+ * @return mixed The return value of the callback.
+ */
+function wpcf7_switch_locale( $locale, callable $callback, ...$args ) {
+	static $available_locales = null;
+
+	if ( ! isset( $available_locales ) ) {
+		$available_locales = array_merge(
+			array( 'en_US' ),
+			get_available_languages()
+		);
+	}
+
+	$previous_locale = determine_locale();
+
+	$do_switch_locale = (
+		$locale !== $previous_locale &&
+		in_array( $locale, $available_locales, true ) &&
+		in_array( $previous_locale, $available_locales, true )
+	);
+
+	if ( $do_switch_locale ) {
+		wpcf7_unload_textdomain();
+		switch_to_locale( $locale );
+		wpcf7_load_textdomain( $locale );
+	}
+
+	$result = call_user_func( $callback, ...$args );
+
+	if ( $do_switch_locale ) {
+		wpcf7_unload_textdomain( true );
+		restore_previous_locale();
+		wpcf7_load_textdomain( $previous_locale );
+	}
+
+	return $result;
+>>>>>>> update
 }

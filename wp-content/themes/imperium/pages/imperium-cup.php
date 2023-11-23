@@ -35,8 +35,13 @@ $contest_date = $kind_contests['date'];
     <div class="top-banner__content">
       <div class="container">
         <div class="top-banner__header">
+<<<<<<< HEAD
           <div class="row flex-column align-items-end justify-content-lg-between">
             <div class="col-7 col-lg-8 text-end">
+=======
+          <div class="row justify-content-between">
+            <div class="col-7 col-lg-8">
+>>>>>>> update
               <p>Фитнес-клуб IMPERIUM FITNESS ARENA г. Чехов, ул. Первомайская,</p>
             </div>
             <div class="col-5 col-lg-4 text-end">

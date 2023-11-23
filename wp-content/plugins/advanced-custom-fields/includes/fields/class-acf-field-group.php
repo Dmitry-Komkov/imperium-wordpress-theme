@@ -1,7 +1,11 @@
 <?php
 
 if ( ! class_exists( 'acf_field__group' ) ) :
+<<<<<<< HEAD
 
+=======
+	#[AllowDynamicProperties]
+>>>>>>> update
 	class acf_field__group extends acf_field {
 
 
@@ -21,6 +25,7 @@ if ( ! class_exists( 'acf_field__group' ) ) :
 		function initialize() {
 
 			// vars
+<<<<<<< HEAD
 			$this->name      = 'group';
 			$this->label     = __( 'Group', 'acf' );
 			$this->category  = 'layout';
@@ -29,6 +34,19 @@ if ( ! class_exists( 'acf_field__group' ) ) :
 				'layout'     => 'block',
 			);
 			$this->have_rows = 'single';
+=======
+			$this->name          = 'group';
+			$this->label         = __( 'Group', 'acf' );
+			$this->category      = 'layout';
+			$this->description   = __( 'Provides a way to structure fields into groups to better organize the data and the edit screen.', 'acf' );
+			$this->preview_image = acf_get_url() . '/assets/images/field-type-previews/field-preview-group.png';
+			$this->doc_url       = acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/resources/group/', 'docs', 'field-type-selection' );
+			$this->defaults      = array(
+				'sub_fields' => array(),
+				'layout'     => 'block',
+			);
+			$this->have_rows     = 'single';
+>>>>>>> update
 
 			// field filters
 			$this->add_field_filter( 'acf/prepare_field_for_export', array( $this, 'prepare_field_for_export' ) );
@@ -180,7 +198,11 @@ if ( ! class_exists( 'acf_field__group' ) ) :
 				return null;
 			}
 
+<<<<<<< HEAD
 			// bail ealry if no sub fields
+=======
+			// bail early if no sub fields
+>>>>>>> update
 			if ( empty( $field['sub_fields'] ) ) {
 				return null;
 			}
@@ -372,7 +394,11 @@ if ( ! class_exists( 'acf_field__group' ) ) :
 				// prepare field (allow sub fields to be removed)
 				$sub_field = acf_prepare_field( $sub_field );
 
+<<<<<<< HEAD
 				// bail ealry if no field
+=======
+				// bail early if no field
+>>>>>>> update
 				if ( ! $sub_field ) {
 					continue;
 				}
@@ -393,7 +419,11 @@ if ( ! class_exists( 'acf_field__group' ) ) :
 				}
 
 				?>
+<<<<<<< HEAD
 			<th <?php acf_esc_attr_e( $atts ); ?>>
+=======
+			<th <?php echo acf_esc_attrs( $atts ); ?>>
+>>>>>>> update
 				<?php acf_render_field_label( $sub_field ); ?>
 				<?php acf_render_field_instructions( $sub_field ); ?>
 			</th>
@@ -436,6 +466,7 @@ if ( ! class_exists( 'acf_field__group' ) ) :
 
 			// vars
 			$args = array(
+<<<<<<< HEAD
 				'fields' => $field['sub_fields'],
 				'parent' => $field['ID'],
 			);
@@ -453,6 +484,26 @@ if ( ! class_exists( 'acf_field__group' ) ) :
 				?>
 			</td>
 		</tr>
+=======
+				'fields'      => $field['sub_fields'],
+				'parent'      => $field['ID'],
+				'is_subfield' => true,
+			);
+
+			?>
+			<div class="acf-field acf-field-setting-sub_fields" data-setting="group" data-name="sub_fields">
+				<div class="acf-label">
+					<label><?php _e( 'Sub Fields', 'acf' ); ?></label>	
+				</div>
+				<div class="acf-input acf-input-sub">
+					<?php
+
+					acf_get_view( 'acf-field-group/fields', $args );
+
+					?>
+				</div>
+			</div>
+>>>>>>> update
 			<?php
 
 			// layout
@@ -624,7 +675,11 @@ if ( ! class_exists( 'acf_field__group' ) ) :
 
 		function delete_value( $post_id, $meta_key, $field ) {
 
+<<<<<<< HEAD
 			// bail ealry if no sub fields
+=======
+			// bail early if no sub fields
+>>>>>>> update
 			if ( empty( $field['sub_fields'] ) ) {
 				return null;
 			}

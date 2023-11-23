@@ -1,5 +1,9 @@
 <?php
 
+<<<<<<< HEAD
+=======
+declare (strict_types=1);
+>>>>>>> update
 namespace YoastSEO_Vendor\GuzzleHttp\Psr7;
 
 use InvalidArgumentException;
@@ -21,11 +25,19 @@ class Request implements \YoastSEO_Vendor\Psr\Http\Message\RequestInterface
     /**
      * @param string                               $method  HTTP method
      * @param string|UriInterface                  $uri     URI
+<<<<<<< HEAD
      * @param array                                $headers Request headers
      * @param string|resource|StreamInterface|null $body    Request body
      * @param string                               $version Protocol version
      */
     public function __construct($method, $uri, array $headers = [], $body = null, $version = '1.1')
+=======
+     * @param array<string, string|string[]>       $headers Request headers
+     * @param string|resource|StreamInterface|null $body    Request body
+     * @param string                               $version Protocol version
+     */
+    public function __construct(string $method, $uri, array $headers = [], $body = null, string $version = '1.1')
+>>>>>>> update
     {
         $this->assertMethod($method);
         if (!$uri instanceof \YoastSEO_Vendor\Psr\Http\Message\UriInterface) {
@@ -42,13 +54,21 @@ class Request implements \YoastSEO_Vendor\Psr\Http\Message\RequestInterface
             $this->stream = \YoastSEO_Vendor\GuzzleHttp\Psr7\Utils::streamFor($body);
         }
     }
+<<<<<<< HEAD
     public function getRequestTarget()
+=======
+    public function getRequestTarget() : string
+>>>>>>> update
     {
         if ($this->requestTarget !== null) {
             return $this->requestTarget;
         }
         $target = $this->uri->getPath();
+<<<<<<< HEAD
         if ($target == '') {
+=======
+        if ($target === '') {
+>>>>>>> update
             $target = '/';
         }
         if ($this->uri->getQuery() != '') {
@@ -56,7 +76,11 @@ class Request implements \YoastSEO_Vendor\Psr\Http\Message\RequestInterface
         }
         return $target;
     }
+<<<<<<< HEAD
     public function withRequestTarget($requestTarget)
+=======
+    public function withRequestTarget($requestTarget) : \YoastSEO_Vendor\Psr\Http\Message\RequestInterface
+>>>>>>> update
     {
         if (\preg_match('#\\s#', $requestTarget)) {
             throw new \InvalidArgumentException('Invalid request target provided; cannot contain whitespace');
@@ -65,22 +89,38 @@ class Request implements \YoastSEO_Vendor\Psr\Http\Message\RequestInterface
         $new->requestTarget = $requestTarget;
         return $new;
     }
+<<<<<<< HEAD
     public function getMethod()
     {
         return $this->method;
     }
     public function withMethod($method)
+=======
+    public function getMethod() : string
+    {
+        return $this->method;
+    }
+    public function withMethod($method) : \YoastSEO_Vendor\Psr\Http\Message\RequestInterface
+>>>>>>> update
     {
         $this->assertMethod($method);
         $new = clone $this;
         $new->method = \strtoupper($method);
         return $new;
     }
+<<<<<<< HEAD
     public function getUri()
     {
         return $this->uri;
     }
     public function withUri(\YoastSEO_Vendor\Psr\Http\Message\UriInterface $uri, $preserveHost = \false)
+=======
+    public function getUri() : \YoastSEO_Vendor\Psr\Http\Message\UriInterface
+    {
+        return $this->uri;
+    }
+    public function withUri(\YoastSEO_Vendor\Psr\Http\Message\UriInterface $uri, $preserveHost = \false) : \YoastSEO_Vendor\Psr\Http\Message\RequestInterface
+>>>>>>> update
     {
         if ($uri === $this->uri) {
             return $this;
@@ -92,7 +132,11 @@ class Request implements \YoastSEO_Vendor\Psr\Http\Message\RequestInterface
         }
         return $new;
     }
+<<<<<<< HEAD
     private function updateHostFromUri()
+=======
+    private function updateHostFromUri() : void
+>>>>>>> update
     {
         $host = $this->uri->getHost();
         if ($host == '') {
@@ -111,7 +155,14 @@ class Request implements \YoastSEO_Vendor\Psr\Http\Message\RequestInterface
         // See: http://tools.ietf.org/html/rfc7230#section-5.4
         $this->headers = [$header => [$host]] + $this->headers;
     }
+<<<<<<< HEAD
     private function assertMethod($method)
+=======
+    /**
+     * @param mixed $method
+     */
+    private function assertMethod($method) : void
+>>>>>>> update
     {
         if (!\is_string($method) || $method === '') {
             throw new \InvalidArgumentException('Method must be a non-empty string.');

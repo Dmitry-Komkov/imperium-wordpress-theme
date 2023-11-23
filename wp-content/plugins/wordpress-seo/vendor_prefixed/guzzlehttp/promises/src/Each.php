@@ -1,5 +1,9 @@
 <?php
 
+<<<<<<< HEAD
+=======
+declare (strict_types=1);
+>>>>>>> update
 namespace YoastSEO_Vendor\GuzzleHttp\Promise;
 
 final class Each
@@ -20,10 +24,15 @@ final class Each
      * @param mixed    $iterable    Iterator or array to iterate over.
      * @param callable $onFulfilled
      * @param callable $onRejected
+<<<<<<< HEAD
      *
      * @return PromiseInterface
      */
     public static function of($iterable, callable $onFulfilled = null, callable $onRejected = null)
+=======
+     */
+    public static function of($iterable, callable $onFulfilled = null, callable $onRejected = null) : \YoastSEO_Vendor\GuzzleHttp\Promise\PromiseInterface
+>>>>>>> update
     {
         return (new \YoastSEO_Vendor\GuzzleHttp\Promise\EachPromise($iterable, ['fulfilled' => $onFulfilled, 'rejected' => $onRejected]))->promise();
     }
@@ -39,10 +48,15 @@ final class Each
      * @param int|callable $concurrency
      * @param callable     $onFulfilled
      * @param callable     $onRejected
+<<<<<<< HEAD
      *
      * @return PromiseInterface
      */
     public static function ofLimit($iterable, $concurrency, callable $onFulfilled = null, callable $onRejected = null)
+=======
+     */
+    public static function ofLimit($iterable, $concurrency, callable $onFulfilled = null, callable $onRejected = null) : \YoastSEO_Vendor\GuzzleHttp\Promise\PromiseInterface
+>>>>>>> update
     {
         return (new \YoastSEO_Vendor\GuzzleHttp\Promise\EachPromise($iterable, ['fulfilled' => $onFulfilled, 'rejected' => $onRejected, 'concurrency' => $concurrency]))->promise();
     }
@@ -54,12 +68,19 @@ final class Each
      * @param mixed        $iterable
      * @param int|callable $concurrency
      * @param callable     $onFulfilled
+<<<<<<< HEAD
      *
      * @return PromiseInterface
      */
     public static function ofLimitAll($iterable, $concurrency, callable $onFulfilled = null)
     {
         return each_limit($iterable, $concurrency, $onFulfilled, function ($reason, $idx, \YoastSEO_Vendor\GuzzleHttp\Promise\PromiseInterface $aggregate) {
+=======
+     */
+    public static function ofLimitAll($iterable, $concurrency, callable $onFulfilled = null) : \YoastSEO_Vendor\GuzzleHttp\Promise\PromiseInterface
+    {
+        return self::ofLimit($iterable, $concurrency, $onFulfilled, function ($reason, $idx, \YoastSEO_Vendor\GuzzleHttp\Promise\PromiseInterface $aggregate) : void {
+>>>>>>> update
             $aggregate->reject($reason);
         });
     }

@@ -5,7 +5,11 @@
  *
  * Uses mcrypt, if available/possible, and an internal implementation, otherwise.
  *
+<<<<<<< HEAD
  * PHP versions 4 and 5
+=======
+ * PHP version 5
+>>>>>>> update
  *
  * NOTE: Since AES.php is (for compatibility and phpseclib-historical reasons) virtually
  * just a wrapper to Rijndael.php you may consider using Rijndael.php instead of
@@ -16,16 +20,26 @@
  * it'll be null-padded to 192-bits and 192 bits will be the key length until {@link self::setKey() setKey()}
  * is called, again, at which point, it'll be recalculated.
  *
+<<<<<<< HEAD
  * Since Crypt_AES extends Crypt_Rijndael, some functions are available to be called that, in the context of AES, don't
+=======
+ * Since \phpseclib\Crypt\AES extends \phpseclib\Crypt\Rijndael, some functions are available to be called that, in the context of AES, don't
+>>>>>>> update
  * make a whole lot of sense.  {@link self::setBlockLength() setBlockLength()}, for instance.  Calling that function,
  * however possible, won't do anything (AES has a fixed block length whereas Rijndael has a variable one).
  *
  * Here's a short example of how to use this library:
  * <code>
  * <?php
+<<<<<<< HEAD
  *    include 'Crypt/AES.php';
  *
  *    $aes = new Crypt_AES();
+=======
+ *    include 'vendor/autoload.php';
+ *
+ *    $aes = new \phpseclib\Crypt\AES();
+>>>>>>> update
  *
  *    $aes->setKey('abcdefghijklmnop');
  *
@@ -39,6 +53,7 @@
  * ?>
  * </code>
  *
+<<<<<<< HEAD
  * LICENSE: Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -59,12 +74,17 @@
  *
  * @category  Crypt
  * @package   Crypt_AES
+=======
+ * @category  Crypt
+ * @package   AES
+>>>>>>> update
  * @author    Jim Wigginton <terrafrost@php.net>
  * @copyright 2008 Jim Wigginton
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
  * @link      http://phpseclib.sourceforge.net
  */
 
+<<<<<<< HEAD
 /**
  * Include Crypt_Rijndael
  */
@@ -110,10 +130,14 @@ define('CRYPT_AES_MODE_CFB', CRYPT_MODE_CFB);
  */
 define('CRYPT_AES_MODE_OFB', CRYPT_MODE_OFB);
 /**#@-*/
+=======
+namespace phpseclib\Crypt;
+>>>>>>> update
 
 /**
  * Pure-PHP implementation of AES.
  *
+<<<<<<< HEAD
  * @package Crypt_AES
  * @author  Jim Wigginton <terrafrost@php.net>
  * @access  public
@@ -135,6 +159,20 @@ class Crypt_AES extends Crypt_Rijndael
      * Since Crypt_AES extends Crypt_Rijndael, this function is, technically, available, but it doesn't do anything.
      *
      * @see Crypt_Rijndael::setBlockLength()
+=======
+ * @package AES
+ * @author  Jim Wigginton <terrafrost@php.net>
+ * @access  public
+ */
+class AES extends Rijndael
+{
+    /**
+     * Dummy function
+     *
+     * Since \phpseclib\Crypt\AES extends \phpseclib\Crypt\Rijndael, this function is, technically, available, but it doesn't do anything.
+     *
+     * @see \phpseclib\Crypt\Rijndael::setBlockLength()
+>>>>>>> update
      * @access public
      * @param int $length
      */
@@ -149,7 +187,11 @@ class Crypt_AES extends Crypt_Rijndael
      * Valid key lengths are 128, 192, and 256.  If the length is less than 128, it will be rounded up to
      * 128.  If the length is greater than 128 and invalid, it will be rounded down to the closest valid amount.
      *
+<<<<<<< HEAD
      * @see Crypt_Rijndael:setKeyLength()
+=======
+     * @see \phpseclib\Crypt\Rijndael:setKeyLength()
+>>>>>>> update
      * @access public
      * @param int $length
      */
@@ -170,7 +212,11 @@ class Crypt_AES extends Crypt_Rijndael
      *
      * Rijndael supports five different key lengths, AES only supports three.
      *
+<<<<<<< HEAD
      * @see Crypt_Rijndael:setKey()
+=======
+     * @see \phpseclib\Crypt\Rijndael:setKey()
+>>>>>>> update
      * @see setKeyLength()
      * @access public
      * @param string $key

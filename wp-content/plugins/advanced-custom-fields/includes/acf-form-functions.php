@@ -119,6 +119,10 @@ function acf_form_data( $data = array() ) {
  */
 function acf_save_post( $post_id = 0, $values = null ) {
 
+<<<<<<< HEAD
+=======
+	// phpcs:disable WordPress.Security.NonceVerification.Missing -- Verified elsewhere.
+>>>>>>> update
 	// Override $_POST data with $values.
 	if ( $values !== null ) {
 		$_POST['acf'] = $values;
@@ -136,6 +140,10 @@ function acf_save_post( $post_id = 0, $values = null ) {
 	if ( ! acf_allow_unfiltered_html() ) {
 		$_POST['acf'] = wp_kses_post_deep( $_POST['acf'] );
 	}
+<<<<<<< HEAD
+=======
+	// phpcs:enable WordPress.Security.NonceVerification.Missing
+>>>>>>> update
 
 	// Do generic action.
 	do_action( 'acf/save_post', $post_id );
@@ -158,10 +166,18 @@ function acf_save_post( $post_id = 0, $values = null ) {
  */
 function _acf_do_save_post( $post_id = 0 ) {
 
+<<<<<<< HEAD
 	// Check and update $_POST data.
 	if ( $_POST['acf'] ) {
 		acf_update_values( $_POST['acf'], $post_id );
 	}
+=======
+	// phpcs:disable WordPress.Security.NonceVerification.Missing -- Verified elsewhere.
+	if ( ! empty( $_POST['acf'] ) ) {
+		acf_update_values( $_POST['acf'], $post_id ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Sanitized by WP when saved.
+	}
+	// phpcs:enable WordPress.Security.NonceVerification.Missing
+>>>>>>> update
 }
 
 // Run during generic action.

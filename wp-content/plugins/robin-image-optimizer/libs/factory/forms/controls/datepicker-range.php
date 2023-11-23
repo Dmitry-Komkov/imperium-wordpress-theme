@@ -29,9 +29,15 @@
 		exit;
 	}
 
+<<<<<<< HEAD
 	if( !class_exists('Wbcr_FactoryForms447_DatepickerRangeControl') ) {
 
 		class Wbcr_FactoryForms447_DatepickerRangeControl extends Wbcr_FactoryForms447_ComplexControl {
+=======
+	if( !class_exists('Wbcr_FactoryForms466_DatepickerRangeControl') ) {
+
+		class Wbcr_FactoryForms466_DatepickerRangeControl extends Wbcr_FactoryForms466_ComplexControl {
+>>>>>>> update
 
 			public $type = 'datetimepicker-range';
 
@@ -65,8 +71,13 @@
 					'default' => date('Y/m/d H:i', strtotime("+1 month"))
 				), $options['range_2']);
 
+<<<<<<< HEAD
 				$this->range_1 = new Wbcr_FactoryForms447_TextboxControl($options['range_1'], $form, $provider);
 				$this->range_2 = new Wbcr_FactoryForms447_TextboxControl($options['range_2'], $form, $provider);
+=======
+				$this->range_1 = new Wbcr_FactoryForms466_TextboxControl($options['range_1'], $form, $provider);
+				$this->range_2 = new Wbcr_FactoryForms466_TextboxControl($options['range_2'], $form, $provider);
+>>>>>>> update
 				$this->inner_controls = array($this->range_1, $this->range_2);
 
 				foreach($this->inner_controls as $key => $control) {

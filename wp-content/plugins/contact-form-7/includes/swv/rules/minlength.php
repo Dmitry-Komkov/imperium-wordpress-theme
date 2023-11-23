@@ -43,7 +43,10 @@ class WPCF7_SWV_MinLengthRule extends WPCF7_SWV_Rule {
 		}
 	}
 
+<<<<<<< HEAD
 	public function to_array() {
 		return array( 'rule' => self::rule_name ) + (array) $this->properties;
 	}
+=======
+>>>>>>> update
 }

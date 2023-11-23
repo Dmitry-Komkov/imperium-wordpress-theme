@@ -106,7 +106,11 @@ public function updraftplus_getResumeUri() { return $this->resumeUri; }
     $this->request = $request;
     $this->mimeType = $mimeType;
     $this->data = $data;
+<<<<<<< HEAD
     $this->size = strlen($this->data);
+=======
+    $this->size = is_null($this->data) ? 0 : strlen($this->data);
+>>>>>>> update
     $this->resumable = $resumable;
     if (!$chunkSize) {
       $chunkSize = 256 * 1024;

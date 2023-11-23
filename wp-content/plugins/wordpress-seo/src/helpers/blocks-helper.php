@@ -81,6 +81,13 @@ class Blocks_Helper {
 	 */
 	private function collect_blocks( $blocks, $collection ) {
 		foreach ( $blocks as $block ) {
+<<<<<<< HEAD
+=======
+			if ( empty( $block['blockName'] ) ) {
+				continue;
+			}
+
+>>>>>>> update
 			if ( ! isset( $collection[ $block['blockName'] ] ) || ! \is_array( $collection[ $block['blockName'] ] ) ) {
 				$collection[ $block['blockName'] ] = [];
 			}

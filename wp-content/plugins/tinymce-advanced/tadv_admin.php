@@ -120,6 +120,7 @@ $all_buttons = $this->get_all_buttons();
 // TODO admin || SA
 $this->warn_if_unsupported();
 
+<<<<<<< HEAD
 // Add a notice that the plugin was renamed.
 // Remove in the bnext version.
 ?>
@@ -128,6 +129,8 @@ $this->warn_if_unsupported();
 </p></div>
 <?php
 
+=======
+>>>>>>> update
 if ( isset( $_POST['tadv-save'] ) && empty( $message ) ) {
 	?><div class="updated notice notice-success is-dismissible"><p><?php _e( 'Settings saved.', 'tinymce-advanced' ); ?></p></div><?php
 } else {
@@ -156,6 +159,7 @@ $dashicons_arrow = is_rtl() ? 'dashicons-arrow-left' : 'dashicons-arrow-right';
 </div>
 
 <div id="block-editor">
+<<<<<<< HEAD
 <h4><?php _e( 'Toolbars for the Block Editor', 'tinymce-advanced' ); ?></h4>
 <div class="block-toolbars">
 <?php
@@ -417,6 +421,28 @@ $dashicons_arrow = is_rtl() ? 'dashicons-arrow-left' : 'dashicons-arrow-right';
 		<br clear="both">
 	</div>
 
+=======
+<h4><?php _e( 'Additional buttons for the Rich-Text toolbar', 'tinymce-advanced' ); ?></h4>
+<div class="block-toolbars yes-no-wrap">
+	<div class="yes-no-text">
+		<p>
+			<?php _e( 'The <b>Mark</b> button will wrap the selected text in a plain &lt;mark&gt; HTML element. The appearance would depend on your theme and usually resembles highlighted text.', 'tinymce-advanced' ); ?>
+		</p>
+		<p>
+			<?php _e( 'The <b>Clear formatting</b> button will remove text formatting from the selected text, or from the whole paragraph if there is no selection. This includes femoval of most text styling like bold, italic, underline, background and foreground color, etc.', 'tinymce-advanced' ); ?>
+		</p>
+	</div>
+	<div class="yes-no-buttons">
+		<div>
+			<input type="radio" name="richtext_buttons" id="richtext_buttons_yes" value="yes"<?php if ( ! $this->check_user_setting( 'disable_richtext_buttons' ) ) echo ' checked'; ?>>
+			<label for="richtext_buttons_yes"><?php _e( 'Enable', 'tinymce-advanced' ); ?></label>
+		</div>
+		<div>
+			<input type="radio" name="richtext_buttons" id="richtext_buttons_no"  value="no"<?php if ( $this->check_user_setting( 'disable_richtext_buttons' ) ) echo ' checked'; ?>>
+			<label for="richtext_buttons_no"><?php _e( 'Disable', 'tinymce-advanced' ); ?></label>
+		</div>
+	</div>
+>>>>>>> update
 </div>
 
 <h4 class="classic-blocks-title-h4"><?php _e( 'Toolbars for the Classic Paragraph and Classic blocks', 'tinymce-advanced' ); ?></h4>
@@ -979,7 +1005,18 @@ if ( ! is_multisite() || current_user_can( 'manage_sites' ) ) {
 	<?php
 
 }
+<<<<<<< HEAD
 ?>
+=======
+
+
+// Add a notice that the plugin was renamed.
+?>
+<p>
+	<span class="dashicons dashicons-info" style="color: #777;"></span>
+	<?php _e( 'Please note: This plugin was renamed from "TinyMCE Advanced" to "Advanced Editor Tools". The plugin functionality remains the same.', 'tinymce-advanced' ); ?>
+</p>
+>>>>>>> update
 
 <hr>
 

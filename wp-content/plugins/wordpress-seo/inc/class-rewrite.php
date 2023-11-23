@@ -34,6 +34,7 @@ class WPSEO_Rewrite {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * If the flush option is set, flush the rewrite rules.
 	 *
 	 * @since 1.2.8
@@ -56,6 +57,8 @@ class WPSEO_Rewrite {
 	}
 
 	/**
+=======
+>>>>>>> update
 	 * Override the category link to remove the category base.
 	 *
 	 * @param string  $link     Term link, overridden by the function for categories.

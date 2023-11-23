@@ -1,6 +1,10 @@
 <?php
 /**
+<<<<<<< HEAD
  * Plugin Name: Robin image optimizer premium
+=======
+ * Plugin Name: Webcraftic Robin image optimizer premium
+>>>>>>> update
  * Plugin URI: https://robin-image-optimizer.webcraftic.com
  * Description: This is an extension for the plugin Robin image optimizer. Adds additional functions: Converting images to Webp, optimization of arbitrary directories, optimization of the Nextgen gallery.
  * Author: Webcraftic <wordpress.webraftic@gmail.com>

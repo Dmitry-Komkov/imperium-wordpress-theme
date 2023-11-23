@@ -12,6 +12,16 @@ use YoastSEO_Vendor\Symfony\Component\DependencyInjection\ContainerInterface;
 class Classes_Surface {
 
 	/**
+<<<<<<< HEAD
+=======
+	 * The dependency injection container.
+	 *
+	 * @var ContainerInterface
+	 */
+	public $container;
+
+	/**
+>>>>>>> update
 	 * Loader constructor.
 	 *
 	 * @param ContainerInterface $container The dependency injection container.

@@ -47,7 +47,11 @@ function acf_get_meta( $post_id = 0 ) {
 	}
 
 	// Unserialized results (get_metadata does not unserialize if $key is empty).
+<<<<<<< HEAD
 	$meta = array_map( 'maybe_unserialize', $meta );
+=======
+	$meta = array_map( 'acf_maybe_unserialize', $meta );
+>>>>>>> update
 
 	/**
 	 * Filters the $meta array after it has been loaded.

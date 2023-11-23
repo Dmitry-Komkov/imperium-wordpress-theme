@@ -1,20 +1,34 @@
 <?php
 
+<<<<<<< HEAD
+=======
+declare (strict_types=1);
+>>>>>>> update
 namespace YoastSEO_Vendor\GuzzleHttp\Psr7;
 
 use YoastSEO_Vendor\Psr\Http\Message\StreamInterface;
 /**
  * Decorator used to return only a subset of a stream.
+<<<<<<< HEAD
  *
  * @final
  */
 class LimitStream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInterface
+=======
+ */
+final class LimitStream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInterface
+>>>>>>> update
 {
     use StreamDecoratorTrait;
     /** @var int Offset to start reading from */
     private $offset;
     /** @var int Limit the number of bytes that can be read */
     private $limit;
+<<<<<<< HEAD
+=======
+    /** @var StreamInterface */
+    private $stream;
+>>>>>>> update
     /**
      * @param StreamInterface $stream Stream to wrap
      * @param int             $limit  Total number of bytes to allow to be read
@@ -22,26 +36,39 @@ class LimitStream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInterface
      * @param int             $offset Position to seek to before reading (only
      *                                works on seekable streams).
      */
+<<<<<<< HEAD
     public function __construct(\YoastSEO_Vendor\Psr\Http\Message\StreamInterface $stream, $limit = -1, $offset = 0)
+=======
+    public function __construct(\YoastSEO_Vendor\Psr\Http\Message\StreamInterface $stream, int $limit = -1, int $offset = 0)
+>>>>>>> update
     {
         $this->stream = $stream;
         $this->setLimit($limit);
         $this->setOffset($offset);
     }
+<<<<<<< HEAD
     public function eof()
+=======
+    public function eof() : bool
+>>>>>>> update
     {
         // Always return true if the underlying stream is EOF
         if ($this->stream->eof()) {
             return \true;
         }
         // No limit and the underlying stream is not at EOF
+<<<<<<< HEAD
         if ($this->limit == -1) {
+=======
+        if ($this->limit === -1) {
+>>>>>>> update
             return \false;
         }
         return $this->stream->tell() >= $this->offset + $this->limit;
     }
     /**
      * Returns the size of the limited subset of data
+<<<<<<< HEAD
      * {@inheritdoc}
      */
     public function getSize()
@@ -49,6 +76,14 @@ class LimitStream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInterface
         if (null === ($length = $this->stream->getSize())) {
             return null;
         } elseif ($this->limit == -1) {
+=======
+     */
+    public function getSize() : ?int
+    {
+        if (null === ($length = $this->stream->getSize())) {
+            return null;
+        } elseif ($this->limit === -1) {
+>>>>>>> update
             return $length - $this->offset;
         } else {
             return \min($this->limit, $length - $this->offset);
@@ -56,9 +91,14 @@ class LimitStream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInterface
     }
     /**
      * Allow for a bounded seek on the read limited stream
+<<<<<<< HEAD
      * {@inheritdoc}
      */
     public function seek($offset, $whence = \SEEK_SET)
+=======
+     */
+    public function seek($offset, $whence = \SEEK_SET) : void
+>>>>>>> update
     {
         if ($whence !== \SEEK_SET || $offset < 0) {
             throw new \RuntimeException(\sprintf('Cannot seek to offset %s with whence %s', $offset, $whence));
@@ -73,9 +113,14 @@ class LimitStream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInterface
     }
     /**
      * Give a relative tell()
+<<<<<<< HEAD
      * {@inheritdoc}
      */
     public function tell()
+=======
+     */
+    public function tell() : int
+>>>>>>> update
     {
         return $this->stream->tell() - $this->offset;
     }
@@ -86,7 +131,11 @@ class LimitStream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInterface
      *
      * @throws \RuntimeException if the stream cannot be seeked.
      */
+<<<<<<< HEAD
     public function setOffset($offset)
+=======
+    public function setOffset(int $offset) : void
+>>>>>>> update
     {
         $current = $this->stream->tell();
         if ($current !== $offset) {
@@ -108,6 +157,7 @@ class LimitStream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInterface
      * @param int $limit Number of bytes to allow to be read from the stream.
      *                   Use -1 for no limit.
      */
+<<<<<<< HEAD
     public function setLimit($limit)
     {
         $this->limit = $limit;
@@ -115,6 +165,15 @@ class LimitStream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInterface
     public function read($length)
     {
         if ($this->limit == -1) {
+=======
+    public function setLimit(int $limit) : void
+    {
+        $this->limit = $limit;
+    }
+    public function read($length) : string
+    {
+        if ($this->limit === -1) {
+>>>>>>> update
             return $this->stream->read($length);
         }
         // Check if the current position is less than the total allowed

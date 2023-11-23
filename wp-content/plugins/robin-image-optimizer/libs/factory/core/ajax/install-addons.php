@@ -15,7 +15,11 @@ if( !defined('ABSPATH') ) {
 /**
  * This action allows you to process Ajax requests to activate external components Clearfy
  */
+<<<<<<< HEAD
 function wfactory_450_install_components($plugin_instance)
+=======
+function wfactory_469_install_components($plugin_instance)
+>>>>>>> update
 {
 	check_ajax_referer('updates');
 
@@ -24,11 +28,19 @@ function wfactory_450_install_components($plugin_instance)
 	$storage = $plugin_instance->request->post('storage', null, true);
 
 	if( !current_user_can('update_plugins') ) {
+<<<<<<< HEAD
 		wp_die(__('You don\'t have enough capability to edit this information.', 'wbcr_factory_450'), __('Something went wrong.'), 403);
 	}
 
 	if( empty($slug) || empty($action) ) {
 		wp_send_json_error(['error_message' => __('Required attributes are not passed or empty.', 'wbcr_factory_450')]);
+=======
+		wp_die(__('You don\'t have enough capability to edit this information.', 'wbcr_factory_469'), __('Something went wrong.'), 403);
+	}
+
+	if( empty($slug) || empty($action) ) {
+		wp_send_json_error(['error_message' => __('Required attributes are not passed or empty.', 'wbcr_factory_469')]);
+>>>>>>> update
 	}
 	$success = false;
 	$send_data = [];
@@ -44,7 +56,11 @@ function wfactory_450_install_components($plugin_instance)
 				$success = true;
 			}
 		} else {
+<<<<<<< HEAD
 			wp_send_json_error(['error_message' => __('You are trying to perform an invalid action.', 'wbcr_factory_450')]);
+=======
+			wp_send_json_error(['error_message' => __('You are trying to perform an invalid action.', 'wbcr_factory_469')]);
+>>>>>>> update
 		}
 	} else if( $storage == 'wordpress' || $storage == 'creativemotion' ) {
 		if( !empty($slug) ) {
@@ -80,7 +96,11 @@ function wfactory_450_install_components($plugin_instance)
 	/*if ( $action == 'deactivate' ) {
 		$is_need_rewrite_rules = $plugin_instance->getPopulateOption( 'need_rewrite_rules' );
 		if ( $is_need_rewrite_rules ) {
+<<<<<<< HEAD
 			$send_data['need_rewrite_rules'] = sprintf( '<span class="wbcr-clr-need-rewrite-rules-message">' . __( 'When you deactivate some components, permanent links may work incorrectly. If this happens, please, <a href="%s">update the permalinks</a>, so you could complete the deactivation.', 'wbcr_factory_450' ), admin_url( 'options-permalink.php' ) . '</span>' );
+=======
+			$send_data['need_rewrite_rules'] = sprintf( '<span class="wbcr-clr-need-rewrite-rules-message">' . __( 'When you deactivate some components, permanent links may work incorrectly. If this happens, please, <a href="%s">update the permalinks</a>, so you could complete the deactivation.', 'wbcr_factory_469' ), admin_url( 'options-permalink.php' ) . '</span>' );
+>>>>>>> update
 		}
 	}*/
 
@@ -94,7 +114,11 @@ function wfactory_450_install_components($plugin_instance)
 		wp_send_json_success($send_data);
 	}
 
+<<<<<<< HEAD
 	wp_send_json_error(['error_message' => __('An unknown error occurred during the activation of the component.', 'wbcr_factory_450')]);
+=======
+	wp_send_json_error(['error_message' => __('An unknown error occurred during the activation of the component.', 'wbcr_factory_469')]);
+>>>>>>> update
 }
 
 /**
@@ -102,18 +126,30 @@ function wfactory_450_install_components($plugin_instance)
  * to get the component to work. Usually this is a call to the installation functions,
  * but in some cases, overwriting permanent references or compatibility checks.
  */
+<<<<<<< HEAD
 function wfactory_450_prepare_component($plugin_instance)
+=======
+function wfactory_469_prepare_component($plugin_instance)
+>>>>>>> update
 {
 	check_ajax_referer('updates');
 
 	$component_name = $plugin_instance->request->post('plugin', null, true);
 
 	if( !current_user_can('update_plugins') ) {
+<<<<<<< HEAD
 		wp_send_json_error(['error_message' => __('You don\'t have enough capability to edit this information.', 'wbcr_factory_450')], 403);
 	}
 
 	if( empty($component_name) ) {
 		wp_send_json_error(['error_message' => __('Required attribute [component_name] is empty.', 'wbcr_factory_450')]);
+=======
+		wp_send_json_error(['error_message' => __('You don\'t have enough capability to edit this information.', 'wbcr_factory_469')], 403);
+	}
+
+	if( empty($component_name) ) {
+		wp_send_json_error(['error_message' => __('Required attribute [component_name] is empty.', 'wbcr_factory_469')]);
+>>>>>>> update
 	}
 	// todo: для совместимости с плагином Clearfy
 	if( "wbcr_clearfy" === $plugin_instance->getPluginName() ) {
@@ -133,7 +169,11 @@ function wfactory_450_prepare_component($plugin_instance)
  *
  * @global WP_Filesystem_Base $wp_filesystem WordPress filesystem subclass.
  */
+<<<<<<< HEAD
 function wfactory_450_creativemotion_install_plugin($plugin_instance)
+=======
+function wfactory_469_creativemotion_install_plugin($plugin_instance)
+>>>>>>> update
 {
 	check_ajax_referer('updates');
 

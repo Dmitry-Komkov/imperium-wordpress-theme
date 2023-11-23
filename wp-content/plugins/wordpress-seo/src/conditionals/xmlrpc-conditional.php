@@ -16,4 +16,7 @@ class XMLRPC_Conditional implements Conditional {
 		return ( \defined( 'XMLRPC_REQUEST' ) && \XMLRPC_REQUEST );
 	}
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> update

@@ -254,7 +254,11 @@ class GoogleSitemapGeneratorUI {
 				}
 
 				echo "<div class='wrap'>";
+<<<<<<< HEAD
 				echo '<h2>' . esc_html( __( 'XML Sitemap Generator for WordPress', 'sitemap' ) ) . ' ' . esc_html( $this->sg->get_version() ) . '</h2>';
+=======
+				echo '<h2>' . esc_html( __( 'XML Sitemap Generator for Google', 'sitemap' ) ) . ' ' . esc_html( $this->sg->get_version() ) . '</h2>';
+>>>>>>> update
 				echo '<p>This is the debug mode of the XML Sitemap Generator. It will show all PHP notices and warnings as well as the internal logs, messages and configuration.</p>';
 				echo "<p style='font-weight:bold; color:red; padding:5px; border:1px red solid; text-align:center;'>DO NOT POST THIS INFORMATION ON PUBLIC PAGES LIKE SUPPORT FORUMS AS IT MAY CONTAIN PASSWORDS OR SECRET SERVER INFORMATION!</p>";
 				echo '<h3>WordPress and PHP Information</h3>';
@@ -368,6 +372,10 @@ class GoogleSitemapGeneratorUI {
 				$_POST['sm_b_style']         = '';
 			}
 
+<<<<<<< HEAD
+=======
+			$old_name = '';
+>>>>>>> update
 			foreach ( $this->sg->get_options() as $k => $v ) {
 				// Skip some options if the user is not super admin...
 				if ( ! is_super_admin() && in_array( $k, array( 'sm_b_time', 'sm_b_memory', 'sm_b_style', 'sm_b_style_default' ), true ) ) {
@@ -380,7 +388,11 @@ class GoogleSitemapGeneratorUI {
 				} // Empty string will get false on 2bool and 0 on 2float
 				// Options of the category 'Basic Settings' are boolean, except the filename and the autoprio provider.
 				if ( substr( $k, 0, 5 ) === 'sm_b_' ) {
+<<<<<<< HEAD
 					if ( 'sm_b_prio_provider' === $k || 'sm_b_style' === $k || 'sm_b_memory' === $k || 'sm_b_baseurl' === $k || 'sm_b_sitemap_name' === $k ) {
+=======
+					if ( 'sm_b_prio_provider' === $k || 'sm_b_style' === $k || 'sm_b_memory' === $k || 'sm_b_baseurl' === $k || 'sm_b_sitemap_name' === $k || 'sm_b_old_sm_name' === $k ) {
+>>>>>>> update
 						if ( 'sm_b_filename_manual' === $k && strpos( sanitize_text_field( wp_unslash( $_POST[ $k ] ) ), '\\' ) !== false ) {
 							$_POST[ $k ] = stripslashes( self::escape( sanitize_text_field( wp_unslash( $_POST[ $k ] ) ) ) );
 						} elseif ( 'sm_b_baseurl' === $k ) {
@@ -394,6 +406,10 @@ class GoogleSitemapGeneratorUI {
 								$_POST[ $k ] = untrailingslashit( sanitize_text_field( wp_unslash( $_POST[ $k ] ) ) );
 							}
 						} elseif ( 'sm_b_sitemap_name' === $k ) {
+<<<<<<< HEAD
+=======
+							$old_name = $v;
+>>>>>>> update
 							if ( '' === $_POST[ $k ] ) {
 								$_POST[ $k ] = 'sitemap';
 							} else {
@@ -402,6 +418,11 @@ class GoogleSitemapGeneratorUI {
 									$this->sg->delete_old_files();
 								}
 							}
+<<<<<<< HEAD
+=======
+						} elseif ( 'sm_b_old_sm_name' === $k ) {
+							$_POST[ $k ] = $old_name;
+>>>>>>> update
 						}
 						$this->sg->set_option( $k, (string) sanitize_text_field( wp_unslash( $_POST[ $k ] ) ) );
 					} elseif ( 'sm_b_time' === $k ) {
@@ -460,6 +481,17 @@ class GoogleSitemapGeneratorUI {
 				} elseif ( 'sm_i_tid' === $k ) {
 					// $_POST[ $k ] = trim( self::escape( sanitize_text_field( wp_unslash( $_POST[ $k ] ) ) ) );
 					$this->sg->set_option( $k, trim( self::escape( sanitize_text_field( wp_unslash( $_POST[ $k ] ) ) ) ) );
+<<<<<<< HEAD
+=======
+				} elseif ( 'sm_user_consent' === $k ) {
+
+					$allow_cookies = (bool) sanitize_text_field( wp_unslash( $_POST[ $k ] ) );
+					if ( $allow_cookies ) {
+						update_option( 'sm_user_consent', 'yes' );
+					} else {
+						update_option( 'sm_user_consent', 'no' );
+					}
+>>>>>>> update
 				} elseif ( substr( $k, 0, 6 ) === 'sm_in_' ) {
 					if ( 'sm_in_tax' === $k ) {
 
@@ -528,9 +560,21 @@ class GoogleSitemapGeneratorUI {
 			}
 		} elseif ( ! empty( $_POST['sm_reset_config'] ) ) { // Pressed Button: Reset Config.
 			check_admin_referer( 'sitemap' );
+<<<<<<< HEAD
 			$this->sg->init_options();
 			$this->sg->save_options();
 
+=======
+			delete_option( 'sm_show_beta_banner' );
+			delete_option( 'sm_beta_banner_discarded_on' );
+			delete_option( 'sm_beta_banner_discarded_count' );
+			delete_option( 'sm_beta_notice_dismissed_from_wp_admin' );
+			delete_option( 'sm_user_consent' );
+			delete_option( 'sm_hide_auto_update_banner' );
+			delete_option( 'sm_disabe_other_plugin' );
+			$this->sg->init_options();
+			$this->sg->save_options();
+>>>>>>> update
 			$message .= __( 'The default configuration was restored.', 'sitemap' );
 		} elseif ( ! empty( $_GET['sm_delete_old'] ) ) { // Delete old sitemap files.
 			check_admin_referer( 'sitemap' );
@@ -612,6 +656,7 @@ class GoogleSitemapGeneratorUI {
 			<?php
 				exit;
 		} elseif ( ! empty( $_GET['sm_ping_main'] ) ) {
+<<<<<<< HEAD
 			if ( null !== $this->sg->get_option( 'i_tid' ) && '' !== $this->sg->get_option( 'i_tid' ) ) {
 				check_admin_referer( 'sitemap' );
 
@@ -640,6 +685,21 @@ class GoogleSitemapGeneratorUI {
 					</div>
 				<?php
 			}
+=======
+			check_admin_referer( 'sitemap' );
+
+				// Check again, just for the case that something went wrong before.
+			if ( ! current_user_can( 'administrator' ) ) {
+				echo '<p>Please log in as admin</p>';
+				return;
+			}
+
+			$this->sg->send_ping();
+			$message = __( 'Ping was executed, please see below for the result.', 'sitemap' );
+		} elseif ( get_option( 'sm_beta_opt_in' ) ) {
+			delete_option( 'sm_beta_opt_in' );
+			$message = __( 'Thanks for for supporting the project. We will reach out by email shortly.', 'sitemap' );
+>>>>>>> update
 		}
 
 		// Print out the message to the user, if any.
@@ -703,8 +763,38 @@ class GoogleSitemapGeneratorUI {
 				?>
 				<!--
 				<div class="updated">
+<<<<<<< HEAD
 					<strong><p><?php echo esc_html( str_replace( '%s', $this->sg->get_redirect_link( 'redir/sitemap-donate-note' ), __( 'Thanks for using this plugin! You\'ve installed this plugin over a month ago. If it works and you are satisfied with the results, isn\'t it worth at least a few dollar? <a href="https://8rkh4sskhh.execute-api.us-east-1.amazonaws.com/gsg/v1/sitemap-donate-note">Donations</a> help me to continue support and development of this <i>free</i> software! <a href="https://8rkh4sskhh.execute-api.us-east-1.amazonaws.com/gsg/v1/sitemap-donate-note">Sure, no problem!</a>', 'sitemap' ) ) ); ?> <a href="<?php echo esc_url( $this->sg->get_back_link() ) . '&amp;sm_donated=true'; ?>" style="float:right; display:block; border:none; margin-left:10px;"><small style="font-weight:normal; "><?php esc_html_e( 'Sure, but I already did!', 'sitemap' ); ?></small></a> <a href="<?php echo esc_url( $this->sg->get_back_link() ) . '&amp;sm_hide_note=true'; ?>" style="float:right; display:block; border:none;"><small style="font-weight:normal; "><?php esc_html_e( 'No thanks, please don\'t bug me anymore!', 'sitemap' ); ?></small></a></p></strong>
 					<div style="clear:right;"></div>
+=======
+					<strong><p>
+						<?php
+						$arr = array(
+							'br'     => array(),
+							'p'      => array(),
+							'a'      => array(
+								'href' => array(),
+							),
+							'strong' => array(),
+						);
+						/* translators: %s: search term */
+						echo wp_kses(
+							str_replace(
+								'%s',
+								$this->sg->get_redirect_link( 'redir/sitemap-donate-note' ),
+								__(
+									'Thanks for using this plugin! You\'ve installed this plugin over a month ago. If it works and you are satisfied with the results, isn\'t it worth at least a few dollar? <a href="https://8rkh4sskhh.execute-api.us-east-1.amazonaws.com/gsg/v1/sitemap-donate-note">Donations</a> help me to continue support and development of this <i>free</i> software! <a href="https://8rkh4sskhh.execute-api.us-east-1.amazonaws.com/gsg/v1/sitemap-donate-note">Sure, no problem!</a>',
+									'sitemap'
+								)
+							),
+							$arr
+						);
+						?>
+						-->
+						<a href="<?php echo esc_url( $this->sg->get_back_link() ) . '&amp;sm_donated=true'; ?>" style="float:right; display:block; border:none; margin-left:10px;"><small style="font-weight:normal; "><?php esc_html_e( 'Sure, but I already did!', 'sitemap' ); ?></small></a> <a href="<?php echo esc_url( $this->sg->get_back_link() ) . '&amp;sm_hide_note=true'; ?>" style="float:right; display:block; border:none;"><small style="font-weight:normal; "><?php esc_html_e( 'No thanks, please don\'t bug me anymore!', 'sitemap' ); ?></small></a></p></strong>
+					<div style="clear:right;"></div>
+					<!--
+>>>>>>> update
 				</div>
 				-->
 				<?php
@@ -713,7 +803,28 @@ class GoogleSitemapGeneratorUI {
 				<div class='updated'>
 					<strong>
 					<?php /* translators: %s: search term */ ?>
+<<<<<<< HEAD
 					<p><?php echo esc_html( str_replace( '%s', esc_html( $this->sg->get_redirect_link( 'redir/sitemap-works-note' ) ), esc_html( 'Thanks for using this plugin! You\'ve installed this plugin some time ago. If it works and your are satisfied, why not ' . esc_html( '<a href=\'%s\'>rate it</a>' ) . ' and <a href=\'%s\'>recommend it</a> to others? :-)' ) ) ); ?> <a href='<?php esc_url( $this->sg->get_back_link() ) . '&amp;sm_hide_works=true'; ?>' style='float:right; display:block; border:none;'><small style='font-weight:normal; '><?php esc_html_e( 'Don\'t show this me anymore', 'sitemap' ); ?></small></a></p>
+=======
+					<p>
+						<?php
+						$arr = array(
+							'br'     => array(),
+							'p'      => array(),
+							'a'      => array(
+								'href' => array(),
+							),
+							'strong' => array(),
+						);
+						/* translators: %s: search term */
+						echo wp_kses( str_replace( array( '%1$s', '%2$s' ), $this->sg->get_redirect_link( 'redir/sitemap-works-note' ), __( 'Thanks for using this plugin! You\'ve installed this plugin some time ago. If it works and your are satisfied, why not <a href=\'%1$s\'>rate it</a>. and <a href=\'%2$s\'>recommend it</a> to others? :-)', 'sitemap' ) ), $arr );
+						?>
+						<a href='<?php echo esc_url( $this->sg->get_back_link() ) . '&amp;sm_hide_works=true'; ?>' style='float:right; display:block; border:none;'><small style='font-weight:normal; '>
+						<?php
+						esc_html_e( 'Don\'t show this me anymore', 'sitemap' );
+						?>
+					</small></a></p>
+>>>>>>> update
 					</strong>
 					<div style='clear:right;'></div>
 				</div>
@@ -753,7 +864,18 @@ class GoogleSitemapGeneratorUI {
 				text-decoration: none;
 				border: none;
 			}
+<<<<<<< HEAD
 
+=======
+			input#sm_user_consent{
+				margin-top: 0px;
+			}
+			label#sm_user_consent_label{
+				display: flex;
+				align-items: center;
+				text-align: center;
+			}
+>>>>>>> update
 			a.sm_button:hover {
 				border-bottom-width: 1px;
 			}
@@ -822,8 +944,102 @@ class GoogleSitemapGeneratorUI {
 				-ms-user-select: auto !important;
 				user-select: auto !important;
 			}
+<<<<<<< HEAD
 
 
+=======
+			.modal-wrapper {
+				position: fixed;
+				display: flex;
+				z-index: 100;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(0, 0, 0, 0.5);			
+				opacity: 1;
+				visibility: visible;
+				transform: scale(1.0);
+				transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+			}
+			#close_popup {
+				border: none;
+				height: 20px;
+				width: 25px;
+				padding: 0px;
+				position: absolute;
+				right: 15px;
+				top: 0;
+				margin-top: 25px;
+				cursor: pointer;
+			}
+			.close_cookie_information{
+				height: 20px;
+				width: 25px;
+			}
+
+			.modal-container {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			background-color: white;
+			padding: 1rem 1.5rem;
+			width: 35rem;
+			border-radius: 0.5rem;
+			z-index: 100;
+			}
+			.allow_consent {
+				color: #ffffff;
+				border-color: #ffffff;
+				background-color: #008078;
+				margin-right: 1em;
+				min-width: 100px;
+				height: auto;
+				white-space: normal;
+				word-break: break-word;
+				word-wrap: break-word;
+				padding: 12px 10px;
+				cursor: pointer;
+			}
+			.cookie-info-banner-wrapper {
+				position: fixed;
+				z-index: 100;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(0, 0, 0, 0.5);
+				opacity: 1;
+				display: none;
+				transform: scale(1.0);
+				transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+			}
+			.decline_consent {
+				background-color: #fff;
+				border-color:  #ef4056 ;
+				color:  #ef4056 ;
+				text-decoration: none;
+				min-width: 100px;
+				height: auto;
+				white-space: normal;
+				word-break: break-word;
+				word-wrap: break-word;
+				padding: 12px 10px;
+				cursor: pointer;
+			}
+			.more_info_button {
+				border: none;
+				height: 25px;
+				width: 25px;
+				padding: 0px;
+				cursor: pointer;
+			}
+			.more_info {
+				height: 20px;
+				width: 20px;
+			}
+>>>>>>> update
 			<?php
 			if ( version_compare( $wp_version, '3.4', '<' ) ) : // Fix style for WP 3.4 (dirty way for now..) .
 				?>
@@ -857,6 +1073,7 @@ class GoogleSitemapGeneratorUI {
 
 			<?php endif; ?>
 		</style>
+<<<<<<< HEAD
 
 
 		<div class='wrap' id='sm_div'>
@@ -864,6 +1081,20 @@ class GoogleSitemapGeneratorUI {
 				<h2>
 					<?php
 					esc_html_e( 'XML Sitemap Generator for WordPress', 'sitemap' );
+=======
+		<div class='wrap' id='sm_div'>
+			<?php
+			$user      = wp_get_current_user();
+			$useremail = $user->user_email;
+			?>
+			<input type="hidden" id="wp_version" name="wp_version" value="<?php echo esc_attr( $wp_version ); ?>" />
+			<input type="hidden" id="plugin_version" name="plugin_version" value="<?php echo esc_attr( $this->sg->get_version() ); ?>" />
+			<input type="hidden" id="user_email" name="user_email" value="<?php echo esc_attr( $useremail ); ?>" />
+			<form method='post' action='<?php echo esc_url( $this->sg->get_back_link() ); ?>'>
+				<h2>
+					<?php
+					esc_html_e( 'XML Sitemap Generator for Google', 'sitemap' );
+>>>>>>> update
 					echo ' ' . esc_html( $this->sg->get_version() );
 					?>
 				</h2>
@@ -883,7 +1114,11 @@ class GoogleSitemapGeneratorUI {
 							'strong' => array(),
 						);
 						/* translators: %s: search term */
+<<<<<<< HEAD
 						echo wp_kses( str_replace( '%s', 'options-reading.php#blog_public', __( 'Your site is currently blocking search engines! Visit the <a href=\'%s\'>Reading Settings</a> to change this.', 'sitemap' ) ), $arr );
+=======
+						echo wp_kses( str_replace( '%s', 'options-reading.php#blog_public', __( 'Your <a href=\'%s\'>Reading Settings</a> signal to search engines not to index your website. While your sitemap will still be generated, the "Search engine visibility" setting should de-selected for optimal indexation.', 'sitemap' ) ), $arr );
+>>>>>>> update
 						?>
 						</p>
 					</div>
@@ -905,9 +1140,15 @@ class GoogleSitemapGeneratorUI {
 									<?php $this->html_print_box_header( 'sm_pnres', __( 'About this Plugin:', 'sitemap' ), true ); ?>
 									<a class='sm_button' href='<?php echo esc_url( $this->sg->get_redirect_link( 'redir/sitemap-home' ) ); ?>'><?php esc_html_e( 'Plugin Homepage', 'sitemap' ); ?></a>
 									<a class='sm_button' href='<?php echo esc_url( $this->sg->get_redirect_link( 'redir/sitemap-support' ) ); ?>'><?php esc_html_e( 'Suggest a Feature', 'sitemap' ); ?></a>
+<<<<<<< HEAD
 									<a class='sm_button' href='<?php echo esc_url( $this->sg->get_redirect_link( 'redir/sitemap-help' ) ); ?>'><?php esc_html_e( 'Help / FAQ', 'sitemap' ); ?></a>
 									<a class='sm_button' href='<?php echo esc_url( $this->sg->get_redirect_link( 'redir/sitemap-list' ) ); ?>'><?php esc_html_e( 'Notify List', 'sitemap' ); ?></a>
 									<a class='sm_button' href='<?php echo esc_url( $this->sg->get_redirect_link( 'redir/sitemap-support' ) ); ?>'><?php esc_html_e( 'Support Forum', 'sitemap' ); ?></a>
+=======
+									<a class='sm_button' href='<?php echo esc_url( $this->sg->get_redirect_link( 'redir/sitemap-help' ) ); ?>'><?php esc_html_e( 'View Frequently Asked Questions', 'sitemap' ); ?></a>
+									<a class='sm_button' href='<?php echo esc_url( $this->sg->get_redirect_link( 'redir/sitemap-list' ) ); ?>'><?php esc_html_e( 'Follow the Forum', 'sitemap' ); ?></a>
+									<a class='sm_button' href='<?php echo esc_url( $this->sg->get_redirect_link( 'redir/sitemap-support' ) ); ?>'><?php esc_html_e( 'Visit Support Forum', 'sitemap' ); ?></a>
+>>>>>>> update
 									<a class='sm_button' href='<?php echo esc_url( $this->sg->get_redirect_link( 'redir/sitemap-bugs' ) ); ?>'><?php esc_html_e( 'Report a Bug', 'sitemap' ); ?></a>
 									<?php
 									if ( __( 'translator_name', 'sitemap' ) !== 'translator_name' ) {
@@ -916,6 +1157,7 @@ class GoogleSitemapGeneratorUI {
 									<?php $this->html_print_box_footer( true ); ?>
 
 									<?php $this->html_print_box_header( 'sm_smres', __( 'Sitemap Resources:', 'sitemap' ), true ); ?>
+<<<<<<< HEAD
 									<a class='sm_button' href='<?php echo esc_url( $this->sg->get_redirect_link( 'redir/sitemap-gwt' ) ); ?>'><?php esc_html_e( 'Webmaster Tools', 'sitemap' ); ?></a>
 									<a class='sm_button' href='<?php echo esc_url( $this->sg->get_redirect_link( 'redir/sitemap-gwb' ) ); ?>'><?php esc_html_e( 'Webmaster Blog', 'sitemap' ); ?></a>
 									<a class='sm_button' href='<?php echo esc_url( $this->sg->get_redirect_link( 'redir/sitemap-ywb' ) ); ?>'><?php esc_html_e( 'Search Blog', 'sitemap' ); ?></a>
@@ -925,6 +1167,15 @@ class GoogleSitemapGeneratorUI {
 									<a class='sm_button' href='<?php echo esc_url( $this->sg->get_redirect_link( 'redir/sitemap-prot' ) ); ?>'><?php esc_html_e( 'Sitemaps Protocol', 'sitemap' ); ?></a>
 									<a class='sm_button' href='<?php echo esc_url( $this->sg->get_redirect_link( 'projects/wordpress-plugins/google-xml-sitemaps-generator/help' ) ); ?>'><?php esc_html_e( 'Official Sitemaps FAQ', 'sitemap' ); ?></a>
 									<a class='sm_button' href='<?php echo esc_url( $this->sg->get_redirect_link( 'projects/wordpress-plugins/google-xml-sitemaps-generator/help' ) ); ?>'><?php esc_html_e( 'My Sitemaps FAQ', 'sitemap' ); ?></a>
+=======
+									<a class='sm_button' href='<?php echo esc_url( $this->sg->get_redirect_link( 'redir/sitemap-gwt' ) ); ?>'><?php esc_html_e( 'Google Search Console', 'sitemap' ); ?></a>
+									<a class='sm_button' href='<?php echo esc_url( $this->sg->get_redirect_link( 'redir/sitemap-ywb' ) ); ?>'><?php esc_html_e( 'Google Search Blog', 'sitemap' ); ?></a>
+									<a class='sm_button' href='<?php echo esc_url( $this->sg->get_redirect_link( 'redir/sitemap-gwb' ) ); ?>'><?php esc_html_e( 'Bing Webmaster Tools', 'sitemap' ); ?></a>
+									<a class='sm_button' href='<?php echo esc_url( $this->sg->get_redirect_link( 'redir/sitemap-lswcb' ) ); ?>'><?php esc_html_e( 'Microsoft Bing Blog', 'sitemap' ); ?></a>
+									<br />
+									<a class='sm_button' href='<?php echo esc_url( $this->sg->get_redirect_link( 'redir/sitemap-prot' ) ); ?>'><?php esc_html_e( 'Sitemaps Protocol', 'sitemap' ); ?></a>
+									<a class='sm_button' href='<?php echo esc_url( $this->sg->get_redirect_link( 'projects/wordpress-plugins/google-xml-sitemaps-generator/help' ) ); ?>'><?php esc_html_e( 'Official Sitemaps FAQ', 'sitemap' ); ?></a>
+>>>>>>> update
 									<?php $this->html_print_box_footer( true ); ?>
 
 
@@ -1041,7 +1292,11 @@ class GoogleSitemapGeneratorUI {
 											?>
 											<?php if ( $this->sg->get_option( 'b_ping' ) ) : ?>
 												<li>
+<<<<<<< HEAD
 													Notify Search Engines about <a href='<?php echo esc_url( wp_nonce_url( $this->sg->get_back_link() . '&sm_ping_main=true', 'sitemap' ) ); ?>'>your sitemap </a> or <a href='<?php echo esc_url( wp_nonce_url( $this->sg->get_back_link() . '&sm_ping_main=true', 'sitemap' ) ); ?>'>your main sitemap and all sub-sitemaps</a> now.
+=======
+													Notify Search Engines about <a id="ping_google" href='<?php echo esc_url( wp_nonce_url( $this->sg->get_back_link() . '&sm_ping_main=true', 'sitemap' ) ); ?>'>your sitemap </a> or <a id="ping_google" href='<?php echo esc_url( wp_nonce_url( $this->sg->get_back_link() . '&sm_ping_main=true', 'sitemap' ) ); ?>'>your main sitemap and all sub-sitemaps</a> now.
+>>>>>>> update
 												</li>
 											<?php endif; ?>
 											<?php
@@ -1086,7 +1341,11 @@ class GoogleSitemapGeneratorUI {
 												<?php
 												$rules = GoogleSitemapGeneratorLoader::get_ngin_x_rules();
 												foreach ( $rules as $rule ) {
+<<<<<<< HEAD
 													echo esc_html( $rule . '<br />' );
+=======
+													echo esc_html( $rule ) . '<br />'; // phpcs:ignore
+>>>>>>> update
 												}
 												?>
 											</code>
@@ -1098,7 +1357,11 @@ class GoogleSitemapGeneratorUI {
 									<!-- Basic Options -->
 									<?php $this->html_print_box_header( 'sm_basic_options', __( 'Basic Options', 'sitemap' ) ); ?>
 
+<<<<<<< HEAD
 									<b><?php esc_html_e( 'Update notification:', 'sitemap' ); ?></b> <a href='<?php echo esc_url( $this->sg->get_redirect_link( 'redir/sitemap-help-options-ping' ) ); ?>'><?php esc_html_e( 'Learn more', 'sitemap' ); ?></a>
+=======
+									<b><?php esc_html_e( 'Update notification:', 'sitemap' ); ?></b> <a href='<?php echo esc_url( $this->sg->get_redirect_link( 'redir/sitemap-help-options-ping' ) ); ?>' target='_blank'><?php esc_html_e( 'Learn more', 'sitemap' ); ?></a>
+>>>>>>> update
 									<ul>
 										<li>
 											<input type='checkbox' id='sm_b_ping' name='sm_b_ping' <?php echo ( $this->sg->get_option( 'b_ping' ) === true ? 'checked=\'checked\'' : '' ); ?> />
@@ -1114,7 +1377,11 @@ class GoogleSitemapGeneratorUI {
 												'strong' => array(),
 											);
 											/* translators: %s: search term */
+<<<<<<< HEAD
 											echo wp_kses( str_replace( '%s', $this->sg->get_redirect_link( 'redir/sitemap-gwt' ), __( 'No registration required, but you can join the <a href=\'%s\'>Google Webmaster Tools</a> to check crawling statistics.', 'sitemap' ) ), $arr );
+=======
+											echo wp_kses( str_replace( '%s', $this->sg->get_redirect_link( 'redir/sitemap-gwt' ), __( 'No registration required, but you can join the <a href=\'%s\' target=\'_blank\'>Google Search Console</a> to check crawling statistics.', 'sitemap' ) ), $arr );
+>>>>>>> update
 											?>
 											</small>
 										</li>
@@ -1131,7 +1398,11 @@ class GoogleSitemapGeneratorUI {
 
 									<?php if ( is_super_admin() ) : ?>
 
+<<<<<<< HEAD
 										<b><?php esc_html_e( 'Advanced options:', 'sitemap' ); ?></b> <a href='<?php echo esc_url( $this->sg->get_redirect_link( 'redir/sitemap-help-options-adv' ) ); ?>'><?php esc_html_e( 'Learn more', 'sitemap' ); ?></a>
+=======
+										<b><?php esc_html_e( 'Advanced options:', 'sitemap' ); ?></b> <a href='<?php echo esc_url( $this->sg->get_redirect_link( 'redir/sitemap-help-options-adv' ) ); ?>' target='_blank'><?php esc_html_e( 'Learn more', 'sitemap' ); ?></a>
+>>>>>>> update
 										<ul>
 											<li>
 											<label for="sm_b_memory"><?php esc_html_e( 'Try to increase the memory limit to:', 'sitemap' ); ?> <input type="text" name="sm_b_memory" id="sm_b_memory" style="width:40px;" value="<?php echo esc_attr( $this->sg->get_option( 'b_memory' ) ); ?>" /></label> ( <?php echo esc_html( htmlspecialchars( esc_html__( 'e.g. \'4M\', \'16M\'', 'sitemap' ) ) ); ?>)
@@ -1157,6 +1428,7 @@ class GoogleSitemapGeneratorUI {
 											</li>
 											<li>
 												<label for='sm_b_baseurl'><?php esc_html_e( 'Override the base URL of the sitemap:', 'sitemap' ); ?> <input type='text' name='sm_b_baseurl' id='sm_b_baseurl' value='<?php echo esc_attr( $this->sg->get_option( 'b_baseurl' ) ); ?>' /></label><br />
+<<<<<<< HEAD
 												<small><?php esc_html_e( 'Use this if your site is in a sub-directory, but you want the sitemap be located in the root. Requires .htaccess modification.', 'sitemap' ); ?> <a href='<?php echo esc_url( $this->sg->get_redirect_link( 'redir/sitemap-help-options-adv-baseurl' ) ); ?>'><?php esc_html_e( 'Learn more', 'sitemap' ); ?></a></small>
 											</li>
 											<li>
@@ -1165,6 +1437,13 @@ class GoogleSitemapGeneratorUI {
 											</li>
 											<li>
 												<label for='sm_i_tid'><?php esc_html_e( ' Add Google Analytics TID:', 'sitemap' ); ?> <input type='text' name='sm_i_tid' id='sm_i_tid' value='<?php echo esc_attr( $this->sg->get_option( 'i_tid' ) ); ?>' /></label><br />
+=======
+												<small><?php esc_html_e( 'Use this if your site is in a sub-directory, but you want the sitemap be located in the root. Requires .htaccess modification.', 'sitemap' ); ?> <a href='<?php echo esc_url( $this->sg->get_redirect_link( 'redir/sitemap-help-options-adv-baseurl' ) ); ?>' target='_blank'><?php esc_html_e( 'Learn more', 'sitemap' ); ?></a></small>
+											</li>
+											<li>
+												<label for='sm_b_sitemap_name'><?php esc_html_e( 'Override the file name of the sitemap:', 'sitemap' ); ?> <input type='text' name='sm_b_sitemap_name' id='sm_b_sitemap_name' value='<?php echo esc_attr( $this->sg->get_option( 'b_sitemap_name' ) ); ?>' /></label><br />
+												<small><?php esc_html_e( 'Use this if you want to change the sitemap file name', 'sitemap' ); ?> <a href='<?php echo esc_url( $this->sg->get_redirect_link( 'sitemap-help-options-adv-baseurl' ) ); ?>' target='_blank'><?php esc_html_e( 'Learn more', 'sitemap' ); ?></a></small>
+>>>>>>> update
 											</li>
 											<li>
 												<label for='sm_b_html'>
@@ -1183,12 +1462,15 @@ class GoogleSitemapGeneratorUI {
 													?>
 												</label>
 											</li>
+<<<<<<< HEAD
 											<li>
 												<label for='sm_b_stats'>
 													<input type='checkbox' id='sm_b_stats' name='sm_b_stats' <?php echo ( $this->sg->get_option( 'b_stats' ) === true ? 'checked=\'checked\'' : '' ); ?> />
 													<?php esc_html_e( 'Allow anonymous statistics (no personal information)', 'sitemap' ); ?>
 												</label> <label><a href='<?php echo esc_url( $this->sg->get_redirect_link( 'redir/sitemap-help-options-adv-stats' ) ); ?>'><?php esc_html_e( 'Learn more', 'sitemap' ); ?></a></label>
 											</li>
+=======
+>>>>>>> update
 										</ul>
 									<?php endif; ?>
 
@@ -1677,11 +1959,32 @@ class GoogleSitemapGeneratorUI {
 									<?php $this->html_print_box_footer(); ?>
 
 								</div>
+<<<<<<< HEAD
 								<div>
 									<p class='submit'>
 										<?php wp_nonce_field( 'sitemap' ); ?>
 										<input type='submit' class='button-primary' name='sm_update' value='<?php esc_html_e( 'Update options', 'sitemap' ); ?>' />
 										<input type='submit' onclick='return confirm('Do you really want to reset your configuration?');' class='sm_warning' name='sm_reset_config' value='<?php esc_html_e( 'Reset options', 'sitemap' ); ?>' />
+=======
+								<?php
+								if ( get_option( 'sm_user_consent' ) === 'yes' ) {
+									?>
+								<div>
+									<label for='sm_user_consent' id="sm_user_consent_label">
+										<input type='checkbox' id='sm_user_consent' name='sm_user_consent' <?php echo ( get_option( 'sm_user_consent' ) === 'yes' ? 'checked=\'checked\'' : '' ); ?> />
+										<?php esc_html_e( 'Help improve the software by sharing anonymous usage data with the developers.', 'sitemap' ); ?>
+										<button class="more_info_button" id="more_info_button" type="button" ><img class='more_info' src='<?php echo esc_attr( $this->sg->get_plugin_url() . 'img/help.png' ); ?>' /></button>
+										</label>
+										</div>
+										<?php
+								}
+								?>
+								<div>
+									<p class='submit'>
+										<?php wp_nonce_field( 'sitemap' ); ?>
+										<input type='submit' class='button-primary update_plugin_options' id='update_plugin_options' name='sm_update' value='<?php esc_html_e( 'Update options', 'sitemap' ); ?>' />
+										<input type='submit' onclick="return confirm('Do you really want to reset your configuration?');" class='sm_warning' name='sm_reset_config' value='<?php esc_html_e( 'Reset options', 'sitemap' ); ?>' />
+>>>>>>> update
 									</p>
 								</div>
 
@@ -1689,10 +1992,13 @@ class GoogleSitemapGeneratorUI {
 							</div>
 						</div>
 						</div>
+<<<<<<< HEAD
 						<!-- <script type='text/javascript'>
 						console.log('type of funiton', typeof sm_loadPages)
 							if (typeof(sm_loadPages) == 'function') addLoadEvent(sm_loadPages);
 						</script> -->
+=======
+>>>>>>> update
 			</form>
 			<form action='https://www.paypal.com/cgi-bin/webscr' method='post' id='sm_donate_form'>
 				<?php

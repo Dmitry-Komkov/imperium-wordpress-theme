@@ -16,14 +16,22 @@
 					}
 					
 					#intro {
+<<<<<<< HEAD
 						background-color:#CFEBF7;
+=======
+						background-color:#cfebf7;
+>>>>>>> update
 						border:1px #2580B2 solid;
 						padding:5px 13px 5px 13px;
 						margin:10px;
 					}
 					
 					#intro p {
+<<<<<<< HEAD
 						line-height:	16.8667px;
+=======
+						line-height:16.8667px;
+>>>>>>> update
 					}
 					#intro strong {
 						font-weight:normal;
@@ -62,8 +70,17 @@
 			<body>
 				<xsl:apply-templates></xsl:apply-templates>
 				<div id="footer">
+<<<<<<< HEAD
 					Generated with <a rel="external nofollow" href="https://auctollo.com/" title="Google (XML) Sitemap Generator Plugin for WordPress">Google (XML) Sitemaps Generator Plugin for WordPress</a> by <a rel="external nofollow" href="https://auctollo.com/">Auctollo</a>. This XSLT template is released under the GPL and free to use.<br />
                     If you have problems with your sitemap please visit the <a rel="external nofollow" href="https://wordpress.org/support/plugin/google-sitemap-generator">support forum</a>.
+=======
+					<p>
+						Dynamically generated with <a rel="external nofollow" href="https://auctollo.com/products/google-xml-sitemap-generator/" title="XML Sitemap Generator for Google">XML Sitemap Generator for Google</a> by <a rel="external nofollow" href="https://auctollo.com/">Auctollo</a>. This XSLT template is released under the GPL and free to use.
+            		</p>
+            		<p>
+	                    If you have problems with your sitemap please visit the <a rel="external nofollow" href="https://auctollo.com/products/google-xml-sitemap-generator/help/" title="Frequently Asked Questions">FAQ</a> or the <a rel="external nofollow" href="https://wordpress.org/support/plugin/google-sitemap-generator">support forum</a>.
+            		</p>
+>>>>>>> update
 				</div>
 			</body>
 		</html>
@@ -74,9 +91,19 @@
         <h1>XML Sitemap</h1>
         <div id="intro">
             <p>
+<<<<<<< HEAD
                 This is a XML Sitemap which is supposed to be processed by search engines which follow the XML Sitemap standard like Ask.com, Bing, Google and Yahoo.<br />
                 It was generated using the <a rel="external nofollow" href="https://wordpress.org/">WordPress</a> content management system and the <strong><a rel="external nofollow" href="https://wordpress.org/plugins/google-sitemap-generator/" title="Google (XML) Sitemaps Generator Plugin for WordPress">XML Sitemap Generator Plugin</a></strong> by <a rel="external nofollow" href="https://auctollo.com">Auctollo</a>.<br />
                 You can find more information about XML sitemaps on <a rel="external nofollow" href="http://sitemaps.org">sitemaps.org</a> and Google's <a rel="external nofollow" href="https://developers.google.com/search/blog/2009/01/new-google-sitemap-generator-for-your">list of sitemap programs</a>.
+=======
+                This XML sitemap is used by search engines which follow the <a rel="external nofollow" href="https://sitemaps.org">XML sitemap standard</a>.
+            </p>
+            <p>
+                This file was dynamically generated using the <a rel="external nofollow" href="https://wordpress.org/">WordPress</a> content management system and <strong><a rel="external nofollow" href="https://auctollo.com/" title="XML Sitemap Generator for Google">XML Sitemap Generator for Google</a></strong> by <a rel="external nofollow" href="https://auctollo.com/">Auctollo</a>.
+            </p>
+            <p>
+                
+>>>>>>> update
             </p>
         </div>
 		<div id="content">
@@ -122,11 +149,18 @@
         <h1>XML Sitemap Index</h1>
         <div id="intro">
             <p>
+<<<<<<< HEAD
                 This is a XML Sitemap which is supposed to be processed by search engines which follow the XML Sitemap standard like Ask.com, Bing, Google and Yahoo.<br />
                 It was generated using the <a rel="external nofollow" href="https://wordpress.org/">WordPress</a> content management system and the <strong><a rel="external nofollow" href="https://wordpress.org/plugins/google-sitemap-generator/" title="XML Sitemaps Generator Plugin for WordPress">XML Sitemap Generator Plugin</a></strong> by <a rel="external nofollow" href="https://auctollo.com/">Auctollo</a>.<br />
                 You can find more information about XML sitemaps on <a rel="external nofollow" href="http://sitemaps.org">sitemaps.org</a> and Google's <a rel="external nofollow" href="https://developers.google.com/search/blog/2009/01/new-google-sitemap-generator-for-your">list of sitemap programs</a>.<br />
                 <br />
                 This file contains links to sub-sitemaps, follow them to see the actual sitemap content.
+=======
+                This XML sitemap is used by search engines which follow the <a rel="external nofollow" href="https://sitemaps.org">XML sitemap standard</a>. This file contains links to sub-sitemaps, follow them to see the actual sitemap content.
+            </p>
+            <p>
+                This file was dynamically generated using the <a rel="external nofollow" href="https://wordpress.org/">WordPress</a> content management system and <strong><a rel="external nofollow" href="https://auctollo.com/products/google-xml-sitemap-generator/" title="XML Sitemap Generator for Google">XML Sitemap Generator for Google</a></strong> by <a rel="external nofollow" href="https://auctollo.com/">Auctollo</a>.
+>>>>>>> update
             </p>
         </div>
 		<div id="content">

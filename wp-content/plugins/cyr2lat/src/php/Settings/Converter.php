@@ -5,7 +5,13 @@
  * @package cyr-to-lat
  */
 
+<<<<<<< HEAD
 namespace Cyr_To_Lat\Settings;
+=======
+namespace CyrToLat\Settings;
+
+use CyrToLat\Settings\Abstracts\SettingsBase;
+>>>>>>> update
 
 /**
  * Class Converter
@@ -17,7 +23,11 @@ class Converter extends PluginSettingsBase {
 	/**
 	 * Admin script handle.
 	 */
+<<<<<<< HEAD
 	const HANDLE = 'cyr-to-lat-settings';
+=======
+	const HANDLE = 'cyr-to-lat-converter';
+>>>>>>> update
 
 	/**
 	 * Converter nonce.
@@ -25,6 +35,7 @@ class Converter extends PluginSettingsBase {
 	const NONCE = 'cyr-to-lat-converter-nonce';
 
 	/**
+<<<<<<< HEAD
 	 * Get screen id.
 	 *
 	 * @return string
@@ -59,17 +70,27 @@ class Converter extends PluginSettingsBase {
 	protected function option_name() {
 		return 'cyr_to_lat_settings';
 	}
+=======
+	 * Post types and statuses section id.
+	 */
+	const SECTION_TYPES_STATUSES = 'types-statuses';
+>>>>>>> update
 
 	/**
 	 * Get page title.
 	 *
 	 * @return string
 	 */
+<<<<<<< HEAD
 	protected function page_title() {
+=======
+	protected function page_title(): string {
+>>>>>>> update
 		return __( 'Converter', 'cyr2lat' );
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Get menu title.
 	 *
 	 * @return string
@@ -79,12 +100,19 @@ class Converter extends PluginSettingsBase {
 	}
 
 	/**
+=======
+>>>>>>> update
 	 * Get section title.
 	 *
 	 * @return string
 	 */
+<<<<<<< HEAD
 	protected function section_title() {
 		return '';
+=======
+	protected function section_title(): string {
+		return 'converter';
+>>>>>>> update
 	}
 
 	/**
@@ -111,7 +139,11 @@ class Converter extends PluginSettingsBase {
 
 		$this->form_fields['background_post_types'] = [
 			'label'        => __( 'Post Types', 'cyr2lat' ),
+<<<<<<< HEAD
 			'section'      => 'background_section',
+=======
+			'section'      => self::SECTION_TYPES_STATUSES,
+>>>>>>> update
 			'type'         => 'checkbox',
 			'placeholder'  => '',
 			'helper'       => __( 'Post types included in the conversion.', 'cyr2lat' ),
@@ -125,8 +157,12 @@ class Converter extends PluginSettingsBase {
 			$this->form_fields['background_post_types']['options'][ $post_type ] = $label;
 		}
 
+<<<<<<< HEAD
 		$this->form_fields['background_post_types']['default'] = $default_post_types;
 		// @todo Mark as disabled.
+=======
+		$this->form_fields['background_post_types']['default']  = $default_post_types;
+>>>>>>> update
 		$this->form_fields['background_post_types']['disabled'] = array_diff( $default_post_types, $filtered_post_types );
 
 		$default_post_statuses = [ 'publish', 'future', 'private' ];
@@ -134,7 +170,11 @@ class Converter extends PluginSettingsBase {
 
 		$this->form_fields['background_post_statuses'] = [
 			'label'        => __( 'Post Statuses', 'cyr2lat' ),
+<<<<<<< HEAD
 			'section'      => 'background_section',
+=======
+			'section'      => self::SECTION_TYPES_STATUSES,
+>>>>>>> update
 			'type'         => 'checkbox',
 			'placeholder'  => '',
 			'helper'       => __( 'Post statuses included in the conversion.', 'cyr2lat' ),
@@ -156,7 +196,11 @@ class Converter extends PluginSettingsBase {
 	 *
 	 * @return array
 	 */
+<<<<<<< HEAD
 	public static function get_convertible_post_types() {
+=======
+	public static function get_convertible_post_types(): array {
+>>>>>>> update
 		$post_types = get_post_types( [ 'public' => true ] );
 
 		return array_merge( $post_types, [ 'nav_menu_item' => 'nav_menu_item' ] );
@@ -178,7 +222,10 @@ class Converter extends PluginSettingsBase {
 			$this->form_fields['background_post_types']['options'][ $post_type ] = $label;
 		}
 
+<<<<<<< HEAD
 		// @todo Mark as disabled.
+=======
+>>>>>>> update
 		$this->form_fields['background_post_types']['disabled'] = array_diff(
 			$this->form_fields['background_post_types']['default'],
 			$filtered_post_types
@@ -188,6 +235,11 @@ class Converter extends PluginSettingsBase {
 	/**
 	 * Init form fields and settings late, on 'init' hook with PHP_INT_MAX priority,
 	 * to allow all plugins to register post types.
+<<<<<<< HEAD
+=======
+	 *
+	 * @return void
+>>>>>>> update
 	 */
 	public function delayed_init_settings() {
 		$this->delayed_init_form_fields();
@@ -199,6 +251,7 @@ class Converter extends PluginSettingsBase {
 	 * Show settings page.
 	 */
 	public function settings_page() {
+<<<<<<< HEAD
 		?>
 		<div class="wrap">
 			<h1>
@@ -223,6 +276,18 @@ class Converter extends PluginSettingsBase {
 				?>
 			</form>
 		</div>
+=======
+		parent::settings_page();
+
+		?>
+		<form id="ctl-convert-existing-slugs" action="" method="post">
+			<input type="hidden" name="ctl-convert"/>
+			<?php
+			wp_nonce_field( self::NONCE );
+			submit_button( __( 'Convert Existing Slugs', 'cyr2lat' ), 'secondary', 'ctl-convert-button' );
+			?>
+		</form>
+>>>>>>> update
 		<?php
 	}
 
@@ -231,8 +296,13 @@ class Converter extends PluginSettingsBase {
 	 *
 	 * @param array $arguments Section arguments.
 	 */
+<<<<<<< HEAD
 	public function section_callback( $arguments ) {
 		if ( 'background_section' === $arguments['id'] ) {
+=======
+	public function section_callback( array $arguments ) {
+		if ( self::SECTION_TYPES_STATUSES === $arguments['id'] ) {
+>>>>>>> update
 			?>
 			<h2 class="title">
 				<?php
@@ -250,11 +320,35 @@ class Converter extends PluginSettingsBase {
 				?>
 			</p>
 			<?php
+<<<<<<< HEAD
+=======
+			$this->print_section_header( $arguments['id'], __( 'Post Types and Statuses', 'cyr2lat' ) );
+>>>>>>> update
 		}
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Output convert confirmation popup.
+=======
+	 * Print section header.
+	 *
+	 * @param string $id    Section id.
+	 * @param string $title Section title.
+	 *
+	 * @return void
+	 */
+	private function print_section_header( string $id, string $title ) {
+		?>
+		<h3 class="ctl-section-<?php echo esc_attr( $id ); ?>"><?php echo esc_html( $title ); ?></h3>
+		<?php
+	}
+
+	/**
+	 * Output convert confirmation popup.
+	 *
+	 * @return void
+>>>>>>> update
 	 */
 	public function in_admin_header() {
 		if ( ! $this->is_options_screen() ) {
@@ -309,6 +403,7 @@ class Converter extends PluginSettingsBase {
 	 * Enqueue class scripts.
 	 */
 	public function admin_enqueue_scripts() {
+<<<<<<< HEAD
 		if ( ! $this->is_options_screen() ) {
 			return;
 		}
@@ -316,6 +411,11 @@ class Converter extends PluginSettingsBase {
 		wp_enqueue_script(
 			self::HANDLE,
 			constant( 'CYR_TO_LAT_URL' ) . '/assets/js/converter/app.js',
+=======
+		wp_enqueue_script(
+			self::HANDLE,
+			constant( 'CYR_TO_LAT_URL' ) . '/assets/js/apps/converter.js',
+>>>>>>> update
 			[],
 			constant( 'CYR_TO_LAT_VERSION' ),
 			true
@@ -323,8 +423,13 @@ class Converter extends PluginSettingsBase {
 
 		wp_enqueue_style(
 			self::HANDLE,
+<<<<<<< HEAD
 			constant( 'CYR_TO_LAT_URL' ) . '/assets/css/converter.css',
 			[],
+=======
+			constant( 'CYR_TO_LAT_URL' ) . "/assets/css/converter$this->min_prefix.css",
+			[ SettingsBase::HANDLE ],
+>>>>>>> update
 			constant( 'CYR_TO_LAT_VERSION' )
 		);
 	}

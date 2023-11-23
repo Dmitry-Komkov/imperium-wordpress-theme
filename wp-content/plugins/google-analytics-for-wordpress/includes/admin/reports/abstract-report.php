@@ -23,6 +23,18 @@ class MonsterInsights_Report {
 	public $name;
 	public $version = '1.0.0';
 	public $source = 'reports';
+<<<<<<< HEAD
+=======
+	public $start_date;
+	public $end_date;
+
+	/**
+	 * We will use this value if we are not using the same value for report store and relay path.
+	 *
+	 * @var string
+	 */
+	protected $api_path;
+>>>>>>> update
 
 	/**
 	 * Primary class constructor.
@@ -171,14 +183,28 @@ class MonsterInsights_Report {
 		if ( ! $this->is_valid_date_range( $start, $end ) ) {
 			return array(
 				'success' => false,
+<<<<<<< HEAD
 				'error'   => __( 'Invalid date range.', 'google-analytics-for-wordpress' ),
 				'data'    => array(),
+=======
+				'error'   => __( 'Whoops! No data found for this date range', 'google-analytics-for-wordpress' ),
+				'data'    => array(
+					'type' => 'INVALID_DATE_RANGE',
+				),
+>>>>>>> update
 			);
 		}
 
 		if ( ( $start !== $this->default_start_date() || $end !== $this->default_end_date() ) && ! monsterinsights_is_pro_version() ) {
+<<<<<<< HEAD
 			$start = $this->default_start_date();
 			$end   = $this->default_end_date();
+=======
+			// On lite version, the date range is blocked with upgrade to pro message and this conflicts with getting YIR report.
+			// $start = $this->default_start_date();
+			// $end   = $this->default_end_date();
+
+>>>>>>> update
 			// return array(
 			// 	'success' => false,
 			// 	'error'   => __( 'Please upgrade to MonsterInsights Pro to use custom date ranges.', 'google-analytics-for-wordpress' ),
@@ -195,6 +221,13 @@ class MonsterInsights_Report {
 			) );
 		}
 
+<<<<<<< HEAD
+=======
+		// These values are going to use on child classes.
+		$this->start_date = $start;
+		$this->end_date   = $end;
+
+>>>>>>> update
 		$check_cache       = ( $start === $this->default_start_date() && $end === $this->default_end_date() ) || apply_filters( 'monsterinsights_report_use_cache', false, $this->name );
 		$site_auth         = MonsterInsights()->auth->get_viewname();
 		$ms_auth           = is_multisite() && MonsterInsights()->auth->get_network_viewname();
@@ -237,7 +270,14 @@ class MonsterInsights_Report {
 				$api_options['network'] = true;
 			}
 
+<<<<<<< HEAD
 			$api = new MonsterInsights_API_Request( 'analytics/reports/' . $this->name . '/', $api_options, 'GET' );
+=======
+			// Get the path of the relay.
+			$api_path = empty( $this->api_path ) ? $this->name : $this->api_path;
+
+			$api = new MonsterInsights_API_Request( 'analytics/reports/' . $api_path . '/', $api_options, 'GET' );
+>>>>>>> update
 
 			// Use a report source indicator for requests.
 			if ( ! empty( $this->source ) ) {
@@ -262,6 +302,15 @@ class MonsterInsights_Report {
 				);
 			} else {
 				// Success
+<<<<<<< HEAD
+=======
+
+				// Strip any HTML tags from API response
+				$ret['data'] = json_encode($ret['data']);
+				$ret['data'] = strip_tags($ret['data']);
+				$ret['data'] = json_decode($ret['data'], true);
+
+>>>>>>> update
 				$data = array(
 					'expires' => time() + $expiration,
 					'p'       => $p,
@@ -341,11 +390,16 @@ class MonsterInsights_Report {
 		return array();
 	}
 
+<<<<<<< HEAD
 	protected function get_ga_report_url( $ua_name, $v4_name, $data, $ua_extra_params = '', $v4_extra_params = '', $v4_endpoint = 'explorer', $is_real_time = false ) {
+=======
+	protected function get_ga_report_url( $v4_name, $data, $v4_extra_params = '', $v4_endpoint = 'explorer', $is_real_time = false ) {
+>>>>>>> update
 		$auth = MonsterInsights()->auth;
 
 		$params = $this->get_ga_report_range( $data );
 
+<<<<<<< HEAD
 		if ( $auth->get_connected_type() === 'v4' ) {
 			$format = 'https://analytics.google.com/analytics/web/#/%1$s/' . ( $is_real_time ? 'realtime' : 'reports' ) . '/%5$s?params=%3$s%4$s&r=%2$s';
 
@@ -362,6 +416,17 @@ class MonsterInsights_Report {
 			$extra_params = '?' . $ua_extra_params;
 			$endpoint     = '';
 		}
+=======
+        $format = 'https://analytics.google.com/analytics/web/#/%1$s/' . ( $is_real_time ? 'realtime' : 'reports' ) . '/%5$s?params=%3$s%4$s&r=%2$s';
+
+        if ( empty( $v4_name ) ) {
+            $report_name = '';
+        } else {
+            $report_name = $v4_name;
+        }
+        $extra_params = '&' . $v4_extra_params;
+        $endpoint     = $v4_endpoint;
+>>>>>>> update
 
 		return sprintf(
 			$format,

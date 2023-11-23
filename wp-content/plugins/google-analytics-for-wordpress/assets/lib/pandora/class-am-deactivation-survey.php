@@ -55,7 +55,11 @@ if ( ! class_exists( 'AM_Deactivation_Survey' ) ) {
 				return;
 			}
 
+<<<<<<< HEAD
 			add_action( 'admin_print_scripts', array( $this, 'js' ), 20 );
+=======
+			add_action( 'admin_print_scripts', array( $this, 'js' ), 99 );
+>>>>>>> update
 			add_action( 'admin_print_scripts', array( $this, 'css' ) );
 			add_action( 'admin_footer', array( $this, 'modal' ) );
 		}
@@ -73,6 +77,7 @@ if ( ! class_exists( 'AM_Deactivation_Survey' ) ) {
 			}
 
 			$url          = network_site_url( '/' );
+<<<<<<< HEAD
 			$is_local_url = false;
 
 			// Trim it up
@@ -113,6 +118,9 @@ if ( ! class_exists( 'AM_Deactivation_Survey' ) ) {
 					}
 				}
 			}
+=======
+			$is_local_url = monsterinsights_is_dev_url( $url );
+>>>>>>> update
 
 			return $is_local_url;
 		}

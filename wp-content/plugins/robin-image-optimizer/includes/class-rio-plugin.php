@@ -7,6 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Основной класс плагина
  *
+<<<<<<< HEAD
  * @author        Webcraftic <wordpress.webraftic@gmail.com>
  * @copyright (c) 19.02.2018, Webcraftic
  * @version       1.0
@@ -16,6 +17,17 @@ class WRIO_Plugin extends Wbcr_Factory450_Plugin {
 	/**
 	 * @see self::app()
 	 * @var Wbcr_Factory450_Plugin
+=======
+ * @author        Webcraftic <WordPress.webraftic@gmail.com>
+ * @copyright (c) 19.02.2018, Webcraftic
+ * @version       1.0
+ */
+class WRIO_Plugin extends Wbcr_Factory469_Plugin {
+
+	/**
+	 * @see self::app()
+	 * @var Wbcr_Factory469_Plugin
+>>>>>>> update
 	 */
 	private static $app;
 
@@ -47,12 +59,21 @@ class WRIO_Plugin extends Wbcr_Factory450_Plugin {
 		if ( is_admin() || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
 			// Processing
 			if ( wrio_is_license_activate() ) {
+<<<<<<< HEAD
 				require_once( WRIO_PLUGIN_DIR . '/includes/classes/processing/class-rio-processing.php' );
 				require_once( WRIO_PLUGIN_DIR . '/includes/classes/processing/class-rio-media-processing.php' );
 				require_once( WRIO_PLUGIN_DIR . '/includes/classes/processing/class-rio-folder-processing.php' );
 				require_once( WRIO_PLUGIN_DIR . '/includes/classes/processing/class-rio-nextgen-processing.php' );
 
 				require_once( WRIO_PLUGIN_DIR . '/includes/classes/processing/class-rio-media-processing-webp.php' );
+=======
+				require_once WRIO_PLUGIN_DIR . '/includes/classes/processing/class-rio-processing.php';
+				require_once WRIO_PLUGIN_DIR . '/includes/classes/processing/class-rio-media-processing.php';
+				require_once WRIO_PLUGIN_DIR . '/includes/classes/processing/class-rio-folder-processing.php';
+				require_once WRIO_PLUGIN_DIR . '/includes/classes/processing/class-rio-nextgen-processing.php';
+
+				require_once WRIO_PLUGIN_DIR . '/includes/classes/processing/class-rio-media-processing-webp.php';
+>>>>>>> update
 			}
 		}
 
@@ -70,15 +91,24 @@ class WRIO_Plugin extends Wbcr_Factory450_Plugin {
 
 			if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
 				// Ajax files
+<<<<<<< HEAD
 				require_once( WRIO_PLUGIN_DIR . '/admin/ajax/backup.php' );
 				require_once( WRIO_PLUGIN_DIR . '/includes/classes/class-rio-bulk-optimization.php' );
+=======
+				require_once WRIO_PLUGIN_DIR . '/admin/ajax/backup.php';
+				require_once WRIO_PLUGIN_DIR . '/includes/classes/class-rio-bulk-optimization.php';
+>>>>>>> update
 				new WRIO_Bulk_Optimization();
 
 				//require_once( WRIO_PLUGIN_DIR . '/admin/ajax/logs.php' );
 
 				// Not under AJAX logical operator above on purpose to have helpers available to find out whether
 				// metas were migrated or not
+<<<<<<< HEAD
 				require_once( WRIO_PLUGIN_DIR . '/admin/ajax/meta-migrations.php' );
+=======
+				require_once WRIO_PLUGIN_DIR . '/admin/ajax/meta-migrations.php';
+>>>>>>> update
 			}
 		}
 
@@ -94,7 +124,11 @@ class WRIO_Plugin extends Wbcr_Factory450_Plugin {
 	 * Используется для получения настроек плагина, информации о плагине, для доступа к вспомогательным
 	 * классам.
 	 *
+<<<<<<< HEAD
 	 * @return \Wbcr_Factory450_Plugin|\WRIO_Plugin
+=======
+	 * @return \Wbcr_Factory469_Plugin|\WRIO_Plugin
+>>>>>>> update
 	 */
 	public static function app() {
 		return self::$app;
@@ -112,7 +146,11 @@ class WRIO_Plugin extends Wbcr_Factory450_Plugin {
 		}
 
 		if ( is_admin() ) {
+<<<<<<< HEAD
 			require_once( WRIO_PLUGIN_DIR . '/admin/boot.php' );
+=======
+			require_once WRIO_PLUGIN_DIR . '/admin/boot.php';
+>>>>>>> update
 			//require_once( WRIO_PLUGIN_DIR . '/admin/includes/classes/class-rio-nextgen-landing.php' );
 
 			$this->registerPages();
@@ -124,7 +162,11 @@ class WRIO_Plugin extends Wbcr_Factory450_Plugin {
 		}
 
 		if ( wrio_is_license_activate() ) {
+<<<<<<< HEAD
 			require_once( WRIO_PLUGIN_DIR . '/libs/addons/robin-image-optimizer-premium.php' );
+=======
+			require_once WRIO_PLUGIN_DIR . '/libs/addons/robin-image-optimizer-premium.php';
+>>>>>>> update
 			wrio_premium_load();
 		}
 	}
@@ -134,6 +176,7 @@ class WRIO_Plugin extends Wbcr_Factory450_Plugin {
 	 */
 	protected function includes() {
 
+<<<<<<< HEAD
 		require_once( WRIO_PLUGIN_DIR . '/includes/functions.php' );
 		require_once( WRIO_PLUGIN_DIR . '/includes/classes/class-rio-views.php' );
 		require_once( WRIO_PLUGIN_DIR . '/includes/classes/class-rio-attachment.php' );
@@ -159,6 +202,33 @@ class WRIO_Plugin extends Wbcr_Factory450_Plugin {
 		// Cron
 		// ----------------
 		require_once( WRIO_PLUGIN_DIR . '/includes/classes/class-rio-cron.php' );
+=======
+		require_once WRIO_PLUGIN_DIR . '/includes/functions.php';
+		require_once WRIO_PLUGIN_DIR . '/includes/classes/class-rio-views.php';
+		require_once WRIO_PLUGIN_DIR . '/includes/classes/class-rio-attachment.php';
+		require_once WRIO_PLUGIN_DIR . '/includes/classes/class-rio-media-library.php';
+		require_once WRIO_PLUGIN_DIR . '/includes/classes/processors/class-rio-server-abstract.php';
+		require_once WRIO_PLUGIN_DIR . '/includes/classes/class-rio-image-statistic.php';
+		require_once WRIO_PLUGIN_DIR . '/includes/classes/class-rio-backup.php';
+		require_once WRIO_PLUGIN_DIR . '/includes/classes/class-rio-optimization-tools.php';
+
+		require_once WRIO_PLUGIN_DIR . '/includes/classes/models/class-rio-base-helper.php';
+		require_once WRIO_PLUGIN_DIR . '/includes/classes/models/class-rio-base-object.php'; // Base object
+
+		// Database related models
+		require_once WRIO_PLUGIN_DIR . '/includes/classes/models/class-rio-base-active-record.php';
+		// Base class
+		require_once WRIO_PLUGIN_DIR . '/includes/classes/models/class-rio-base-extra-data.php';
+		require_once WRIO_PLUGIN_DIR . '/includes/classes/models/class-rio-attachment-extra-data.php';
+		require_once WRIO_PLUGIN_DIR . '/includes/classes/models/class.webp-extra-data.php';
+		require_once WRIO_PLUGIN_DIR . '/includes/classes/models/class-rio-server-smushit-extra-data.php';
+
+		require_once WRIO_PLUGIN_DIR . '/includes/classes/models/class-rio-process-queue-table.php'; // Processing queue model
+
+		// Cron
+		// ----------------
+		require_once WRIO_PLUGIN_DIR . '/includes/classes/class-rio-cron.php';
+>>>>>>> update
 		new WRIO_Cron();
 	}
 
@@ -166,7 +236,11 @@ class WRIO_Plugin extends Wbcr_Factory450_Plugin {
 	 * Инициализируем активацию плагина
 	 */
 	protected function initActivation() {
+<<<<<<< HEAD
 		include_once( WRIO_PLUGIN_DIR . '/admin/activation.php' );
+=======
+		include_once WRIO_PLUGIN_DIR . '/admin/activation.php';
+>>>>>>> update
 		self::app()->registerActivation( 'WIO_Activation' );
 	}
 
@@ -179,7 +253,11 @@ class WRIO_Plugin extends Wbcr_Factory450_Plugin {
 		$admin_path = WRIO_PLUGIN_DIR . '/admin/pages/';
 
 		// Parent page class
+<<<<<<< HEAD
 		require_once( $admin_path . '/class-rio-page.php' );
+=======
+		require_once $admin_path . '/class-rio-page.php';
+>>>>>>> update
 
 		if ( ! wrio_is_clearfy_license_activate() ) {
 			self::app()->registerPage( 'WRIO_License_Page', $admin_path . '/class-rio-license.php' );

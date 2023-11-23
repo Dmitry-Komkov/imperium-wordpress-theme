@@ -130,7 +130,11 @@ class Indexing_Tool_Integration implements Integration_Interface {
 	 * Register hooks.
 	 */
 	public function register_hooks() {
+<<<<<<< HEAD
 		\add_action( 'wpseo_tools_overview_list_items', [ $this, 'render_indexing_list_item' ], 10 );
+=======
+		\add_action( 'wpseo_tools_overview_list_items_internal', [ $this, 'render_indexing_list_item' ], 10 );
+>>>>>>> update
 		\add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_scripts' ], 10 );
 	}
 
@@ -244,6 +248,7 @@ class Indexing_Tool_Integration implements Integration_Interface {
 
 		return $importing_endpoints;
 	}
+<<<<<<< HEAD
 
 	/**
 	 * Returns the total number of unindexed objects.
@@ -276,4 +281,6 @@ class Indexing_Tool_Integration implements Integration_Interface {
 
 		return $this->indexing_helper->get_filtered_unindexed_count();
 	}
+=======
+>>>>>>> update
 }

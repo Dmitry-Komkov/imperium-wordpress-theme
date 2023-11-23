@@ -75,6 +75,10 @@ class Schema_Generator implements Generator_Interface {
 		$pieces_to_generate = $this->filter_graph_pieces_to_generate( $pieces );
 		$graph              = $this->generate_graph( $pieces_to_generate, $context );
 		$graph              = $this->add_schema_blocks_graph_pieces( $graph, $context );
+<<<<<<< HEAD
+=======
+		$graph              = $this->finalize_graph( $graph, $context );
+>>>>>>> update
 
 		return [
 			'@context' => 'https://schema.org',
@@ -94,7 +98,11 @@ class Schema_Generator implements Generator_Interface {
 		$pieces_to_generate = [];
 		foreach ( $graph_pieces as $piece ) {
 			$identifier = \strtolower( \str_replace( 'Yoast\WP\SEO\Generators\Schema\\', '', \get_class( $piece ) ) );
+<<<<<<< HEAD
 			if ( \property_exists( $piece, 'identifier' ) ) {
+=======
+			if ( isset( $piece->identifier ) ) {
+>>>>>>> update
 				$identifier = $piece->identifier;
 			}
 
@@ -183,6 +191,10 @@ class Schema_Generator implements Generator_Interface {
 		foreach ( $context->blocks as $block_type => $blocks ) {
 			foreach ( $blocks as $block ) {
 				$block_type = \strtolower( $block['blockName'] );
+<<<<<<< HEAD
+=======
+
+>>>>>>> update
 				/**
 				 * Filter: 'wpseo_schema_block_<block-type>'.
 				 * This filter is documented in the `generate_graph()` function in this class.
@@ -199,6 +211,65 @@ class Schema_Generator implements Generator_Interface {
 	}
 
 	/**
+<<<<<<< HEAD
+=======
+	 * Finalizes the schema graph after all filtering is done.
+	 *
+	 * @param array             $graph   The current schema graph.
+	 * @param Meta_Tags_Context $context The meta tags context.
+	 *
+	 * @return array The schema graph.
+	 */
+	protected function finalize_graph( $graph, $context ) {
+		$graph = $this->remove_empty_breadcrumb( $graph, $context );
+
+		return $graph;
+	}
+
+	/**
+	 * Removes the breadcrumb schema if empty.
+	 *
+	 * @param array             $graph   The current schema graph.
+	 * @param Meta_Tags_Context $context The meta tags context.
+	 *
+	 * @return array The schema graph with empty breadcrumbs taken out.
+	 */
+	protected function remove_empty_breadcrumb( $graph, $context ) {
+		if ( $this->helpers->current_page->is_home_static_page() || $this->helpers->current_page->is_home_posts_page() ) {
+			return $graph;
+		}
+
+		// Remove the breadcrumb piece, if it's empty.
+		$index_to_remove = 0;
+		foreach ( $graph as $key => $piece ) {
+			if ( \in_array( 'BreadcrumbList', $this->get_type_from_piece( $piece ), true ) ) {
+				if ( isset( $piece['itemListElement'] ) && \is_array( $piece['itemListElement'] ) && \count( $piece['itemListElement'] ) === 1 ) {
+					$index_to_remove = $key;
+					break;
+				}
+			}
+		}
+
+		// If the breadcrumb piece has been removed, we should remove its reference from the WebPage node.
+		if ( $index_to_remove !== 0 ) {
+			\array_splice( $graph, $index_to_remove, 1 );
+
+			// Get the type of the WebPage node.
+			$webpage_types = \is_array( $context->schema_page_type ) ? $context->schema_page_type : [ $context->schema_page_type ];
+
+			foreach ( $graph as $key => $piece ) {
+				if ( ! empty( \array_intersect( $webpage_types, $this->get_type_from_piece( $piece ) ) ) && isset( $piece['breadcrumb'] ) ) {
+					unset( $piece['breadcrumb'] );
+					$graph[ $key ] = $piece;
+				}
+			}
+		}
+
+		return $graph;
+	}
+
+	/**
+>>>>>>> update
 	 * Adapts the WebPage graph piece for password-protected posts.
 	 *
 	 * It should only have certain whitelisted properties.

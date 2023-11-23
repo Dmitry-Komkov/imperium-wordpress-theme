@@ -1,5 +1,6 @@
 === WP Fastest Cache ===
 Contributors: emrevona
+<<<<<<< HEAD
 Donate link: http://profiles.wordpress.org/emrevona/
 Tags: cache, Optimize, performance, wp-cache, core web vitals
 Requires at least: 3.3
@@ -7,6 +8,15 @@ Tested up to: 6.0
 Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
+=======
+Donate link: https://profiles.wordpress.org/emrevona/
+Tags: cache, Optimize, performance, wp-cache, core web vitals
+Requires at least: 3.3
+Tested up to: 6.4
+Stable tag: 1.2.2
+License: GPLv2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+>>>>>>> update
 
 The simplest and fastest WP Cache system
 
@@ -14,7 +24,11 @@ The simplest and fastest WP Cache system
 
 <h4>Official Website</h4>
 
+<<<<<<< HEAD
 You can find more information on our web site (<a href="http://www.wpfastestcache.com/">wpfastestcache.com</a>)
+=======
+You can find more information on our web site (<a href="https://www.wpfastestcache.com/">wpfastestcache.com</a>)
+>>>>>>> update
 
 When a page is rendered, php and mysql are used. Therefore, system needs RAM and CPU. 
 If many visitors come to a site, system uses lots of RAM and CPU so page is rendered so slowly. In this case, you need a cache system not to render page again and again. Cache system generates a static html file and saves. Other users reach to static html page.
@@ -40,10 +54,18 @@ Setup of this plugin is so easy. You don't need to modify the .htacces file. It 
 13. Preload Cache - Create the cache of all the site automatically
 14. Exclude pages and user-agents
 15. WP-CLI cache clearing
+<<<<<<< HEAD
 
 <h4>Performance Optimization</h4>
 
 In the premium version there are many features such as Minify Html, Minify Css, Enable Gzip Compression, Leverage Browser Caching, Add Expires Headers, Combine CSS, Combine JS, Disable Emoji.
+=======
+16. Proxy Cache - Varnish Cache Integration to clear proxy cached content automatically when the cache created by WP Fastest Cache is cleared
+
+<h4>Performance Optimization</h4>
+
+WP Fastest Cache is not only a wp cache plugin but also a speed optimization wordpress cache plugin. There are many features such as Minify Html, Minify Css, Enable Gzip Compression, Leverage Browser Caching, Add Expires Headers, Combine CSS, Combine JS, Disable Emoji.
+>>>>>>> update
 
 1. Generating static html files from your dynamic WordPress blog
 2. Minify Html - You can decrease the size of page
@@ -67,7 +89,11 @@ The free version is enough to speed up your site but in the premium version ther
 7. Defer Javascript - Eliminate render-blocking JavaScript resources. Consider delivering critical JS inline and deferring all non-critical JS
 8. Optimize Images - Optimized images load faster and consume less cellular data
 9. Convert WebP - Serve images in next-gen formats. Image formats like JPEG 2000, JPEG XR, and WebP often provide better compression than PNG or JPEG, which means faster downloads and less data consumption
+<<<<<<< HEAD
 10. Database Cleanup
+=======
+10. Database Cleanup - The Database Cleanup feature clears out all of the garbage datas such as post revisions, trashed posts & pages, comments from trash & spam, trackbacks and pingbacks, transient options etc.
+>>>>>>> update
 11. Google Fonts Async
 12. Lazy Load - Defer offscreen images. Consider lazy-loading offscreen and hidden images after all critical resources have finished loading to lower time to interactive
 
@@ -75,6 +101,7 @@ The free version is enough to speed up your site but in the premium version ther
 
 It is very inconvenient to use multiple caching plugins at the same time. That's why you need to disable plugins such as LiteSpeed Cache, WP-Optimize, W3 Total Cache, WP Super Cache, SiteGround Optimizer, Breeze while using WP Fastest Cache.
 
+<<<<<<< HEAD
 <h4>Supported languages: </h4>
 
 * 中文 (by suifengtec)
@@ -98,6 +125,17 @@ It is very inconvenient to use multiple caching plugins at the same time. That's
 * Svenska (by Linus Wileryd)
 * Türkçe
 * 繁體中文 (Alex Lion)
+=======
+WP Fastest Cache is compatible with most popular plugins such as Contact Form 7, Yoast SEO, Elementor Website Builder, Classic Editor, Akismet Spam Protection, WooCommerce, Contact Form by WPForms, Really Simple SSL, All-in-One WP Migration, Yoast Duplicate Post, Wordfence Security – Firewall & Malware Scan, WordPress Importer, UpdraftPlus WordPress Backup Plugin, MonsterInsights, All in One SEO, WP Mail SMTP by WPForms.
+
+<h4>Supported Languages</h4>
+
+Although there are over 7000 languages spoken in the world today, we feel very lucky to support 27 languages for now.
+
+However, localizing or adapting a plugin to another language or culture is time consuming and a demanding task. That's where the amazing Translation Contributors team of WordPress comes into play. These selfless people spent their precious time without expecting anything in return so that other people can use the add-ons more easily. We sincerely thank all of them.
+
+Chinese Simplified (China), Chinese Traditional (Taiwan), Czech, Dutch (Belgium), Dutch (Netherlands), English (South Africa), English (UK), Finnish, French (France), Galician, German (Germany), Hungarian, Indonesian, Italian, Japanese, Korean (Korea), Persian, Russian, Slovak (Slovakia), Spanish (Argentina), Spanish (Colombia), Spanish (Ecuador), Spanish (Mexico), Spanish (Spain), Spanish (Venezuela), Swedish, Turkish
+>>>>>>> update
 
 == Installation ==
 
@@ -128,6 +166,113 @@ It is very inconvenient to use multiple caching plugins at the same time. That's
 18. Database Cleanup
 
 == Changelog ==
+<<<<<<< HEAD
+=======
+= 1.2.2 =
+* Security Enhancements
+* to update translation files
+
+= 1.2.1 =
+* refactroning of the condition that was added for Divi theme
+* <strong>[FEATURE]</strong> Add a hook system for creating a post cache by id [<a target="_blank" href="https://www.wpfastestcache.com/tutorial/create-a-post-cache-by-id-using-the-function-hook/">Details</a>]
+* to fix the issue of obtaining the latest version of the sitemap after a restart
+* to check if the intl extension is available for Cloudflare integration
+* to fix Warning: Undefined property: stdClass::$zone_id in cdn.php on line 227
+
+= 1.2.0 =
+* to make the Preload feature to be compatible with Sitemap Index
+* to hide the premium tab for the premium users
+* to show warning if the Static CSS File Generation option of Divi theme is enabled
+* to update translation files
+* to fix PHP Warning: Undefined array key "sitemaps" in preload.php on line 62
+* to change the cache path for the Polylang-Pro plugin
+* to check if the buffer has only one line (no line breaks)
+* refactoring of checkHtml()
+* to check that Cookie Notice & Compliance for GDPR / CCPA is active or not
+
+= 1.1.9 =
+* to add gear button for the preload feature
+* to remove image urls for sitemap preload
+* to fix PHP Deprecated: Required parameter in preload.php on line 576
+* <strong>[FEATURE]</strong> Moving the menu item under the settings menu [<a target="_blank" href="https://www.wpfastestcache.com/tutorial/how-to-move-the-menu-item-under-the-setting-menu/">Details</a>]
+* to fix Warning: Undefined array key "action" in wpFastestCache.php on line 378 and 395
+
+= 1.1.8 =
+* <strong>[FEATURE]</strong> to add Sitemap option for the preload feature [<a target="_blank" href="https://www.wpfastestcache.com/features/preload-settings/#methods">Details</a>]
+* to update translation files
+* to fix PHP Warning: Attempt to read property "term_taxonomy_id" on bool in wpFastestCache.php on line 1638
+
+= 1.1.7 =
+* to change the cache path for the Polylang plugin
+* <strong>[FEATURE]</strong> to add Korean (Korea) language
+* to update translation files
+* refactoring of is_amp()
+* to replace empty char which exist in the admin cookie with %20 for RewriteCond
+
+= 1.1.6 =
+* to update translation files
+* to fix problem that the first js source is not able to be excluded
+* refactoring of set_cache_file_path()
+* refactoring of Buffer Callback Filter [<a target="_blank" href="https://www.wpfastestcache.com/tutorial/buffer-callback-filter/#how-to-remove-trailing-slash-on-void-elements">Details</a>]
+
+= 1.1.5 =
+* to replace wp_remote_get() with wp_safe_remote_get() in the check_url() function
+* to update translation files
+* to fix PHP Warning: Undefined array key "roles" in wpFastestCache.php on line 962
+* to remove multiple slashes from url
+* to fix PHP Warning: Attempt to read property “wpFastestCacheLanguage” on array in admin.php on line 23
+
+= 1.1.4 =
+* to check trailing slash for query string cache
+* refactoring process of clearing homepage cache by cache timeout
+
+= 1.1.3 =
+* to change translation system [<a target="_blank" href="https://www.wpfastestcache.com/blog/is-wp-fastest-cache-available-in-other-languages/">Details</a>]
+* refactoring of delete_author_page_cache()
+* to add Czech, Dutch (Belgium), Galician, Hungarian, Indonesian, Japanese, Persian, Spanish (Colombia), Spanish (Ecuador), Spanish (Ecuador), Spanish (Venezuela), Spanish (Argentina), Spanish (Mexico) translations
+* to enable the toolbar settings wizard for the Multisite installation [<a target="_blank" href="https://www.wpfastestcache.com/features/clear-cache-link-on-the-toolbar/">Details</a>]
+* to fix low level vulnerability
+
+= 1.1.2 =
+* to clear cache of next/prev posts after updating or publishing a post
+* to fix E_WARNING: file_get_contents(): No such file or directory in admin.php  on line 377
+* <strong>[FEATURE]</strong> Added ability to disable hook system [<a target="_blank" href="https://www.wpfastestcache.com/features/how-to-disable-clear-cache-hook-system/">Details</a>]
+* to fix PHP Deprecated:  trim(): Passing null to parameter #1 ($string) of type string is deprecated in preload.php on line 546
+* to fix Notice:  Constant WPFC_CACHE_QUERYSTRING already defined
+
+= 1.1.1 =
+* <strong>[FEATURE]</strong> Varnish Cache Integration [<a target="_blank" href="https://www.wpfastestcache.com/features/using-varnish-cache-with-wp-fastest-cache/">Details</a>]
+* to fix E_WARNING: unlink(): No such file or directory in wpFastestCache.php  on line 1530
+
+= 1.1.0 =
+* to show cache if the url contains a parameter of Yandex Click Identifier
+* <strong>[FEATURE]</strong> Excluding Yandex Click Identifier [<a target="_blank" href="https://www.wpfastestcache.com/features/cache-url-with-yandex-click-id-parameters-querystring/">Details</a>]
+* <strong>[FEATURE]</strong> Adding "Regular Expression" option for the Exclude Pages feature [<a target="_blank" href="https://www.wpfastestcache.com/features/using-regular-expression-to-exclude-a-page/">Details</a>]
+
+= 1.0.9 =
+* to improve the style of exclude feature wizard
+* to fix hiding the toolbar when logged in
+* to fix PHP Notice: Undefined offset: -1 in js-utilities.php on line 67
+* to fix PHP Fatal error: Uncaught Error: Non-static method cannot be called statically in clearing-specific-pages.php on line 58
+
+= 1.0.8 =
+* to stop showing the "DONOTCACHEPAGE is defined as TRUE" comment in the footer for the ajax requests
+* <strong>[FEATURE]</strong> Clearing Specific Pages [<a target="_blank" href="https://www.wpfastestcache.com/features/clear-cache-of-specific-urls-when-updating-or-posting/">Details</a>]
+* to fix the site url on the exclude page
+* to fix PHP Notice:  Function WP_User_Query::query was called incorrectly. User queries should not be run before the plugins_loaded hook
+
+= 1.0.7 =
+* <strong>[FEATURE]</strong> Clearing Specific Pages (BETA) [<a target="_blank" href="https://www.wpfastestcache.com/features/clear-cache-of-specific-urls-when-updating-or-posting/">Details</a>]
+* to add last-modified header when cache is served via php
+
+= 1.0.6 =
+* to serve sources via cdn for excluded pages if cdn is enabled
+* to fix PHP Notice: Undefined offset: -1 in js-utilities.php  on line 48
+
+= 1.0.5 =
+* to fix E_NOTICE: Undefined variable: path in wpFastestCache.php on line 2142
+* to add excluding feature for Buffer Callback Filter [<a target="_blank" href="https://www.wpfastestcache.com/tutorial/buffer-callback-filter/#exclude">Details</a>]
+>>>>>>> update
 
 = 1.0.4 =
 * to add avif extensions for cdn
@@ -149,6 +294,7 @@ It is very inconvenient to use multiple caching plugins at the same time. That's
 = 1.0.0 =
 * to define the save_settings() function of single preload feature as static function
 
+<<<<<<< HEAD
 = 0.9.9 =
 * to clear cache when regular price of woocommorce is updated
 * refactoring of Automatic Cache
@@ -324,6 +470,8 @@ It is very inconvenient to use multiple caching plugins at the same time. That's
 * to convert the icon from png to svg [by Roni Laukkarinen]
 * to fix Undefined index: HTTP_HOST cache.php on line 321
 
+=======
+>>>>>>> update
 EARLIER VERSIONS
 For the changelog of earlier versions, please refer to [<a target="_blank" href="https://www.wpfastestcache.com/changelog/earlier-changelog-of-freemium-version/">the changelog on wpfastestcache.com</a>]
 
@@ -333,7 +481,11 @@ For the changelog of earlier versions, please refer to [<a target="_blank" href=
 You need to refresh a page twice. If a page is cached, at the bottom of the page there is a text like "&lt;!-- WP Fastest Cache file was created in 0.330816984177 seconds, on 08-01-14 9:01:35 --&gt;".
 
 = Does it work with Nginx? =
+<<<<<<< HEAD
 Yes, it works with Nginx properly.
+=======
+Yes, it works with Nginx properly. Since Nginx doesn’t use an .htaccess file, you need to enable the Gzip compression and Browser Caching features manually. You can follow these tutorials: <a href="https://www.wpfastestcache.com/tutorial/how-to-enable-leverage-browser-caching-on-nginx/">How to Enable Leverage Browser Caching on Nginx</a> and <a href="https://www.wpfastestcache.com/tutorial/how-to-enable-gzip-compression-in-wordpress/#nginx">How to Enable Gzip on Nginx</a>
+>>>>>>> update
 
 = Does it work with IIS (Windows Server) ? =
 Yes, it works with IIS properly.
@@ -351,6 +503,7 @@ Yes, it is compatible with Http Secure (https).
 Yes, it is compatible with Adsense 100%.
 
 = Is this plugin compatible with CloudFlare? =
+<<<<<<< HEAD
 Yes, it is but you need to read the details. <a href="http://www.wpfastestcache.com/tutorial/wp-fastest-cache-cloudflarecloudfront/">Click</a>
 
 = Is this plugin compatible with WP-Polls? =
@@ -361,10 +514,14 @@ Yes, it is compatible with Bulletproof Security 100%.
 
 = Is this plugin compatible with Wordfence Security? =
 Yes, it is compatible with Wordfence Security 100%.
+=======
+Yes, it is but you need to read the details. <a href="https://www.wpfastestcache.com/tutorial/wp-fastest-cache-cloudflarecloudfront/">Click</a>
+>>>>>>> update
 
 = Is this plugin compatible with qTranslate? =
 Yes, it is compatible with qTranslate 100%.
 
+<<<<<<< HEAD
 = Is this plugin compatible with WPtouch Mobile? =
 Yes, it is compatible with WPtouch Mobile.
 
@@ -374,17 +531,26 @@ Yes, it is compatible with WP-PostRatings.
 = Is this plugin compatible with AdRotate? =
 No, it is NOT compatible with AdRotate.
 
+=======
+>>>>>>> update
 = Is this plugin compatible with WP Hide & Security Enhancer? =
 Yes, it is compatible with WP Hide & Security Enhancer.
 
 = Is this plugin compatible with WP-PostViews? =
 Yes, it is compatible with WP-PostViews. The current post views appear on the admin panel. The visitors cannot see the current post views. The developer of WP-PostViews needs to fix this issue.
 
+<<<<<<< HEAD
 = Is this plugin compatible with MobilePress? =
 No, it is NOT compatible with MobilePress. We advise WPtouch Mobile.
 
 = Is this plugin compatible with WooCommerce Themes? =
 Yes, it is compatible with WooCommerce Themes 100%.
 
+=======
+= Is this plugin compatible with WooCommerce Themes? =
+Yes, it is compatible with WooCommerce Themes 100%.
+
+
+>>>>>>> update
 == Upgrade notice ==
 ....
