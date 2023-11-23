@@ -1,11 +1,7 @@
 {
     "name": "jquery",
     "repo": "components/jquery",
-<<<<<<< HEAD
-    "version": "3.5.1",
-=======
     "version": "3.7.1",
->>>>>>> update
     "description": "jQuery component",
     "license": "MIT",
     "keywords": [

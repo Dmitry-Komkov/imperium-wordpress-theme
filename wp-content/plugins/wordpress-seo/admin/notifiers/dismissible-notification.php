@@ -90,12 +90,6 @@ abstract class WPSEO_Dismissible_Notification implements WPSEO_Listener, WPSEO_N
 	 *
 	 * @codeCoverageIgnore
 	 *
-<<<<<<< HEAD
-	 * @return string The listener value.
-	 */
-	protected function get_listener_value() {
-		return filter_input( INPUT_GET, 'yoast_dismiss' );
-=======
 	 * @return string|null The listener value or null if not set.
 	 */
 	protected function get_listener_value() {
@@ -105,7 +99,6 @@ abstract class WPSEO_Dismissible_Notification implements WPSEO_Listener, WPSEO_N
 			return sanitize_text_field( wp_unslash( $_GET['yoast_dismiss'] ) );
 		}
 		return null;
->>>>>>> update
 	}
 
 	/**

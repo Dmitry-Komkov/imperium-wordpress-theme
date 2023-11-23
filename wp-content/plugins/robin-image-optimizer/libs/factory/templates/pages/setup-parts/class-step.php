@@ -1,10 +1,6 @@
 <?php
 
-<<<<<<< HEAD
-namespace WBCR\Factory_Templates_102\Pages;
-=======
 namespace WBCR\Factory_Templates_118\Pages;
->>>>>>> update
 
 /**
  * Step
@@ -20,28 +16,16 @@ abstract class Step {
 	protected $next_id = false;
 
 	/**
-<<<<<<< HEAD
-	 * @var \WBCR\Factory_Templates_102\Pages\Setup
-=======
 	 * @var \WBCR\Factory_Templates_118\Pages\Setup
->>>>>>> update
 	 */
 	protected $page;
 
 	/**
-<<<<<<< HEAD
-	 * @var \Wbcr_Factory450_Plugin
-	 */
-	protected $plugin;
-
-	public function __construct(\WBCR\Factory_Templates_102\Pages\Setup $page)
-=======
 	 * @var \Wbcr_Factory469_Plugin
 	 */
 	protected $plugin;
 
 	public function __construct(\WBCR\Factory_Templates_118\Pages\Setup $page)
->>>>>>> update
 	{
 		$this->page = $page;
 		$this->plugin = $page->plugin;
@@ -67,11 +51,7 @@ abstract class Step {
 	 *
 	 * @return void
 	 * @since 1.0.0
-<<<<<<< HEAD
-	 * @see   FactoryPages449_AdminPage
-=======
 	 * @see   FactoryPages467_AdminPage
->>>>>>> update
 	 *
 	 */
 	public function assets($scripts, $styles)

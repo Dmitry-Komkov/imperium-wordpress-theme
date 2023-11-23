@@ -412,25 +412,6 @@ function wpcf7_init_captcha() {
 		return $captcha;
 	}
 
-<<<<<<< HEAD
-	if ( wp_mkdir_p( $dir ) ) {
-		$htaccess_file = path_join( $dir, '.htaccess' );
-
-		if ( file_exists( $htaccess_file ) ) {
-			return $captcha;
-		}
-
-		if ( $handle = fopen( $htaccess_file, 'w' ) ) {
-			fwrite( $handle, 'Order deny,allow' . "\n" );
-			fwrite( $handle, 'Deny from all' . "\n" );
-			fwrite( $handle, '<Files ~ "^[0-9A-Za-z]+\\.(jpeg|gif|png)$">' . "\n" );
-			fwrite( $handle, '    Allow from all' . "\n" );
-			fwrite( $handle, '</Files>' . "\n" );
-			fclose( $handle );
-		}
-	} else {
-		return false;
-=======
 	$result = wp_mkdir_p( $dir );
 
 	if ( ! $result ) {
@@ -469,7 +450,6 @@ function wpcf7_init_captcha() {
 		fwrite( $handle, "</IfModule>\n" );
 
 		fclose( $handle );
->>>>>>> update
 	}
 
 	return $captcha;
@@ -513,11 +493,7 @@ function wpcf7_captcha_url( $filename ) {
 		$url = 'https:' . substr( $url, 5 );
 	}
 
-<<<<<<< HEAD
-	return apply_filters( 'wpcf7_captcha_url', esc_url_raw( $url ) );
-=======
 	return apply_filters( 'wpcf7_captcha_url', sanitize_url( $url ) );
->>>>>>> update
 }
 
 function wpcf7_generate_captcha( $options = null ) {

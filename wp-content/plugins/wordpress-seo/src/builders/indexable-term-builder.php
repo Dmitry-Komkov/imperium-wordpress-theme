@@ -4,10 +4,7 @@ namespace Yoast\WP\SEO\Builders;
 
 use wpdb;
 use Yoast\WP\SEO\Exceptions\Indexable\Invalid_Term_Exception;
-<<<<<<< HEAD
-=======
 use Yoast\WP\SEO\Exceptions\Indexable\Term_Not_Built_Exception;
->>>>>>> update
 use Yoast\WP\SEO\Exceptions\Indexable\Term_Not_Found_Exception;
 use Yoast\WP\SEO\Helpers\Post_Helper;
 use Yoast\WP\SEO\Helpers\Taxonomy_Helper;
@@ -79,12 +76,8 @@ class Indexable_Term_Builder {
 	 *
 	 * @return bool|Indexable The extended indexable. False when unable to build.
 	 *
-<<<<<<< HEAD
-	 * @throws Invalid_Term_Exception When the term is invalid.
-=======
 	 * @throws Invalid_Term_Exception   When the term is invalid.
 	 * @throws Term_Not_Built_Exception When the term is not viewable.
->>>>>>> update
 	 * @throws Term_Not_Found_Exception When the term is not found.
 	 */
 	public function build( $term_id, $indexable ) {
@@ -98,14 +91,11 @@ class Indexable_Term_Builder {
 			throw new Invalid_Term_Exception( $term->get_error_message() );
 		}
 
-<<<<<<< HEAD
-=======
 		$indexable_taxonomies = $this->taxonomy_helper->get_indexable_taxonomies();
 		if ( ! \in_array( $term->taxonomy, $indexable_taxonomies, true ) ) {
 			throw Term_Not_Built_Exception::because_not_indexable( $term_id );
 		}
 
->>>>>>> update
 		$term_link = \get_term_link( $term, $term->taxonomy );
 
 		if ( \is_wp_error( $term_link ) ) {
@@ -199,22 +189,6 @@ class Indexable_Term_Builder {
 	 */
 	protected function get_indexable_lookup() {
 		return [
-<<<<<<< HEAD
-			'wpseo_canonical'             => 'canonical',
-			'wpseo_focuskw'               => 'primary_focus_keyword',
-			'wpseo_title'                 => 'title',
-			'wpseo_desc'                  => 'description',
-			'wpseo_content_score'         => 'readability_score',
-			'wpseo_bctitle'               => 'breadcrumb_title',
-			'wpseo_opengraph-title'       => 'open_graph_title',
-			'wpseo_opengraph-description' => 'open_graph_description',
-			'wpseo_opengraph-image'       => 'open_graph_image',
-			'wpseo_opengraph-image-id'    => 'open_graph_image_id',
-			'wpseo_twitter-title'         => 'twitter_title',
-			'wpseo_twitter-description'   => 'twitter_description',
-			'wpseo_twitter-image'         => 'twitter_image',
-			'wpseo_twitter-image-id'      => 'twitter_image_id',
-=======
 			'wpseo_canonical'                => 'canonical',
 			'wpseo_focuskw'                  => 'primary_focus_keyword',
 			'wpseo_title'                    => 'title',
@@ -230,7 +204,6 @@ class Indexable_Term_Builder {
 			'wpseo_twitter-description'      => 'twitter_description',
 			'wpseo_twitter-image'            => 'twitter_image',
 			'wpseo_twitter-image-id'         => 'twitter_image_id',
->>>>>>> update
 		];
 	}
 

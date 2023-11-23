@@ -1,10 +1,7 @@
 <?php
 
 $base = MonsterInsights();
-<<<<<<< HEAD
-=======
 require_once plugin_dir_path( $base->file ) . '/includes/admin/notifications/notification-install-user-feedback.php';
->>>>>>> update
 require_once plugin_dir_path( $base->file ) . '/includes/admin/notifications/notification-visitors.php';
 require_once plugin_dir_path( $base->file ) . '/includes/admin/notifications/notification-audience.php';
 require_once plugin_dir_path( $base->file ) . '/includes/admin/notifications/notification-mobile-device-high-traffic.php';
@@ -12,10 +9,6 @@ require_once plugin_dir_path( $base->file ) . '/includes/admin/notifications/not
 require_once plugin_dir_path( $base->file ) . '/includes/admin/notifications/notification-upgrade-to-pro.php';
 require_once plugin_dir_path( $base->file ) . '/includes/admin/notifications/notification-upgrade-to-pro-high-traffic.php';
 require_once plugin_dir_path( $base->file ) . '/includes/admin/notifications/notification-bounce-rate.php';
-<<<<<<< HEAD
-require_once plugin_dir_path( $base->file ) . '/includes/admin/notifications/notification-dual-tracking.php';
-=======
->>>>>>> update
 require_once plugin_dir_path( $base->file ) . '/includes/admin/notifications/notification-returning-visitors.php';
 require_once plugin_dir_path( $base->file ) . '/includes/admin/notifications/notification-traffic-dropping.php';
 require_once plugin_dir_path( $base->file ) . '/includes/admin/notifications/notification-upgrade-for-post-templates.php';
@@ -24,10 +17,6 @@ require_once plugin_dir_path( $base->file ) . '/includes/admin/notifications/not
 require_once plugin_dir_path( $base->file ) . '/includes/admin/notifications/notification-upgrade-for-form-conversion.php';
 require_once plugin_dir_path( $base->file ) . '/includes/admin/notifications/notification-upgrade-for-email-summaries.php';
 require_once plugin_dir_path( $base->file ) . '/includes/admin/notifications/notification-upgrade-for-custom-dimensions.php';
-<<<<<<< HEAD
-require_once plugin_dir_path( $base->file ) . '/includes/admin/notifications/notification-upgrade-for-google-optimize.php';
-=======
->>>>>>> update
 require_once plugin_dir_path( $base->file ) . '/includes/admin/notifications/notification-upgrade-eu-traffic.php';
 require_once plugin_dir_path( $base->file ) . '/includes/admin/notifications/notification-to-add-more-file-extensions.php';
 require_once plugin_dir_path( $base->file ) . '/includes/admin/notifications/notification-to-setup-affiliate-links.php';

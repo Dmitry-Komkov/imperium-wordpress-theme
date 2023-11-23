@@ -116,13 +116,7 @@ class WPSEO_Term_Metabox_Formatter implements WPSEO_Metabox_Formatter_Interface 
 	 * @return string
 	 */
 	private function edit_url() {
-<<<<<<< HEAD
-		global $wp_version;
-		$script_filename = version_compare( $wp_version, '4.5', '<' ) ? 'edit-tags' : 'term';
-		return admin_url( $script_filename . '.php?action=edit&taxonomy=' . $this->term->taxonomy . '&tag_ID={id}' );
-=======
 		return admin_url( 'term.php?action=edit&taxonomy=' . $this->term->taxonomy . '&tag_ID={id}' );
->>>>>>> update
 	}
 
 	/**
@@ -134,13 +128,9 @@ class WPSEO_Term_Metabox_Formatter implements WPSEO_Metabox_Formatter_Interface 
 
 		$base_url = home_url( '/', null );
 		if ( ! WPSEO_Options::get( 'stripcategorybase', false ) ) {
-<<<<<<< HEAD
-			$base_url = trailingslashit( $base_url . $this->taxonomy->rewrite['slug'] );
-=======
 			if ( $this->taxonomy->rewrite ) {
 				$base_url = trailingslashit( $base_url . $this->taxonomy->rewrite['slug'] );
 			}
->>>>>>> update
 		}
 
 		return $base_url;

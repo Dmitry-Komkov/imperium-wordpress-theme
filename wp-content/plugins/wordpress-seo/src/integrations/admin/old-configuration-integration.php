@@ -2,10 +2,6 @@
 
 namespace Yoast\WP\SEO\Integrations\Admin;
 
-<<<<<<< HEAD
-use WPSEO_Admin_Asset_Manager;
-=======
->>>>>>> update
 use Yoast\WP\SEO\Conditionals\Admin_Conditional;
 use Yoast\WP\SEO\Integrations\Integration_Interface;
 
@@ -38,15 +34,9 @@ class Old_Configuration_Integration implements Integration_Interface {
 	 */
 	public function add_submenu_page( $submenu_pages ) {
 		\add_submenu_page(
-<<<<<<< HEAD
-			null,
-			\__( 'Old Configuration Wizard', 'wordpress-seo' ),
-			null,
-=======
 			'',
 			\__( 'Old Configuration Wizard', 'wordpress-seo' ),
 			'',
->>>>>>> update
 			'manage_options',
 			'wpseo_configurator',
 			[ $this, 'render_page' ]

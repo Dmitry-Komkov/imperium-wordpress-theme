@@ -2,11 +2,7 @@
 
 if (!defined('UPDRAFTPLUS_DIR')) die('No direct access allowed');
 
-<<<<<<< HEAD
-if (!class_exists('UpdraftPlus_RemoteStorage_Addons_Base_v2')) require_once(UPDRAFTPLUS_DIR.'/methods/addon-base-v2.php');
-=======
 if (!class_exists('UpdraftPlus_RemoteStorage_Addons_Base_v2')) updraft_try_include_file('methods/addon-base-v2.php', 'require_once');
->>>>>>> update
 
 class UpdraftPlus_BackupModule_remotesend extends UpdraftPlus_RemoteStorage_Addons_Base_v2 {
 
@@ -455,11 +451,7 @@ class UpdraftPlus_BackupModule_remotesend extends UpdraftPlus_RemoteStorage_Addo
 		// Don't call self::log() - this then requests options (to get the label), causing an infinite loop.
 	
 		global $updraftplus, $updraftplus_admin;
-<<<<<<< HEAD
-		if (empty($updraftplus_admin)) include_once(UPDRAFTPLUS_DIR.'/admin.php');
-=======
 		if (empty($updraftplus_admin)) updraft_try_include_file('admin.php', 'include_once');
->>>>>>> update
 		
 		$clone_job = $updraftplus->jobdata_get('clone_job');
 		
@@ -474,30 +466,21 @@ class UpdraftPlus_BackupModule_remotesend extends UpdraftPlus_RemoteStorage_Addo
 		$clone_url = $updraftplus->jobdata_get('clone_url');
 		$clone_key = $updraftplus->jobdata_get('clone_key');
 		$secret_token = $updraftplus->jobdata_get('secret_token');
-<<<<<<< HEAD
-			
-		if (empty($clone_id) && empty($secret_token)) return $opts;
-=======
 		$clone_region = $updraftplus->jobdata_get('clone_region');
 			
 		if (empty($clone_id) && empty($secret_token)) return $opts;
 
 		$updraftplus->log("Polling for UpdraftClone (ID: {$clone_id} Region: {$clone_region}) migration information.");
->>>>>>> update
 		
 		$params = array('clone_id' => $clone_id, 'secret_token' => $secret_token);
 		$response = $updraftplus->get_updraftplus_clone()->clone_info_poll($params);
 
 		if (!isset($response['status']) || 'success' != $response['status']) {
-<<<<<<< HEAD
-			$updraftplus->log("UpdraftClone migration information poll failed with code: " . $response['code']);
-=======
 			if ('clone_network_not_found' == $response['code'] && 0 === $updraftplus->current_resumption) {
 				$updraftplus->log("UpdraftClone network information is not ready yet please wait while the clone finishes provisioning.");
 			} else {
 				$updraftplus->log("UpdraftClone migration information poll failed with code: " . $response['code']);
 			}
->>>>>>> update
 			return $opts;
 		}
 

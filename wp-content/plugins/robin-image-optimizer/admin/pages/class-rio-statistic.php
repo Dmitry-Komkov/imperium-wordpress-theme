@@ -85,11 +85,7 @@ class WRIO_StatisticPage extends WRIO_Page {
 	 * @return void|bool
 	 */
 	public function register_limit_notice( $plugin, $obj ) {
-<<<<<<< HEAD
-		if ( ( $this->plugin->getPluginName() != $plugin->getPluginName() ) || ( $obj->id != 'rio_general' ) ) {
-=======
 		if ( ( $this->plugin->getPluginName() !== $plugin->getPluginName() ) || ( 'rio_general' !== $obj->id ) ) {
->>>>>>> update
 			return false;
 		}
 	}
@@ -141,15 +137,6 @@ class WRIO_StatisticPage extends WRIO_Page {
 
 		$this->scripts->add( WRIO_PLUGIN_URL . '/admin/assets/js/modals.js', [ 'jquery' ], 'wrio-modals' );
 		$this->scripts->add( WRIO_PLUGIN_URL . '/admin/assets/js/bulk-optimization.js', [
-<<<<<<< HEAD
-			'jquery',
-			'wrio-modals'
-		] );
-		if ( wrio_is_license_activate() ) {
-			$this->scripts->add( WRIO_PLUGIN_URL . '/admin/assets/js/bulk-conversion.js', [
-				'jquery',
-				'wrio-modals'
-=======
 				'jquery',
 				'wrio-modals',
 		] );
@@ -157,7 +144,6 @@ class WRIO_StatisticPage extends WRIO_Page {
 			$this->scripts->add( WRIO_PLUGIN_URL . '/admin/assets/js/bulk-conversion.js', [
 					'jquery',
 					'wrio-modals',
->>>>>>> update
 			] );
 
 		}
@@ -178,30 +164,12 @@ class WRIO_StatisticPage extends WRIO_Page {
 	public function print_i18n() {
 		$page = $this->plugin->request->get( 'page', null );
 
-<<<<<<< HEAD
-		if ( $page != $this->getResultId() ) {
-=======
 		if ( $page !== $this->getResultId() ) {
->>>>>>> update
 			return;
 		}
 
 		$backup = new WIO_Backup();
 
-<<<<<<< HEAD
-		wp_enqueue_script( 'wio-statistic-page', WRIO_PLUGIN_URL . '/admin/assets/js/statistic.js', [ 'jquery' ], WRIO_Plugin::app()->getPluginVersion() );
-		wp_localize_script( 'wio-statistic-page', 'wrio_l18n_bulk_page', $this->get_i18n() );
-
-		wp_localize_script( 'wio-statistic-page', 'wrio_settings_bulk_page', [
-			'is_premium'             => wrio_is_license_activate(),
-			'is_network_admin'       => WRIO_Plugin::app()->isNetworkAdmin() ? 1 : 0,
-			'is_writable_backup_dir' => $backup->isBackupWritable() ? 1 : 0,
-			'images_backup'          => WRIO_Plugin::app()->getPopulateOption( 'backup_origin_images', false ) ? 1 : 0,
-			'need_migration'         => wbcr_rio_has_meta_to_migrate() ? 1 : 0,
-			'scope'                  => $this->scope,
-			'optimization_nonce'     => wp_create_nonce( 'bulk_optimization' ),
-			'conversion_nonce'       => wp_create_nonce( 'bulk_conversion' ),
-=======
 		wp_enqueue_script( 'wio-statistic-page', WRIO_PLUGIN_URL . '/admin/assets/js/statistic.js', [ 'jquery' ], WRIO_Plugin::app()->getPluginVersion(), true );
 		wp_localize_script( 'wio-statistic-page', 'wrio_l18n_bulk_page', $this->get_i18n() );
 
@@ -214,7 +182,6 @@ class WRIO_StatisticPage extends WRIO_Page {
 				'scope'                  => $this->scope,
 				'optimization_nonce'     => wp_create_nonce( 'bulk_optimization' ),
 				'conversion_nonce'       => wp_create_nonce( 'bulk_conversion' ),
->>>>>>> update
 		] );
 	}
 
@@ -226,37 +193,23 @@ class WRIO_StatisticPage extends WRIO_Page {
 		$statistics = $this->get_statisctic_data();
 
 		$template_data = [
-<<<<<<< HEAD
-			'is_premium' => $is_premium,
-			'scope'      => $this->scope
-=======
 				'is_premium' => $is_premium,
 				'scope'      => $this->scope,
->>>>>>> update
 		];
 
 		//do_action( 'wbcr/rio/multisite_current_blog' );
 
 		// Page header
 		$this->view->print_template( 'part-page-header', [
-<<<<<<< HEAD
-			'title'       => __( 'Image optimization dashboard', 'robin-image-optimizer' ),
-			'description' => __( 'Monitor image optimization statistics and run on demand or scheduled optimization.', 'robin-image-optimizer' )
-=======
 				'title'       => __( 'Image optimization dashboard', 'robin-image-optimizer' ),
 				'description' => __( 'Monitor image optimization statistics and run on demand or scheduled optimization.', 'robin-image-optimizer' ),
->>>>>>> update
 		], $this );
 
 		// Page tabs
 		$this->view->print_template( 'part-bulk-optimization-tabs', $template_data, $this );
 
 		?>
-<<<<<<< HEAD
-        <div class="wbcr-factory-page-group-body" style="padding:0; border-top: 1px solid #d4d4d4;">
-=======
 		<div class="wbcr-factory-page-group-body" style="padding:0; border-top: 1px solid #d4d4d4;">
->>>>>>> update
 			<?php
 			// Servers
 			$this->view->print_template( 'part-bulk-optimization-servers', $template_data, $this );
@@ -266,28 +219,11 @@ class WRIO_StatisticPage extends WRIO_Page {
 
 			// Statistic
 			$this->view->print_template( 'part-bulk-optimization-statistic', array_merge( $template_data, [
-<<<<<<< HEAD
-				'stats' => $statistics->get()
-=======
 					'stats' => $statistics->get(),
->>>>>>> update
 			] ), $this );
 
 			// Optimization log
 			$this->view->print_template( 'part-bulk-optimization-log', array_merge( $template_data, [
-<<<<<<< HEAD
-				'process_log' => $statistics->get_last_optimized_images()
-			] ), $this );
-			?>
-        </div>
-        <script type="text/html" id="wrio-tmpl-bulk-optimization">
-			<?php $this->view->print_template( 'modal-bulk-optimization' ); ?>
-        </script>
-		<?php if ( wrio_is_license_activate() ): ?>
-            <script type="text/html" id="wrio-tmpl-webp-conversion">
-				<?php $this->view->print_template( 'modal-webp-conversion' ); ?>
-            </script>
-=======
 					'process_log' => $statistics->get_last_optimized_images(),
 			] ), $this );
 			?>
@@ -299,7 +235,6 @@ class WRIO_StatisticPage extends WRIO_Page {
 			<script type="text/html" id="wrio-tmpl-webp-conversion">
 				<?php $this->view->print_template( 'modal-webp-conversion' ); ?>
 			</script>
->>>>>>> update
 		<?php endif; ?>
 		<?php
 		//do_action( 'wbcr/rio/multisite_restore_blog' );
@@ -334,38 +269,6 @@ class WRIO_StatisticPage extends WRIO_Page {
 		}
 
 		return [
-<<<<<<< HEAD
-			'premium_server_disabled'      => __( 'You cannot use the premium server on a free plan. You must activate the license to use all the features of the premium version.', 'robin-image-optimizer' ),
-			'webp_premium_server_disabled' => __( "You can't convert to WebP through a free optimization server. Select the premium optimization server.", 'robin-image-optimizer' ),
-			'server_down_warning'          => __( 'Your selected optimization server is down. This means that you cannot optimize images through this server. Try selecting another optimization server.', 'robin-image-optimizer' ),
-			'server_status_down'           => __( 'down', 'robin-image-optimizer' ),
-			'server_status_stable'         => __( 'stable', 'robin-image-optimizer' ),
-			'modal_error'                  => __( 'Error', 'robin-image-optimizer' ),
-			'modal_cancel'                 => __( 'Cancel', 'robin-image-optimizer' ),
-			'modal_confirm'                => __( 'Confirm', 'robin-image-optimizer' ),
-
-			'modal_optimization_title'            => __( 'Select optimization way', 'robin-image-optimizer' ),
-			'modal_optimization_manual_button'    => __( 'Optimize now', 'robin-image-optimizer' ),
-			'modal_optimization_cron_button'      => $modal_optimization_cron_button,
-			'modal_optimization_cron_button_stop' => $modal_optimization_cron_button_stop,
-			'optimization_complete'               => __( 'All images from the media library are optimized.', 'robin-image-optimizer' ),
-			'optimization_inprogress'             => __( 'Optimization in progress. Remained <span id="wio-total-unoptimized">%s</span> images.', 'robin-image-optimizer' ),
-			'modal_conversion_title'              => __( 'Select conversion way', 'robin-image-optimizer' ),
-			'modal_conversion_manual_button'      => __( 'Convert now', 'robin-image-optimizer' ),
-			'modal_conversion_cron_button'        => $modal_conversion_cron_button,
-			'modal_conversion_cron_button_stop'   => $modal_conversion_cron_button_stop,
-			'conversion_complete'                 => __( 'All images from the media library are optimized.', 'robin-image-optimizer' ),
-			'conversion_inprogress'               => __( 'Conversion in progress. Remained <span id="wio-total-unoptimized">%s</span> images.', 'robin-image-optimizer' ),
-			'webp_button_start'                   => __( 'Convert to WebP', 'robin-image-optimizer' ),
-
-			'need_migrations'        => __( 'To start optimizing, you must complete migration from old plugin version.', 'robin-image-optimizer' ),
-			'leave_page_warning'     => __( 'Are you sure that you want to leave the page? The optimization process is not over yet, stay on the page until the end of the optimization process.', 'robin-image-optimizer' ),
-			'process_without_backup' => __( 'Do you want to start optimization without backup?', 'robin-image-optimizer' ),
-			'button_resume'          => __( 'Resume', 'robin-image-optimizer' ),
-			'button_completed'       => __( 'Completed', 'robin-image-optimizer' ),
-			'button_start'           => __( 'Optimize', 'robin-image-optimizer' ),
-			'button_stop'            => __( 'Stop', 'robin-image-optimizer' ),
-=======
 				'premium_server_disabled'      => __( 'You cannot use the premium server on a free plan. You must activate the license to use all the features of the premium version.', 'robin-image-optimizer' ),
 				'webp_premium_server_disabled' => __( "You can't convert to WebP through a free optimization server. Select the premium optimization server.", 'robin-image-optimizer' ),
 				'server_down_warning'          => __( 'Your selected optimization server is down. This means that you cannot optimize images through this server. Try selecting another optimization server.', 'robin-image-optimizer' ),
@@ -396,7 +299,6 @@ class WRIO_StatisticPage extends WRIO_Page {
 				'button_completed'       => __( 'Completed', 'robin-image-optimizer' ),
 				'button_start'           => __( 'Optimize', 'robin-image-optimizer' ),
 				'button_stop'            => __( 'Stop', 'robin-image-optimizer' ),
->>>>>>> update
 			//Don't Need a Parachute?
 			//If you keep this option deactivated, you won't be able to re-optimize your images to another compression level and restore your original images in case of need.
 		];

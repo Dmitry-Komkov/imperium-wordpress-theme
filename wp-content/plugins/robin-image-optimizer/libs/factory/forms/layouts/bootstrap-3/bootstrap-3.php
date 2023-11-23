@@ -14,19 +14,11 @@
 		exit;
 	}
 
-<<<<<<< HEAD
-	if( !class_exists('Wbcr_FactoryForms447_Bootstrap3FormLayout') ) {
-		/**
-		 * A form layout based on Twitter Bootstrap 3
-		 */
-		class Wbcr_FactoryForms447_Bootstrap3FormLayout extends Wbcr_FactoryForms447_FormLayout {
-=======
 	if( !class_exists('Wbcr_FactoryForms466_Bootstrap3FormLayout') ) {
 		/**
 		 * A form layout based on Twitter Bootstrap 3
 		 */
 		class Wbcr_FactoryForms466_Bootstrap3FormLayout extends Wbcr_FactoryForms466_FormLayout {
->>>>>>> update
 
 			public $name = 'default';
 
@@ -35,11 +27,7 @@
 			 *
 			 * @since 1.0.0
 			 * @param array $options A holder options.
-<<<<<<< HEAD
-			 * @param Wbcr_FactoryForms447_Form $form A parent form.
-=======
 			 * @param Wbcr_FactoryForms466_Form $form A parent form.
->>>>>>> update
 			 */
 			public function __construct($options, $form)
 			{
@@ -80,11 +68,7 @@
 			}
 
 			/**
-<<<<<<< HEAD
-			 * @param Wbcr_FactoryForms447_Control $control
-=======
 			 * @param Wbcr_FactoryForms466_Control $control
->>>>>>> update
 			 */
 			public function beforeControl($control)
 			{
@@ -105,17 +89,10 @@
 				$col_left = $control->getLayoutOption('column-left', '2');
 				$col_right = $control->getLayoutOption('column-right', '10');
 				?>
-<<<<<<< HEAD
-				<div class="form-group form-group-<?php echo $control->getType() ?> <?php echo $theme_class ?> <?php echo $control_name_class ?>">
-				<label for="<?php $control->printNameOnForm() ?>" class="col-sm-<?= $col_left ?> control-label">
-					<?php if( $control->hasIcon() ) { ?>
-						<img class="control-icon" src="<?php $control->icon() ?>"/>
-=======
 				<div class="form-group form-group-<?php echo esc_attr($control->getType()); ?> <?php echo esc_attr($theme_class); ?> <?php echo esc_attr($control_name_class); ?>">
 				<label for="<?php $control->printNameOnForm() ?>" class="col-sm-<?php echo esc_attr($col_left); ?> control-label">
 					<?php if( $control->hasIcon() ) { ?>
 						<img class="control-icon" src="<?php $control->icon(); ?>"/>
->>>>>>> update
 					<?php } ?>
 					<?php
 						$hint_type = $control->getLayoutOption('hint-type', 'default');
@@ -124,11 +101,7 @@
 						if( $control->hasHint() ) {
 							if( $hint_type == 'icon' ): ?>
 								<?php $hint_icon_color = $control->getLayoutOption('hint-icon-color', 'green'); ?>
-<<<<<<< HEAD
-								<span class="factory-hint-icon factory-hint-icon-<?= $hint_icon_color ?>" data-toggle="factory-tooltip" data-placement="right" title="<?php $control->hint(true) ?>">
-=======
 								<span class="factory-hint-icon factory-hint-icon-<?php echo esc_attr($hint_icon_color); ?>" data-toggle="factory-tooltip" data-placement="right" title="<?php $control->hint(true); ?>">
->>>>>>> update
 							<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAJCAQAAABKmM6bAAAAUUlEQVQIHU3BsQ1AQABA0X/komIrnQHYwyhqQ1hBo9KZRKL9CBfeAwy2ri42JA4mPQ9rJ6OVt0BisFM3Po7qbEliru7m/FkY+TN64ZVxEzh4ndrMN7+Z+jXCAAAAAElFTkSuQmCC" alt=""/>
 
 						</span>
@@ -138,20 +111,12 @@
 							<?php endif; ?>
 						<?php } ?>
 				</label>
-<<<<<<< HEAD
-				<div class="control-group col-sm-<?= $col_right ?>">
-=======
 				<div class="control-group col-sm-<?php echo esc_attr($col_right); ?>">
->>>>>>> update
 			<?php
 			}
 
 			/**
-<<<<<<< HEAD
-			 * @param Wbcr_FactoryForms447_Control $control
-=======
 			 * @param Wbcr_FactoryForms466_Control $control
->>>>>>> update
 			 */
 			public function afterControl($control)
 			{
@@ -185,11 +150,7 @@
 			public function startRow($index, $total)
 			{
 				?>
-<<<<<<< HEAD
-				<div class='factory-row factory-row-<?php echo $index ?> factory-row-<?php echo $index ?>-of-<?php echo $total ?>'>
-=======
 				<div class='factory-row factory-row-<?php echo esc_attr($index); ?> factory-row-<?php echo esc_attr($index); ?>-of-<?php echo esc_attr($total); ?>'>
->>>>>>> update
 				<div class="form-group form-group">
 			<?php
 			}
@@ -207,11 +168,7 @@
 			}
 
 			/**
-<<<<<<< HEAD
-			 * @param Wbcr_FactoryForms447_Control $control
-=======
 			 * @param Wbcr_FactoryForms466_Control $control
->>>>>>> update
 			 * @param int $index
 			 * @param int $total
 			 */
@@ -236,11 +193,7 @@
 			}
 
 			/**
-<<<<<<< HEAD
-			 * @param Wbcr_FactoryForms447_Control $control
-=======
 			 * @param Wbcr_FactoryForms466_Control $control
->>>>>>> update
 			 * @param int $index
 			 * @param int $total
 			 */

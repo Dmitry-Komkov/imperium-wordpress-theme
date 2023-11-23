@@ -2,10 +2,7 @@
 
 namespace Yoast\WP\SEO\Helpers;
 
-<<<<<<< HEAD
-=======
 use WP_Query;
->>>>>>> update
 use Yoast\WP\Lib\Model;
 
 /**
@@ -14,8 +11,6 @@ use Yoast\WP\Lib\Model;
 class Author_Archive_Helper {
 
 	/**
-<<<<<<< HEAD
-=======
 	 * The options helper.
 	 *
 	 * @var Options_Helper
@@ -44,7 +39,6 @@ class Author_Archive_Helper {
 	}
 
 	/**
->>>>>>> update
 	 * Gets the array of post types that are shown on an author's archive.
 	 *
 	 * @return array The post types that are shown on an author's archive.
@@ -84,8 +78,6 @@ class Author_Archive_Helper {
 	/**
 	 * Returns whether the author has at least one public post.
 	 *
-<<<<<<< HEAD
-=======
 	 * **Note**: It uses WP_Query to determine the number of posts,
 	 * not the indexables table.
 	 *
@@ -129,7 +121,6 @@ class Author_Archive_Helper {
 	/**
 	 * Returns whether the author has at least one public post.
 	 *
->>>>>>> update
 	 * @codeCoverageIgnore It looks for the first ID through the ORM and converts it to a boolean.
 	 *
 	 * @param int $author_id The author ID.

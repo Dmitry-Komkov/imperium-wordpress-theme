@@ -36,10 +36,6 @@ class autoptimizeCSSmin
      */
     public function run( $css )
     {
-<<<<<<< HEAD
-        $result = $this->minifier->run( $css );
-
-=======
         // hide calc() if filter says yes.
         if ( apply_filters( 'autoptimize_filter_css_hide_calc', false ) ) {
             $css = autoptimizeBase::replace_contents_with_marker_if_exists( 'CALC', 'calc(', '#calc\([^\)]*\)#m', $css );
@@ -53,7 +49,6 @@ class autoptimizeCSSmin
             $result = autoptimizeBase::restore_marked_content( 'CALC', $result );
         }
 
->>>>>>> update
         return $result;
     }
 

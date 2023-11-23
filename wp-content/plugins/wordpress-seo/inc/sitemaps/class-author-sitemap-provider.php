@@ -5,12 +5,6 @@
  * @package WPSEO\XML_Sitemaps
  */
 
-<<<<<<< HEAD
-use Yoast\WP\SEO\Helpers\Author_Archive_Helper;
-use Yoast\WP\SEO\Helpers\Wordpress_Helper;
-
-=======
->>>>>>> update
 /**
  * Sitemap provider for author archives.
  */
@@ -123,25 +117,9 @@ class WPSEO_Author_Sitemap_Provider implements WPSEO_Sitemap_Provider {
 			],
 		];
 
-<<<<<<< HEAD
-		$wordpress_helper  = new Wordpress_Helper();
-		$wordpress_version = $wordpress_helper->get_wordpress_version();
-
-		// Capability queries were only introduced in WP 5.9.
-		if ( version_compare( $wordpress_version, '5.8.99', '<' ) ) {
-			$defaults['who'] = 'authors';
-			unset( $defaults['capability'] );
-		}
-
-		if ( WPSEO_Options::get( 'noindex-author-noposts-wpseo', true ) ) {
-			unset( $defaults['who'], $defaults['capability'] ); // Otherwise it cancels out next argument.
-			$author_archive                  = new Author_Archive_Helper();
-			$defaults['has_published_posts'] = $author_archive->get_author_archive_post_types();
-=======
 		if ( WPSEO_Options::get( 'noindex-author-noposts-wpseo', true ) ) {
 			unset( $defaults['capability'] ); // Otherwise it cancels out next argument.
 			$defaults['has_published_posts'] = YoastSEO()->helpers->author_archive->get_author_archive_post_types();
->>>>>>> update
 		}
 
 		return get_users( array_merge( $defaults, $arguments ) );
@@ -236,18 +214,6 @@ class WPSEO_Author_Sitemap_Provider implements WPSEO_Sitemap_Provider {
 			],
 		];
 
-<<<<<<< HEAD
-		$wordpress_helper  = new Wordpress_Helper();
-		$wordpress_version = $wordpress_helper->get_wordpress_version();
-
-		// Capability queries were only introduced in WP 5.9.
-		if ( version_compare( $wordpress_version, '5.8.99', '<' ) ) {
-			$user_criteria['who'] = 'authors';
-			unset( $user_criteria['capability'] );
-		}
-
-=======
->>>>>>> update
 		$users = get_users( $user_criteria );
 
 		$time = time();

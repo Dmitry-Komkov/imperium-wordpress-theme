@@ -75,10 +75,7 @@ class Schema_Generator implements Generator_Interface {
 		$pieces_to_generate = $this->filter_graph_pieces_to_generate( $pieces );
 		$graph              = $this->generate_graph( $pieces_to_generate, $context );
 		$graph              = $this->add_schema_blocks_graph_pieces( $graph, $context );
-<<<<<<< HEAD
-=======
 		$graph              = $this->finalize_graph( $graph, $context );
->>>>>>> update
 
 		return [
 			'@context' => 'https://schema.org',
@@ -98,11 +95,7 @@ class Schema_Generator implements Generator_Interface {
 		$pieces_to_generate = [];
 		foreach ( $graph_pieces as $piece ) {
 			$identifier = \strtolower( \str_replace( 'Yoast\WP\SEO\Generators\Schema\\', '', \get_class( $piece ) ) );
-<<<<<<< HEAD
-			if ( \property_exists( $piece, 'identifier' ) ) {
-=======
 			if ( isset( $piece->identifier ) ) {
->>>>>>> update
 				$identifier = $piece->identifier;
 			}
 
@@ -191,10 +184,7 @@ class Schema_Generator implements Generator_Interface {
 		foreach ( $context->blocks as $block_type => $blocks ) {
 			foreach ( $blocks as $block ) {
 				$block_type = \strtolower( $block['blockName'] );
-<<<<<<< HEAD
-=======
 
->>>>>>> update
 				/**
 				 * Filter: 'wpseo_schema_block_<block-type>'.
 				 * This filter is documented in the `generate_graph()` function in this class.
@@ -211,8 +201,6 @@ class Schema_Generator implements Generator_Interface {
 	}
 
 	/**
-<<<<<<< HEAD
-=======
 	 * Finalizes the schema graph after all filtering is done.
 	 *
 	 * @param array             $graph   The current schema graph.
@@ -269,7 +257,6 @@ class Schema_Generator implements Generator_Interface {
 	}
 
 	/**
->>>>>>> update
 	 * Adapts the WebPage graph piece for password-protected posts.
 	 *
 	 * It should only have certain whitelisted properties.

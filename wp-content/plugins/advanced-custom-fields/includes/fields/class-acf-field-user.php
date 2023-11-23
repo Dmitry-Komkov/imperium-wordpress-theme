@@ -9,23 +9,6 @@ if ( ! class_exists( 'ACF_Field_User' ) ) :
 		 *
 		 * @date    5/03/2014
 		 * @since   5.0.0
-<<<<<<< HEAD
-		 *
-		 * @param   void
-		 * @return  void
-		 */
-		function initialize() {
-
-			// Props.
-			$this->name     = 'user';
-			$this->label    = __( 'User', 'acf' );
-			$this->category = 'relational';
-			$this->defaults = array(
-				'role'          => '',
-				'multiple'      => 0,
-				'allow_null'    => 0,
-				'return_format' => 'array',
-=======
 		 */
 		function initialize() {
 			$this->name          = 'user';
@@ -40,7 +23,6 @@ if ( ! class_exists( 'ACF_Field_User' ) ) :
 				'allow_null'           => 0,
 				'return_format'        => 'array',
 				'bidirectional_target' => array(),
->>>>>>> update
 			);
 
 			// Register filter variations.
@@ -63,18 +45,10 @@ if ( ! class_exists( 'ACF_Field_User' ) ) :
 		 * @return  void
 		 */
 		function render_field_settings( $field ) {
-<<<<<<< HEAD
-
-			acf_render_field_setting(
-				$field,
-				array(
-					'label'        => __( 'Filter by role', 'acf' ),
-=======
 			acf_render_field_setting(
 				$field,
 				array(
 					'label'        => __( 'Filter by Role', 'acf' ),
->>>>>>> update
 					'instructions' => '',
 					'type'         => 'select',
 					'name'         => 'role',
@@ -89,31 +63,6 @@ if ( ! class_exists( 'ACF_Field_User' ) ) :
 			acf_render_field_setting(
 				$field,
 				array(
-<<<<<<< HEAD
-					'label'        => __( 'Allow Null?', 'acf' ),
-					'instructions' => '',
-					'name'         => 'allow_null',
-					'type'         => 'true_false',
-					'ui'           => 1,
-				)
-			);
-
-			acf_render_field_setting(
-				$field,
-				array(
-					'label'        => __( 'Select multiple values?', 'acf' ),
-					'instructions' => '',
-					'name'         => 'multiple',
-					'type'         => 'true_false',
-					'ui'           => 1,
-				)
-			);
-
-			acf_render_field_setting(
-				$field,
-				array(
-=======
->>>>>>> update
 					'label'        => __( 'Return Format', 'acf' ),
 					'instructions' => '',
 					'type'         => 'radio',
@@ -126,8 +75,6 @@ if ( ! class_exists( 'ACF_Field_User' ) ) :
 					'layout'       => 'horizontal',
 				)
 			);
-<<<<<<< HEAD
-=======
 
 			acf_render_field_setting(
 				$field,
@@ -172,7 +119,6 @@ if ( ! class_exists( 'ACF_Field_User' ) ) :
 		 */
 		public function render_field_advanced_settings( $field ) {
 			acf_render_bidirectional_field_settings( $field );
->>>>>>> update
 		}
 
 		/**
@@ -348,23 +294,11 @@ if ( ! class_exists( 'ACF_Field_User' ) ) :
 		/**
 		 * Filters the field value before it is saved into the database.
 		 *
-<<<<<<< HEAD
-		 * @date    23/01/13
-=======
->>>>>>> update
 		 * @since   3.6.0
 		 *
 		 * @param   mixed $value The field value.
 		 * @param   mixed $post_id The post ID where the value is saved.
 		 * @param   array $field The field array containing all settings.
-<<<<<<< HEAD
-		 * @return  mixed
-		 */
-		function update_value( $value, $post_id, $field ) {
-
-			// Bail early if no value.
-			if ( empty( $value ) ) {
-=======
 		 *
 		 * @return mixed $value The modified value.
 		 */
@@ -373,7 +307,6 @@ if ( ! class_exists( 'ACF_Field_User' ) ) :
 			// Bail early if no value.
 			if ( empty( $value ) ) {
 				acf_update_bidirectional_values( array(), $post_id, $field, 'user' );
->>>>>>> update
 				return $value;
 			}
 
@@ -389,11 +322,8 @@ if ( ! class_exists( 'ACF_Field_User' ) ) :
 				$value = acf_idval( $value );
 			}
 
-<<<<<<< HEAD
-=======
 			acf_update_bidirectional_values( acf_get_array( $value ), $post_id, $field, 'user' );
 
->>>>>>> update
 			// Return value.
 			return $value;
 		}
@@ -409,15 +339,6 @@ if ( ! class_exists( 'ACF_Field_User' ) ) :
 		 */
 		function ajax_query() {
 
-<<<<<<< HEAD
-			// Modify Request args.
-			if ( isset( $_REQUEST['s'] ) ) {
-				$_REQUEST['search'] = $_REQUEST['s'];
-			}
-			if ( isset( $_REQUEST['paged'] ) ) {
-				$_REQUEST['page'] = $_REQUEST['paged'];
-			}
-=======
 			// phpcs:disable WordPress.Security.NonceVerification.Recommended
 			// Modify Request args.
 			if ( isset( $_REQUEST['s'] ) ) {
@@ -427,7 +348,6 @@ if ( ! class_exists( 'ACF_Field_User' ) ) :
 				$_REQUEST['page'] = absint( $_REQUEST['paged'] );
 			}
 			// phpcs:enable WordPress.Security.NonceVerification.Recommended
->>>>>>> update
 
 			// Add query hooks.
 			add_action( 'acf/ajax/query_users/init', array( $this, 'ajax_query_init' ), 10, 2 );
@@ -456,11 +376,7 @@ if ( ! class_exists( 'ACF_Field_User' ) ) :
 			}
 
 			// Verify that this is a legitimate request using a separate nonce from the main AJAX nonce.
-<<<<<<< HEAD
-			if ( ! isset( $_REQUEST['user_query_nonce'] ) || ! wp_verify_nonce( $_REQUEST['user_query_nonce'], 'acf/fields/user/query' . $query->field['key']) ) {
-=======
 			if ( ! isset( $_REQUEST['user_query_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( $_REQUEST['user_query_nonce'] ), 'acf/fields/user/query' . $query->field['key'] ) ) {
->>>>>>> update
 				$query->send( new WP_Error( 'acf_invalid_request', __( 'Invalid request.', 'acf' ), array( 'status' => 404 ) ) );
 			}
 		}

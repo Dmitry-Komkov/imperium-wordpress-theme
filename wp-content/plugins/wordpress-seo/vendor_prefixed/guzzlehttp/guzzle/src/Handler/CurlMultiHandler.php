@@ -4,10 +4,7 @@ namespace YoastSEO_Vendor\GuzzleHttp\Handler;
 
 use YoastSEO_Vendor\GuzzleHttp\Promise as P;
 use YoastSEO_Vendor\GuzzleHttp\Promise\Promise;
-<<<<<<< HEAD
-=======
 use YoastSEO_Vendor\GuzzleHttp\Promise\PromiseInterface;
->>>>>>> update
 use YoastSEO_Vendor\GuzzleHttp\Utils;
 use YoastSEO_Vendor\Psr\Http\Message\RequestInterface;
 /**
@@ -17,19 +14,6 @@ use YoastSEO_Vendor\Psr\Http\Message\RequestInterface;
  * associative array of curl option constants mapping to values in the
  * **curl** key of the provided request options.
  *
-<<<<<<< HEAD
- * @property resource $_mh Internal use only. Lazy loaded multi-handle.
- */
-class CurlMultiHandler
-{
-    /** @var CurlFactoryInterface */
-    private $factory;
-    private $selectTimeout;
-    private $active;
-    private $handles = [];
-    private $delays = [];
-    private $options = [];
-=======
  * @final
  */
 class CurlMultiHandler
@@ -64,7 +48,6 @@ class CurlMultiHandler
     private $options = [];
     /** @var resource|\CurlMultiHandle */
     private $_mh;
->>>>>>> update
     /**
      * This handler accepts the following options:
      *
@@ -73,36 +56,6 @@ class CurlMultiHandler
      *   out while selecting curl handles. Defaults to 1 second.
      * - options: An associative array of CURLMOPT_* options and
      *   corresponding values for curl_multi_setopt()
-<<<<<<< HEAD
-     *
-     * @param array $options
-     */
-    public function __construct(array $options = [])
-    {
-        $this->factory = isset($options['handle_factory']) ? $options['handle_factory'] : new \YoastSEO_Vendor\GuzzleHttp\Handler\CurlFactory(50);
-        if (isset($options['select_timeout'])) {
-            $this->selectTimeout = $options['select_timeout'];
-        } elseif ($selectTimeout = \getenv('GUZZLE_CURL_SELECT_TIMEOUT')) {
-            $this->selectTimeout = $selectTimeout;
-        } else {
-            $this->selectTimeout = 1;
-        }
-        $this->options = isset($options['options']) ? $options['options'] : [];
-    }
-    public function __get($name)
-    {
-        if ($name === '_mh') {
-            $this->_mh = \curl_multi_init();
-            foreach ($this->options as $option => $value) {
-                // A warning is raised in case of a wrong option.
-                \curl_multi_setopt($this->_mh, $option, $value);
-            }
-            // Further calls to _mh will return the value directly, without entering the
-            // __get() method at all.
-            return $this->_mh;
-        }
-        throw new \BadMethodCallException();
-=======
      */
     public function __construct(array $options = [])
     {
@@ -143,7 +96,6 @@ class CurlMultiHandler
             \curl_multi_setopt($this->_mh, $option, $value);
         }
         return $this->_mh;
->>>>>>> update
     }
     public function __destruct()
     {
@@ -152,11 +104,7 @@ class CurlMultiHandler
             unset($this->_mh);
         }
     }
-<<<<<<< HEAD
-    public function __invoke(\YoastSEO_Vendor\Psr\Http\Message\RequestInterface $request, array $options)
-=======
     public function __invoke(\YoastSEO_Vendor\Psr\Http\Message\RequestInterface $request, array $options) : \YoastSEO_Vendor\GuzzleHttp\Promise\PromiseInterface
->>>>>>> update
     {
         $easy = $this->factory->create($request, $options);
         $id = (int) $easy->handle;
@@ -169,11 +117,7 @@ class CurlMultiHandler
     /**
      * Ticks the curl event loop.
      */
-<<<<<<< HEAD
-    public function tick()
-=======
     public function tick() : void
->>>>>>> update
     {
         // Add any delayed handles if needed.
         if ($this->delays) {
@@ -186,11 +130,7 @@ class CurlMultiHandler
             }
         }
         // Step through the task queue which may add additional requests.
-<<<<<<< HEAD
-        \YoastSEO_Vendor\GuzzleHttp\Promise\queue()->run();
-=======
         \YoastSEO_Vendor\GuzzleHttp\Promise\Utils::queue()->run();
->>>>>>> update
         if ($this->active && \curl_multi_select($this->_mh, $this->selectTimeout) === -1) {
             // Perform a usleep if a select returns -1.
             // See: https://bugs.php.net/bug.php?id=61141
@@ -203,15 +143,9 @@ class CurlMultiHandler
     /**
      * Runs until all outstanding connections have completed.
      */
-<<<<<<< HEAD
-    public function execute()
-    {
-        $queue = \YoastSEO_Vendor\GuzzleHttp\Promise\queue();
-=======
     public function execute() : void
     {
         $queue = \YoastSEO_Vendor\GuzzleHttp\Promise\Utils::queue();
->>>>>>> update
         while ($this->handles || !$queue->isEmpty()) {
             // If there are no transfers, then sleep for the next delay
             if (!$this->active && $this->delays) {
@@ -220,11 +154,7 @@ class CurlMultiHandler
             $this->tick();
         }
     }
-<<<<<<< HEAD
-    private function addRequest(array $entry)
-=======
     private function addRequest(array $entry) : void
->>>>>>> update
     {
         $easy = $entry['easy'];
         $id = (int) $easy->handle;
@@ -242,16 +172,11 @@ class CurlMultiHandler
      *
      * @return bool True on success, false on failure.
      */
-<<<<<<< HEAD
-    private function cancel($id)
-    {
-=======
     private function cancel($id) : bool
     {
         if (!\is_int($id)) {
             trigger_deprecation('guzzlehttp/guzzle', '7.4', 'Not passing an integer to %s::%s() is deprecated and will cause an error in 8.0.', __CLASS__, __FUNCTION__);
         }
->>>>>>> update
         // Cannot cancel if it has been processed.
         if (!isset($this->handles[$id])) {
             return \false;
@@ -262,11 +187,6 @@ class CurlMultiHandler
         \curl_close($handle);
         return \true;
     }
-<<<<<<< HEAD
-    private function processMessages()
-    {
-        while ($done = \curl_multi_info_read($this->_mh)) {
-=======
     private function processMessages() : void
     {
         while ($done = \curl_multi_info_read($this->_mh)) {
@@ -274,7 +194,6 @@ class CurlMultiHandler
                 // if it's not done, then it would be premature to remove the handle. ref https://github.com/guzzle/guzzle/pull/2892#issuecomment-945150216
                 continue;
             }
->>>>>>> update
             $id = (int) $done['handle'];
             \curl_multi_remove_handle($this->_mh, $done['handle']);
             if (!isset($this->handles[$id])) {
@@ -287,11 +206,7 @@ class CurlMultiHandler
             $entry['deferred']->resolve(\YoastSEO_Vendor\GuzzleHttp\Handler\CurlFactory::finish($this, $entry['easy'], $this->factory));
         }
     }
-<<<<<<< HEAD
-    private function timeToNext()
-=======
     private function timeToNext() : int
->>>>>>> update
     {
         $currentTime = \YoastSEO_Vendor\GuzzleHttp\Utils::currentTime();
         $nextTime = \PHP_INT_MAX;
@@ -300,10 +215,6 @@ class CurlMultiHandler
                 $nextTime = $time;
             }
         }
-<<<<<<< HEAD
-        return \max(0, $nextTime - $currentTime) * 1000000;
-=======
         return (int) \max(0, $nextTime - $currentTime) * 1000000;
->>>>>>> update
     }
 }

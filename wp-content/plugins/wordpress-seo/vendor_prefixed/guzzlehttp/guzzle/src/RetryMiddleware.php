@@ -2,39 +2,13 @@
 
 namespace YoastSEO_Vendor\GuzzleHttp;
 
-<<<<<<< HEAD
-use YoastSEO_Vendor\GuzzleHttp\Promise\PromiseInterface;
-use YoastSEO_Vendor\GuzzleHttp\Promise\RejectedPromise;
-use YoastSEO_Vendor\GuzzleHttp\Psr7;
-=======
 use YoastSEO_Vendor\GuzzleHttp\Promise as P;
 use YoastSEO_Vendor\GuzzleHttp\Promise\PromiseInterface;
->>>>>>> update
 use YoastSEO_Vendor\Psr\Http\Message\RequestInterface;
 use YoastSEO_Vendor\Psr\Http\Message\ResponseInterface;
 /**
  * Middleware that retries requests based on the boolean result of
  * invoking the provided "decider" function.
-<<<<<<< HEAD
- */
-class RetryMiddleware
-{
-    /** @var callable  */
-    private $nextHandler;
-    /** @var callable */
-    private $decider;
-    /** @var callable */
-    private $delay;
-    /**
-     * @param callable $decider     Function that accepts the number of retries,
-     *                              a request, [response], and [exception] and
-     *                              returns true if the request is to be
-     *                              retried.
-     * @param callable $nextHandler Next handler to invoke.
-     * @param callable $delay       Function that accepts the number of retries
-     *                              and [response] and returns the number of
-     *                              milliseconds to delay.
-=======
  *
  * @final
  */
@@ -61,7 +35,6 @@ class RetryMiddleware
      * @param (callable(int): int)|null                           $delay       Function that accepts the number of retries
      *                                                                         and returns the number of
      *                                                                         milliseconds to delay.
->>>>>>> update
      */
     public function __construct(callable $decider, callable $nextHandler, callable $delay = null)
     {
@@ -72,23 +45,6 @@ class RetryMiddleware
     /**
      * Default exponential backoff delay function.
      *
-<<<<<<< HEAD
-     * @param int $retries
-     *
-     * @return int milliseconds.
-     */
-    public static function exponentialDelay($retries)
-    {
-        return (int) \pow(2, $retries - 1) * 1000;
-    }
-    /**
-     * @param RequestInterface $request
-     * @param array            $options
-     *
-     * @return PromiseInterface
-     */
-    public function __invoke(\YoastSEO_Vendor\Psr\Http\Message\RequestInterface $request, array $options)
-=======
      * @return int milliseconds.
      */
     public static function exponentialDelay(int $retries) : int
@@ -96,7 +52,6 @@ class RetryMiddleware
         return (int) 2 ** ($retries - 1) * 1000;
     }
     public function __invoke(\YoastSEO_Vendor\Psr\Http\Message\RequestInterface $request, array $options) : \YoastSEO_Vendor\GuzzleHttp\Promise\PromiseInterface
->>>>>>> update
     {
         if (!isset($options['retries'])) {
             $options['retries'] = 0;
@@ -106,18 +61,6 @@ class RetryMiddleware
     }
     /**
      * Execute fulfilled closure
-<<<<<<< HEAD
-     *
-     * @return mixed
-     */
-    private function onFulfilled(\YoastSEO_Vendor\Psr\Http\Message\RequestInterface $req, array $options)
-    {
-        return function ($value) use($req, $options) {
-            if (!\call_user_func($this->decider, $options['retries'], $req, $value, null)) {
-                return $value;
-            }
-            return $this->doRetry($req, $options, $value);
-=======
      */
     private function onFulfilled(\YoastSEO_Vendor\Psr\Http\Message\RequestInterface $request, array $options) : callable
     {
@@ -126,44 +69,23 @@ class RetryMiddleware
                 return $value;
             }
             return $this->doRetry($request, $options, $value);
->>>>>>> update
         };
     }
     /**
      * Execute rejected closure
-<<<<<<< HEAD
-     *
-     * @return callable
-     */
-    private function onRejected(\YoastSEO_Vendor\Psr\Http\Message\RequestInterface $req, array $options)
-    {
-        return function ($reason) use($req, $options) {
-            if (!\call_user_func($this->decider, $options['retries'], $req, null, $reason)) {
-                return \YoastSEO_Vendor\GuzzleHttp\Promise\rejection_for($reason);
-=======
      */
     private function onRejected(\YoastSEO_Vendor\Psr\Http\Message\RequestInterface $req, array $options) : callable
     {
         return function ($reason) use($req, $options) {
             if (!($this->decider)($options['retries'], $req, null, $reason)) {
                 return \YoastSEO_Vendor\GuzzleHttp\Promise\Create::rejectionFor($reason);
->>>>>>> update
             }
             return $this->doRetry($req, $options);
         };
     }
-<<<<<<< HEAD
-    /**
-     * @return self
-     */
-    private function doRetry(\YoastSEO_Vendor\Psr\Http\Message\RequestInterface $request, array $options, \YoastSEO_Vendor\Psr\Http\Message\ResponseInterface $response = null)
-    {
-        $options['delay'] = \call_user_func($this->delay, ++$options['retries'], $response);
-=======
     private function doRetry(\YoastSEO_Vendor\Psr\Http\Message\RequestInterface $request, array $options, \YoastSEO_Vendor\Psr\Http\Message\ResponseInterface $response = null) : \YoastSEO_Vendor\GuzzleHttp\Promise\PromiseInterface
     {
         $options['delay'] = ($this->delay)(++$options['retries'], $response, $request);
->>>>>>> update
         return $this($request, $options);
     }
 }

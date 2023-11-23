@@ -3,35 +3,6 @@
 /**
  * Pure-PHP ANSI Decoder
  *
-<<<<<<< HEAD
- * PHP versions 4 and 5
- *
- * If you call read() in Net_SSH2 you may get {@link http://en.wikipedia.org/wiki/ANSI_escape_code ANSI escape codes} back.
- * They'd look like chr(0x1B) . '[00m' or whatever (0x1B = ESC).  They tell a
- * {@link http://en.wikipedia.org/wiki/Terminal_emulator terminal emulator} how to format the characters, what
- * color to display them in, etc. File_ANSI is a {@link http://en.wikipedia.org/wiki/VT100 VT100} terminal emulator.
- *
- * LICENSE: Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- *
- * @category  File
- * @package   File_ANSI
-=======
  * PHP version 5
  *
  * If you call read() in \phpseclib\Net\SSH2 you may get {@link http://en.wikipedia.org/wiki/ANSI_escape_code ANSI escape codes} back.
@@ -41,23 +12,12 @@
  *
  * @category  File
  * @package   ANSI
->>>>>>> update
  * @author    Jim Wigginton <terrafrost@php.net>
  * @copyright 2012 Jim Wigginton
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
  * @link      http://phpseclib.sourceforge.net
  */
 
-<<<<<<< HEAD
-/**
- * Pure-PHP ANSI Decoder
- *
- * @package File_ANSI
- * @author  Jim Wigginton <terrafrost@php.net>
- * @access  public
- */
-class File_ANSI
-=======
 namespace phpseclib\File;
 
 /**
@@ -68,7 +28,6 @@ namespace phpseclib\File;
  * @access  public
  */
 class ANSI
->>>>>>> update
 {
     /**
      * Max Width
@@ -201,53 +160,26 @@ class ANSI
     /**
      * Default Constructor.
      *
-<<<<<<< HEAD
-     * @return File_ANSI
-=======
      * @return \phpseclib\File\ANSI
->>>>>>> update
      * @access public
      */
     function __construct()
     {
-<<<<<<< HEAD
-        $attr_cell = new stdClass();
-=======
         $attr_cell = new \stdClass();
->>>>>>> update
         $attr_cell->bold = false;
         $attr_cell->underline = false;
         $attr_cell->blink = false;
         $attr_cell->background = 'black';
         $attr_cell->foreground = 'white';
         $attr_cell->reverse = false;
-<<<<<<< HEAD
-        $this->base_attr_cell = clone($attr_cell);
-        $this->attr_cell = clone($attr_cell);
-=======
         $this->base_attr_cell = clone $attr_cell;
         $this->attr_cell = clone $attr_cell;
->>>>>>> update
 
         $this->setHistory(200);
         $this->setDimensions(80, 24);
     }
 
     /**
-<<<<<<< HEAD
-     * PHP4 compatible Default Constructor.
-     *
-     * @see self::__construct()
-     * @access public
-     */
-    function File_ANSI()
-    {
-        $this->__construct($mode);
-    }
-
-    /**
-=======
->>>>>>> update
      * Set terminal width and height
      *
      * Resets the screen as well
@@ -385,11 +317,7 @@ class ANSI
                                     switch ($mod) {
                                         case '':
                                         case '0': // Turn off character attributes
-<<<<<<< HEAD
-                                            $attr_cell = clone($this->base_attr_cell);
-=======
                                             $attr_cell = clone $this->base_attr_cell;
->>>>>>> update
                                             break;
                                         case '1': // Turn bold mode on
                                             $attr_cell->bold = true;
@@ -459,11 +387,7 @@ class ANSI
                 case "\x08": // backspace
                     if ($this->x) {
                         $this->x--;
-<<<<<<< HEAD
-                        $this->attrs[$this->y][$this->x] = clone($this->base_attr_cell);
-=======
                         $this->attrs[$this->y][$this->x] = clone $this->base_attr_cell;
->>>>>>> update
                         $this->screen[$this->y] = substr_replace(
                             $this->screen[$this->y],
                             $source[$i],
@@ -482,11 +406,7 @@ class ANSI
                     $this->ansi.= "\x1B";
                     break;
                 default:
-<<<<<<< HEAD
-                    $this->attrs[$this->y][$this->x] = clone($this->attr_cell);
-=======
                     $this->attrs[$this->y][$this->x] = clone $this->attr_cell;
->>>>>>> update
                     if ($this->x > strlen($this->screen[$this->y])) {
                         $this->screen[$this->y] = str_repeat(' ', $this->x);
                     }

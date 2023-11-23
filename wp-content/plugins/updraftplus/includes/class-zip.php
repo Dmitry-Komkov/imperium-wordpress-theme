@@ -244,11 +244,7 @@ class UpdraftPlus_PclZip {
 		// Route around PHP bug (exact version with the problem not known)
 		$ziparchive_create_match = (version_compare(PHP_VERSION, '5.2.12', '>') && defined('ZIPARCHIVE::CREATE')) ? ZIPARCHIVE::CREATE : 1;
 
-<<<<<<< HEAD
-		if ($flags == $ziparchive_create_match && file_exists($path)) @unlink($path);// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
-=======
 		if ($flags == $ziparchive_create_match && file_exists($path)) @unlink($path);// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged -- Silenced to suppress errors that may arise if the file doesn't exist.
->>>>>>> update
 
 		$this->pclzip = new PclZip($path);
 
@@ -362,11 +358,8 @@ class UpdraftPlus_PclZip {
 class UpdraftPlus_BinZip extends UpdraftPlus_PclZip {
 
 	private $binzip;
-<<<<<<< HEAD
-=======
 	
 	private $symlink_reversals = array();
->>>>>>> update
 
 	/**
 	 * Class constructor
@@ -381,14 +374,6 @@ class UpdraftPlus_BinZip extends UpdraftPlus_PclZip {
 		return parent::__construct();
 	}
 
-<<<<<<< HEAD
-	public function addFile($file, $add_as) {
-
-		global $updraftplus;
-		// Get the directory that $add_as is relative to
-		$base = UpdraftPlus_Manipulation_Functions::str_lreplace($add_as, '', $file);
-
-=======
 	/**
 	 * Receive a list of directory symlinks found, allowing their later reversal
 	 *
@@ -420,7 +405,6 @@ class UpdraftPlus_BinZip extends UpdraftPlus_PclZip {
 		$base = UpdraftPlus_Manipulation_Functions::str_lreplace($add_as, '', $file);
 		
 		// If the replacement operation has done nothing, i.e. if $file did not begin with $add_as
->>>>>>> update
 		if ($file == $base) {
 			// Shouldn't happen; but see: https://bugs.php.net/bug.php?id=62119
 			$updraftplus->log("File skipped due to unexpected name mismatch (locale: ".setlocale(LC_CTYPE, "0")."): file=$file add_as=$add_as", 'notice', false, true);
@@ -448,11 +432,7 @@ class UpdraftPlus_BinZip extends UpdraftPlus_PclZip {
 		global $updraftplus, $updraftplus_backup;
 
 		// BinZip does not like zero-sized zip files
-<<<<<<< HEAD
-		if (file_exists($this->path) && 0 == filesize($this->path)) @unlink($this->path);// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
-=======
 		if (file_exists($this->path) && 0 == filesize($this->path)) @unlink($this->path);// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged -- Silenced to suppress errors that may arise if the file doesn't exist.
->>>>>>> update
 
 		$descriptorspec = array(
 			0 => array('pipe', 'r'),
@@ -523,11 +503,7 @@ class UpdraftPlus_BinZip extends UpdraftPlus_PclZip {
 						$last_recorded_alive = time();
 					}
 					if (file_exists($this->path)) {
-<<<<<<< HEAD
-						$new_size = @filesize($this->path);// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
-=======
 						$new_size = @filesize($this->path);// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged -- Silenced to suppress errors that may arise because of the function.
->>>>>>> update
 						if (!$something_useful_happened && $new_size > $orig_size + 20) {
 							UpdraftPlus_Job_Scheduler::something_useful_happened();
 							$something_useful_happened = true;

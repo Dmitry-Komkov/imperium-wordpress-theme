@@ -24,14 +24,8 @@ class Page_Comments_Check extends Health_Check {
 	/**
 	 * Constructor.
 	 *
-<<<<<<< HEAD
-	 * @param  Page_Comments_Runner  $runner The object that implements the actual health check.
-	 * @param  Page_Comments_Reports $reports The object that generates WordPress-friendly results.
-	 * @return void
-=======
 	 * @param  Page_Comments_Runner  $runner  The object that implements the actual health check.
 	 * @param  Page_Comments_Reports $reports The object that generates WordPress-friendly results.
->>>>>>> update
 	 */
 	public function __construct(
 		Page_Comments_Runner $runner,
@@ -50,11 +44,7 @@ class Page_Comments_Check extends Health_Check {
 	 * @return string The human-readable label.
 	 */
 	public function get_test_label() {
-<<<<<<< HEAD
-		return __( 'Page comments', 'wordpress-seo' );
-=======
 		return \__( 'Page comments', 'wordpress-seo' );
->>>>>>> update
 	}
 
 	/**

@@ -2,15 +2,9 @@
 Contributors: SergeyBiryukov, mihdan, karevn, webvitaly, kaggdesign
 Tags: cyrillic, belorussian, ukrainian, bulgarian, macedonian, georgian, kazakh, latin, l10n, russian, cyr-to-lat, cyr2lat, rustolat, slugs, translations, transliteration
 Requires at least: 5.1
-<<<<<<< HEAD
-Tested up to: 6.0
-Stable tag: 5.3.0
-Requires PHP: 5.6.20
-=======
 Tested up to: 6.3
 Stable tag: 6.0.5
 Requires PHP: 7.0.0
->>>>>>> update
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -21,11 +15,7 @@ Convert Non-Latin characters in post, page and term slugs to Latin characters.
 Converts Cyrillic characters in post, page and term slugs to Latin characters. Useful for creating human-readable URLs.
 
 = Features =
-<<<<<<< HEAD
-* The only plugin with fully editable transliteration table. Allows add/remove and edit pairs like 'Я' => 'Ya', or even 'Пиво' => 'Beer'
-=======
 * The only plugin with fully editable transliteration table. Allows to add/remove and edit pairs like 'Я' => 'Ya', or even 'Пиво' => 'Beer'
->>>>>>> update
 * Converts any number of existing post, page and term slugs in background processes
 * Saves existing post and page permalinks integrity
 * Performs transliteration of attachment file names
@@ -37,13 +27,10 @@ Converts Cyrillic characters in post, page and term slugs to Latin characters. U
 
 Based on the original Rus-To-Lat plugin by Anton Skorobogatov.
 
-<<<<<<< HEAD
-=======
 Sponsored by [Blackfire](https://www.blackfire.io/).
 
 <img src="https://ps.w.org/cyr2lat/assets/blackfire-io_secondary_horizontal_transparent-250x62.png" alt="Blackfire Logo" />
 
->>>>>>> update
 == Screenshots ==
 
 1. Tables settings page
@@ -152,8 +139,6 @@ function my_ctl_pre_sanitize_filename( $result, $filename ) {
 add_filter( 'ctl_pre_sanitize_filename', 10, 2 );
 `
 
-<<<<<<< HEAD
-=======
 = How can I allow the plugin to work on the frontend? =
 
 Add similar code to your theme's `functions.php` file:
@@ -181,7 +166,6 @@ function my_ctl_allow( bool $allowed ): bool {
 add_filter( 'ctl_allow', 'my_ctl_allow' );
 `
 
->>>>>>> update
 = How can I limit post types for background conversion? =
 
 Add similar code to your theme's `functions.php` file:
@@ -237,8 +221,6 @@ Yes you can!
 
 == Changelog ==
 
-<<<<<<< HEAD
-=======
 = 6.0.5 (09.10.2023) =
 * Fixed displaying file descriptions in the Theme Editor; now in the current locale.
 
@@ -284,7 +266,6 @@ Yes you can!
 * Tested with WordPress 6.1 and WooCommerce 7.2.
 * Added compatibility with WC High-Performance order storage (COT) feature.
 
->>>>>>> update
 = 5.3.0 (23.05.2022) =
 * Tested with WordPress 6.0 and WooCommerce 6.5.
 
@@ -410,11 +391,7 @@ Yes you can!
 * Tables sorted by local alphabets
 
 = 4.3.2 (29.12.2019) =
-<<<<<<< HEAD
-* Fixed problems with setting of max_input_vars on some hostings
-=======
 * Fixed problems with setting of max_input_vars on some hosting
->>>>>>> update
 
 = 4.3.1 (27.12.2019) =
 * Added requirement to have max_input_vars >= 5000

@@ -1,10 +1,7 @@
 /*!*****************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./src/advanced-custom-fields-pro/assets/src/sass/acf-global.scss ***!
   \*****************************************************************************************************************************************************************************************************************/
-<<<<<<< HEAD
-=======
 @charset "UTF-8";
->>>>>>> update
 /*--------------------------------------------------------------------------------------------
 *
 *	Vars
@@ -15,14 +12,11 @@
 /* responsive */
 /*--------------------------------------------------------------------------------------------
 *
-<<<<<<< HEAD
-=======
 *	ACF 6 ↓
 *
 *--------------------------------------------------------------------------------------------*/
 /*--------------------------------------------------------------------------------------------
 *
->>>>>>> update
 *  Mixins
 *
 *--------------------------------------------------------------------------------------------*/
@@ -52,18 +46,12 @@
 }
 
 /* Horizontal List: Clearfix */
-<<<<<<< HEAD
-.acf-hl:before, .acf-hl:after,
-.acf-bl:before, .acf-bl:after,
-.acf-cf:before, .acf-cf:after {
-=======
 .acf-hl:before,
 .acf-hl:after,
 .acf-bl:before,
 .acf-bl:after,
 .acf-cf:before,
 .acf-cf:after {
->>>>>>> update
   content: "";
   display: block;
   line-height: 0;
@@ -158,15 +146,12 @@
   color: #f00;
 }
 
-<<<<<<< HEAD
-=======
 /* Allow pointer events in reusable blocks */
 .acf-button,
 .acf-tab-button {
   pointer-events: auto !important;
 }
 
->>>>>>> update
 /* show on hover */
 .acf-soh .acf-soh-target {
   -webkit-transition: opacity 0.25s 0s ease-in-out, visibility 0s linear 0.25s;
@@ -218,16 +203,6 @@
 *---------------------------------------------------------------------------------------------*/
 /* tooltip */
 .acf-tooltip {
-<<<<<<< HEAD
-  background: #2F353E;
-  border-radius: 5px;
-  color: #fff;
-  padding: 5px 10px;
-  position: absolute;
-  font-size: 12px;
-  line-height: 1.4em;
-  z-index: 900000;
-=======
   background: #1D2939;
   border-radius: 6px;
   color: #D0D5DD;
@@ -239,7 +214,6 @@
   z-index: 900000;
   max-width: 280px;
   box-shadow: 0px 12px 16px -4px rgba(16, 24, 40, 0.08), 0px 4px 6px -2px rgba(16, 24, 40, 0.03);
->>>>>>> update
   /* tip */
   /* positions */
 }
@@ -257,11 +231,7 @@
   top: 100%;
   left: 50%;
   margin-left: -6px;
-<<<<<<< HEAD
-  border-top-color: #2F353E;
-=======
   border-top-color: #2f353e;
->>>>>>> update
   border-bottom-width: 0;
 }
 .acf-tooltip.right {
@@ -271,11 +241,7 @@
   top: 50%;
   margin-top: -6px;
   right: 100%;
-<<<<<<< HEAD
-  border-right-color: #2F353E;
-=======
   border-right-color: #2f353e;
->>>>>>> update
   border-left-width: 0;
 }
 .acf-tooltip.bottom {
@@ -285,11 +251,7 @@
   bottom: 100%;
   left: 50%;
   margin-left: -6px;
-<<<<<<< HEAD
-  border-bottom-color: #2F353E;
-=======
   border-bottom-color: #2f353e;
->>>>>>> update
   border-top-width: 0;
 }
 .acf-tooltip.left {
@@ -299,11 +261,7 @@
   top: 50%;
   margin-top: -6px;
   left: 100%;
-<<<<<<< HEAD
-  border-left-color: #2F353E;
-=======
   border-left-color: #2f353e;
->>>>>>> update
   border-right-width: 0;
 }
 .acf-tooltip .acf-overlay {
@@ -322,11 +280,7 @@
   text-decoration: underline;
 }
 .acf-tooltip.-confirm a[data-event=confirm] {
-<<<<<<< HEAD
-  color: #F55E4F;
-=======
   color: #f55e4f;
->>>>>>> update
 }
 
 .acf-overlay {
@@ -411,10 +365,7 @@
 
 .acf-icon.-cancel:before {
   content: "\f335";
-<<<<<<< HEAD
-=======
   margin: -1px 0 0 -1px;
->>>>>>> update
 }
 
 .acf-icon.-pencil:before {
@@ -512,8 +463,6 @@
   border: solid 2px currentColor;
 }
 
-<<<<<<< HEAD
-=======
 .acf-icon.-trash {
   position: relative;
 }
@@ -535,7 +484,6 @@
   border: solid 2px currentColor;
 }
 
->>>>>>> update
 .acf-icon.-collapse:before {
   content: "\f142";
   margin-left: -0.1em;
@@ -583,38 +531,22 @@ a.acf-icon:active, a.acf-icon:focus {
 
 .acf-icon.light {
   border-color: transparent;
-<<<<<<< HEAD
-  background: #F5F5F5;
-=======
   background: #f5f5f5;
->>>>>>> update
   color: #23282d;
 }
 
 .acf-icon.dark {
   border-color: transparent !important;
-<<<<<<< HEAD
-  background: #23282D;
-=======
   background: #23282d;
->>>>>>> update
   color: #eee;
 }
 
 a.acf-icon.dark:hover {
-<<<<<<< HEAD
-  background: #191E23;
-  color: #00b9eb;
-}
-a.acf-icon.dark.-minus:hover, a.acf-icon.dark.-cancel:hover {
-  color: #D54E21;
-=======
   background: #191e23;
   color: #00b9eb;
 }
 a.acf-icon.dark.-minus:hover, a.acf-icon.dark.-cancel:hover {
   color: #d54e21;
->>>>>>> update
 }
 
 .acf-icon.grey {
@@ -623,19 +555,11 @@ a.acf-icon.dark.-minus:hover, a.acf-icon.dark.-cancel:hover {
   color: #fff !important;
 }
 .acf-icon.grey:hover {
-<<<<<<< HEAD
-  background: #00A0D2;
-  color: #fff;
-}
-.acf-icon.grey.-minus:hover, .acf-icon.grey.-cancel:hover {
-  background: #32373C;
-=======
   background: #00a0d2;
   color: #fff;
 }
 .acf-icon.grey.-minus:hover, .acf-icon.grey.-cancel:hover {
   background: #32373c;
->>>>>>> update
 }
 
 .acf-icon.small,
@@ -657,11 +581,7 @@ a.acf-icon.dark.-minus:hover, a.acf-icon.dark.-cancel:hover {
 *
 *--------------------------------------------------------------------------------------------*/
 .acf-box {
-<<<<<<< HEAD
-  background: #FFFFFF;
-=======
   background: #ffffff;
->>>>>>> update
   border: 1px solid #ccd0d4;
   position: relative;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
@@ -674,11 +594,8 @@ a.acf-icon.dark.-minus:hover, a.acf-icon.dark.-cancel:hover {
   padding: 15px;
 }
 .acf-box .title h3 {
-<<<<<<< HEAD
-=======
   display: flex;
   align-items: center;
->>>>>>> update
   font-size: 14px;
   line-height: 1em;
   margin: 0;
@@ -793,12 +710,8 @@ a.acf-icon.dark.-minus:hover, a.acf-icon.dark.-cancel:hover {
   /* tbody */
   /* -clear */
 }
-<<<<<<< HEAD
-.acf-table > tbody > tr > th, .acf-table > tbody > tr > td,
-=======
 .acf-table > tbody > tr > th,
 .acf-table > tbody > tr > td,
->>>>>>> update
 .acf-table > thead > tr > th,
 .acf-table > thead > tr > td {
   padding: 8px;
@@ -836,12 +749,8 @@ a.acf-icon.dark.-minus:hover, a.acf-icon.dark.-cancel:hover {
 .acf-table.-clear {
   border: 0 none;
 }
-<<<<<<< HEAD
-.acf-table.-clear > tbody > tr > td, .acf-table.-clear > tbody > tr > th,
-=======
 .acf-table.-clear > tbody > tr > td,
 .acf-table.-clear > tbody > tr > th,
->>>>>>> update
 .acf-table.-clear > thead > tr > td,
 .acf-table.-clear > thead > tr > th {
   border: 0 none;
@@ -884,11 +793,7 @@ a.acf-icon.dark.-minus:hover, a.acf-icon.dark.-cancel:hover {
 .acf-tbody > li,
 .acf-tfoot > li {
   box-sizing: border-box;
-<<<<<<< HEAD
-  padding: 8px 12px;
-=======
   padding-top: 14px;
->>>>>>> update
   font-size: 12px;
   line-height: 14px;
 }
@@ -1029,10 +934,6 @@ html[dir=rtl] #acf-popup .acf-popup-box .title .acf-icon {
 #acf-upgrade-notice {
   position: relative;
   background: #fff;
-<<<<<<< HEAD
-  border-left: 4px solid #00a0d2;
-=======
->>>>>>> update
   padding: 20px;
 }
 #acf-upgrade-notice:after {
@@ -1045,20 +946,6 @@ html[dir=rtl] #acf-popup .acf-popup-box .title .acf-icon {
   width: 55%;
   padding-left: 90px;
 }
-<<<<<<< HEAD
-#acf-upgrade-notice .col-actions {
-  float: right;
-  text-align: center;
-  padding: 10px;
-}
-#acf-upgrade-notice img {
-  float: left;
-  width: 70px;
-  height: 70px;
-  margin: 0 0 0 -90px;
-}
-#acf-upgrade-notice h2 {
-=======
 #acf-upgrade-notice .notice-container {
   display: flex;
   justify-content: space-between;
@@ -1077,7 +964,6 @@ html[dir=rtl] #acf-popup .acf-popup-box .title .acf-icon {
 }
 #acf-upgrade-notice h2 {
   display: inline-block;
->>>>>>> update
   font-size: 16px;
   margin: 2px 0 6.5px;
 }
@@ -1090,11 +976,7 @@ html[dir=rtl] #acf-popup .acf-popup-box .title .acf-icon {
 }
 @media screen and (max-width: 640px) {
   #acf-upgrade-notice .col-content,
-<<<<<<< HEAD
-#acf-upgrade-notice .col-actions {
-=======
   #acf-upgrade-notice .col-actions {
->>>>>>> update
     float: none;
     padding-left: 90px;
     width: auto;
@@ -1102,8 +984,6 @@ html[dir=rtl] #acf-popup .acf-popup-box .title .acf-icon {
   }
 }
 
-<<<<<<< HEAD
-=======
 #acf-upgrade-notice:has(.notice-container)::before,
 #acf-upgrade-notice:has(.notice-container)::after {
   display: none;
@@ -1113,7 +993,6 @@ html[dir=rtl] #acf-popup .acf-popup-box .title .acf-icon {
   padding-left: 20px !important;
 }
 
->>>>>>> update
 /*--------------------------------------------------------------------------------------------
 *
 *	Welcome
@@ -1192,11 +1071,7 @@ html[dir=rtl] #acf-popup .acf-popup-box .title .acf-icon {
   margin-right: -10px;
 }
 .acf-hl[data-cols] > li {
-<<<<<<< HEAD
-  padding: 0 10px;
-=======
   padding: 0 6px 0 10px;
->>>>>>> update
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -1218,22 +1093,16 @@ html[dir=rtl] #acf-popup .acf-popup-box .title .acf-icon {
 /* mobile */
 @media screen and (max-width: 640px) {
   .acf-hl[data-cols] {
-<<<<<<< HEAD
-=======
     flex-wrap: wrap;
     justify-content: flex-start;
     align-content: flex-start;
     align-items: flex-start;
->>>>>>> update
     margin-left: 0;
     margin-right: 0;
     margin-top: -10px;
   }
   .acf-hl[data-cols] > li {
-<<<<<<< HEAD
-=======
     flex: 1 1 100%;
->>>>>>> update
     width: 100% !important;
     padding: 10px 0 0;
   }
@@ -1255,10 +1124,7 @@ html[dir=rtl] #acf-popup .acf-popup-box .title .acf-icon {
   top: 0;
   right: 0;
   padding: 5px;
-<<<<<<< HEAD
-=======
   z-index: 1050;
->>>>>>> update
 }
 html[dir=rtl] .acf-actions.-hover {
   right: auto;
@@ -1371,11 +1237,7 @@ html[dir=rtl] .acf-table > tbody > tr > td.order + td {
     margin: 0;
   }
   .acf-postbox-columns .acf-postbox-main,
-<<<<<<< HEAD
-.acf-postbox-columns .acf-postbox-side {
-=======
   .acf-postbox-columns .acf-postbox-side {
->>>>>>> update
     float: none;
     width: auto;
     margin: 0;
@@ -1445,13 +1307,6 @@ html[dir=rtl] .acf-table > tbody > tr > td.order + td {
 #acf-admin-tools .notice {
   margin-top: 10px;
 }
-<<<<<<< HEAD
-
-.acf-meta-box-wrap {
-  margin-top: 10px;
-  /* acf-fields */
-}
-=======
 #acf-admin-tools .acf-meta-box-wrap {
   /* acf-fields */
 }
@@ -1486,7 +1341,6 @@ html[dir=rtl] .acf-table > tbody > tr > td.order + td {
   margin-top: 19px;
 }
 
->>>>>>> update
 .acf-meta-box-wrap .postbox {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -1509,14 +1363,6 @@ html[dir=rtl] .acf-table > tbody > tr > td.order + td {
 .acf-meta-box-wrap .postbox .handle-order-lower {
   display: none;
 }
-<<<<<<< HEAD
-.acf-meta-box-wrap .acf-fields {
-  border: #ebebeb solid 1px;
-  background: #fafafa;
-  border-radius: 3px;
-}
-=======
->>>>>>> update
 
 /* grid */
 .acf-meta-box-wrap.-grid {
@@ -1558,9 +1404,6 @@ html[dir=rtl] .acf-table > tbody > tr > td.order + td {
   max-width: 800px;
 }
 #acf-admin-tool-export ul {
-<<<<<<< HEAD
-  column-width: 200px;
-=======
   display: flex;
   flex-wrap: wrap;
   width: 100%;
@@ -1580,7 +1423,6 @@ html[dir=rtl] .acf-table > tbody > tr > td.order + td {
 }
 #acf-admin-tool-export .acf-postbox-side ul {
   display: block;
->>>>>>> update
 }
 #acf-admin-tool-export .acf-postbox-side .button {
   margin: 0;
@@ -1590,147 +1432,6 @@ html[dir=rtl] .acf-table > tbody > tr > td.order + td {
   display: block;
   width: 100%;
   min-height: 500px;
-<<<<<<< HEAD
-  background: #fafafa;
-  box-shadow: none;
-  padding: 7px;
-  border-radius: 3px;
-}
-#acf-admin-tool-export .acf-panel-selection .acf-label {
-  display: none;
-}
-
-/*---------------------------------------------------------------------------------------------
-*
-*  Admin Navigation
-*
-*---------------------------------------------------------------------------------------------*/
-.acf-admin-toolbar {
-  background: #fff;
-  border-bottom: 1px solid #ccd0d4;
-  padding-top: 10px;
-}
-.acf-admin-toolbar h2 {
-  font-size: 14px;
-  line-height: 2.5714285714;
-  display: inline-block;
-  padding: 5px 0;
-  margin: 0 10px 0 0;
-}
-.acf-admin-toolbar h2 i {
-  vertical-align: middle;
-  color: #babbbc;
-}
-.acf-admin-toolbar .acf-tab {
-  display: inline-block;
-  font-size: 14px;
-  line-height: 2.5714285714;
-  padding: 5px;
-  margin: 0 5px;
-  text-decoration: none;
-  color: inherit;
-}
-.acf-admin-toolbar .acf-tab.is-active {
-  border-bottom: #0071a4 solid 3px;
-  padding-bottom: 10px;
-}
-.acf-admin-toolbar .acf-tab:hover {
-  color: #00a0d2;
-}
-.acf-admin-toolbar .acf-tab:focus {
-  box-shadow: none;
-}
-.acf-admin-toolbar a.btn-upgrade {
-  display: inline-flex;
-  background: #dee3ff;
-  border: 1px solid #c6d3f8;
-  box-sizing: border-box;
-  border-radius: 0.25rem;
-  padding: 0 0.75rem;
-  cursor: pointer;
-  vertical-align: middle;
-  margin-top: -6px;
-  margin-left: 20px;
-  text-decoration: none;
-}
-.acf-admin-toolbar a.btn-upgrade:hover {
-  background: #d1ddff;
-  border-color: #b9caf9;
-}
-.acf-admin-toolbar a.btn-upgrade p {
-  font-family: system-ui;
-  font-weight: 600;
-  letter-spacing: 0.2;
-  line-height: 1;
-  font-size: 0.625rem;
-  text-transform: uppercase;
-  color: #425fdd;
-  margin-left: 0.65rem;
-}
-#wpcontent .acf-admin-toolbar {
-  margin-left: -20px;
-  padding-left: 20px;
-}
-@media screen and (max-width: 600px) {
-  .acf-admin-toolbar {
-    display: none;
-  }
-}
-
-/*---------------------------------------------------------------------------------------------
-*
-*  Field Groups
-*
-*---------------------------------------------------------------------------------------------*/
-.acf-admin-field-groups .tablenav.top {
-  display: none;
-}
-.acf-admin-field-groups .subsubsub {
-  margin-bottom: 3px;
-}
-.acf-admin-field-groups .wp-list-table td, .acf-admin-field-groups .wp-list-table th {
-  box-sizing: border-box;
-}
-.acf-admin-field-groups .wp-list-table tr:hover {
-  background: #f7f7f7;
-}
-@media screen and (min-width: 782px) {
-  .acf-admin-field-groups .wp-list-table .column-acf-count {
-    width: 10%;
-  }
-}
-.acf-admin-field-groups .wp-list-table .row-actions span.file {
-  display: block;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-.acf-admin-field-groups .acf-secondary-text {
-  color: #a0a5aa;
-}
-
-.acf-multi-dashicon {
-  position: relative;
-  z-index: 1;
-}
-.acf-multi-dashicon:before, .acf-multi-dashicon:after {
-  width: 18px;
-  height: 18px;
-  line-height: 18px;
-  font-size: 14px;
-  background: #fff;
-  border: #7e8993 solid 1px;
-  border-radius: 2px;
-  display: block;
-}
-.acf-multi-dashicon:after {
-  content: "";
-  position: absolute;
-  top: -3px;
-  left: -3px;
-  z-index: -1;
-  background: #e7e7e7;
-=======
   background: #F9FAFB;
   border-color: #D0D5DD;
   box-shadow: none;
@@ -1744,7 +1445,6 @@ html[dir=rtl] .acf-table > tbody > tr > td.order + td {
 
 #acf-admin-tool-import ul {
   column-width: 200px;
->>>>>>> update
 }
 
 .acf-css-tooltip {
@@ -1814,12 +1514,8 @@ html[dir=rtl] .acf-table > tbody > tr > td.order + td {
 .acf-diff table.diff col.diffsplit.middle {
   width: 0;
 }
-<<<<<<< HEAD
-.acf-diff table.diff td, .acf-diff table.diff th {
-=======
 .acf-diff table.diff td,
 .acf-diff table.diff th {
->>>>>>> update
   padding-top: 0.25em;
   padding-bottom: 0.25em;
 }
@@ -1930,13 +1626,8 @@ html[dir=rtl] .acf-table > tbody > tr > td.order + td {
   left: 0;
   right: 0;
   bottom: 0;
-<<<<<<< HEAD
-  background: #000;
-  opacity: 0.7;
-=======
   background: #101828;
   opacity: 0.8;
->>>>>>> update
   z-index: 159900;
 }
 
@@ -1947,17 +1638,11 @@ html[dir=rtl] .acf-table > tbody > tr > td.order + td {
 *---------------------------------------------------------------------------------------------*/
 @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
   .acf-loading,
-<<<<<<< HEAD
-.acf-spinner {
-=======
   .acf-spinner {
->>>>>>> update
     background-image: url(../../images/spinner@2x.gif);
     background-size: 20px 20px;
   }
 }
-<<<<<<< HEAD
-=======
 /*--------------------------------------------------------------------------------------------
 *
 *  Wrap
@@ -7213,6 +6898,5 @@ h3.acf-sub-field-list-title:before,
     display: none;
   }
 }
->>>>>>> update
 
 /*# sourceMappingURL=acf-global.css.map*/

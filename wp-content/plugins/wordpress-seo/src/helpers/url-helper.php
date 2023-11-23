@@ -116,8 +116,6 @@ class Url_Helper {
 	}
 
 	/**
-<<<<<<< HEAD
-=======
 	 * Gets the host from the passed URL.
 	 *
 	 * @param string $url The URL to get the host from.
@@ -136,7 +134,6 @@ class Url_Helper {
 	}
 
 	/**
->>>>>>> update
 	 * Determines the file extension of the given url.
 	 *
 	 * @param string $url The URL.
@@ -282,8 +279,6 @@ class Url_Helper {
 
 		return $current_url;
 	}
-<<<<<<< HEAD
-=======
 
 	/**
 	 * Parses a URL and returns its components, this wrapper function was created to support unit tests.
@@ -299,5 +294,4 @@ class Url_Helper {
 
 		return $array;
 	}
->>>>>>> update
 }

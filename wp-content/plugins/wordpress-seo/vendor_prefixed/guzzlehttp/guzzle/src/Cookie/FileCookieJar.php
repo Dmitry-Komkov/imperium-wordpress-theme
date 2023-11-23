@@ -2,20 +2,12 @@
 
 namespace YoastSEO_Vendor\GuzzleHttp\Cookie;
 
-<<<<<<< HEAD
-=======
 use YoastSEO_Vendor\GuzzleHttp\Utils;
->>>>>>> update
 /**
  * Persists non-session cookies using a JSON formatted file
  */
 class FileCookieJar extends \YoastSEO_Vendor\GuzzleHttp\Cookie\CookieJar
 {
-<<<<<<< HEAD
-    /** @var string filename */
-    private $filename;
-    /** @var bool Control whether to persist session cookies or not. */
-=======
     /**
      * @var string filename
      */
@@ -23,20 +15,10 @@ class FileCookieJar extends \YoastSEO_Vendor\GuzzleHttp\Cookie\CookieJar
     /**
      * @var bool Control whether to persist session cookies or not.
      */
->>>>>>> update
     private $storeSessionCookies;
     /**
      * Create a new FileCookieJar object
      *
-<<<<<<< HEAD
-     * @param string $cookieFile        File to store the cookie data
-     * @param bool $storeSessionCookies Set to true to store session cookies
-     *                                  in the cookie jar.
-     *
-     * @throws \RuntimeException if the file cannot be found or created
-     */
-    public function __construct($cookieFile, $storeSessionCookies = \false)
-=======
      * @param string $cookieFile          File to store the cookie data
      * @param bool   $storeSessionCookies Set to true to store session cookies
      *                                    in the cookie jar.
@@ -44,7 +26,6 @@ class FileCookieJar extends \YoastSEO_Vendor\GuzzleHttp\Cookie\CookieJar
      * @throws \RuntimeException if the file cannot be found or created
      */
     public function __construct(string $cookieFile, bool $storeSessionCookies = \false)
->>>>>>> update
     {
         parent::__construct();
         $this->filename = $cookieFile;
@@ -64,15 +45,6 @@ class FileCookieJar extends \YoastSEO_Vendor\GuzzleHttp\Cookie\CookieJar
      * Saves the cookies to a file.
      *
      * @param string $filename File to save
-<<<<<<< HEAD
-     * @throws \RuntimeException if the file cannot be found or created
-     */
-    public function save($filename)
-    {
-        $json = [];
-        foreach ($this as $cookie) {
-            /** @var SetCookie $cookie */
-=======
      *
      * @throws \RuntimeException if the file cannot be found or created
      */
@@ -81,16 +53,11 @@ class FileCookieJar extends \YoastSEO_Vendor\GuzzleHttp\Cookie\CookieJar
         $json = [];
         /** @var SetCookie $cookie */
         foreach ($this as $cookie) {
->>>>>>> update
             if (\YoastSEO_Vendor\GuzzleHttp\Cookie\CookieJar::shouldPersist($cookie, $this->storeSessionCookies)) {
                 $json[] = $cookie->toArray();
             }
         }
-<<<<<<< HEAD
-        $jsonStr = \YoastSEO_Vendor\GuzzleHttp\json_encode($json);
-=======
         $jsonStr = \YoastSEO_Vendor\GuzzleHttp\Utils::jsonEncode($json);
->>>>>>> update
         if (\false === \file_put_contents($filename, $jsonStr, \LOCK_EX)) {
             throw new \RuntimeException("Unable to save file {$filename}");
         }
@@ -101,31 +68,14 @@ class FileCookieJar extends \YoastSEO_Vendor\GuzzleHttp\Cookie\CookieJar
      * Old cookies are kept unless overwritten by newly loaded ones.
      *
      * @param string $filename Cookie file to load.
-<<<<<<< HEAD
-     * @throws \RuntimeException if the file cannot be loaded.
-     */
-    public function load($filename)
-=======
      *
      * @throws \RuntimeException if the file cannot be loaded.
      */
     public function load(string $filename) : void
->>>>>>> update
     {
         $json = \file_get_contents($filename);
         if (\false === $json) {
             throw new \RuntimeException("Unable to load file {$filename}");
-<<<<<<< HEAD
-        } elseif ($json === '') {
-            return;
-        }
-        $data = \YoastSEO_Vendor\GuzzleHttp\json_decode($json, \true);
-        if (\is_array($data)) {
-            foreach (\json_decode($json, \true) as $cookie) {
-                $this->setCookie(new \YoastSEO_Vendor\GuzzleHttp\Cookie\SetCookie($cookie));
-            }
-        } elseif (\strlen($data)) {
-=======
         }
         if ($json === '') {
             return;
@@ -136,7 +86,6 @@ class FileCookieJar extends \YoastSEO_Vendor\GuzzleHttp\Cookie\CookieJar
                 $this->setCookie(new \YoastSEO_Vendor\GuzzleHttp\Cookie\SetCookie($cookie));
             }
         } elseif (\is_scalar($data) && !empty($data)) {
->>>>>>> update
             throw new \RuntimeException("Invalid cookie file: {$filename}");
         }
     }

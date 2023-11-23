@@ -139,26 +139,6 @@ class Breadcrumbs_Presenter extends Abstract_Indexable_Presenter {
 			$link      .= '<' . $this->get_element() . '>';
 			$title_attr = isset( $breadcrumb['title'] ) ? ' title="' . \esc_attr( $breadcrumb['title'] ) . '"' : '';
 			$link      .= '<a href="' . \esc_url( $breadcrumb['url'] ) . '"' . $title_attr . '>' . $text . '</a>';
-<<<<<<< HEAD
-		}
-		elseif ( $index === ( $total - 1 ) ) {
-			// If it's the last element.
-			$inner_elm = 'span';
-			if ( $this->helpers->options->get( 'breadcrumbs-boldlast' ) === true ) {
-				$inner_elm = 'strong';
-			}
-
-			$link .= '<' . $inner_elm . ' class="breadcrumb_last" aria-current="page">' . $text . '</' . $inner_elm . '>';
-			// This is the last element, now close all previous elements.
-			while ( $index > 0 ) {
-				$link .= '</' . $this->get_element() . '>';
-				--$index;
-			}
-		}
-		else {
-			// It's not the last element and has no url.
-			$link .= '<span>' . $text . '</span>';
-=======
 			$link      .= '</' . $this->get_element() . '>';
 		}
 		elseif ( $index === ( $total - 1 ) ) {
@@ -173,7 +153,6 @@ class Breadcrumbs_Presenter extends Abstract_Indexable_Presenter {
 		else {
 			// It's not the last element and has no url.
 			$link .= '<' . $this->get_element() . '>' . $text . '</' . $this->get_element() . '>';
->>>>>>> update
 		}
 
 		/**

@@ -27,10 +27,7 @@ class WPSEO_Option_Wpseo extends WPSEO_Option {
 	protected $defaults = [
 		// Non-form fields, set via (ajax) function.
 		'tracking'                                 => null,
-<<<<<<< HEAD
-=======
 		'toggled_tracking'                         => false,
->>>>>>> update
 		'license_server_version'                   => false,
 		'ms_defaults_set'                          => false,
 		'ignore_search_engines_discouraged_notice' => false,
@@ -61,10 +58,7 @@ class WPSEO_Option_Wpseo extends WPSEO_Option {
 		'enable_xml_sitemap'                       => true,
 		'enable_text_link_counter'                 => true,
 		'enable_index_now'                         => true,
-<<<<<<< HEAD
-=======
 		'enable_ai_generator'                      => false,
->>>>>>> update
 		'show_onboarding_notice'                   => false,
 		'first_activated_on'                       => false,
 		'myyoast-oauth'                            => [
@@ -130,8 +124,6 @@ class WPSEO_Option_Wpseo extends WPSEO_Option {
 		'search_cleanup_emoji'                     => false,
 		'search_cleanup_patterns'                  => false,
 		'search_character_limit'                   => 50,
-<<<<<<< HEAD
-=======
 		'deny_search_crawling'                     => false,
 		'deny_wp_json_crawling'                    => false,
 		'deny_adsbot_crawling'                     => false,
@@ -151,7 +143,6 @@ class WPSEO_Option_Wpseo extends WPSEO_Option {
 		'new_post_types'                           => [],
 		'new_taxonomies'                           => [],
 		'show_new_content_type_notification'       => false,
->>>>>>> update
 	];
 
 	/**
@@ -190,10 +181,7 @@ class WPSEO_Option_Wpseo extends WPSEO_Option {
 	 */
 	protected $environment_types = [
 		'',
-<<<<<<< HEAD
-=======
 		'local',
->>>>>>> update
 		'production',
 		'staging',
 		'development',
@@ -343,10 +331,7 @@ class WPSEO_Option_Wpseo extends WPSEO_Option {
 				case 'index_now_key':
 				case 'wincher_website_id':
 				case 'clean_permalinks_extra_variables':
-<<<<<<< HEAD
-=======
 				case 'indexables_overview_state':
->>>>>>> update
 					if ( isset( $dirty[ $key ] ) ) {
 						$clean[ $key ] = $dirty[ $key ];
 					}
@@ -423,8 +408,6 @@ class WPSEO_Option_Wpseo extends WPSEO_Option {
 				case 'wincher_tokens':
 				case 'workouts_data':
 				case 'configuration_finished_steps':
-<<<<<<< HEAD
-=======
 				case 'least_readability_ignore_list':
 				case 'least_seo_score_ignore_list':
 				case 'most_linked_ignore_list':
@@ -434,7 +417,6 @@ class WPSEO_Option_Wpseo extends WPSEO_Option {
 				case 'last_known_public_taxonomies':
 				case 'new_post_types':
 				case 'new_taxonomies':
->>>>>>> update
 					$clean[ $key ] = $old[ $key ];
 
 					if ( isset( $dirty[ $key ] ) ) {
@@ -478,15 +460,6 @@ class WPSEO_Option_Wpseo extends WPSEO_Option {
 						$clean['wordproof_integration_changed'] = true;
 					}
 					break;
-<<<<<<< HEAD
-
-
-				/*
-				* Boolean (checkbox) fields.
-				*/
-
-				/*
-=======
 				case 'last_known_no_unindexed':
 					$clean[ $key ] = $old[ $key ];
 
@@ -508,7 +481,6 @@ class WPSEO_Option_Wpseo extends WPSEO_Option {
 				/*
 				 * Boolean (checkbox) fields.
 				 *
->>>>>>> update
 				 * Covers:
 				 *  'disableadvanced_meta'
 				 *  'enable_headless_rest_endpoints'
@@ -540,9 +512,6 @@ class WPSEO_Option_Wpseo extends WPSEO_Option {
 				 *  'search_cleanup'
 				 *  'search_cleanup_emoji'
 				 *  'search_cleanup_patterns'
-<<<<<<< HEAD
-				 *  'should_redirect_after_install_free'
-=======
 				 *  'deny_wp_json_crawling'
 				 *  'deny_adsbot_crawling'
 				 *  'deny_ccbot_crawling'
@@ -551,7 +520,6 @@ class WPSEO_Option_Wpseo extends WPSEO_Option {
 				 *  'redirect_search_pretty_urls'
 				 *  'should_redirect_after_install_free'
 				 *  'show_new_content_type_notification'
->>>>>>> update
 				 *  and most of the feature variables.
 				 */
 				default:
@@ -598,10 +566,7 @@ class WPSEO_Option_Wpseo extends WPSEO_Option {
 			'remove_feed_global_comments'        => false,
 			'remove_feed_post_comments'          => false,
 			'enable_index_now'                   => false,
-<<<<<<< HEAD
-=======
 			'enable_ai_generator'                => false,
->>>>>>> update
 			'remove_feed_authors'                => false,
 			'remove_feed_categories'             => false,
 			'remove_feed_tags'                   => false,
@@ -622,10 +587,7 @@ class WPSEO_Option_Wpseo extends WPSEO_Option {
 			'search_cleanup'                     => false,
 			'search_cleanup_emoji'               => false,
 			'search_cleanup_patterns'            => false,
-<<<<<<< HEAD
-=======
 			'redirect_search_pretty_urls'        => false,
->>>>>>> update
 			'algolia_integration_active'         => false,
 		];
 

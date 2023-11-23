@@ -6,10 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( ! class_exists( 'acf_validation' ) ) :
 
-<<<<<<< HEAD
-=======
 	#[AllowDynamicProperties]
->>>>>>> update
 	class acf_validation {
 
 
@@ -186,32 +183,6 @@ if ( ! class_exists( 'acf_validation' ) ) :
 
 		}
 
-<<<<<<< HEAD
-
-		/*
-		*  acf_validate_save_post
-		*
-		*  This function will loop over $_POST data and validate
-		*
-		*  @type    function
-		*  @date    7/09/2016
-		*  @since   5.4.0
-		*
-		*  @param   n/a
-		*  @return  n/a
-		*/
-
-		function acf_validate_save_post() {
-
-			// bail early if no $_POST
-			if ( empty( $_POST['acf'] ) ) {
-				return;
-			}
-
-			// validate
-			acf_validate_values( $_POST['acf'], 'acf' );
-
-=======
 		/**
 		 * Loops over $_POST data and validates ACF values.
 		 *
@@ -237,7 +208,6 @@ if ( ! class_exists( 'acf_validation' ) ) :
 				acf_validate_values( $_POST['acf'], 'acf' ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 			}
 			// phpcs:enable WordPress.Security.NonceVerification.Missing
->>>>>>> update
 		}
 
 	}
@@ -307,11 +277,7 @@ function acf_validate_save_post( $show_errors = false ) {
 	// vars
 	$errors = acf_get_validation_errors();
 
-<<<<<<< HEAD
-	// bail ealry if no errors
-=======
 	// bail early if no errors
->>>>>>> update
 	if ( ! $errors ) {
 		return true;
 	}

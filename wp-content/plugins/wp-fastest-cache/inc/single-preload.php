@@ -3,10 +3,6 @@
 		public static $id = 0;
 		public static $urls = array();
 
-<<<<<<< HEAD
-		public static function init(){
-			SinglePreloadWPFC::set_id();
-=======
 		public static function init($id = false){
 			if($id){
 	            self::set_id($id);
@@ -14,7 +10,6 @@
 	            self::set_id($_GET["post"]);
 	        }
 
->>>>>>> update
 			SinglePreloadWPFC::set_urls();
 			SinglePreloadWPFC::set_urls_with_terms();
 		}
@@ -77,11 +72,7 @@
 	                    jQuery.ajax({
 	                      type: 'POST',
 	                      url: ajaxurl,
-<<<<<<< HEAD
-	                      data: {"action": "wpfc_preload_single_save_settings", "is_enable": jQuery(this).val()},
-=======
 	                      data: {"action": "wpfc_preload_single_save_settings", "is_enable": jQuery(this).val(), "nonce" : wpfc_nonce},
->>>>>>> update
 	                      dataType: "json",
 	                      cache: false, 
 	                      success: function(data){
@@ -126,18 +117,6 @@
 	        wp_die("Must be admin");
 	    }
 
-<<<<<<< HEAD
-		public static function set_id(){
-			if(isset($_GET["post"]) && $_GET["post"]){
-				
-				static::$id = (int) $_GET["post"];
-
-				if(get_post_status(static::$id) != "publish"){
-					static::$id = 0;
-				}
-			}
-		}
-=======
 		public static function set_id($id) {
 	        $id = (int)$id;
 
@@ -165,7 +144,6 @@
 
 	    	return $res_arr;
 	    }
->>>>>>> update
 
 		public static function create_cache(){
 			$res = $GLOBALS["wp_fastest_cache"]->wpfc_remote_get($_GET["url"], $_GET["user_agent"]);
@@ -300,11 +278,7 @@
 			        		jQuery.ajax({
 								type: 'GET',
 								url: ajaxurl,
-<<<<<<< HEAD
-								data: {"action": "wpfc_preload_single", "url": url, "user_agent": user_agent},
-=======
 								data: {"action": "wpfc_preload_single", "url": url, "user_agent": user_agent, "nonce" : wpfc_nonce},
->>>>>>> update
 								dataType: "html",
 								timeout: 10000,
 								cache: false, 

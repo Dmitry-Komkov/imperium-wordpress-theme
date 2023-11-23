@@ -126,14 +126,11 @@ class CFDB7_Export_CSV{
                         if( $rm_underscore ) preg_match('/^_.*$/m', $key, $matches);
                         if( ! empty($matches[0]) ) continue;
 
-<<<<<<< HEAD
-=======
                         $value = str_replace( 
                                     array('&quot;','&#039;','&#047;','&#092;'),
                                     array('"',"'",'/','\\'), $value 
                                 );
 
->>>>>>> update
                         if (strpos($key, 'cfdb7_file') !== false ){
                             $data[$key][$i] = empty( $value ) ? '' : $cfdb7_dir_url.'/'.$value;
                             continue;
@@ -143,15 +140,8 @@ class CFDB7_Export_CSV{
                             $data[$key][$i] = implode(', ', $value);
                             continue;
                         }
-<<<<<<< HEAD
-
-                        $data[$key][$i] = str_replace( array('&quot;','&#039;','&#047;','&#092;')
-                        , array('"',"'",'/','\\'), $value );
-                        $data[$key][$i] = $this->escape_data( $data[$key][$i]);
-=======
                         $data[$key][$i] = $value;
                         $data[$key][$i] = $this->escape_data( $data[$key][$i] );
->>>>>>> update
 
                     endforeach;
 
@@ -172,17 +162,10 @@ class CFDB7_Export_CSV{
     * @return string    
     */
     public function escape_data( $data ) {
-<<<<<<< HEAD
-		$active_content_triggers = array( '=', '+', '-', '@' );
-
-		if ( in_array( mb_substr( $data, 0, 1 ), $active_content_triggers, true ) ) {
-			$data = "'" . $data;
-=======
 		$active_content_triggers = array( '=', '+', '-', '@', ';' );
 
 		if ( in_array( mb_substr( $data, 0, 1 ), $active_content_triggers, true ) ) {
 			$data = '"'. $data.'"';
->>>>>>> update
 		}
 
 		return $data;

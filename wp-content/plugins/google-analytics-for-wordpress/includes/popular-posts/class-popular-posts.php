@@ -223,12 +223,9 @@ class MonsterInsights_Popular_Posts {
 	 * @return string
 	 */
 	public function render_shortcode( $args ) {
-<<<<<<< HEAD
-=======
 		if ( empty( $args ) || ! is_array( $args ) ) {
 			$args = array();
 		}
->>>>>>> update
 
 		return apply_filters( 'monsterinsights_popular_posts_shortcode_output', $this->shortcode_output( $args ), $args, $this );
 
@@ -373,14 +370,6 @@ class MonsterInsights_Popular_Posts {
 	private function get_query_args() {
 
 		$args = array(
-<<<<<<< HEAD
-			'numberposts'         => $this->posts_count,
-			'ignore_sticky_posts' => true,
-			'fields'              => 'ids',
-		);
-		$args = wp_parse_args( $this->query_args(), $args );
-
-=======
 			'numberposts'         => 25,
 			'ignore_sticky_posts' => true,
 			'fields'              => 'ids',
@@ -388,7 +377,6 @@ class MonsterInsights_Popular_Posts {
 		);
 		$args = wp_parse_args( $this->query_args(), $args );
 		
->>>>>>> update
 		return apply_filters( 'monsterinsights_popular_posts_query_args', $args );
 	}
 
@@ -509,17 +497,10 @@ class MonsterInsights_Popular_Posts {
 	/**
 	 * Generic helper function to build style attributes for elements based on shortcode/block parameters.
 	 *
-<<<<<<< HEAD
-	 * @param string $theme The theme for which  we're building the style.
-	 * @param string $object Object we're styling like title, label, background, etc.
-	 * @param array $atts Attributes passed from shortcode/block.
-	 * @param string $key The key of the style we're going to output.
-=======
 	 * @param string $theme  The theme for which  we're building the style.
 	 * @param string $object Object we're styling like title, label, background, etc.
 	 * @param array  $atts   Attributes passed from shortcode/block.
 	 * @param string $key    The key of the style we're going to output.
->>>>>>> update
 	 *
 	 * @return string
 	 */
@@ -536,10 +517,6 @@ class MonsterInsights_Popular_Posts {
 
 		// Find theme-specific available options and check if our attributes have those set.
 		$theme_styles = $this->get_theme_props( $theme )->get_theme();
-<<<<<<< HEAD
-		$style_output = '';
-=======
->>>>>>> update
 		$style_css    = '';
 
 		if ( ! empty( $theme_styles['styles'] ) ) {
@@ -575,16 +552,7 @@ class MonsterInsights_Popular_Posts {
 			}
 		}
 
-<<<<<<< HEAD
-		if ( ! empty( $style_css ) ) {
-			$style_output = 'style="' . $style_css . '"';
-		}
-
-		return $style_output;
-
-=======
 		return $style_css;
->>>>>>> update
 	}
 
 	/**

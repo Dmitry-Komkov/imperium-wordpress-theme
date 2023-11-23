@@ -1,10 +1,7 @@
 <?php
-<<<<<<< HEAD
-=======
 
 declare(strict_types=1);
 
->>>>>>> update
 namespace Psr\Http\Message;
 
 /**
@@ -194,11 +191,7 @@ interface UriInterface
      * @return static A new instance with the specified scheme.
      * @throws \InvalidArgumentException for invalid or unsupported schemes.
      */
-<<<<<<< HEAD
-    public function withScheme($scheme);
-=======
     public function withScheme(string $scheme);
->>>>>>> update
 
     /**
      * Return an instance with the specified user information.
@@ -214,11 +207,7 @@ interface UriInterface
      * @param null|string $password The password associated with $user.
      * @return static A new instance with the specified user information.
      */
-<<<<<<< HEAD
-    public function withUserInfo($user, $password = null);
-=======
     public function withUserInfo(string $user, ?string $password = null);
->>>>>>> update
 
     /**
      * Return an instance with the specified host.
@@ -232,11 +221,7 @@ interface UriInterface
      * @return static A new instance with the specified host.
      * @throws \InvalidArgumentException for invalid hostnames.
      */
-<<<<<<< HEAD
-    public function withHost($host);
-=======
     public function withHost(string $host);
->>>>>>> update
 
     /**
      * Return an instance with the specified port.
@@ -255,11 +240,7 @@ interface UriInterface
      * @return static A new instance with the specified port.
      * @throws \InvalidArgumentException for invalid ports.
      */
-<<<<<<< HEAD
-    public function withPort($port);
-=======
     public function withPort(?int $port);
->>>>>>> update
 
     /**
      * Return an instance with the specified path.
@@ -283,11 +264,7 @@ interface UriInterface
      * @return static A new instance with the specified path.
      * @throws \InvalidArgumentException for invalid paths.
      */
-<<<<<<< HEAD
-    public function withPath($path);
-=======
     public function withPath(string $path);
->>>>>>> update
 
     /**
      * Return an instance with the specified query string.
@@ -304,11 +281,7 @@ interface UriInterface
      * @return static A new instance with the specified query string.
      * @throws \InvalidArgumentException for invalid query strings.
      */
-<<<<<<< HEAD
-    public function withQuery($query);
-=======
     public function withQuery(string $query);
->>>>>>> update
 
     /**
      * Return an instance with the specified URI fragment.
@@ -324,11 +297,7 @@ interface UriInterface
      * @param string $fragment The fragment to use with the new instance.
      * @return static A new instance with the specified fragment.
      */
-<<<<<<< HEAD
-    public function withFragment($fragment);
-=======
     public function withFragment(string $fragment);
->>>>>>> update
 
     /**
      * Return the string representation as a URI reference.

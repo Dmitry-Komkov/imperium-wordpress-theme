@@ -1,10 +1,6 @@
 <?php
 
-<<<<<<< HEAD
-namespace WBCR\Factory_450\Components;
-=======
 namespace WBCR\Factory_469\Components;
->>>>>>> update
 
 /**
  * This file groups the settings for quick setup

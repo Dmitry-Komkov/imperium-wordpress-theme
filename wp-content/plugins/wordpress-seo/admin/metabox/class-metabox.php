@@ -5,17 +5,11 @@
  * @package WPSEO\Admin
  */
 
-<<<<<<< HEAD
-use Yoast\WP\SEO\Conditionals\Admin\Estimated_Reading_Time_Conditional;
-use Yoast\WP\SEO\Conditionals\Admin\Post_Conditional;
-use Yoast\WP\SEO\Helpers\Input_Helper;
-=======
 use Yoast\WP\SEO\Actions\Alert_Dismissal_Action;
 use Yoast\WP\SEO\Conditionals\Third_Party\Jetpack_Boost_Active_Conditional;
 use Yoast\WP\SEO\Conditionals\Third_Party\Jetpack_Boost_Not_Premium_Conditional;
 use Yoast\WP\SEO\Conditionals\WooCommerce_Conditional;
 use Yoast\WP\SEO\Introductions\Infrastructure\Wistia_Embed_Permission_Repository;
->>>>>>> update
 use Yoast\WP\SEO\Presenters\Admin\Alert_Presenter;
 use Yoast\WP\SEO\Presenters\Admin\Meta_Fields_Presenter;
 
@@ -25,41 +19,27 @@ use Yoast\WP\SEO\Presenters\Admin\Meta_Fields_Presenter;
 class WPSEO_Metabox extends WPSEO_Meta {
 
 	/**
-<<<<<<< HEAD
-	 * Whether or not the social tab is enabled.
-=======
 	 * Whether the social tab is enabled.
->>>>>>> update
 	 *
 	 * @var bool
 	 */
 	private $social_is_enabled;
 
 	/**
-<<<<<<< HEAD
-	 * Helper to determine whether or not the SEO analysis is enabled.
-=======
 	 * Helper to determine whether the SEO analysis is enabled.
->>>>>>> update
 	 *
 	 * @var WPSEO_Metabox_Analysis_SEO
 	 */
 	protected $seo_analysis;
 
 	/**
-<<<<<<< HEAD
-	 * Helper to determine whether or not the readability analysis is enabled.
-=======
 	 * Helper to determine whether the readability analysis is enabled.
->>>>>>> update
 	 *
 	 * @var WPSEO_Metabox_Analysis_Readability
 	 */
 	protected $readability_analysis;
 
 	/**
-<<<<<<< HEAD
-=======
 	 * Helper to determine whether the inclusive language analysis is enabled.
 	 *
 	 * @var WPSEO_Metabox_Analysis_Inclusive_Language
@@ -67,7 +47,6 @@ class WPSEO_Metabox extends WPSEO_Meta {
 	protected $inclusive_language_analysis;
 
 	/**
->>>>>>> update
 	 * The metabox editor object.
 	 *
 	 * @var WPSEO_Metabox_Editor
@@ -82,27 +61,13 @@ class WPSEO_Metabox extends WPSEO_Meta {
 	protected $post = null;
 
 	/**
-<<<<<<< HEAD
-	 * Whether or not the advanced metadata is enabled.
-=======
 	 * Whether the advanced metadata is enabled.
->>>>>>> update
 	 *
 	 * @var bool
 	 */
 	protected $is_advanced_metadata_enabled;
 
 	/**
-<<<<<<< HEAD
-	 * Represents the estimated_reading_time_conditional.
-	 *
-	 * @var Estimated_Reading_Time_Conditional
-	 */
-	protected $estimated_reading_time_conditional;
-
-	/**
-=======
->>>>>>> update
 	 * Class constructor.
 	 */
 	public function __construct() {
@@ -125,19 +90,9 @@ class WPSEO_Metabox extends WPSEO_Meta {
 		$this->social_is_enabled            = WPSEO_Options::get( 'opengraph', false ) || WPSEO_Options::get( 'twitter', false );
 		$this->is_advanced_metadata_enabled = WPSEO_Capability_Utils::current_user_can( 'wpseo_edit_advanced_metadata' ) || WPSEO_Options::get( 'disableadvanced_meta' ) === false;
 
-<<<<<<< HEAD
-		$this->estimated_reading_time_conditional = new Estimated_Reading_Time_Conditional(
-			new Post_Conditional(),
-			new Input_Helper()
-		);
-
-		$this->seo_analysis         = new WPSEO_Metabox_Analysis_SEO();
-		$this->readability_analysis = new WPSEO_Metabox_Analysis_Readability();
-=======
 		$this->seo_analysis                = new WPSEO_Metabox_Analysis_SEO();
 		$this->readability_analysis        = new WPSEO_Metabox_Analysis_Readability();
 		$this->inclusive_language_analysis = new WPSEO_Metabox_Analysis_Inclusive_Language();
->>>>>>> update
 	}
 
 	/**
@@ -468,13 +423,10 @@ class WPSEO_Metabox extends WPSEO_Meta {
 			$tabs[] = new WPSEO_Metabox_Section_Readability();
 		}
 
-<<<<<<< HEAD
-=======
 		if ( $this->inclusive_language_analysis->is_enabled() ) {
 			$tabs[] = new WPSEO_Metabox_Section_Inclusive_Language();
 		}
 
->>>>>>> update
 		if ( $this->is_advanced_metadata_enabled ) {
 			$tabs[] = new WPSEO_Metabox_Section_React(
 				'schema',
@@ -649,10 +601,6 @@ class WPSEO_Metabox extends WPSEO_Meta {
 
 					$options_count = count( $meta_field_def['options'] );
 
-<<<<<<< HEAD
-					// This select now uses Select2.
-=======
->>>>>>> update
 					$content .= '<select multiple="multiple" size="' . esc_attr( $options_count ) . '" name="' . $esc_form_key . '[]" id="' . $esc_form_key . '" class="yoast' . $class . '"' . $aria_describedby . '>';
 					foreach ( $meta_field_def['options'] as $val => $option ) {
 						$selected = '';
@@ -871,13 +819,10 @@ class WPSEO_Metabox extends WPSEO_Meta {
 			return true;
 		}
 
-<<<<<<< HEAD
-=======
 		if ( $key === 'inclusive_language_score' && ! $this->inclusive_language_analysis->is_enabled() ) {
 			return true;
 		}
 
->>>>>>> update
 		return false;
 	}
 
@@ -906,16 +851,10 @@ class WPSEO_Metabox extends WPSEO_Meta {
 		}
 
 		$post_id = get_queried_object_id();
-<<<<<<< HEAD
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
-		if ( empty( $post_id ) && isset( $_GET['post'] ) ) {
-			$post_id = sanitize_text_field( filter_input( INPUT_GET, 'post' ) );
-=======
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Reason: We are not processing form information.
 		if ( empty( $post_id ) && isset( $_GET['post'] ) && is_string( $_GET['post'] ) ) {
 			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Reason: We are not processing form information.
 			$post_id = sanitize_text_field( wp_unslash( $_GET['post'] ) );
->>>>>>> update
 		}
 
 		if ( $post_id !== 0 ) {
@@ -925,13 +864,8 @@ class WPSEO_Metabox extends WPSEO_Meta {
 
 		$asset_manager->enqueue_style( 'metabox-css' );
 		$asset_manager->enqueue_style( 'scoring' );
-<<<<<<< HEAD
-		$asset_manager->enqueue_style( 'select2' );
-		$asset_manager->enqueue_style( 'monorepo' );
-=======
 		$asset_manager->enqueue_style( 'monorepo' );
 		$asset_manager->enqueue_style( 'ai-generator' );
->>>>>>> update
 
 		$is_block_editor  = WP_Screen::get()->is_block_editor();
 		$post_edit_handle = 'post-edit';
@@ -959,12 +893,7 @@ class WPSEO_Metabox extends WPSEO_Meta {
 				'has_taxonomies'           => $this->current_post_type_has_taxonomies(),
 			],
 			'shortcodes' => [
-<<<<<<< HEAD
-				'wpseo_filter_shortcodes_nonce' => wp_create_nonce( 'wpseo-filter-shortcodes' ),
-				'wpseo_shortcode_tags'          => $this->get_valid_shortcode_tags(),
-=======
 				'wpseo_shortcode_tags' => $this->get_valid_shortcode_tags(),
->>>>>>> update
 			],
 		];
 
@@ -975,10 +904,6 @@ class WPSEO_Metabox extends WPSEO_Meta {
 			'log_level'               => WPSEO_Utils::get_analysis_worker_log_level(),
 		];
 
-<<<<<<< HEAD
-		$alert_dismissal_action = YoastSEO()->classes->get( \Yoast\WP\SEO\Actions\Alert_Dismissal_Action::class );
-		$dismissed_alerts       = $alert_dismissal_action->all_dismissed();
-=======
 		$alert_dismissal_action            = YoastSEO()->classes->get( Alert_Dismissal_Action::class );
 		$dismissed_alerts                  = $alert_dismissal_action->all_dismissed();
 		$woocommerce_conditional           = new WooCommerce_Conditional();
@@ -986,7 +911,6 @@ class WPSEO_Metabox extends WPSEO_Meta {
 		$wpseo_plugin_availability_checker = new WPSEO_Plugin_Availability();
 		$woocommerce_seo_file              = 'wpseo-woocommerce/wpseo-woocommerce.php';
 		$woocommerce_seo_active            = $wpseo_plugin_availability_checker->is_active( $woocommerce_seo_file );
->>>>>>> update
 
 		$script_data = [
 			// @todo replace this translation with JavaScript translations.
@@ -997,19 +921,13 @@ class WPSEO_Metabox extends WPSEO_Meta {
 			'isBlockEditor'              => $is_block_editor,
 			'postId'                     => $post_id,
 			'postStatus'                 => get_post_status( $post_id ),
-<<<<<<< HEAD
-=======
 			'postType'                   => get_post_type( $post_id ),
 			'usedKeywordsNonce'          => \wp_create_nonce( 'wpseo-keyword-usage-and-post-types' ),
->>>>>>> update
 			'analysis'                   => [
 				'plugins' => $plugins_script_data,
 				'worker'  => $worker_script_data,
 			],
 			'dismissedAlerts'            => $dismissed_alerts,
-<<<<<<< HEAD
-			'webinarIntroBlockEditorUrl' => WPSEO_Shortlinker::get( 'https://yoa.st/webinar-intro-block-editor' ),
-=======
 			'currentPromotions'          => YoastSEO()->classes->get( Yoast\WP\SEO\Promotions\Application\Promotion_Manager::class )->get_current_promotions(),
 			'webinarIntroBlockEditorUrl' => WPSEO_Shortlinker::get( 'https://yoa.st/webinar-intro-block-editor' ),
 			'blackFridayBlockEditorUrl'  => ( YoastSEO()->classes->get( Yoast\WP\SEO\Promotions\Application\Promotion_Manager::class )->is( 'black-friday-2023-checklist' ) ) ? WPSEO_Shortlinker::get( 'https://yoa.st/black-friday-checklist' ) : '',
@@ -1021,7 +939,6 @@ class WPSEO_Metabox extends WPSEO_Meta {
 			'linkParams'                 => WPSEO_Shortlinker::get_query_params(),
 			'pluginUrl'                  => \plugins_url( '', \WPSEO_FILE ),
 			'wistiaEmbedPermission'      => YoastSEO()->classes->get( Wistia_Embed_Permission_Repository::class )->get_value_for_user( \get_current_user_id() ),
->>>>>>> update
 		];
 
 		if ( post_type_supports( get_post_type(), 'thumbnail' ) ) {
@@ -1047,16 +964,10 @@ class WPSEO_Metabox extends WPSEO_Meta {
 			return $this->post;
 		}
 
-<<<<<<< HEAD
-		$post = filter_input( INPUT_GET, 'post' );
-		if ( ! empty( $post ) ) {
-			$post_id = (int) WPSEO_Utils::validate_int( $post );
-=======
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Reason: We are not processing form information.
 		if ( isset( $_GET['post'] ) && is_string( $_GET['post'] ) ) {
 			// phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Reason: We are not processing form information, Sanitization happens in the validate_int function.
 			$post_id = (int) WPSEO_Utils::validate_int( wp_unslash( $_GET['post'] ) );
->>>>>>> update
 
 			$this->post = get_post( $post_id );
 

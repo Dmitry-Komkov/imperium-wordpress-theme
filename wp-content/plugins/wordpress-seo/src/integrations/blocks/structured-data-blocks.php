@@ -174,8 +174,6 @@ class Structured_Data_Blocks implements Integration_Interface {
 	}
 
 	/**
-<<<<<<< HEAD
-=======
 	 * Transforms the durations into a translated string containing the count, and either singular or plural unit.
 	 * For example (in en-US): If 'days' is 1, it returns "1 day". If 'days' is 2, it returns "2 days".
 	 * If a number value is 0, we don't output the string.
@@ -270,7 +268,6 @@ class Structured_Data_Blocks implements Integration_Interface {
 	}
 
 	/**
->>>>>>> update
 	 * Optimizes images in the How-To blocks.
 	 *
 	 * @param array  $attributes The attributes.
@@ -283,11 +280,8 @@ class Structured_Data_Blocks implements Integration_Interface {
 			return $content;
 		}
 
-<<<<<<< HEAD
-=======
 		$content = $this->present_duration_text( $attributes, $content );
 
->>>>>>> update
 		return $this->optimize_images( $attributes['steps'], 'text', $content );
 	}
 
@@ -448,18 +442,6 @@ class Structured_Data_Blocks implements Integration_Interface {
 			if ( ! isset( $element[ $key ] ) ) {
 				continue;
 			}
-<<<<<<< HEAD
-			foreach ( $element[ $key ] as $part ) {
-				if ( ! \is_array( $part ) || ! isset( $part['type'] ) || $part['type'] !== 'img' ) {
-					continue;
-				}
-
-				if ( ! isset( $part['key'] ) || ! isset( $part['props']['src'] ) ) {
-					continue;
-				}
-
-				$images[ $part['props']['src'] ] = (int) $part['key'];
-=======
 			if ( isset( $element[ $key ] ) && \is_array( $element[ $key ] ) ) {
 				foreach ( $element[ $key ] as $part ) {
 					if ( ! \is_array( $part ) || ! isset( $part['type'] ) || $part['type'] !== 'img' ) {
@@ -472,7 +454,6 @@ class Structured_Data_Blocks implements Integration_Interface {
 
 					$images[ $part['props']['src'] ] = (int) $part['key'];
 				}
->>>>>>> update
 			}
 		}
 

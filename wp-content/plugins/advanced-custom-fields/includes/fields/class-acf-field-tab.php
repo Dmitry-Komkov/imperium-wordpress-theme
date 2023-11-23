@@ -22,12 +22,6 @@ if ( ! class_exists( 'acf_field_tab' ) ) :
 		function initialize() {
 
 			// vars
-<<<<<<< HEAD
-			$this->name     = 'tab';
-			$this->label    = __( 'Tab', 'acf' );
-			$this->category = 'layout';
-			$this->defaults = array(
-=======
 			$this->name          = 'tab';
 			$this->label         = __( 'Tab', 'acf' );
 			$this->category      = 'layout';
@@ -35,7 +29,6 @@ if ( ! class_exists( 'acf_field_tab' ) ) :
 			$this->preview_image = acf_get_url() . '/assets/images/field-type-previews/field-preview-tabs.png';
 			$this->doc_url       = acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/resources/tab/', 'docs', 'field-type-selection' );
 			$this->defaults      = array(
->>>>>>> update
 				'placement' => 'top',
 				'endpoint'  => 0, // added in 5.2.8
 			);
@@ -66,17 +59,12 @@ if ( ! class_exists( 'acf_field_tab' ) ) :
 				'data-key'       => $field['key'],
 			);
 
-<<<<<<< HEAD
-			?>
-		<a <?php acf_esc_attr_e( $atts ); ?>><?php echo acf_esc_html( $field['label'] ); ?></a>
-=======
 			if ( isset( $field['settings-type'] ) ) {
 				$atts['class'] .= ' acf-settings-type-' . acf_slugify( $field['settings-type'] );
 			}
 
 			?>
 		<a <?php echo acf_esc_attrs( $atts ); ?>><?php echo acf_esc_html( $field['label'] ); ?></a>
->>>>>>> update
 			<?php
 
 		}
@@ -133,13 +121,8 @@ if ( ! class_exists( 'acf_field_tab' ) ) :
 			acf_render_field_setting(
 				$field,
 				array(
-<<<<<<< HEAD
-					'label'        => __( 'Endpoint', 'acf' ),
-					'instructions' => __( 'Define an endpoint for the previous tabs to stop. This will start a new group of tabs.', 'acf' ),
-=======
 					'label'        => __( 'New Tab Group', 'acf' ),
 					'instructions' => __( 'Start a new group of tabs at this tab.', 'acf' ),
->>>>>>> update
 					'name'         => 'endpoint',
 					'type'         => 'true_false',
 					'ui'           => 1,

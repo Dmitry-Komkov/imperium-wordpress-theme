@@ -13,20 +13,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> update
 /**
  * Print Monsterinsights frontend tracking script.
  *
  * @return void
  * @since 7.0.0
  * @access public
-<<<<<<< HEAD
- *
-=======
->>>>>>> update
  */
 function monsterinsights_tracking_script() {
 	if ( monsterinsights_skip_tracking() ) {
@@ -42,13 +34,6 @@ function monsterinsights_tracking_script() {
 	if ( 'preview' === $mode ) {
 		require_once plugin_dir_path( MONSTERINSIGHTS_PLUGIN_FILE ) . 'includes/frontend/tracking/class-tracking-preview.php';
 		$tracking = new MonsterInsights_Tracking_Preview();
-<<<<<<< HEAD
-		echo $tracking->frontend_output();
-	} else {
-		require_once plugin_dir_path( MONSTERINSIGHTS_PLUGIN_FILE ) . 'includes/frontend/tracking/class-tracking-gtag.php';
-		$tracking = new MonsterInsights_Tracking_Gtag();
-		echo $tracking->frontend_output();
-=======
 		// Escaped in frontend_output function
 		echo $tracking->frontend_output(); // phpcs:ignore
 	} else {
@@ -56,7 +41,6 @@ function monsterinsights_tracking_script() {
 		$tracking = new MonsterInsights_Tracking_Gtag();
 		// Escaped in frontend_output function
 		echo $tracking->frontend_output(); // phpcs:ignore
->>>>>>> update
 	}
 
 	do_action( 'monsterinsights_tracking_after_' . $mode );
@@ -64,11 +48,7 @@ function monsterinsights_tracking_script() {
 }
 
 add_action( 'wp_head', 'monsterinsights_tracking_script', 6 );
-<<<<<<< HEAD
-//add_action( 'login_head', 'monsterinsights_tracking_script', 6 );
-=======
 // add_action( 'login_head', 'monsterinsights_tracking_script', 6 );
->>>>>>> update
 
 /**
  * Get frontend tracking options.
@@ -80,10 +60,6 @@ add_action( 'wp_head', 'monsterinsights_tracking_script', 6 );
  * @return array Array of the options to use.
  * @since 6.0.0
  * @access public
-<<<<<<< HEAD
- *
-=======
->>>>>>> update
  */
 function monsterinsights_events_tracking() {
 	if ( monsterinsights_skip_tracking() ) {
@@ -110,29 +86,10 @@ add_action( 'template_redirect', 'monsterinsights_events_tracking', 9 );
  * @return string The new link for the RSS feed.
  * @since 6.0.0
  * @access public
-<<<<<<< HEAD
- *
-=======
->>>>>>> update
  */
 function monsterinsights_rss_link_tagger( $guid ) {
 	global $post;
 
-<<<<<<< HEAD
-	if ( monsterinsights_get_option( 'tag_links_in_rss', false ) ) {
-		if ( is_feed() ) {
-			if ( monsterinsights_get_option( 'allow_anchor', false ) ) {
-				$delimiter = '#';
-			} else {
-				$delimiter = '?';
-				if ( strpos( $guid, $delimiter ) > 0 ) {
-					$delimiter = '&amp;';
-				}
-			}
-
-			return $guid . $delimiter . 'utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=' . urlencode( $post->post_name );
-		}
-=======
 	if (
 		monsterinsights_get_option( 'tag_links_in_rss', false )
 		&& is_feed()
@@ -148,7 +105,6 @@ function monsterinsights_rss_link_tagger( $guid ) {
 		}
 
 		return $guid . $delimiter . 'utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=' . urlencode( $post->post_name );
->>>>>>> update
 	}
 
 	return $guid;
@@ -161,11 +117,7 @@ add_filter( 'the_permalink_rss', 'monsterinsights_rss_link_tagger', 99 );
  * Checks used for loading the frontend scripts/admin bar button.
  */
 function monsterinsights_prevent_loading_frontend_reports() {
-<<<<<<< HEAD
-	return ! current_user_can( 'monsterinsights_view_dashboard' ) || monsterinsights_get_option( 'hide_admin_bar_reports' ) || function_exists( 'monsterinsights_is_reports_page' ) && monsterinsights_is_reports_page() || function_exists( 'monsterinsights_is_settings_page' ) && monsterinsights_is_settings_page();
-=======
 	return ! current_user_can( 'monsterinsights_view_dashboard' ) || monsterinsights_get_option( 'hide_admin_bar_reports' );
->>>>>>> update
 }
 
 /**
@@ -173,10 +125,6 @@ function monsterinsights_prevent_loading_frontend_reports() {
  *
  * @return void
  * @since 7.5.0
-<<<<<<< HEAD
- *
-=======
->>>>>>> update
  */
 function monsterinsights_add_admin_bar_menu() {
 	if ( monsterinsights_prevent_loading_frontend_reports() ) {
@@ -204,15 +152,9 @@ add_action( 'admin_bar_menu', 'monsterinsights_add_admin_bar_menu', 999 );
  *
  * @return void
  * @since 7.5.0
-<<<<<<< HEAD
- *
- */
-function monsterinsights_frontend_admin_bar_scripts() {
-=======
  */
 function monsterinsights_frontend_admin_bar_scripts() {
 	global $current_user;
->>>>>>> update
 	if ( monsterinsights_prevent_loading_frontend_reports() ) {
 		return;
 	}
@@ -262,11 +204,8 @@ function monsterinsights_frontend_admin_bar_scripts() {
 				'getting_started_url'  => is_multisite() ? network_admin_url( 'admin.php?page=monsterinsights_network#/about/getting-started' ) : admin_url( 'admin.php?page=monsterinsights_settings#/about/getting-started' ),
 				'wizard_url'           => is_network_admin() ? network_admin_url( 'index.php?page=monsterinsights-onboarding' ) : admin_url( 'index.php?page=monsterinsights-onboarding' ),
 				'roles_manage_options' => monsterinsights_get_manage_options_roles(),
-<<<<<<< HEAD
-=======
 				'user_roles'   => $current_user->roles,
 				'roles_view_reports'   => monsterinsights_get_option('view_reports'),
->>>>>>> update
 			)
 		);
 	}
@@ -291,13 +230,8 @@ function monsterinsights_administrator_tracking_notice() {
 	}
 
 	// Only show when tracking.
-<<<<<<< HEAD
-	$ua = monsterinsights_get_ua();
-	if ( empty( $ua ) ) {
-=======
 	$tracking_tag = monsterinsights_get_v4_id();
 	if ( empty( $tracking_tag ) ) {
->>>>>>> update
 		return;
 	}
 
@@ -310,118 +244,6 @@ function monsterinsights_administrator_tracking_notice() {
 	update_option( 'monsterinsights_frontend_tracking_notice_viewed', 1 );
 
 	?>
-<<<<<<< HEAD
-	<div class="monsterinsights-tracking-notice monsterinsights-tracking-notice-hide">
-		<div class="monsterinsights-tracking-notice-icon">
-			<img src="<?php echo esc_url( plugins_url( 'assets/images/mascot.png', MONSTERINSIGHTS_PLUGIN_FILE ) ); ?>"
-				 width="40" alt="MonsterInsights Mascot"/>
-		</div>
-		<div class="monsterinsights-tracking-notice-text">
-			<h3><?php esc_html_e( 'Tracking is Disabled for Administrators', 'google-analytics-for-wordpress' ); ?></h3>
-			<p>
-				<?php
-				$doc_url = 'https://monsterinsights.com/docs/tracking-disabled-administrators-editors';
-				$doc_url = add_query_arg( array(
-					'utm_source'   => monsterinsights_is_pro_version() ? 'proplugin' : 'liteplugin',
-					'utm_medium'   => 'frontend-notice',
-					'utm_campaign' => 'admin-tracking-doc',
-				), $doc_url );
-				// Translators: %s is the link to the article where more details about tracking are listed.
-				printf( esc_html__( 'To keep stats accurate, we do not load Google Analytics scripts for admin users. %1$sLearn More &raquo;%2$s', 'google-analytics-for-wordpress' ), '<a href="' . esc_url( $doc_url ) . '" target="_blank">', '</a>' );
-				?>
-			</p>
-		</div>
-		<div class="monsterinsights-tracking-notice-close">&times;</div>
-	</div>
-	<style type="text/css">
-		.monsterinsights-tracking-notice {
-			position: fixed;
-			bottom: 20px;
-			right: 15px;
-			font-family: Arial, Helvetica, "Trebuchet MS", sans-serif;
-			background: #fff;
-			box-shadow: 0 0 10px 0 #dedede;
-			padding: 6px 5px;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			width: 380px;
-			max-width: calc(100% - 30px);
-			border-radius: 6px;
-			transition: bottom 700ms ease;
-			z-index: 10000;
-		}
-
-		.monsterinsights-tracking-notice h3 {
-			font-size: 13px;
-			color: #222;
-			font-weight: 700;
-			margin: 0 0 8px;
-			padding: 0;
-			line-height: 1;
-			border: none;
-		}
-
-		.monsterinsights-tracking-notice p {
-			font-size: 13px;
-			color: #7f7f7f;
-			font-weight: 400;
-			margin: 0;
-			padding: 0;
-			line-height: 1.2;
-			border: none;
-		}
-
-		.monsterinsights-tracking-notice p a {
-			color: #7f7f7f;
-			font-size: 13px;
-			line-height: 1.2;
-			margin: 0;
-			padding: 0;
-			text-decoration: underline;
-			font-weight: 400;
-		}
-
-		.monsterinsights-tracking-notice p a:hover {
-			color: #7f7f7f;
-			text-decoration: none;
-		}
-
-		.monsterinsights-tracking-notice-icon img {
-			height: auto;
-			display: block;
-			margin: 0;
-		}
-
-		.monsterinsights-tracking-notice-icon {
-			padding: 14px;
-			background-color: #f2f6ff;
-			border-radius: 6px;
-			flex-grow: 0;
-			flex-shrink: 0;
-			margin-right: 12px;
-		}
-
-		.monsterinsights-tracking-notice-close {
-			padding: 0;
-			margin: 0 3px 0 0;
-			border: none;
-			box-shadow: none;
-			border-radius: 0;
-			color: #7f7f7f;
-			background: transparent;
-			line-height: 1;
-			align-self: flex-start;
-			cursor: pointer;
-			font-weight: 400;
-		}
-
-		.monsterinsights-tracking-notice.monsterinsights-tracking-notice-hide {
-			bottom: -200px;
-		}
-	</style>
-	<?php
-=======
 <div class="monsterinsights-tracking-notice monsterinsights-tracking-notice-hide">
     <div class="monsterinsights-tracking-notice-icon">
         <img src="<?php echo esc_url( plugins_url( 'assets/images/mascot.png', MONSTERINSIGHTS_PLUGIN_FILE ) ); ?>"
@@ -535,35 +357,11 @@ function monsterinsights_administrator_tracking_notice() {
 }
 </style>
 <?php
->>>>>>> update
 
 	if ( ! wp_script_is( 'jquery', 'queue' ) ) {
 		wp_enqueue_script( 'jquery' );
 	}
 	?>
-<<<<<<< HEAD
-	<script>
-		if ('undefined' !== typeof jQuery) {
-			jQuery(document).ready(function ($) {
-				/* Don't show the notice if we don't have a way to hide it (no js, no jQuery). */
-				$(document.querySelector('.monsterinsights-tracking-notice')).removeClass('monsterinsights-tracking-notice-hide');
-				$(document.querySelector('.monsterinsights-tracking-notice-close')).on('click', function (e) {
-					e.preventDefault();
-					$(this).closest('.monsterinsights-tracking-notice').addClass('monsterinsights-tracking-notice-hide');
-					$.ajax({
-						url: '<?php echo esc_url( admin_url( 'admin-ajax.php' ) ); ?>',
-						method: 'POST',
-						data: {
-							action: 'monsterinsights_dismiss_tracking_notice',
-							nonce: '<?php echo esc_js( wp_create_nonce( 'monsterinsights-tracking-notice' ) ); ?>',
-						}
-					});
-				});
-			});
-		}
-	</script>
-	<?php
-=======
 <script>
 if ('undefined' !== typeof jQuery) {
     jQuery(document).ready(function($) {
@@ -587,7 +385,6 @@ if ('undefined' !== typeof jQuery) {
 }
 </script>
 <?php
->>>>>>> update
 }
 
 add_action( 'wp_footer', 'monsterinsights_administrator_tracking_notice', 300 );
@@ -619,8 +416,6 @@ function monsterinsights_maybe_handle_legacy_shortcodes() {
 }
 
 add_action( 'init', 'monsterinsights_maybe_handle_legacy_shortcodes', 1000 );
-<<<<<<< HEAD
-=======
 
 /**
  * Remove Query String from a Vue Settings before sending the data to GA.
@@ -659,4 +454,3 @@ function monsterinsights_exclude_query_params_v4( $options ) {
 }
 
 add_filter( 'monsterinsights_frontend_tracking_options_gtag_before_pageview', 'monsterinsights_exclude_query_params_v4', 10, 1 );
->>>>>>> update

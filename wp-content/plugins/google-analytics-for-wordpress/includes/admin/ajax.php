@@ -139,12 +139,8 @@ function monsterinsights_ajax_activate_addon() {
 		} else {
 			$activate = activate_plugin( $_POST['plugin'] );
 		}
-<<<<<<< HEAD
-
-=======
 		/* Restrict thirt-party redirections on activation */
 		delete_transient( '_userfeedback_activation_redirect' );
->>>>>>> update
 		if ( is_wp_error( $activate ) ) {
 			echo json_encode( array( 'error' => $activate->get_error_message() ) );
 			wp_die();
@@ -266,8 +262,6 @@ function monsterinsights_get_sem_rush_cta_status() {
 }
 
 add_action( 'wp_ajax_monsterinsights_get_sem_rush_cta_status', 'monsterinsights_get_sem_rush_cta_status' );
-<<<<<<< HEAD
-=======
 
 function monsterinsights_handle_get_plugin_info() {
 
@@ -335,4 +329,3 @@ if ( ! ( $license_type === 'master' || $license_type === 'pro' ) ) {
 	add_action( 'wp_ajax_monsterinsights_user_journey_report', 'monsterinsights_user_journey_demo_report_ajax' );
 	add_action( 'wp_ajax_monsterinsights_user_journey_report_filter_params', '__return_false' );
 }
->>>>>>> update

@@ -114,8 +114,6 @@ class Taxonomy_Helper {
 	public function get_custom_taxonomies( $output = 'names' ) {
 		return \get_taxonomies( [ '_builtin' => false ], $output );
 	}
-<<<<<<< HEAD
-=======
 
 	/**
 	 * Returns an array of taxonomies that are excluded from being indexed for the
@@ -181,5 +179,4 @@ class Taxonomy_Helper {
 
 		return $taxonomy_objects;
 	}
->>>>>>> update
 }

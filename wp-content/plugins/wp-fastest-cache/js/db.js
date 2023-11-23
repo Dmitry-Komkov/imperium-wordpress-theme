@@ -17,8 +17,6 @@ var WpfcDB = {
     	});
 
     	self.click_event_for_warnings();
-<<<<<<< HEAD
-=======
     	self.click_event_for_auto_cleanup();
 	},
 	click_event_for_auto_cleanup: function(){
@@ -49,7 +47,6 @@ var WpfcDB = {
 
 
 		});
->>>>>>> update
 	},
 	click_event_for_warnings: function(){
 		var self = this;
@@ -99,11 +96,7 @@ var WpfcDB = {
 			type: 'GET', 
 			url: ajaxurl,
 			dataType : "json",
-<<<<<<< HEAD
-			data : {"action": "wpfc_db_statics"},
-=======
 			data : {"action": "wpfc_db_statics", "nonce" : wpfc_nonce},
->>>>>>> update
 			cache: false, 
 			success: function(data){
 				jQuery.each(data, function(key, value){

@@ -21,18 +21,12 @@ if ( ! class_exists( 'acf_field_password' ) ) :
 		function initialize() {
 
 			// vars
-<<<<<<< HEAD
-			$this->name     = 'password';
-			$this->label    = __( 'Password', 'acf' );
-			$this->defaults = array(
-=======
 			$this->name          = 'password';
 			$this->label         = __( 'Password', 'acf' );
 			$this->description   = __( 'An input for providing a password using a masked field.', 'acf' );
 			$this->preview_image = acf_get_url() . '/assets/images/field-type-previews/field-preview-password.png';
 			$this->doc_url       = acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/resources/password/', 'docs', 'field-type-selection' );
 			$this->defaults      = array(
->>>>>>> update
 				'placeholder' => '',
 				'prepend'     => '',
 				'append'      => '',
@@ -59,10 +53,6 @@ if ( ! class_exists( 'acf_field_password' ) ) :
 
 		}
 
-<<<<<<< HEAD
-
-=======
->>>>>>> update
 		/*
 		*  render_field_settings()
 		*
@@ -75,12 +65,6 @@ if ( ! class_exists( 'acf_field_password' ) ) :
 		*
 		*  @param   $field  - an array holding all the field's data
 		*/
-<<<<<<< HEAD
-
-		function render_field_settings( $field ) {
-
-			// placeholder
-=======
 		function render_field_settings( $field ) {
 			// TODO: Delete this method?
 		}
@@ -94,7 +78,6 @@ if ( ! class_exists( 'acf_field_password' ) ) :
 		 * @return void
 		 */
 		function render_field_presentation_settings( $field ) {
->>>>>>> update
 			acf_render_field_setting(
 				$field,
 				array(
@@ -105,10 +88,6 @@ if ( ! class_exists( 'acf_field_password' ) ) :
 				)
 			);
 
-<<<<<<< HEAD
-			// prepend
-=======
->>>>>>> update
 			acf_render_field_setting(
 				$field,
 				array(
@@ -119,10 +98,6 @@ if ( ! class_exists( 'acf_field_password' ) ) :
 				)
 			);
 
-<<<<<<< HEAD
-			// append
-=======
->>>>>>> update
 			acf_render_field_setting(
 				$field,
 				array(

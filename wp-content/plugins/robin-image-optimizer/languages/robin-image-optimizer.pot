@@ -3,11 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Webcraftic Robin image optimizer\n"
 "Report-Msgid-Bugs-To: \n"
-<<<<<<< HEAD
-"POT-Creation-Date: 2021-04-02 08:30+0000\n"
-=======
 "POT-Creation-Date: 2022-10-06 07:49+0000\n"
->>>>>>> update
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -47,34 +43,6 @@ msgid ""
 "even inline styles."
 msgstr ""
 
-<<<<<<< HEAD
-#: admin/pages/class-rio-settings.php:441
-#: includes/classes/class-rio-cron.php:42
-msgid "1 min"
-msgstr ""
-
-#: admin/pages/class-rio-settings.php:444
-#: includes/classes/class-rio-cron.php:54
-msgid "10 min"
-msgstr ""
-
-#: admin/pages/class-rio-settings.php:442
-#: includes/classes/class-rio-cron.php:46
-msgid "2 min"
-msgstr ""
-
-#: admin/pages/class-rio-settings.php:445
-#: includes/classes/class-rio-cron.php:58
-msgid "30 min"
-msgstr ""
-
-#: admin/pages/class-rio-settings.php:443
-#: includes/classes/class-rio-cron.php:50
-msgid "5 min"
-msgstr ""
-
-#: includes/classes/class-rio-cron.php:62
-=======
 #: admin/pages/class-rio-settings.php:446
 #: includes/classes/class-rio-cron.php:43
 msgid "1 min"
@@ -101,7 +69,6 @@ msgid "5 min"
 msgstr ""
 
 #: includes/classes/class-rio-cron.php:63
->>>>>>> update
 msgid "60 min"
 msgstr ""
 
@@ -112,11 +79,7 @@ msgid ""
 "premium plugin updates, as well as to get additional services."
 msgstr ""
 
-<<<<<<< HEAD
-#: admin/pages/class-rio-settings.php:424
-=======
 #: admin/pages/class-rio-settings.php:429
->>>>>>> update
 msgid ""
 "<b>Scheduled optimization</b> will occur on a scheduled basis.<br><b>"
 "Background optimization</b> will occur in the background constantly."
@@ -148,12 +111,8 @@ msgstr ""
 msgid "All images from custom folders are optimized."
 msgstr ""
 
-<<<<<<< HEAD
-#: admin/pages/class-rio-statistic.php:266
-=======
 #: admin/pages/class-rio-statistic.php:285
 #: admin/pages/class-rio-statistic.php:291
->>>>>>> update
 msgid "All images from the media library are optimized."
 msgstr ""
 
@@ -161,35 +120,16 @@ msgstr ""
 msgid "All Media Files"
 msgstr ""
 
-<<<<<<< HEAD
-#: admin/pages/class-rio-settings.php:559
-msgid "Are you sure that you want to clear image backups folder?"
-msgstr ""
-
-#: admin/pages/class-rio-statistic.php:268
-=======
 #: admin/pages/class-rio-settings.php:564
 msgid "Are you sure that you want to clear image backups folder?"
 msgstr ""
 
 #: admin/pages/class-rio-statistic.php:296
->>>>>>> update
 msgid ""
 "Are you sure that you want to leave the page? The optimization process is "
 "not over yet, stay on the page until the end of the optimization process."
 msgstr ""
 
-<<<<<<< HEAD
-#: admin/pages/class-rio-settings.php:556
-msgid "Are you sure?"
-msgstr ""
-
-#: admin/pages/class-rio-settings.php:311
-msgid "Ascending"
-msgstr ""
-
-#: includes/classes/class-rio-attachment.php:254
-=======
 #: admin/pages/class-rio-settings.php:561
 msgid "Are you sure?"
 msgstr ""
@@ -199,24 +139,15 @@ msgid "Ascending"
 msgstr ""
 
 #: includes/classes/class-rio-attachment.php:271
->>>>>>> update
 #, php-format
 msgid "Attachment #%d doesn't have metadata, the image may be damaged."
 msgstr ""
 
-<<<<<<< HEAD
-#: includes/classes/class-rio-attachment.php:251
-msgid "Attachment cannot be optimized."
-msgstr ""
-
-#: admin/pages/class-rio-settings.php:220
-=======
 #: includes/classes/class-rio-attachment.php:268
 msgid "Attachment cannot be optimized."
 msgstr ""
 
 #: admin/pages/class-rio-settings.php:225
->>>>>>> update
 msgid "Auto optimization on upload"
 msgstr ""
 
@@ -224,35 +155,12 @@ msgstr ""
 msgid "Automatic convertation in Webp"
 msgstr ""
 
-<<<<<<< HEAD
-#: admin/pages/class-rio-settings.php:222
-=======
 #: admin/pages/class-rio-settings.php:227
->>>>>>> update
 msgid ""
 "Automatically compress all images that you upload directly to the WordPress "
 "media library, when editing pages and posts or using themes and plugins."
 msgstr ""
 
-<<<<<<< HEAD
-#: admin/pages/class-rio-settings.php:419
-msgid "Background"
-msgstr ""
-
-#: admin/pages/class-rio-statistic.php:250
-msgid "Background optimization"
-msgstr ""
-
-#: admin/pages/class-rio-settings.php:410
-msgid "Background optimization type"
-msgstr ""
-
-#: admin/pages/class-rio-settings.php:231
-msgid "Backup images"
-msgstr ""
-
-#: admin/pages/class-rio-settings.php:233
-=======
 #: admin/pages/class-rio-settings.php:424
 msgid "Background"
 msgstr ""
@@ -274,7 +182,6 @@ msgid "Backup images"
 msgstr ""
 
 #: admin/pages/class-rio-settings.php:238
->>>>>>> update
 msgid ""
 "Before optimizing, all your images will be saved in a separate folder for "
 "future recovery."
@@ -288,41 +195,25 @@ msgstr ""
 msgid "Bulk optimization"
 msgstr ""
 
-<<<<<<< HEAD
-#: admin/pages/class-rio-statistic.php:260
-=======
 #: admin/pages/class-rio-statistic.php:278
->>>>>>> update
 #: libs/addons/views/part-bulk-optimization-table-folders.php:26
 #: libs/addons/admin/pages/class-rio-statistic-folders-page.php:166
 msgid "Cancel"
 msgstr ""
 
-<<<<<<< HEAD
-#: admin/pages/class-rio-settings.php:375
-=======
 #: admin/pages/class-rio-settings.php:380
->>>>>>> update
 msgid ""
 "Choose which formats of images should be optimized and uncheck those that do "
 "not need optimization."
 msgstr ""
 
-<<<<<<< HEAD
-#: admin/pages/class-rio-settings.php:396
-=======
 #: admin/pages/class-rio-settings.php:401
->>>>>>> update
 msgid ""
 "Choose which sizes of thumbnails should be optimized and uncheck those that "
 "do not need optimization."
 msgstr ""
 
-<<<<<<< HEAD
-#: admin/pages/class-rio-settings.php:560
-=======
 #: admin/pages/class-rio-settings.php:565
->>>>>>> update
 msgid "Clear Backup"
 msgstr ""
 
@@ -351,11 +242,7 @@ msgctxt "Column label"
 msgid "Status"
 msgstr ""
 
-<<<<<<< HEAD
-#: admin/pages/class-rio-statistic.php:271
-=======
 #: admin/pages/class-rio-statistic.php:299
->>>>>>> update
 msgid "Completed"
 msgstr ""
 
@@ -373,21 +260,6 @@ msgstr ""
 msgid "Compressed thumbnails"
 msgstr ""
 
-<<<<<<< HEAD
-#: admin/pages/class-rio-settings.php:155
-msgid "Compression mode"
-msgstr ""
-
-#: admin/pages/class-rio-statistic.php:261
-msgid "Confirm"
-msgstr ""
-
-#: admin/pages/class-rio-settings.php:263
-msgid "Convert Images to WebP"
-msgstr ""
-
-#: admin/pages/class-rio-settings.php:265
-=======
 #: admin/pages/class-rio-settings.php:160
 msgid "Compression mode"
 msgstr ""
@@ -412,14 +284,11 @@ msgid "Convert in progress"
 msgstr ""
 
 #: admin/pages/class-rio-settings.php:270
->>>>>>> update
 msgid ""
 "Convert JPEG & PNG images into WebP format and replace them for browsers "
 "which support it. Unsupported browsers would be skipped."
 msgstr ""
 
-<<<<<<< HEAD
-=======
 #: admin/pages/class-rio-statistic.php:288
 msgid "Convert now"
 msgstr ""
@@ -431,27 +300,19 @@ msgstr ""
 msgid "Convert to WebP"
 msgstr ""
 
->>>>>>> update
 #: includes/classes/class-rio-backup.php:321
 msgid "Could not copy the file to the temporary directory"
 msgstr ""
 
-<<<<<<< HEAD
-=======
 #. Author of the plugin
 msgid "Creative Motion <info@cm-wp.com>"
 msgstr ""
 
->>>>>>> update
 #: views/part-bulk-optimization-servers.php:35
 msgid "Credits"
 msgstr ""
 
-<<<<<<< HEAD
-#: admin/pages/class-rio-settings.php:105
-=======
 #: admin/pages/class-rio-settings.php:110
->>>>>>> update
 msgid "Cron is disabled in wp-config.php"
 msgstr ""
 
@@ -459,13 +320,8 @@ msgstr ""
 msgid "Current size"
 msgstr ""
 
-<<<<<<< HEAD
-#: admin/pages/class-rio-settings.php:179
-#: admin/includes/classes/class-rio-optimize-template.php:141
-=======
 #: admin/pages/class-rio-settings.php:184
 #: admin/includes/classes/class-rio-optimize-template.php:146
->>>>>>> update
 msgid "Custom"
 msgstr ""
 
@@ -478,19 +334,11 @@ msgstr ""
 msgid "Custom folders"
 msgstr ""
 
-<<<<<<< HEAD
-#: admin/pages/class-rio-settings.php:211
-msgid "custom quality 1-100"
-msgstr ""
-
-#: includes/classes/class-rio-cron.php:66
-=======
 #: admin/pages/class-rio-settings.php:216
 msgid "custom quality 1-100"
 msgstr ""
 
 #: includes/classes/class-rio-cron.php:67
->>>>>>> update
 msgid "daily"
 msgstr ""
 
@@ -498,11 +346,7 @@ msgstr ""
 msgid "Date when the limit is topped up"
 msgstr ""
 
-<<<<<<< HEAD
-#: admin/pages/class-rio-settings.php:447
-=======
 #: admin/pages/class-rio-settings.php:452
->>>>>>> update
 msgid "Day"
 msgstr ""
 
@@ -513,33 +357,6 @@ msgid ""
 "target=\"_blank\">Read more</a>"
 msgstr ""
 
-<<<<<<< HEAD
-#: admin/pages/class-rio-settings.php:316
-msgid "Descending"
-msgstr ""
-
-#: admin/pages/class-rio-statistic.php:269
-msgid "Do you want to start optimization without backup?"
-msgstr ""
-
-#: admin/pages/class-rio-statistic.php:257
-msgid "down"
-msgstr ""
-
-#: admin/pages/class-rio-settings.php:244
-msgid "Enable error logging. The log will be displayed on a separate tab."
-msgstr ""
-
-#: admin/pages/class-rio-settings.php:209
-msgid "Enter custom quality"
-msgstr ""
-
-#: admin/pages/class-rio-settings.php:358
-msgid "Enter the maximum height (px)"
-msgstr ""
-
-#: admin/pages/class-rio-settings.php:348
-=======
 #: admin/pages/class-rio-settings.php:321
 msgid "Descending"
 msgstr ""
@@ -565,36 +382,22 @@ msgid "Enter the maximum height (px)"
 msgstr ""
 
 #: admin/pages/class-rio-settings.php:353
->>>>>>> update
 msgid "Enter the maximum width (px)"
 msgstr ""
 
 #: views/part-bulk-optimization-log.php:141
-<<<<<<< HEAD
-#: views/part-bulk-optimization-statistic.php:50
-#: admin/pages/class-rio-statistic.php:259
-=======
 #: views/part-bulk-optimization-statistic.php:53
 #: admin/pages/class-rio-statistic.php:277
->>>>>>> update
 #: libs/addons/includes/classes/class.folders-list-table.php:236
 msgid "Error"
 msgstr ""
 
 #: admin/pages/class-rio-log.php:69 admin/pages/class-rio-log.php:98
-<<<<<<< HEAD
-#: admin/pages/class-rio-settings.php:242
-msgid "Error Log"
-msgstr ""
-
-#: admin/includes/classes/class-rio-optimize-template.php:166
-=======
 #: admin/pages/class-rio-settings.php:247
 msgid "Error Log"
 msgstr ""
 
 #: admin/includes/classes/class-rio-optimize-template.php:171
->>>>>>> update
 msgid "Error Message:"
 msgstr ""
 
@@ -607,11 +410,7 @@ msgstr ""
 msgid "Exclude directory from optimization?"
 msgstr ""
 
-<<<<<<< HEAD
-#: admin/pages/class-rio-settings.php:294
-=======
 #: admin/pages/class-rio-settings.php:299
->>>>>>> update
 msgid ""
 "EXIF is information stored in photos: camera model, shutter speed, exposure "
 "compensation, ISO, GPS, etc. By default, the plugin removes EXIF extended "
@@ -627,11 +426,7 @@ msgstr ""
 msgid "Fast optimization servers"
 msgstr ""
 
-<<<<<<< HEAD
-#: includes/classes/class-rio-attachment.php:256
-=======
 #: includes/classes/class-rio-attachment.php:273
->>>>>>> update
 #, php-format
 msgid "File \"(%s)\" doesn't exist"
 msgstr ""
@@ -660,17 +455,6 @@ msgstr ""
 msgid "Folder"
 msgstr ""
 
-<<<<<<< HEAD
-#: admin/pages/class-rio-settings.php:96
-msgid "Folder wp-content/uploads/ is unavailable for writing"
-msgstr ""
-
-#: admin/pages/class-rio-settings.php:101
-msgid "Folder wp-content/uploads/wio-backup/ is unavailable for writing"
-msgstr ""
-
-#: admin/pages/class-rio-settings.php:174
-=======
 #: admin/pages/class-rio-settings.php:101
 msgid "Folder wp-content/uploads/ is unavailable for writing"
 msgstr ""
@@ -680,7 +464,6 @@ msgid "Folder wp-content/uploads/wio-backup/ is unavailable for writing"
 msgstr ""
 
 #: admin/pages/class-rio-settings.php:179
->>>>>>> update
 msgid "G PageSpeed"
 msgstr ""
 
@@ -692,19 +475,6 @@ msgstr ""
 msgid "Having Issues?"
 msgstr ""
 
-<<<<<<< HEAD
-#: admin/pages/class-rio-settings.php:300
-msgid "Here you can specify additional image optimization options."
-msgstr ""
-
-#: admin/pages/class-rio-settings.php:169
-#: admin/includes/classes/class-rio-optimize-template.php:149
-#: admin/includes/classes/class-rio-optimize-template.php:197
-msgid "High"
-msgstr ""
-
-#: admin/pages/class-rio-settings.php:446
-=======
 #: admin/pages/class-rio-settings.php:305
 msgid "Here you can specify additional image optimization options."
 msgstr ""
@@ -716,21 +486,10 @@ msgid "High"
 msgstr ""
 
 #: admin/pages/class-rio-settings.php:451
->>>>>>> update
 msgid "Hour"
 msgstr ""
 
 #. Author URI of the plugin
-<<<<<<< HEAD
-msgid "https://robinoptimizer.com"
-msgstr ""
-
-#. URI of the plugin
-msgid "https://wordpress.org/plugins/robin-image-optimizer/"
-msgstr ""
-
-#: libs/addons/includes/classes/class.custom-folders.php:328
-=======
 msgid "https://cm-wp.com"
 msgstr ""
 
@@ -739,14 +498,11 @@ msgid "https://robinoptimizer.com"
 msgstr ""
 
 #: libs/addons/includes/classes/class.custom-folders.php:329
->>>>>>> update
 msgid ""
 "If the file counter shows that not all files have been optimized yet, add "
 "the custom folder again."
 msgstr ""
 
-<<<<<<< HEAD
-=======
 #: views/modal-webp-conversion.php:29
 msgid ""
 "If you choose to a scheduled conversion, you can leave this page or close "
@@ -755,7 +511,6 @@ msgid ""
 "alternative, but you don’t have to waste your time on manual conversion."
 msgstr ""
 
->>>>>>> update
 #: views/modal-bulk-optimization.php:29
 msgid ""
 "If you choose to a scheduled optimization, you can leave this page or close "
@@ -765,8 +520,6 @@ msgid ""
 "optimization."
 msgstr ""
 
-<<<<<<< HEAD
-=======
 #: views/modal-webp-conversion.php:15
 msgid ""
 "If you choose to convert now, you should keep this page open until a bulk "
@@ -774,7 +527,6 @@ msgid ""
 "you will need to run it again.."
 msgstr ""
 
->>>>>>> update
 #: views/modal-bulk-optimization.php:15
 msgid ""
 "If you choose to optimize now, you should keep this page open until a bulk "
@@ -782,8 +534,6 @@ msgid ""
 "and you will need to run it again.."
 msgstr ""
 
-<<<<<<< HEAD
-=======
 #: views/modal-webp-conversion.php:31
 msgid ""
 "If you have selected background conversion, you can leave this page or close "
@@ -792,7 +542,6 @@ msgid ""
 "conversion and manual conversion. (beta version)."
 msgstr ""
 
->>>>>>> update
 #: views/modal-bulk-optimization.php:31
 msgid ""
 "If you have selected background optimization, you can leave this page or "
@@ -801,11 +550,7 @@ msgid ""
 "faster than scheduled optimization and manual optimization. (beta version)."
 msgstr ""
 
-<<<<<<< HEAD
-#: admin/pages/class-rio-statistic.php:196
-=======
 #: admin/pages/class-rio-statistic.php:204
->>>>>>> update
 #: libs/addons/admin/pages/class-rio-statistic-folders-page.php:123
 msgid "Image optimization dashboard"
 msgstr ""
@@ -816,11 +561,7 @@ msgstr ""
 msgid "Image optimizer"
 msgstr ""
 
-<<<<<<< HEAD
-#: admin/pages/class-rio-settings.php:457
-=======
 #: admin/pages/class-rio-settings.php:462
->>>>>>> update
 msgid "Images per iteration"
 msgstr ""
 
@@ -848,11 +589,7 @@ msgstr ""
 msgid "Keep an error log on frontend"
 msgstr ""
 
-<<<<<<< HEAD
-#: admin/pages/class-rio-settings.php:292
-=======
 #: admin/pages/class-rio-settings.php:297
->>>>>>> update
 msgid "Leave EXIF data"
 msgstr ""
 
@@ -861,11 +598,7 @@ msgstr ""
 msgid "left to migrate: %s items"
 msgstr ""
 
-<<<<<<< HEAD
-#: admin/includes/classes/class-rio-optimize-template.php:135
-=======
 #: admin/includes/classes/class-rio-optimize-template.php:140
->>>>>>> update
 msgid "Level:"
 msgstr ""
 
@@ -877,31 +610,6 @@ msgstr ""
 msgid "Logs clean-up successfully"
 msgstr ""
 
-<<<<<<< HEAD
-#: admin/pages/class-rio-settings.php:159
-msgid "Lossless"
-msgstr ""
-
-#: admin/includes/classes/class-rio-optimize-template.php:145
-#: admin/includes/classes/class-rio-optimize-template.php:177
-msgid "lossless"
-msgstr ""
-
-#: admin/pages/class-rio-settings.php:164
-msgid "Lossy"
-msgstr ""
-
-#: admin/includes/classes/class-rio-optimize-template.php:147
-#: admin/includes/classes/class-rio-optimize-template.php:187
-msgid "lossy"
-msgstr ""
-
-#: admin/pages/class-rio-settings.php:122
-msgid "Main Settings"
-msgstr ""
-
-#: admin/pages/class-rio-settings.php:544
-=======
 #: admin/pages/class-rio-settings.php:164
 msgid "Lossless"
 msgstr ""
@@ -925,7 +633,6 @@ msgid "Main Settings"
 msgstr ""
 
 #: admin/pages/class-rio-settings.php:549
->>>>>>> update
 msgid "Manage backups"
 msgstr ""
 
@@ -933,11 +640,7 @@ msgstr ""
 msgid "Media library"
 msgstr ""
 
-<<<<<<< HEAD
-#: admin/pages/class-rio-statistic.php:197
-=======
 #: admin/pages/class-rio-statistic.php:205
->>>>>>> update
 #: libs/addons/admin/pages/class-rio-statistic-folders-page.php:124
 msgid ""
 "Monitor image optimization statistics and run on demand or scheduled "
@@ -948,11 +651,7 @@ msgstr ""
 msgid "Multisite support"
 msgstr ""
 
-<<<<<<< HEAD
-#: admin/includes/classes/class-rio-optimize-template.php:123
-=======
 #: admin/includes/classes/class-rio-optimize-template.php:125
->>>>>>> update
 msgid "New Filesize:"
 msgstr ""
 
@@ -969,21 +668,12 @@ msgstr ""
 msgid "Nextgen gallery"
 msgstr ""
 
-<<<<<<< HEAD
-#: includes/classes/class-rio-media-library.php:274
-#: includes/classes/class-rio-media-library.php:278
-#: libs/addons/includes/classes/class.custom-folders.php:311
-#: libs/addons/includes/classes/class.custom-folders.php:315
-#: libs/addons/includes/classes/class.gallery-nextgen.php:339
-#: libs/addons/includes/classes/class.gallery-nextgen.php:342
-=======
 #: includes/classes/class-rio-media-library.php:293
 #: includes/classes/class-rio-media-library.php:297
 #: libs/addons/includes/classes/class.custom-folders.php:312
 #: libs/addons/includes/classes/class.custom-folders.php:316
 #: libs/addons/includes/classes/class.gallery-nextgen.php:341
 #: libs/addons/includes/classes/class.gallery-nextgen.php:344
->>>>>>> update
 msgid "No access for writing backups."
 msgstr ""
 
@@ -995,24 +685,6 @@ msgstr ""
 msgid "No delivery"
 msgstr ""
 
-<<<<<<< HEAD
-#: views/part-bulk-optimization-statistic.php:28
-msgid "of your website's images"
-msgstr ""
-
-#: admin/pages/class-rio-settings.php:300
-msgid "Optimization"
-msgstr ""
-
-#: admin/includes/classes/class-rio-optimize-template.php:175
-#: admin/includes/classes/class-rio-optimize-template.php:185
-#: admin/includes/classes/class-rio-optimize-template.php:195
-#: admin/includes/classes/class-rio-optimize-template.php:217
-msgid "Optimization in progress"
-msgstr ""
-
-#: admin/pages/class-rio-statistic.php:267
-=======
 #: views/part-bulk-optimization-statistic.php:31
 #: views/part-bulk-optimization-statistic.php:108
 msgid "of your website's images"
@@ -1030,7 +702,6 @@ msgid "Optimization in progress"
 msgstr ""
 
 #: admin/pages/class-rio-statistic.php:286
->>>>>>> update
 #, php-format
 msgid ""
 "Optimization in progress. Remained <span id=\"wio-total-unoptimized\">"
@@ -1047,33 +718,6 @@ msgid ""
 "quality of the image by clicking on the file name."
 msgstr ""
 
-<<<<<<< HEAD
-#: admin/pages/class-rio-settings.php:307
-msgid "Optimization order"
-msgstr ""
-
-#: admin/pages/class-rio-settings.php:128
-msgid "Optimization server"
-msgstr ""
-
-#: admin/pages/class-rio-settings.php:420
-msgid "Optimization will occur in the background constantly"
-msgstr ""
-
-#: admin/pages/class-rio-settings.php:317
-msgid "Optimization will start with new images in the media library"
-msgstr ""
-
-#: admin/pages/class-rio-settings.php:312
-msgid "Optimization will start with old images in the media library"
-msgstr ""
-
-#: admin/pages/class-rio-settings.php:415
-msgid "Optimization will take place on a schedule"
-msgstr ""
-
-#: admin/includes/classes/class-rio-optimize-template.php:219
-=======
 #: admin/pages/class-rio-settings.php:312
 msgid "Optimization order"
 msgstr ""
@@ -1102,16 +746,11 @@ msgstr ""
 #: views/part-bulk-optimization-button.php:31
 #: admin/pages/class-rio-statistic.php:300
 #: admin/includes/classes/class-rio-optimize-template.php:245
->>>>>>> update
 #: libs/addons/views/part-bulk-optimization-table-folders.php:41
 msgid "Optimize"
 msgstr ""
 
-<<<<<<< HEAD
-#: admin/pages/class-rio-settings.php:368
-=======
 #: admin/pages/class-rio-settings.php:373
->>>>>>> update
 msgid "Optimize formats"
 msgstr ""
 
@@ -1121,17 +760,6 @@ msgid ""
 "SEO and save money on server and CDN bandwidth."
 msgstr ""
 
-<<<<<<< HEAD
-#: admin/pages/class-rio-statistic.php:263
-msgid "Optimize now"
-msgstr ""
-
-#: admin/pages/class-rio-settings.php:393
-msgid "Optimize thumbnails"
-msgstr ""
-
-#: views/part-bulk-optimization-statistic.php:43
-=======
 #: admin/pages/class-rio-statistic.php:282
 msgid "Optimize now"
 msgstr ""
@@ -1141,16 +769,11 @@ msgid "Optimize thumbnails"
 msgstr ""
 
 #: views/part-bulk-optimization-statistic.php:46
->>>>>>> update
 #: libs/addons/includes/classes/class.folders-list-table.php:132
 msgid "Optimized"
 msgstr ""
 
-<<<<<<< HEAD
-#: views/part-bulk-optimization-statistic.php:67
-=======
 #: views/part-bulk-optimization-statistic.php:71
->>>>>>> update
 msgid "Optimized size"
 msgstr ""
 
@@ -1161,11 +784,7 @@ msgid ""
 "send this report to the plugin support service."
 msgstr ""
 
-<<<<<<< HEAD
-#: admin/includes/classes/class-rio-optimize-template.php:132
-=======
 #: admin/includes/classes/class-rio-optimize-template.php:137
->>>>>>> update
 msgid "Original Filesize:"
 msgstr ""
 
@@ -1173,17 +792,6 @@ msgstr ""
 msgid "Original Saving"
 msgstr ""
 
-<<<<<<< HEAD
-#: admin/includes/classes/class-rio-optimize-template.php:126
-msgid "Original Saving:"
-msgstr ""
-
-#: views/part-bulk-optimization-statistic.php:59
-msgid "Original size"
-msgstr ""
-
-#: libs/addons/includes/classes/class.custom-folders.php:86
-=======
 #: admin/includes/classes/class-rio-optimize-template.php:131
 msgid "Original Saving:"
 msgstr ""
@@ -1193,7 +801,6 @@ msgid "Original size"
 msgstr ""
 
 #: libs/addons/includes/classes/class.custom-folders.php:85
->>>>>>> update
 msgid "Other Media"
 msgstr ""
 
@@ -1201,11 +808,7 @@ msgstr ""
 msgid "Overall Saving"
 msgstr ""
 
-<<<<<<< HEAD
-#: admin/includes/classes/class-rio-optimize-template.php:161
-=======
 #: admin/includes/classes/class-rio-optimize-template.php:166
->>>>>>> update
 msgid "Overall Saving:"
 msgstr ""
 
@@ -1223,11 +826,7 @@ msgid ""
 "available and you can use it."
 msgstr ""
 
-<<<<<<< HEAD
-#: admin/pages/class-rio-settings.php:45
-=======
 #: admin/pages/class-rio-settings.php:50
->>>>>>> update
 msgid "Plugin configuration"
 msgstr ""
 
@@ -1236,11 +835,7 @@ msgid "Plugin debug report"
 msgstr ""
 
 #: views/part-bulk-optimization-servers.php:27
-<<<<<<< HEAD
-#: admin/pages/class-rio-settings.php:142
-=======
 #: admin/pages/class-rio-settings.php:147
->>>>>>> update
 msgid "Premium - no limits"
 msgstr ""
 
@@ -1252,15 +847,9 @@ msgstr ""
 msgid "Product activation"
 msgstr ""
 
-<<<<<<< HEAD
-#: admin/includes/classes/class-rio-optimize-template.php:177
-#: admin/includes/classes/class-rio-optimize-template.php:187
-#: admin/includes/classes/class-rio-optimize-template.php:197
-=======
 #: admin/includes/classes/class-rio-optimize-template.php:185
 #: admin/includes/classes/class-rio-optimize-template.php:198
 #: admin/includes/classes/class-rio-optimize-template.php:211
->>>>>>> update
 msgid "Re-Optimize to"
 msgstr ""
 
@@ -1268,11 +857,7 @@ msgstr ""
 msgid "Recover images from backup?"
 msgstr ""
 
-<<<<<<< HEAD
-#: admin/includes/classes/class-rio-optimize-template.php:205
-=======
 #: admin/includes/classes/class-rio-optimize-template.php:220
->>>>>>> update
 msgid "Recovery in progress"
 msgstr ""
 
@@ -1280,15 +865,12 @@ msgstr ""
 msgid "Redirection (via .htaccess)"
 msgstr ""
 
-<<<<<<< HEAD
-=======
 #: views/modal-webp-conversion.php:45
 msgid ""
 "Remember that the conversion of a large number of images may take some time "
 "depending on your server and network speed."
 msgstr ""
 
->>>>>>> update
 #: views/modal-bulk-optimization.php:45
 msgid ""
 "Remember that the optimization of a large number of images may take some "
@@ -1309,34 +891,15 @@ msgstr ""
 msgid "Replace image URLs"
 msgstr ""
 
-<<<<<<< HEAD
-#: admin/pages/class-rio-settings.php:330
-msgid "Resizing large images"
-msgstr ""
-
-#: admin/pages/class-rio-settings.php:557
-=======
 #: admin/pages/class-rio-settings.php:335
 msgid "Resizing large images"
 msgstr ""
 
 #: admin/pages/class-rio-settings.php:562
->>>>>>> update
 #: libs/addons/views/part-bulk-optimization-table-folders.php:43
 msgid "Restore"
 msgstr ""
 
-<<<<<<< HEAD
-#: admin/pages/class-rio-settings.php:613
-msgid "Restore completed."
-msgstr ""
-
-#: admin/includes/classes/class-rio-optimize-template.php:206
-msgid "Restore original"
-msgstr ""
-
-#: admin/pages/class-rio-statistic.php:270
-=======
 #: admin/pages/class-rio-settings.php:618
 msgid "Restore completed."
 msgstr ""
@@ -1346,7 +909,6 @@ msgid "Restore original"
 msgstr ""
 
 #: admin/pages/class-rio-statistic.php:298
->>>>>>> update
 msgid "Resume"
 msgstr ""
 
@@ -1354,12 +916,8 @@ msgstr ""
 msgid "Robin Image Optimizer"
 msgstr ""
 
-<<<<<<< HEAD
-#: admin/pages/class-rio-statistic.php:70
-=======
 #. Name of the plugin
 #: robin-image-optimizer.php:35 admin/pages/class-rio-statistic.php:70
->>>>>>> update
 #: admin/pages/class-rio-statistic.php:113
 msgid "Robin image optimizer"
 msgstr ""
@@ -1372,27 +930,6 @@ msgstr ""
 msgid "ROBIN IMAGE OPTIMIZER PRO"
 msgstr ""
 
-<<<<<<< HEAD
-#: views/part-bulk-optimization-button.php:25
-#: views/part-bulk-optimization-button.php:31
-#: admin/pages/class-rio-statistic.php:272
-msgid "Run"
-msgstr ""
-
-#: admin/pages/class-rio-settings.php:450
-msgid "Run every"
-msgstr ""
-
-#: admin/pages/class-rio-settings.php:414
-msgid "Scheduled"
-msgstr ""
-
-#: admin/pages/class-rio-settings.php:403
-msgid "Scheduled and background optimization"
-msgstr ""
-
-#: admin/pages/class-rio-statistic.php:245
-=======
 #: admin/pages/class-rio-settings.php:455
 msgid "Run every"
 msgstr ""
@@ -1410,7 +947,6 @@ msgid "Scheduled conversion"
 msgstr ""
 
 #: admin/pages/class-rio-statistic.php:258
->>>>>>> update
 msgid "Scheduled optimization"
 msgstr ""
 
@@ -1424,13 +960,10 @@ msgid ""
 "optimized recursively."
 msgstr ""
 
-<<<<<<< HEAD
-=======
 #: admin/pages/class-rio-statistic.php:287
 msgid "Select conversion way"
 msgstr ""
 
->>>>>>> update
 #: libs/addons/admin/pages/class-rio-statistic-folders-page.php:163
 msgid "Select custom folder"
 msgstr ""
@@ -1443,21 +976,6 @@ msgstr ""
 msgid "Select optimization server:"
 msgstr ""
 
-<<<<<<< HEAD
-#: admin/pages/class-rio-statistic.php:262
-msgid "Select optimization way"
-msgstr ""
-
-#: admin/pages/class-rio-settings.php:184
-msgid "Select the compression mode appropriate for your case."
-msgstr ""
-
-#: admin/pages/class-rio-settings.php:321
-msgid "Select the optimization order from the media library."
-msgstr ""
-
-#: admin/pages/class-rio-settings.php:451
-=======
 #: admin/pages/class-rio-statistic.php:281
 msgid "Select optimization way"
 msgstr ""
@@ -1471,7 +989,6 @@ msgid "Select the optimization order from the media library."
 msgstr ""
 
 #: admin/pages/class-rio-settings.php:456
->>>>>>> update
 msgid "Select time at which the task will be repeated."
 msgstr ""
 
@@ -1485,27 +1002,11 @@ msgid "Server"
 msgstr ""
 
 #: views/part-bulk-optimization-servers.php:21
-<<<<<<< HEAD
-#: admin/pages/class-rio-settings.php:132
-=======
 #: admin/pages/class-rio-settings.php:137
->>>>>>> update
 msgid "Server 1 - image size limit up to 5 MB"
 msgstr ""
 
 #: views/part-bulk-optimization-servers.php:24
-<<<<<<< HEAD
-#: admin/pages/class-rio-settings.php:137
-msgid "Server 2 - beta"
-msgstr ""
-
-#: includes/classes/class-rio-bulk-optimization.php:279
-msgid "Server name is empty!"
-msgstr ""
-
-#: admin/pages/class-rio-settings.php:350
-#: admin/pages/class-rio-settings.php:360
-=======
 #: admin/pages/class-rio-settings.php:142
 msgid "Server 2 - beta"
 msgstr ""
@@ -1516,26 +1017,17 @@ msgstr ""
 
 #: admin/pages/class-rio-settings.php:355
 #: admin/pages/class-rio-settings.php:365
->>>>>>> update
 msgid ""
 "Set the maximum images resolution on the long side. For horizontal images, "
 "this will be the width, and for vertical images - the height. The resolution "
 "of the images will be changed proportionally according to the set value."
 msgstr ""
 
-<<<<<<< HEAD
-#: admin/pages/class-rio-settings.php:44
-msgid "Settings"
-msgstr ""
-
-#: admin/pages/class-rio-settings.php:403
-=======
 #: admin/pages/class-rio-settings.php:49
 msgid "Settings"
 msgstr ""
 
 #: admin/pages/class-rio-settings.php:408
->>>>>>> update
 msgid "Settings for scheduled and background image optimization."
 msgstr ""
 
@@ -1543,30 +1035,18 @@ msgstr ""
 msgid "Skipped"
 msgstr ""
 
-<<<<<<< HEAD
-#: admin/pages/class-rio-settings.php:459
-=======
 #: admin/pages/class-rio-settings.php:464
->>>>>>> update
 msgid ""
 "Specify the number of images that will be optimized during the job. For "
 "example, if you enter 5 and select 5 min, the plugin will optimize 5 images "
 "every 5 minutes."
 msgstr ""
 
-<<<<<<< HEAD
-#: admin/pages/class-rio-statistic.php:258
-msgid "stable"
-msgstr ""
-
-#: views/part-bulk-optimization-statistic.php:57
-=======
 #: admin/pages/class-rio-statistic.php:276
 msgid "stable"
 msgstr ""
 
 #: views/part-bulk-optimization-statistic.php:60
->>>>>>> update
 msgid "Statistics"
 msgstr ""
 
@@ -1575,19 +1055,6 @@ msgstr ""
 msgid "Status"
 msgstr ""
 
-<<<<<<< HEAD
-#: admin/pages/class-rio-statistic.php:273
-msgid "Stop"
-msgstr ""
-
-#: views/part-bulk-optimization-button.php:29
-#: admin/pages/class-rio-statistic.php:251
-msgid "Stop background optimization"
-msgstr ""
-
-#: views/part-bulk-optimization-button.php:29
-#: admin/pages/class-rio-statistic.php:246
-=======
 #: admin/pages/class-rio-statistic.php:301
 msgid "Stop"
 msgstr ""
@@ -1615,7 +1082,6 @@ msgstr ""
 
 #: views/part-bulk-optimization-button.php:29
 #: admin/pages/class-rio-statistic.php:260
->>>>>>> update
 msgid "Stop schedule optimization"
 msgstr ""
 
@@ -1631,11 +1097,7 @@ msgstr ""
 msgid "Sync"
 msgstr ""
 
-<<<<<<< HEAD
-#: views/part-bulk-optimization-statistic.php:83
-=======
 #: views/part-bulk-optimization-statistic.php:87
->>>>>>> update
 msgid "that's the size you saved <br>by using Image Optimizer"
 msgstr ""
 
@@ -1643,11 +1105,7 @@ msgstr ""
 msgid "The all images are limited, including thumbnails"
 msgstr ""
 
-<<<<<<< HEAD
-#: admin/pages/class-rio-settings.php:615
-=======
 #: admin/pages/class-rio-settings.php:620
->>>>>>> update
 msgid "The backup folder was cleared."
 msgstr ""
 
@@ -1669,19 +1127,11 @@ msgid ""
 "nonce=\"%s\">click here</a> to upgrade it to the latest version"
 msgstr ""
 
-<<<<<<< HEAD
-#: admin/pages/class-rio-settings.php:180
-msgid "This mode allows you to configure your own compression ratio."
-msgstr ""
-
-#: admin/pages/class-rio-settings.php:165
-=======
 #: admin/pages/class-rio-settings.php:185
 msgid "This mode allows you to configure your own compression ratio."
 msgstr ""
 
 #: admin/pages/class-rio-settings.php:170
->>>>>>> update
 msgid ""
 "This mode provides an ideal optimization of your images without significant "
 "quality loss. The file size will be reduced approximately 5 times with a "
@@ -1689,11 +1139,7 @@ msgid ""
 "naked eye."
 msgstr ""
 
-<<<<<<< HEAD
-#: admin/pages/class-rio-settings.php:160
-=======
 #: admin/pages/class-rio-settings.php:165
->>>>>>> update
 msgid ""
 "This mode provides lossless compression and your images will be optimized "
 "without visible changes. If you want an ideal image quality, we recommend "
@@ -1701,19 +1147,11 @@ msgid ""
 "this is not enough for you, try other modes."
 msgstr ""
 
-<<<<<<< HEAD
-#: admin/pages/class-rio-settings.php:175
-msgid "This mode uses the optimal settings for Google Page Speed"
-msgstr ""
-
-#: admin/pages/class-rio-settings.php:170
-=======
 #: admin/pages/class-rio-settings.php:180
 msgid "This mode uses the optimal settings for Google Page Speed"
 msgstr ""
 
 #: admin/pages/class-rio-settings.php:175
->>>>>>> update
 msgid ""
 "This mode will use all available optimization methods for maximum image "
 "compression. The file size will be reduced approximately 7 times. The "
@@ -1722,11 +1160,7 @@ msgid ""
 "quality."
 msgstr ""
 
-<<<<<<< HEAD
-#: admin/pages/class-rio-settings.php:122
-=======
 #: admin/pages/class-rio-settings.php:127
->>>>>>> update
 msgid "This section you can set main images optimization settings."
 msgstr ""
 
@@ -1740,11 +1174,7 @@ msgid ""
 "JPEG files seamlessly, via .htaccess."
 msgstr ""
 
-<<<<<<< HEAD
-#: admin/includes/classes/class-rio-optimize-template.php:157
-=======
 #: admin/includes/classes/class-rio-optimize-template.php:162
->>>>>>> update
 msgid "Thumbnails Optimized:"
 msgstr ""
 
@@ -1754,11 +1184,7 @@ msgid ""
 "above."
 msgstr ""
 
-<<<<<<< HEAD
-#: admin/pages/class-rio-statistic.php:265
-=======
 #: admin/pages/class-rio-statistic.php:295
->>>>>>> update
 msgid ""
 "To start optimizing, you must complete migration from old plugin version."
 msgstr ""
@@ -1767,12 +1193,8 @@ msgstr ""
 msgid "Total number of images to optimize"
 msgstr ""
 
-<<<<<<< HEAD
-#: includes/classes/class-rio-image-statistic.php:377
-=======
 #: includes/classes/class-rio-image-statistic.php:537
 #: includes/classes/class-rio-image-statistic.php:644
->>>>>>> update
 #: libs/addons/includes/classes/class.image-statistic-folders.php:325
 #: libs/addons/includes/classes/class.image-statistic-nextgen.php:199
 msgid "Unknown error"
@@ -1782,23 +1204,15 @@ msgstr ""
 msgid "Unknown error."
 msgstr ""
 
-<<<<<<< HEAD
-#: includes/classes/class-rio-bulk-optimization.php:199
-=======
 #: includes/classes/class-rio-bulk-optimization.php:309
 #: includes/classes/class-rio-bulk-optimization.php:383
->>>>>>> update
 msgid ""
 "Unknown error. Enable error log on the plugin's settings page, then check "
 "the error report on the Error Log page. You can export the error report and "
 "send it to the support service of the plugin."
 msgstr ""
 
-<<<<<<< HEAD
-#: views/part-bulk-optimization-statistic.php:36
-=======
 #: views/part-bulk-optimization-statistic.php:39
->>>>>>> update
 #: libs/addons/includes/classes/class.folders-list-table.php:135
 #: libs/addons/includes/classes/class.folders-list-table.php:238
 msgid "Unoptimized"
@@ -1823,11 +1237,7 @@ msgid ""
 "just create a new ticket. We will definitely help you!"
 msgstr ""
 
-<<<<<<< HEAD
-#: admin/pages/class-rio-settings.php:146
-=======
 #: admin/pages/class-rio-settings.php:151
->>>>>>> update
 msgid ""
 "We use several free servers for image optimization and can’t fully guarantee "
 "their stable performance. The server can be not available in some countries "
@@ -1838,41 +1248,24 @@ msgid ""
 "limitations."
 msgstr ""
 
-<<<<<<< HEAD
-#. Author of the plugin
-msgid "Webcraftic <wordpress.webraftic@gmail.com>"
-msgstr ""
-
-#. Name of the plugin
-#: robin-image-optimizer.php:33
-msgid "Webcraftic Robin image optimizer"
-=======
 #: admin/includes/classes/class-rio-optimize-template.php:128
 #: admin/includes/classes/class-rio-optimize-template.php:232
 msgid "WebP Filesize:"
->>>>>>> update
 msgstr ""
 
 #: views/part-bulk-optimization-log.php:115
 msgid "WebP size"
 msgstr ""
 
-<<<<<<< HEAD
-=======
 #: views/modal-webp-conversion.php:2
 msgid "What you need to know before starting conversion."
 msgstr ""
 
->>>>>>> update
 #: views/modal-bulk-optimization.php:2
 msgid "What you need to know before starting optimization."
 msgstr ""
 
-<<<<<<< HEAD
-#: admin/pages/class-rio-settings.php:332
-=======
 #: admin/pages/class-rio-settings.php:337
->>>>>>> update
 msgid ""
 "When you upload images from a camera or stock, they may be too high "
 "resolution and it is not necessary for web. The option allows you to "
@@ -1883,13 +1276,6 @@ msgstr ""
 msgid "You can optimize custom folders"
 msgstr ""
 
-<<<<<<< HEAD
-#: admin/pages/class-rio-settings.php:547
-msgid "You can restore the original images from a backup or clear them."
-msgstr ""
-
-#: admin/pages/class-rio-statistic.php:255
-=======
 #: admin/pages/class-rio-settings.php:552
 msgid "You can restore the original images from a backup or clear them."
 msgstr ""
@@ -1901,36 +1287,24 @@ msgid ""
 msgstr ""
 
 #: admin/pages/class-rio-statistic.php:272
->>>>>>> update
 msgid ""
 "You cannot use the premium server on a free plan. You must activate the "
 "license to use all the features of the premium version."
 msgstr ""
 
-<<<<<<< HEAD
-=======
 #: views/part-bulk-optimization-statistic.php:104
 msgid "You converted to WebP"
 msgstr ""
 
->>>>>>> update
 #: views/part-bulk-optimization-log.php:126
 msgid "You don't have optimized images."
 msgstr ""
 
-<<<<<<< HEAD
-#: libs/addons/includes/classes/class.custom-folders.php:319
-msgid "You need to add an custom folder to start optimization!"
-msgstr ""
-
-#: views/part-bulk-optimization-statistic.php:24
-=======
 #: libs/addons/includes/classes/class.custom-folders.php:320
 msgid "You need to add an custom folder to start optimization!"
 msgstr ""
 
 #: views/part-bulk-optimization-statistic.php:27
->>>>>>> update
 msgid "You optimized"
 msgstr ""
 
@@ -1942,11 +1316,7 @@ msgid ""
 "been suspended."
 msgstr ""
 
-<<<<<<< HEAD
-#: admin/pages/class-rio-statistic.php:256
-=======
 #: admin/pages/class-rio-statistic.php:274
->>>>>>> update
 msgid ""
 "Your selected optimization server is down. This means that you cannot "
 "optimize images through this server. Try selecting another optimization "

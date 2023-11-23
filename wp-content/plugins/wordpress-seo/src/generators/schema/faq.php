@@ -34,11 +34,7 @@ class FAQ extends Abstract_Schema_Piece {
 	private function generate_ids() {
 		$ids = [];
 		foreach ( $this->context->blocks['yoast/faq-block'] as $block ) {
-<<<<<<< HEAD
-			foreach ( $block['attrs']['questions'] as $index => $question ) {
-=======
 			foreach ( $block['attrs']['questions'] as $question ) {
->>>>>>> update
 				if ( ! isset( $question['jsonAnswer'] ) || empty( $question['jsonAnswer'] ) ) {
 					continue;
 				}

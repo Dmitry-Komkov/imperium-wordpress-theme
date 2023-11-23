@@ -47,8 +47,6 @@ class SEO_Links_Repository {
 	}
 
 	/**
-<<<<<<< HEAD
-=======
 	 * Retrieves an SEO Link by url.
 	 *
 	 * @param string $url The SEO Link's url.
@@ -91,7 +89,6 @@ class SEO_Links_Repository {
 	}
 
 	/**
->>>>>>> update
 	 * Clears all SEO Links by post ID.
 	 *
 	 * @param int $post_id The post ID.
@@ -155,13 +152,10 @@ class SEO_Links_Repository {
 	 * @return array An array of associative arrays, each containing a indexable id and incoming property.
 	 */
 	public function get_incoming_link_counts_for_indexable_ids( $indexable_ids ) {
-<<<<<<< HEAD
-=======
 		if ( empty( $indexable_ids ) ) {
 			return [];
 		}
 
->>>>>>> update
 		// This query only returns ID's with an incoming count > 0. We need to restore any ID's with 0 incoming links later.
 		$indexable_counts = $this->query()
 			->select_expr( 'COUNT( id )', 'incoming' )

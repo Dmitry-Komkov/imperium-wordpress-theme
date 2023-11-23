@@ -79,10 +79,7 @@ class Akismet_Widget extends WP_Widget {
 	}
 
 	function update( $new_instance, $old_instance ) {
-<<<<<<< HEAD
-=======
 		$instance = array();
->>>>>>> update
 		$instance['title'] = strip_tags( $new_instance['title'] );
 		return $instance;
 	}

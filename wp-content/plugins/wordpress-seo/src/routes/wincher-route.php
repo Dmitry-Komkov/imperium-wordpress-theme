@@ -58,8 +58,6 @@ class Wincher_Route implements Route_Interface {
 	const UNTRACK_KEYPHRASE_ROUTE = self::ROUTE_PREFIX . '/keyphrases/untrack';
 
 	/**
-<<<<<<< HEAD
-=======
 	 * The check limit route constant.
 	 *
 	 * @var string
@@ -74,7 +72,6 @@ class Wincher_Route implements Route_Interface {
 	const UPGRADE_CAMPAIGN_ROUTE = self::ROUTE_PREFIX . '/account/upgrade-campaign';
 
 	/**
->>>>>>> update
 	 * The login action.
 	 *
 	 * @var Wincher_Login_Action
@@ -188,8 +185,6 @@ class Wincher_Route implements Route_Interface {
 		];
 
 		\register_rest_route( Main::API_V1_NAMESPACE, self::UNTRACK_KEYPHRASE_ROUTE, $delete_keyphrase_route_args );
-<<<<<<< HEAD
-=======
 
 		$check_limit_route_args = [
 			'methods'             => 'GET',
@@ -206,7 +201,6 @@ class Wincher_Route implements Route_Interface {
 		];
 
 		\register_rest_route( Main::API_V1_NAMESPACE, self::UPGRADE_CAMPAIGN_ROUTE, $get_upgrade_campaign_route_args );
->>>>>>> update
 	}
 
 	/**
@@ -281,8 +275,6 @@ class Wincher_Route implements Route_Interface {
 	}
 
 	/**
-<<<<<<< HEAD
-=======
 	 * Checks the account limit.
 	 *
 	 * @return WP_REST_Response The response.
@@ -304,7 +296,6 @@ class Wincher_Route implements Route_Interface {
 	}
 
 	/**
->>>>>>> update
 	 * Checks if a valid code was returned.
 	 *
 	 * @param string $code The code to check.

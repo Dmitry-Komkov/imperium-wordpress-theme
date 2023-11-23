@@ -6,11 +6,7 @@ if (!defined('UPDRAFTPLUS_DIR')) die('No direct access allowed.');
 // @codingStandardsIgnoreLine
 use OpenCloud\OpenStack;
 
-<<<<<<< HEAD
-require_once(UPDRAFTPLUS_DIR.'/methods/openstack-base.php');
-=======
 updraft_try_include_file('methods/openstack-base.php', 'require_once');
->>>>>>> update
 
 class UpdraftPlus_BackupModule_openstack extends UpdraftPlus_BackupModule_openstack_base {
 
@@ -36,11 +32,7 @@ class UpdraftPlus_BackupModule_openstack extends UpdraftPlus_BackupModule_openst
 
 		if (empty($user) || empty($password) || empty($authurl)) throw new Exception(__('Authorisation failed (check your credentials)', 'updraftplus'));// phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UndefinedVariable -- $user, $password and $authurl being extracted in extract() line 29
 
-<<<<<<< HEAD
-		include_once(UPDRAFTPLUS_DIR.'/vendor/autoload.php');
-=======
 		updraft_try_include_file('vendor/autoload.php', 'include_once');
->>>>>>> update
 		global $updraftplus;
 		$updraftplus->log("OpenStack authentication URL: ".$authurl);// phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UndefinedVariable -- $authurl being extracted in extract() line 29
 
@@ -63,11 +55,7 @@ class UpdraftPlus_BackupModule_openstack extends UpdraftPlus_BackupModule_openst
 
 		$client->authenticate();
 
-<<<<<<< HEAD
-		if (empty($region)) {// phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UndefinedVariable
-=======
 		if (empty($region)) {// phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UndefinedVariable -- The variable is defined below.
->>>>>>> update
 			$catalog = $client->getCatalog();
 			if (!empty($catalog)) {
 				$items = $catalog->getItems();
@@ -120,76 +108,7 @@ class UpdraftPlus_BackupModule_openstack extends UpdraftPlus_BackupModule_openst
 			'region' => ''
 		);
 	}
-<<<<<<< HEAD
-
-	/**
-	 * Get the pre middlesection configuration template
-	 *
-	 * @return String - the template
-	 */
-	public function get_pre_configuration_middlesection_template() {
-		
-		?>
-		<p><?php _e('Get your access credentials from your OpenStack Swift provider, and then pick a container name to use for storage. This container will be created for you if it does not already exist.', 'updraftplus');?> <a href="<?php echo apply_filters("updraftplus_com_link", "https://updraftplus.com/faqs/there-appear-to-be-lots-of-extra-files-in-my-rackspace-cloud-files-container/");?>" target="_blank"><?php _e('Also, you should read this important FAQ.', 'updraftplus'); ?></a></p>
-
-		<?php
-	}
 	
-	/**
-	 * This outputs the html to the settings page for the Openstack settings.
-	 *
-	 * @return String - the partial template, ready for substitutions to be carried out
-	 */
-	public function get_configuration_middlesection_template() {
-		ob_start();
-		$classes = $this->get_css_classes();
-		?>
-
-		<tr class="<?php echo $classes; ?>">
-			<th><?php echo ucfirst(__('authentication URI', 'updraftplus'));?>:</th>
-			<td><input title="<?php echo _x('This needs to be a v2 (Keystone) authentication URI; v1 (Swauth) is not supported.', 'Keystone and swauth are technical terms which cannot be translated', 'updraftplus');?>" data-updraft_settings_test="authurl" type="text" autocomplete="off" class="updraft_input--wide" <?php $this->output_settings_field_name_and_id('authurl');?> value="{{authurl}}" />
-			<br>
-			<em><?php echo _x('This needs to be a v2 (Keystone) authentication URI; v1 (Swauth) is not supported.', 'Keystone and swauth are technical terms which cannot be translated', 'updraftplus');?></em>
-			</td>
-		</tr>
-
-		<tr class="<?php echo $classes; ?>">
-			<th><a href="http://docs.openstack.org/openstack-ops/content/projects_users.html" title="<?php _e('Follow this link for more information', 'updraftplus');?>" target="_blank"><?php _e('Tenant', 'updraftplus');?></a>:</th>
-			<td><input data-updraft_settings_test="tenant" type="text" autocomplete="off" class="updraft_input--wide" <?php $this->output_settings_field_name_and_id('tenant');?> value="{{tenant}}" />
-			</td>
-		</tr>
-
-		<tr class="<?php echo $classes; ?>">
-			<th><?php _e('Region', 'updraftplus');?>:</th>
-			<td><input title="<?php _e('Leave this blank, and a default will be chosen.', 'updraftplus');?>" data-updraft_settings_test="region" type="text" autocomplete="off" class="updraft_input--wide" <?php $this->output_settings_field_name_and_id('region');?> value="{{region}}" />
-			<br>
-			<em><?php _e('Leave this blank, and a default will be chosen.', 'updraftplus');?></em>
-			</td>
-		</tr>
-
-		<tr class="<?php echo $classes; ?>">
-			<th><?php _e('Username', 'updraftplus');?>:</th>
-			<td><input data-updraft_settings_test="user" type="text" autocomplete="off" class="updraft_input--wide" <?php $this->output_settings_field_name_and_id('user');?> value="{{user}}" />
-			</td>
-		</tr>
-
-		<tr class="<?php echo $classes; ?>">
-			<th><?php _e('Password', 'updraftplus');?>:</th>
-			<td><input data-updraft_settings_test="password" type="<?php echo apply_filters('updraftplus_admin_secret_field_type', 'password'); ?>" autocomplete="off" class="updraft_input--wide" <?php $this->output_settings_field_name_and_id('password');?> value="{{password}}" />
-			</td>
-		</tr>
-
-		<tr class="<?php echo $classes; ?>">
-			<th><?php echo __('Container', 'updraftplus');?>:</th>
-			<td><input data-updraft_settings_test="path" type="text" class="updraft_input--wide" <?php $this->output_settings_field_name_and_id('path');?> value="{{path}}" /></td>
-		</tr>
-		<?php
-		return ob_get_clean();
-	}
-
-=======
-	
->>>>>>> update
 	public function credentials_test($posted_settings) {
 
 		if (empty($posted_settings['user'])) {
@@ -234,8 +153,6 @@ class UpdraftPlus_BackupModule_openstack extends UpdraftPlus_BackupModule_openst
 		if (is_array($opts) && $opts['user'] && '' !== $opts['user'] && !empty($opts['authurl'])) return true;
 		return false;
 	}
-<<<<<<< HEAD
-=======
 
 	/**
 	 * Get the pre configuration template
@@ -342,5 +259,4 @@ class UpdraftPlus_BackupModule_openstack extends UpdraftPlus_BackupModule_openst
 		);
 		return wp_parse_args($properties, $this->get_persistent_variables_and_methods());
 	}
->>>>>>> update
 }

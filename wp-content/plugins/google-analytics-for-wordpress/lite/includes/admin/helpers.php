@@ -38,11 +38,7 @@ function monsterinsights_get_admin_menu_tooltip() {
 
 	$show_tooltip = get_option( 'monsterinsights_admin_menu_tooltip', 0 );
 	$activated    = get_option( 'monsterinsights_over_time', array() );
-<<<<<<< HEAD
-	$ua_code      = monsterinsights_get_ua();
-=======
 	$tracking_id  = monsterinsights_get_v4_id();
->>>>>>> update
 
 	if ( monsterinsights_is_reports_page() || monsterinsights_is_settings_page() ) {
 		// Don't show on MI pages.
@@ -58,11 +54,7 @@ function monsterinsights_get_admin_menu_tooltip() {
 		return;
 	}
 
-<<<<<<< HEAD
-	if ( empty( $activated['installed_date'] ) || ( $activated['installed_date'] + 30 * DAY_IN_SECONDS > time() ) || empty( $ua_code ) ) {
-=======
 	if ( empty( $activated['installed_date'] ) || ( $activated['installed_date'] + 30 * DAY_IN_SECONDS > time() ) || empty( $tracking_id ) ) {
->>>>>>> update
 		return;
 	}
 	// More than 30 days since it was installed & is tracking.

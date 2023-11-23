@@ -72,8 +72,6 @@ class WPSEO_Taxonomy_Fields {
 				'options'     => '',
 				'hide'        => false,
 			],
-<<<<<<< HEAD
-=======
 			'inclusive_language_score' => [
 				'label'       => '',
 				'description' => '',
@@ -81,7 +79,6 @@ class WPSEO_Taxonomy_Fields {
 				'options'     => '',
 				'hide'        => false,
 			],
->>>>>>> update
 			'focuskw' => [
 				'label'       => '',
 				'description' => '',

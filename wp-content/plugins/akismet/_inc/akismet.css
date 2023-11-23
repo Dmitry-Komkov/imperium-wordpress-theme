@@ -99,52 +99,9 @@ table.comments td.comment p a:after {
 	font-size: 120%;
 	margin-top: .5rem;
 }
-<<<<<<< HEAD
-.akismet-alert {
-	padding: 0.4em 1em 1.4em 1em;
-	box-sizing: border-box;
-	box-shadow: 0 0 0 1px rgba(200, 215, 225, 0.5), 0 1px 2px #e9eff3;
-}
-
-.akismet-alert h3.akismet-key-status {
-	color: #fff;
-	margin: 1em 0 0.5em 0;
-}
-
-.akismet-alert.akismet-critical {
-	background-color: #993300;
-}
-
-.akismet-alert.akismet-active {
-	background-color: #649316;
-}
-
-.akismet-alert p.akismet-key-status {
-	font-size: 24px;
-}
-
-.akismet-alert p.akismet-description {
-	color:#fff;
-	font-size: 14px;
-    margin: 0 0;
-	font-style: normal;
-}
-
-.akismet-alert p.akismet-description a,
-.akismet-alert p.akismet-description a,
-.akismet-alert p.akismet-description a,
-.akismet-alert p.akismet-description a {
-	color: #fff;
-}
 
 .akismet-new-snapshot {
 	margin-top: 1em;
-	padding: 1em;
-=======
-
-.akismet-new-snapshot {
-	margin-top: 1em;
->>>>>>> update
 	text-align: center;
 	background: #fff;
 }
@@ -154,46 +111,19 @@ table.comments td.comment p a:after {
 	color: #888;
 	font-size: 11px;
     margin: 0;
-<<<<<<< HEAD
-    padding: 3px;
-}
-
-.new-snapspot ul {
-	font-size: 12px;
-	width: 100%;
-=======
->>>>>>> update
 }
 
 .akismet-new-snapshot ul li {
     color: #999;
-<<<<<<< HEAD
-	float: left;
-    font-size: 11px;
-	padding: 0 20px;
-    text-transform: uppercase;
-	width: 33%;
-=======
     font-size: 11px;
     text-transform: uppercase;
->>>>>>> update
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	-ms-box-sizing: border-box;
 }
 
-<<<<<<< HEAD
-.akismet-new-snapshot ul li:first-child,
-.akismet-new-snapshot ul li:nth-child(2) {
-	border-right:1px dotted #ccc;
-}
-
-.akismet-new-snapshot ul li span {
-    color: #52accc;
-=======
 .akismet-new-snapshot__number {
->>>>>>> update
 	display: block;
 	font-size: 32px;
 	font-weight: lighter;
@@ -210,13 +140,6 @@ table.comments td.comment p a:after {
 	padding-top: 0;
 }
 
-<<<<<<< HEAD
-.akismet-settings input[type=text] {
-	width: 75%;
-}
-
-=======
->>>>>>> update
 .akismet-settings span.akismet-note{
 	float: left;
 	padding-left: 23px;
@@ -333,11 +256,7 @@ table.comments td.comment p a:after {
 	.akismet_activate .aa_a {
 		display: none;
 	}
-<<<<<<< HEAD
-	
-=======
 
->>>>>>> update
 	.akismet_activate .aa_button_container {
 		width: 100%;
 	}
@@ -353,11 +272,7 @@ table.comments td.comment p a:after {
 	#akismet_setup_prompt .aa_description {
 		display: none;
 	}
-<<<<<<< HEAD
-	
-=======
 
->>>>>>> update
 	.akismet_activate {
 		min-width: 0;
 	}
@@ -388,13 +303,6 @@ table.comments td.comment p a:after {
 .akismet-masthead__logo-container {
 	padding:.3125rem 0 0
 }
-<<<<<<< HEAD
-.akismet-masthead__logo {
-	width:10.375rem;
-	height:1.8125rem;
-}
-=======
->>>>>>> update
 .akismet-masthead__logo-link {
 	display:inline-block;
 	outline:none;
@@ -480,15 +388,8 @@ table.comments td.comment p a:after {
 	margin-top: 1rem;
 	margin-bottom: 0;
 	position: relative;
-<<<<<<< HEAD
-	margin: 0 auto 0.625rem auto;
 	box-sizing: border-box;
 	background: white;
-	box-shadow: 0 0 0 1px rgba(200, 215, 225, 0.5), 0 1px 2px #e9eff3;
-=======
-	box-sizing: border-box;
-	background: white;
->>>>>>> update
 }
 
 .akismet-card:after, .akismet-card .inside:after, .akismet-masthead__logo-container:after {
@@ -544,11 +445,7 @@ table.comments td.comment p a:after {
 	width: 54px;
 	height: 54px;
 }
-<<<<<<< HEAD
-	
-=======
 
->>>>>>> update
 .akismet-box p:after {
 	content: ".";
 	display: block;
@@ -592,18 +489,6 @@ table.comments td.comment p a:after {
 	text-align: center;
 }
 
-<<<<<<< HEAD
-.akismet-enter-api-key-box {
-	margin: 1.5rem 0;
-}
-
-.akismet-box .enter-api-key {
-	display: none;
-	margin-top: 1.5rem;
-}
-
-=======
->>>>>>> update
 .akismet-box .akismet-toggles {
 	margin: 3rem 0;
 }
@@ -612,13 +497,6 @@ table.comments td.comment p a:after {
 	display: none;
 }
 
-<<<<<<< HEAD
-.akismet-box .enter-api-key p {
-	padding: 0 1.5rem;
-}
-
-=======
->>>>>>> update
 .akismet-button, .akismet-button:hover, .akismet-button:visited {
 	background: white;
 	border-color: #c8d7e1;
@@ -746,11 +624,6 @@ div.error.akismet-usage-limit-alert {
 }
 
 .akismet-usage-limit-alert .akismet-usage-limit-cta {
-<<<<<<< HEAD
-	text-align: right;
-}
-
-=======
 	border-color: none;
 	text-align: right;
 }
@@ -759,7 +632,6 @@ div.error.akismet-usage-limit-alert {
 	color: #d63638;
 }
 
->>>>>>> update
 @media (max-width: 550px) {
 	div.error.akismet-usage-limit-alert {
 		display: block;

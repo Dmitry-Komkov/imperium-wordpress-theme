@@ -4,10 +4,7 @@ namespace Yoast\WP\Lib;
 
 use Exception;
 use Yoast\WP\Lib\Dependency_Injection\Container_Registry;
-<<<<<<< HEAD
-=======
 use Yoast\WP\SEO\Exceptions\Forbidden_Property_Mutation_Exception;
->>>>>>> update
 use Yoast\WP\SEO\Loader;
 use YoastSEO_Vendor\Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -24,8 +21,6 @@ abstract class Abstract_Main {
 	protected $container;
 
 	/**
-<<<<<<< HEAD
-=======
 	 * A cache for previously requested and constructed surfaces.
 	 *
 	 * @var mixed[]
@@ -33,7 +28,6 @@ abstract class Abstract_Main {
 	private $cached_surfaces = [];
 
 	/**
->>>>>>> update
 	 * Loads the plugin.
 	 *
 	 * @throws Exception If loading fails and YOAST_ENVIRONMENT is development.
@@ -64,33 +58,15 @@ abstract class Abstract_Main {
 	}
 
 	/**
-<<<<<<< HEAD
-	 * Magic getter for retrieving a property.
-	 *
-	 * @param string $property The property to retrieve.
-	 *
-	 * @return string The value of the property.
-=======
 	 * Magic getter for retrieving a property from a surface.
 	 *
 	 * @param string $property The property to retrieve.
 	 *
 	 * @return mixed The value of the property.
->>>>>>> update
 	 *
 	 * @throws Exception When the property doesn't exist.
 	 */
 	public function __get( $property ) {
-<<<<<<< HEAD
-		$surfaces = $this->get_surfaces();
-
-		if ( isset( $surfaces[ $property ] ) ) {
-			$this->{$property} = $this->container->get( $surfaces[ $property ] );
-
-			return $this->{$property};
-		}
-		throw new Exception( "Property $property does not exist." );
-=======
 		if ( \array_key_exists( $property, $this->cached_surfaces ) ) {
 			return $this->cached_surfaces[ $property ];
 		}
@@ -103,7 +79,6 @@ abstract class Abstract_Main {
 			return $this->cached_surfaces[ $property ];
 		}
 		throw new Exception( sprintf( 'Property $%s does not exist.', $property ) );
->>>>>>> update
 	}
 
 	/**
@@ -114,9 +89,6 @@ abstract class Abstract_Main {
 	 * @return bool True when property is set.
 	 */
 	public function __isset( $property ) {
-<<<<<<< HEAD
-		return isset( $this->surfaces[ $property ] );
-=======
 		if ( \array_key_exists( $property, $this->cached_surfaces ) ) {
 			return true;
 		}
@@ -157,7 +129,6 @@ abstract class Abstract_Main {
 	 */
 	public function __unset( $name ) {
 		throw Forbidden_Property_Mutation_Exception::cannot_unset_because_property_is_immutable( $name );
->>>>>>> update
 	}
 
 	/**
@@ -192,11 +163,7 @@ abstract class Abstract_Main {
 		try {
 			return \WPSEO_Utils::is_development_mode();
 		}
-<<<<<<< HEAD
-		catch ( \Exception $exception ) {
-=======
 		catch ( Exception $exception ) {
->>>>>>> update
 			// E.g. when WordPress and/or WordPress SEO are not loaded.
 			return \defined( 'YOAST_ENVIRONMENT' ) && \YOAST_ENVIRONMENT === 'development';
 		}

@@ -1,14 +1,9 @@
 <?php
 
-<<<<<<< HEAD
-namespace YoastSEO_Vendor\GuzzleHttp\Psr7;
-
-=======
 declare (strict_types=1);
 namespace YoastSEO_Vendor\GuzzleHttp\Psr7;
 
 use YoastSEO_Vendor\GuzzleHttp\Psr7\Exception\MalformedUriException;
->>>>>>> update
 use YoastSEO_Vendor\Psr\Http\Message\UriInterface;
 /**
  * PSR-7 URI implementation.
@@ -17,11 +12,7 @@ use YoastSEO_Vendor\Psr\Http\Message\UriInterface;
  * @author Tobias Schultze
  * @author Matthew Weier O'Phinney
  */
-<<<<<<< HEAD
-class Uri implements \YoastSEO_Vendor\Psr\Http\Message\UriInterface
-=======
 class Uri implements \YoastSEO_Vendor\Psr\Http\Message\UriInterface, \JsonSerializable
->>>>>>> update
 {
     /**
      * Absolute http and https URIs require a host per RFC 7230 Section 2.7
@@ -29,13 +20,6 @@ class Uri implements \YoastSEO_Vendor\Psr\Http\Message\UriInterface, \JsonSerial
      * we apply this default host when no host is given yet to form a
      * valid URI.
      */
-<<<<<<< HEAD
-    const HTTP_DEFAULT_HOST = 'localhost';
-    private static $defaultPorts = ['http' => 80, 'https' => 443, 'ftp' => 21, 'gopher' => 70, 'nntp' => 119, 'news' => 119, 'telnet' => 23, 'tn3270' => 23, 'imap' => 143, 'pop' => 110, 'ldap' => 389];
-    private static $charUnreserved = 'a-zA-Z0-9_\\-\\.~';
-    private static $charSubDelims = '!\\$&\'\\(\\)\\*\\+,;=';
-    private static $replaceQuery = ['=' => '%3D', '&' => '%26'];
-=======
     private const HTTP_DEFAULT_HOST = 'localhost';
     private const DEFAULT_PORTS = ['http' => 80, 'https' => 443, 'ftp' => 21, 'gopher' => 70, 'nntp' => 119, 'news' => 119, 'telnet' => 23, 'tn3270' => 23, 'imap' => 143, 'pop' => 110, 'ldap' => 389];
     /**
@@ -51,7 +35,6 @@ class Uri implements \YoastSEO_Vendor\Psr\Http\Message\UriInterface, \JsonSerial
      */
     private const CHAR_SUB_DELIMS = '!\\$&\'\\(\\)\\*\\+,;=';
     private const QUERY_SEPARATORS_REPLACEMENT = ['=' => '%3D', '&' => '%26'];
->>>>>>> update
     /** @var string Uri scheme. */
     private $scheme = '';
     /** @var string Uri user info. */
@@ -66,18 +49,6 @@ class Uri implements \YoastSEO_Vendor\Psr\Http\Message\UriInterface, \JsonSerial
     private $query = '';
     /** @var string Uri fragment. */
     private $fragment = '';
-<<<<<<< HEAD
-    /**
-     * @param string $uri URI to parse
-     */
-    public function __construct($uri = '')
-    {
-        // weak type check to also accept null until we can add scalar type hints
-        if ($uri != '') {
-            $parts = self::parse($uri);
-            if ($parts === \false) {
-                throw new \InvalidArgumentException("Unable to parse URI: {$uri}");
-=======
     /** @var string|null String representation */
     private $composedComponents;
     public function __construct(string $uri = '')
@@ -86,7 +57,6 @@ class Uri implements \YoastSEO_Vendor\Psr\Http\Message\UriInterface, \JsonSerial
             $parts = self::parse($uri);
             if ($parts === \false) {
                 throw new \YoastSEO_Vendor\GuzzleHttp\Psr7\Exception\MalformedUriException("Unable to parse URI: {$uri}");
->>>>>>> update
             }
             $this->applyParts($parts);
         }
@@ -104,32 +74,18 @@ class Uri implements \YoastSEO_Vendor\Psr\Http\Message\UriInterface, \JsonSerial
      * @see https://www.php.net/manual/en/function.parse-url.php#114817
      * @see https://curl.haxx.se/libcurl/c/CURLOPT_URL.html#ENCODING
      *
-<<<<<<< HEAD
-     * @param string $url
-     *
-     * @return array|false
-     */
-    private static function parse($url)
-=======
      * @return array|false
      */
     private static function parse(string $url)
->>>>>>> update
     {
         // If IPv6
         $prefix = '';
         if (\preg_match('%^(.*://\\[[0-9:a-f]+\\])(.*?)$%', $url, $matches)) {
-<<<<<<< HEAD
-            $prefix = $matches[1];
-            $url = $matches[2];
-        }
-=======
             /** @var array{0:string, 1:string, 2:string} $matches */
             $prefix = $matches[1];
             $url = $matches[2];
         }
         /** @var string */
->>>>>>> update
         $encodedUrl = \preg_replace_callback('%[^:/@?&=#]+%usD', static function ($matches) {
             return \urlencode($matches[0]);
         }, $url);
@@ -139,18 +95,12 @@ class Uri implements \YoastSEO_Vendor\Psr\Http\Message\UriInterface, \JsonSerial
         }
         return \array_map('urldecode', $result);
     }
-<<<<<<< HEAD
-    public function __toString()
-    {
-        return self::composeComponents($this->scheme, $this->getAuthority(), $this->path, $this->query, $this->fragment);
-=======
     public function __toString() : string
     {
         if ($this->composedComponents === null) {
             $this->composedComponents = self::composeComponents($this->scheme, $this->getAuthority(), $this->path, $this->query, $this->fragment);
         }
         return $this->composedComponents;
->>>>>>> update
     }
     /**
      * Composes a URI reference string from its various components.
@@ -168,23 +118,9 @@ class Uri implements \YoastSEO_Vendor\Psr\Http\Message\UriInterface, \JsonSerial
      * `file:///` is the more common syntax for the file scheme anyway (Chrome for example redirects to
      * that format).
      *
-<<<<<<< HEAD
-     * @param string $scheme
-     * @param string $authority
-     * @param string $path
-     * @param string $query
-     * @param string $fragment
-     *
-     * @return string
-     *
-     * @link https://tools.ietf.org/html/rfc3986#section-5.3
-     */
-    public static function composeComponents($scheme, $authority, $path, $query, $fragment)
-=======
      * @see https://tools.ietf.org/html/rfc3986#section-5.3
      */
     public static function composeComponents(?string $scheme, ?string $authority, string $path, ?string $query, ?string $fragment) : string
->>>>>>> update
     {
         $uri = '';
         // weak type checks to also accept null until we can add scalar type hints
@@ -194,12 +130,9 @@ class Uri implements \YoastSEO_Vendor\Psr\Http\Message\UriInterface, \JsonSerial
         if ($authority != '' || $scheme === 'file') {
             $uri .= '//' . $authority;
         }
-<<<<<<< HEAD
-=======
         if ($authority != '' && $path != '' && $path[0] != '/') {
             $path = '/' . $path;
         }
->>>>>>> update
         $uri .= $path;
         if ($query != '') {
             $uri .= '?' . $query;
@@ -214,21 +147,10 @@ class Uri implements \YoastSEO_Vendor\Psr\Http\Message\UriInterface, \JsonSerial
      *
      * `Psr\Http\Message\UriInterface::getPort` may return null or the standard port. This method can be used
      * independently of the implementation.
-<<<<<<< HEAD
-     *
-     * @param UriInterface $uri
-     *
-     * @return bool
-     */
-    public static function isDefaultPort(\YoastSEO_Vendor\Psr\Http\Message\UriInterface $uri)
-    {
-        return $uri->getPort() === null || isset(self::$defaultPorts[$uri->getScheme()]) && $uri->getPort() === self::$defaultPorts[$uri->getScheme()];
-=======
      */
     public static function isDefaultPort(\YoastSEO_Vendor\Psr\Http\Message\UriInterface $uri) : bool
     {
         return $uri->getPort() === null || isset(self::DEFAULT_PORTS[$uri->getScheme()]) && $uri->getPort() === self::DEFAULT_PORTS[$uri->getScheme()];
->>>>>>> update
     }
     /**
      * Whether the URI is absolute, i.e. it has a scheme.
@@ -240,25 +162,12 @@ class Uri implements \YoastSEO_Vendor\Psr\Http\Message\UriInterface, \JsonSerial
      * - absolute-path references, e.g. '/path'
      * - relative-path references, e.g. 'subpath'
      *
-<<<<<<< HEAD
-     * @param UriInterface $uri
-     *
-     * @return bool
-     *
-     * @see Uri::isNetworkPathReference
-     * @see Uri::isAbsolutePathReference
-     * @see Uri::isRelativePathReference
-     * @link https://tools.ietf.org/html/rfc3986#section-4
-     */
-    public static function isAbsolute(\YoastSEO_Vendor\Psr\Http\Message\UriInterface $uri)
-=======
      * @see Uri::isNetworkPathReference
      * @see Uri::isAbsolutePathReference
      * @see Uri::isRelativePathReference
      * @see https://tools.ietf.org/html/rfc3986#section-4
      */
     public static function isAbsolute(\YoastSEO_Vendor\Psr\Http\Message\UriInterface $uri) : bool
->>>>>>> update
     {
         return $uri->getScheme() !== '';
     }
@@ -267,19 +176,9 @@ class Uri implements \YoastSEO_Vendor\Psr\Http\Message\UriInterface, \JsonSerial
      *
      * A relative reference that begins with two slash characters is termed an network-path reference.
      *
-<<<<<<< HEAD
-     * @param UriInterface $uri
-     *
-     * @return bool
-     *
-     * @link https://tools.ietf.org/html/rfc3986#section-4.2
-     */
-    public static function isNetworkPathReference(\YoastSEO_Vendor\Psr\Http\Message\UriInterface $uri)
-=======
      * @see https://tools.ietf.org/html/rfc3986#section-4.2
      */
     public static function isNetworkPathReference(\YoastSEO_Vendor\Psr\Http\Message\UriInterface $uri) : bool
->>>>>>> update
     {
         return $uri->getScheme() === '' && $uri->getAuthority() !== '';
     }
@@ -288,19 +187,9 @@ class Uri implements \YoastSEO_Vendor\Psr\Http\Message\UriInterface, \JsonSerial
      *
      * A relative reference that begins with a single slash character is termed an absolute-path reference.
      *
-<<<<<<< HEAD
-     * @param UriInterface $uri
-     *
-     * @return bool
-     *
-     * @link https://tools.ietf.org/html/rfc3986#section-4.2
-     */
-    public static function isAbsolutePathReference(\YoastSEO_Vendor\Psr\Http\Message\UriInterface $uri)
-=======
      * @see https://tools.ietf.org/html/rfc3986#section-4.2
      */
     public static function isAbsolutePathReference(\YoastSEO_Vendor\Psr\Http\Message\UriInterface $uri) : bool
->>>>>>> update
     {
         return $uri->getScheme() === '' && $uri->getAuthority() === '' && isset($uri->getPath()[0]) && $uri->getPath()[0] === '/';
     }
@@ -309,19 +198,9 @@ class Uri implements \YoastSEO_Vendor\Psr\Http\Message\UriInterface, \JsonSerial
      *
      * A relative reference that does not begin with a slash character is termed a relative-path reference.
      *
-<<<<<<< HEAD
-     * @param UriInterface $uri
-     *
-     * @return bool
-     *
-     * @link https://tools.ietf.org/html/rfc3986#section-4.2
-     */
-    public static function isRelativePathReference(\YoastSEO_Vendor\Psr\Http\Message\UriInterface $uri)
-=======
      * @see https://tools.ietf.org/html/rfc3986#section-4.2
      */
     public static function isRelativePathReference(\YoastSEO_Vendor\Psr\Http\Message\UriInterface $uri) : bool
->>>>>>> update
     {
         return $uri->getScheme() === '' && $uri->getAuthority() === '' && (!isset($uri->getPath()[0]) || $uri->getPath()[0] !== '/');
     }
@@ -335,17 +214,9 @@ class Uri implements \YoastSEO_Vendor\Psr\Http\Message\UriInterface, \JsonSerial
      * @param UriInterface      $uri  The URI to check
      * @param UriInterface|null $base An optional base URI to compare against
      *
-<<<<<<< HEAD
-     * @return bool
-     *
-     * @link https://tools.ietf.org/html/rfc3986#section-4.4
-     */
-    public static function isSameDocumentReference(\YoastSEO_Vendor\Psr\Http\Message\UriInterface $uri, \YoastSEO_Vendor\Psr\Http\Message\UriInterface $base = null)
-=======
      * @see https://tools.ietf.org/html/rfc3986#section-4.4
      */
     public static function isSameDocumentReference(\YoastSEO_Vendor\Psr\Http\Message\UriInterface $uri, \YoastSEO_Vendor\Psr\Http\Message\UriInterface $base = null) : bool
->>>>>>> update
     {
         if ($base !== null) {
             $uri = \YoastSEO_Vendor\GuzzleHttp\Psr7\UriResolver::resolve($base, $uri);
@@ -354,41 +225,6 @@ class Uri implements \YoastSEO_Vendor\Psr\Http\Message\UriInterface, \JsonSerial
         return $uri->getScheme() === '' && $uri->getAuthority() === '' && $uri->getPath() === '' && $uri->getQuery() === '';
     }
     /**
-<<<<<<< HEAD
-     * Removes dot segments from a path and returns the new path.
-     *
-     * @param string $path
-     *
-     * @return string
-     *
-     * @deprecated since version 1.4. Use UriResolver::removeDotSegments instead.
-     * @see UriResolver::removeDotSegments
-     */
-    public static function removeDotSegments($path)
-    {
-        return \YoastSEO_Vendor\GuzzleHttp\Psr7\UriResolver::removeDotSegments($path);
-    }
-    /**
-     * Converts the relative URI into a new URI that is resolved against the base URI.
-     *
-     * @param UriInterface        $base Base URI
-     * @param string|UriInterface $rel  Relative URI
-     *
-     * @return UriInterface
-     *
-     * @deprecated since version 1.4. Use UriResolver::resolve instead.
-     * @see UriResolver::resolve
-     */
-    public static function resolve(\YoastSEO_Vendor\Psr\Http\Message\UriInterface $base, $rel)
-    {
-        if (!$rel instanceof \YoastSEO_Vendor\Psr\Http\Message\UriInterface) {
-            $rel = new self($rel);
-        }
-        return \YoastSEO_Vendor\GuzzleHttp\Psr7\UriResolver::resolve($base, $rel);
-    }
-    /**
-=======
->>>>>>> update
      * Creates a new URI with a specific query string value removed.
      *
      * Any existing query string values that exactly match the provided key are
@@ -396,15 +232,8 @@ class Uri implements \YoastSEO_Vendor\Psr\Http\Message\UriInterface, \JsonSerial
      *
      * @param UriInterface $uri URI to use as a base.
      * @param string       $key Query string key to remove.
-<<<<<<< HEAD
-     *
-     * @return UriInterface
-     */
-    public static function withoutQueryValue(\YoastSEO_Vendor\Psr\Http\Message\UriInterface $uri, $key)
-=======
      */
     public static function withoutQueryValue(\YoastSEO_Vendor\Psr\Http\Message\UriInterface $uri, string $key) : \YoastSEO_Vendor\Psr\Http\Message\UriInterface
->>>>>>> update
     {
         $result = self::getFilteredQueryString($uri, [$key]);
         return $uri->withQuery(\implode('&', $result));
@@ -421,15 +250,8 @@ class Uri implements \YoastSEO_Vendor\Psr\Http\Message\UriInterface, \JsonSerial
      * @param UriInterface $uri   URI to use as a base.
      * @param string       $key   Key to set.
      * @param string|null  $value Value to set
-<<<<<<< HEAD
-     *
-     * @return UriInterface
-     */
-    public static function withQueryValue(\YoastSEO_Vendor\Psr\Http\Message\UriInterface $uri, $key, $value)
-=======
      */
     public static function withQueryValue(\YoastSEO_Vendor\Psr\Http\Message\UriInterface $uri, string $key, ?string $value) : \YoastSEO_Vendor\Psr\Http\Message\UriInterface
->>>>>>> update
     {
         $result = self::getFilteredQueryString($uri, [$key]);
         $result[] = self::generateQueryString($key, $value);
@@ -440,18 +262,6 @@ class Uri implements \YoastSEO_Vendor\Psr\Http\Message\UriInterface, \JsonSerial
      *
      * It has the same behavior as withQueryValue() but for an associative array of key => value.
      *
-<<<<<<< HEAD
-     * @param UriInterface $uri           URI to use as a base.
-     * @param array        $keyValueArray Associative array of key and values
-     *
-     * @return UriInterface
-     */
-    public static function withQueryValues(\YoastSEO_Vendor\Psr\Http\Message\UriInterface $uri, array $keyValueArray)
-    {
-        $result = self::getFilteredQueryString($uri, \array_keys($keyValueArray));
-        foreach ($keyValueArray as $key => $value) {
-            $result[] = self::generateQueryString($key, $value);
-=======
      * @param UriInterface               $uri           URI to use as a base.
      * @param array<string, string|null> $keyValueArray Associative array of key and values
      */
@@ -460,49 +270,28 @@ class Uri implements \YoastSEO_Vendor\Psr\Http\Message\UriInterface, \JsonSerial
         $result = self::getFilteredQueryString($uri, \array_keys($keyValueArray));
         foreach ($keyValueArray as $key => $value) {
             $result[] = self::generateQueryString((string) $key, $value !== null ? (string) $value : null);
->>>>>>> update
         }
         return $uri->withQuery(\implode('&', $result));
     }
     /**
      * Creates a URI from a hash of `parse_url` components.
      *
-<<<<<<< HEAD
-     * @param array $parts
-     *
-     * @return UriInterface
-     *
-     * @link http://php.net/manual/en/function.parse-url.php
-     *
-     * @throws \InvalidArgumentException If the components do not form a valid URI.
-     */
-    public static function fromParts(array $parts)
-=======
      * @see http://php.net/manual/en/function.parse-url.php
      *
      * @throws MalformedUriException If the components do not form a valid URI.
      */
     public static function fromParts(array $parts) : \YoastSEO_Vendor\Psr\Http\Message\UriInterface
->>>>>>> update
     {
         $uri = new self();
         $uri->applyParts($parts);
         $uri->validateState();
         return $uri;
     }
-<<<<<<< HEAD
-    public function getScheme()
-    {
-        return $this->scheme;
-    }
-    public function getAuthority()
-=======
     public function getScheme() : string
     {
         return $this->scheme;
     }
     public function getAuthority() : string
->>>>>>> update
     {
         $authority = $this->host;
         if ($this->userInfo !== '') {
@@ -513,33 +302,6 @@ class Uri implements \YoastSEO_Vendor\Psr\Http\Message\UriInterface, \JsonSerial
         }
         return $authority;
     }
-<<<<<<< HEAD
-    public function getUserInfo()
-    {
-        return $this->userInfo;
-    }
-    public function getHost()
-    {
-        return $this->host;
-    }
-    public function getPort()
-    {
-        return $this->port;
-    }
-    public function getPath()
-    {
-        return $this->path;
-    }
-    public function getQuery()
-    {
-        return $this->query;
-    }
-    public function getFragment()
-    {
-        return $this->fragment;
-    }
-    public function withScheme($scheme)
-=======
     public function getUserInfo() : string
     {
         return $this->userInfo;
@@ -565,7 +327,6 @@ class Uri implements \YoastSEO_Vendor\Psr\Http\Message\UriInterface, \JsonSerial
         return $this->fragment;
     }
     public function withScheme($scheme) : \YoastSEO_Vendor\Psr\Http\Message\UriInterface
->>>>>>> update
     {
         $scheme = $this->filterScheme($scheme);
         if ($this->scheme === $scheme) {
@@ -573,19 +334,12 @@ class Uri implements \YoastSEO_Vendor\Psr\Http\Message\UriInterface, \JsonSerial
         }
         $new = clone $this;
         $new->scheme = $scheme;
-<<<<<<< HEAD
-=======
         $new->composedComponents = null;
->>>>>>> update
         $new->removeDefaultPort();
         $new->validateState();
         return $new;
     }
-<<<<<<< HEAD
-    public function withUserInfo($user, $password = null)
-=======
     public function withUserInfo($user, $password = null) : \YoastSEO_Vendor\Psr\Http\Message\UriInterface
->>>>>>> update
     {
         $info = $this->filterUserInfoComponent($user);
         if ($password !== null) {
@@ -596,18 +350,11 @@ class Uri implements \YoastSEO_Vendor\Psr\Http\Message\UriInterface, \JsonSerial
         }
         $new = clone $this;
         $new->userInfo = $info;
-<<<<<<< HEAD
-        $new->validateState();
-        return $new;
-    }
-    public function withHost($host)
-=======
         $new->composedComponents = null;
         $new->validateState();
         return $new;
     }
     public function withHost($host) : \YoastSEO_Vendor\Psr\Http\Message\UriInterface
->>>>>>> update
     {
         $host = $this->filterHost($host);
         if ($this->host === $host) {
@@ -615,18 +362,11 @@ class Uri implements \YoastSEO_Vendor\Psr\Http\Message\UriInterface, \JsonSerial
         }
         $new = clone $this;
         $new->host = $host;
-<<<<<<< HEAD
-        $new->validateState();
-        return $new;
-    }
-    public function withPort($port)
-=======
         $new->composedComponents = null;
         $new->validateState();
         return $new;
     }
     public function withPort($port) : \YoastSEO_Vendor\Psr\Http\Message\UriInterface
->>>>>>> update
     {
         $port = $this->filterPort($port);
         if ($this->port === $port) {
@@ -634,19 +374,12 @@ class Uri implements \YoastSEO_Vendor\Psr\Http\Message\UriInterface, \JsonSerial
         }
         $new = clone $this;
         $new->port = $port;
-<<<<<<< HEAD
-=======
         $new->composedComponents = null;
->>>>>>> update
         $new->removeDefaultPort();
         $new->validateState();
         return $new;
     }
-<<<<<<< HEAD
-    public function withPath($path)
-=======
     public function withPath($path) : \YoastSEO_Vendor\Psr\Http\Message\UriInterface
->>>>>>> update
     {
         $path = $this->filterPath($path);
         if ($this->path === $path) {
@@ -654,18 +387,11 @@ class Uri implements \YoastSEO_Vendor\Psr\Http\Message\UriInterface, \JsonSerial
         }
         $new = clone $this;
         $new->path = $path;
-<<<<<<< HEAD
-        $new->validateState();
-        return $new;
-    }
-    public function withQuery($query)
-=======
         $new->composedComponents = null;
         $new->validateState();
         return $new;
     }
     public function withQuery($query) : \YoastSEO_Vendor\Psr\Http\Message\UriInterface
->>>>>>> update
     {
         $query = $this->filterQueryAndFragment($query);
         if ($this->query === $query) {
@@ -673,16 +399,10 @@ class Uri implements \YoastSEO_Vendor\Psr\Http\Message\UriInterface, \JsonSerial
         }
         $new = clone $this;
         $new->query = $query;
-<<<<<<< HEAD
-        return $new;
-    }
-    public function withFragment($fragment)
-=======
         $new->composedComponents = null;
         return $new;
     }
     public function withFragment($fragment) : \YoastSEO_Vendor\Psr\Http\Message\UriInterface
->>>>>>> update
     {
         $fragment = $this->filterQueryAndFragment($fragment);
         if ($this->fragment === $fragment) {
@@ -690,10 +410,6 @@ class Uri implements \YoastSEO_Vendor\Psr\Http\Message\UriInterface, \JsonSerial
         }
         $new = clone $this;
         $new->fragment = $fragment;
-<<<<<<< HEAD
-        return $new;
-    }
-=======
         $new->composedComponents = null;
         return $new;
     }
@@ -701,17 +417,12 @@ class Uri implements \YoastSEO_Vendor\Psr\Http\Message\UriInterface, \JsonSerial
     {
         return $this->__toString();
     }
->>>>>>> update
     /**
      * Apply parse_url parts to a URI.
      *
      * @param array $parts Array of parse_url parts to apply.
      */
-<<<<<<< HEAD
-    private function applyParts(array $parts)
-=======
     private function applyParts(array $parts) : void
->>>>>>> update
     {
         $this->scheme = isset($parts['scheme']) ? $this->filterScheme($parts['scheme']) : '';
         $this->userInfo = isset($parts['user']) ? $this->filterUserInfoComponent($parts['user']) : '';
@@ -726,21 +437,11 @@ class Uri implements \YoastSEO_Vendor\Psr\Http\Message\UriInterface, \JsonSerial
         $this->removeDefaultPort();
     }
     /**
-<<<<<<< HEAD
-     * @param string $scheme
-     *
-     * @return string
-     *
-     * @throws \InvalidArgumentException If the scheme is invalid.
-     */
-    private function filterScheme($scheme)
-=======
      * @param mixed $scheme
      *
      * @throws \InvalidArgumentException If the scheme is invalid.
      */
     private function filterScheme($scheme) : string
->>>>>>> update
     {
         if (!\is_string($scheme)) {
             throw new \InvalidArgumentException('Scheme must be a string');
@@ -748,37 +449,15 @@ class Uri implements \YoastSEO_Vendor\Psr\Http\Message\UriInterface, \JsonSerial
         return \strtr($scheme, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz');
     }
     /**
-<<<<<<< HEAD
-     * @param string $component
-     *
-     * @return string
-     *
-     * @throws \InvalidArgumentException If the user info is invalid.
-     */
-    private function filterUserInfoComponent($component)
-=======
      * @param mixed $component
      *
      * @throws \InvalidArgumentException If the user info is invalid.
      */
     private function filterUserInfoComponent($component) : string
->>>>>>> update
     {
         if (!\is_string($component)) {
             throw new \InvalidArgumentException('User info must be a string');
         }
-<<<<<<< HEAD
-        return \preg_replace_callback('/(?:[^%' . self::$charUnreserved . self::$charSubDelims . ']+|%(?![A-Fa-f0-9]{2}))/', [$this, 'rawurlencodeMatchZero'], $component);
-    }
-    /**
-     * @param string $host
-     *
-     * @return string
-     *
-     * @throws \InvalidArgumentException If the host is invalid.
-     */
-    private function filterHost($host)
-=======
         return \preg_replace_callback('/(?:[^%' . self::CHAR_UNRESERVED . self::CHAR_SUB_DELIMS . ']+|%(?![A-Fa-f0-9]{2}))/', [$this, 'rawurlencodeMatchZero'], $component);
     }
     /**
@@ -787,7 +466,6 @@ class Uri implements \YoastSEO_Vendor\Psr\Http\Message\UriInterface, \JsonSerial
      * @throws \InvalidArgumentException If the host is invalid.
      */
     private function filterHost($host) : string
->>>>>>> update
     {
         if (!\is_string($host)) {
             throw new \InvalidArgumentException('Host must be a string');
@@ -795,21 +473,11 @@ class Uri implements \YoastSEO_Vendor\Psr\Http\Message\UriInterface, \JsonSerial
         return \strtr($host, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz');
     }
     /**
-<<<<<<< HEAD
-     * @param int|null $port
-     *
-     * @return int|null
-     *
-     * @throws \InvalidArgumentException If the port is invalid.
-     */
-    private function filterPort($port)
-=======
      * @param mixed $port
      *
      * @throws \InvalidArgumentException If the port is invalid.
      */
     private function filterPort($port) : ?int
->>>>>>> update
     {
         if ($port === null) {
             return null;
@@ -821,20 +489,11 @@ class Uri implements \YoastSEO_Vendor\Psr\Http\Message\UriInterface, \JsonSerial
         return $port;
     }
     /**
-<<<<<<< HEAD
-     * @param UriInterface $uri
-     * @param array        $keys
-     *
-     * @return array
-     */
-    private static function getFilteredQueryString(\YoastSEO_Vendor\Psr\Http\Message\UriInterface $uri, array $keys)
-=======
      * @param string[] $keys
      *
      * @return string[]
      */
     private static function getFilteredQueryString(\YoastSEO_Vendor\Psr\Http\Message\UriInterface $uri, array $keys) : array
->>>>>>> update
     {
         $current = $uri->getQuery();
         if ($current === '') {
@@ -845,30 +504,11 @@ class Uri implements \YoastSEO_Vendor\Psr\Http\Message\UriInterface, \JsonSerial
             return !\in_array(\rawurldecode(\explode('=', $part)[0]), $decodedKeys, \true);
         });
     }
-<<<<<<< HEAD
-    /**
-     * @param string      $key
-     * @param string|null $value
-     *
-     * @return string
-     */
-    private static function generateQueryString($key, $value)
-=======
     private static function generateQueryString(string $key, ?string $value) : string
->>>>>>> update
     {
         // Query string separators ("=", "&") within the key or value need to be encoded
         // (while preventing double-encoding) before setting the query string. All other
         // chars that need percent-encoding will be encoded by withQuery().
-<<<<<<< HEAD
-        $queryString = \strtr($key, self::$replaceQuery);
-        if ($value !== null) {
-            $queryString .= '=' . \strtr($value, self::$replaceQuery);
-        }
-        return $queryString;
-    }
-    private function removeDefaultPort()
-=======
         $queryString = \strtr($key, self::QUERY_SEPARATORS_REPLACEMENT);
         if ($value !== null) {
             $queryString .= '=' . \strtr($value, self::QUERY_SEPARATORS_REPLACEMENT);
@@ -876,7 +516,6 @@ class Uri implements \YoastSEO_Vendor\Psr\Http\Message\UriInterface, \JsonSerial
         return $queryString;
     }
     private function removeDefaultPort() : void
->>>>>>> update
     {
         if ($this->port !== null && self::isDefaultPort($this)) {
             $this->port = null;
@@ -885,62 +524,29 @@ class Uri implements \YoastSEO_Vendor\Psr\Http\Message\UriInterface, \JsonSerial
     /**
      * Filters the path of a URI
      *
-<<<<<<< HEAD
-     * @param string $path
-     *
-     * @return string
-     *
-     * @throws \InvalidArgumentException If the path is invalid.
-     */
-    private function filterPath($path)
-=======
      * @param mixed $path
      *
      * @throws \InvalidArgumentException If the path is invalid.
      */
     private function filterPath($path) : string
->>>>>>> update
     {
         if (!\is_string($path)) {
             throw new \InvalidArgumentException('Path must be a string');
         }
-<<<<<<< HEAD
-        return \preg_replace_callback('/(?:[^' . self::$charUnreserved . self::$charSubDelims . '%:@\\/]++|%(?![A-Fa-f0-9]{2}))/', [$this, 'rawurlencodeMatchZero'], $path);
-=======
         return \preg_replace_callback('/(?:[^' . self::CHAR_UNRESERVED . self::CHAR_SUB_DELIMS . '%:@\\/]++|%(?![A-Fa-f0-9]{2}))/', [$this, 'rawurlencodeMatchZero'], $path);
->>>>>>> update
     }
     /**
      * Filters the query string or fragment of a URI.
      *
-<<<<<<< HEAD
-     * @param string $str
-     *
-     * @return string
-     *
-     * @throws \InvalidArgumentException If the query or fragment is invalid.
-     */
-    private function filterQueryAndFragment($str)
-=======
      * @param mixed $str
      *
      * @throws \InvalidArgumentException If the query or fragment is invalid.
      */
     private function filterQueryAndFragment($str) : string
->>>>>>> update
     {
         if (!\is_string($str)) {
             throw new \InvalidArgumentException('Query and fragment must be a string');
         }
-<<<<<<< HEAD
-        return \preg_replace_callback('/(?:[^' . self::$charUnreserved . self::$charSubDelims . '%:@\\/\\?]++|%(?![A-Fa-f0-9]{2}))/', [$this, 'rawurlencodeMatchZero'], $str);
-    }
-    private function rawurlencodeMatchZero(array $match)
-    {
-        return \rawurlencode($match[0]);
-    }
-    private function validateState()
-=======
         return \preg_replace_callback('/(?:[^' . self::CHAR_UNRESERVED . self::CHAR_SUB_DELIMS . '%:@\\/\\?]++|%(?![A-Fa-f0-9]{2}))/', [$this, 'rawurlencodeMatchZero'], $str);
     }
     private function rawurlencodeMatchZero(array $match) : string
@@ -948,30 +554,17 @@ class Uri implements \YoastSEO_Vendor\Psr\Http\Message\UriInterface, \JsonSerial
         return \rawurlencode($match[0]);
     }
     private function validateState() : void
->>>>>>> update
     {
         if ($this->host === '' && ($this->scheme === 'http' || $this->scheme === 'https')) {
             $this->host = self::HTTP_DEFAULT_HOST;
         }
         if ($this->getAuthority() === '') {
             if (0 === \strpos($this->path, '//')) {
-<<<<<<< HEAD
-                throw new \InvalidArgumentException('The path of a URI without an authority must not start with two slashes "//"');
-            }
-            if ($this->scheme === '' && \false !== \strpos(\explode('/', $this->path, 2)[0], ':')) {
-                throw new \InvalidArgumentException('A relative URI must not have a path beginning with a segment containing a colon');
-            }
-        } elseif (isset($this->path[0]) && $this->path[0] !== '/') {
-            @\trigger_error('The path of a URI with an authority must start with a slash "/" or be empty. Automagically fixing the URI ' . 'by adding a leading slash to the path is deprecated since version 1.4 and will throw an exception instead.', \E_USER_DEPRECATED);
-            $this->path = '/' . $this->path;
-            //throw new \InvalidArgumentException('The path of a URI with an authority must start with a slash "/" or be empty');
-=======
                 throw new \YoastSEO_Vendor\GuzzleHttp\Psr7\Exception\MalformedUriException('The path of a URI without an authority must not start with two slashes "//"');
             }
             if ($this->scheme === '' && \false !== \strpos(\explode('/', $this->path, 2)[0], ':')) {
                 throw new \YoastSEO_Vendor\GuzzleHttp\Psr7\Exception\MalformedUriException('A relative URI must not have a path beginning with a segment containing a colon');
             }
->>>>>>> update
         }
     }
 }

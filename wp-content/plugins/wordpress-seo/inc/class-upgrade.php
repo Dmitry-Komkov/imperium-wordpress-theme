@@ -6,11 +6,8 @@
  */
 
 use Yoast\WP\Lib\Model;
-<<<<<<< HEAD
-=======
 use Yoast\WP\SEO\Helpers\Taxonomy_Helper;
 use Yoast\WP\SEO\Integrations\Cleanup_Integration;
->>>>>>> update
 
 /**
  * This code handles the option upgrades.
@@ -20,11 +17,7 @@ class WPSEO_Upgrade {
 	/**
 	 * The taxonomy helper.
 	 *
-<<<<<<< HEAD
-	 * @var \Yoast\WP\SEO\Helpers\Taxonomy_Helper
-=======
 	 * @var Taxonomy_Helper
->>>>>>> update
 	 */
 	private $taxonomy_helper;
 
@@ -91,12 +84,6 @@ class WPSEO_Upgrade {
 			'19.1-RC0'   => 'upgrade_191',
 			'19.3-RC0'   => 'upgrade_193',
 			'19.6-RC0'   => 'upgrade_196',
-<<<<<<< HEAD
-		];
-
-		array_walk( $routines, [ $this, 'run_upgrade_routine' ], $version );
-
-=======
 			'19.11-RC0'  => 'upgrade_1911',
 			'20.2-RC0'   => 'upgrade_202',
 			'20.5-RC0'   => 'upgrade_205',
@@ -105,7 +92,6 @@ class WPSEO_Upgrade {
 		];
 
 		array_walk( $routines, [ $this, 'run_upgrade_routine' ], $version );
->>>>>>> update
 		if ( version_compare( $version, '12.5-RC0', '<' ) ) {
 			/*
 			 * We have to run this by hook, because otherwise:
@@ -455,10 +441,6 @@ class WPSEO_Upgrade {
 		// Move one XML sitemap setting, then delete the option.
 		$this->save_option_setting( $wpseo_xml, 'enablexmlsitemap', 'enable_xml_sitemap' );
 
-<<<<<<< HEAD
-
-=======
->>>>>>> update
 		// Move the RSS settings to the search appearance settings, then delete the RSS option.
 		$this->save_option_setting( $wpseo_rss, 'rssbefore' );
 		$this->save_option_setting( $wpseo_rss, 'rssafter' );
@@ -870,13 +852,8 @@ class WPSEO_Upgrade {
 		\wp_unschedule_hook( 'wpseo_cleanup_orphaned_indexables' );
 		\wp_unschedule_hook( 'wpseo_cleanup_indexables' );
 
-<<<<<<< HEAD
-		if ( ! \wp_next_scheduled( \Yoast\WP\SEO\Integrations\Cleanup_Integration::START_HOOK ) ) {
-			\wp_schedule_single_event( ( time() + ( MINUTE_IN_SECONDS * 5 ) ), \Yoast\WP\SEO\Integrations\Cleanup_Integration::START_HOOK );
-=======
 		if ( ! \wp_next_scheduled( Cleanup_Integration::START_HOOK ) ) {
 			\wp_schedule_single_event( ( time() + ( MINUTE_IN_SECONDS * 5 ) ), Cleanup_Integration::START_HOOK );
->>>>>>> update
 		}
 	}
 
@@ -977,8 +954,6 @@ class WPSEO_Upgrade {
 	}
 
 	/**
-<<<<<<< HEAD
-=======
 	 * Performs the 19.11 upgrade routine.
 	 */
 	private function upgrade_1911() {
@@ -1039,7 +1014,6 @@ class WPSEO_Upgrade {
 	}
 
 	/**
->>>>>>> update
 	 * Sets the home_url option for the 15.1 upgrade routine.
 	 *
 	 * @return void
@@ -1432,8 +1406,6 @@ class WPSEO_Upgrade {
 
 		update_option( 'wpseo_titles', $wpseo_titles );
 	}
-<<<<<<< HEAD
-=======
 
 	/**
 	 * Removes all indexables for posts that are not publicly viewable.
@@ -1690,5 +1662,4 @@ class WPSEO_Upgrade {
 	public function delete_user_introduction_meta() {
 		delete_metadata( 'user', 0, '_yoast_settings_introduction', '', true );
 	}
->>>>>>> update
 }

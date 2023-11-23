@@ -641,11 +641,7 @@ class UpdraftCentral_Comments_Commands extends UpdraftCentral_Commands {
 	 * The edit_comment function saves new information for the
 	 * currently selected comment.
 	 *
-<<<<<<< HEAD
-	 * @param  array $params Specific params for editing a coment
-=======
 	 * @param  array $params Specific params for editing a comment
->>>>>>> update
 	 * @return array
 	 */
 	public function edit_comment($params) {
@@ -725,11 +721,7 @@ class UpdraftCentral_Comments_Commands extends UpdraftCentral_Commands {
 	 * - approve comment
 	 * - unapprove comment
 	 * - set comment as spam
-<<<<<<< HEAD
-	 * - move commment to trash
-=======
 	 * - move comment to trash
->>>>>>> update
 	 * - delete comment permanently
 	 * - unset comment as spam
 	 * - restore comment

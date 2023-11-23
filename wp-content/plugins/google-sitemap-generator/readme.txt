@@ -1,31 +1,3 @@
-<<<<<<< HEAD
- === XML Sitemaps ===
-Contributors: auctollo
-Tags: seo, google, bing, yahoo, msn, ask, live, sitemaps, google sitemaps, xml sitemap, xml
-Requires at least: 3.3
-Tested up to: 6.0
-Stable tag: 4.1.5
-License: GPLv2
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
-
-This plugin will improve SEO by helping search enginess better index your site using sitemaps.
-
-== Description ==
-
-Use this plugin to greatly improve SEO to create special XML sitemaps which will help search engines like Google, Bing, Yahoo and Ask.com to better index your site.
-
-With such a sitemap, it's much easier for the crawlers to see the complete structure of your site and retrieve it more efficiently. The plugin supports all kinds of WordPress generated pages as well as custom URLs. Additionally it notifies all major search engines every time you create a post about the new content.
-
-Supported since *over 9 years* and rated as the [best WordPress plugin](http://wordpress.org/plugins/browse/top-rated/), it will do exactly what it's supposed to do - providing a complete XML sitemap for search engines. It will not break your site, slow it down or annoy you. Guaranteed!
-
-> If you like the plugin, feel free to rate it (on the right side of this page)! :)
-
-Related Links:
-
-* <a href="http://www.arnebrachhold.de/projects/wordpress-plugins/google-xml-sitemaps-generator/" title="XML Sitemaps Plugin for WordPress">Plugin Homepage</a>
-* <a href="http://www.arnebrachhold.de/projects/wordpress-plugins/google-xml-sitemaps-generator/changelog/" title="Changelog of the XML Sitemaps Plugin for WordPress">Changelog</a>
-* <a href="http://www.arnebrachhold.de/projects/wordpress-plugins/google-xml-sitemaps-generator/help/" title="Sitemaps FAQ">Plugin help and sitemaps FAQ</a>
-=======
 === XML Sitemap Generator for Google ===
 Contributors: auctollo
 Tags: sitemap, seo, xml sitemap, indexnow, google sitemaps, google search console, news sitemap, image sitemap, image seo, video sitemap, video seo, woo commerce, robots.txt, site kit, schema, bing, baidu, yandex
@@ -50,27 +22,10 @@ Supported for more than a decade and [rated among the best](https://wordpress.or
 
 Related Links:
 
->>>>>>> update
 * <a href="http://wordpress.org/support/topic/read-before-opening-a-new-support-topic">Support Forum</a>
 
 == Installation ==
 
-<<<<<<< HEAD
-1. Install the plugin like you always install plugins, either by uploading it via FTP or by using the "Add Plugin" function of WordPress.
-2. Activate the plugin at the plugin administration page
-3. If you want: Open the plugin configuration page, which is located under Settings -> XML-Sitemap and customize settings like priorities and change frequencies.
-4. The plugin will automatically update your sitemap of you publish a post, so there is nothing more to do :)
-
-== Frequently Asked Questions ==
-
-= Where can I find the options page of the plugin? =
-
-It is under Settings > XML Sitemap. I know nowadays many plugins add top-level menu items, but in most of the cases it is just not necessary. I've seen WP installations which looked like an Internet Explorer ten years ago with 20 toolbars installed. ;-)
-
-= Do I have to create a sitemap.xml and sitemap.xml.gz by myself? =
-
-Not anymore. Since version 4, these files are dynamically generated. *There must be no sitemap.xml or sitemap.xml.gz in your site directory anymore!* The plugin will try to rename them to sitemap.xml.bak if they still exists.
-=======
 1. Deactivate or disable other sitemap generators.
 2. Install the plugin like you always install plugins, either by uploading it via FTP or by using the "Add Plugin" function of WordPress.
 3. Activate the plugin on the plugin administration page
@@ -126,7 +81,6 @@ Yes, the Google XML Sitemap Generator plugin supports schema markup, which can h
 = Where can I find the options page of the plugin? =
 
 It is under Settings > XML-Sitemap. I know nowadays many plugins add top-level menu items, but in most of the cases it is just not necessary. I've seen WP installations which looked like an Internet Explorer ten years ago with 20 toolbars installed. ;-)
->>>>>>> update
 
 = Does this plugin use static files or "I can't find the sitemap.xml file!" =
 
@@ -140,30 +94,6 @@ Please disable automatic priority calculation and define a static priority for p
 
 No, only if you want to. Default values are ok for most sites.
 
-<<<<<<< HEAD
-= Does this plugin work with all WordPress versions? =
-
-This version works with WordPress 3.3 and better. If you're using an older version, please check the [Sitemaps Plugin Homepage](http://www.arnebrachhold.de/projects/wordpress-plugins/google-xml-sitemaps-generator/ "XML Sitemap Generator Plugin Homepage") for the legacy releases. There is a working release for every WordPress version since 1.5, but you really should consider updating your WordPress installation!
-
-= My question isn't answered here =
-
-Most of the plugin options are described at the [plugin homepage](http://www.arnebrachhold.de/projects/wordpress-plugins/google-xml-sitemaps-generator/) as well as the dedicated [Sitemaps FAQ](http://www.arnebrachhold.de/projects/wordpress-plugins/google-xml-sitemaps-generator/help/ "List of common questions / problems regarding XML Sitemaps").
-
-= My question isn't even answered there =
-
-Please post your question at the [WordPress support forum](http://wordpress.org/support/topic/read-before-opening-a-new-support-topic) and tag your post with "google-sitemap-generator".
-
-= What's new in the latest version? =
-
-The changelog is maintained [here](http://www.arnebrachhold.de/projects/wordpress-plugins/google-xml-sitemaps-generator/changelog/ "XML Sitemap Generator Plugin Changelog")
-
-= Why is the changelog on a separate page and not here? =
-
-The WordPress.org repository is just another place to download this plugin. I don't want to maintain too many pages with the same content. Thank you for your understanding!
-
-== Changelog ==
-
-=======
 = My question isn't answered here =
 
 Please post your question at the [WordPress support forum](https://wordpress.org/support/plugin/google-sitemap-generator/).
@@ -209,7 +139,6 @@ Please post your question at the [WordPress support forum](https://wordpress.org
 * Added support for paginated sitemap posts, pages, and product links
 * Added conditional statements to prevent rewrite rules from being checked every time the sitemap loads
 
->>>>>>> update
 = 4.1.5 (2022-06-14) =
 * Fixed code regressions moving from git to svn (preventing recent fixes from being available)
 
@@ -629,10 +558,5 @@ The plugin comes with various translations, please refer to the [WordPress Codex
 
 == Upgrade Notice ==
 
-<<<<<<< HEAD
-= 4.0.9 =
-Thanks for using XML Sitemaps! This release includes an important security fix that has been reported.
-=======
 = 4.1.9 =
 Thanks for using XML Sitemaps! This release includes an important privacy improvements. Make sure to "Enable auto-updates!"
->>>>>>> update

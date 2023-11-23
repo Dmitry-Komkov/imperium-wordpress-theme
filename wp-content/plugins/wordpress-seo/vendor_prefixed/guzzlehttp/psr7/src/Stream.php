@@ -1,40 +1,15 @@
 <?php
 
-<<<<<<< HEAD
-=======
 declare (strict_types=1);
->>>>>>> update
 namespace YoastSEO_Vendor\GuzzleHttp\Psr7;
 
 use YoastSEO_Vendor\Psr\Http\Message\StreamInterface;
 /**
  * PHP stream implementation.
-<<<<<<< HEAD
- *
- * @var $stream
-=======
->>>>>>> update
  */
 class Stream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInterface
 {
     /**
-<<<<<<< HEAD
-     * Resource modes.
-     *
-     * @var string
-     *
-     * @see http://php.net/manual/function.fopen.php
-     * @see http://php.net/manual/en/function.gzopen.php
-     */
-    const READABLE_MODES = '/r|a\\+|ab\\+|w\\+|wb\\+|x\\+|xb\\+|c\\+|cb\\+/';
-    const WRITABLE_MODES = '/a|w|r\\+|rb\\+|rw|x|c/';
-    private $stream;
-    private $size;
-    private $seekable;
-    private $readable;
-    private $writable;
-    private $uri;
-=======
      * @see http://php.net/manual/function.fopen.php
      * @see http://php.net/manual/en/function.gzopen.php
      */
@@ -53,7 +28,6 @@ class Stream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInterface
     /** @var string|null */
     private $uri;
     /** @var mixed[] */
->>>>>>> update
     private $customMetadata;
     /**
      * This constructor accepts an associative array of options.
@@ -64,21 +38,12 @@ class Stream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInterface
      * - metadata: (array) Any additional metadata to return when the metadata
      *   of the stream is accessed.
      *
-<<<<<<< HEAD
-     * @param resource $stream  Stream resource to wrap.
-     * @param array    $options Associative array of options.
-     *
-     * @throws \InvalidArgumentException if the stream is not a stream resource
-     */
-    public function __construct($stream, $options = [])
-=======
      * @param resource                            $stream  Stream resource to wrap.
      * @param array{size?: int, metadata?: array} $options Associative array of options.
      *
      * @throws \InvalidArgumentException if the stream is not a stream resource
      */
     public function __construct($stream, array $options = [])
->>>>>>> update
     {
         if (!\is_resource($stream)) {
             throw new \InvalidArgumentException('Stream must be a resource');
@@ -86,11 +51,7 @@ class Stream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInterface
         if (isset($options['size'])) {
             $this->size = $options['size'];
         }
-<<<<<<< HEAD
-        $this->customMetadata = isset($options['metadata']) ? $options['metadata'] : [];
-=======
         $this->customMetadata = $options['metadata'] ?? [];
->>>>>>> update
         $this->stream = $stream;
         $meta = \stream_get_meta_data($this->stream);
         $this->seekable = $meta['seekable'];
@@ -105,24 +66,13 @@ class Stream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInterface
     {
         $this->close();
     }
-<<<<<<< HEAD
-    public function __toString()
-=======
     public function __toString() : string
->>>>>>> update
     {
         try {
             if ($this->isSeekable()) {
                 $this->seek(0);
             }
             return $this->getContents();
-<<<<<<< HEAD
-        } catch (\Exception $e) {
-            return '';
-        }
-    }
-    public function getContents()
-=======
         } catch (\Throwable $e) {
             if (\PHP_VERSION_ID >= 70400) {
                 throw $e;
@@ -132,27 +82,16 @@ class Stream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInterface
         }
     }
     public function getContents() : string
->>>>>>> update
     {
         if (!isset($this->stream)) {
             throw new \RuntimeException('Stream is detached');
         }
-<<<<<<< HEAD
-        $contents = \stream_get_contents($this->stream);
-        if ($contents === \false) {
-            throw new \RuntimeException('Unable to read stream contents');
-        }
-        return $contents;
-    }
-    public function close()
-=======
         if (!$this->readable) {
             throw new \RuntimeException('Cannot read from non-readable stream');
         }
         return \YoastSEO_Vendor\GuzzleHttp\Psr7\Utils::tryGetContents($this->stream);
     }
     public function close() : void
->>>>>>> update
     {
         if (isset($this->stream)) {
             if (\is_resource($this->stream)) {
@@ -172,11 +111,7 @@ class Stream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInterface
         $this->readable = $this->writable = $this->seekable = \false;
         return $result;
     }
-<<<<<<< HEAD
-    public function getSize()
-=======
     public function getSize() : ?int
->>>>>>> update
     {
         if ($this->size !== null) {
             return $this->size;
@@ -189,31 +124,12 @@ class Stream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInterface
             \clearstatcache(\true, $this->uri);
         }
         $stats = \fstat($this->stream);
-<<<<<<< HEAD
-        if (isset($stats['size'])) {
-=======
         if (\is_array($stats) && isset($stats['size'])) {
->>>>>>> update
             $this->size = $stats['size'];
             return $this->size;
         }
         return null;
     }
-<<<<<<< HEAD
-    public function isReadable()
-    {
-        return $this->readable;
-    }
-    public function isWritable()
-    {
-        return $this->writable;
-    }
-    public function isSeekable()
-    {
-        return $this->seekable;
-    }
-    public function eof()
-=======
     public function isReadable() : bool
     {
         return $this->readable;
@@ -227,18 +143,13 @@ class Stream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInterface
         return $this->seekable;
     }
     public function eof() : bool
->>>>>>> update
     {
         if (!isset($this->stream)) {
             throw new \RuntimeException('Stream is detached');
         }
         return \feof($this->stream);
     }
-<<<<<<< HEAD
-    public function tell()
-=======
     public function tell() : int
->>>>>>> update
     {
         if (!isset($this->stream)) {
             throw new \RuntimeException('Stream is detached');
@@ -249,19 +160,11 @@ class Stream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInterface
         }
         return $result;
     }
-<<<<<<< HEAD
-    public function rewind()
-    {
-        $this->seek(0);
-    }
-    public function seek($offset, $whence = \SEEK_SET)
-=======
     public function rewind() : void
     {
         $this->seek(0);
     }
     public function seek($offset, $whence = \SEEK_SET) : void
->>>>>>> update
     {
         $whence = (int) $whence;
         if (!isset($this->stream)) {
@@ -274,11 +177,7 @@ class Stream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInterface
             throw new \RuntimeException('Unable to seek to stream position ' . $offset . ' with whence ' . \var_export($whence, \true));
         }
     }
-<<<<<<< HEAD
-    public function read($length)
-=======
     public function read($length) : string
->>>>>>> update
     {
         if (!isset($this->stream)) {
             throw new \RuntimeException('Stream is detached');
@@ -292,25 +191,17 @@ class Stream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInterface
         if (0 === $length) {
             return '';
         }
-<<<<<<< HEAD
-        $string = \fread($this->stream, $length);
-=======
         try {
             $string = \fread($this->stream, $length);
         } catch (\Exception $e) {
             throw new \RuntimeException('Unable to read from stream', 0, $e);
         }
->>>>>>> update
         if (\false === $string) {
             throw new \RuntimeException('Unable to read from stream');
         }
         return $string;
     }
-<<<<<<< HEAD
-    public function write($string)
-=======
     public function write($string) : int
->>>>>>> update
     {
         if (!isset($this->stream)) {
             throw new \RuntimeException('Stream is detached');
@@ -326,12 +217,9 @@ class Stream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInterface
         }
         return $result;
     }
-<<<<<<< HEAD
-=======
     /**
      * @return mixed
      */
->>>>>>> update
     public function getMetadata($key = null)
     {
         if (!isset($this->stream)) {
@@ -342,10 +230,6 @@ class Stream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInterface
             return $this->customMetadata[$key];
         }
         $meta = \stream_get_meta_data($this->stream);
-<<<<<<< HEAD
-        return isset($meta[$key]) ? $meta[$key] : null;
-=======
         return $meta[$key] ?? null;
->>>>>>> update
     }
 }

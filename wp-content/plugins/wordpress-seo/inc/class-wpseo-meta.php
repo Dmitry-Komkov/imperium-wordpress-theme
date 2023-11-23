@@ -137,15 +137,12 @@ class WPSEO_Meta {
 				'default_value' => '0',
 				'description'   => '',
 			],
-<<<<<<< HEAD
-=======
 			'inclusive_language_score' => [
 				'type'          => 'hidden',
 				'title'         => 'inclusive_language_score',
 				'default_value' => '0',
 				'description'   => '',
 			],
->>>>>>> update
 			'is_cornerstone' => [
 				'type'          => 'hidden',
 				'title'         => 'is_cornerstone',
@@ -386,11 +383,6 @@ class WPSEO_Meta {
 					unset( $field_defs['bctitle'] );
 				}
 
-<<<<<<< HEAD
-				global $post;
-
-=======
->>>>>>> update
 				if ( empty( $post->ID ) || ( ! empty( $post->ID ) && self::get_value( 'redirect', $post->ID ) === '' ) ) {
 					unset( $field_defs['redirect'] );
 				}
@@ -461,10 +453,6 @@ class WPSEO_Meta {
 				}
 				break;
 
-<<<<<<< HEAD
-
-=======
->>>>>>> update
 			case ( $field_def['type'] === 'select' || $field_def['type'] === 'radio' ):
 				// Only allow value if it's one of the predefined options.
 				if ( isset( $field_def['options'][ $meta_value ] ) ) {
@@ -472,18 +460,10 @@ class WPSEO_Meta {
 				}
 				break;
 
-<<<<<<< HEAD
-
-=======
->>>>>>> update
 			case ( $field_def['type'] === 'hidden' && $meta_key === self::$meta_prefix . 'meta-robots-adv' ):
 				$clean = self::validate_meta_robots_adv( $meta_value );
 				break;
 
-<<<<<<< HEAD
-
-=======
->>>>>>> update
 			case ( $field_def['type'] === 'url' || $meta_key === self::$meta_prefix . 'canonical' ):
 				// Validate as url(-part).
 				$url = WPSEO_Utils::sanitize_url( $meta_value );
@@ -492,10 +472,6 @@ class WPSEO_Meta {
 				}
 				break;
 
-<<<<<<< HEAD
-
-=======
->>>>>>> update
 			case ( $field_def['type'] === 'upload' && in_array( $meta_key, [ self::$meta_prefix . 'opengraph-image', self::$meta_prefix . 'twitter-image' ], true ) ):
 				// Validate as url.
 				$url = WPSEO_Utils::sanitize_url( $meta_value, [ 'http', 'https', 'ftp', 'ftps' ] );
@@ -536,10 +512,6 @@ class WPSEO_Meta {
 				$clean = $meta_value;
 				break;
 
-<<<<<<< HEAD
-
-=======
->>>>>>> update
 			case ( $field_def['type'] === 'text' ):
 			default:
 				if ( is_string( $meta_value ) ) {
@@ -1045,22 +1017,12 @@ class WPSEO_Meta {
 			->where( 'primary_focus_keyword', $keyword )
 			->where( 'object_type', 'post' )
 			->where_not_equal( 'object_id', $post_id )
-<<<<<<< HEAD
-			->limit( 2 )
-			->find_array();
-
-		$callback = static function ( $row ) {
-			return (int) $row['object_id'];
-		};
-		$post_ids = array_map( $callback, $post_ids );
-=======
 			->where_not_equal( 'post_status', 'trash' )
 			->limit( 2 )    // Limit to 2 results to save time and resources.
 			->find_array();
 
 		// Get object_id from each subarray in $post_ids.
 		$post_ids = ( is_array( $post_ids ) ) ? array_column( $post_ids, 'object_id' ) : [];
->>>>>>> update
 
 		/*
 		 * If Premium is installed, get the additional keywords as well.
@@ -1083,8 +1045,6 @@ class WPSEO_Meta {
 	}
 
 	/**
-<<<<<<< HEAD
-=======
 	 * Returns the post types for the given post ids.
 	 *
 	 * @param array $post_ids The post ids to get the post types for.
@@ -1119,7 +1079,6 @@ class WPSEO_Meta {
 	}
 
 	/**
->>>>>>> update
 	 * Filter the schema article types.
 	 *
 	 * @return void

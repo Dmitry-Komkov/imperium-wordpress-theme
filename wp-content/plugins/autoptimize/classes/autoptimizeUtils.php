@@ -409,11 +409,7 @@ class autoptimizeUtils
         if ( null === $_found_pagecache ) {
             $_page_cache_constants = array(
                 'NgInx' => 'NGINX_HELPER_BASENAME',
-<<<<<<< HEAD
-                'Kinsta' => 'KINSTA_CACHE_ZONE',
-=======
                 'Kinsta' => 'KINSTAMU_VERSION',
->>>>>>> update
                 'Presslabs' => 'PL_INSTANCE_REF',
                 'Cache Enabler' => 'CACHE_ENABLER_VERSION',
                 'Speed Booster Pack' => 'SBP_PLUGIN_NAME',
@@ -494,11 +490,7 @@ class autoptimizeUtils
      * @return bool
      */
     public static function is_ao_settings() {
-<<<<<<< HEAD
-        $_is_ao_settings = ( str_replace( array( 'autoptimize', 'autoptimize_imgopt', 'ao_critcss', 'autoptimize_extra', 'ao_partners' ), '', $_SERVER['REQUEST_URI'] ) !== $_SERVER['REQUEST_URI'] ? true : false );
-=======
         $_is_ao_settings = ( str_replace( array( 'autoptimize', 'autoptimize_imgopt', 'ao_critcss', 'autoptimize_extra', 'ao_partners', 'ao_pro_boosters', 'ao_pro_pagecache', 'ao_protab' ), '', $_SERVER['REQUEST_URI'] ) !== $_SERVER['REQUEST_URI'] ? true : false );
->>>>>>> update
         return $_is_ao_settings;
     }
 
@@ -547,8 +539,6 @@ class autoptimizeUtils
 
         return false;
     }
-<<<<<<< HEAD
-=======
     
     /**
      * Returns true if false if on a local dev environment, true if not.
@@ -602,5 +592,4 @@ class autoptimizeUtils
         }
         return $result;
     }
->>>>>>> update
 }

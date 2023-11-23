@@ -15,8 +15,6 @@ class autoptimizeCriticalCSSSettings {
      */
     private $settings_screen_do_remote_http = true;
 
-<<<<<<< HEAD
-=======
     /**
      * Critical CSS object.
      *
@@ -24,7 +22,6 @@ class autoptimizeCriticalCSSSettings {
      */
     protected $criticalcss;
 
->>>>>>> update
     public function __construct() {
         $this->criticalcss = autoptimize()->criticalcss();
         $this->settings_screen_do_remote_http = apply_filters( 'autoptimize_settingsscreen_remotehttp', $this->settings_screen_do_remote_http );
@@ -59,11 +56,7 @@ class autoptimizeCriticalCSSSettings {
 
     public function add_critcss_tabs( $in )
     {
-<<<<<<< HEAD
-        $in = array_merge( $in, array( 'ao_critcss' => '⚡ ' . __( 'Critical CSS', 'autoptimize' ) ) );
-=======
         $in = array_merge( $in, array( 'ao_critcss' => apply_filters( 'autoptimize_filter_ccss_tab_text', '⚡ ' . __( 'Critical CSS', 'autoptimize' ) ) ) );
->>>>>>> update
 
         return $in;
     }
@@ -146,8 +139,6 @@ class autoptimizeCriticalCSSSettings {
                 // Print AO settings tabs.
                 echo autoptimizeConfig::ao_admin_tabs();
 
-<<<<<<< HEAD
-=======
                 if ( autoptimizeUtils::is_local_server() && isset( $ao_ccss_key ) ) { ?>
                     <div class="notice-warning notice"><p>
                     <?php
@@ -156,7 +147,6 @@ class autoptimizeCriticalCSSSettings {
                     </p></div>
                 <?php }
 
->>>>>>> update
                 $mkdirresult = $this->criticalcss->create_ao_ccss_dir();
 
                 // Warn if we could not create those files.
@@ -199,11 +189,7 @@ class autoptimizeCriticalCSSSettings {
                     ?>
                     <div data-dismissible="i-know-about-disable-cron-forever" class="notice-warning notice is-dismissible"><p>
                     <?php
-<<<<<<< HEAD
-                    _e( 'WordPress cron (for task scheduling) seems to be disabled. Have a look at <a href="https://wordpress.org/plugins/autoptimize-criticalcss/faq/" target="_blank">the FAQ</a> or the info in the Job Queue instructions if all jobs remain in "N" status and no rules are created.', 'autoptimize' );
-=======
                     _e( 'WordPress cron (for task scheduling) seems to be disabled. Have a look at <a href="https://blog.futtta.be/2023/03/17/how-to-fix-autoptimize-critical-css-cron-issue/" target="_blank">the FAQ</a> or the info in the Job Queue instructions if all jobs remain in "N" status and no rules are created.', 'autoptimize' );
->>>>>>> update
                     ?>
                     </p></div>
                     <?php
@@ -267,11 +253,7 @@ class autoptimizeCriticalCSSSettings {
                     ?>
                     <div data-dismissible="i-know-about-cron-1" class="notice-warning notice is-dismissible"><p>
                     <?php
-<<<<<<< HEAD
-                    _e( 'It looks like there might be a problem with WordPress cron (task scheduling). Have a look at <a href="https://wordpress.org/plugins/autoptimize-criticalcss/faq/" target="_blank">the FAQ</a> or the info in the Job Queue instructions if all jobs remain in "N" status and no rules are created.', 'autoptimize' );
-=======
                     _e( 'It looks like there might be a problem with WordPress cron (task scheduling). Have a look at <a href="https://blog.futtta.be/2023/03/17/how-to-fix-autoptimize-critical-css-cron-issue/" target="_blank">the FAQ</a> or the info in the Job Queue instructions if all jobs remain in "N" status and no rules are created.', 'autoptimize' );
->>>>>>> update
                     ?>
                     </p></div>
                     <?php
@@ -332,11 +314,7 @@ class autoptimizeCriticalCSSSettings {
                         </ul>
                         <?php
                     } else {
-<<<<<<< HEAD
-                        if ( 'valid' == $key['status'] ) {
-=======
                         if ( 'valid' == $key['status'] || ( defined( 'AO_PRO_VERSION' ) && has_filter( 'autoptimize_filter_ccss_key' ) ) ) {
->>>>>>> update
                             // If key status is valid, render other panels.
                             // Render rules section.
                             ao_ccss_render_rules();

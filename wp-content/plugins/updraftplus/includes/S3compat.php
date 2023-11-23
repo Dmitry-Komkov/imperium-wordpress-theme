@@ -40,11 +40,7 @@ use Aws\S3\S3MultiRegionClient;
 
 global $updraftplus;
 $updraftplus->potentially_remove_composer_autoloaders(array('GuzzleHttp\\', 'Aws\\'));
-<<<<<<< HEAD
-include(UPDRAFTPLUS_DIR.'/vendor/autoload.php');
-=======
 updraft_try_include_file('vendor/autoload.php', 'include');
->>>>>>> update
 $updraftplus->mitigate_guzzle_autoloader_conflicts();
 
 /**
@@ -96,11 +92,8 @@ class UpdraftPlus_S3_Compat {
 	public $ssl_cert = null;
 
 	public $ssl_ca_cert = null;
-<<<<<<< HEAD
-=======
 
 	public $iam = null;
->>>>>>> update
 	
 	// Added at request of a user using a non-default port.
 	public static $port = false;
@@ -118,10 +111,7 @@ class UpdraftPlus_S3_Compat {
 	 * @return void
 	 */
 	public function __construct($access_key = null, $secret_key = null, $use_ssl = true, $ssl_ca_cert = true, $endpoint = null, $session_token = null, $region = null) {// phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- $region is unused
-<<<<<<< HEAD
-=======
 		do_action('updraftplus_load_aws_sdk');
->>>>>>> update
 		
 		global $updraftplus;
 		$updraftplus->mitigate_guzzle_autoloader_conflicts();
@@ -298,11 +288,7 @@ class UpdraftPlus_S3_Compat {
 	 * @param string $ssl_ca_cert SSL CA cert (only required if you are having problems with your system CA cert)
 	 * @return void
 	 */
-<<<<<<< HEAD
-	public function setSSLAuth($ssl_cert = null, $ssl_key = null, $ssl_ca_cert = null) {// phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.Found
-=======
 	public function setSSLAuth($ssl_cert = null, $ssl_key = null, $ssl_ca_cert = null) {// phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.Found -- Unused parameters are for future use.
->>>>>>> update
 
 		if (!$this->use_ssl) return;
 
@@ -556,11 +542,7 @@ class UpdraftPlus_S3_Compat {
 	 * @param constant $storage_class   Storage class constant
 	 * @return string | false
 	 */
-<<<<<<< HEAD
-	public function initiateMultipartUpload($bucket, $uri, $acl = self::ACL_PRIVATE, $meta_headers = array(), $request_headers = array(), $storage_class = self::STORAGE_CLASS_STANDARD) {// phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.Found
-=======
 	public function initiateMultipartUpload($bucket, $uri, $acl = self::ACL_PRIVATE, $meta_headers = array(), $request_headers = array(), $storage_class = self::STORAGE_CLASS_STANDARD) {// phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.Found -- Unused parameter is present because the caller from UpdraftPlus_BackupModule_s3 class uses 6 arguments.
->>>>>>> update
 		$vars = array(
 			'ACL' => $acl,
 			'Bucket' => $bucket,
@@ -781,21 +763,13 @@ class UpdraftPlus_S3_Compat {
 				$fp = $save_to;
 				if (!is_bool($resume)) $range_header = $resume;
 			} elseif (file_exists($save_to)) {
-<<<<<<< HEAD
-				if ($resume && ($fp = @fopen($save_to, 'ab')) !== false) {// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
-=======
 				if ($resume && ($fp = @fopen($save_to, 'ab')) !== false) {// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged -- Silenced to suppress errors that may arise because of the function.
->>>>>>> update
 					$range_header = "bytes=".filesize($save_to).'-';
 				} else {
 					throw new Exception('Unable to open save file for writing: '.$save_to);
 				}
 			} else {
-<<<<<<< HEAD
-				if (($fp = @fopen($save_to, 'wb')) !== false) {// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
-=======
 				if (($fp = @fopen($save_to, 'wb')) !== false) {// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged -- Silenced to suppress errors that may arise because of the function.
->>>>>>> update
 					$range_header = false;
 				} else {
 					throw new Exception('Unable to open save file for writing: '.$save_to);
@@ -902,8 +876,6 @@ class UpdraftPlus_S3_Compat {
 		return false;
 		
 	}
-<<<<<<< HEAD
-=======
 
 	/**
 	 * Get or create IAM instance
@@ -998,5 +970,4 @@ class UpdraftPlus_S3_Compat {
 
 		return $response;
 	}
->>>>>>> update
 }

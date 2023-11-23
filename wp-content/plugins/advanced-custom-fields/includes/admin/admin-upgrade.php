@@ -9,8 +9,6 @@ if ( ! class_exists( 'ACF_Admin_Upgrade' ) ) :
 	class ACF_Admin_Upgrade {
 
 		/**
-<<<<<<< HEAD
-=======
 		 * The name of the transient to store the network update check status.
 		 *
 		 * @var string
@@ -18,7 +16,6 @@ if ( ! class_exists( 'ACF_Admin_Upgrade' ) ) :
 		public $network_upgrade_needed_transient;
 
 		/**
->>>>>>> update
 		 *  __construct
 		 *
 		 *  Sets up the class functionality.
@@ -31,12 +28,8 @@ if ( ! class_exists( 'ACF_Admin_Upgrade' ) ) :
 		 */
 		function __construct() {
 
-<<<<<<< HEAD
-			// actions
-=======
 			$this->network_upgrade_needed_transient = 'acf_network_upgrade_needed_' . ACF_UPGRADE_VERSION;
 
->>>>>>> update
 			add_action( 'admin_menu', array( $this, 'admin_menu' ), 20 );
 			if ( is_multisite() ) {
 				add_action( 'network_admin_menu', array( $this, 'network_admin_menu' ), 20 );
@@ -71,60 +64,6 @@ if ( ! class_exists( 'ACF_Admin_Upgrade' ) ) :
 		}
 
 		/**
-<<<<<<< HEAD
-		 * network_admin_menu
-		 *
-		 * Sets up admin logic if DB Upgrade is required on a multi site.
-		 *
-		 * @date    24/8/18
-		 * @since   5.7.4
-		 *
-		 * @param   void
-		 * @return  void
-		 */
-		function network_admin_menu() {
-
-			// Vars.
-			$upgrade = false;
-
-			// Loop over sites and check for upgrades.
-			$sites = get_sites( array( 'number' => 0 ) );
-			if ( $sites ) {
-
-				// Unhook action to avoid memory issue (as seen in wp-includes/ms-site.php).
-				remove_action( 'switch_blog', 'wp_switch_roles_and_user', 1 );
-				foreach ( $sites as $site ) {
-
-					// Switch site.
-					switch_to_blog( $site->blog_id );
-
-					// Check for upgrade.
-					$site_upgrade = acf_has_upgrade();
-
-					// Restore site.
-					// Ideally, we would switch back to the original site at after looping, however,
-					// the restore_current_blog() is needed to modify global vars.
-					restore_current_blog();
-
-					// Check if upgrade was found.
-					if ( $site_upgrade ) {
-						$upgrade = true;
-						break;
-					}
-				}
-				add_action( 'switch_blog', 'wp_switch_roles_and_user', 1, 2 );
-			}
-
-			// Bail early if no upgrade is needed.
-			if ( ! $upgrade ) {
-				return;
-			}
-
-			// Add notice.
-			add_action( 'network_admin_notices', array( $this, 'network_admin_notices' ) );
-
-			// Add page.
-=======
 		 * Displays a “Database Upgrade Required” network admin notice and adds
 		 * the “Upgrade Database” submenu under the “Dashboard” network admin
 		 * menu item if an ACF upgrade needs to run on any network site.
@@ -149,7 +88,6 @@ if ( ! class_exists( 'ACF_Admin_Upgrade' ) ) :
 
 			add_action( 'network_admin_notices', array( $this, 'network_admin_notices' ) );
 
->>>>>>> update
 			$page = add_submenu_page(
 				'index.php',
 				__( 'Upgrade Database', 'acf' ),
@@ -158,16 +96,11 @@ if ( ! class_exists( 'ACF_Admin_Upgrade' ) ) :
 				'acf-upgrade-network',
 				array( $this, 'network_admin_html' )
 			);
-<<<<<<< HEAD
-=======
 
->>>>>>> update
 			add_action( "load-$page", array( $this, 'network_admin_load' ) );
 		}
 
 		/**
-<<<<<<< HEAD
-=======
 		 * Checks if an ACF database upgrade is required on any site in the
 		 * multisite network.
 		 * 
@@ -223,7 +156,6 @@ if ( ! class_exists( 'ACF_Admin_Upgrade' ) ) :
 		}
 
 		/**
->>>>>>> update
 		 *  admin_load
 		 *
 		 *  Runs during the loading of the admin page.
@@ -236,11 +168,8 @@ if ( ! class_exists( 'ACF_Admin_Upgrade' ) ) :
 		 */
 		function admin_load() {
 
-<<<<<<< HEAD
-=======
 			add_action( 'admin_body_class', array( $this, 'admin_body_class' ) );
 
->>>>>>> update
 			// remove prompt
 			remove_action( 'admin_notices', array( $this, 'admin_notices' ) );
 
@@ -261,11 +190,8 @@ if ( ! class_exists( 'ACF_Admin_Upgrade' ) ) :
 		 */
 		function network_admin_load() {
 
-<<<<<<< HEAD
-=======
 			add_action( 'admin_body_class', array( $this, 'admin_body_class' ) );
 
->>>>>>> update
 			// remove prompt
 			remove_action( 'network_admin_notices', array( $this, 'network_admin_notices' ) );
 
@@ -274,8 +200,6 @@ if ( ! class_exists( 'ACF_Admin_Upgrade' ) ) :
 		}
 
 		/**
-<<<<<<< HEAD
-=======
 		 * Modifies the admin body class.
 		 *
 		 * @since 6.0.0
@@ -289,7 +213,6 @@ if ( ! class_exists( 'ACF_Admin_Upgrade' ) ) :
 		}
 
 		/**
->>>>>>> update
 		 *  admin_notices
 		 *
 		 *  Displays the DB Upgrade prompt.
@@ -310,11 +233,7 @@ if ( ! class_exists( 'ACF_Admin_Upgrade' ) ) :
 			);
 
 			// view
-<<<<<<< HEAD
-			acf_get_view( 'html-notice-upgrade', $view );
-=======
 			acf_get_view( 'upgrade/notice', $view );
->>>>>>> update
 		}
 
 		/**
@@ -338,11 +257,7 @@ if ( ! class_exists( 'ACF_Admin_Upgrade' ) ) :
 			);
 
 			// view
-<<<<<<< HEAD
-			acf_get_view( 'html-notice-upgrade', $view );
-=======
 			acf_get_view( 'upgrade/notice', $view );
->>>>>>> update
 		}
 
 		/**
@@ -357,11 +272,7 @@ if ( ! class_exists( 'ACF_Admin_Upgrade' ) ) :
 		 *  @return  void
 		 */
 		function admin_html() {
-<<<<<<< HEAD
-			acf_get_view( 'html-admin-page-upgrade' );
-=======
 			acf_get_view( 'upgrade/upgrade' );
->>>>>>> update
 		}
 
 		/**
@@ -376,11 +287,7 @@ if ( ! class_exists( 'ACF_Admin_Upgrade' ) ) :
 		 *  @return  void
 		 */
 		function network_admin_html() {
-<<<<<<< HEAD
-			acf_get_view( 'html-admin-page-upgrade-network' );
-=======
 			acf_get_view( 'upgrade/network' );
->>>>>>> update
 		}
 	}
 
@@ -388,8 +295,3 @@ if ( ! class_exists( 'ACF_Admin_Upgrade' ) ) :
 	acf_new_instance( 'ACF_Admin_Upgrade' );
 
 endif; // class_exists check
-<<<<<<< HEAD
-
-
-=======
->>>>>>> update

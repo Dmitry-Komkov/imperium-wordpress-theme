@@ -3,12 +3,6 @@ if ( is_admin() ) {
 	require_once MONSTERINSIGHTS_PLUGIN_DIR . 'lite/includes/admin/tools.php';
 	require_once MONSTERINSIGHTS_PLUGIN_DIR . 'lite/includes/admin/metaboxes.php';
 
-<<<<<<< HEAD
-	//require_once MONSTERINSIGHTS_PLUGIN_DIR . 'lite/includes/admin/tab-support.php';
-}
-
-if ( is_admin() || ( defined( 'DOING_CRON' ) && DOING_CRON ) ) {
-=======
 	require_once MONSTERINSIGHTS_PLUGIN_DIR . 'lite/includes/admin/woocommerce-marketing.php';
 }
 
@@ -20,7 +14,6 @@ if ( is_admin() || ( defined( 'DOING_CRON' ) && DOING_CRON ) ) {
 	require_once MONSTERINSIGHTS_PLUGIN_DIR . 'lite/includes/emails/summaries.php';
 	new MonsterInsights_Email_Summaries();
 	
->>>>>>> update
 	$overview_report = new MonsterInsights_Report_Overview();
 	MonsterInsights()->reporting->add_report( $overview_report );
 
@@ -51,14 +44,11 @@ if ( is_admin() || ( defined( 'DOING_CRON' ) && DOING_CRON ) ) {
 	require_once MONSTERINSIGHTS_PLUGIN_DIR . 'lite/includes/admin/reports/report-year-in-review.php';
 	$year_in_review = new MonsterInsights_Lite_Report_YearInReview();
 	MonsterInsights()->reporting->add_report( $year_in_review );
-<<<<<<< HEAD
-=======
 
 	require_once MONSTERINSIGHTS_PLUGIN_DIR . 'lite/includes/admin/reports/report-summaries.php';
 	$summaries = new MonsterInsights_Report_Summaries();
 	MonsterInsights()->reporting->add_report( $summaries );
 
->>>>>>> update
 }
 
 if ( is_admin() ) {
@@ -97,10 +87,7 @@ if ( is_admin() || ( defined( 'DOING_CRON' ) && DOING_CRON ) ) {
 // Popular posts.
 require_once MONSTERINSIGHTS_PLUGIN_DIR . 'includes/popular-posts/class-popular-posts-themes.php';
 require_once MONSTERINSIGHTS_PLUGIN_DIR . 'includes/popular-posts/class-popular-posts.php';
-<<<<<<< HEAD
-=======
 require_once MONSTERINSIGHTS_PLUGIN_DIR . 'includes/popular-posts/class-popular-posts-helper.php';
->>>>>>> update
 // Lite popular posts specific.
 require_once MONSTERINSIGHTS_PLUGIN_DIR . 'lite/includes/popular-posts/class-popular-posts-inline.php';
 require_once MONSTERINSIGHTS_PLUGIN_DIR . 'lite/includes/popular-posts/class-popular-posts-cache.php';

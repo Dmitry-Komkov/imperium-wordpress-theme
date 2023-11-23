@@ -2,11 +2,7 @@
 
 add_action(
 	'wp_enqueue_scripts',
-<<<<<<< HEAD
-	function () {
-=======
 	static function () {
->>>>>>> update
 		$assets = array();
 		$asset_file = wpcf7_plugin_path( 'includes/swv/js/index.asset.php' );
 
@@ -15,19 +11,6 @@ add_action(
 		}
 
 		$assets = wp_parse_args( $assets, array(
-<<<<<<< HEAD
-			'src' => wpcf7_plugin_url( 'includes/swv/js/index.js' ),
-			'dependencies' => array(),
-			'version' => WPCF7_VERSION,
-			'in_footer' => true,
-		) );
-
-		wp_register_script( 'swv',
-			$assets['src'],
-			$assets['dependencies'],
-			$assets['version'],
-			$assets['in_footer']
-=======
 			'dependencies' => array(),
 			'version' => WPCF7_VERSION,
 		) );
@@ -37,7 +20,6 @@ add_action(
 			$assets['dependencies'],
 			$assets['version'],
 			true
->>>>>>> update
 		);
 	},
 	10, 0

@@ -52,13 +52,8 @@ class Yoast_Plugin_Conflict {
 	 */
 	public static function get_instance( $class_name = '' ) {
 
-<<<<<<< HEAD
-		if ( \is_null( self::$instance ) ) {
-			if ( ! \is_string( $class_name ) || $class_name === '' ) {
-=======
 		if ( is_null( self::$instance ) ) {
 			if ( ! is_string( $class_name ) || $class_name === '' ) {
->>>>>>> update
 				$class_name = __CLASS__;
 			}
 
@@ -72,16 +67,6 @@ class Yoast_Plugin_Conflict {
 	 * Setting instance, all active plugins and search for active plugins.
 	 *
 	 * Protected constructor to prevent creating a new instance of the
-<<<<<<< HEAD
-	 * *Singleton* via the `new` operator from outside of this class.
-	 */
-	protected function __construct() {
-		// Set active plugins.
-		$this->all_active_plugins = \get_option( 'active_plugins' );
-
-		if ( \filter_input( INPUT_GET, 'action' ) === 'deactivate' ) {
-			$this->remove_deactivated_plugin();
-=======
 	 * *Singleton* via the `new` operator from outside this class.
 	 */
 	protected function __construct() {
@@ -95,7 +80,6 @@ class Yoast_Plugin_Conflict {
 			if ( $action === 'deactivate' ) {
 				$this->remove_deactivated_plugin();
 			}
->>>>>>> update
 		}
 
 		// Search for active plugins.
@@ -124,57 +108,13 @@ class Yoast_Plugin_Conflict {
 
 		if ( ! \in_array( $plugin_section, $sections_checked, true ) ) {
 			$sections_checked[] = $plugin_section;
-<<<<<<< HEAD
-			$has_conflicts      = ( ! empty( $this->active_conflicting_plugins[ $plugin_section ] ) );
-
-			return $has_conflicts;
-=======
 			return ( ! empty( $this->active_conflicting_plugins[ $plugin_section ] ) );
->>>>>>> update
 		}
 
 		return false;
 	}
 
 	/**
-<<<<<<< HEAD
-	 * Getting all the conflicting plugins and return them as a string.
-	 *
-	 * This method will loop through all conflicting plugins to get the details of each plugin. The plugin name
-	 * will be taken from the details to parse a comma separated string, which can be use for by example a notice
-	 *
-	 * @deprecated 17.7 This method is unused and will be removed in the future
-	 * @codeCoverageIgnore
-	 *
-	 * @param string $plugin_section Plugin conflict type (such as Open Graph or sitemap).
-	 *
-	 * @return string
-	 */
-	public function get_conflicting_plugins_as_string( $plugin_section ) {
-		if ( ! \function_exists( 'get_plugin_data' ) ) {
-			require_once ABSPATH . 'wp-admin/includes/plugin.php';
-		}
-
-		// Getting the active plugins by given section.
-		$plugins = $this->active_conflicting_plugins[ $plugin_section ];
-
-		$plugin_names = [];
-		foreach ( $plugins as $plugin ) {
-			$name = $this->get_plugin_name( $plugin );
-			if ( ! empty( $name ) ) {
-				$plugin_names[] = '<em>' . $name . '</em>';
-			}
-		}
-		unset( $plugins, $plugin );
-
-		if ( ! empty( $plugin_names ) ) {
-			return \implode( ' &amp; ', $plugin_names );
-		}
-	}
-
-	/**
-=======
->>>>>>> update
 	 * Checks for given $plugin_sections for conflicts.
 	 *
 	 * @param array $plugin_sections Set of sections.
@@ -207,11 +147,7 @@ class Yoast_Plugin_Conflict {
 
 		// For active sections clear errors for inactive plugins.
 		foreach ( $sections as $section ) {
-<<<<<<< HEAD
-			// By default clear errors for all plugins of the section.
-=======
 			// By default, clear errors for all plugins of the section.
->>>>>>> update
 			$inactive_plugins = $this->plugins[ $section ];
 
 			// If there are active plugins, filter them from being cleared.
@@ -365,9 +301,6 @@ class Yoast_Plugin_Conflict {
 	 * When being in the deactivation process the currently deactivated plugin has to be removed.
 	 */
 	private function remove_deactivated_plugin() {
-<<<<<<< HEAD
-		$deactivated_plugin = \filter_input( INPUT_GET, 'plugin' );
-=======
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Reason: On the deactivation screen the nonce is already checked by WordPress itself.
 		if ( ! isset( $_GET['plugin'] ) || ! is_string( $_GET['plugin'] ) ) {
 			return;
@@ -375,7 +308,6 @@ class Yoast_Plugin_Conflict {
 
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Reason: On the deactivation screen the nonce is already checked by WordPress itself.
 		$deactivated_plugin = sanitize_text_field( wp_unslash( $_GET['plugin'] ) );
->>>>>>> update
 		$key_to_remove      = \array_search( $deactivated_plugin, $this->all_active_plugins, true );
 
 		if ( $key_to_remove !== false ) {

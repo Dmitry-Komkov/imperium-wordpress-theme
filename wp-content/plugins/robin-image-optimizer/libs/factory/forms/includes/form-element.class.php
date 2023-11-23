@@ -14,11 +14,7 @@
 		exit;
 	}
 
-<<<<<<< HEAD
-	if( !class_exists('Wbcr_FactoryForms447_FormElement') ) {
-=======
 	if( !class_exists('Wbcr_FactoryForms466_FormElement') ) {
->>>>>>> update
 
 		/**
 		 * The base class for all form element (controls, holders).
@@ -27,11 +23,7 @@
 		 *
 		 * @since 1.0.0
 		 */
-<<<<<<< HEAD
-		abstract class Wbcr_FactoryForms447_FormElement {
-=======
 		abstract class Wbcr_FactoryForms466_FormElement {
->>>>>>> update
 
 			/**
 			 * A type of an elemnt.
@@ -45,11 +37,7 @@
 			 * An html attribute builder.
 			 *
 			 * @since 1.0.0
-<<<<<<< HEAD
-			 * @var Wbcr_FactoryForms447_HtmlAttributeBuilder
-=======
 			 * @var Wbcr_FactoryForms466_HtmlAttributeBuilder
->>>>>>> update
 			 */
 			private $html_builder;
 
@@ -65,11 +53,7 @@
 			 * A parent form.
 			 *
 			 * @since 1.0.0
-<<<<<<< HEAD
-			 * @var Wbcr_FactoryForms447_Form
-=======
 			 * @var Wbcr_FactoryForms466_Form
->>>>>>> update
 			 */
 			protected $form;
 
@@ -77,11 +61,7 @@
 			 * A form layout.
 			 *
 			 * @since 1.0.0
-<<<<<<< HEAD
-			 * @var Wbcr_FactoryForms447_FormLayout
-=======
 			 * @var Wbcr_FactoryForms466_FormLayout
->>>>>>> update
 			 */
 			protected $layout;
 
@@ -114,11 +94,7 @@
 			 *
 			 * @since 1.0.0
 			 * @param mixed[] $options A holder options.
-<<<<<<< HEAD
-			 * @param Wbcr_FactoryForms447_Form $form A parent form.
-=======
 			 * @param Wbcr_FactoryForms466_Form $form A parent form.
->>>>>>> update
 			 */
 			public function __construct($options, $form)
 			{
@@ -126,11 +102,7 @@
 				$this->form = $form;
 				$this->layout = $form->layout;
 
-<<<<<<< HEAD
-				$this->html_builder = new Wbcr_FactoryForms447_HtmlAttributeBuilder();
-=======
 				$this->html_builder = new Wbcr_FactoryForms466_HtmlAttributeBuilder();
->>>>>>> update
 
 				if( isset($this->options['cssClass']) ) {
 					$this->html_builder->addCssClass($this->options['cssClass']);

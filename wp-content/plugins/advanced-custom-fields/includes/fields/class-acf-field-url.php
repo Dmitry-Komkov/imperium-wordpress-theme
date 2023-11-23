@@ -21,18 +21,12 @@ if ( ! class_exists( 'acf_field_url' ) ) :
 		function initialize() {
 
 			// vars
-<<<<<<< HEAD
-			$this->name     = 'url';
-			$this->label    = __( 'Url', 'acf' );
-			$this->defaults = array(
-=======
 			$this->name          = 'url';
 			$this->label         = __( 'URL', 'acf' );
 			$this->description   = __( 'A text input specifically designed for storing web addresses.', 'acf' );
 			$this->preview_image = acf_get_url() . '/assets/images/field-type-previews/field-preview-url.png';
 			$this->doc_url       = acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/resources/url/', 'docs', 'field-type-selection' );
 			$this->defaults      = array(
->>>>>>> update
 				'default_value' => '',
 				'placeholder'   => '',
 			);
@@ -100,14 +94,7 @@ if ( ! class_exists( 'acf_field_url' ) ) :
 		*
 		*  @param   $field  - an array holding all the field's data
 		*/
-<<<<<<< HEAD
-
 		function render_field_settings( $field ) {
-
-			// default_value
-=======
-		function render_field_settings( $field ) {
->>>>>>> update
 			acf_render_field_setting(
 				$field,
 				array(
@@ -117,10 +104,6 @@ if ( ! class_exists( 'acf_field_url' ) ) :
 					'name'         => 'default_value',
 				)
 			);
-<<<<<<< HEAD
-
-			// placeholder
-=======
 		}
 
 		/**
@@ -132,7 +115,6 @@ if ( ! class_exists( 'acf_field_url' ) ) :
 		 * @return void
 		 */
 		function render_field_presentation_settings( $field ) {
->>>>>>> update
 			acf_render_field_setting(
 				$field,
 				array(
@@ -142,10 +124,6 @@ if ( ! class_exists( 'acf_field_url' ) ) :
 					'name'         => 'placeholder',
 				)
 			);
-<<<<<<< HEAD
-
-=======
->>>>>>> update
 		}
 
 

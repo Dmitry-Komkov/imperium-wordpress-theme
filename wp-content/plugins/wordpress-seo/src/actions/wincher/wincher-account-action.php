@@ -10,12 +10,8 @@ use Yoast\WP\SEO\Helpers\Options_Helper;
  */
 class Wincher_Account_Action {
 
-<<<<<<< HEAD
-	const ACCOUNT_URL = 'https://api.wincher.com/beta/account';
-=======
 	const ACCOUNT_URL          = 'https://api.wincher.com/beta/account';
 	const UPGRADE_CAMPAIGN_URL = 'https://api.wincher.com/v1/yoast/upgrade-campaign';
->>>>>>> update
 
 	/**
 	 * The Wincher_Client instance.
@@ -68,8 +64,6 @@ class Wincher_Account_Action {
 			];
 		}
 	}
-<<<<<<< HEAD
-=======
 
 	/**
 	 * Gets the upgrade campaign.
@@ -105,5 +99,4 @@ class Wincher_Account_Action {
 			];
 		}
 	}
->>>>>>> update
 }

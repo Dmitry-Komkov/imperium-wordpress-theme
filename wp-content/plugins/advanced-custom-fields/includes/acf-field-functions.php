@@ -93,11 +93,7 @@ function acf_get_raw_field( $id = 0 ) {
 	}
 
 	// Unserialize post_content.
-<<<<<<< HEAD
-	$field = (array) maybe_unserialize( $post->post_content );
-=======
 	$field = (array) acf_maybe_unserialize( $post->post_content );
->>>>>>> update
 
 	// update attributes
 	$field['ID']         = $post->ID;
@@ -227,10 +223,7 @@ function acf_validate_field( $field = array() ) {
 			'key'               => '',
 			'label'             => '',
 			'name'              => '',
-<<<<<<< HEAD
-=======
 			'aria-label'        => '',
->>>>>>> update
 			'prefix'            => '',
 			'type'              => 'text',
 			'value'             => null,
@@ -612,11 +605,8 @@ function acf_render_fields( $fields, $post_id = 0, $el = 'div', $instruction = '
 	if ( $fields ) {
 		foreach ( $fields as $field ) {
 
-<<<<<<< HEAD
-=======
 			$field = apply_filters( 'acf/pre_render_field', $field, $post_id );
 
->>>>>>> update
 			// Load value if not already loaded.
 			if ( $field['value'] === null ) {
 				$field['value'] = acf_get_value( $post_id, $field );
@@ -640,21 +630,6 @@ function acf_render_fields( $fields, $post_id = 0, $el = 'div', $instruction = '
 }
 
 /**
-<<<<<<< HEAD
- * acf_render_field_wrap
- *
- * Render the wrapping element for a given field.
- *
- * @date    28/09/13
- * @since   5.0.0
- *
- * @param   array  $field The field array.
- * @param   string $element The wrapping element type.
- * @param   string $instruction The instruction render position (label|field).
- * @return  void
- */
-function acf_render_field_wrap( $field, $element = 'div', $instruction = 'label' ) {
-=======
  * Render the wrapping element for a given field.
  *
  * @since   5.0.0
@@ -666,7 +641,6 @@ function acf_render_field_wrap( $field, $element = 'div', $instruction = 'label'
  * @return  void
  */
 function acf_render_field_wrap( $field, $element = 'div', $instruction = 'label', $field_setting = false ) {
->>>>>>> update
 
 	// Ensure field is complete (adds all settings).
 	$field = acf_validate_field( $field );
@@ -721,8 +695,6 @@ function acf_render_field_wrap( $field, $element = 'div', $instruction = 'label'
 		$wrapper['data-required'] = 1;
 	}
 
-<<<<<<< HEAD
-=======
 	// Support custom attributes.
 	if ( ! empty( $field['data'] ) && is_array( $field['data'] ) ) {
 		foreach ( $field['data'] as $name => $attr ) {
@@ -731,7 +703,6 @@ function acf_render_field_wrap( $field, $element = 'div', $instruction = 'label'
 		unset( $field['data'] );
 	}
 
->>>>>>> update
 	// Clean up class attribute.
 	$wrapper['class'] = str_replace( '_', '-', $wrapper['class'] );
 	$wrapper['class'] = str_replace( 'field-field-', 'field-', $wrapper['class'] );
@@ -776,11 +747,7 @@ function acf_render_field_wrap( $field, $element = 'div', $instruction = 'label'
 	}
 
 	// Vars for render.
-<<<<<<< HEAD
-	$attributes_html = acf_esc_attr( $wrapper );
-=======
 	$attributes_html = acf_esc_attrs( $wrapper );
->>>>>>> update
 
 	// Render HTML
 	echo "<$element $attributes_html>" . "\n";
@@ -788,22 +755,12 @@ function acf_render_field_wrap( $field, $element = 'div', $instruction = 'label'
 		echo "<$inner_element class=\"acf-label\">" . "\n";
 			acf_render_field_label( $field );
 		if ( $instruction == 'label' ) {
-<<<<<<< HEAD
-			acf_render_field_instructions( $field );
-=======
 			acf_render_field_instructions( $field, $field_setting );
->>>>>>> update
 		}
 			echo "</$inner_element>" . "\n";
 	}
 		echo "<$inner_element class=\"acf-input\">" . "\n";
 			acf_render_field( $field );
-<<<<<<< HEAD
-	if ( $instruction == 'field' ) {
-		acf_render_field_instructions( $field );
-	}
-		echo "</$inner_element>" . "\n";
-=======
 	if ( ! $field_setting && $instruction == 'field' ) {
 		acf_render_field_instructions( $field );
 	}
@@ -812,7 +769,6 @@ function acf_render_field_wrap( $field, $element = 'div', $instruction = 'label'
 	if ( $field_setting && $instruction == 'field' ) {
 		acf_render_field_instructions( $field );
 	}
->>>>>>> update
 	echo "</$element>" . "\n";
 }
 
@@ -886,11 +842,7 @@ function acf_render_field_label( $field ) {
  *
  * @param   array  $field The field array.
  * @param   string $context The output context (admin).
-<<<<<<< HEAD
- * @return  void
-=======
  * @return  string The field label in HTML format.
->>>>>>> update
  */
 function acf_get_field_label( $field, $context = '' ) {
 
@@ -924,23 +876,6 @@ function acf_get_field_label( $field, $context = '' ) {
 }
 
 /**
-<<<<<<< HEAD
- * acf_render_field_instructions
- *
- * Renders the field's instructions.
- *
- * @date    19/9/17
- * @since   5.6.3
- *
- * @param   array $field The field array.
- * @return  void
- */
-function acf_render_field_instructions( $field ) {
-
-	// Output instructions.
-	if ( $field['instructions'] ) {
-		echo '<p class="description">' . acf_esc_html( $field['instructions'] ) . '</p>';
-=======
  * Renders the field's instructions.
  *
  * @since   5.6.3
@@ -961,7 +896,6 @@ function acf_render_field_instructions( $field, $tooltip = false ) {
 	} elseif ( ! empty( $field['hint'] ) ) {
 		$instructions = acf_esc_html( $field['hint'] );
 		printf( '<p class="description">%s</p>', $instructions );
->>>>>>> update
 	}
 }
 
@@ -990,8 +924,6 @@ function acf_render_field_setting( $field, $setting, $global = false ) {
 		$setting['wrapper']['data-setting'] = $field['type'];
 	}
 
-<<<<<<< HEAD
-=======
 	// Add classes for appended and prepended fields.
 	if ( ! empty( $setting['append'] ) ) {
 		$setting['wrapper']['class'] .= ' acf-field-appended';
@@ -1000,7 +932,6 @@ function acf_render_field_setting( $field, $setting, $global = false ) {
 		$setting['wrapper']['class'] .= ' acf-field-prepended';
 	}
 
->>>>>>> update
 	// Copy across prefix.
 	$setting['prefix'] = $field['prefix'];
 
@@ -1022,10 +953,6 @@ function acf_render_field_setting( $field, $setting, $global = false ) {
 		$setting['wrapper']['data-append'] = $setting['_append'];
 	}
 
-<<<<<<< HEAD
-	// Render setting.
-	acf_render_field_wrap( $setting, 'tr', 'label' );
-=======
 	// If we're using a hint, set the label location as field so it appears after.
 	$label_location = ! empty( $setting['instructions'] ) ? 'field' : 'label';
 
@@ -1036,7 +963,6 @@ function acf_render_field_setting( $field, $setting, $global = false ) {
 
 	// Render setting.
 	acf_render_field_wrap( $setting, 'div', $label_location );
->>>>>>> update
 }
 
 /**
@@ -1049,11 +975,7 @@ function acf_render_field_setting( $field, $setting, $global = false ) {
  *
  * @param   array $field The field array.
  * @param   array $specific An array of specific field attributes to update.
-<<<<<<< HEAD
- * @return  void
-=======
  * @return  array
->>>>>>> update
  */
 function acf_update_field( $field, $specific = array() ) {
 

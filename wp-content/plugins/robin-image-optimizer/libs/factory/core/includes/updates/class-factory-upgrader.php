@@ -1,18 +1,10 @@
 <?php
 
-<<<<<<< HEAD
-namespace WBCR\Factory_450\Updates;
-
-use Exception;
-use stdClass;
-use Wbcr_Factory450_Plugin;
-=======
 namespace WBCR\Factory_469\Updates;
 
 use Exception;
 use stdClass;
 use Wbcr_Factory469_Plugin;
->>>>>>> update
 
 // Exit if accessed directly
 if( !defined('ABSPATH') ) {
@@ -36,13 +28,8 @@ class Upgrader {
 	 * @since  4.1.7
 	 * @var array хранит имя репозитория и его имя класса
 	 * [
-<<<<<<< HEAD
-	 *  'wordpress' => 'WBCR\Factory_Freemius_138\Updates\Freemius_Repository',
-	 *  'freemius' => '\WBCR\Factory_450\Updates\Wordpress_Repository'
-=======
 	 *  'wordpress' => 'WBCR\Factory_Freemius_157\Updates\Freemius_Repository',
 	 *  'freemius' => '\WBCR\Factory_469\Updates\Wordpress_Repository'
->>>>>>> update
 	 * ]
 	 */
 	public static $repositories = [];
@@ -55,11 +42,7 @@ class Upgrader {
 	protected $type = 'default';
 
 	/**
-<<<<<<< HEAD
-	 * @var Wbcr_Factory450_Plugin
-=======
 	 * @var Wbcr_Factory469_Plugin
->>>>>>> update
 	 */
 	protected $plugin;
 
@@ -105,11 +88,7 @@ class Upgrader {
 	/**
 	 * Manager constructor.
 	 *
-<<<<<<< HEAD
-	 * @param Wbcr_Factory450_Plugin $plugin
-=======
 	 * @param Wbcr_Factory469_Plugin $plugin
->>>>>>> update
 	 * @param                        $args
 	 * @param bool $is_premium
 	 *
@@ -117,11 +96,7 @@ class Upgrader {
 	 * @since 4.1.1
 	 *
 	 */
-<<<<<<< HEAD
-	public function __construct(Wbcr_Factory450_Plugin $plugin)
-=======
 	public function __construct(Wbcr_Factory469_Plugin $plugin)
->>>>>>> update
 	{
 
 		$this->plugin = $plugin;
@@ -132,13 +107,8 @@ class Upgrader {
 		$this->is_debug = defined('FACTORY_UPDATES_DEBUG') && FACTORY_UPDATES_DEBUG;
 
 		# Добавляем Wordpress репозиторий в список доступных репозиториев по умолчанию
-<<<<<<< HEAD
-		self::$repositories['wordpress'] = '\WBCR\Factory_450\Updates\Wordpress_Repository';
-		self::$repositories['github'] = '\WBCR\Factory_450\Updates\Github_Repository';
-=======
 		self::$repositories['wordpress'] = '\WBCR\Factory_469\Updates\Wordpress_Repository';
 		self::$repositories['github'] = '\WBCR\Factory_469\Updates\Github_Repository';
->>>>>>> update
 
 		$settings = $this->get_settings();
 
@@ -328,11 +298,7 @@ class Upgrader {
 
 		if( isset(self::$repositories[$repository_name]) && class_exists(self::$repositories[$repository_name]) ) {
 			if( self::$repositories[$repository_name] instanceof Repository ) {
-<<<<<<< HEAD
-				throw new Exception("Repository {$repository_name} must extend the class WBCR\Factory_450\Updates\Repository interface!");
-=======
 				throw new Exception("Repository {$repository_name} must extend the class WBCR\Factory_469\Updates\Repository interface!");
->>>>>>> update
 			}
 
 			return new self::$repositories[$repository_name]($this->plugin, $this->get_settings());

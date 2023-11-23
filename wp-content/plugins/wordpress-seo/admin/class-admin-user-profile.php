@@ -39,24 +39,6 @@ class WPSEO_Admin_User_Profile {
 	}
 
 	/**
-<<<<<<< HEAD
-	 * Filter POST variables.
-	 *
-	 * @param string $var_name Name of the variable to filter.
-	 *
-	 * @return mixed
-	 */
-	private function filter_input_post( $var_name ) {
-		$val = filter_input( INPUT_POST, $var_name );
-		if ( $val ) {
-			return WPSEO_Utils::sanitize_text_field( $val );
-		}
-		return '';
-	}
-
-	/**
-=======
->>>>>>> update
 	 * Updates the user metas that (might) have been set on the user profile page.
 	 *
 	 * @param int $user_id User ID of the updated user.
@@ -64,21 +46,6 @@ class WPSEO_Admin_User_Profile {
 	public function process_user_option_update( $user_id ) {
 		update_user_meta( $user_id, '_yoast_wpseo_profile_updated', time() );
 
-<<<<<<< HEAD
-		$nonce_value = $this->filter_input_post( 'wpseo_nonce' );
-
-		if ( empty( $nonce_value ) ) { // Submit from alternate forms.
-			return;
-		}
-
-		check_admin_referer( 'wpseo_user_profile_update', 'wpseo_nonce' );
-
-		update_user_meta( $user_id, 'wpseo_title', $this->filter_input_post( 'wpseo_author_title' ) );
-		update_user_meta( $user_id, 'wpseo_metadesc', $this->filter_input_post( 'wpseo_author_metadesc' ) );
-		update_user_meta( $user_id, 'wpseo_noindex_author', $this->filter_input_post( 'wpseo_noindex_author' ) );
-		update_user_meta( $user_id, 'wpseo_content_analysis_disable', $this->filter_input_post( 'wpseo_content_analysis_disable' ) );
-		update_user_meta( $user_id, 'wpseo_keyword_analysis_disable', $this->filter_input_post( 'wpseo_keyword_analysis_disable' ) );
-=======
 		if ( ! check_admin_referer( 'wpseo_user_profile_update', 'wpseo_nonce' ) ) {
 			return;
 		}
@@ -96,7 +63,6 @@ class WPSEO_Admin_User_Profile {
 		update_user_meta( $user_id, 'wpseo_content_analysis_disable', $wpseo_content_analysis_disable );
 		update_user_meta( $user_id, 'wpseo_keyword_analysis_disable', $wpseo_keyword_analysis_disable );
 		update_user_meta( $user_id, 'wpseo_inclusive_language_analysis_disable', $wpseo_inclusive_language_analysis_disable );
->>>>>>> update
 	}
 
 	/**

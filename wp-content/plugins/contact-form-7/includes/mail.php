@@ -1,7 +1,5 @@
 <?php
 
-<<<<<<< HEAD
-=======
 add_filter( 'wpcf7_mail_html_body', 'wpcf7_mail_html_body_autop', 10, 1 );
 
 /**
@@ -19,7 +17,6 @@ function wpcf7_mail_html_body_autop( $body ) {
 /**
  * Class that represents an attempt to compose and send email.
  */
->>>>>>> update
 class WPCF7_Mail {
 
 	private static $current = null;
@@ -30,19 +27,14 @@ class WPCF7_Mail {
 	private $use_html = false;
 	private $exclude_blank = false;
 
-<<<<<<< HEAD
-=======
 
 	/**
 	 * Returns the singleton instance of this class.
 	 */
->>>>>>> update
 	public static function get_current() {
 		return self::$current;
 	}
 
-<<<<<<< HEAD
-=======
 
 	/**
 	 * Composes and sends email based on the specified template.
@@ -52,14 +44,11 @@ class WPCF7_Mail {
 	 *               'mail' or 'mail_2'. Default empty string.
 	 * @return bool Whether the email was sent successfully.
 	 */
->>>>>>> update
 	public static function send( $template, $name = '' ) {
 		self::$current = new self( $name, $template );
 		return self::$current->compose();
 	}
 
-<<<<<<< HEAD
-=======
 
 	/**
 	 * The constructor method.
@@ -68,7 +57,6 @@ class WPCF7_Mail {
 	 *               Such as 'mail' or 'mail_2'.
 	 * @param array $template Array of email template.
 	 */
->>>>>>> update
 	private function __construct( $name, $template ) {
 		$this->name = trim( $name );
 		$this->use_html = ! empty( $template['use_html'] );
@@ -89,19 +77,14 @@ class WPCF7_Mail {
 		}
 	}
 
-<<<<<<< HEAD
-=======
 
 	/**
 	 * Returns the name of the email template.
 	 */
->>>>>>> update
 	public function name() {
 		return $this->name;
 	}
 
-<<<<<<< HEAD
-=======
 
 	/**
 	 * Retrieves a component from the email template.
@@ -111,7 +94,6 @@ class WPCF7_Mail {
 	 *             within the component.
 	 * @return string The text representation of the email component.
 	 */
->>>>>>> update
 	public function get( $component, $replace_tags = false ) {
 		$use_html = ( $this->use_html && 'body' == $component );
 		$exclude_blank = ( $this->exclude_blank && 'body' == $component );
@@ -125,11 +107,6 @@ class WPCF7_Mail {
 				'exclude_blank' => $exclude_blank,
 			) );
 
-<<<<<<< HEAD
-			if ( $use_html
-			and ! preg_match( '%<html[>\s].*</html>%is', $component ) ) {
-				$component = $this->htmlize( $component );
-=======
 			if ( $use_html ) {
 				// Convert <example@example.com> to &lt;example@example.com&gt;.
 				$component = preg_replace_callback(
@@ -147,15 +124,12 @@ class WPCF7_Mail {
 				if ( ! preg_match( '%<html[>\s].*</html>%is', $component ) ) {
 					$component = $this->htmlize( $component );
 				}
->>>>>>> update
 			}
 		}
 
 		return $component;
 	}
 
-<<<<<<< HEAD
-=======
 
 	/**
 	 * Creates HTML message body by adding the header and footer.
@@ -163,7 +137,6 @@ class WPCF7_Mail {
 	 * @param string $body The body part of HTML.
 	 * @return string Formatted HTML.
 	 */
->>>>>>> update
 	private function htmlize( $body ) {
 		if ( $this->locale ) {
 			$lang_atts = sprintf( ' %s',
@@ -183,18 +156,6 @@ class WPCF7_Mail {
 <title>' . esc_html( $this->get( 'subject', true ) ) . '</title>
 </head>
 <body>
-<<<<<<< HEAD
-', $this );
-
-		$footer = apply_filters( 'wpcf7_mail_html_footer',
-			'</body>
-</html>', $this );
-
-		$html = $header . wpautop( $body ) . $footer;
-		return $html;
-	}
-
-=======
 ',
 			$this
 		);
@@ -216,7 +177,6 @@ class WPCF7_Mail {
 	 *
 	 * @param bool $send Whether to attempt to send email. Default true.
 	 */
->>>>>>> update
 	private function compose( $send = true ) {
 		$components = array(
 			'subject' => $this->get( 'subject', true ),
@@ -317,13 +277,10 @@ class WPCF7_Mail {
 		return wp_mail( $recipient, $subject, $body, $headers, $attachments );
 	}
 
-<<<<<<< HEAD
-=======
 
 	/**
 	 * Replaces mail-tags within the given text.
 	 */
->>>>>>> update
 	public function replace_tags( $content, $args = '' ) {
 		if ( true === $args ) {
 			$args = array( 'html' => true );
@@ -337,13 +294,10 @@ class WPCF7_Mail {
 		return wpcf7_mail_replace_tags( $content, $args );
 	}
 
-<<<<<<< HEAD
-=======
 
 	/**
 	 * Creates an array of attachments based on uploaded files and local files.
 	 */
->>>>>>> update
 	private function attachments( $template = null ) {
 		if ( ! $template ) {
 			$template = $this->get( 'attachments' );
@@ -355,11 +309,7 @@ class WPCF7_Mail {
 			$uploaded_files = $submission->uploaded_files();
 
 			foreach ( (array) $uploaded_files as $name => $paths ) {
-<<<<<<< HEAD
-				if ( false !== strpos( $template, "[${name}]" ) ) {
-=======
 				if ( false !== strpos( $template, "[{$name}]" ) ) {
->>>>>>> update
 					$attachments = array_merge( $attachments, (array) $paths );
 				}
 			}
@@ -386,8 +336,6 @@ class WPCF7_Mail {
 	}
 }
 
-<<<<<<< HEAD
-=======
 
 /**
  * Replaces all mail-tags within the given text content.
@@ -396,7 +344,6 @@ class WPCF7_Mail {
  * @param string|array $args Optional. Output options.
  * @return string Result of replacement.
  */
->>>>>>> update
 function wpcf7_mail_replace_tags( $content, $args = '' ) {
 	$args = wp_parse_args( $args, array(
 		'html' => false,
@@ -436,17 +383,12 @@ function wpcf7_mail_replace_tags( $content, $args = '' ) {
 	return $content;
 }
 
-<<<<<<< HEAD
-add_action( 'phpmailer_init', 'wpcf7_phpmailer_init', 10, 1 );
-
-=======
 
 add_action( 'phpmailer_init', 'wpcf7_phpmailer_init', 10, 1 );
 
 /**
  * Adds custom properties to the PHPMailer object.
  */
->>>>>>> update
 function wpcf7_phpmailer_init( $phpmailer ) {
 	$custom_headers = $phpmailer->getCustomHeaders();
 	$phpmailer->clearCustomHeaders();
@@ -470,13 +412,10 @@ function wpcf7_phpmailer_init( $phpmailer ) {
 	}
 }
 
-<<<<<<< HEAD
-=======
 
 /**
  * Class that represents a single-line text including mail-tags.
  */
->>>>>>> update
 class WPCF7_MailTaggedText {
 
 	private $html = false;
@@ -484,13 +423,10 @@ class WPCF7_MailTaggedText {
 	private $content = '';
 	private $replaced_tags = array();
 
-<<<<<<< HEAD
-=======
 
 	/**
 	 * The constructor method.
 	 */
->>>>>>> update
 	public function __construct( $content, $args = '' ) {
 		$args = wp_parse_args( $args, array(
 			'html' => false,
@@ -511,26 +447,20 @@ class WPCF7_MailTaggedText {
 		$this->content = $content;
 	}
 
-<<<<<<< HEAD
-=======
 
 	/**
 	 * Retrieves mail-tags that have been replaced by this instance.
 	 *
 	 * @return array List of mail-tags replaced.
 	 */
->>>>>>> update
 	public function get_replaced_tags() {
 		return $this->replaced_tags;
 	}
 
-<<<<<<< HEAD
-=======
 
 	/**
 	 * Replaces mail-tags based on regexp.
 	 */
->>>>>>> update
 	public function replace_tags() {
 		$regex = '/(\[?)\[[\t ]*'
 			. '([a-zA-Z_][0-9a-zA-Z:._-]*)' // [2] = name
@@ -540,24 +470,18 @@ class WPCF7_MailTaggedText {
 		return preg_replace_callback( $regex, $this->callback, $this->content );
 	}
 
-<<<<<<< HEAD
-=======
 
 	/**
 	 * Callback function for replacement. For HTML message body.
 	 */
->>>>>>> update
 	private function replace_tags_callback_html( $matches ) {
 		return $this->replace_tags_callback( $matches, true );
 	}
 
-<<<<<<< HEAD
-=======
 
 	/**
 	 * Callback function for replacement.
 	 */
->>>>>>> update
 	private function replace_tags_callback( $matches, $html = false ) {
 		// allow [[foo]] syntax for escaping a tag
 		if ( $matches[1] == '['
@@ -590,13 +514,9 @@ class WPCF7_MailTaggedText {
 				$replaced = $this->format( $replaced, $format );
 			}
 
-<<<<<<< HEAD
-			$replaced = wpcf7_flat_join( $replaced );
-=======
 			$replaced = wpcf7_flat_join( $replaced, array(
 				'separator' => wp_get_list_item_separator(),
 			) );
->>>>>>> update
 
 			if ( $html ) {
 				$replaced = esc_html( $replaced );
@@ -637,13 +557,10 @@ class WPCF7_MailTaggedText {
 		return $tag;
 	}
 
-<<<<<<< HEAD
-=======
 
 	/**
 	 * Formats string based on the formatting option in the form-tag.
 	 */
->>>>>>> update
 	public function format( $original, $format ) {
 		$original = (array) $original;
 
@@ -659,10 +576,6 @@ class WPCF7_MailTaggedText {
 
 		return $original;
 	}
-<<<<<<< HEAD
-}
-
-=======
 
 }
 
@@ -670,7 +583,6 @@ class WPCF7_MailTaggedText {
 /**
  * Class that represents a mail-tag.
  */
->>>>>>> update
 class WPCF7_MailTag {
 
 	private $tag;
@@ -680,13 +592,10 @@ class WPCF7_MailTag {
 	private $values = array();
 	private $form_tag = null;
 
-<<<<<<< HEAD
-=======
 
 	/**
 	 * The constructor method.
 	 */
->>>>>>> update
 	public function __construct( $tag, $tagname, $values ) {
 		$this->tag = $tag;
 		$this->name = $this->tagname = $tagname;
@@ -712,57 +621,42 @@ class WPCF7_MailTag {
 		}
 	}
 
-<<<<<<< HEAD
-=======
 
 	/**
 	 * Returns the name part of this mail-tag.
 	 */
->>>>>>> update
 	public function tag_name() {
 		return $this->tagname;
 	}
 
-<<<<<<< HEAD
-=======
 
 	/**
 	 * Returns the form field name corresponding to this mail-tag.
 	 */
->>>>>>> update
 	public function field_name() {
 		return strtr( $this->name, '.', '_' );
 	}
 
-<<<<<<< HEAD
-=======
 
 	/**
 	 * Returns the value of the specified option.
 	 */
->>>>>>> update
 	public function get_option( $option ) {
 		return $this->options[$option];
 	}
 
-<<<<<<< HEAD
-=======
 
 	/**
 	 * Returns the values part of this mail-tag.
 	 */
->>>>>>> update
 	public function values() {
 		return $this->values;
 	}
 
-<<<<<<< HEAD
-=======
 
 	/**
 	 * Retrieves the WPCF7_FormTag object that corresponds to this mail-tag.
 	 */
->>>>>>> update
 	public function corresponding_form_tag() {
 		if ( $this->form_tag instanceof WPCF7_FormTag ) {
 			return $this->form_tag;
@@ -782,8 +676,5 @@ class WPCF7_MailTag {
 
 		return $this->form_tag;
 	}
-<<<<<<< HEAD
-=======
 
->>>>>>> update
 }

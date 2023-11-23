@@ -7,11 +7,7 @@ if (!defined('UPDRAFTPLUS_DIR')) die('No direct access allowed.');
 
 // Converted to multi-options (Feb 2017-) and previous options conversion removed: Yes
 
-<<<<<<< HEAD
-if (!class_exists('UpdraftPlus_BackupModule')) require_once(UPDRAFTPLUS_DIR.'/methods/backup-module.php');
-=======
 if (!class_exists('UpdraftPlus_BackupModule')) updraft_try_include_file('methods/backup-module.php', 'require_once');
->>>>>>> update
 
 // Fix a potential problem for users who had the short-lived 1.12.35-1.12.38 free versions (see: https://wordpress.org/support/topic/1-12-37-dropbox-auth-broken/page/2/#post-8981457)
 // Can be removed after a few months
@@ -65,15 +61,9 @@ class UpdraftPlus_BackupModule_dropbox extends UpdraftPlus_BackupModule {
 				$upload_rate = $data_since_last_tick / max($time_since_last_tick, 1);
 				$upload_secs = min(floor($job_run_time), 10);
 				if ($job_run_time < 15) $upload_secs = max(6, $job_run_time*0.6);
-<<<<<<< HEAD
-				$new_chunk = max(min($upload_secs * $upload_rate * 0.9, 10485760), 1048576);
-				$new_chunk = $new_chunk - ($new_chunk % 524288);
-				$chunk_size = (int) $new_chunk;
-=======
 				$new_chunk = (int) max(min($upload_secs * $upload_rate * 0.9, 10485760), 1048576);
 				$new_chunk = $new_chunk - ($new_chunk % 524288);
 				$chunk_size = $new_chunk;
->>>>>>> update
 				$storage->setChunkSize($chunk_size);
 				$updraftplus->jobdata_set('dropbox_chunk_size', $chunk_size);
 			}
@@ -200,13 +190,8 @@ class UpdraftPlus_BackupModule_dropbox extends UpdraftPlus_BackupModule {
 		$opts = $this->get_options();
 		
 		if (empty($opts['tk_access_token'])) {
-<<<<<<< HEAD
-			$this->log('You do not appear to be authenticated with Dropbox (1)');
-			$this->log(__('You do not appear to be authenticated with Dropbox', 'updraftplus'), 'error');
-=======
 			$this->log('You are not authenticated with Dropbox (1)');
 			$this->log(__('You are not authenticated with Dropbox', 'updraftplus'), 'error');
->>>>>>> update
 			return false;
 		}
 		
@@ -223,11 +208,7 @@ class UpdraftPlus_BackupModule_dropbox extends UpdraftPlus_BackupModule {
 
 		try {
 			$dropbox = $this->bootstrap();
-<<<<<<< HEAD
-			if (false === $dropbox) throw new Exception(__('You do not appear to be authenticated with Dropbox', 'updraftplus'));
-=======
 			if (false === $dropbox) throw new Exception(__('You are not authenticated with Dropbox', 'updraftplus'));
->>>>>>> update
 			$this->log("access gained; setting chunk size to: ".round($chunk_size/1024, 1)." KB");
 			$dropbox->setChunkSize($chunk_size);
 		} catch (Exception $e) {
@@ -395,11 +376,7 @@ class UpdraftPlus_BackupModule_dropbox extends UpdraftPlus_BackupModule {
 	}
 
 	/**
-<<<<<<< HEAD
-	 * This method gets a list of files from the remote stoage that match the string passed in and returns an array of backups
-=======
 	 * This method gets a list of files from the remote storage that match the string passed in and returns an array of backups
->>>>>>> update
 	 *
 	 * @param  String $match a substring to require (tested via strpos() !== false)
 	 * @return Array
@@ -501,13 +478,8 @@ class UpdraftPlus_BackupModule_dropbox extends UpdraftPlus_BackupModule {
 		$opts = $this->get_options();
 
 		if (empty($opts['tk_access_token'])) {
-<<<<<<< HEAD
-			$this->log('You do not appear to be authenticated with Dropbox (3)');
-			$this->log(sprintf(__('You do not appear to be authenticated with %s (whilst deleting)', 'updraftplus'), 'Dropbox'), 'warning');
-=======
 			$this->log('You are not authenticated with Dropbox (3)');
 			$this->log(sprintf(__('You are not authenticated with %s (whilst deleting)', 'updraftplus'), 'Dropbox'), 'warning');
->>>>>>> update
 			return 'authentication_fail';
 		}
 
@@ -552,13 +524,8 @@ class UpdraftPlus_BackupModule_dropbox extends UpdraftPlus_BackupModule {
 		$opts = $this->get_options();
 
 		if (empty($opts['tk_access_token'])) {
-<<<<<<< HEAD
-			$this->log('You do not appear to be authenticated with Dropbox (4)');
-			$this->log(sprintf(__('You do not appear to be authenticated with %s', 'updraftplus'), 'Dropbox'), 'error');
-=======
 			$this->log('You are not authenticated with Dropbox (4)');
 			$this->log(sprintf(__('You are not authenticated with %s', 'updraftplus'), 'Dropbox'), 'error');
->>>>>>> update
 			return false;
 		}
 
@@ -594,11 +561,7 @@ class UpdraftPlus_BackupModule_dropbox extends UpdraftPlus_BackupModule {
 	 *
 	 * @return String - the data downloaded
 	 */
-<<<<<<< HEAD
-	public function chunked_download($file, $headers, $data, $fh) {// phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.Found
-=======
 	public function chunked_download($file, $headers, $data, $fh) {// phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.Found -- Unused parameter is present because the caller from UpdraftPlus class uses 4 arguments.
->>>>>>> update
 
 		$opts = $this->get_options();// phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- filter use
 		$storage = $this->get_storage();
@@ -623,8 +586,6 @@ class UpdraftPlus_BackupModule_dropbox extends UpdraftPlus_BackupModule {
 	}
 
 	/**
-<<<<<<< HEAD
-=======
 	 * Retrieve a list of template properties by taking all the persistent variables and methods of the parent class and combining them with the ones that are unique to this module, also the necessary HTML element attributes and texts which are also unique only to this backup module
 	 * NOTE: Please sanitise all strings that are required to be shown as HTML content on the frontend side (i.e. wp_kses())
 	 *
@@ -656,36 +617,11 @@ class UpdraftPlus_BackupModule_dropbox extends UpdraftPlus_BackupModule {
 	}
 
 	/**
->>>>>>> update
 	 * Get the pre configuration template
 	 *
 	 * @return String - the template
 	 */
 	public function get_pre_configuration_template() {
-<<<<<<< HEAD
-
-		global $updraftplus_admin;
-
-		$classes = $this->get_css_classes(false);
-		
-		?>
-			<tr class="<?php echo $classes . ' ' . 'dropbox_pre_config_container';?>">
-				<td colspan="2">
-					<img alt="<?php _e(sprintf(__('%s logo', 'updraftplus'), 'Dropbox')); ?>" src="<?php echo UPDRAFTPLUS_URL.'/images/dropbox-logo.png'; ?>">
-					<br>
-					<p>
-						<?php
-							global $updraftplus_admin;
-							$updraftplus_admin->curl_check('Dropbox', false, 'dropbox');
-						?>
-					</p>
-					<p>
-						<?php echo sprintf(__('Please read %s for use of our %s authorization app (none of your backup data is sent to us).', 'updraftplus'), '<a target="_blank" href="https://updraftplus.com/faqs/what-is-your-privacy-policy-for-the-use-of-your-dropbox-app/">'.__('this privacy policy', 'updraftplus').'</a>', 'Dropbox');?>
-					</p>
-				</td>
-			</tr>
-
-=======
 		?>
 			<tr class="{{get_template_css_classes false}} {{method_id}}_pre_config_container">
 				<td colspan="2">
@@ -699,13 +635,10 @@ class UpdraftPlus_BackupModule_dropbox extends UpdraftPlus_BackupModule {
 					</p>
 				</td>
 			</tr>
->>>>>>> update
 		<?php
 	}
 
 	/**
-<<<<<<< HEAD
-=======
 	 * Get remote storage partial templates, the partial template is recognised by its name. To find out a name of partial template, look for the partial call syntax in the template, it's enclosed by double curly braces (i.e. {{> partial_template_name }})
 	 *
 	 * @return Array an associative array keyed by name of the partial templates
@@ -724,31 +657,12 @@ class UpdraftPlus_BackupModule_dropbox extends UpdraftPlus_BackupModule {
 	}
 
 	/**
->>>>>>> update
 	 * Get the configuration template
 	 *
 	 * @return String - the template, ready for substitutions to be carried out
 	 */
 	public function get_configuration_template() {
 		ob_start();
-<<<<<<< HEAD
-		$classes = $this->get_css_classes();
-
-		$defmsg = '<tr class="'.$classes.'"><td></td><td><strong>'.__('Need to use sub-folders?', 'updraftplus').'</strong> '.sprintf(__('Backups are saved in %s.', 'updraftplus'), 'apps/UpdraftPlus').' '.sprintf(__('If you backup several sites into the same Dropbox and want to organize with sub-folders, then %scheck out Premium%s', 'updraftplus'), '<a href="'.apply_filters("updraftplus_com_link", "https://updraftplus.com/shop/").'" target="_blank">', '</a>').'</td></tr>';
-				
-		$extra_config = apply_filters('updraftplus_dropbox_extra_config_template', $defmsg, $this);
-		echo $extra_config;
-		?>
-			<tr class="<?php echo $classes;?>">
-				<th><?php echo sprintf(__('Authenticate with %s', 'updraftplus'), __('Dropbox', 'updraftplus'));?>:</th>
-				<td>
-					{{#if is_authenticated}}
-					<?php
-						echo "<p><strong>".__('(You appear to be already authenticated).', 'updraftplus')."</strong>";
-						$this->get_deauthentication_link();
-						echo '</p>';
-					?>
-=======
 		?>
 			{{#> dropbox_additional_configuration_top}}
 			{{/dropbox_additional_configuration_top}}
@@ -760,49 +674,18 @@ class UpdraftPlus_BackupModule_dropbox extends UpdraftPlus_BackupModule {
 						<strong>{{already_authenticated_label}}</strong>
 						<a class="updraft_deauthlink" href="{{admin_page_url}}?action=updraftmethod-{{method_id}}-auth&page=updraftplus&updraftplus_{{method_id}}auth=deauth&nonce={{deauthentication_nonce}}&updraftplus_instance={{instance_id}}" data-instance_id="{{instance_id}}" data-remote_method="{{method_id}}">{{deauthentication_link_text}}</a>
 					</p>
->>>>>>> update
 					{{/if}}
 					{{#if ownername_sentence}}
 						<br/>
 						{{ownername_sentence}}
 					{{/if}}
-<<<<<<< HEAD
-					<?php
-						echo '<p>';
-						$this->get_authentication_link();
-						echo '</p>';
-					?>			
-=======
 					<p>
 					{{authentication_label}} <a class="updraft_authlink" href="{{admin_page_url}}?&action=updraftmethod-{{method_id}}-auth&page=updraftplus&updraftplus_{{method_id}}auth=doit&nonce={{storage_auth_nonce}}&updraftplus_instance={{instance_id}}" data-instance_id="{{instance_id}}" data-remote_method="{{method_id}}">{{{authentication_link_text}}}</a>
 					</p>
->>>>>>> update
 				</td>
 			</tr>
 			{{!-- Legacy: only show this next setting to old users who had a setting stored --}}
 			{{#if old_user_settings}}
-<<<<<<< HEAD
-				<tr class="<?php echo $classes;?>">
-					<th></th>
-					<td>
-						<?php echo '<p>'.htmlspecialchars(__('You must add the following as the authorised redirect URI in your Dropbox console (under "API Settings") when asked', 'updraftplus')).': <kbd>'.UpdraftPlus_Options::admin_page_url().'?page=updraftplus&action=updraftmethod-dropbox-auth</kbd></p>'; ?>
-					</td>
-				</tr>
-				<tr class="<?php echo $classes;?>">
-					<th>Your Dropbox App Key:</th>
-					<td><input type="text" autocomplete="off" style="width:332px" <?php $this->output_settings_field_name_and_id('appkey');?> value="{{appkey}}" /></td>
-				</tr>
-				<tr class="<?php echo $classes;?>">
-					<th>Your Dropbox App Secret:</th>
-					<td><input type="text" style="width:332px" <?php $this->output_settings_field_name_and_id('secret');?> value="{{secret}}" /></td>
-				</tr>
-			{{else}}
-			<?php if (false === strpos($extra_config, '<input')) {
-				// We need to make sure that it is not the case that the module has no settings whatsoever - this can result in the module being effectively invisible.
-				?>
-				<input type="hidden" <?php $this->output_settings_field_name_and_id('dummy-nosave');?> value="0">
-			<?php } ?>
-=======
 				<tr class="{{get_template_css_classes true}}">
 					<th></th>
 					<td>
@@ -822,13 +705,10 @@ class UpdraftPlus_BackupModule_dropbox extends UpdraftPlus_BackupModule {
 				{{!-- We need to make sure that it is not the case that the module has no settings whatsoever - this can result in the module being effectively invisible. --}}
 				<input type="hidden" id="{{get_template_input_attribute_value "id" "dummy-nosave"}}" name="{{get_template_input_attribute_value "name" "dummy-nosave"}}" value="0">
 				{{/unless}}
->>>>>>> update
 			{{/if}}
 		<?php
 		return ob_get_clean();
 	}
-<<<<<<< HEAD
-=======
 
 	/**
 	 * Generates ownername with email
@@ -853,7 +733,6 @@ class UpdraftPlus_BackupModule_dropbox extends UpdraftPlus_BackupModule {
 
 	   return $ownername_with_email;
 	}
->>>>>>> update
 	
 	/**
 	 * Modifies handerbar template options
@@ -864,16 +743,11 @@ class UpdraftPlus_BackupModule_dropbox extends UpdraftPlus_BackupModule {
 	public function transform_options_for_template($opts) {
 		if (!empty($opts['tk_access_token'])) {
 			$opts['ownername'] = empty($opts['ownername']) ? '' : $opts['ownername'];
-<<<<<<< HEAD
-			if ($opts['ownername']) {
-				$opts['ownername_sentence']	= sprintf(__("Account holder's name: %s.", 'updraftplus'), $opts['ownername']).' ';
-=======
 			$opts['email'] = empty($opts['email']) ? '' : $opts['email'];
 			$ownername_with_email = $this->generate_ownername_with_email($opts);
 			
 			if ($ownername_with_email) {
 				$opts['ownername_sentence']	= sprintf(__("Account holder's name: %s.", 'updraftplus'), $ownername_with_email).' ';
->>>>>>> update
 			}
 			$opts['is_authenticated'] = true;
 		}
@@ -1038,29 +912,17 @@ class UpdraftPlus_BackupModule_dropbox extends UpdraftPlus_BackupModule {
 		$this->log(__('Success:', 'updraftplus').' '.sprintf(__('you have authenticated your %s account', 'updraftplus'), 'Dropbox'));
 
 		if (empty($account_info['code']) || "200" != $account_info['code']) {
-<<<<<<< HEAD
-			$message .= " (".__('though part of the returned information was not as expected - your mileage may vary', 'updraftplus').") ". $account_info['code'];
-=======
 			$message .= " (".__('though part of the returned information was not as expected - whether this indicates a real problem cannot be determined', 'updraftplus').") ". $account_info['code'];
->>>>>>> update
 			if (!empty($accountinfo_err)) $message .= "<br>".htmlspecialchars($accountinfo_err);
 		} else {
 			$body = $account_info['body'];
 			$name = '';
-<<<<<<< HEAD
-=======
 			$email = '';
->>>>>>> update
 			if (isset($body->display_name)) {
 				$name = $body->display_name;
 			} else {
 				$name = $body->name->display_name;
 			}
-<<<<<<< HEAD
-			$message .= ". <br>".sprintf(__('Your %s account name: %s', 'updraftplus'), 'Dropbox', htmlspecialchars($name));
-			$opts = $this->get_options();
-			$opts['ownername'] = $name;
-=======
 			if (isset($body->email)) {
 				$email = $body->email;
 			}
@@ -1070,7 +932,6 @@ class UpdraftPlus_BackupModule_dropbox extends UpdraftPlus_BackupModule {
 			$opts['email'] = $email;
 			$ownername_with_email = $this->generate_ownername_with_email($opts);
 			$message .= ". <br>".sprintf(__('Your %s account name: %s', 'updraftplus'), 'Dropbox', htmlspecialchars($ownername_with_email));
->>>>>>> update
 			$this->set_options($opts, true);
 
 			try {
@@ -1080,11 +941,7 @@ class UpdraftPlus_BackupModule_dropbox extends UpdraftPlus_BackupModule {
 				$quota_info = $dropbox->quotaInfo(array('timeout' => 190));
 
 				if (empty($quota_info['code']) || "200" != $quota_info['code']) {
-<<<<<<< HEAD
-					$message .= " (".__('though part of the returned information was not as expected - your mileage may vary', 'updraftplus').")". $quota_info['code'];
-=======
 					$message .= " (".__('though part of the returned information was not as expected - whether this indicates a real problem cannot be determined', 'updraftplus').")". $quota_info['code'];
->>>>>>> update
 					if (!empty($accountinfo_err)) $message .= "<br>".htmlspecialchars($accountinfo_err);
 				} else {
 					$body = $quota_info['body'];
@@ -1161,16 +1018,6 @@ class UpdraftPlus_BackupModule_dropbox extends UpdraftPlus_BackupModule {
 		// Dropbox APIv1 is dead, but we'll keep the variable in case v3 is ever announced
 		$dropbox_api = 'Dropbox2';
 
-<<<<<<< HEAD
-		include_once(UPDRAFTPLUS_DIR.'/includes/'.$dropbox_api.'/API.php');
-		include_once(UPDRAFTPLUS_DIR.'/includes/'.$dropbox_api.'/Exception.php');
-		include_once(UPDRAFTPLUS_DIR.'/includes/'.$dropbox_api.'/OAuth/Consumer/ConsumerAbstract.php');
-		include_once(UPDRAFTPLUS_DIR.'/includes/'.$dropbox_api.'/OAuth/Storage/StorageInterface.php');
-		include_once(UPDRAFTPLUS_DIR.'/includes/'.$dropbox_api.'/OAuth/Storage/Encrypter.php');
-		include_once(UPDRAFTPLUS_DIR.'/includes/'.$dropbox_api.'/OAuth/Storage/WordPress.php');
-		include_once(UPDRAFTPLUS_DIR.'/includes/'.$dropbox_api.'/OAuth/Consumer/Curl.php');
-		// require_once(UPDRAFTPLUS_DIR.'/includes/'.$dropbox_api.'/OAuth/Consumer/WordPress.php');
-=======
 		updraft_try_include_file('includes/'.$dropbox_api.'/API.php', 'include_once');
 		updraft_try_include_file('includes/'.$dropbox_api.'/Exception.php', 'include_once');
 		updraft_try_include_file('includes/'.$dropbox_api.'/OAuth/Consumer/ConsumerAbstract.php', 'include_once');
@@ -1179,7 +1026,6 @@ class UpdraftPlus_BackupModule_dropbox extends UpdraftPlus_BackupModule {
 		updraft_try_include_file('includes/'.$dropbox_api.'/OAuth/Storage/WordPress.php', 'include_once');
 		updraft_try_include_file('includes/'.$dropbox_api.'/OAuth/Consumer/Curl.php', 'include_once');
 		// updraft_try_include_file('includes/'.$dropbox_api.'/OAuth/Consumer/WordPress.php', 'require_once');
->>>>>>> update
 
 		$opts = $this->get_options();
 
@@ -1191,17 +1037,11 @@ class UpdraftPlus_BackupModule_dropbox extends UpdraftPlus_BackupModule {
 		// Set the callback URL
 		$callbackhome = UpdraftPlus_Options::admin_page_url().'?page=updraftplus&action=updraftmethod-dropbox-auth';
 		$callback = defined('UPDRAFTPLUS_DROPBOX_AUTH_RETURN_URL') ? UPDRAFTPLUS_DROPBOX_AUTH_RETURN_URL : 'https://auth.updraftplus.com/auth/dropbox/';
-<<<<<<< HEAD
-		
-		$instance_id = $this->get_instance_id();
-		// Instantiate the Encrypter and storage objects
-=======
 
 		if (defined('UPDRAFTPLUS_CUSTOM_DROPBOX_APP') && UPDRAFTPLUS_CUSTOM_DROPBOX_APP) $callback = $callbackhome;
 		
 		$instance_id = $this->get_instance_id();
 		// Instantiate the Encryptor and storage objects
->>>>>>> update
 		$encrypter = new Dropbox_Encrypter('ThisOneDoesNotMatterBeyondLength');
 
 		// Instantiate the storage

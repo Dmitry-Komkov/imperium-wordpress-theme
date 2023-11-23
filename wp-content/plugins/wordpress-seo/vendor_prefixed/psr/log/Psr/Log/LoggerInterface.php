@@ -22,13 +22,8 @@ interface LoggerInterface
     /**
      * System is unusable.
      *
-<<<<<<< HEAD
-     * @param string $message
-     * @param array  $context
-=======
      * @param string  $message
      * @param mixed[] $context
->>>>>>> update
      *
      * @return void
      */
@@ -39,13 +34,8 @@ interface LoggerInterface
      * Example: Entire website down, database unavailable, etc. This should
      * trigger the SMS alerts and wake you up.
      *
-<<<<<<< HEAD
-     * @param string $message
-     * @param array  $context
-=======
      * @param string  $message
      * @param mixed[] $context
->>>>>>> update
      *
      * @return void
      */
@@ -55,13 +45,8 @@ interface LoggerInterface
      *
      * Example: Application component unavailable, unexpected exception.
      *
-<<<<<<< HEAD
-     * @param string $message
-     * @param array  $context
-=======
      * @param string  $message
      * @param mixed[] $context
->>>>>>> update
      *
      * @return void
      */
@@ -70,13 +55,8 @@ interface LoggerInterface
      * Runtime errors that do not require immediate action but should typically
      * be logged and monitored.
      *
-<<<<<<< HEAD
-     * @param string $message
-     * @param array  $context
-=======
      * @param string  $message
      * @param mixed[] $context
->>>>>>> update
      *
      * @return void
      */
@@ -87,13 +67,8 @@ interface LoggerInterface
      * Example: Use of deprecated APIs, poor use of an API, undesirable things
      * that are not necessarily wrong.
      *
-<<<<<<< HEAD
-     * @param string $message
-     * @param array  $context
-=======
      * @param string  $message
      * @param mixed[] $context
->>>>>>> update
      *
      * @return void
      */
@@ -101,13 +76,8 @@ interface LoggerInterface
     /**
      * Normal but significant events.
      *
-<<<<<<< HEAD
-     * @param string $message
-     * @param array  $context
-=======
      * @param string  $message
      * @param mixed[] $context
->>>>>>> update
      *
      * @return void
      */
@@ -117,13 +87,8 @@ interface LoggerInterface
      *
      * Example: User logs in, SQL logs.
      *
-<<<<<<< HEAD
-     * @param string $message
-     * @param array  $context
-=======
      * @param string  $message
      * @param mixed[] $context
->>>>>>> update
      *
      * @return void
      */
@@ -131,13 +96,8 @@ interface LoggerInterface
     /**
      * Detailed debug information.
      *
-<<<<<<< HEAD
-     * @param string $message
-     * @param array  $context
-=======
      * @param string  $message
      * @param mixed[] $context
->>>>>>> update
      *
      * @return void
      */
@@ -145,13 +105,6 @@ interface LoggerInterface
     /**
      * Logs with an arbitrary level.
      *
-<<<<<<< HEAD
-     * @param mixed  $level
-     * @param string $message
-     * @param array  $context
-     *
-     * @return void
-=======
      * @param mixed   $level
      * @param string  $message
      * @param mixed[] $context
@@ -159,7 +112,6 @@ interface LoggerInterface
      * @return void
      *
      * @throws \Psr\Log\InvalidArgumentException
->>>>>>> update
      */
     public function log($level, $message, array $context = array());
 }

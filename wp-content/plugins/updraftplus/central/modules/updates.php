@@ -217,11 +217,7 @@ class UpdraftCentral_Updates_Commands extends UpdraftCentral_Commands {
 			return $status;
 
 		} else {
-<<<<<<< HEAD
-			// An unhandled error occured
-=======
 			// An unhandled error occurred
->>>>>>> update
 			$status['error'] = 'update_failed';
 			return $status;
 		}
@@ -247,11 +243,7 @@ class UpdraftCentral_Updates_Commands extends UpdraftCentral_Commands {
 		// THis is included so we can get $wp_version
 		include(ABSPATH.WPINC.'/version.php');
 		
-<<<<<<< HEAD
-		$status['oldVersion'] = $wp_version;// phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UndefinedVariable
-=======
 		$status['oldVersion'] = $wp_version;// phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UndefinedVariable -- The variable is defined inside the ABSPATH.WPINC.'/version.php'.
->>>>>>> update
 		
 		if (!current_user_can('update_core')) {
 			$status['error'] = 'updates_permission_denied';
@@ -262,11 +254,7 @@ class UpdraftCentral_Updates_Commands extends UpdraftCentral_Commands {
 
 		wp_version_check();
 		
-<<<<<<< HEAD
-		$locale = get_locale();// phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable
-=======
 		$locale = get_locale();// phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- Unused variable is for future use.
->>>>>>> update
 		
 		$core_update_key = false;
 		$core_update_latest_version = false;
@@ -274,17 +262,10 @@ class UpdraftCentral_Updates_Commands extends UpdraftCentral_Commands {
 		$get_core_updates = get_core_updates();
 		
 		// THis is included so we can get $wp_version
-<<<<<<< HEAD
-		@include(ABSPATH.WPINC.'/version.php');// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
-		
-		foreach ($get_core_updates as $k => $core_update) {
-			if (isset($core_update->version) && version_compare($core_update->version, $wp_version, '>') && version_compare($core_update->version, $core_update_latest_version, '>')) {// phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UndefinedVariable
-=======
 		@include(ABSPATH.WPINC.'/version.php');// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged -- Silenced to suppress errors that may arise because of the function.
 		
 		foreach ($get_core_updates as $k => $core_update) {
 			if (isset($core_update->version) && version_compare($core_update->version, $wp_version, '>') && version_compare($core_update->version, $core_update_latest_version, '>')) {// phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UndefinedVariable -- The variable is defined inside the ABSPATH.WPINC.'/version.php'.
->>>>>>> update
 				$core_update_latest_version = $core_update->version;
 				$core_update_key = $k;
 			}
@@ -331,11 +312,7 @@ class UpdraftCentral_Updates_Commands extends UpdraftCentral_Commands {
 			return $status;
 			
 		} else {
-<<<<<<< HEAD
-			// An unhandled error occured
-=======
 			// An unhandled error occurred
->>>>>>> update
 			$status['error'] = 'update_failed';
 			return $status;
 		}
@@ -431,11 +408,7 @@ class UpdraftCentral_Updates_Commands extends UpdraftCentral_Commands {
 			return $status;
 
 		} else {
-<<<<<<< HEAD
-			// An unhandled error occured
-=======
 			// An unhandled error occurred
->>>>>>> update
 			$status['error'] = 'update_failed';
 			return $status;
 		}
@@ -475,11 +448,7 @@ class UpdraftCentral_Updates_Commands extends UpdraftCentral_Commands {
 		} elseif (is_bool($result) && $result) {
 			$status['error'] = 'up_to_date';
 		} else {
-<<<<<<< HEAD
-			// An unhandled error occured
-=======
 			// An unhandled error occurred
->>>>>>> update
 			$status['error'] = 'update_failed';
 		}
 
@@ -808,17 +777,10 @@ class UpdraftCentral_Updates_Commands extends UpdraftCentral_Commands {
 				$core_update_latest_version = false;
 				
 				// THis is included so we can get $wp_version
-<<<<<<< HEAD
-				@include(ABSPATH.WPINC.'/version.php');// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
-				
-				foreach ($get_core_updates as $k => $core_update) {
-					if (isset($core_update->version) && version_compare($core_update->version, $wp_version, '>') && version_compare($core_update->version, $core_update_latest_version, '>')) {// phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UndefinedVariable
-=======
 				@include(ABSPATH.WPINC.'/version.php');// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged -- Silenced to suppress errors that may arise because of the function.
 				
 				foreach ($get_core_updates as $k => $core_update) {
 					if (isset($core_update->version) && version_compare($core_update->version, $wp_version, '>') && version_compare($core_update->version, $core_update_latest_version, '>')) {// phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UndefinedVariable -- The variable is defined inside the ABSPATH.WPINC.'/version.php'.
->>>>>>> update
 						$core_update_latest_version = $core_update->version;
 						$core_update_key = $k;
 					}
@@ -836,22 +798,14 @@ class UpdraftCentral_Updates_Commands extends UpdraftCentral_Commands {
 					
 					// We're making sure here to only return those items for update that has new
 					// versions greater than the currently installed version.
-<<<<<<< HEAD
-					if (version_compare($wp_version, $update->version, '<')) {// phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UndefinedVariable
-=======
 					if (version_compare($wp_version, $update->version, '<')) {// phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UndefinedVariable -- The variable is defined inside the ABSPATH.WPINC.'/version.php'.
->>>>>>> update
 						$core_updates[] = array(
 							'download' => $update->download,
 							'version' => $update->version,
 							'php_version' => $update->php_version,
 							'mysql_version' => $update->mysql_version,
 							'installed' => array(
-<<<<<<< HEAD
-								'version' => $wp_version,// phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UndefinedVariable
-=======
 								'version' => $wp_version,// phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UndefinedVariable -- The variable is defined inside the ABSPATH.WPINC.'/version.php'.
->>>>>>> update
 								'mysql' => $mysql_version,
 								'php' => PHP_VERSION,
 								'is_mysql' => $is_mysql,

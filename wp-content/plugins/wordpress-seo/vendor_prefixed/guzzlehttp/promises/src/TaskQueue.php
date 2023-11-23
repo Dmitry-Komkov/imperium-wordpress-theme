@@ -1,9 +1,6 @@
 <?php
 
-<<<<<<< HEAD
-=======
 declare (strict_types=1);
->>>>>>> update
 namespace YoastSEO_Vendor\GuzzleHttp\Promise;
 
 /**
@@ -14,27 +11,17 @@ namespace YoastSEO_Vendor\GuzzleHttp\Promise;
  * by calling the `run()` function of the global task queue in an event loop.
  *
  *     GuzzleHttp\Promise\Utils::queue()->run();
-<<<<<<< HEAD
-=======
  *
  * @final
->>>>>>> update
  */
 class TaskQueue implements \YoastSEO_Vendor\GuzzleHttp\Promise\TaskQueueInterface
 {
     private $enableShutdown = \true;
     private $queue = [];
-<<<<<<< HEAD
-    public function __construct($withShutdown = \true)
-    {
-        if ($withShutdown) {
-            \register_shutdown_function(function () {
-=======
     public function __construct(bool $withShutdown = \true)
     {
         if ($withShutdown) {
             \register_shutdown_function(function () : void {
->>>>>>> update
                 if ($this->enableShutdown) {
                     // Only run the tasks if an E_ERROR didn't occur.
                     $err = \error_get_last();
@@ -45,17 +32,6 @@ class TaskQueue implements \YoastSEO_Vendor\GuzzleHttp\Promise\TaskQueueInterfac
             });
         }
     }
-<<<<<<< HEAD
-    public function isEmpty()
-    {
-        return !$this->queue;
-    }
-    public function add(callable $task)
-    {
-        $this->queue[] = $task;
-    }
-    public function run()
-=======
     public function isEmpty() : bool
     {
         return !$this->queue;
@@ -65,7 +41,6 @@ class TaskQueue implements \YoastSEO_Vendor\GuzzleHttp\Promise\TaskQueueInterfac
         $this->queue[] = $task;
     }
     public function run() : void
->>>>>>> update
     {
         while ($task = \array_shift($this->queue)) {
             /** @var callable $task */
@@ -83,11 +58,7 @@ class TaskQueue implements \YoastSEO_Vendor\GuzzleHttp\Promise\TaskQueueInterfac
      *
      * Note: This shutdown will occur before any destructors are triggered.
      */
-<<<<<<< HEAD
-    public function disableShutdown()
-=======
     public function disableShutdown() : void
->>>>>>> update
     {
         $this->enableShutdown = \false;
     }

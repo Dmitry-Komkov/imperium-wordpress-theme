@@ -16,12 +16,9 @@ class WebPage extends Abstract_Schema_Piece {
 	 * @return bool
 	 */
 	public function is_needed() {
-<<<<<<< HEAD
-=======
 		if ( $this->context->indexable->object_type === 'unknown' ) {
 			return false;
 		}
->>>>>>> update
 		return ! ( $this->context->indexable->object_type === 'system-page' && $this->context->indexable->object_sub_type === '404' );
 	}
 
@@ -51,11 +48,7 @@ class WebPage extends Abstract_Schema_Piece {
 			}
 		}
 
-<<<<<<< HEAD
-		$this->add_image( $data );
-=======
 		$data = $this->add_image( $data );
->>>>>>> update
 
 		if ( $this->context->indexable->object_type === 'post' ) {
 			$data['datePublished'] = $this->helpers->date->format( $this->context->post->post_date_gmt );
@@ -107,20 +100,13 @@ class WebPage extends Abstract_Schema_Piece {
 	 *
 	 * @param array $data WebPage schema data.
 	 */
-<<<<<<< HEAD
-	public function add_image( &$data ) {
-=======
 	public function add_image( $data ) {
->>>>>>> update
 		if ( $this->context->has_image ) {
 			$data['primaryImageOfPage'] = [ '@id' => $this->context->canonical . Schema_IDs::PRIMARY_IMAGE_HASH ];
 			$data['image']              = [ '@id' => $this->context->canonical . Schema_IDs::PRIMARY_IMAGE_HASH ];
 			$data['thumbnailUrl']       = $this->context->main_image_url;
 		}
-<<<<<<< HEAD
-=======
 		return $data;
->>>>>>> update
 	}
 
 	/**
@@ -145,11 +131,7 @@ class WebPage extends Abstract_Schema_Piece {
 	 */
 	private function add_potential_action( $data ) {
 		$url = $this->context->canonical;
-<<<<<<< HEAD
-		if ( $data['@type'] === 'CollectionPage' || ( is_array( $data['@type'] ) && in_array( 'CollectionPage', $data['@type'], true ) ) ) {
-=======
 		if ( $data['@type'] === 'CollectionPage' || ( \is_array( $data['@type'] ) && \in_array( 'CollectionPage', $data['@type'], true ) ) ) {
->>>>>>> update
 			return $data;
 		}
 

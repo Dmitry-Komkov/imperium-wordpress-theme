@@ -2,10 +2,6 @@
 
 namespace Yoast\WP\SEO\Helpers\Schema;
 
-<<<<<<< HEAD
-use Yoast\WP\SEO\Config\Schema_IDs;
-=======
->>>>>>> update
 use Yoast\WP\SEO\Helpers\Image_Helper as Main_Image_Helper;
 
 /**
@@ -52,17 +48,6 @@ class Image_Helper {
 	/**
 	 * Find an image based on its URL and generate a Schema object for it.
 	 *
-<<<<<<< HEAD
-	 * @param string $schema_id The `@id` to use for the returned image.
-	 * @param string $url       The image URL to base our object on.
-	 * @param string $caption   An optional caption.
-	 * @param bool   $add_hash  Whether a hash will be added as a suffix in the @id.
-	 *
-	 * @return array Schema ImageObject array.
-	 */
-	public function generate_from_url( $schema_id, $url, $caption = '', $add_hash = false ) {
-		$attachment_id = $this->image->get_attachment_by_url( $url );
-=======
 	 * @param string $schema_id      The `@id` to use for the returned image.
 	 * @param string $url            The image URL to base our object on.
 	 * @param string $caption        An optional caption.
@@ -73,7 +58,6 @@ class Image_Helper {
 	 */
 	public function generate_from_url( $schema_id, $url, $caption = '', $add_hash = false, $use_link_table = true ) {
 		$attachment_id = $this->image->get_attachment_by_url( $url, $use_link_table );
->>>>>>> update
 		if ( $attachment_id > 0 ) {
 			return $this->generate_from_attachment_id( $schema_id, $attachment_id, $caption, $add_hash );
 		}

@@ -50,10 +50,6 @@ if ( ! class_exists( 'ACF_Form_Post' ) ) :
 			// globals
 			global $typenow;
 
-<<<<<<< HEAD
-			// restrict specific post types
-			$restricted = array( 'acf-field-group', 'attachment' );
-=======
 			$acf_post_types = acf_get_internal_post_types();
 
 			foreach ( $acf_post_types as $post_type ) {
@@ -62,7 +58,6 @@ if ( ! class_exists( 'ACF_Form_Post' ) ) :
 
 			// restrict specific post types
 			$restricted = array_merge( $acf_post_types, array( 'acf-taxonomy', 'attachment' ) );
->>>>>>> update
 			if ( in_array( $typenow, $restricted ) ) {
 				return;
 			}
@@ -311,11 +306,7 @@ if ( ! class_exists( 'ACF_Form_Post' ) ) :
 
 		function save_post( $post_id, $post ) {
 
-<<<<<<< HEAD
-			// bail ealry if no allowed to save this post type
-=======
 			// bail early if no allowed to save this post type
->>>>>>> update
 			if ( ! $this->allow_save_post( $post ) ) {
 				return $post_id;
 			}

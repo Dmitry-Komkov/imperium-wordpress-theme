@@ -2,15 +2,9 @@
 
 namespace Yoast\WP\SEO\Integrations\Front_End;
 
-<<<<<<< HEAD
-use Yoast\WP\SEO\Integrations\Integration_Interface;
-use Yoast\WP\SEO\Conditionals\Front_End_Conditional;
-use Yoast\WP\SEO\Helpers\Options_Helper;
-=======
 use Yoast\WP\SEO\Conditionals\Front_End_Conditional;
 use Yoast\WP\SEO\Helpers\Options_Helper;
 use Yoast\WP\SEO\Integrations\Integration_Interface;
->>>>>>> update
 use Yoast\WP\SEO\Surfaces\Meta_Surface;
 
 /**
@@ -66,14 +60,9 @@ class Feed_Improvements implements Integration_Interface {
 		\add_filter( 'get_bloginfo_rss', [ $this, 'filter_bloginfo_rss' ], 10, 2 );
 		\add_filter( 'document_title_separator', [ $this, 'filter_document_title_separator' ] );
 
-<<<<<<< HEAD
-		\add_action( 'do_feed_rss', [ $this, 'send_canonical_header' ], 9 );
-		\add_action( 'do_feed_rss2', [ $this, 'send_canonical_header' ], 9 );
-=======
 		\add_action( 'do_feed_rss', [ $this, 'handle_rss_feed' ], 9 );
 		\add_action( 'do_feed_rss2', [ $this, 'send_canonical_header' ], 9 );
 		\add_action( 'do_feed_rss2', [ $this, 'add_robots_headers' ], 9 );
->>>>>>> update
 	}
 
 	/**
@@ -93,12 +82,6 @@ class Feed_Improvements implements Integration_Interface {
 	}
 
 	/**
-<<<<<<< HEAD
-	 * Adds a canonical link header to the main canonical URL for the requested feed object.
-	 */
-	public function send_canonical_header() {
-		if ( \headers_sent() ) {
-=======
 	 * Makes sure send canonical header always runs, because this RSS hook does not support the for_comments parameter
 	 *
 	 * @return void
@@ -118,7 +101,6 @@ class Feed_Improvements implements Integration_Interface {
 	public function send_canonical_header( $for_comments ) {
 
 		if ( $for_comments || \headers_sent() ) {
->>>>>>> update
 			return;
 		}
 
@@ -129,8 +111,6 @@ class Feed_Improvements implements Integration_Interface {
 	}
 
 	/**
-<<<<<<< HEAD
-=======
 	 * Adds noindex, follow tag for comment feeds.
 	 *
 	 * @param bool $for_comments If the RSS feed is meant for a comment feed.
@@ -144,7 +124,6 @@ class Feed_Improvements implements Integration_Interface {
 	}
 
 	/**
->>>>>>> update
 	 * Makes sure the title separator set in Yoast SEO is used for all feeds.
 	 *
 	 * @param string $separator The separator from WordPress.

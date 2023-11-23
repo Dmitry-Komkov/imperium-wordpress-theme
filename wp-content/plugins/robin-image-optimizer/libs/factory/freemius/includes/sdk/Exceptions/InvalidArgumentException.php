@@ -1,13 +1,4 @@
 <?php
-<<<<<<< HEAD
-	if ( ! class_exists( 'Freemius_Exception' ) ) {
-		exit;
-	}
-
-	if ( ! class_exists( 'Freemius_InvalidArgumentException' ) ) {
-		class Freemius_InvalidArgumentException extends Freemius_Exception { }
-	}
-=======
 
 namespace WBCR\Factory_Freemius_157\Sdk;
 
@@ -22,4 +13,3 @@ if( !class_exists('WBCR\Factory_Freemius_157\Sdk\Freemius_Exception') ) {
 if( !class_exists('WBCR\Factory_Freemius_157\Sdk\Freemius_InvalidArgumentException') ) {
 	class Freemius_InvalidArgumentException extends Freemius_Exception { }
 }
->>>>>>> update

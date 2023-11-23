@@ -59,11 +59,7 @@ class WPSEO_Options {
 	protected function __construct() {
 		$this->register_hooks();
 
-<<<<<<< HEAD
-		foreach ( static::$options as $option_name => $option_class ) {
-=======
 		foreach ( static::$options as $option_class ) {
->>>>>>> update
 			static::register_option( call_user_func( [ $option_class, 'get_instance' ] ) );
 		}
 	}
@@ -563,10 +559,6 @@ class WPSEO_Options {
 	private static function get_lookup_table() {
 		$lookup_table = [];
 
-<<<<<<< HEAD
-
-=======
->>>>>>> update
 		foreach ( array_keys( static::$options ) as $option_name ) {
 			$full_option = static::get_option( $option_name );
 			foreach ( $full_option as $key => $value ) {

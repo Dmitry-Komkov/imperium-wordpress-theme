@@ -1,14 +1,8 @@
 <?php
 /**
-<<<<<<< HEAD
- * $Id: sitemap.php 1026247 2014-11-15 16:47:36Z arnee $
-
- *  Google XML Sitemaps Generator for WordPress
-=======
  * $Id: sitemap.php 2947864 2023-08-04 18:02:26Z auctollo $
 
  *  XML Sitemap Generator for Google
->>>>>>> update
  * ==============================================================================
 
  * This generator will create a sitemaps.org compliant sitemap of your WordPress site.
@@ -16,18 +10,6 @@
  * For additional details like installation instructions, please check the readme.txt and documentation.txt files.
 
  * Have fun!
-<<<<<<< HEAD
- * Arne
-
- * Info for WordPress:
- * ==============================================================================
- * Plugin Name: Google XML Sitemaps
- * Plugin URI: https://auctollo.com/
- * Description: This plugin improves SEO using sitemaps for best indexation by search engines like Google, Bing, Yahoo and others.
- * Version: 4.1.5
- * Author: Auctollo
- * Author URI: https://acutollo.com/
-=======
 
  * Info for WordPress:
  * ==============================================================================
@@ -37,17 +19,12 @@
  * Version: 4.1.13
  * Author: Auctollo
  * Author URI: https://auctollo.com/
->>>>>>> update
  * Text Domain: sitemap
  * Domain Path: /lang
 
 
-<<<<<<< HEAD
- * Copyright 2005 - 2018 ARNE BRACHHOLD  (email : himself - arnebrachhold - de)
-=======
  * Copyright 2019 - 2023 AUCTOLLO
  * Copyright 2005 - 2018 ARNE BRACHHOLD
->>>>>>> update
 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -59,11 +36,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
-<<<<<<< HEAD
- * @author Arne Brachhold
-=======
  * @author AUCTOLLO
->>>>>>> update
  * @package sitemap
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
@@ -72,10 +45,6 @@
  * Please see license.txt for the full license.
  */
 
-<<<<<<< HEAD
-define( 'SM_SUPPORTFEED_URL', 'https://wordpress.org/support/plugin/google-sitemap-generator/feed/' );
-
-=======
 global $wp_version;
 if ( (int) $wp_version > 4 ) {
 	include_once( ABSPATH . 'wp-admin/includes/plugin-install.php' ); //for plugins_api..
@@ -286,7 +255,6 @@ function ga_footer() {
 		}
 	}
 }
->>>>>>> update
 
 /**
  * Check if the requirements of the sitemap plugin are met and loads the actual loader
@@ -351,8 +319,6 @@ function sm_get_init_file() {
 	return __FILE__;
 }
 
-<<<<<<< HEAD
-=======
 /**
  * Register beta user consent function.
  */
@@ -415,7 +381,6 @@ function register_consent() {
 }
 
 
->>>>>>> update
 // Don't do anything if this file was called directly.
 if ( defined( 'ABSPATH' ) && defined( 'WPINC' ) && ! class_exists( 'GoogleSitemapGeneratorLoader', false ) ) {
 	sm_setup();

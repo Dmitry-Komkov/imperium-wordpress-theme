@@ -8,15 +8,9 @@
  */
 final class MonsterInsights_Notification_Bounce_Rate extends MonsterInsights_Notification_Event {
 
-<<<<<<< HEAD
-	public $notification_id = 'monsterinsights_notification_bounce_rate';
-	public $notification_interval = 30; // In days.
-	public $notification_type = array( 'basic', 'lite', 'master', 'plus', 'pro' );
-=======
 	public $notification_id       = 'monsterinsights_notification_bounce_rate';
 	public $notification_interval = 30; // In days.
 	public $notification_type     = array( 'basic', 'lite', 'master', 'plus', 'pro' );
->>>>>>> update
 	public $notification_category = 'insight';
 	public $notification_priority = 2;
 
@@ -34,17 +28,9 @@ final class MonsterInsights_Notification_Bounce_Rate extends MonsterInsights_Not
 		$bounce_rate = isset( $report['data']['infobox']['bounce']['value'] ) ? $report['data']['infobox']['bounce']['value'] : 0;
 
 		if ( $bounce_rate ) {
-<<<<<<< HEAD
-			$is_em = defined( 'EXACTMETRICS_VERSION' );
-
-			$learn_more_url = $is_em
-				? 'https://www.exactmetrics.com/epic-list-of-marketing-hacks-for-explosive-traffic-growth/'
-				: 'https://www.monsterinsights.com/how-to-reduce-bounce-rate/';
-=======
 			$is_em = function_exists( 'ExactMetrics' );
 
 			$learn_more_url = 'https://www.monsterinsights.com/how-to-reduce-bounce-rate/';
->>>>>>> update
 
 			$notification['title'] = sprintf( __( 'Your Website Bounce Rate is Higher Than %s', 'google-analytics-for-wordpress' ), $bounce_rate );
 			// Translators: Bounce rate notification content.
@@ -54,14 +40,6 @@ final class MonsterInsights_Notification_Bounce_Rate extends MonsterInsights_Not
 					'url'  => $this->get_view_url( 'monsterinsights-report-infobox-bounce-rate', 'monsterinsights_reports' ),
 					'text' => __( 'View Report', 'google-analytics-for-wordpress' ),
 				),
-<<<<<<< HEAD
-				'learn_more'  => array(
-					'url'         => $this->build_external_link( $learn_more_url ),
-					'text'        => __( 'Learn More', 'google-analytics-for-wordpress' ),
-					'is_external' => true,
-				),
-			);
-=======
 			);
 
 			if ( ! $is_em ) {
@@ -71,7 +49,6 @@ final class MonsterInsights_Notification_Bounce_Rate extends MonsterInsights_Not
 					'is_external' => true,
 				);
 			}
->>>>>>> update
 
 			return $notification;
 		}
@@ -82,8 +59,4 @@ final class MonsterInsights_Notification_Bounce_Rate extends MonsterInsights_Not
 }
 
 // initialize the class
-<<<<<<< HEAD
 new MonsterInsights_Notification_Bounce_Rate();
-=======
-new MonsterInsights_Notification_Bounce_Rate();
->>>>>>> update

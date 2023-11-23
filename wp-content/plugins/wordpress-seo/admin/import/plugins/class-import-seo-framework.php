@@ -15,11 +15,7 @@ class WPSEO_Import_SEO_Framework extends WPSEO_Plugin_Importer {
 	 *
 	 * @var string
 	 */
-<<<<<<< HEAD
-	protected $plugin_name = 'SEO Framework';
-=======
 	protected $plugin_name = 'The SEO Framework';
->>>>>>> update
 
 	/**
 	 * Meta key, used in SQL LIKE clause for delete query.

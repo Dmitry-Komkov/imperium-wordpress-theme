@@ -2,10 +2,7 @@
 
 namespace Yoast\WP\SEO;
 
-<<<<<<< HEAD
-=======
 use Throwable;
->>>>>>> update
 use WP_CLI;
 use YoastSEO_Vendor\Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -170,15 +167,11 @@ class Loader {
 	 */
 	protected function load_commands() {
 		foreach ( $this->commands as $class ) {
-<<<<<<< HEAD
-			$command = $this->container->get( $class );
-=======
 			$command = $this->get_class( $class );
 
 			if ( $command === null ) {
 				continue;
 			}
->>>>>>> update
 
 			WP_CLI::add_command( $class::get_namespace(), $command );
 		}
@@ -195,9 +188,6 @@ class Loader {
 				continue;
 			}
 
-<<<<<<< HEAD
-			$this->container->get( $class )->initialize();
-=======
 			$initializer = $this->get_class( $class );
 
 			if ( $initializer === null ) {
@@ -205,7 +195,6 @@ class Loader {
 			}
 
 			$initializer->initialize();
->>>>>>> update
 		}
 	}
 
@@ -220,9 +209,6 @@ class Loader {
 				continue;
 			}
 
-<<<<<<< HEAD
-			$this->container->get( $class )->register_hooks();
-=======
 			$integration = $this->get_class( $class );
 
 			if ( $integration === null ) {
@@ -230,7 +216,6 @@ class Loader {
 			}
 
 			$integration->register_hooks();
->>>>>>> update
 		}
 	}
 
@@ -245,9 +230,6 @@ class Loader {
 				continue;
 			}
 
-<<<<<<< HEAD
-			$this->container->get( $class )->register_routes();
-=======
 			$route = $this->get_class( $class );
 
 			if ( $route === null ) {
@@ -255,23 +237,10 @@ class Loader {
 			}
 
 			$route->register_routes();
->>>>>>> update
 		}
 	}
 
 	/**
-<<<<<<< HEAD
-	 * Checks if all conditionals of a given integration are met.
-	 *
-	 * @param Loadable_Interface $integration_class The class name of the integration.
-	 *
-	 * @return bool Whether or not all conditionals of the integration are met.
-	 */
-	protected function conditionals_are_met( $integration_class ) {
-		$conditionals = $integration_class::get_conditionals();
-		foreach ( $conditionals as $conditional ) {
-			if ( ! $this->container->get( $conditional )->is_met() ) {
-=======
 	 * Checks if all conditionals of a given loadable are met.
 	 *
 	 * @param string $loadable_class The class name of the loadable.
@@ -299,15 +268,12 @@ class Loader {
 		foreach ( $conditionals as $class ) {
 			$conditional = $this->get_class( $class );
 			if ( $conditional === null || ! $conditional->is_met() ) {
->>>>>>> update
 				return false;
 			}
 		}
 
 		return true;
 	}
-<<<<<<< HEAD
-=======
 
 	/**
 	 * Gets a class from the container.
@@ -333,5 +299,4 @@ class Loader {
 			throw $e;
 		}
 	}
->>>>>>> update
 }

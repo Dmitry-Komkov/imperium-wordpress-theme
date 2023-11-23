@@ -45,10 +45,7 @@ class WPSEO_Option_Social extends WPSEO_Option {
 		'youtube_url'           => '',
 		'wikipedia_url'         => '',
 		'other_social_urls'     => [],
-<<<<<<< HEAD
-=======
 		'mastodon_url'          => '',
->>>>>>> update
 	];
 
 	/**
@@ -73,13 +70,8 @@ class WPSEO_Option_Social extends WPSEO_Option {
 	 * @var array
 	 */
 	public static $twitter_card_types = [
-<<<<<<< HEAD
-		'summary'             => '',
-		'summary_large_image' => '',
-=======
 		'summary_large_image' => '',
 		// 'summary'             => '',
->>>>>>> update
 		// 'photo'               => '',
 		// 'gallery'             => '',
 		// 'app'                 => '',
@@ -115,10 +107,6 @@ class WPSEO_Option_Social extends WPSEO_Option {
 	 * @return void
 	 */
 	public function translate_defaults() {
-<<<<<<< HEAD
-		self::$twitter_card_types['summary']             = __( 'Summary', 'wordpress-seo' );
-=======
->>>>>>> update
 		self::$twitter_card_types['summary_large_image'] = __( 'Summary with large image', 'wordpress-seo' );
 	}
 
@@ -164,10 +152,7 @@ class WPSEO_Option_Social extends WPSEO_Option {
 				case 'og_frontpage_image':
 				case 'youtube_url':
 				case 'wikipedia_url':
-<<<<<<< HEAD
-=======
 				case 'mastodon_url':
->>>>>>> update
 					$this->validate_url( $key, $dirty, $old, $clean );
 					break;
 
@@ -271,12 +256,7 @@ class WPSEO_Option_Social extends WPSEO_Option {
 	 * @return string|false The validated URL or false if the URL is not valid.
 	 */
 	public function validate_social_url( $url ) {
-<<<<<<< HEAD
-		$submitted_url = trim( htmlspecialchars( $url, ENT_COMPAT, get_bloginfo( 'charset' ), true ) );
-		$validated_url = filter_var( WPSEO_Utils::sanitize_url( $submitted_url ), FILTER_VALIDATE_URL );
-=======
 		$validated_url = filter_var( WPSEO_Utils::sanitize_url( trim( $url ) ), FILTER_VALIDATE_URL );
->>>>>>> update
 
 		return $validated_url;
 	}
@@ -351,10 +331,6 @@ class WPSEO_Option_Social extends WPSEO_Option {
 		}
 		unset( $old_option );
 
-<<<<<<< HEAD
-
-=======
->>>>>>> update
 		return $option_value;
 	}
 }

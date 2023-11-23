@@ -291,13 +291,9 @@ class MonsterInsights_Install {
 			'email_summaries'                          => 'on',
 			'summaries_html_template'                  => 'yes',
 			'summaries_email_addresses'                => $admin_email_array,
-<<<<<<< HEAD
-			'automatic_updates'                        => 'none',
-=======
 			'automatic_updates'                        => 'all',
 			'anonymous_data'                           => 0,
 			'verified_automatic'                       => 0,
->>>>>>> update
 			'popular_posts_inline_theme'               => 'alpha',
 			'popular_posts_widget_theme'               => 'alpha',
 			'popular_posts_products_theme'             => 'alpha',
@@ -642,11 +638,7 @@ class MonsterInsights_Install {
 	 */
 	public function v780_upgrades() {
 
-<<<<<<< HEAD
-		if ( monsterinsights_get_ua() ) {
-=======
 		if ( monsterinsights_get_v4_id() ) {
->>>>>>> update
 			// If we have a UA, don't show the first run notice.
 			monsterinsights_update_option( 'monsterinsights_first_run_notice', true );
 
@@ -666,11 +658,7 @@ class MonsterInsights_Install {
 	public function v790_upgrades() {
 
 		// If they are already tracking, don't show the notice.
-<<<<<<< HEAD
-		if ( monsterinsights_get_ua() ) {
-=======
 		if ( monsterinsights_get_v4_id() ) {
->>>>>>> update
 			update_option( 'monsterinsights_frontend_tracking_notice_viewed', true );
 
 			// If they are already tracking when they upgrade & not already marked mark connected time as now.

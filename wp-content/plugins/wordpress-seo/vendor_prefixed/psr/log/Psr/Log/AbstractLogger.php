@@ -14,13 +14,8 @@ abstract class AbstractLogger implements \YoastSEO_Vendor\Psr\Log\LoggerInterfac
     /**
      * System is unusable.
      *
-<<<<<<< HEAD
-     * @param string $message
-     * @param array  $context
-=======
      * @param string  $message
      * @param mixed[] $context
->>>>>>> update
      *
      * @return void
      */
@@ -34,13 +29,8 @@ abstract class AbstractLogger implements \YoastSEO_Vendor\Psr\Log\LoggerInterfac
      * Example: Entire website down, database unavailable, etc. This should
      * trigger the SMS alerts and wake you up.
      *
-<<<<<<< HEAD
-     * @param string $message
-     * @param array  $context
-=======
      * @param string  $message
      * @param mixed[] $context
->>>>>>> update
      *
      * @return void
      */
@@ -53,13 +43,8 @@ abstract class AbstractLogger implements \YoastSEO_Vendor\Psr\Log\LoggerInterfac
      *
      * Example: Application component unavailable, unexpected exception.
      *
-<<<<<<< HEAD
-     * @param string $message
-     * @param array  $context
-=======
      * @param string  $message
      * @param mixed[] $context
->>>>>>> update
      *
      * @return void
      */
@@ -71,13 +56,8 @@ abstract class AbstractLogger implements \YoastSEO_Vendor\Psr\Log\LoggerInterfac
      * Runtime errors that do not require immediate action but should typically
      * be logged and monitored.
      *
-<<<<<<< HEAD
-     * @param string $message
-     * @param array  $context
-=======
      * @param string  $message
      * @param mixed[] $context
->>>>>>> update
      *
      * @return void
      */
@@ -91,13 +71,8 @@ abstract class AbstractLogger implements \YoastSEO_Vendor\Psr\Log\LoggerInterfac
      * Example: Use of deprecated APIs, poor use of an API, undesirable things
      * that are not necessarily wrong.
      *
-<<<<<<< HEAD
-     * @param string $message
-     * @param array  $context
-=======
      * @param string  $message
      * @param mixed[] $context
->>>>>>> update
      *
      * @return void
      */
@@ -108,13 +83,8 @@ abstract class AbstractLogger implements \YoastSEO_Vendor\Psr\Log\LoggerInterfac
     /**
      * Normal but significant events.
      *
-<<<<<<< HEAD
-     * @param string $message
-     * @param array  $context
-=======
      * @param string  $message
      * @param mixed[] $context
->>>>>>> update
      *
      * @return void
      */
@@ -127,13 +97,8 @@ abstract class AbstractLogger implements \YoastSEO_Vendor\Psr\Log\LoggerInterfac
      *
      * Example: User logs in, SQL logs.
      *
-<<<<<<< HEAD
-     * @param string $message
-     * @param array  $context
-=======
      * @param string  $message
      * @param mixed[] $context
->>>>>>> update
      *
      * @return void
      */
@@ -144,13 +109,8 @@ abstract class AbstractLogger implements \YoastSEO_Vendor\Psr\Log\LoggerInterfac
     /**
      * Detailed debug information.
      *
-<<<<<<< HEAD
-     * @param string $message
-     * @param array  $context
-=======
      * @param string  $message
      * @param mixed[] $context
->>>>>>> update
      *
      * @return void
      */

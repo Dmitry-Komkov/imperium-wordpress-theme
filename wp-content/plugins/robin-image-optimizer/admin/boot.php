@@ -123,13 +123,8 @@
 	 *
 	 * Once all post meta migrated, notice would not be shown anymore.
 	 *
-<<<<<<< HEAD
-	 * @param Wbcr_Factory450_Plugin $plugin
-	 * @param Wbcr_FactoryPages449_ImpressiveThemplate $obj
-=======
 	 * @param Wbcr_Factory469_Plugin $plugin
 	 * @param Wbcr_FactoryPages467_ImpressiveThemplate $obj
->>>>>>> update
 	 *
 	 * @author Alexander Kovalev <alex.kovalevv@gmail.com>
 	 * @since  1.3.0
@@ -151,19 +146,11 @@
 	 * Flush configuration after saving the settings
 	 *
 	 * @param WRIO_Plugin $plugin
-<<<<<<< HEAD
-	 * @param Wbcr_FactoryPages449_ImpressiveThemplate $obj
-	 *
-	 * @return bool
-	 */
-	/*add_action('wbcr_factory_450_imppage_after_form_save', function ($plugin, $obj) {
-=======
 	 * @param Wbcr_FactoryPages467_ImpressiveThemplate $obj
 	 *
 	 * @return bool
 	 */
 	/*add_action('wbcr_factory_469_imppage_after_form_save', function ($plugin, $obj) {
->>>>>>> update
 		$is_rio = WRIO_Plugin::app()->getPluginName() == $plugin->getPluginName();
 	
 		if( $is_rio ) {
@@ -187,22 +174,14 @@
 		return $page_url;
 	}
 	
-<<<<<<< HEAD
-	add_filter( 'wbcr_factory_pages_449_imppage_rating_widget_url', 'wio_rating_widget_url', 10, 2 );
-=======
 	add_filter( 'wbcr_factory_pages_467_imppage_rating_widget_url', 'wio_rating_widget_url', 10, 2 );
->>>>>>> update
 	
 	/**
 	 * Widget with the offer to buy Clearfy Business
 	 *
 	 * @param array $widgets
 	 * @param string $position
-<<<<<<< HEAD
-	 * @param Wbcr_Factory450_Plugin $plugin
-=======
 	 * @param Wbcr_Factory469_Plugin $plugin
->>>>>>> update
 	 */
 	add_filter( 'wbcr/factory/pages/impressive/widgets', function ( $widgets, $position, $plugin ) {
 		if ( $plugin->getPluginName() == WRIO_Plugin::app()->getPluginName() ) {
@@ -342,13 +321,8 @@
 	 * Отправка уведомлений и скором окончании квоты в Impressive
 	 * Уведомления создаются только если квота <= 100
 	 *
-<<<<<<< HEAD
-	 * @param Wbcr_Factory450_Plugin $plugin Экземпляр плагина, который передается в функцию обратного вызова
-	 * @param Wbcr_FactoryPages449_ImpressiveThemplate $obj Экземпляр страницы, который передается в функцию обратного вызова
-=======
 	 * @param Wbcr_Factory469_Plugin $plugin Экземпляр плагина, который передается в функцию обратного вызова
 	 * @param Wbcr_FactoryPages467_ImpressiveThemplate $obj Экземпляр страницы, который передается в функцию обратного вызова
->>>>>>> update
 	 *
 	 * @author Alexander Gorenkov <g.a.androidjc2@ya.ru>
 	 * @since  1.4.2

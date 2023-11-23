@@ -5,46 +5,20 @@
  * @package cyr-to-lat
  */
 
-<<<<<<< HEAD
-namespace Cyr_To_Lat\Settings;
-
-use Cyr_To_Lat\Settings\Abstracts\SettingsBase;
-use Cyr_To_Lat\Settings\Abstracts\SettingsInterface;
-use Cyr_To_Lat\Symfony\Polyfill\Mbstring\Mbstring;
-=======
 namespace CyrToLat\Settings;
 
 use CyrToLat\Settings\Abstracts\SettingsBase;
 use CyrToLat\Settings\Abstracts\SettingsInterface;
 use CyrToLat\Symfony\Polyfill\Mbstring\Mbstring;
->>>>>>> update
 
 /**
  * Class Settings
  *
-<<<<<<< HEAD
- * Central point to get settings from.
-=======
  * The central point to get settings from.
->>>>>>> update
  */
 class Settings implements SettingsInterface {
 
 	/**
-<<<<<<< HEAD
-	 * Menu pages classes.
-	 */
-	const MENU_PAGES = [
-		[ Tables::class, Converter::class ],
-	];
-
-	/**
-	 * Menu pages class instances.
-	 *
-	 * @var array
-	 */
-	protected $menu_pages = [];
-=======
 	 * Menu pages class names.
 	 *
 	 * @var array
@@ -57,7 +31,6 @@ class Settings implements SettingsInterface {
 	 * @var array
 	 */
 	protected $tabs = [];
->>>>>>> update
 
 	/**
 	 * Screen ids of pages and tabs.
@@ -68,10 +41,6 @@ class Settings implements SettingsInterface {
 
 	/**
 	 * Settings constructor.
-<<<<<<< HEAD
-	 */
-	public function __construct() {
-=======
 	 *
 	 * @param array $menu_pages_classes Menu pages.
 	 */
@@ -79,28 +48,15 @@ class Settings implements SettingsInterface {
 		// Allow to specify $menu_pages_classes item as one class, not an array.
 		$this->menu_pages_classes = $menu_pages_classes;
 
->>>>>>> update
 		$this->init();
 	}
 
 	/**
 	 * Init class.
-<<<<<<< HEAD
-	 *
-	 * @noinspection UnnecessaryCastingInspection
-	 */
-	protected function init() {
-		// Allow to specify MENU_PAGES item as one class, not an array.
-		$menu_pages = (array) self::MENU_PAGES;
-
-		foreach ( $menu_pages as $menu_page ) {
-			$tab_classes = (array) $menu_page;
-=======
 	 */
 	protected function init() {
 		foreach ( $this->menu_pages_classes as $menu_page_classes ) {
 			$tab_classes = (array) $menu_page_classes;
->>>>>>> update
 
 			// Allow to specify menu page as one class, without tabs.
 			$page_class  = $tab_classes[0];
@@ -123,10 +79,6 @@ class Settings implements SettingsInterface {
 			 *
 			 * @var PluginSettingsBase $page_class
 			 */
-<<<<<<< HEAD
-			$this->menu_pages[] = new $page_class( $tabs );
-		}
-=======
 			$menu_page = new $page_class( $tabs );
 
 			$this->tabs[] = [ $menu_page ];
@@ -143,7 +95,6 @@ class Settings implements SettingsInterface {
 	 */
 	public function get_tabs(): array {
 		return $this->tabs;
->>>>>>> update
 	}
 
 	/**
@@ -154,35 +105,6 @@ class Settings implements SettingsInterface {
 	 *
 	 * @return string|array The value specified for the option or a default value for the option.
 	 */
-<<<<<<< HEAD
-	public function get( $key, $empty_value = null ) {
-		$value = '';
-
-		foreach ( $this->menu_pages as $menu_page ) {
-			/**
-			 * Menu page.
-			 *
-			 * @var SettingsBase $menu_page
-			 */
-			$value = $menu_page->get( $key, $empty_value );
-			if ( ! empty( $value ) ) {
-				break;
-			}
-
-			$tabs = $menu_page->get_tabs();
-
-			foreach ( $tabs as $tab ) {
-				/**
-				 * Tab.
-				 *
-				 * @var SettingsBase $tab
-				 */
-				$value = $tab->get( $key, $empty_value );
-				if ( ! empty( $value ) ) {
-					break 2;
-				}
-			}
-=======
 	public function get( string $key, $empty_value = null ) {
 		$value = '';
 
@@ -197,7 +119,6 @@ class Settings implements SettingsInterface {
 			if ( ! empty( $value ) ) {
 				break;
 			}
->>>>>>> update
 		}
 
 		if ( '' === $value && ! is_null( $empty_value ) ) {
@@ -208,8 +129,6 @@ class Settings implements SettingsInterface {
 	}
 
 	/**
-<<<<<<< HEAD
-=======
 	 * Check whether option value equals to the compared.
 	 *
 	 * @param string $key     Setting name.
@@ -263,16 +182,11 @@ class Settings implements SettingsInterface {
 	}
 
 	/**
->>>>>>> update
 	 * Get screen ids of all settings pages and tabs.
 	 *
 	 * @return array
 	 */
-<<<<<<< HEAD
-	public function screen_ids() {
-=======
 	public function screen_ids(): array {
->>>>>>> update
 		return $this->screen_ids;
 	}
 
@@ -281,11 +195,7 @@ class Settings implements SettingsInterface {
 	 *
 	 * @return array
 	 */
-<<<<<<< HEAD
-	public function get_table() {
-=======
 	public function get_table(): array {
->>>>>>> update
 		// List of locales: https://make.wordpress.org/polyglots/teams/.
 		$locale = (string) apply_filters( 'ctl_locale', get_locale() );
 		$table  = $this->get( $locale );
@@ -301,11 +211,7 @@ class Settings implements SettingsInterface {
 	 *
 	 * @return bool
 	 */
-<<<<<<< HEAD
-	public function is_chinese_locale() {
-=======
 	public function is_chinese_locale(): bool {
->>>>>>> update
 		$chinese_locales = [ 'zh_CN', 'zh_HK', 'zh_SG', 'zh_TW' ];
 
 		return in_array( get_locale(), $chinese_locales, true );
@@ -320,11 +226,7 @@ class Settings implements SettingsInterface {
 	 *
 	 * @return array
 	 */
-<<<<<<< HEAD
-	protected function transpose_chinese_table( $table ) {
-=======
 	protected function transpose_chinese_table( array $table ): array {
->>>>>>> update
 		if ( ! $this->is_chinese_locale() ) {
 			return $table;
 		}

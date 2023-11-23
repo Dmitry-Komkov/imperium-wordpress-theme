@@ -182,32 +182,19 @@ if ( ! class_exists( 'acf_form_nav_menu' ) ) :
 
 		function update_nav_menu_items( $menu_id ) {
 
-<<<<<<< HEAD
-			// bail ealry if not set
-=======
 			// phpcs:disable WordPress.Security.NonceVerification.Missing -- Verified elsewhere.
->>>>>>> update
 			if ( empty( $_POST['menu-item-acf'] ) ) {
 				return;
 			}
 
-<<<<<<< HEAD
-			// loop
-			foreach ( $_POST['menu-item-acf'] as $post_id => $values ) {
-=======
 			$posted_values = acf_sanitize_request_args( $_POST['menu-item-acf'] );
 
 			foreach ( $posted_values as $post_id => $values ) {
->>>>>>> update
 
 				acf_save_post( $post_id, $values );
 
 			}
-<<<<<<< HEAD
-
-=======
 			// phpcs:enable WordPress.Security.NonceVerification.Missing
->>>>>>> update
 		}
 
 
@@ -246,15 +233,6 @@ if ( ! class_exists( 'acf_form_nav_menu' ) ) :
 			// update data (needed for ajax location rules to work)
 			acf_set_data( 'nav_menu_id', $menu_id );
 
-<<<<<<< HEAD
-			// Use custom walker class to inject "wp_nav_menu_item_custom_fields" action prioir to WP 5.4.
-			if ( acf_version_compare( 'wp', '<', '5.3.99' ) ) {
-				acf_include( 'includes/walkers/class-acf-walker-nav-menu-edit.php' );
-				return 'ACF_Walker_Nav_Menu_Edit';
-			}
-
-=======
->>>>>>> update
 			// Return class.
 			return $class;
 		}
@@ -275,23 +253,14 @@ if ( ! class_exists( 'acf_form_nav_menu' ) ) :
 
 		function acf_validate_save_post() {
 
-<<<<<<< HEAD
-			// bail ealry if not set
-=======
 			// phpcs:disable WordPress.Security.NonceVerification.Missing -- Verified elsewhere.
->>>>>>> update
 			if ( empty( $_POST['menu-item-acf'] ) ) {
 				return;
 			}
 
-<<<<<<< HEAD
-			// loop
-			foreach ( $_POST['menu-item-acf'] as $post_id => $values ) {
-=======
 			$posted_values = acf_sanitize_request_args( $_POST['menu-item-acf'] );
 
 			foreach ( $posted_values as $post_id => $values ) {
->>>>>>> update
 
 				// vars
 				$prefix = 'menu-item-acf[' . $post_id . ']';
@@ -300,17 +269,10 @@ if ( ! class_exists( 'acf_form_nav_menu' ) ) :
 				acf_validate_values( $values, $prefix );
 
 			}
-<<<<<<< HEAD
-
-		}
-
-
-=======
 			// phpcs:enable // phpcs:disable WordPress.Security.NonceVerification.Missing
 
 		}
 
->>>>>>> update
 		/*
 		*  admin_footer
 		*
@@ -432,8 +394,4 @@ if ( ! class_exists( 'acf_form_nav_menu' ) ) :
 	acf_new_instance( 'acf_form_nav_menu' );
 
 endif;
-<<<<<<< HEAD
-
-=======
->>>>>>> update
 ?>

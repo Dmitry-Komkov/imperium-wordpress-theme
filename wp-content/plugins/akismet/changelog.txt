@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-=== Akismet Anti-Spam ===
-=======
 === Akismet Anti-spam ===
->>>>>>> update
 
 == Archived Changelog Entries ==
 

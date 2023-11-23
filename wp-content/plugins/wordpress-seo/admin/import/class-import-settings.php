@@ -52,9 +52,6 @@ class WPSEO_Import_Settings {
 			return;
 		}
 
-<<<<<<< HEAD
-		$content = filter_input( INPUT_POST, 'settings_import' );
-=======
 		if ( ! isset( $_POST['settings_import'] ) || ! is_string( $_POST['settings_import'] ) ) {
 			return;
 		}
@@ -62,7 +59,6 @@ class WPSEO_Import_Settings {
 		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Reason: The raw content will be parsed afterwards.
 		$content = wp_unslash( $_POST['settings_import'] );
 
->>>>>>> update
 		if ( empty( $content ) ) {
 			return;
 		}

@@ -100,9 +100,6 @@ class Yoast_Network_Admin implements WPSEO_WordPress_AJAX_Integration, WPSEO_Wor
 	 * @return void
 	 */
 	public function handle_update_options_request() {
-<<<<<<< HEAD
-		$option_group = filter_input( INPUT_POST, 'network_option_group', FILTER_SANITIZE_STRING );
-=======
 		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- Reason: Nonce verification will happen in verify_request below.
 		if ( ! isset( $_POST['network_option_group'] ) || ! is_string( $_POST['network_option_group'] ) ) {
 			return;
@@ -114,7 +111,6 @@ class Yoast_Network_Admin implements WPSEO_WordPress_AJAX_Integration, WPSEO_Wor
 		if ( empty( $option_group ) ) {
 			return;
 		}
->>>>>>> update
 
 		$this->verify_request( "{$option_group}-network-options" );
 
@@ -131,11 +127,7 @@ class Yoast_Network_Admin implements WPSEO_WordPress_AJAX_Integration, WPSEO_Wor
 		foreach ( $whitelist_options as $option_name ) {
 			$value = null;
 			if ( isset( $_POST[ $option_name ] ) ) {
-<<<<<<< HEAD
-				// Adding sanitize_text_field around this will break the saving of settings because it expects a string: https://github.com/Yoast/wordpress-seo/issues/12440.
-=======
 				// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Reason: Adding sanitize_text_field around this will break the saving of settings because it expects a string: https://github.com/Yoast/wordpress-seo/issues/12440.
->>>>>>> update
 				$value = wp_unslash( $_POST[ $option_name ] );
 			}
 

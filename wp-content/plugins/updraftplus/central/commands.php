@@ -204,16 +204,6 @@ abstract class UpdraftCentral_Commands {
 		}
 
 		// Save uploaded file
-<<<<<<< HEAD
-		$filename = basename($params['filename']);
-		$is_chunked = false;
-
-		if (isset($params['chunks']) && 1 < (int) $params['chunks']) {
-			$filename = basename($params['filename']).'.part';
-			$is_chunked = true;
-		}
-
-=======
 		$filename = basename($params['filename']).md5(get_home_url());
 		$is_chunked = false;
 
@@ -227,7 +217,6 @@ abstract class UpdraftCentral_Commands {
 			if (file_exists($upload_dir.'/'.$filename) && !unlink($upload_dir.'/'.$filename)) return $this->_generic_error_response('unable_to_delete_existing_file');
 		}
 
->>>>>>> update
 		if (empty($params['data'])) {
 			return $this->_generic_error_response('data_empty_or_invalid');
 		}
@@ -276,27 +265,17 @@ abstract class UpdraftCentral_Commands {
 
 				// WP < 3.7
 				if (!class_exists('Automatic_Upgrader_Skin')) include_once(UPDRAFTCENTRAL_CLIENT_DIR.'/classes/class-automatic-upgrader-skin.php');
-<<<<<<< HEAD
-
-				$skin = new Automatic_Upgrader_Skin();
-				$upgrader = ('plugin' === $type) ? new Plugin_Upgrader($skin) : new Theme_Upgrader($skin);
-=======
 				require_once(UPDRAFTCENTRAL_CLIENT_DIR.'/classes/class-updraftcentral-wp-upgrader.php');
 
 				$skin = new Automatic_Upgrader_Skin();
 				$upgrader = ('plugin' === $type) ? new UpdraftCentral_Plugin_Upgrader($skin) : new UpdraftCentral_Theme_Upgrader($skin);
->>>>>>> update
 
 				$install_result = $upgrader->install($zip_filepath);
 				remove_filter('upgrader_post_install', array($this, 'get_install_data'), 10, 3);
 
 				// Remove zip file on success and on error (cleanup)
 				if ($install_result || is_null($install_result) || is_wp_error($install_result)) {
-<<<<<<< HEAD
-					@unlink($zip_filepath);// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
-=======
 					@unlink($zip_filepath);// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged -- Silenced to suppress errors that may arise if the file doesn't exist.
->>>>>>> update
 				}
 
 				if (false === $install_result || is_wp_error($install_result)) {

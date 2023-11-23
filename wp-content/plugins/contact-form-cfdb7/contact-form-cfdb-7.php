@@ -7,11 +7,7 @@ Author: Arshid
 Author URI: http://ciphercoin.com/
 Text Domain: contact-form-cfdb7
 Domain Path: /languages/
-<<<<<<< HEAD
-Version: 1.2.6.4
-=======
 Version: 1.2.6.7
->>>>>>> update
 */
 
 function cfdb7_create_table(){
@@ -120,11 +116,8 @@ function cfdb7_before_send_mail( $form_tag ) {
     if ( $submission ) {
 
         $allowed_tags = array();
-<<<<<<< HEAD
-=======
         $bl   = array('\"',"\'",'/','\\','"',"'");
         $wl   = array('&quot;','&#039;','&#047;', '&#092;','&quot;','&#039;');
->>>>>>> update
 
         if( $strict_keys ){
             $tags  = $contact_form->scan_form_tags();
@@ -162,13 +155,6 @@ function cfdb7_before_send_mail( $form_tag ) {
                 $tmpD = $d;
 
                 if ( ! is_array($d) ){
-<<<<<<< HEAD
-                    $bl   = array('\"',"\'",'/','\\','"',"'");
-                    $wl   = array('&quot;','&#039;','&#047;', '&#092;','&quot;','&#039;');
-                    $tmpD = str_replace($bl, $wl, $tmpD );
-                }
-
-=======
                     $tmpD = str_replace($bl, $wl, $tmpD );
                 }else{
                     $tmpD = array_map(function($item) use($bl, $wl){
@@ -177,16 +163,12 @@ function cfdb7_before_send_mail( $form_tag ) {
                 }
 
                 $key = sanitize_text_field( $key );
->>>>>>> update
                 $form_data[$key] = $tmpD;
             }
             if ( in_array($key, $uploaded_files ) ) {
                 $file = is_array( $files[ $key ] ) ? reset( $files[ $key ] ) : $files[ $key ];
                 $file_name = empty( $file ) ? '' : $time_now.'-'.$key.'-'.basename( $file ); 
-<<<<<<< HEAD
-=======
                 $key = sanitize_text_field( $key );
->>>>>>> update
                 $form_data[$key.'cfdb7_file'] = $file_name;
             }
         }
@@ -293,11 +275,7 @@ function cfdb7_view_ignore_notice() {
  * @return array of links
  */
 function cfdb7_settings_link( $links ) {
-<<<<<<< HEAD
-    $forms_link = '<a href="admin.php?page=cfdb7-list.php">Contact Forms</a>';
-=======
     $forms_link = '<a href="admin.php?page=cfdb7-list.php">' . __( 'Submissions', 'contact-form-cfdb7' ) . '</a>';
->>>>>>> update
     array_unshift($links, $forms_link);
     return $links;
 }
@@ -314,8 +292,4 @@ add_filter("plugin_action_links_$plugin", 'cfdb7_settings_link' );
 function cfdb7_load_textdomain() {
 	load_plugin_textdomain( 'contact-form-cfdb7', false, basename( dirname( __FILE__ ) ) . '/languages' );
 }
-<<<<<<< HEAD
 add_action( 'plugins_loaded', 'cfdb7_load_textdomain' );
-=======
-add_action( 'plugins_loaded', 'cfdb7_load_textdomain' );
->>>>>>> update

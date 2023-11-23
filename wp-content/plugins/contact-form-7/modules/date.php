@@ -40,18 +40,11 @@ function wpcf7_date_form_tag_handler( $tag ) {
 	$atts['min'] = $tag->get_date_option( 'min' );
 	$atts['max'] = $tag->get_date_option( 'max' );
 	$atts['step'] = $tag->get_option( 'step', 'int', true );
-<<<<<<< HEAD
-
-	if ( $tag->has_option( 'readonly' ) ) {
-		$atts['readonly'] = 'readonly';
-	}
-=======
 	$atts['readonly'] = $tag->has_option( 'readonly' );
 
 	$atts['autocomplete'] = $tag->get_option(
 		'autocomplete', '[-0-9a-zA-Z]+', true
 	);
->>>>>>> update
 
 	if ( $tag->is_required() ) {
 		$atts['aria-required'] = 'true';
@@ -90,17 +83,7 @@ function wpcf7_date_form_tag_handler( $tag ) {
 	$value = wpcf7_get_hangover( $tag->name, $value );
 
 	$atts['value'] = $value;
-<<<<<<< HEAD
-
-	if ( wpcf7_support_html5() ) {
-		$atts['type'] = $tag->basetype;
-	} else {
-		$atts['type'] = 'text';
-	}
-
-=======
 	$atts['type'] = $tag->basetype;
->>>>>>> update
 	$atts['name'] = $tag->name;
 
 	$html = sprintf(

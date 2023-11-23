@@ -6,10 +6,7 @@
     width: 750px;
     height: auto;
     float: left;
-<<<<<<< HEAD
-=======
     box-sizing: unset;
->>>>>>> update
 }
 
 .tabGroup div.questionCon{
@@ -21,10 +18,7 @@
 
 .tabGroup select, .tabGroup label, .tabGroup div {
     font-size: 12px;
-<<<<<<< HEAD
-=======
     box-sizing: unset;
->>>>>>> update
     
 }
 .tabGroup > label{
@@ -140,10 +134,7 @@ div.questionCon.qsubmit{
 .get-info {
     float: left;
     padding-left: 10px;
-<<<<<<< HEAD
-=======
     cursor: pointer;
->>>>>>> update
 }
 #rule-help-tip {
     width: 500px;
@@ -181,51 +172,12 @@ h1.summary-rec {
     float: right;
     font-family: "Lucida Grande",Verdana,Arial,"Bitstream Vera Sans",sans-serif;
     font-size: 12px;
-<<<<<<< HEAD
-    margin-right: 50px;
-    width: 222px;
-=======
     margin-right: 30px;
     width: 400px;
->>>>>>> update
 }
 
 .omni_admin_sidebar_section {
     background-color: #F6F6F6;
-<<<<<<< HEAD
-    border: 1px solid #CCCCCC;
-    float: left;
-    margin: 0 0 10px;
-    padding: 10px;
-    width: 200px;
-}
-
-.omni_admin_sidebar ul {
-    margin: 0;
-    padding: 0;
-}
-
-.omni_admin_sidebar li {
-    font-size: 11px;
-    line-height: 16px;
-    list-style: disc outside none;
-    margin: 5px 0 5px 20px;
-}
-
-.omni_admin_sidebar h3 {
-    margin: 0 0 10px;
-}
-.omni_admin_sidebar_section label {
-    font-size: 11px;
-}
-
-#vote-us{
-    border-color: #D09847; 
-    background: url("../images/facebook-like-xxl.png") #E39124 no-repeat 103% 130%; 
-    background-size: 30%;
-    cursor: pointer;
-}
-=======
     float: right;
     width: 195px;
     padding: 0;
@@ -259,7 +211,6 @@ h1.summary-rec {
 
 
 
->>>>>>> update
 
 #wpfc-beta{
     padding-right: 5px;
@@ -434,17 +385,6 @@ span.deleteicon span.cleared {
     overflow-y: auto;
     padding: 0;
 }
-<<<<<<< HEAD
-.wpfc-timeout-item, .wpfc-exclude-item, .int-item{
-    background: url(data:image/gif;base64,R0lGODlhAQAkANUAAAAAAP/////+//38/fb19vX09fDv8Pr6+/n5+vb29/Hx8u/v8Pv8/Pn6+vLz8vv7+vj49/T08/Pz8vLy8f/+/v38/Pn4+PHw8P7+/v39/fv7+/j4+Pf39/b29vPz8/Hx8fDw8P///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAEAACEALAAAAAABACQAAAYiwICAgsFkMpUBQ/M4IBqWDYST6BAKhYjHIZkoPp8LaGEIAgA7) repeat-x scroll center bottom transparent !important;
-    border: 1px solid #CCCCCC !important;
-}
-.wpfc-timeout-item:hover, .wpfc-exclude-item:hover, .int-item:hover{
-    border:1px solid #ccc;
-    background:#f5f5f5 none repeat scroll 0 0 !important;
-}
-.int-item, .wpfc-timeout-item, .wpfc-exclude-item {
-=======
 .wpfc-csp-item, .wpfc-timeout-item, .wpfc-exclude-item, .int-item{
     background: url(data:image/gif;base64,R0lGODlhAQAkANUAAAAAAP/////+//38/fb19vX09fDv8Pr6+/n5+vb29/Hx8u/v8Pv8/Pn6+vLz8vv7+vj49/T08/Pz8vLy8f/+/v38/Pn4+PHw8P7+/v39/fv7+/j4+Pf39/b29vPz8/Hx8fDw8P///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAEAACEALAAAAAABACQAAAYiwICAgsFkMpUBQ/M4IBqWDYST6BAKhYjHIZkoPp8LaGEIAgA7) repeat-x scroll center bottom transparent !important;
     border: 1px solid #CCCCCC !important;
@@ -454,7 +394,6 @@ span.deleteicon span.cleared {
     background:#f5f5f5 none repeat scroll 0 0 !important;
 }
 .int-item, .wpfc-timeout-item, .wpfc-exclude-item, .wpfc-csp-item {
->>>>>>> update
     border-radius: 6px;
     cursor: pointer;
     margin-bottom: 7px;
@@ -489,18 +428,6 @@ span.deleteicon span.cleared {
     width: 45px;
 }
 .int-item .meta.isConnected{
-<<<<<<< HEAD
-    background: url("../images/check.png") no-repeat scroll 0 0;
-    height: 24px;
-    width: 24px;
-    position: relative;
-    top: -10px;
-    left: 311px;
-}
-
-.int-item .meta.isConnected.pause{
-    background: url("../images/pause.png") no-repeat scroll 0 0;
-=======
     background: url("../images/check.png") no-repeat scroll 100% 0;
     height: 24px;
     width: 100%;
@@ -511,7 +438,6 @@ span.deleteicon span.cleared {
 
 .int-item .meta.isConnected.pause{
     background: url("../images/pause.png") no-repeat scroll 100% 0;
->>>>>>> update
 }
 
 .int-item .meta.success{

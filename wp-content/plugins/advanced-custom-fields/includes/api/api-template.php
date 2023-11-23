@@ -57,35 +57,6 @@ function get_field( $selector, $post_id = false, $format_value = true ) {
 
 }
 
-<<<<<<< HEAD
-
-/*
-*  the_field()
-*
-*  This function is the same as echo get_field().
-*
-*  @type    function
-*  @since   1.0.3
-*  @date    29/01/13
-*
-*  @param   $selector (string) the field name or key
-*  @param   $post_id (mixed) the post_id of which the value is saved against
-*  @return  n/a
-*/
-
-function the_field( $selector, $post_id = false, $format_value = true ) {
-
-	$value = get_field( $selector, $post_id, $format_value );
-
-	if ( is_array( $value ) ) {
-
-		$value = @implode( ', ', $value );
-
-	}
-
-	echo $value;
-
-=======
 /**
  *  This function is the same as echo get_field().
  *
@@ -104,7 +75,6 @@ function the_field( $selector, $post_id = false, $format_value = true ) {
 	}
 
 	echo $value;
->>>>>>> update
 }
 
 /**
@@ -118,11 +88,7 @@ function the_field( $selector, $post_id = false, $format_value = true ) {
  * @param bool   $format_value Whether to format the field value.
  * @param bool   $load_value   Whether to load the field value.
  *
-<<<<<<< HEAD
- * @return array $field
-=======
  * @return array|false $field
->>>>>>> update
  */
 function get_field_object( $selector, $post_id = false, $format_value = true, $load_value = true ) {
 	// Compatibility with ACF ~4.
@@ -158,11 +124,7 @@ function get_field_object( $selector, $post_id = false, $format_value = true, $l
 *  @date    4/08/2015
 *  @since   5.2.3
 *
-<<<<<<< HEAD
-*  @param   $selector (mixed) identifyer of field. Can be an ID, key, name or post object
-=======
 *  @param   $selector (mixed) identifier of field. Can be an ID, key, name or post object
->>>>>>> update
 *  @param   $post_id (mixed) the post_id of which the value is saved against
 *  @param   $strict (boolean) if true, return a field only when a field key is found.
 *  @return  $field (array)
@@ -208,11 +170,7 @@ function acf_maybe_get_field( $selector, $post_id = false, $strict = true ) {
 
 function acf_maybe_get_sub_field( $selectors, $post_id = false, $strict = true ) {
 
-<<<<<<< HEAD
-	// bail ealry if not enough selectors
-=======
 	// bail early if not enough selectors
->>>>>>> update
 	if ( ! is_array( $selectors ) || count( $selectors ) < 3 ) {
 		return false;
 	}
@@ -331,11 +289,7 @@ function get_field_objects( $post_id = false, $format_value = true, $load_value 
 	foreach ( $meta as $key => $value ) {
 
 		// bail if reference key does not exist
-<<<<<<< HEAD
-		if ( ! isset( $meta[ "_$key" ] ) ) {
-=======
 		if ( ! isset( $meta[ "_$key" ] ) || ( ! is_string( $meta[ "_$key" ] ) && ! is_numeric( $meta[ "_$key" ] ) ) ) {
->>>>>>> update
 			continue;
 		}
 
@@ -895,11 +849,6 @@ function get_row_layout() {
  * @return string
  */
 function acf_shortcode( $atts ) {
-<<<<<<< HEAD
-	// Mitigate issue where some AJAX requests can return ACF field data.
-	$capability = apply_filters( 'acf/ajax/shortcode_capability', 'edit_posts' );
-	if ( wp_doing_ajax() && ( $capability !== false ) && ! current_user_can( $capability ) ) {
-=======
 	// Return if the ACF shortcode is disabled.
 	if ( ! acf_get_setting( 'enable_shortcode' ) ) {
 		return;
@@ -921,7 +870,6 @@ function acf_shortcode( $atts ) {
 	// Mitigate issue where some AJAX requests can return ACF field data.
 	$ajax_capability = apply_filters( 'acf/ajax/shortcode_capability', 'edit_posts' );
 	if ( wp_doing_ajax() && ( $ajax_capability !== false ) && ! current_user_can( $ajax_capability ) ) {
->>>>>>> update
 		return;
 	}
 
@@ -951,11 +899,7 @@ function acf_shortcode( $atts ) {
 	}
 
 	if ( is_array( $value ) ) {
-<<<<<<< HEAD
-		$value = @implode( ', ', $value );
-=======
 		$value = implode( ', ', $value );
->>>>>>> update
 	}
 
 	return $value;
@@ -1136,12 +1080,9 @@ function add_row( $selector, $row = false, $post_id = false ) {
 	// append
 	$value[] = $row;
 
-<<<<<<< HEAD
-=======
 	// Paginated repeaters should be saved normally.
 	$field['pagination'] = false;
 
->>>>>>> update
 	// update value
 	acf_update_value( $value, $post_id, $field );
 

@@ -5,16 +5,12 @@
  * @package WPSEO
  */
 
-<<<<<<< HEAD
-use Yoast\WP\SEO\Helpers\Score_Icon_Helper;
-=======
 use Yoast\WP\SEO\Helpers\Product_Helper;
 use Yoast\WP\SEO\Helpers\Score_Icon_Helper;
 use Yoast\WP\SEO\Integrations\Support_Integration;
 use Yoast\WP\SEO\Models\Indexable;
 use Yoast\WP\SEO\Presenters\Admin\Premium_Badge_Presenter;
 use Yoast\WP\SEO\Promotions\Application\Promotion_Manager;
->>>>>>> update
 use Yoast\WP\SEO\Repositories\Indexable_Repository;
 
 /**
@@ -79,8 +75,6 @@ class WPSEO_Admin_Bar_Menu implements WPSEO_WordPress_Integration {
 	protected $score_icon_helper;
 
 	/**
-<<<<<<< HEAD
-=======
 	 * Holds the Product_Helper instance.
 	 *
 	 * @var Product_Helper
@@ -116,28 +110,20 @@ class WPSEO_Admin_Bar_Menu implements WPSEO_WordPress_Integration {
 	protected $current_indexable = null;
 
 	/**
->>>>>>> update
 	 * Constructs the WPSEO_Admin_Bar_Menu.
 	 *
 	 * @param WPSEO_Admin_Asset_Manager|null $asset_manager        Optional. Asset manager to use.
 	 * @param Indexable_Repository|null      $indexable_repository Optional. The Indexable_Repository.
 	 * @param Score_Icon_Helper|null         $score_icon_helper    Optional. The Score_Icon_Helper.
-<<<<<<< HEAD
-=======
 	 * @param Product_Helper|null            $product_helper       Optional. The product helper.
 	 * @param WPSEO_Shortlinker|null         $shortlinker          The shortlinker.
->>>>>>> update
 	 */
 	public function __construct(
 		WPSEO_Admin_Asset_Manager $asset_manager = null,
 		Indexable_Repository $indexable_repository = null,
-<<<<<<< HEAD
-		Score_Icon_Helper $score_icon_helper = null
-=======
 		Score_Icon_Helper $score_icon_helper = null,
 		Product_Helper $product_helper = null,
 		WPSEO_Shortlinker $shortlinker = null
->>>>>>> update
 	) {
 		if ( ! $asset_manager ) {
 			$asset_manager = new WPSEO_Admin_Asset_Manager();
@@ -148,12 +134,6 @@ class WPSEO_Admin_Bar_Menu implements WPSEO_WordPress_Integration {
 		if ( ! $score_icon_helper ) {
 			$score_icon_helper = YoastSEO()->helpers->score_icon;
 		}
-<<<<<<< HEAD
-
-		$this->asset_manager        = $asset_manager;
-		$this->indexable_repository = $indexable_repository;
-		$this->score_icon_helper    = $score_icon_helper;
-=======
 		if ( ! $product_helper ) {
 			$product_helper = YoastSEO()->helpers->product;
 		}
@@ -205,7 +185,6 @@ class WPSEO_Admin_Bar_Menu implements WPSEO_WordPress_Integration {
 		}
 
 		return $this->current_indexable;
->>>>>>> update
 	}
 
 	/**
@@ -232,19 +211,6 @@ class WPSEO_Admin_Bar_Menu implements WPSEO_WordPress_Integration {
 		$this->add_root_menu( $wp_admin_bar );
 
 		/**
-<<<<<<< HEAD
-		* Adds a submenu item in the top of the adminbar.
-		*
-		* @param WP_Admin_Bar $wp_admin_bar    Admin bar instance to add the menu to.
-		* @param string       $menu_identifier The menu identifier.
-		*/
-		do_action( 'wpseo_add_adminbar_submenu', $wp_admin_bar, self::MENU_IDENTIFIER );
-
-		$this->add_keyword_research_submenu( $wp_admin_bar );
-
-		if ( ! is_admin() ) {
-			$this->add_analysis_submenu( $wp_admin_bar );
-=======
 		 * Adds a submenu item in the top of the adminbar.
 		 *
 		 * @param WP_Admin_Bar $wp_admin_bar    Admin bar instance to add the menu to.
@@ -313,7 +279,6 @@ class WPSEO_Admin_Bar_Menu implements WPSEO_WordPress_Integration {
 			$this->add_seo_tools_submenu( $wp_admin_bar );
 			$this->add_how_to_submenu( $wp_admin_bar );
 			$this->add_get_help_submenu( $wp_admin_bar );
->>>>>>> update
 		}
 
 		if ( ! is_admin() || is_blog_admin() ) {
@@ -322,13 +287,10 @@ class WPSEO_Admin_Bar_Menu implements WPSEO_WordPress_Integration {
 		elseif ( is_network_admin() ) {
 			$this->add_network_settings_submenu( $wp_admin_bar );
 		}
-<<<<<<< HEAD
-=======
 
 		if ( ! $this->product_helper->is_premium() ) {
 			$this->add_premium_link( $wp_admin_bar );
 		}
->>>>>>> update
 	}
 
 	/**
@@ -440,67 +402,6 @@ class WPSEO_Admin_Bar_Menu implements WPSEO_WordPress_Integration {
 	}
 
 	/**
-<<<<<<< HEAD
-	 * Adds the admin bar keyword research submenu.
-	 *
-	 * @param WP_Admin_Bar $wp_admin_bar Admin bar instance to add the menu to.
-	 *
-	 * @return void
-	 */
-	protected function add_keyword_research_submenu( WP_Admin_Bar $wp_admin_bar ) {
-		$adwords_url = 'https://yoa.st/keywordplanner';
-		$trends_url  = 'https://yoa.st/google-trends';
-
-		$post = $this->get_singular_post();
-		if ( $post ) {
-			$focus_keyword = $this->get_post_focus_keyword( $post );
-
-			if ( ! empty( $focus_keyword ) ) {
-				$trends_url .= '#q=' . rawurlencode( $focus_keyword );
-			}
-		}
-
-		$menu_args = [
-			'parent' => self::MENU_IDENTIFIER,
-			'id'     => self::KEYWORD_RESEARCH_SUBMENU_IDENTIFIER,
-			'title'  => __( 'Keyword Research', 'wordpress-seo' ),
-			'meta'   => [ 'tabindex' => '0' ],
-		];
-		$wp_admin_bar->add_menu( $menu_args );
-
-		$submenu_items = [
-			[
-				'id'    => 'wpseo-kwresearchtraining',
-				'title' => __( 'Keyword research training', 'wordpress-seo' ),
-				'href'  => WPSEO_Shortlinker::get( 'https://yoa.st/wp-admin-bar' ),
-			],
-			[
-				'id'    => 'wpseo-adwordsexternal',
-				'title' => __( 'Google Ads', 'wordpress-seo' ),
-				'href'  => $adwords_url,
-			],
-			[
-				'id'    => 'wpseo-googleinsights',
-				'title' => __( 'Google Trends', 'wordpress-seo' ),
-				'href'  => $trends_url,
-			],
-		];
-
-		foreach ( $submenu_items as $menu_item ) {
-			$menu_args = [
-				'parent' => self::KEYWORD_RESEARCH_SUBMENU_IDENTIFIER,
-				'id'     => $menu_item['id'],
-				'title'  => $menu_item['title'],
-				'href'   => $menu_item['href'],
-				'meta'   => [ 'target' => '_blank' ],
-			];
-			$wp_admin_bar->add_menu( $menu_args );
-		}
-	}
-
-	/**
-=======
->>>>>>> update
 	 * Adds the admin bar analysis submenu.
 	 *
 	 * @param WP_Admin_Bar $wp_admin_bar Admin bar instance to add the menu to.
@@ -515,23 +416,10 @@ class WPSEO_Admin_Bar_Menu implements WPSEO_WordPress_Integration {
 			return;
 		}
 
-<<<<<<< HEAD
-		$focus_keyword = '';
-
-=======
->>>>>>> update
 		if ( ! $url ) {
 			return;
 		}
 
-<<<<<<< HEAD
-		$post = $this->get_singular_post();
-		if ( $post ) {
-			$focus_keyword = $this->get_post_focus_keyword( $post );
-		}
-
-=======
->>>>>>> update
 		$menu_args = [
 			'parent' => self::MENU_IDENTIFIER,
 			'id'     => self::ANALYSIS_SUBMENU_IDENTIFIER,
@@ -548,20 +436,6 @@ class WPSEO_Admin_Bar_Menu implements WPSEO_WordPress_Integration {
 				'href'  => 'https://search.google.com/search-console/links/drilldown?resource_id=' . rawurlencode( get_option( 'siteurl' ) ) . '&type=EXTERNAL&target=' . $encoded_url . '&domain=',
 			],
 			[
-<<<<<<< HEAD
-				'id'    => 'wpseo-kwdensity',
-				'title' => __( 'Check Keyphrase Density', 'wordpress-seo' ),
-				// HTTPS not available.
-				'href'  => 'http://www.zippy.co.uk/keyworddensity/index.php?url=' . $encoded_url . '&keyword=' . rawurlencode( $focus_keyword ),
-			],
-			[
-				'id'    => 'wpseo-cache',
-				'title' => __( 'Check Google Cache', 'wordpress-seo' ),
-				'href'  => '//webcache.googleusercontent.com/search?strip=1&q=cache:' . $encoded_url,
-			],
-			[
-=======
->>>>>>> update
 				'id'    => 'wpseo-structureddata',
 				'title' => __( 'Google Rich Results Test', 'wordpress-seo' ),
 				'href'  => 'https://search.google.com/test/rich-results?url=' . $encoded_url,
@@ -572,24 +446,6 @@ class WPSEO_Admin_Bar_Menu implements WPSEO_WordPress_Integration {
 				'href'  => '//developers.facebook.com/tools/debug/?q=' . $encoded_url,
 			],
 			[
-<<<<<<< HEAD
-				'id'    => 'wpseo-pinterestvalidator',
-				'title' => __( 'Pinterest Rich Pins Validator', 'wordpress-seo' ),
-				'href'  => 'https://developers.pinterest.com/tools/url-debugger/?link=' . $encoded_url,
-			],
-			[
-				'id'    => 'wpseo-htmlvalidation',
-				'title' => __( 'HTML Validator', 'wordpress-seo' ),
-				'href'  => '//validator.w3.org/check?uri=' . $encoded_url,
-			],
-			[
-				'id'    => 'wpseo-cssvalidation',
-				'title' => __( 'CSS Validator', 'wordpress-seo' ),
-				'href'  => '//jigsaw.w3.org/css-validator/validator?uri=' . $encoded_url,
-			],
-			[
-=======
->>>>>>> update
 				'id'    => 'wpseo-pagespeed',
 				'title' => __( 'Google Page Speed Test', 'wordpress-seo' ),
 				'href'  => '//developers.google.com/speed/pagespeed/insights/?url=' . $encoded_url,
@@ -601,18 +457,6 @@ class WPSEO_Admin_Bar_Menu implements WPSEO_WordPress_Integration {
 			],
 		];
 
-<<<<<<< HEAD
-		foreach ( $submenu_items as $menu_item ) {
-			$menu_args = [
-				'parent' => self::ANALYSIS_SUBMENU_IDENTIFIER,
-				'id'     => $menu_item['id'],
-				'title'  => $menu_item['title'],
-				'href'   => $menu_item['href'],
-				'meta'   => [ 'target' => '_blank' ],
-			];
-			$wp_admin_bar->add_menu( $menu_args );
-		}
-=======
 		$this->add_submenu_items( $submenu_items, $wp_admin_bar, self::ANALYSIS_SUBMENU_IDENTIFIER );
 	}
 
@@ -770,7 +614,6 @@ class WPSEO_Admin_Bar_Menu implements WPSEO_WordPress_Integration {
 				],
 			]
 		);
->>>>>>> update
 	}
 
 	/**
@@ -982,21 +825,10 @@ class WPSEO_Admin_Bar_Menu implements WPSEO_WordPress_Integration {
 	 * @return string The score icon, or empty string.
 	 */
 	protected function get_score_icon() {
-<<<<<<< HEAD
-		$is_seo_enabled         = ( new WPSEO_Metabox_Analysis_SEO() )->is_enabled();
-		$is_readability_enabled = ( new WPSEO_Metabox_Analysis_Readability() )->is_enabled();
-
-		if ( ! $is_seo_enabled && ! $is_readability_enabled ) {
-			return '';
-		}
-
-		$indexable = $this->indexable_repository->for_current_page();
-=======
 		$is_seo_enabled         = $this->get_is_seo_enabled();
 		$is_readability_enabled = $this->get_is_readability_enabled();
 
 		$indexable = $this->get_current_indexable();
->>>>>>> update
 
 		if ( $is_seo_enabled ) {
 			return $this->score_icon_helper->for_seo( $indexable, 'adminbar-seo-score' )->present();
@@ -1032,17 +864,10 @@ class WPSEO_Admin_Bar_Menu implements WPSEO_WordPress_Integration {
 			return '';
 		}
 
-<<<<<<< HEAD
-		/* translators: %s: number of notifications */
-		$counter_screen_reader_text = sprintf( _n( '%s notification', '%s notifications', $notification_count, 'wordpress-seo' ), number_format_i18n( $notification_count ) );
-
-		return sprintf( ' <div class="wp-core-ui wp-ui-notification yoast-issue-counter"><span aria-hidden="true">%d</span><span class="screen-reader-text">%s</span></div>', $notification_count, $counter_screen_reader_text );
-=======
 		/* translators: Hidden accessibility text; %s: number of notifications. */
 		$counter_screen_reader_text = sprintf( _n( '%s notification', '%s notifications', $notification_count, 'wordpress-seo' ), number_format_i18n( $notification_count ) );
 
 		return sprintf( ' <div class="wp-core-ui wp-ui-notification yoast-issue-counter"><span class="yoast-issues-count" aria-hidden="true">%d</span><span class="screen-reader-text">%s</span></div>', $notification_count, $counter_screen_reader_text );
->>>>>>> update
 	}
 
 	/**
@@ -1080,8 +905,6 @@ class WPSEO_Admin_Bar_Menu implements WPSEO_WordPress_Integration {
 	protected function can_manage_options() {
 		return is_network_admin() && current_user_can( 'wpseo_manage_network_options' ) || ! is_network_admin() && WPSEO_Capability_Utils::current_user_can( 'wpseo_manage_options' );
 	}
-<<<<<<< HEAD
-=======
 
 	/**
 	 * Add submenu items to a menu item.
@@ -1104,5 +927,4 @@ class WPSEO_Admin_Bar_Menu implements WPSEO_WordPress_Integration {
 			$wp_admin_bar->add_menu( $menu_args );
 		}
 	}
->>>>>>> update
 }

@@ -21,12 +21,6 @@ if ( ! class_exists( 'acf_field_date_picker' ) ) :
 		function initialize() {
 
 			// vars
-<<<<<<< HEAD
-			$this->name     = 'date_picker';
-			$this->label    = __( 'Date Picker', 'acf' );
-			$this->category = 'jquery';
-			$this->defaults = array(
-=======
 			$this->name          = 'date_picker';
 			$this->label         = __( 'Date Picker', 'acf' );
 			$this->category      = 'advanced';
@@ -34,7 +28,6 @@ if ( ! class_exists( 'acf_field_date_picker' ) ) :
 			$this->preview_image = acf_get_url() . '/assets/images/field-type-previews/field-preview-date-picker.png';
 			$this->doc_url       = acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/resources/date-picker/', 'docs', 'field-type-selection' );
 			$this->defaults      = array(
->>>>>>> update
 				'display_format' => 'd/m/Y',
 				'return_format'  => 'd/m/Y',
 				'first_day'      => 1,
@@ -57,11 +50,7 @@ if ( ! class_exists( 'acf_field_date_picker' ) ) :
 
 		function input_admin_enqueue_scripts() {
 
-<<<<<<< HEAD
-			// bail ealry if no enqueue
-=======
 			// bail early if no enqueue
->>>>>>> update
 			if ( ! acf_get_setting( 'enqueue_datepicker' ) ) {
 				return;
 			}
@@ -156,11 +145,7 @@ if ( ! class_exists( 'acf_field_date_picker' ) ) :
 
 			// html
 			?>
-<<<<<<< HEAD
-		<div <?php acf_esc_attr_e( $div ); ?>>
-=======
 		<div <?php echo acf_esc_attrs( $div ); ?>>
->>>>>>> update
 			<?php acf_hidden_input( $hidden_input ); ?>
 			<?php acf_text_input( $text_input ); ?>
 		</div>
@@ -180,39 +165,21 @@ if ( ! class_exists( 'acf_field_date_picker' ) ) :
 		*
 		*  @param   $field  - an array holding all the field's data
 		*/
-<<<<<<< HEAD
-
-		function render_field_settings( $field ) {
-
-			// global
-			global $wp_locale;
-
-			// vars
-=======
 		function render_field_settings( $field ) {
 			global $wp_locale;
 
->>>>>>> update
 			$d_m_Y = date_i18n( 'd/m/Y' );
 			$m_d_Y = date_i18n( 'm/d/Y' );
 			$F_j_Y = date_i18n( 'F j, Y' );
 			$Ymd   = date_i18n( 'Ymd' );
 
-<<<<<<< HEAD
-			// display_format
-=======
 			echo '<div class="acf-field-settings-split">';
 
->>>>>>> update
 			acf_render_field_setting(
 				$field,
 				array(
 					'label'        => __( 'Display Format', 'acf' ),
-<<<<<<< HEAD
-					'instructions' => __( 'The format displayed when editing a post', 'acf' ),
-=======
 					'hint'         => __( 'The format displayed when editing a post', 'acf' ),
->>>>>>> update
 					'type'         => 'radio',
 					'name'         => 'display_format',
 					'other_choice' => 1,
@@ -227,24 +194,6 @@ if ( ! class_exists( 'acf_field_date_picker' ) ) :
 
 			// save_format - compatibility with ACF < 5.0.0
 			if ( ! empty( $field['save_format'] ) ) {
-<<<<<<< HEAD
-
-				// save_format
-				acf_render_field_setting(
-					$field,
-					array(
-						'label'        => __( 'Save Format', 'acf' ),
-						'instructions' => __( 'The format used when saving a value', 'acf' ),
-						'type'         => 'text',
-						'name'         => 'save_format',
-					// 'readonly'        => 1 // this setting was not readonly in v4
-					)
-				);
-
-			} else {
-
-				// return_format
-=======
 				acf_render_field_setting(
 					$field,
 					array(
@@ -256,16 +205,11 @@ if ( ! class_exists( 'acf_field_date_picker' ) ) :
 					)
 				);
 			} else {
->>>>>>> update
 				acf_render_field_setting(
 					$field,
 					array(
 						'label'        => __( 'Return Format', 'acf' ),
-<<<<<<< HEAD
-						'instructions' => __( 'The format returned via template functions', 'acf' ),
-=======
 						'hint'         => __( 'The format returned via template functions', 'acf' ),
->>>>>>> update
 						'type'         => 'radio',
 						'name'         => 'return_format',
 						'other_choice' => 1,
@@ -278,17 +222,10 @@ if ( ! class_exists( 'acf_field_date_picker' ) ) :
 						),
 					)
 				);
-<<<<<<< HEAD
-
-			}
-
-			// first_day
-=======
 			}
 
 			echo '</div>';
 
->>>>>>> update
 			acf_render_field_setting(
 				$field,
 				array(
@@ -299,15 +236,8 @@ if ( ! class_exists( 'acf_field_date_picker' ) ) :
 					'choices'      => array_values( $wp_locale->weekday ),
 				)
 			);
-<<<<<<< HEAD
-
 		}
 
-
-=======
-		}
-
->>>>>>> update
 		/*
 		*  format_value()
 		*
@@ -337,11 +267,7 @@ if ( ! class_exists( 'acf_field_date_picker' ) ) :
 			return acf_format_date( $value, $field['return_format'] );
 
 		}
-<<<<<<< HEAD
-		
-=======
 
->>>>>>> update
 
 		/**
 		 *  This filter is applied to the $field after it is loaded from the database

@@ -140,13 +140,10 @@ form.submitting .wpcf7-spinner {
 	}
 }
 
-<<<<<<< HEAD
-=======
 .wpcf7 [inert] {
 	opacity: 0.5;
 }
 
->>>>>>> update
 .wpcf7 input[type="file"] {
 	cursor: pointer;
 }
@@ -164,8 +161,6 @@ form.submitting .wpcf7-spinner {
 .wpcf7 input[type="tel"] {
 	direction: ltr;
 }
-<<<<<<< HEAD
-=======
 
 .wpcf7-reflection > output {
 	display: list-item;
@@ -175,4 +170,3 @@ form.submitting .wpcf7-spinner {
 .wpcf7-reflection > output[hidden] {
 	display: none;
 }
->>>>>>> update

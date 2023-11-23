@@ -412,16 +412,6 @@ class Current_Page_Helper {
 	 * @return bool True when current page is a yoast seo plugin page.
 	 */
 	public function is_yoast_seo_page() {
-<<<<<<< HEAD
-		static $is_yoast_seo;
-
-		if ( $is_yoast_seo === null ) {
-			$current_page = \filter_input( \INPUT_GET, 'page' );
-			$is_yoast_seo = ( \is_string( $current_page ) && \strpos( $current_page, 'wpseo_' ) === 0 );
-		}
-
-		return $is_yoast_seo;
-=======
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Reason: We are not processing form information.
 		if ( isset( $_GET['page'] ) && \is_string( $_GET['page'] ) ) {
 			// phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Reason: We are not processing form information, We are only using the variable in the strpos function.
@@ -429,7 +419,6 @@ class Current_Page_Helper {
 			return \strpos( $current_page, 'wpseo_' ) === 0;
 		}
 		return false;
->>>>>>> update
 	}
 
 	/**
@@ -439,15 +428,6 @@ class Current_Page_Helper {
 	 * @return string The current Yoast SEO page.
 	 */
 	public function get_current_yoast_seo_page() {
-<<<<<<< HEAD
-		static $current_yoast_seo_page;
-
-		if ( $current_yoast_seo_page === null ) {
-			$current_yoast_seo_page = \filter_input( \INPUT_GET, 'page' );
-		}
-
-		return $current_yoast_seo_page;
-=======
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Reason: We are not processing form information.
 		if ( isset( $_GET['page'] ) && \is_string( $_GET['page'] ) ) {
 			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Reason: We are not processing form information.
@@ -455,7 +435,6 @@ class Current_Page_Helper {
 		}
 
 		return '';
->>>>>>> update
 	}
 
 	/**

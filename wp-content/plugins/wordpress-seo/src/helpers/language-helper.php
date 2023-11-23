@@ -70,8 +70,6 @@ class Language_Helper {
 		}
 		return $researcher_language;
 	}
-<<<<<<< HEAD
-=======
 
 	/**
 	 * Returns The site language code without region
@@ -82,5 +80,4 @@ class Language_Helper {
 	public function get_language() {
 		return WPSEO_Language_Utils::get_language( \get_locale() );
 	}
->>>>>>> update
 }

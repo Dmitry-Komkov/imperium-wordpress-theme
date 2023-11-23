@@ -31,20 +31,6 @@ use YoastSEO_Vendor\Psr\Http\Message\ResponseInterface;
  * - {res_headers}:    Response headers
  * - {req_body}:       Request body
  * - {res_body}:       Response body
-<<<<<<< HEAD
- */
-class MessageFormatter
-{
-    /**
-     * Apache Common Log Format.
-     * @link http://httpd.apache.org/docs/2.4/logs.html#common
-     * @var string
-     */
-    const CLF = "{hostname} {req_header_User-Agent} - [{date_common_log}] \"{method} {target} HTTP/{version}\" {code} {res_header_Content-Length}";
-    const DEBUG = ">>>>>>>>\n{request}\n<<<<<<<<\n{response}\n--------\n{error}";
-    const SHORT = '[{ts}] "{method} {target} HTTP/{version}" {code}';
-    /** @var string Template used to format log messages */
-=======
  *
  * @final
  */
@@ -63,33 +49,17 @@ class MessageFormatter implements \YoastSEO_Vendor\GuzzleHttp\MessageFormatterIn
     /**
      * @var string Template used to format log messages
      */
->>>>>>> update
     private $template;
     /**
      * @param string $template Log message template
      */
-<<<<<<< HEAD
-    public function __construct($template = self::CLF)
-=======
     public function __construct(?string $template = self::CLF)
->>>>>>> update
     {
         $this->template = $template ?: self::CLF;
     }
     /**
      * Returns a formatted message string.
      *
-<<<<<<< HEAD
-     * @param RequestInterface  $request  Request that was sent
-     * @param ResponseInterface $response Response that was received
-     * @param \Exception        $error    Exception that was received
-     *
-     * @return string
-     */
-    public function format(\YoastSEO_Vendor\Psr\Http\Message\RequestInterface $request, \YoastSEO_Vendor\Psr\Http\Message\ResponseInterface $response = null, \Exception $error = null)
-    {
-        $cache = [];
-=======
      * @param RequestInterface       $request  Request that was sent
      * @param ResponseInterface|null $response Response that was received
      * @param \Throwable|null        $error    Exception that was received
@@ -98,7 +68,6 @@ class MessageFormatter implements \YoastSEO_Vendor\GuzzleHttp\MessageFormatterIn
     {
         $cache = [];
         /** @var string */
->>>>>>> update
         return \preg_replace_callback('/{\\s*([A-Za-z_\\-\\.0-9]+)\\s*}/', function (array $matches) use($request, $response, $error, &$cache) {
             if (isset($cache[$matches[1]])) {
                 return $cache[$matches[1]];
@@ -106,17 +75,10 @@ class MessageFormatter implements \YoastSEO_Vendor\GuzzleHttp\MessageFormatterIn
             $result = '';
             switch ($matches[1]) {
                 case 'request':
-<<<<<<< HEAD
-                    $result = \YoastSEO_Vendor\GuzzleHttp\Psr7\str($request);
-                    break;
-                case 'response':
-                    $result = $response ? \YoastSEO_Vendor\GuzzleHttp\Psr7\str($response) : '';
-=======
                     $result = \YoastSEO_Vendor\GuzzleHttp\Psr7\Message::toString($request);
                     break;
                 case 'response':
                     $result = $response ? \YoastSEO_Vendor\GuzzleHttp\Psr7\Message::toString($response) : '';
->>>>>>> update
                     break;
                 case 'req_headers':
                     $result = \trim($request->getMethod() . ' ' . $request->getRequestTarget()) . ' HTTP/' . $request->getProtocolVersion() . "\r\n" . $this->headers($request);
@@ -125,12 +87,6 @@ class MessageFormatter implements \YoastSEO_Vendor\GuzzleHttp\MessageFormatterIn
                     $result = $response ? \sprintf('HTTP/%s %d %s', $response->getProtocolVersion(), $response->getStatusCode(), $response->getReasonPhrase()) . "\r\n" . $this->headers($response) : 'NULL';
                     break;
                 case 'req_body':
-<<<<<<< HEAD
-                    $result = $request->getBody();
-                    break;
-                case 'res_body':
-                    $result = $response ? $response->getBody() : 'NULL';
-=======
                     $result = $request->getBody()->__toString();
                     break;
                 case 'res_body':
@@ -144,7 +100,6 @@ class MessageFormatter implements \YoastSEO_Vendor\GuzzleHttp\MessageFormatterIn
                         break;
                     }
                     $result = $response->getBody()->__toString();
->>>>>>> update
                     break;
                 case 'ts':
                 case 'date_iso_8601':
@@ -161,11 +116,7 @@ class MessageFormatter implements \YoastSEO_Vendor\GuzzleHttp\MessageFormatterIn
                     break;
                 case 'uri':
                 case 'url':
-<<<<<<< HEAD
-                    $result = $request->getUri();
-=======
                     $result = $request->getUri()->__toString();
->>>>>>> update
                     break;
                 case 'target':
                     $result = $request->getRequestTarget();
@@ -205,15 +156,8 @@ class MessageFormatter implements \YoastSEO_Vendor\GuzzleHttp\MessageFormatterIn
     }
     /**
      * Get headers from message as string
-<<<<<<< HEAD
-     *
-     * @return string
-     */
-    private function headers(\YoastSEO_Vendor\Psr\Http\Message\MessageInterface $message)
-=======
      */
     private function headers(\YoastSEO_Vendor\Psr\Http\Message\MessageInterface $message) : string
->>>>>>> update
     {
         $result = '';
         foreach ($message->getHeaders() as $name => $values) {

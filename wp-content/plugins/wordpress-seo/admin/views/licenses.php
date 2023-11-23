@@ -6,11 +6,8 @@
  * @since   5.1
  */
 
-<<<<<<< HEAD
-=======
 use Yoast\WP\SEO\Promotions\Application\Promotion_Manager;
 
->>>>>>> update
 if ( ! defined( 'WPSEO_VERSION' ) ) {
 	header( 'Status: 403 Forbidden' );
 	header( 'HTTP/1.1 403 Forbidden' );
@@ -25,10 +22,7 @@ $premium_extension = [
 	'title'    => 'Yoast SEO Premium',
 	/* translators: %1$s expands to Yoast SEO */
 	'desc'     => sprintf( __( 'The premium version of %1$s with more features & support.', 'wordpress-seo' ), 'Yoast SEO' ),
-<<<<<<< HEAD
-=======
 	'image'    => plugin_dir_url( WPSEO_FILE ) . 'packages/js/images/Yoast_SEO_Icon.svg',
->>>>>>> update
 	'benefits' => [],
 ];
 
@@ -37,16 +31,6 @@ $extensions = [
 		'buyUrl'        => WPSEO_Shortlinker::get( 'https://yoa.st/zt' ),
 		'infoUrl'       => WPSEO_Shortlinker::get( 'https://yoa.st/zs' ),
 		'title'         => 'Local SEO',
-<<<<<<< HEAD
-		'display_title' => __( 'Stop losing customers to other local businesses', 'wordpress-seo' ),
-		'desc'          => __( 'Rank better locally and in Google Maps, without breaking a sweat!', 'wordpress-seo' ),
-		'image'         => plugins_url( 'images/local_plugin_assistant.svg?v=' . WPSEO_VERSION, WPSEO_FILE ),
-		'benefits'      => [
-			__( 'Get better search results in local search', 'wordpress-seo' ),
-			__( 'Easily insert Google Maps, a store locator, opening hours and more', 'wordpress-seo' ),
-			/* translators: %1$s expands to WooCommerce  */
-			sprintf( __( 'Allow customers to pick up their %s order locally', 'wordpress-seo' ), 'WooCommerce' ),
-=======
 		'display_title' => __( 'Maximize your visibility for local searches', 'wordpress-seo' ),
 		'desc'          => __( 'Rank better locally and in Google Maps, without breaking a sweat!', 'wordpress-seo' ),
 		'image'         => plugins_url( 'images/local_plugin_assistant.svg?v=' . WPSEO_VERSION, WPSEO_FILE ),
@@ -55,22 +39,12 @@ $extensions = [
 			__( 'Automatically get technical SEO best practices for local businesses', 'wordpress-seo' ),
 			__( 'Easily add maps, address finders, and opening hours to your content', 'wordpress-seo' ),
 			__( 'Optimize your business for multiple locations', 'wordpress-seo' ),
->>>>>>> update
 		],
 	],
 	WPSEO_Addon_Manager::VIDEO_SLUG => [
 		'buyUrl'        => WPSEO_Shortlinker::get( 'https://yoa.st/zx/' ),
 		'infoUrl'       => WPSEO_Shortlinker::get( 'https://yoa.st/zw/' ),
 		'title'         => 'Video SEO',
-<<<<<<< HEAD
-		'display_title' => __( 'Start ranking better for your videos', 'wordpress-seo' ),
-		'desc'          => __( 'Optimize your videos to show them off in search results and get more clicks!', 'wordpress-seo' ),
-		'image'         => plugins_url( 'images/video_plugin_assistant.svg?v=' . WPSEO_VERSION, WPSEO_FILE ),
-		'benefits'      => [
-			__( 'Show your videos in Google Videos', 'wordpress-seo' ),
-			__( 'Enhance the experience of sharing posts with videos', 'wordpress-seo' ),
-			__( 'Make videos responsive through enabling fitvids.js', 'wordpress-seo' ),
-=======
 		'display_title' => __( 'Drive more traffic to your videos', 'wordpress-seo' ),
 		'desc'          => __( 'Optimize your videos to show them off in search results and get more clicks!', 'wordpress-seo' ),
 		'image'         => plugins_url( 'images/video_plugin_assistant.svg?v=' . WPSEO_VERSION, WPSEO_FILE ),
@@ -79,30 +53,20 @@ $extensions = [
 			__( 'Load pages faster that include videos', 'wordpress-seo' ),
 			__( 'Make your videos responsive for all screen sizes', 'wordpress-seo' ),
 			__( 'Get XML video sitemaps', 'wordpress-seo' ),
->>>>>>> update
 		],
 	],
 	WPSEO_Addon_Manager::NEWS_SLUG  => [
 		'buyUrl'        => WPSEO_Shortlinker::get( 'https://yoa.st/zv/' ),
 		'infoUrl'       => WPSEO_Shortlinker::get( 'https://yoa.st/zu/' ),
 		'title'         => 'News SEO',
-<<<<<<< HEAD
-		'display_title' => __( 'Everything you need for Google News', 'wordpress-seo' ),
-=======
 		'display_title' => __( 'Rank higher in Google\'s news carousel', 'wordpress-seo' ),
->>>>>>> update
 		'desc'          => __( 'Are you in Google News? Increase your traffic from Google News by optimizing for it!', 'wordpress-seo' ),
 		'image'         => plugins_url( 'images/news_plugin_assistant.svg?v=' . WPSEO_VERSION, WPSEO_FILE ),
 		'benefits'      => [
 			__( 'Optimize your site for Google News', 'wordpress-seo' ),
-<<<<<<< HEAD
-			__( 'Immediately pings Google on the publication of a new post', 'wordpress-seo' ),
-			__( 'Creates XML News Sitemaps', 'wordpress-seo' ),
-=======
 			__( 'Ping Google on the publication of a new post', 'wordpress-seo' ),
 			__( 'Add all necessary schema.org markup', 'wordpress-seo' ),
 			__( 'Get XML news sitemaps', 'wordpress-seo' ),
->>>>>>> update
 		],
 	],
 ];
@@ -113,35 +77,21 @@ if ( YoastSEO()->helpers->woocommerce->is_active() ) {
 		'buyUrl'        => WPSEO_Shortlinker::get( 'https://yoa.st/zr' ),
 		'infoUrl'       => WPSEO_Shortlinker::get( 'https://yoa.st/zq' ),
 		'title'         => 'Yoast WooCommerce SEO',
-<<<<<<< HEAD
-		'display_title' => __( 'Make your products stand out in Google', 'wordpress-seo' ),
-=======
 		'display_title' => __( 'Drive more traffic to your online store', 'wordpress-seo' ),
->>>>>>> update
 		/* translators: %1$s expands to Yoast SEO */
 		'desc'          => sprintf( __( 'Seamlessly integrate WooCommerce with %1$s and get extra features!', 'wordpress-seo' ), 'Yoast SEO' ),
 		'image'         => plugins_url( 'images/woo_plugin_assistant.svg?v=' . WPSEO_VERSION, WPSEO_FILE ),
 		'benefits'      => [
-<<<<<<< HEAD
-			sprintf( __( 'Improve sharing on Facebook and Pinterest', 'wordpress-seo' ) ),
-			/* translators: %1$s expands to Yoast, %2$s expands to WooCommerce */
-			sprintf( __( 'Use %1$s breadcrumbs instead of %2$s ones', 'wordpress-seo' ), 'Yoast', 'WooCommerce' ),
-			/* translators: %1$s expands to Yoast SEO, %2$s expands to WooCommerce */
-			sprintf( __( 'A seamless integration between %1$s and %2$s', 'wordpress-seo' ), 'Yoast SEO', 'WooCommerce' ),
-=======
 			__( 'Write product pages that rank with the enhanced SEO analysis', 'wordpress-seo' ),
 			__( 'Increase clicks of Google search with rich results', 'wordpress-seo' ),
 			__( 'Add global identifiers for variable products', 'wordpress-seo' ),
 			/* translators: %1$s expands to Yoast SEO, %2$s expands to WooCommerce */
 			sprintf( __( 'Seamless integration between %1$s and %2$s', 'wordpress-seo' ), 'Yoast SEO', 'WooCommerce' ),
->>>>>>> update
 		],
 		'buy_button'    => 'WooCommerce SEO',
 	];
 }
 
-<<<<<<< HEAD
-=======
 // The total number of plugins to consider is the length of the array + 1 for Premium.
 // @phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 $number_plugins_total = ( count( $extensions ) + 1 );
@@ -168,7 +118,6 @@ $extensions['yoast-seo-plugin-subscription'] = [
 	'buy_button'    => __( 'all the Yoast plugins', 'wordpress-seo' ),
 ];
 
->>>>>>> update
 $addon_manager                  = new WPSEO_Addon_Manager();
 $has_valid_premium_subscription = YoastSEO()->helpers->product->is_premium() && $addon_manager->has_valid_subscription( WPSEO_Addon_Manager::PREMIUM_SLUG );
 
@@ -176,11 +125,6 @@ $has_valid_premium_subscription = YoastSEO()->helpers->product->is_premium() && 
 $wpseo_extensions_header = sprintf( __( '%1$s Extensions', 'wordpress-seo' ), 'Yoast SEO' );
 $new_tab_message         = sprintf(
 	'<span class="screen-reader-text">%1$s</span>',
-<<<<<<< HEAD
-	esc_html__( '(Opens in a new browser tab)', 'wordpress-seo' )
-);
-
-=======
 	/* translators: Hidden accessibility text. */
 	esc_html__( '(Opens in a new browser tab)', 'wordpress-seo' )
 );
@@ -198,7 +142,6 @@ if ( YoastSEO()->classes->get( Promotion_Manager::class )->is( 'black-friday-202
 
 }
 
->>>>>>> update
 ?>
 
 <div class="wrap yoast wpseo_table_page">
@@ -207,23 +150,11 @@ if ( YoastSEO()->classes->get( Promotion_Manager::class )->is( 'black-friday-202
 
 	<div id="extensions">
 		<section class="yoast-seo-premium-extension">
-<<<<<<< HEAD
-=======
 			<?php echo $premium_sale_badge; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Reason: Output is already escaped ?>
->>>>>>> update
 			<h2>
 				<?php
 				printf(
 					/* translators: 1: expands to Yoast SEO Premium */
-<<<<<<< HEAD
-					esc_html__( '%1$s, take your optimization to the next level!', 'wordpress-seo' ),
-					// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Reason: The `get_title` value is hardcoded; only passed through the WPSEO_Extensions class.
-					'<span class="yoast-heading-highlight">' . $premium_extension['title'] . '</span>'
-				);
-				?>
-			</h2>
-
-=======
 					esc_html__( 'Drive more traffic to your site with %1$s', 'wordpress-seo' ),
 					// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Reason: The `get_title` value is hardcoded; only passed through the WPSEO_Extensions class.
 					$premium_extension['title']
@@ -231,28 +162,11 @@ if ( YoastSEO()->classes->get( Promotion_Manager::class )->is( 'black-friday-202
 				?>
 				<img alt="" width="100" height="100" src="<?php echo esc_url( $premium_extension['image'] ); ?>"/>
 			</h2>
->>>>>>> update
 			<?php
 			if ( ! $has_valid_premium_subscription ) :
 				?>
 				<ul class="yoast-seo-premium-benefits yoast-list--usp">
 					<li class="yoast-seo-premium-benefits__item">
-<<<<<<< HEAD
-						<span class="yoast-seo-premium-benefits__title"><?php esc_html_e( 'Redirect manager', 'wordpress-seo' ); ?></span>
-						<span class="yoast-seo-premium-benefits__description"><?php esc_html_e( 'create and manage redirects from within your WordPress install.', 'wordpress-seo' ); ?></span>
-					</li>
-					<li class="yoast-seo-premium-benefits__item">
-						<span class="yoast-seo-premium-benefits__title"><?php esc_html_e( 'Synonyms & related keyphrases', 'wordpress-seo' ); ?></span>
-						<span class="yoast-seo-premium-benefits__description"><?php esc_html_e( 'optimize a single post for synonyms and related keyphrases.', 'wordpress-seo' ); ?></span>
-					</li>
-					<li class="yoast-seo-premium-benefits__item">
-						<span class="yoast-seo-premium-benefits__title"><?php esc_html_e( 'Social previews', 'wordpress-seo' ); ?></span>
-						<span class="yoast-seo-premium-benefits__description"><?php esc_html_e( 'check what your Facebook or Twitter post will look like.', 'wordpress-seo' ); ?></span>
-					</li>
-					<li class="yoast-seo-premium-benefits__item">
-						<span class="yoast-seo-premium-benefits__title"><?php esc_html_e( 'Premium support', 'wordpress-seo' ); ?></span>
-						<span class="yoast-seo-premium-benefits__description"><?php esc_html_e( 'gain access to our 24/7 support team.', 'wordpress-seo' ); ?></span>
-=======
 						<span class="yoast-seo-premium-benefits__title"><?php esc_html_e( 'Be more efficient in creating content', 'wordpress-seo' ); ?></span>
 						<span class="yoast-seo-premium-benefits__description"><?php esc_html_e( 'Use AI to create high-quality titles and meta descriptions for posts and pages', 'wordpress-seo' ); ?></span>
 					</li>
@@ -283,26 +197,18 @@ if ( YoastSEO()->classes->get( Promotion_Manager::class )->is( 'black-friday-202
 					<li class="yoast-seo-premium-benefits__item">
 						<span class="yoast-seo-premium-benefits__title"><?php esc_html_e( 'Premium support', 'wordpress-seo' ); ?></span>
 						<span class="yoast-seo-premium-benefits__description"><?php esc_html_e( 'Gain access to our 24/7 support team', 'wordpress-seo' ); ?></span>
->>>>>>> update
 					</li>
 				</ul>
 			<?php endif; ?>
 			<?php if ( $addon_manager->is_installed( WPSEO_Addon_Manager::PREMIUM_SLUG ) ) : ?>
 				<div class="yoast-button yoast-button--noarrow yoast-button--extension yoast-button--extension-installed"><?php esc_html_e( 'Installed', 'wordpress-seo' ); ?></div>
 
-<<<<<<< HEAD
-				<?php if ( $has_valid_premium_subscription ) : ?>
-					<div class="yoast-button yoast-button--noarrow yoast-button--extension yoast-button--extension-activated"><?php esc_html_e( 'Activated', 'wordpress-seo' ); ?></div>
-					<a target="_blank" href="<?php WPSEO_Shortlinker::show( 'https://yoa.st/13k' ); ?>"
-						class="yoast-link--license">
-=======
 				<?php
 				if ( $has_valid_premium_subscription ) :
 					++$number_plugins_active;
 					?>
 					<div class="yoast-button yoast-button--noarrow yoast-button--extension yoast-button--extension-activated"><?php esc_html_e( 'Activated', 'wordpress-seo' ); ?></div>
 					<a target="_blank" href="<?php WPSEO_Shortlinker::show( 'https://yoa.st/13k' ); ?>" class="yoast-link--license">
->>>>>>> update
 						<?php
 						printf(
 							/* translators: %s expands to the extension title */
@@ -315,12 +221,7 @@ if ( YoastSEO()->classes->get( Promotion_Manager::class )->is( 'black-friday-202
 					</a>
 				<?php else : ?>
 					<div class="yoast-button yoast-button--noarrow yoast-button--extension yoast-button--extension-not-activated"><?php esc_html_e( 'Not activated', 'wordpress-seo' ); ?></div>
-<<<<<<< HEAD
-					<a target="_blank" href="<?php WPSEO_Shortlinker::show( 'https://yoa.st/13i' ); ?>"
-						class="yoast-link--license">
-=======
 					<a target="_blank" href="<?php WPSEO_Shortlinker::show( 'https://yoa.st/13i' ); ?>" class="yoast-link--license">
->>>>>>> update
 						<?php
 						printf(
 							/* translators: %s expands to the extension title */
@@ -336,12 +237,7 @@ if ( YoastSEO()->classes->get( Promotion_Manager::class )->is( 'black-friday-202
 
 			<?php else : ?>
 
-<<<<<<< HEAD
-				<a target="_blank" href="<?php echo esc_url( $premium_extension['buyUrl'] ); ?>"
-					class="yoast-button-upsell">
-=======
 				<a target="_blank" data-action="load-nfd-ctb" data-ctb-id="f6a84663-465f-4cb5-8ba5-f7a6d72224b2" href="<?php echo esc_url( $premium_extension['buyUrl'] ); ?>" class="yoast-button-upsell">
->>>>>>> update
 					<?php
 					printf(
 						/* translators: $s expands to Yoast SEO Premium */
@@ -354,12 +250,7 @@ if ( YoastSEO()->classes->get( Promotion_Manager::class )->is( 'black-friday-202
 					?>
 				</a>
 
-<<<<<<< HEAD
-				<a target="_blank" href="<?php echo esc_url( $premium_extension['infoUrl'] ); ?>"
-					class="yoast-link--more-info">
-=======
 				<a target="_blank"  href="<?php echo esc_url( $premium_extension['infoUrl'] ); ?>" class="yoast-link--more-info">
->>>>>>> update
 					<?php
 					printf(
 						/* translators: Text between 1: and 2: will only be shown to screen readers. 3: expands to the product name. */
@@ -376,11 +267,7 @@ if ( YoastSEO()->classes->get( Promotion_Manager::class )->is( 'black-friday-202
 			<?php endif; ?>
 			<?php if ( ! $has_valid_premium_subscription ) { ?>
 				<p>
-<<<<<<< HEAD
-					<small class="yoast-money-back-guarantee"><?php esc_html_e( 'Comes with our 30-day no questions asked money back guarantee', 'wordpress-seo' ); ?></small>
-=======
 					<small class="yoast-money-back-guarantee"><?php esc_html_e( 'With 30-day money-back guarantee. No questions asked.', 'wordpress-seo' ); ?></small>
->>>>>>> update
 				</p>
 			<?php } ?>
 		</section>
@@ -390,17 +277,6 @@ if ( YoastSEO()->classes->get( Promotion_Manager::class )->is( 'black-friday-202
 		<section class="yoast-promo-extensions">
 			<h2>
 				<?php
-<<<<<<< HEAD
-				/* translators: 1: expands to Yoast SEO */
-				$yoast_seo_extensions = sprintf( esc_html__( '%1$s extensions', 'wordpress-seo' ), 'Yoast SEO' );
-				$yoast_seo_extensions = '<span class="yoast-heading-highlight">' . $yoast_seo_extensions . '</span>';
-
-				printf(
-					/* translators: 1: expands to Yoast SEO extensions */
-					esc_html__( '%1$s to optimize your site even further', 'wordpress-seo' ),
-					// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Reason: $yoast_seo_extensions is properly escaped.
-					$yoast_seo_extensions
-=======
 				$yoast_outrank_copy = sprintf( esc_html__( 'Outrank your competitors even further', 'wordpress-seo' ) );
 				$yoast_outrank_copy = '<span class="yoast-heading-highlight">' . $yoast_outrank_copy . '</span>';
 
@@ -410,15 +286,10 @@ if ( YoastSEO()->classes->get( Promotion_Manager::class )->is( 'black-friday-202
 					// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Reason: $yoast_seo_extensions is properly escaped.
 					$yoast_outrank_copy,
 					'Yoast SEO'
->>>>>>> update
 				);
 				?>
 			</h2>
 
-<<<<<<< HEAD
-			<?php foreach ( $extensions as $slug => $extension ) : ?>
-				<section class="yoast-promoblock secondary yoast-promo-extension">
-=======
 			<?php
 			foreach ( $extensions as $slug => $extension ) :
 
@@ -431,7 +302,6 @@ if ( YoastSEO()->classes->get( Promotion_Manager::class )->is( 'black-friday-202
 					<?php if ( ! $addon_manager->has_valid_subscription( $slug ) || ! $addon_manager->is_installed( $slug ) ) : ?>
 						<?php echo $sale_badge; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Reason: Output already escaped ?>
 					<?php endif; ?>
->>>>>>> update
 					<h3>
 						<img alt="" width="100" height="100" src="<?php echo esc_url( $extension['image'] ); ?>"/>
 						<?php echo esc_html( $extension['display_title'] ); ?>
@@ -444,14 +314,6 @@ if ( YoastSEO()->classes->get( Promotion_Manager::class )->is( 'black-friday-202
 
 					<div class="yoast-button-container">
 						<?php if ( $addon_manager->is_installed( $slug ) ) : ?>
-<<<<<<< HEAD
-							<div class="yoast-button yoast-button--noarrow  yoast-button--extension yoast-button--extension-installed"><?php esc_html_e( 'Installed', 'wordpress-seo' ); ?></div>
-
-							<?php if ( $addon_manager->has_valid_subscription( $slug ) ) : ?>
-								<div class="yoast-button yoast-button--noarrow yoast-button--extension yoast-button--extension-activated"><?php esc_html_e( 'Activated', 'wordpress-seo' ); ?></div>
-								<a target="_blank" href="<?php WPSEO_Shortlinker::show( 'https://yoa.st/13k' ); ?>"
-									class="yoast-link--license">
-=======
 							<div class="yoast-button yoast-button--noarrow yoast-button--extension yoast-button--extension-installed"><?php esc_html_e( 'Installed', 'wordpress-seo' ); ?></div>
 
 							<?php
@@ -460,7 +322,6 @@ if ( YoastSEO()->classes->get( Promotion_Manager::class )->is( 'black-friday-202
 								?>
 								<div class="yoast-button yoast-button--noarrow yoast-button--extension yoast-button--extension-activated"><?php esc_html_e( 'Activated', 'wordpress-seo' ); ?></div>
 								<a target="_blank" href="<?php WPSEO_Shortlinker::show( 'https://yoa.st/13k' ); ?>" class="yoast-link--license">
->>>>>>> update
 									<?php
 									printf(
 										/* translators: %s expands to the extension title */
@@ -473,14 +334,8 @@ if ( YoastSEO()->classes->get( Promotion_Manager::class )->is( 'black-friday-202
 									?>
 								</a>
 							<?php else : ?>
-<<<<<<< HEAD
-								<div class="yoast-button yoast-button--noarrow  yoast-button--extension yoast-button--extension-not-activated"><?php esc_html_e( 'Not activated', 'wordpress-seo' ); ?></div>
-								<a target="_blank" href="<?php WPSEO_Shortlinker::show( 'https://yoa.st/13i' ); ?>"
-									class="yoast-link--license">
-=======
 								<div class="yoast-button yoast-button--noarrow yoast-button--extension yoast-button--extension-not-activated"><?php esc_html_e( 'Not activated', 'wordpress-seo' ); ?></div>
 								<a target="_blank" href="<?php WPSEO_Shortlinker::show( 'https://yoa.st/13i' ); ?>" class="yoast-link--license">
->>>>>>> update
 									<?php
 									printf(
 										/* translators: %s expands to the extension title */
@@ -494,18 +349,10 @@ if ( YoastSEO()->classes->get( Promotion_Manager::class )->is( 'black-friday-202
 								</a>
 							<?php endif; ?>
 						<?php else : ?>
-<<<<<<< HEAD
-							<a target="_blank" class="yoast-button-upsell"
-								href="<?php echo esc_url( $extension['buyUrl'] ); ?>">
-								<?php
-								printf(
-									/* translators: %s expands to the product name */
-=======
 							<a target="_blank" class="yoast-button-upsell" href="<?php echo esc_url( $extension['buyUrl'] ); ?>">
 								<?php
 								printf(
 									/* translators: %s expands to the product name, e.g. "News SEO" or "all the Yoast Plugins" */
->>>>>>> update
 									esc_html__( 'Buy %s', 'wordpress-seo' ),
 									// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Reason: The possible `get_buy_button` values are hardcoded (buy_button or title); only passed through the WPSEO_Extensions class.
 									( isset( $extension['buy_button'] ) ) ? $extension['buy_button'] : $extension['title']
@@ -516,18 +363,10 @@ if ( YoastSEO()->classes->get( Promotion_Manager::class )->is( 'black-friday-202
 								?>
 							</a>
 
-<<<<<<< HEAD
-							<a target="_blank" class="yoast-link--more-info"
-								href="<?php echo esc_url( $extension['infoUrl'] ); ?>">
-								<?php
-								printf(
-									/* translators: Text between 1: and 2: will only be shown to screen readers. 3: expands to the product name. */
-=======
 							<a target="_blank" class="yoast-link--more-info" href="<?php echo esc_url( $extension['infoUrl'] ); ?>">
 								<?php
 								printf(
 									/* translators: Text between 1: and 2: will only be shown to screen readers. 3: expands to the product name, e.g. "News SEO" or "all the Yoast Plugins" */
->>>>>>> update
 									esc_html__( 'More information %1$sabout %3$s%2$s', 'wordpress-seo' ),
 									'<span class="screen-reader-text">',
 									'</span>',

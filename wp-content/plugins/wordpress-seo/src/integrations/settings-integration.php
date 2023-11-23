@@ -3,65 +3,44 @@
 namespace Yoast\WP\SEO\Integrations;
 
 use WP_Post_Type;
-<<<<<<< HEAD
-=======
 use WP_Taxonomy;
 use WP_User;
->>>>>>> update
 use WPSEO_Admin_Asset_Manager;
 use WPSEO_Admin_Editor_Specific_Replace_Vars;
 use WPSEO_Admin_Recommended_Replace_Vars;
 use WPSEO_Option_Titles;
 use WPSEO_Options;
-<<<<<<< HEAD
-use WPSEO_Post_Type;
-=======
->>>>>>> update
 use WPSEO_Replace_Vars;
 use WPSEO_Shortlinker;
 use WPSEO_Sitemaps_Router;
 use Yoast\WP\SEO\Conditionals\Settings_Conditional;
 use Yoast\WP\SEO\Config\Schema_Types;
 use Yoast\WP\SEO\Helpers\Current_Page_Helper;
-<<<<<<< HEAD
-=======
 use Yoast\WP\SEO\Helpers\Language_Helper;
->>>>>>> update
 use Yoast\WP\SEO\Helpers\Post_Type_Helper;
 use Yoast\WP\SEO\Helpers\Product_Helper;
 use Yoast\WP\SEO\Helpers\Schema\Article_Helper;
 use Yoast\WP\SEO\Helpers\Taxonomy_Helper;
-<<<<<<< HEAD
-use Yoast\WP\SEO\Helpers\Woocommerce_Helper;
-=======
 use Yoast\WP\SEO\Helpers\User_Helper;
 use Yoast\WP\SEO\Helpers\Woocommerce_Helper;
 use Yoast\WP\SEO\Helpers\Options_Helper;
 use Yoast\WP\SEO\Content_Type_Visibility\Application\Content_Type_Visibility_Dismiss_Notifications;
 use Yoast\WP\SEO\Promotions\Application\Promotion_Manager;
 
->>>>>>> update
 
 /**
  * Class Settings_Integration.
  */
 class Settings_Integration implements Integration_Interface {
 
-<<<<<<< HEAD
-=======
 	const PAGE = 'wpseo_page_settings';
 
->>>>>>> update
 	/**
 	 * Holds the included WordPress options.
 	 *
 	 * @var string[]
 	 */
-<<<<<<< HEAD
-	const WP_OPTIONS = [ 'blogname', 'blogdescription' ];
-=======
 	const WP_OPTIONS = [ 'blogdescription' ];
->>>>>>> update
 
 	/**
 	 * Holds the allowed option groups.
@@ -73,19 +52,10 @@ class Settings_Integration implements Integration_Interface {
 	/**
 	 * Holds the disallowed settings, per option group.
 	 *
-<<<<<<< HEAD
-	 * Note: these are the settings that hold Objects.
-	 *
-=======
->>>>>>> update
 	 * @var array
 	 */
 	const DISALLOWED_SETTINGS = [
 		'wpseo'        => [
-<<<<<<< HEAD
-			'custom_taxonomy_slugs',
-			'workouts_data',
-=======
 			'myyoast-oauth',
 			'semrush_tokens',
 			'custom_taxonomy_slugs',
@@ -103,7 +73,6 @@ class Settings_Integration implements Integration_Interface {
 			'show_new_content_type_notification',
 			'new_post_types',
 			'new_taxonomies',
->>>>>>> update
 		],
 		'wpseo_titles' => [
 			'company_logo_meta',
@@ -112,8 +81,6 @@ class Settings_Integration implements Integration_Interface {
 	];
 
 	/**
-<<<<<<< HEAD
-=======
 	 * Holds the disabled on multisite settings, per option group.
 	 *
 	 * @var array
@@ -130,7 +97,6 @@ class Settings_Integration implements Integration_Interface {
 	];
 
 	/**
->>>>>>> update
 	 * Holds the WPSEO_Admin_Asset_Manager.
 	 *
 	 * @var WPSEO_Admin_Asset_Manager
@@ -166,8 +132,6 @@ class Settings_Integration implements Integration_Interface {
 	protected $post_type_helper;
 
 	/**
-<<<<<<< HEAD
-=======
 	 * Holds the Language_Helper.
 	 *
 	 * @var Language_Helper
@@ -175,7 +139,6 @@ class Settings_Integration implements Integration_Interface {
 	protected $language_helper;
 
 	/**
->>>>>>> update
 	 * Holds the Taxonomy_Helper.
 	 *
 	 * @var Taxonomy_Helper
@@ -204,19 +167,6 @@ class Settings_Integration implements Integration_Interface {
 	protected $article_helper;
 
 	/**
-<<<<<<< HEAD
-	 * Constructs Settings_Integration.
-	 *
-	 * @param WPSEO_Admin_Asset_Manager $asset_manager       The WPSEO_Admin_Asset_Manager.
-	 * @param WPSEO_Replace_Vars        $replace_vars        The WPSEO_Replace_Vars.
-	 * @param Schema_Types              $schema_types        The Schema_Types.
-	 * @param Current_Page_Helper       $current_page_helper The Current_Page_Helper.
-	 * @param Post_Type_Helper          $post_type_helper    The Post_Type_Helper.
-	 * @param Taxonomy_Helper           $taxonomy_helper     The Taxonomy_Helper.
-	 * @param Product_Helper            $product_helper      The Product_Helper.
-	 * @param Woocommerce_Helper        $woocommerce_helper  The Woocommerce_Helper.
-	 * @param Article_Helper            $article_helper      The Article_Helper.
-=======
 	 * Holds the User_Helper.
 	 *
 	 * @var User_Helper
@@ -253,7 +203,6 @@ class Settings_Integration implements Integration_Interface {
 	 * @param User_Helper                                   $user_helper         The User_Helper.
 	 * @param Options_Helper                                $options             The options helper.
 	 * @param Content_Type_Visibility_Dismiss_Notifications $content_type_visibility The Content_Type_Visibility_Dismiss_Notifications instance.
->>>>>>> update
 	 */
 	public function __construct(
 		WPSEO_Admin_Asset_Manager $asset_manager,
@@ -261,22 +210,6 @@ class Settings_Integration implements Integration_Interface {
 		Schema_Types $schema_types,
 		Current_Page_Helper $current_page_helper,
 		Post_Type_Helper $post_type_helper,
-<<<<<<< HEAD
-		Taxonomy_Helper $taxonomy_helper,
-		Product_Helper $product_helper,
-		Woocommerce_Helper $woocommerce_helper,
-		Article_Helper $article_helper
-	) {
-		$this->asset_manager       = $asset_manager;
-		$this->replace_vars        = $replace_vars;
-		$this->schema_types        = $schema_types;
-		$this->current_page_helper = $current_page_helper;
-		$this->taxonomy_helper     = $taxonomy_helper;
-		$this->post_type_helper    = $post_type_helper;
-		$this->product_helper      = $product_helper;
-		$this->woocommerce_helper  = $woocommerce_helper;
-		$this->article_helper      = $article_helper;
-=======
 		Language_Helper $language_helper,
 		Taxonomy_Helper $taxonomy_helper,
 		Product_Helper $product_helper,
@@ -299,7 +232,6 @@ class Settings_Integration implements Integration_Interface {
 		$this->user_helper             = $user_helper;
 		$this->options                 = $options;
 		$this->content_type_visibility = $content_type_visibility;
->>>>>>> update
 	}
 
 	/**
@@ -319,22 +251,12 @@ class Settings_Integration implements Integration_Interface {
 	 * @return void
 	 */
 	public function register_hooks() {
-<<<<<<< HEAD
-=======
 		// Add page.
->>>>>>> update
 		\add_filter( 'wpseo_submenu_pages', [ $this, 'add_page' ] );
 		\add_filter( 'admin_menu', [ $this, 'add_settings_saved_page' ] );
 
 		// Are we saving the settings?
 		if ( $this->current_page_helper->get_current_admin_page() === 'options.php' ) {
-<<<<<<< HEAD
-			$post_action = \filter_input( \INPUT_POST, 'action', \FILTER_SANITIZE_STRING );
-			$option_page = \filter_input( \INPUT_POST, 'option_page', \FILTER_SANITIZE_STRING );
-
-			if ( $post_action === 'update' && $option_page === 'wpseo_settings' ) {
-				\add_action( 'admin_init', [ $this, 'register_setting' ] );
-=======
 			// phpcs:disable WordPress.PHP.NoSilencedErrors.Discouraged -- This deprecation will be addressed later.
 			$post_action = \filter_input( \INPUT_POST, 'action', @\FILTER_SANITIZE_STRING );
 			$option_page = \filter_input( \INPUT_POST, 'option_page', @\FILTER_SANITIZE_STRING );
@@ -343,24 +265,17 @@ class Settings_Integration implements Integration_Interface {
 			if ( $post_action === 'update' && $option_page === self::PAGE ) {
 				\add_action( 'admin_init', [ $this, 'register_setting' ] );
 				\add_action( 'in_admin_header', [ $this, 'remove_notices' ], \PHP_INT_MAX );
->>>>>>> update
 			}
 
 			return;
 		}
 
 		// Are we on the settings page?
-<<<<<<< HEAD
-		if ( $this->current_page_helper->get_current_yoast_seo_page() === 'wpseo_settings' ) {
-			\add_action( 'admin_init', [ $this, 'register_setting' ] );
-			\add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_assets' ] );
-=======
 		if ( $this->current_page_helper->get_current_yoast_seo_page() === self::PAGE ) {
 			\add_action( 'admin_init', [ $this, 'register_setting' ] );
 			\add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_assets' ] );
 			\add_action( 'in_admin_header', [ $this, 'remove_notices' ], \PHP_INT_MAX );
 
->>>>>>> update
 		}
 	}
 
@@ -372,13 +287,6 @@ class Settings_Integration implements Integration_Interface {
 	public function register_setting() {
 		foreach ( WPSEO_Options::$options as $name => $instance ) {
 			if ( \in_array( $name, self::ALLOWED_OPTION_GROUPS, true ) ) {
-<<<<<<< HEAD
-				\register_setting( 'wpseo_settings', $name );
-			}
-		}
-		foreach ( self::WP_OPTIONS as $name ) {
-			\register_setting( 'wpseo_settings', $name );
-=======
 				\register_setting( self::PAGE, $name );
 			}
 		}
@@ -387,7 +295,6 @@ class Settings_Integration implements Integration_Interface {
 			foreach ( self::WP_OPTIONS as $name ) {
 				\register_setting( self::PAGE, $name );
 			}
->>>>>>> update
 		}
 	}
 
@@ -399,22 +306,6 @@ class Settings_Integration implements Integration_Interface {
 	 * @return array The pages.
 	 */
 	public function add_page( $pages ) {
-<<<<<<< HEAD
-		\array_unshift(
-			$pages,
-			[
-				'wpseo_dashboard',
-				'',
-				\sprintf(
-				// translators: %1$s expands to the opening span tag (styling). %2$s expands to the closing span tag.
-					__( 'Settings %1$sBeta%2$s', 'wordpress-seo' ),
-					'<span class="yoast-badge yoast-beta-badge">',
-					'</span>'
-				),
-				'wpseo_manage_options',
-				'wpseo_settings',
-				[ $this, 'display_page' ],
-=======
 		\array_splice(
 			$pages,
 			1,
@@ -428,7 +319,6 @@ class Settings_Integration implements Integration_Interface {
 					self::PAGE,
 					[ $this, 'display_page' ],
 				],
->>>>>>> update
 			]
 		);
 
@@ -446,14 +336,6 @@ class Settings_Integration implements Integration_Interface {
 	 */
 	public function add_settings_saved_page( $pages ) {
 		\add_submenu_page(
-<<<<<<< HEAD
-			null,
-			'',
-			null,
-			'wpseo_manage_options',
-			'wpseo_settings_saved',
-			static function () {
-=======
 			'',
 			'',
 			'',
@@ -463,7 +345,6 @@ class Settings_Integration implements Integration_Interface {
 				// Add success indication to HTML response.
 				$success = empty( \get_settings_errors() ) ? 'true' : 'false';
 				echo \esc_html( "{{ yoast-success: $success }}" );
->>>>>>> update
 			}
 		);
 
@@ -474,11 +355,7 @@ class Settings_Integration implements Integration_Interface {
 	 * Displays the page.
 	 */
 	public function display_page() {
-<<<<<<< HEAD
-		echo '<div id="yoast-seo-settings" class="yst--ml-2.5 md:yst--ml-5"></div>';
-=======
 		echo '<div id="yoast-seo-settings"></div>';
->>>>>>> update
 	}
 
 	/**
@@ -490,23 +367,15 @@ class Settings_Integration implements Integration_Interface {
 		// Remove the emoji script as it is incompatible with both React and any contenteditable fields.
 		\remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
 		\wp_enqueue_media();
-<<<<<<< HEAD
-		\wp_enqueue_script( 'wp-api' );
-		$this->asset_manager->enqueue_script( 'new-settings' );
-		$this->asset_manager->enqueue_style( 'new-settings' );
-=======
 		$this->asset_manager->enqueue_script( 'new-settings' );
 		$this->asset_manager->enqueue_style( 'new-settings' );
 		if ( YoastSEO()->classes->get( Promotion_Manager::class )->is( 'black-friday-2023-promotion' ) ) {
 			$this->asset_manager->enqueue_style( 'black-friday-banner' );
 		}
->>>>>>> update
 		$this->asset_manager->localize_script( 'new-settings', 'wpseoScriptData', $this->get_script_data() );
 	}
 
 	/**
-<<<<<<< HEAD
-=======
 	 * Removes all current WP notices.
 	 *
 	 * @return void
@@ -519,30 +388,11 @@ class Settings_Integration implements Integration_Interface {
 	}
 
 	/**
->>>>>>> update
 	 * Creates the script data.
 	 *
 	 * @return array The script data.
 	 */
 	protected function get_script_data() {
-<<<<<<< HEAD
-		$settings   = $this->get_settings();
-		$post_types = $this->get_post_types();
-
-		return [
-			'settings'             => $settings,
-			'disabledSettings'     => $this->get_disabled_settings( $settings ),
-			'endpoint'             => \admin_url( 'options.php' ),
-			'nonce'                => \wp_create_nonce( 'wpseo_settings-options' ),
-			'userEditUrl'          => \admin_url( 'user-edit.php' ),
-			'separators'           => WPSEO_Option_Titles::get_instance()->get_separator_options_for_display(),
-			'replacementVariables' => $this->get_replacement_variables(),
-			'schema'               => $this->get_schema( $post_types ),
-			'preferences'          => $this->get_preferences(),
-			'linkParams'           => WPSEO_Shortlinker::get_query_params(),
-			'postTypes'            => $post_types,
-			'taxonomies'           => $this->get_taxonomies( \array_keys( $post_types ) ),
-=======
 		$default_setting_values = $this->get_default_setting_values();
 		$settings               = $this->get_settings( $default_setting_values );
 		$post_types             = $this->post_type_helper->get_indexable_post_type_objects();
@@ -586,24 +436,17 @@ class Settings_Integration implements Integration_Interface {
 			'taxonomies'                     => $transformed_taxonomies,
 			'fallbacks'                      => $this->get_fallbacks(),
 			'showNewContentTypeNotification' => $show_new_content_type_notification,
->>>>>>> update
 		];
 	}
 
 	/**
 	 * Retrieves the preferences.
 	 *
-<<<<<<< HEAD
-	 * @return array The preferences.
-	 */
-	protected function get_preferences() {
-=======
 	 * @param array $settings The settings.
 	 *
 	 * @return array The preferences.
 	 */
 	protected function get_preferences( $settings ) {
->>>>>>> update
 		$shop_page_id             = $this->woocommerce_helper->get_shop_page_id();
 		$homepage_is_latest_posts = \get_option( 'show_on_front' ) === 'posts';
 		$page_on_front            = \get_option( 'page_on_front' );
@@ -615,13 +458,6 @@ class Settings_Integration implements Integration_Interface {
 
 		return [
 			'isPremium'                     => $this->product_helper->is_premium(),
-<<<<<<< HEAD
-			'isRtl'                         => is_rtl(),
-			'isNetworkAdmin'                => \is_network_admin(),
-			'isMainSite'                    => \is_main_site(),
-			'isWooCommerceActive'           => $this->woocommerce_helper->is_active(),
-			'siteUrl'                       => \get_bloginfo( 'url' ),
-=======
 			'isRtl'                         => \is_rtl(),
 			'isNetworkAdmin'                => \is_network_admin(),
 			'isMainSite'                    => \is_main_site(),
@@ -632,7 +468,6 @@ class Settings_Integration implements Integration_Interface {
 			'promotions'                    => YoastSEO()->classes->get( Promotion_Manager::class )->get_current_promotions(),
 			'siteUrl'                       => \get_bloginfo( 'url' ),
 			'siteTitle'                     => \get_bloginfo( 'name' ),
->>>>>>> update
 			'sitemapUrl'                    => WPSEO_Sitemaps_Router::get_base_url( 'sitemap_index.xml' ),
 			'hasWooCommerceShopPage'        => $shop_page_id !== -1,
 			'editWooCommerceShopPageUrl'    => \get_edit_post_link( $shop_page_id, 'js' ),
@@ -640,8 +475,6 @@ class Settings_Integration implements Integration_Interface {
 			'homepageIsLatestPosts'         => $homepage_is_latest_posts,
 			'homepagePageEditUrl'           => \get_edit_post_link( $page_on_front, 'js' ),
 			'homepagePostsEditUrl'          => \get_edit_post_link( $page_for_posts, 'js' ),
-<<<<<<< HEAD
-=======
 			'createUserUrl'                 => \admin_url( 'user-new.php' ),
 			'createPageUrl'                 => \admin_url( 'post-new.php?post_type=page' ),
 			'editUserUrl'                   => \admin_url( 'user-edit.php' ),
@@ -659,20 +492,10 @@ class Settings_Integration implements Integration_Interface {
 			'upsellSettings'                => $this->get_upsell_settings(),
 			'siteRepresentsPerson'          => $this->get_site_represents_person( $settings ),
 			'siteBasicsPolicies'            => $this->get_site_basics_policies( $settings ),
->>>>>>> update
 		];
 	}
 
 	/**
-<<<<<<< HEAD
-	 * Retrieves the settings and their values.
-	 *
-	 * @return array The settings.
-	 */
-	protected function get_settings() {
-		$defaults = [];
-		$settings = [];
-=======
 	 * Retrieves the currently represented person.
 	 *
 	 * @param array $settings The settings.
@@ -771,16 +594,12 @@ class Settings_Integration implements Integration_Interface {
 	 */
 	protected function get_default_setting_values() {
 		$defaults = [];
->>>>>>> update
 
 		// Add Yoast settings.
 		foreach ( WPSEO_Options::$options as $option_name => $instance ) {
 			if ( \in_array( $option_name, self::ALLOWED_OPTION_GROUPS, true ) ) {
 				$option_instance          = WPSEO_Options::get_option_instance( $option_name );
 				$defaults[ $option_name ] = ( $option_instance ) ? $option_instance->get_defaults() : [];
-<<<<<<< HEAD
-				$settings[ $option_name ] = \array_merge( $defaults[ $option_name ], WPSEO_Options::get_option( $option_name ) );
-=======
 			}
 		}
 		// Add WP settings.
@@ -812,7 +631,6 @@ class Settings_Integration implements Integration_Interface {
 		foreach ( WPSEO_Options::$options as $option_name => $instance ) {
 			if ( \in_array( $option_name, self::ALLOWED_OPTION_GROUPS, true ) ) {
 				$settings[ $option_name ] = \array_merge( $default_setting_values[ $option_name ], WPSEO_Options::get_option( $option_name ) );
->>>>>>> update
 			}
 		}
 		// Add WP settings.
@@ -831,9 +649,6 @@ class Settings_Integration implements Integration_Interface {
 	}
 
 	/**
-<<<<<<< HEAD
-	 * Retrieves the settings and their values.
-=======
 	 * Transforms setting values.
 	 *
 	 * @param array $settings The settings.
@@ -867,7 +682,6 @@ class Settings_Integration implements Integration_Interface {
 
 	/**
 	 * Retrieves the disabled settings.
->>>>>>> update
 	 *
 	 * @param array $settings The settings.
 	 *
@@ -875,10 +689,7 @@ class Settings_Integration implements Integration_Interface {
 	 */
 	protected function get_disabled_settings( $settings ) {
 		$disabled_settings = [];
-<<<<<<< HEAD
-=======
 		$site_language     = $this->language_helper->get_language();
->>>>>>> update
 
 		foreach ( WPSEO_Options::$options as $option_name => $instance ) {
 			if ( ! \in_array( $option_name, self::ALLOWED_OPTION_GROUPS, true ) ) {
@@ -892,17 +703,11 @@ class Settings_Integration implements Integration_Interface {
 			}
 			foreach ( $settings[ $option_name ] as $setting_name => $setting_value ) {
 				if ( $option_instance->is_disabled( $setting_name ) ) {
-<<<<<<< HEAD
-					$disabled_settings[ $option_name ][ $setting_name ] = true;
-=======
 					$disabled_settings[ $option_name ][ $setting_name ] = 'network';
->>>>>>> update
 				}
 			}
 		}
 
-<<<<<<< HEAD
-=======
 		// Remove disabled on multisite settings.
 		if ( \is_multisite() ) {
 			foreach ( self::DISABLED_ON_MULTISITE_SETTINGS as $option_name => $disabled_ms_settings ) {
@@ -918,7 +723,6 @@ class Settings_Integration implements Integration_Interface {
 			$disabled_settings['wpseo']['inclusive_language_analysis_active'] = 'language';
 		}
 
->>>>>>> update
 		return $disabled_settings;
 	}
 
@@ -975,53 +779,6 @@ class Settings_Integration implements Integration_Interface {
 	}
 
 	/**
-<<<<<<< HEAD
-	 * Creates the post types to represent.
-	 *
-	 * @return array The post types.
-	 */
-	protected function get_post_types() {
-		$post_types = $this->post_type_helper->get_public_post_types( 'objects' );
-		$post_types = WPSEO_Post_Type::filter_attachment_post_type( $post_types );
-
-		return \array_map( [ $this, 'transform_post_type' ], $post_types );
-	}
-
-	/**
-	 * Transforms a WP_Post_Type to an array with the needed info.
-	 *
-	 * @param WP_Post_Type $post_type The post type.
-	 *
-	 * @return array The transformed post type.
-	 */
-	protected function transform_post_type( WP_Post_Type $post_type ) {
-		return [
-			'name'                 => $post_type->name,
-			'route'                => $this->get_route( $post_type->name, $post_type->rewrite, $post_type->rest_base ),
-			'label'                => $post_type->label,
-			'singularLabel'        => $post_type->labels->singular_name,
-			'hasArchive'           => $this->post_type_helper->has_archive( $post_type ),
-			'hasSchemaArticleType' => $this->article_helper->is_article_post_type( $post_type->name ),
-		];
-	}
-
-	/**
-	 * Creates the taxonomies to represent.
-	 *
-	 * @param string[] $post_type_names The post type names.
-	 *
-	 * @return array The taxonomies.
-	 */
-	protected function get_taxonomies( $post_type_names ) {
-		$taxonomies = $this->taxonomy_helper->get_public_taxonomies( 'objects' );
-
-		$transformed = [];
-		foreach ( $taxonomies as $name => $taxonomy ) {
-			$transformed[ $name ] = [
-				'name'          => $taxonomy->name,
-				'route'         => $this->get_route( $taxonomy->name, $taxonomy->rewrite, $taxonomy->rest_base ),
-				'label'         => $taxonomy->label,
-=======
 	 * Transforms the post types, to represent them.
 	 *
 	 * @param WP_Post_Type[] $post_types The WP_Post_Type array to transform.
@@ -1090,7 +847,6 @@ class Settings_Integration implements Integration_Interface {
 				'route'         => $this->get_route( $taxonomy->name, $taxonomy->rewrite, $taxonomy->rest_base ),
 				'label'         => $taxonomy->label,
 				'showUi'        => $taxonomy->show_ui,
->>>>>>> update
 				'singularLabel' => $taxonomy->labels->singular_name,
 				'postTypes'     => \array_filter(
 					$taxonomy->object_type,
@@ -1098,11 +854,6 @@ class Settings_Integration implements Integration_Interface {
 						return \in_array( $object_type, $post_type_names, true );
 					}
 				),
-<<<<<<< HEAD
-			];
-		}
-
-=======
 				'isNew'         => \in_array( $taxonomy->name, $new_taxonomies, true ),
 			];
 		}
@@ -1114,7 +865,6 @@ class Settings_Integration implements Integration_Interface {
 			}
 		);
 
->>>>>>> update
 		return $transformed;
 	}
 
@@ -1136,13 +886,6 @@ class Settings_Integration implements Integration_Interface {
 			$route = $rest_base;
 		}
 		// Always strip leading slashes.
-<<<<<<< HEAD
-		while ( substr( $route, 0, 1 ) === '/' ) {
-			$route = substr( $route, 1 );
-		}
-
-		return $route;
-=======
 		while ( \substr( $route, 0, 1 ) === '/' ) {
 			$route = \substr( $route, 1 );
 		}
@@ -1167,6 +910,5 @@ class Settings_Integration implements Integration_Interface {
 		return [
 			'siteLogoId' => $site_logo_id,
 		];
->>>>>>> update
 	}
 }

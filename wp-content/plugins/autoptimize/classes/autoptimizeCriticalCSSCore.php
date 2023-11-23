@@ -15,8 +15,6 @@ class autoptimizeCriticalCSSCore {
      * @var array
      */
     protected $_types = null;
-<<<<<<< HEAD
-=======
     
     /**
      * Critical CSS object.
@@ -24,7 +22,6 @@ class autoptimizeCriticalCSSCore {
      * @var object
      */
     protected $criticalcss;
->>>>>>> update
 
     public function __construct() {
         $this->criticalcss = autoptimize()->criticalcss();
@@ -110,12 +107,9 @@ class autoptimizeCriticalCSSCore {
                                 }
                                 return apply_filters( 'autoptimize_filter_ccss_core_ccss', $_ccss_contents . $additional );
                             } else {
-<<<<<<< HEAD
-=======
                                 if ( $debug ) {
                                     $this->criticalcss->log( 'Path based rule with value "none" found.', 3 );
                                 }
->>>>>>> update
                                 $no_ccss = 'none';
                             }
                         }
@@ -139,12 +133,9 @@ class autoptimizeCriticalCSSCore {
                                 }
                                 return apply_filters( 'autoptimize_filter_ccss_core_ccss', $_ccss_contents . $additional );
                             } else {
-<<<<<<< HEAD
-=======
                                 if ( $debug ) {
                                     $this->criticalcss->log( 'Conditional rule for is_front_page with value "none" found.', 3 );
                                 }
->>>>>>> update
                                 $no_ccss = 'none';
                             }
                         } elseif ( ( $this->criticalcss->is_api_active() || $this->criticalcss->is_rule_manual( $rule ) ) && strpos( $type, 'custom_post_' ) === 0 && ! $is_front_page ) {
@@ -155,12 +146,9 @@ class autoptimizeCriticalCSSCore {
                                     }
                                     return apply_filters( 'autoptimize_filter_ccss_core_ccss', $_ccss_contents . $additional );
                                 } else {
-<<<<<<< HEAD
-=======
                                     if ( $debug ) {
                                         $this->criticalcss->log( 'Conditional rule custom_post with value "none" found.', 3 );
                                     }
->>>>>>> update
                                     $no_ccss = 'none';
                                 }
                             }
@@ -172,12 +160,9 @@ class autoptimizeCriticalCSSCore {
                                     }
                                     return apply_filters( 'autoptimize_filter_ccss_core_ccss', $_ccss_contents . $additional );
                                 } else {
-<<<<<<< HEAD
-=======
                                     if ( $debug ) {
                                         $this->criticalcss->log( 'Conditional rule for template with value "none" found.', 3 );
                                     }
->>>>>>> update
                                     $no_ccss = 'none';
                                 }
                             }
@@ -192,12 +177,9 @@ class autoptimizeCriticalCSSCore {
                                     }
                                     return apply_filters( 'autoptimize_filter_ccss_core_ccss', $_ccss_contents . $additional );
                                 } else {
-<<<<<<< HEAD
-=======
                                     if ( $debug ) {
                                         $this->criticalcss->log( 'Conditional rule for ' . $type . ' with value "none" found.', 3 );
                                     }
->>>>>>> update
                                     $no_ccss = 'none';
                                 }
                             }
@@ -210,10 +192,6 @@ class autoptimizeCriticalCSSCore {
         // Finally, inline the default CriticalCSS if any or else the entire CSS for the page
         // This also applies to logged in users if the option to add CCSS for logged in users has been disabled.
         if ( ! empty( $inlined ) && 'none' !== $no_ccss ) {
-<<<<<<< HEAD
-            return apply_filters( 'autoptimize_filter_ccss_core_ccss', $inlined . $additional );
-        } else {
-=======
             if ( $debug ) {
                 $this->criticalcss->log( 'Using default "above the fold" CSS.', 3 );
             }
@@ -222,7 +200,6 @@ class autoptimizeCriticalCSSCore {
             if ( $debug ) {
                 $this->criticalcss->log( 'No matching CCSS found, switching to inlining full CSS.', 3 );
             }
->>>>>>> update
             add_filter( 'autoptimize_filter_css_inline', '__return_true' );
             return;
         }
@@ -507,99 +484,13 @@ class autoptimizeCriticalCSSCore {
 
         // Avoid AO optimizations if required by config or avoid lazyload if lazyload is active in AO.
         if ( ! empty( $noptimize ) ) {
-<<<<<<< HEAD
-            $src_url .= '?ao_noptirocket=1';
-        } elseif ( class_exists( 'autoptimizeImages', false ) && autoptimizeImages::should_lazyload_wrapper() ) {
-            $src_url .= '?ao_nolazy=1';
-=======
             $src_url .= '/?ao_noptirocket=1';
         } elseif ( class_exists( 'autoptimizeImages', false ) && autoptimizeImages::should_lazyload_wrapper() ) {
             $src_url .= '/?ao_nolazy=1';
->>>>>>> update
         }
 
         $src_url = apply_filters( 'autoptimize_filter_ccss_cron_srcurl', $src_url );
 
-<<<<<<< HEAD
-        // Prepare the request.
-        $url  = esc_url_raw( AO_CCSS_API . 'generate' );
-        $args = array(
-            'headers' => apply_filters(
-                'autoptimize_ccss_cron_api_generate_headers',
-                array(
-                    'User-Agent'    => 'Autoptimize v' . AO_CCSS_VER,
-                    'Content-type'  => 'application/json; charset=utf-8',
-                    'Authorization' => 'JWT ' . $key,
-                    'Connection'    => 'close',
-                )
-            ),
-            // Body must be JSON.
-            'body'    => json_encode(
-                apply_filters(
-                    'autoptimize_ccss_cron_api_generate_body',
-                    array(
-                        'url'    => $src_url,
-                        'aff'    => 1,
-                        'aocssv' => AO_CCSS_VER,
-                    )
-                )
-            ),
-        );
-
-        // Dispatch the request and store its response code.
-        $req  = wp_safe_remote_post( $url, $args );
-        $code = wp_remote_retrieve_response_code( $req );
-        $body = json_decode( wp_remote_retrieve_body( $req ), true );
-
-        if ( 200 == $code ) {
-            // Response is OK.
-            // Set key status as valid and log key check.
-            update_option( 'autoptimize_ccss_keyst', 2 );
-            $this->ao_ccss_log( 'criticalcss.com: API key is valid, updating key status', 3 );
-
-            // extract job-id from $body and put it in the queue as a P job
-            // but only if no jobs and no rules!
-            $queue = $this->criticalcss->get_option( 'queue' );
-            $rules = $this->criticalcss->get_option( 'rules' );
-
-            if ( 0 == count( $queue ) && 0 == count( $rules['types'] ) && 0 == count( $rules['paths'] ) ) {
-                if ( 'JOB_QUEUED' == $body['job']['status'] || 'JOB_ONGOING' == $body['job']['status'] ) {
-                    $jprops['ljid']     = 'firstrun';
-                    $jprops['rtarget']  = 'types|is_front_page';
-                    $jprops['ptype']    = 'is_front_page';
-                    $jprops['hashes'][] = 'dummyhash';
-                    $jprops['hash']     = 'dummyhash';
-                    $jprops['file']     = null;
-                    $jprops['jid']      = $body['job']['id'];
-                    $jprops['jqstat']   = $body['job']['status'];
-                    $jprops['jrstat']   = null;
-                    $jprops['jvstat']   = null;
-                    $jprops['jctime']   = microtime( true );
-                    $jprops['jftime']   = null;
-                    $queue['/'] = $jprops;
-                    $queue_raw  = json_encode( $queue );
-                    update_option( 'autoptimize_ccss_queue', $queue_raw, false );
-                    $this->ao_ccss_log( 'Created P job for is_front_page based on API key check response.', 3 );
-                }
-            }
-            return true;
-        } elseif ( 401 == $code ) {
-            // Response is unauthorized
-            // Set key status as invalid and log key check.
-            update_option( 'autoptimize_ccss_keyst', 1 );
-            $this->ao_ccss_log( 'criticalcss.com: API key is invalid, updating key status', 3 );
-            return false;
-        } else {
-            // Response unkown
-            // Log key check attempt.
-            $this->ao_ccss_log( 'criticalcss.com: could not check API key status, this is a service error, body follows if any...', 2 );
-            if ( ! empty( $body ) ) {
-                $this->ao_ccss_log( print_r( $body, true ), 2 );
-            }
-            if ( is_wp_error( $req ) ) {
-                $this->ao_ccss_log( $req->get_error_message(), 2 );
-            }
-=======
         if ( true !== autoptimizeUtils::is_local_server( parse_url( $src_url,  PHP_URL_HOST ) ) ) {
             // Prepare the request.
             $url  = esc_url_raw( AO_CCSS_API . 'generate' );
@@ -684,7 +575,6 @@ class autoptimizeCriticalCSSCore {
             }
         } else {
             // localhost/ private network server, no API check possible.
->>>>>>> update
             return false;
         }
     }

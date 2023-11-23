@@ -377,10 +377,6 @@ class autoptimizeScripts extends autoptimizeBase
                         }
 
                         // not aggregating but deferring?
-<<<<<<< HEAD
-                        if ( $this->defer_not_aggregate && false === $this->aggregate && ( str_replace( $this->dontmove, '', $path ) === $path || ( apply_filters( 'autoptimize_filter_js_defer_external', true ) && str_replace( $this->dontmove, '', $orig_tag ) === $orig_tag ) ) && strpos( $new_tag, ' defer' ) === false && strpos( $new_tag, ' async' ) === false ) {
-                            $new_tag = str_replace( '<script ', '<script defer ', $new_tag );
-=======
                         if ( $this->defer_not_aggregate && false === $this->aggregate && ( str_replace( $this->dontmove, '', $path ) === $path || ( apply_filters( 'autoptimize_filter_js_defer_external', true ) && str_replace( $this->dontmove, '', $orig_tag ) === $orig_tag ) ) && strpos( $new_tag, ' defer' ) === false ) {
                             if ( false !== strpos( $new_tag, ' async' ) && true === apply_filters( 'autoptimize_filter_js_defer_trumps_async', true ) ) {
                                 // remove async flag to ensure JS is properly deferred, otherwise the asynced JS might fire 
@@ -395,7 +391,6 @@ class autoptimizeScripts extends autoptimizeBase
                                 // filter was set to false and in that case defer should not be added.
                                 $new_tag = str_replace( '<script ', '<script defer ', $new_tag );
                             }
->>>>>>> update
                         }
 
                         // Should we minify the non-aggregated script?
@@ -476,10 +471,6 @@ class autoptimizeScripts extends autoptimizeBase
                                 $_id = '';
                             }
 
-<<<<<<< HEAD
-                            $new_tag       = '<script defer ' . $_id . 'src="data:text/javascript;base64,' . base64_encode( $match[3] ) . '"></script>';
-                            $this->content = str_replace( $tag, $new_tag, $this->content );
-=======
                             // if "minify inline" is on and if more then 9 spaces or 4 line breaks are found 
                             // in the inline JS then it is likely not minified, so minify before base64-encoding.
                             $_script_contents = $match[3];
@@ -493,7 +484,6 @@ class autoptimizeScripts extends autoptimizeBase
                             // base64 and defer the lot already.
                             $new_tag       = '<script defer ' . $_id . 'src="data:text/javascript;base64,' . base64_encode( $_script_contents ) . '"></script>';
                             $this->content = str_replace( $this->hide_comments( $tag ), $new_tag, $this->content );
->>>>>>> update
                             $tag           = '';
                         } else {
                             $tag = '';
@@ -799,10 +789,6 @@ class autoptimizeScripts extends autoptimizeBase
      * Determines wheter a <script> $tag can be excluded from minification (as already minified) based on:
      * - inject_min_late being active
      * - filename ending in `min.js`
-<<<<<<< HEAD
-     * - filename matching `js/jquery/jquery.js` (WordPress core jquery, is minified)
-=======
->>>>>>> update
      * - filename matching one passed in the consider minified filter
      *
      * @param string $js_path Path to JS file.
@@ -813,11 +799,7 @@ class autoptimizeScripts extends autoptimizeBase
         if ( true !== $this->inject_min_late ) {
             // late-inject turned off.
             return false;
-<<<<<<< HEAD
-        } elseif ( ( false === strpos( $js_path, 'min.js' ) ) && ( false === strpos( $js_path, 'wp-includes/js/jquery/jquery.js' ) ) && ( str_replace( $consider_minified_array, '', $js_path ) === $js_path ) ) {
-=======
         } elseif ( ( false === strpos( $js_path, 'min.js' ) ) && ( str_replace( $consider_minified_array, '', $js_path ) === $js_path ) ) {
->>>>>>> update
             // file not minified based on filename & filter.
             return false;
         } else {

@@ -5,35 +5,6 @@ if ( ! class_exists( 'acf_field_relationship' ) ) :
 	class acf_field_relationship extends acf_field {
 
 
-<<<<<<< HEAD
-		/*
-		*  __construct
-		*
-		*  This function will setup the field type data
-		*
-		*  @type    function
-		*  @date    5/03/2014
-		*  @since   5.0.0
-		*
-		*  @param   n/a
-		*  @return  n/a
-		*/
-
-		function initialize() {
-
-			// vars
-			$this->name     = 'relationship';
-			$this->label    = __( 'Relationship', 'acf' );
-			$this->category = 'relational';
-			$this->defaults = array(
-				'post_type'     => array(),
-				'taxonomy'      => array(),
-				'min'           => 0,
-				'max'           => 0,
-				'filters'       => array( 'search', 'post_type', 'taxonomy' ),
-				'elements'      => array(),
-				'return_format' => 'object',
-=======
 		/**
 		 *  This function will setup the field type data
 		 *
@@ -57,7 +28,6 @@ if ( ! class_exists( 'acf_field_relationship' ) ) :
 				'elements'             => array(),
 				'return_format'        => 'object',
 				'bidirectional_target' => array(),
->>>>>>> update
 			);
 
 			// extra
@@ -194,8 +164,6 @@ if ( ! class_exists( 'acf_field_relationship' ) ) :
 
 			}
 
-<<<<<<< HEAD
-=======
 			// post status
 			if ( ! empty( $options['post_status'] ) ) {
 
@@ -207,7 +175,6 @@ if ( ! class_exists( 'acf_field_relationship' ) ) :
 
 			}
 
->>>>>>> update
 			// taxonomy
 			if ( ! empty( $options['taxonomy'] ) ) {
 
@@ -480,11 +447,7 @@ if ( ! class_exists( 'acf_field_relationship' ) ) :
 			);
 
 			?>
-<<<<<<< HEAD
-<div <?php acf_esc_attr_e( $atts ); ?>>
-=======
 <div <?php echo acf_esc_attrs( $atts ); ?>>
->>>>>>> update
 	
 			<?php
 			acf_hidden_input(
@@ -581,11 +544,7 @@ if ( ! class_exists( 'acf_field_relationship' ) ) :
 								)
 							);
 						?>
-<<<<<<< HEAD
-						<span data-id="<?php echo esc_attr( $post->ID ); ?>" class="acf-rel-item">
-=======
 						<span tabindex="0" data-id="<?php echo esc_attr( $post->ID ); ?>" class="acf-rel-item acf-rel-item-remove">
->>>>>>> update
 								<?php echo acf_esc_html( $this->get_post_title( $post, $field ) ); ?>
 							<a href="#" class="acf-icon -minus small dark" data-name="remove_item"></a>
 						</span>
@@ -612,18 +571,7 @@ if ( ! class_exists( 'acf_field_relationship' ) ) :
 		*
 		*  @param   $field  - an array holding all the field's data
 		*/
-<<<<<<< HEAD
-
 		function render_field_settings( $field ) {
-
-			// vars
-			$field['min'] = empty( $field['min'] ) ? '' : $field['min'];
-			$field['max'] = empty( $field['max'] ) ? '' : $field['max'];
-
-			// post_type
-=======
-		function render_field_settings( $field ) {
->>>>>>> update
 			acf_render_field_setting(
 				$field,
 				array(
@@ -639,9 +587,6 @@ if ( ! class_exists( 'acf_field_relationship' ) ) :
 				)
 			);
 
-<<<<<<< HEAD
-			// taxonomy
-=======
 			acf_render_field_setting(
 				$field,
 				array(
@@ -657,7 +602,6 @@ if ( ! class_exists( 'acf_field_relationship' ) ) :
 				)
 			);
 
->>>>>>> update
 			acf_render_field_setting(
 				$field,
 				array(
@@ -673,10 +617,6 @@ if ( ! class_exists( 'acf_field_relationship' ) ) :
 				)
 			);
 
-<<<<<<< HEAD
-			// filters
-=======
->>>>>>> update
 			acf_render_field_setting(
 				$field,
 				array(
@@ -692,46 +632,6 @@ if ( ! class_exists( 'acf_field_relationship' ) ) :
 				)
 			);
 
-<<<<<<< HEAD
-			// filters
-			acf_render_field_setting(
-				$field,
-				array(
-					'label'        => __( 'Elements', 'acf' ),
-					'instructions' => __( 'Selected elements will be displayed in each result', 'acf' ),
-					'type'         => 'checkbox',
-					'name'         => 'elements',
-					'choices'      => array(
-						'featured_image' => __( 'Featured Image', 'acf' ),
-					),
-				)
-			);
-
-			// min
-			acf_render_field_setting(
-				$field,
-				array(
-					'label'        => __( 'Minimum posts', 'acf' ),
-					'instructions' => '',
-					'type'         => 'number',
-					'name'         => 'min',
-				)
-			);
-
-			// max
-			acf_render_field_setting(
-				$field,
-				array(
-					'label'        => __( 'Maximum posts', 'acf' ),
-					'instructions' => '',
-					'type'         => 'number',
-					'name'         => 'max',
-				)
-			);
-
-			// return_format
-=======
->>>>>>> update
 			acf_render_field_setting(
 				$field,
 				array(
@@ -746,11 +646,6 @@ if ( ! class_exists( 'acf_field_relationship' ) ) :
 					'layout'       => 'horizontal',
 				)
 			);
-<<<<<<< HEAD
-
-		}
-
-=======
 		}
 
 		/**
@@ -820,7 +715,6 @@ if ( ! class_exists( 'acf_field_relationship' ) ) :
 		public function render_field_advanced_settings( $field ) {
 			acf_render_bidirectional_field_settings( $field );
 		}
->>>>>>> update
 
 		/*
 		*  format_value()
@@ -909,25 +803,6 @@ if ( ! class_exists( 'acf_field_relationship' ) ) :
 
 
 		/**
-<<<<<<< HEAD
-		 *  update_value()
-		 *
-		 *  This filter is applied to the $value before it is updated in the db
-		 *
-		 *  @type    filter
-		 *  @since   3.6
-		 *  @date    23/01/13
-		 *
-		 *  @param   $value - the value which will be saved in the database
-		 *  @param   $post_id - the $post_id of which the value will be saved
-		 *  @param   $field - the field array holding all the field options
-		 *
-		 *  @return  $value - the modified value
-		 */
-		function update_value( $value, $post_id, $field ) {
-			// Bail early if no value.
-			if ( empty( $value ) ) {
-=======
 		 * Filters the field value before it is saved into the database.
 		 *
 		 * @since 3.6
@@ -943,7 +818,6 @@ if ( ! class_exists( 'acf_field_relationship' ) ) :
 			// Bail early if no value.
 			if ( empty( $value ) ) {
 				acf_update_bidirectional_values( array(), $post_id, $field );
->>>>>>> update
 				return $value;
 			}
 
@@ -959,11 +833,8 @@ if ( ! class_exists( 'acf_field_relationship' ) ) :
 				$value = acf_idval( $value );
 			}
 
-<<<<<<< HEAD
-=======
 			acf_update_bidirectional_values( acf_get_array( $value ), $post_id, $field );
 
->>>>>>> update
 			// Return value.
 			return $value;
 		}

@@ -1,10 +1,7 @@
 /*!**********************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./src/advanced-custom-fields-pro/assets/src/sass/acf-field-group.scss ***!
   \**********************************************************************************************************************************************************************************************************************/
-<<<<<<< HEAD
-=======
 @charset "UTF-8";
->>>>>>> update
 /*--------------------------------------------------------------------------------------------
 *
 *	Vars
@@ -15,14 +12,11 @@
 /* responsive */
 /*--------------------------------------------------------------------------------------------
 *
-<<<<<<< HEAD
-=======
 *	ACF 6 ↓
 *
 *--------------------------------------------------------------------------------------------*/
 /*--------------------------------------------------------------------------------------------
 *
->>>>>>> update
 *  Mixins
 *
 *--------------------------------------------------------------------------------------------*/
@@ -43,19 +37,11 @@
   display: none;
 }
 
-<<<<<<< HEAD
-/*---------------------------------------------------------------------------------------------
-*
-*  Postbox: Publish
-*
-*---------------------------------------------------------------------------------------------*/
-=======
 /*----------------------------------------------------------------------------
 *
 *  Postbox: Publish
 *
 *----------------------------------------------------------------------------*/
->>>>>>> update
 #minor-publishing-actions,
 #misc-publishing-actions #visibility,
 #misc-publishing-actions .edit-timestamp {
@@ -74,25 +60,6 @@
   border-bottom-color: #F5F5F5;
 }
 
-<<<<<<< HEAD
-/*---------------------------------------------------------------------------------------------
-*
-*  Postbox: Fields
-*
-*---------------------------------------------------------------------------------------------*/
-#acf-field-group-fields {
-  border: 0 none;
-  box-shadow: none;
-  /* links */
-  /* table header */
-  /* show keys */
-  /* fields */
-}
-#acf-field-group-fields > .postbox-header,
-#acf-field-group-fields > .handlediv,
-#acf-field-group-fields > .hndle {
-  display: none;
-=======
 /*----------------------------------------------------------------------------
 *
 *  Postbox: Fields
@@ -110,28 +77,10 @@
 #acf-field-group-fields .inside {
   border-top-width: 0;
   border-top-style: none;
->>>>>>> update
 }
 #acf-field-group-fields a {
   text-decoration: none;
 }
-<<<<<<< HEAD
-#acf-field-group-fields a:active, #acf-field-group-fields a:focus {
-  outline: none;
-  box-shadow: none;
-}
-#acf-field-group-fields .li-field-order {
-  width: 20%;
-}
-#acf-field-group-fields .li-field-label {
-  width: 30%;
-}
-#acf-field-group-fields .li-field-name {
-  width: 25%;
-}
-#acf-field-group-fields .li-field-type {
-  width: 25%;
-=======
 #acf-field-group-fields .li-field-type .field-type-icon {
   margin-right: 8px;
 }
@@ -160,21 +109,10 @@
 #acf-field-group-fields .li-field-name {
   width: 25%;
   word-break: break-word;
->>>>>>> update
 }
 #acf-field-group-fields .li-field-key {
   display: none;
 }
-<<<<<<< HEAD
-#acf-field-group-fields.show-field-keys .li-field-label,
-#acf-field-group-fields.show-field-keys .li-field-name,
-#acf-field-group-fields.show-field-keys .li-field-type,
-#acf-field-group-fields.show-field-keys .li-field-key {
-  width: 20%;
-}
-#acf-field-group-fields.show-field-keys .li-field-key {
-  display: block;
-=======
 #acf-field-group-fields .li-field-type {
   width: 25%;
 }
@@ -218,7 +156,6 @@
 }
 #acf-field-group-fields.hide-tabs .acf-field-settings-footer {
   margin-top: 32px;
->>>>>>> update
 }
 #acf-field-group-fields .acf-field-list-wrap {
   border: #ccd0d4 solid 1px;
@@ -229,8 +166,6 @@
   /* no fields */
   /* empty */
 }
-<<<<<<< HEAD
-=======
 #acf-field-group-fields .acf-field-list .acf-tbody > .li-field-name,
 #acf-field-group-fields .acf-field-list .acf-tbody > .li-field-key {
   align-items: flex-start;
@@ -316,7 +251,6 @@
   mask-image: url("../../images/icons/icon-check-circle-solid.svg");
   background-color: #49ad52;
 }
->>>>>>> update
 #acf-field-group-fields .acf-field-list .no-fields-message {
   padding: 15px 15px;
   background: #fff;
@@ -329,14 +263,11 @@
   border-color: #dfdfdf;
 }
 
-<<<<<<< HEAD
-=======
 .rtl #acf-field-group-fields .li-field-type .field-type-icon {
   margin-left: 8px;
   margin-right: 0;
 }
 
->>>>>>> update
 /* field object */
 .acf-field-object {
   border-top: #eeeeee solid 1px;
@@ -364,10 +295,6 @@
   /* conditional logic */
 }
 .acf-field-object.ui-sortable-helper {
-<<<<<<< HEAD
-  border-top-color: #fff;
-  box-shadow: 0 0 0 1px #DFDFDF, 0 1px 4px rgba(0, 0, 0, 0.1);
-=======
   overflow: hidden !important;
   border-width: 1px;
   border-style: solid;
@@ -377,7 +304,6 @@
 }
 .acf-field-object.ui-sortable-helper:before {
   display: none !important;
->>>>>>> update
 }
 .acf-field-object.ui-sortable-placeholder {
   box-shadow: 0 -1px 0 0 #DFDFDF;
@@ -399,42 +325,16 @@
   transition: none;
 }
 .acf-field-object > .handle li {
-<<<<<<< HEAD
-  padding-top: 10px;
-  padding-bottom: 10px;
-  word-wrap: break-word;
-}
-.acf-field-object > .handle .acf-icon {
-  margin: 1px 0 0;
-  cursor: move;
-  background: transparent;
-  float: left;
-  height: 28px;
-  line-height: 26px;
-  width: 28px;
-  font-size: 13px;
-  color: #444;
-  position: relative;
-  z-index: 1;
-}
-.acf-field-object > .handle strong {
-  display: block;
-  padding-bottom: 6px;
-=======
   word-wrap: break-word;
 }
 .acf-field-object > .handle strong {
   display: block;
   padding-bottom: 0;
->>>>>>> update
   font-size: 14px;
   line-height: 14px;
   min-height: 14px;
 }
 .acf-field-object > .handle .row-options {
-<<<<<<< HEAD
-  visibility: hidden;
-=======
   display: block;
   opacity: 0;
   margin-top: 5px;
@@ -444,29 +344,22 @@
     opacity: 1;
     margin-bottom: 0;
   }
->>>>>>> update
 }
 .acf-field-object > .handle .row-options a {
   margin-right: 4px;
 }
-<<<<<<< HEAD
-=======
 .acf-field-object > .handle .row-options a:hover {
   color: #044767;
 }
->>>>>>> update
 .acf-field-object > .handle .row-options a.delete-field {
   color: #a00;
 }
 .acf-field-object > .handle .row-options a.delete-field:hover {
   color: #f00;
 }
-<<<<<<< HEAD
-=======
 .acf-field-object > .handle .row-options.active {
   visibility: visible;
 }
->>>>>>> update
 .acf-field-object.open + .acf-field-object {
   border-top-color: #E1E1E1;
 }
@@ -476,11 +369,7 @@
   text-shadow: #268FBB 0 1px 0;
   color: #fff;
   position: relative;
-<<<<<<< HEAD
-  margin: -1px -1px 0 -1px;
-=======
   margin: 0 -1px 0 -1px;
->>>>>>> update
 }
 .acf-field-object.open > .handle a {
   color: #fff !important;
@@ -488,21 +377,9 @@
 .acf-field-object.open > .handle a:hover {
   text-decoration: underline !important;
 }
-<<<<<<< HEAD
-.acf-field-object.open > .handle .acf-icon {
-  border-color: #fff;
-  color: #fff;
-}
-.acf-field-object.open > .handle .acf-required {
-  color: #fff;
-}
-.acf-field-object:hover > .handle .row-options, .acf-field-object.-hover > .handle .row-options {
-  visibility: visible;
-=======
 .acf-field-object:hover > .handle .row-options, .acf-field-object.-hover > .handle .row-options, .acf-field-object:focus-within > .handle .row-options {
   opacity: 1;
   margin-bottom: 0;
->>>>>>> update
 }
 .acf-field-object > .settings {
   display: none;
@@ -515,19 +392,11 @@
   margin-top: 20px;
 }
 
-<<<<<<< HEAD
-/*---------------------------------------------------------------------------------------------
-*
-* Postbox: Locations
-*
-*---------------------------------------------------------------------------------------------*/
-=======
 /*----------------------------------------------------------------------------
 *
 * Postbox: Locations
 *
 *----------------------------------------------------------------------------*/
->>>>>>> update
 .rule-groups h4 {
   margin: 3px 0;
 }
@@ -551,10 +420,6 @@
   vertical-align: middle;
 }
 .rule-groups .rule-group td.remove a {
-<<<<<<< HEAD
-  visibility: hidden;
-}
-=======
   width: 22px;
   height: 22px;
   visibility: hidden;
@@ -564,7 +429,6 @@
   top: -2px;
   font-size: 16px;
 }
->>>>>>> update
 .rule-groups .rule-group tr:hover td.remove a {
   visibility: visible;
 }
@@ -576,19 +440,11 @@
   visibility: hidden !important;
 }
 
-<<<<<<< HEAD
-/*---------------------------------------------------------------------------------------------
-*
-*	Options
-*	
-*---------------------------------------------------------------------------------------------*/
-=======
 /*----------------------------------------------------------------------------
 *
 *	Options
 *
 *----------------------------------------------------------------------------*/
->>>>>>> update
 #acf-field-group-options tr[data-name=hide_on_screen] li {
   float: left;
   width: 33%;
@@ -599,19 +455,11 @@
     width: 50%;
   }
 }
-<<<<<<< HEAD
-/*---------------------------------------------------------------------------------------------
-*
-*	Conditional Logic
-*	
-*---------------------------------------------------------------------------------------------*/
-=======
 /*----------------------------------------------------------------------------
 *
 *	Conditional Logic
 *
 *----------------------------------------------------------------------------*/
->>>>>>> update
 table.conditional-logic-rules {
   background: transparent;
   border: 0 none;
@@ -624,58 +472,6 @@ table.conditional-logic-rules tbody td {
   padding: 5px 2px !important;
 }
 
-<<<<<<< HEAD
-/*---------------------------------------------------------------------------------------------
-*
-*	Field: Tab
-*	
-*---------------------------------------------------------------------------------------------*/
-.acf-field-object-tab .acf-field-setting-name, .acf-field-object-accordion .acf-field-setting-name,
-.acf-field-object-tab .acf-field-setting-instructions,
-.acf-field-object-accordion .acf-field-setting-instructions,
-.acf-field-object-tab .acf-field-setting-required,
-.acf-field-object-accordion .acf-field-setting-required,
-.acf-field-object-tab .acf-field-setting-warning,
-.acf-field-object-accordion .acf-field-setting-warning,
-.acf-field-object-tab .acf-field-setting-wrapper,
-.acf-field-object-accordion .acf-field-setting-wrapper {
-  display: none;
-}
-.acf-field-object-tab .li-field-name, .acf-field-object-accordion .li-field-name {
-  visibility: hidden;
-}
-.acf-field-object + .acf-field-object-tab:before, .acf-field-object + .acf-field-object-accordion:before {
-  display: block;
-  content: "";
-  height: 5px;
-  width: 100%;
-  background: #f5f5f5;
-  border-top: #e1e1e1 solid 1px;
-  border-bottom: #e1e1e1 solid 1px;
-  margin-top: -1px;
-}
-.acf-admin-3-8 .acf-field-object + .acf-field-object-tab:before, .acf-admin-3-8 .acf-field-object + .acf-field-object-accordion:before {
-  border-color: #E5E5E5;
-}
-.acf-field-object-tab p:first-child, .acf-field-object-accordion p:first-child {
-  margin: 0.5em 0;
-}
-
-/*---------------------------------------------------------------------------------------------
-*
-*	Field: Accordion
-*	
-*---------------------------------------------------------------------------------------------*/
-.acf-field-object-accordion .acf-field-setting-instructions {
-  display: table-row;
-}
-
-/*---------------------------------------------------------------------------------------------
-*
-*	Field: Message
-*	
-*---------------------------------------------------------------------------------------------*/
-=======
 /*----------------------------------------------------------------------------
 *
 *	Field: Tab
@@ -726,7 +522,6 @@ table.conditional-logic-rules tbody td {
 *	Field: Message
 *
 *----------------------------------------------------------------------------*/
->>>>>>> update
 .acf-field-object-message tr[data-name=name],
 .acf-field-object-message tr[data-name=instructions],
 .acf-field-object-message tr[data-name=required] {
@@ -741,38 +536,22 @@ table.conditional-logic-rules tbody td {
   height: 175px !important;
 }
 
-<<<<<<< HEAD
-/*---------------------------------------------------------------------------------------------
-*
-*	Field: Separator
-*	
-*---------------------------------------------------------------------------------------------*/
-=======
 /*----------------------------------------------------------------------------
 *
 *	Field: Separator
 *
 *----------------------------------------------------------------------------*/
->>>>>>> update
 .acf-field-object-separator tr[data-name=name],
 .acf-field-object-separator tr[data-name=instructions],
 .acf-field-object-separator tr[data-name=required] {
   display: none !important;
 }
 
-<<<<<<< HEAD
-/*---------------------------------------------------------------------------------------------
-*
-*	Field: Date Picker
-*	
-*---------------------------------------------------------------------------------------------*/
-=======
 /*----------------------------------------------------------------------------
 *
 *	Field: Date Picker
 *
 *----------------------------------------------------------------------------*/
->>>>>>> update
 .acf-field-object-date-picker .acf-radio-list li,
 .acf-field-object-time-picker .acf-radio-list li,
 .acf-field-object-date-time-picker .acf-radio-list li {
@@ -818,29 +597,6 @@ table.conditional-logic-rules tbody td {
 *
 *--------------------------------------------------------------------------------------------*/
 html[dir=rtl] .acf-field-object.open > .handle {
-<<<<<<< HEAD
-  margin: -1px -1px 0;
-}
-
-html[dir=rtl] .acf-field-object.open > .handle .acf-icon {
-  float: right;
-}
-
-html[dir=rtl] .acf-field-object.open > .handle .li-field-order {
-  padding-left: 0 !important;
-  padding-right: 15px !important;
-}
-
-/*---------------------------------------------------------------------------------------------
-*
-*  Device
-*
-*---------------------------------------------------------------------------------------------*/
-@media only screen and (max-width: 850px) {
-  tr.acf-field,
-td.acf-label,
-td.acf-input {
-=======
   margin: 0;
 }
 
@@ -853,30 +609,19 @@ td.acf-input {
   tr.acf-field,
   td.acf-label,
   td.acf-input {
->>>>>>> update
     display: block !important;
     width: auto !important;
     border: 0 none !important;
   }
-<<<<<<< HEAD
-
-=======
->>>>>>> update
   tr.acf-field {
     border-top: #ededed solid 1px !important;
     margin-bottom: 0 !important;
   }
-<<<<<<< HEAD
-
-=======
->>>>>>> update
   td.acf-label {
     background: transparent !important;
     padding-bottom: 0 !important;
   }
 }
-<<<<<<< HEAD
-=======
 /*----------------------------------------------------------------------------
 *
 *  Subtle background on accordion & tab fields to separate them from others
@@ -3428,6 +3173,5 @@ td.acf-input {
 .post-type-acf-field-group #acf-field-group-fields .acf-field-list-wrap .acf-input-sub .acf-input-sub .acf-input-sub .acf-input-sub .acf-field-object .settings {
   border-left-color: #A3B1B9;
 }
->>>>>>> update
 
 /*# sourceMappingURL=acf-field-group.css.map*/

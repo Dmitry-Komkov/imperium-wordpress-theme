@@ -1,30 +1,19 @@
 <?php
 
-<<<<<<< HEAD
-namespace WBCR\Factory_Freemius_138;
-
-use Freemius_Api_WordPress;
-use Freemius_Exception;
-use Wbcr_Factory450_Plugin;
-=======
 namespace WBCR\Factory_Freemius_157;
 
 use WBCR\Factory_Freemius_157\Sdk\Freemius_Api_WordPress;
 use WBCR\Factory_Freemius_157\Sdk\Freemius_Exception;
 use Wbcr_Factory469_Plugin;
->>>>>>> update
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-<<<<<<< HEAD
-=======
 if( !defined('FREEMIUS__DIR_SDK') ) {
 	define('FREEMIUS__DIR_SDK', dirname(__FILE__) . '/sdk');
 }
 
->>>>>>> update
 /**
  * Class FS_Api
  *
@@ -48,11 +37,7 @@ final class Api {
 	private $api;
 	
 	/**
-<<<<<<< HEAD
-	 * @var Wbcr_Factory450_Plugin
-=======
 	 * @var Wbcr_Factory469_Plugin
->>>>>>> update
 	 */
 	private $plugin;
 	
@@ -67,26 +52,16 @@ final class Api {
 	private static $clock_diff;
 	
 	/**
-<<<<<<< HEAD
-	 * @param Wbcr_Factory450_Plugin $slug
-=======
 	 * @param Wbcr_Factory469_Plugin $slug
->>>>>>> update
 	 * @param string $scope 'app', 'developer', 'user' or 'install'.
 	 * @param number $id Element's id.
 	 * @param string $public_key Public key.
 	 * @param bool|string $secret_key Element's secret key.
 	 * @param bool $is_sandbox
 	 */
-<<<<<<< HEAD
-	private function __construct( Wbcr_Factory450_Plugin $plugin, $scope, $id, $public_key, $secret_key, $is_sandbox ) {
-		if ( ! class_exists( 'Freemius_Api_WordPress' ) ) {
-			require_once WP_FS__DIR_SDK . '/FreemiusWordPress.php';
-=======
 	private function __construct( Wbcr_Factory469_Plugin $plugin, $scope, $id, $public_key, $secret_key, $is_sandbox ) {
 		if ( ! class_exists( 'WBCR\Factory_Freemius_157\Sdk\Freemius_Api_WordPress' ) ) {
 			require_once FREEMIUS__DIR_SDK . '/FreemiusWordPress.php';
->>>>>>> update
 		}
 		
 		$this->api = new Freemius_Api_WordPress( $scope, $id, $public_key, $secret_key, $is_sandbox );
@@ -102,11 +77,7 @@ final class Api {
 	}
 	
 	/**
-<<<<<<< HEAD
-	 * @param Wbcr_Factory450_Plugin $plugin
-=======
 	 * @param Wbcr_Factory469_Plugin $plugin
->>>>>>> update
 	 * @param string $scope 'app', 'developer', 'user' or 'install'.
 	 * @param number $id Element's id.
 	 * @param string $public_key Public key.
@@ -115,11 +86,7 @@ final class Api {
 	 *
 	 * @return Api
 	 */
-<<<<<<< HEAD
-	public static function instance( Wbcr_Factory450_Plugin $plugin, $scope, $id, $public_key, $is_sandbox, $secret_key = false ) {
-=======
 	public static function instance( Wbcr_Factory469_Plugin $plugin, $scope, $id, $public_key, $is_sandbox, $secret_key = false ) {
->>>>>>> update
 		$identifier = md5( $plugin->getPluginName() . $scope . $id . $public_key . ( is_string( $secret_key ) ? $secret_key : '' ) . json_encode( $is_sandbox ) );
 		
 		if ( ! isset( self::$instances[ $identifier ] ) ) {

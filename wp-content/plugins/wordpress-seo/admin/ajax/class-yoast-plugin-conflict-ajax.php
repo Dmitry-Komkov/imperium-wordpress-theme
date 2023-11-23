@@ -37,9 +37,6 @@ class Yoast_Plugin_Conflict_Ajax {
 	public function dismiss_notice() {
 		check_ajax_referer( 'dismiss-plugin-conflict' );
 
-<<<<<<< HEAD
-		$conflict_data = filter_input( INPUT_POST, 'data', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY );
-=======
 		if ( ! isset( $_POST['data'] ) || ! is_array( $_POST['data'] ) ) {
 			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Reason: WPSEO_Utils::format_json_encode is considered safe.
 			wp_die( WPSEO_Utils::format_json_encode( [] ) );
@@ -52,7 +49,6 @@ class Yoast_Plugin_Conflict_Ajax {
 			'section' => sanitize_text_field( $conflict_data['section'] ),
 			'plugins' => sanitize_text_field( $conflict_data['plugins'] ),
 		];
->>>>>>> update
 
 		$this->dismissed_conflicts = $this->get_dismissed_conflicts( $conflict_data['section'] );
 

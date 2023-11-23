@@ -1,10 +1,6 @@
 <?php
 
-<<<<<<< HEAD
-namespace WBCR\Factory_Logger_115;
-=======
 namespace WBCR\Factory_Logger_133;
->>>>>>> update
 
 /**
  * Prepares export files, ZIPs them and allows to download the package.

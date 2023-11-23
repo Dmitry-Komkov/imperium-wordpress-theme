@@ -1,9 +1,5 @@
 <?php
-<<<<<<< HEAD
-namespace WBCR\Factory_Templates_102;
-=======
 namespace WBCR\Factory_Templates_118;
->>>>>>> update
 
 // Exit if accessed directly
 if( !defined('ABSPATH') ) {

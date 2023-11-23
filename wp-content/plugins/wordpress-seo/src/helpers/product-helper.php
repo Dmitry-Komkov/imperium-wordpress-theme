@@ -50,8 +50,6 @@ class Product_Helper {
 
 		return null;
 	}
-<<<<<<< HEAD
-=======
 
 	/**
 	 * Gets the version.
@@ -61,5 +59,4 @@ class Product_Helper {
 	public function get_version() {
 		return \WPSEO_VERSION;
 	}
->>>>>>> update
 }

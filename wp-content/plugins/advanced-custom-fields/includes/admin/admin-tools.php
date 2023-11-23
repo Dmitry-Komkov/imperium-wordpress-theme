@@ -5,11 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! class_exists( 'acf_admin_tools' ) ) :
-<<<<<<< HEAD
-
-=======
 	#[AllowDynamicProperties]
->>>>>>> update
 	class acf_admin_tools {
 
 
@@ -36,18 +32,10 @@ if ( ! class_exists( 'acf_admin_tools' ) ) :
 		function __construct() {
 
 			// actions
-<<<<<<< HEAD
-			add_action( 'admin_menu', array( $this, 'admin_menu' ) );
-
-		}
-
-
-=======
 			add_action( 'admin_menu', array( $this, 'admin_menu' ), 15 );
 
 		}
 
->>>>>>> update
 		/**
 		 *  register_tool
 		 *
@@ -149,11 +137,8 @@ if ( ! class_exists( 'acf_admin_tools' ) ) :
 
 		function load() {
 
-<<<<<<< HEAD
-=======
 			add_action( 'admin_body_class', array( $this, 'admin_body_class' ) );
 
->>>>>>> update
 			// disable filters (default to raw data)
 			acf_disable_filters();
 
@@ -168,8 +153,6 @@ if ( ! class_exists( 'acf_admin_tools' ) ) :
 
 		}
 
-<<<<<<< HEAD
-=======
 		/**
 		 * Modifies the admin body class.
 		 *
@@ -182,7 +165,6 @@ if ( ! class_exists( 'acf_admin_tools' ) ) :
 			$classes .= ' acf-admin-page';
 			return $classes;
 		}
->>>>>>> update
 
 		/**
 		 *  include_tools
@@ -276,41 +258,12 @@ if ( ! class_exists( 'acf_admin_tools' ) ) :
 			}
 
 			// view
-<<<<<<< HEAD
-			acf_get_view( 'html-admin-tools', $view );
-=======
 			acf_get_view( 'tools/tools', $view );
->>>>>>> update
 
 		}
 
 
 		/**
-<<<<<<< HEAD
-		 *  meta_box_html
-		 *
-		 *  description
-		 *
-		 *  @date    10/10/17
-		 *  @since   5.6.3
-		 *
-		 *  @param   n/a
-		 *  @return  n/a
-		 */
-
-		function metabox_html( $post, $metabox ) {
-
-			// vars
-			$tool = $this->get_tool( $metabox['args']['tool'] );
-
-			?>
-		<form method="post">
-			<?php $tool->html(); ?>
-			<?php acf_nonce_input( $tool->name ); ?>
-		</form>
-			<?php
-
-=======
 		 * Output the metabox HTML for specific tools
 		 *
 		 * @since 5.6.3
@@ -332,7 +285,6 @@ if ( ! class_exists( 'acf_admin_tools' ) ) :
 			$tool->html();
 			acf_nonce_input( $tool->name );
 			echo '</form>';
->>>>>>> update
 		}
 
 	}
@@ -401,9 +353,3 @@ function acf_get_admin_tool_url( $tool = '' ) {
 	return acf_get_admin_tools_url() . '&tool=' . $tool;
 
 }
-<<<<<<< HEAD
-
-
-?>
-=======
->>>>>>> update

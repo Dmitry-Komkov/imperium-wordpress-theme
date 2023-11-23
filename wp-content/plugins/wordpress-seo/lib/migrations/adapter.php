@@ -542,11 +542,7 @@ class Adapter {
 			}
 
 			return $result;
-<<<<<<< HEAD
-		} catch ( \Exception $e ) {
-=======
 		} catch ( Exception $e ) {
->>>>>>> update
 			return null;
 		}
 	}

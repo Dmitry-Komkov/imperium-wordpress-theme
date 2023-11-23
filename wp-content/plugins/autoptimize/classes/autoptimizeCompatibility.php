@@ -10,8 +10,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 class autoptimizeCompatibility
 {
     /**
-<<<<<<< HEAD
-=======
      * Options.
      *
      * @var array
@@ -19,7 +17,6 @@ class autoptimizeCompatibility
     protected $conf = array();
 
     /**
->>>>>>> update
      * Constructor.
      */
     public function __construct()
@@ -46,11 +43,7 @@ class autoptimizeCompatibility
                 'autoptimize_filter_js_exclude',
                 function( $js_excl = '', $html = '' ) {
                     $revslider_excl = 'revslider, setREVStartSize, window.RSIW, window.RS_MODULES, jquery.min.js';
-<<<<<<< HEAD
-                    if ( ! empty( $html ) && false !== strpos( $html, '<rs-slides>' ) ) {
-=======
                     if ( ! empty( $html ) && false !== strpos( $html, '<rs-slides' ) ) {
->>>>>>> update
                         if ( is_array( $js_excl ) ) {
                             $js_excl = implode( ',', $js_excl );
                         }
@@ -69,11 +62,7 @@ class autoptimizeCompatibility
             add_filter(
                 'autoptimize_filter_js_removables',
                 function( $to_remove = '', $html = '' ) {
-<<<<<<< HEAD
-                    if ( ! empty( $html ) && false === strpos( $html, '<rs-slides>' ) ) {
-=======
                     if ( ! empty( $html ) && false === strpos( $html, '<rs-slides' ) ) {
->>>>>>> update
                         $to_remove .= 'plugins/revslider, setREVStartSize, window.RSIW, window.RS_MODULES';
                     }
 

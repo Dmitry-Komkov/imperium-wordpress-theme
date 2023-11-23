@@ -1,24 +1,14 @@
 <?php
 
-<<<<<<< HEAD
-=======
 declare (strict_types=1);
->>>>>>> update
 namespace YoastSEO_Vendor\GuzzleHttp\Psr7;
 
 use YoastSEO_Vendor\Psr\Http\Message\StreamInterface;
 /**
  * Stream decorator that can cache previously read bytes from a sequentially
  * read stream.
-<<<<<<< HEAD
- *
- * @final
- */
-class CachingStream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInterface
-=======
  */
 final class CachingStream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInterface
->>>>>>> update
 {
     use StreamDecoratorTrait;
     /** @var StreamInterface Stream being wrapped */
@@ -26,13 +16,10 @@ final class CachingStream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInt
     /** @var int Number of bytes to skip reading due to a write on the buffer */
     private $skipReadBytes = 0;
     /**
-<<<<<<< HEAD
-=======
      * @var StreamInterface
      */
     private $stream;
     /**
->>>>>>> update
      * We will treat the buffer object as the body of the stream
      *
      * @param StreamInterface $stream Stream to cache. The cursor is assumed to be at the beginning of the stream.
@@ -43,11 +30,7 @@ final class CachingStream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInt
         $this->remoteStream = $stream;
         $this->stream = $target ?: new \YoastSEO_Vendor\GuzzleHttp\Psr7\Stream(\YoastSEO_Vendor\GuzzleHttp\Psr7\Utils::tryFopen('php://temp', 'r+'));
     }
-<<<<<<< HEAD
-    public function getSize()
-=======
     public function getSize() : ?int
->>>>>>> update
     {
         $remoteSize = $this->remoteStream->getSize();
         if (null === $remoteSize) {
@@ -55,19 +38,6 @@ final class CachingStream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInt
         }
         return \max($this->stream->getSize(), $remoteSize);
     }
-<<<<<<< HEAD
-    public function rewind()
-    {
-        $this->seek(0);
-    }
-    public function seek($offset, $whence = \SEEK_SET)
-    {
-        if ($whence == \SEEK_SET) {
-            $byte = $offset;
-        } elseif ($whence == \SEEK_CUR) {
-            $byte = $offset + $this->tell();
-        } elseif ($whence == \SEEK_END) {
-=======
     public function rewind() : void
     {
         $this->seek(0);
@@ -79,7 +49,6 @@ final class CachingStream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInt
         } elseif ($whence === \SEEK_CUR) {
             $byte = $offset + $this->tell();
         } elseif ($whence === \SEEK_END) {
->>>>>>> update
             $size = $this->remoteStream->getSize();
             if ($size === null) {
                 $size = $this->cacheEntireStream();
@@ -101,11 +70,7 @@ final class CachingStream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInt
             $this->stream->seek($byte);
         }
     }
-<<<<<<< HEAD
-    public function read($length)
-=======
     public function read($length) : string
->>>>>>> update
     {
         // Perform a regular read on any previously read data from the buffer
         $data = $this->stream->read($length);
@@ -127,11 +92,7 @@ final class CachingStream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInt
         }
         return $data;
     }
-<<<<<<< HEAD
-    public function write($string)
-=======
     public function write($string) : int
->>>>>>> update
     {
         // When appending to the end of the currently read stream, you'll want
         // to skip bytes from being read from the remote stream to emulate
@@ -143,31 +104,19 @@ final class CachingStream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInt
         }
         return $this->stream->write($string);
     }
-<<<<<<< HEAD
-    public function eof()
-=======
     public function eof() : bool
->>>>>>> update
     {
         return $this->stream->eof() && $this->remoteStream->eof();
     }
     /**
      * Close both the remote stream and buffer stream
      */
-<<<<<<< HEAD
-    public function close()
-    {
-        $this->remoteStream->close() && $this->stream->close();
-    }
-    private function cacheEntireStream()
-=======
     public function close() : void
     {
         $this->remoteStream->close();
         $this->stream->close();
     }
     private function cacheEntireStream() : int
->>>>>>> update
     {
         $target = new \YoastSEO_Vendor\GuzzleHttp\Psr7\FnStream(['write' => 'strlen']);
         \YoastSEO_Vendor\GuzzleHttp\Psr7\Utils::copyToStream($this, $target);

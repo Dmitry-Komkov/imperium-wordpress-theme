@@ -11,12 +11,6 @@ use YoastSEO_Vendor\Psr\Http\Message\UriInterface;
  */
 final class TransferStats
 {
-<<<<<<< HEAD
-    private $request;
-    private $response;
-    private $transferTime;
-    private $handlerStats;
-=======
     /**
      * @var RequestInterface
      */
@@ -36,7 +30,6 @@ final class TransferStats
     /**
      * @var mixed|null
      */
->>>>>>> update
     private $handlerErrorData;
     /**
      * @param RequestInterface       $request          Request that was sent.
@@ -45,11 +38,7 @@ final class TransferStats
      * @param mixed                  $handlerErrorData Handler error data.
      * @param array                  $handlerStats     Handler specific stats.
      */
-<<<<<<< HEAD
-    public function __construct(\YoastSEO_Vendor\Psr\Http\Message\RequestInterface $request, \YoastSEO_Vendor\Psr\Http\Message\ResponseInterface $response = null, $transferTime = null, $handlerErrorData = null, $handlerStats = [])
-=======
     public function __construct(\YoastSEO_Vendor\Psr\Http\Message\RequestInterface $request, \YoastSEO_Vendor\Psr\Http\Message\ResponseInterface $response = null, float $transferTime = null, $handlerErrorData = null, array $handlerStats = [])
->>>>>>> update
     {
         $this->request = $request;
         $this->response = $response;
@@ -57,42 +46,21 @@ final class TransferStats
         $this->handlerErrorData = $handlerErrorData;
         $this->handlerStats = $handlerStats;
     }
-<<<<<<< HEAD
-    /**
-     * @return RequestInterface
-     */
-    public function getRequest()
-=======
     public function getRequest() : \YoastSEO_Vendor\Psr\Http\Message\RequestInterface
->>>>>>> update
     {
         return $this->request;
     }
     /**
      * Returns the response that was received (if any).
-<<<<<<< HEAD
-     *
-     * @return ResponseInterface|null
-     */
-    public function getResponse()
-=======
      */
     public function getResponse() : ?\YoastSEO_Vendor\Psr\Http\Message\ResponseInterface
->>>>>>> update
     {
         return $this->response;
     }
     /**
      * Returns true if a response was received.
-<<<<<<< HEAD
-     *
-     * @return bool
-     */
-    public function hasResponse()
-=======
      */
     public function hasResponse() : bool
->>>>>>> update
     {
         return $this->response !== null;
     }
@@ -111,15 +79,8 @@ final class TransferStats
     }
     /**
      * Get the effective URI the request was sent to.
-<<<<<<< HEAD
-     *
-     * @return UriInterface
-     */
-    public function getEffectiveUri()
-=======
      */
     public function getEffectiveUri() : \YoastSEO_Vendor\Psr\Http\Message\UriInterface
->>>>>>> update
     {
         return $this->request->getUri();
     }
@@ -128,25 +89,14 @@ final class TransferStats
      *
      * @return float|null Time in seconds.
      */
-<<<<<<< HEAD
-    public function getTransferTime()
-=======
     public function getTransferTime() : ?float
->>>>>>> update
     {
         return $this->transferTime;
     }
     /**
      * Gets an array of all of the handler specific transfer data.
-<<<<<<< HEAD
-     *
-     * @return array
-     */
-    public function getHandlerStats()
-=======
      */
     public function getHandlerStats() : array
->>>>>>> update
     {
         return $this->handlerStats;
     }
@@ -157,14 +107,8 @@ final class TransferStats
      *
      * @return mixed|null
      */
-<<<<<<< HEAD
-    public function getHandlerStat($stat)
-    {
-        return isset($this->handlerStats[$stat]) ? $this->handlerStats[$stat] : null;
-=======
     public function getHandlerStat(string $stat)
     {
         return $this->handlerStats[$stat] ?? null;
->>>>>>> update
     }
 }

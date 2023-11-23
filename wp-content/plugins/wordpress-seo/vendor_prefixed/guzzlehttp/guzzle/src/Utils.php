@@ -3,28 +3,6 @@
 namespace YoastSEO_Vendor\GuzzleHttp;
 
 use YoastSEO_Vendor\GuzzleHttp\Exception\InvalidArgumentException;
-<<<<<<< HEAD
-use YoastSEO_Vendor\Psr\Http\Message\UriInterface;
-use YoastSEO_Vendor\Symfony\Polyfill\Intl\Idn\Idn;
-final class Utils
-{
-    /**
-     * Wrapper for the hrtime() or microtime() functions
-     * (depending on the PHP version, one of the two is used)
-     *
-     * @return float|mixed UNIX timestamp
-     *
-     * @internal
-     */
-    public static function currentTime()
-    {
-        return \function_exists('hrtime') ? \hrtime(\true) / 1000000000.0 : \microtime(\true);
-    }
-    /**
-     * @param int $options
-     *
-     * @return UriInterface
-=======
 use YoastSEO_Vendor\GuzzleHttp\Handler\CurlHandler;
 use YoastSEO_Vendor\GuzzleHttp\Handler\CurlMultiHandler;
 use YoastSEO_Vendor\GuzzleHttp\Handler\Proxy;
@@ -304,27 +282,17 @@ EOT
         return (float) \function_exists('hrtime') ? \hrtime(\true) / 1000000000.0 : \microtime(\true);
     }
     /**
->>>>>>> update
      * @throws InvalidArgumentException
      *
      * @internal
      */
-<<<<<<< HEAD
-    public static function idnUriConvert(\YoastSEO_Vendor\Psr\Http\Message\UriInterface $uri, $options = 0)
-=======
     public static function idnUriConvert(\YoastSEO_Vendor\Psr\Http\Message\UriInterface $uri, int $options = 0) : \YoastSEO_Vendor\Psr\Http\Message\UriInterface
->>>>>>> update
     {
         if ($uri->getHost()) {
             $asciiHost = self::idnToAsci($uri->getHost(), $options, $info);
             if ($asciiHost === \false) {
-<<<<<<< HEAD
-                $errorBitSet = isset($info['errors']) ? $info['errors'] : 0;
-                $errorConstants = \array_filter(\array_keys(\get_defined_constants()), function ($name) {
-=======
                 $errorBitSet = $info['errors'] ?? 0;
                 $errorConstants = \array_filter(\array_keys(\get_defined_constants()), static function (string $name) : bool {
->>>>>>> update
                     return \substr($name, 0, 11) === 'IDNA_ERROR_';
                 });
                 $errors = [];
@@ -338,46 +306,15 @@ EOT
                     $errorMessage .= ' (errors: ' . \implode(', ', $errors) . ')';
                 }
                 throw new \YoastSEO_Vendor\GuzzleHttp\Exception\InvalidArgumentException($errorMessage);
-<<<<<<< HEAD
-            } else {
-                if ($uri->getHost() !== $asciiHost) {
-                    // Replace URI only if the ASCII version is different
-                    $uri = $uri->withHost($asciiHost);
-                }
-=======
             }
             if ($uri->getHost() !== $asciiHost) {
                 // Replace URI only if the ASCII version is different
                 $uri = $uri->withHost($asciiHost);
->>>>>>> update
             }
         }
         return $uri;
     }
     /**
-<<<<<<< HEAD
-     * @param string $domain
-     * @param int    $options
-     * @param array  $info
-     *
-     * @return string|false
-     */
-    private static function idnToAsci($domain, $options, &$info = [])
-    {
-        if (\preg_match('%^[ -~]+$%', $domain) === 1) {
-            return $domain;
-        }
-        if (\extension_loaded('intl') && \defined('INTL_IDNA_VARIANT_UTS46')) {
-            return \idn_to_ascii($domain, $options, \INTL_IDNA_VARIANT_UTS46, $info);
-        }
-        /*
-         * The Idn class is marked as @internal. Verify that class and method exists.
-         */
-        if (\method_exists(\YoastSEO_Vendor\Symfony\Polyfill\Intl\Idn\Idn::class, 'idn_to_ascii')) {
-            return \YoastSEO_Vendor\Symfony\Polyfill\Intl\Idn\Idn::idn_to_ascii($domain, $options, \YoastSEO_Vendor\Symfony\Polyfill\Intl\Idn\Idn::INTL_IDNA_VARIANT_UTS46, $info);
-        }
-        throw new \RuntimeException('ext-intl or symfony/polyfill-intl-idn not loaded or too old');
-=======
      * @internal
      */
     public static function getenv(string $name) : ?string
@@ -399,6 +336,5 @@ EOT
             return \idn_to_ascii($domain, $options, \INTL_IDNA_VARIANT_UTS46, $info);
         }
         throw new \Error('ext-idn or symfony/polyfill-intl-idn not loaded or too old');
->>>>>>> update
     }
 }

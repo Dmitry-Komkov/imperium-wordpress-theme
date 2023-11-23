@@ -144,11 +144,7 @@ var WpfcCDN = {
 			type: 'POST',
 			dataType: "json",
 			url: ajaxurl,
-<<<<<<< HEAD
-			data : {"action": "wpfc_start_cdn_integration", "id" : self.id},
-=======
 			data : {"action": "wpfc_start_cdn_integration", "id" : self.id, "nonce" : self.nonce},
->>>>>>> update
 		    success: function(res){
 		    	self.show_button("pause");
 		    	self.enable_button("pause");
@@ -174,11 +170,7 @@ var WpfcCDN = {
 			type: 'POST',
 			dataType: "json",
 			url: ajaxurl,
-<<<<<<< HEAD
-			data : {"action": "wpfc_pause_cdn_integration", "id" : self.id},
-=======
 			data : {"action": "wpfc_pause_cdn_integration", "id" : self.id, "nonce" : self.nonce},
->>>>>>> update
 		    success: function(res){
 		    	self.show_button("start");
 		    	self.enable_button("start");
@@ -205,11 +197,7 @@ var WpfcCDN = {
 			type: 'POST',
 			dataType: "json",
 			url: ajaxurl,
-<<<<<<< HEAD
-			data : {"action": "wpfc_remove_cdn_integration", "id" : self.id},
-=======
 			data : {"action": "wpfc_remove_cdn_integration", "id" : self.id, "nonce" : self.nonce},
->>>>>>> update
 		    success: function(res){
 		    	self.values = jQuery.grep(self.values, function (e, i) {
 							    	if(e.id == self.id){
@@ -345,11 +333,7 @@ var WpfcCDN = {
 			type: 'GET',
 			dataType: "json",
 			url: ajaxurl,
-<<<<<<< HEAD
-			data : {"action": "wpfc_check_url", "url" : cdn_url, "origin_url" : origin_url, "type" : WpfcCDN.id},
-=======
 			data : {"action": "wpfc_check_url", "url" : cdn_url, "origin_url" : origin_url, "type" : WpfcCDN.id, "nonce" : self.nonce},
->>>>>>> update
 		    success: function(res){
 		    	modal.find("#cdn-url-loading").hide();
 		    	if(res.success){

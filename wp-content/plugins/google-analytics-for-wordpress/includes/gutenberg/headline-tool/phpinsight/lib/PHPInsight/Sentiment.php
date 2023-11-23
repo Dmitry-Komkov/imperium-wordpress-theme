@@ -225,21 +225,11 @@ class Sentiment {
 		 */
 		$fn = "{$this->dataFolder}data.{$class}.php";
 
-<<<<<<< HEAD
-		if ( file_exists( $fn ) ) {
-=======
 		if ( file_exists( $fn ) && is_readable( $fn ) ) {
->>>>>>> update
 			$temp  = file_get_contents( $fn );
 			$words = unserialize( $temp );
 		} else {
 			echo 'File does not exist: ' . $fn;
-<<<<<<< HEAD
-		}
-
-		//Loop through all of the entries
-		foreach ( $words as $word ) {
-=======
 			$words = array();
 		}
 
@@ -250,7 +240,6 @@ class Sentiment {
 
 		//Loop through all of the entries
 		foreach ( (array) $words as $word ) {
->>>>>>> update
 
 			$this->docCount ++;
 			$this->classDocCounts[ $class ] ++;

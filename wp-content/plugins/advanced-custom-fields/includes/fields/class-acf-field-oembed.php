@@ -1,11 +1,7 @@
 <?php
 
 if ( ! class_exists( 'acf_field_oembed' ) ) :
-<<<<<<< HEAD
-
-=======
 	#[AllowDynamicProperties]
->>>>>>> update
 	class acf_field_oembed extends acf_field {
 
 
@@ -25,17 +21,6 @@ if ( ! class_exists( 'acf_field_oembed' ) ) :
 		function initialize() {
 
 			// vars
-<<<<<<< HEAD
-			$this->name     = 'oembed';
-			$this->label    = __( 'oEmbed', 'acf' );
-			$this->category = 'content';
-			$this->defaults = array(
-				'width'  => '',
-				'height' => '',
-			);
-			$this->width    = 640;
-			$this->height   = 390;
-=======
 			$this->name          = 'oembed';
 			$this->label         = __( 'oEmbed', 'acf' );
 			$this->category      = 'content';
@@ -48,7 +33,6 @@ if ( ! class_exists( 'acf_field_oembed' ) ) :
 			);
 			$this->width         = 640;
 			$this->height        = 390;
->>>>>>> update
 
 			// extra
 			add_action( 'wp_ajax_acf/fields/oembed/search', array( $this, 'ajax_query' ) );
@@ -85,26 +69,6 @@ if ( ! class_exists( 'acf_field_oembed' ) ) :
 
 		}
 
-<<<<<<< HEAD
-
-		/*
-		*  wp_oembed_get
-		*
-		*  description
-		*
-		*  @type    function
-		*  @date    24/01/2014
-		*  @since   5.0.0
-		*
-		*  @param   $post_id (int)
-		*  @return  $post_id (int)
-		*/
-
-		function wp_oembed_get( $url = '', $width = 0, $height = 0 ) {
-
-			// vars
-			$embed = '';
-=======
 		/**
 		 * Attempts to fetch the HTML for the provided URL using oEmbed.
 		 *
@@ -118,33 +82,11 @@ if ( ! class_exists( 'acf_field_oembed' ) ) :
 		 */
 		function wp_oembed_get( $url = '', $width = 0, $height = 0 ) {
 			$embed = false;
->>>>>>> update
 			$res   = array(
 				'width'  => $width,
 				'height' => $height,
 			);
 
-<<<<<<< HEAD
-			// get emebed
-			$embed = @wp_oembed_get( $url, $res );
-
-			// try shortcode
-			if ( ! $embed ) {
-
-				 // global
-				global $wp_embed;
-
-				// get emebed
-				$embed = $wp_embed->shortcode( $res, $url );
-
-			}
-
-			// return
-			return $embed;
-		}
-
-
-=======
 			if ( function_exists( 'wp_oembed_get' ) ) {
 				$embed = wp_oembed_get( $url, $res );
 			}
@@ -158,7 +100,6 @@ if ( ! class_exists( 'acf_field_oembed' ) ) :
 			return $embed;
 		}
 
->>>>>>> update
 		/*
 		*  ajax_query
 		*
@@ -260,11 +201,7 @@ if ( ! class_exists( 'acf_field_oembed' ) ) :
 			}
 
 			?>
-<<<<<<< HEAD
-<div <?php acf_esc_attr_e( $atts ); ?>>
-=======
 <div <?php echo acf_esc_attrs( $atts ); ?>>
->>>>>>> update
 	
 			<?php
 			acf_hidden_input(
@@ -321,14 +258,7 @@ if ( ! class_exists( 'acf_field_oembed' ) ) :
 		*  @since   3.6
 		*  @date    23/01/13
 		*/
-<<<<<<< HEAD
-
 		function render_field_settings( $field ) {
-
-			// width
-=======
-		function render_field_settings( $field ) {
->>>>>>> update
 			acf_render_field_setting(
 				$field,
 				array(
@@ -341,10 +271,6 @@ if ( ! class_exists( 'acf_field_oembed' ) ) :
 				)
 			);
 
-<<<<<<< HEAD
-			// height
-=======
->>>>>>> update
 			acf_render_field_setting(
 				$field,
 				array(
@@ -357,15 +283,8 @@ if ( ! class_exists( 'acf_field_oembed' ) ) :
 					'_append'     => 'width',
 				)
 			);
-<<<<<<< HEAD
-
 		}
 
-
-=======
-		}
-
->>>>>>> update
 		/**
 		 *  format_value()
 		 *
@@ -376,11 +295,7 @@ if ( ! class_exists( 'acf_field_oembed' ) ) :
 		 *  @date    23/01/13
 		 *
 		 *  @param   $value (mixed) the value which was loaded from the database
-<<<<<<< HEAD
-		 *  @param   $post_id (mixed) the $post_id from which the value was loaded
-=======
 		 *  @param   $post_id (mixed) the post_id from which the value was loaded
->>>>>>> update
 		 *  @param   $field (array) the field array holding all the field options
 		 *
 		 *  @return  $value (mixed) the modified value

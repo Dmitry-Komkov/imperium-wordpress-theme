@@ -434,17 +434,6 @@ class UpdraftCentral_Posts_Commands extends UpdraftCentral_Commands {
 			$block_registry = WP_Block_Type_Registry::get_instance();
 			foreach ($block_registry->get_all_registered() as $block_type) {
 				if (!empty($block_type->style)) {
-<<<<<<< HEAD
-					$style_handles[] = $block_type->style;
-				}
-
-				if (!empty($block_type->editor_style)) {
-					$style_handles[] = $block_type->editor_style;
-				}
-
-				if (!empty($block_type->script)) {
-					$script_handles[] = $block_type->script;
-=======
 					if (is_array($block_type->style)) {
 						$style_handles = array_merge($style_handles, $block_type->style);
 					} else {
@@ -466,7 +455,6 @@ class UpdraftCentral_Posts_Commands extends UpdraftCentral_Commands {
 					} else {
 						$script_handles[] = $block_type->script;
 					}
->>>>>>> update
 				}
 			}
 		}
@@ -1074,11 +1062,7 @@ class UpdraftCentral_Posts_Commands extends UpdraftCentral_Commands {
 				$editor = get_userdata($editor_id);
 				if (!$editor) {
 					// The user with lock does not exist. This can happen if you created a backup or clone
-<<<<<<< HEAD
-					// where you excluded the users table during the proces and you restore this backup to
-=======
 					// where you excluded the users table during the process and you restore this backup to
->>>>>>> update
 					// a different site or the user was deleted or removed more recently. Thus, we will
 					// release the lock so that other users with the right permission can edit the post.
 					delete_post_meta($post->ID, '_edit_lock');

@@ -311,11 +311,7 @@ class UpdraftPlus_Database_Utility {
 			 *			[0]=> string(18) "GENERATED ALWAYS AS (concat(`firstname`,'()`)(()',`lastname`))"
 			 *			[1]=> int(629) // this is the position or starting offset of the captured data type's option, this can later be used to help with the unsupported keyword replacement stuff among db server
 			 *		}
-<<<<<<< HEAD
-			 *		[4]=> // 5th index represents data type option that is captured before COMMENT keyword and after "generated alwasy as"
-=======
 			 *		[4]=> // 5th index represents data type option that is captured before COMMENT keyword and after "generated always as"
->>>>>>> update
 			 *		array(2) {
 			 *			[0]=> string(13) " VIRTUAL NOT NULL " // this is the comment string that could be filled with any word even the reserved keyword (e.g. not null, virtual, stored, etc..)
 			 *			[1]=> int(656) // this is the position or starting offset of the captured data type's option, this can later be used to help with the unsupported keyword replacement stuff among db server
@@ -679,8 +675,6 @@ class UpdraftPlus_Database_Utility {
 	public static function esc_like($text) {
 		return function_exists('esc_like') ? esc_like($text) : addcslashes($text, '_%\\');
 	}
-<<<<<<< HEAD
-=======
 
 	/**
 	 * Return installation or activation link of WP-Optimize plugin
@@ -734,7 +728,6 @@ class UpdraftPlus_Database_Utility {
 		}
 		return false;
 	}
->>>>>>> update
 }
 
 class UpdraftPlus_WPDB_OtherDB_Utility extends wpdb {

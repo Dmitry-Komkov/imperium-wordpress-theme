@@ -3,10 +3,7 @@
 namespace YoastSEO_Vendor\GuzzleHttp\Handler;
 
 use YoastSEO_Vendor\GuzzleHttp\Psr7\Response;
-<<<<<<< HEAD
-=======
 use YoastSEO_Vendor\GuzzleHttp\Utils;
->>>>>>> update
 use YoastSEO_Vendor\Psr\Http\Message\RequestInterface;
 use YoastSEO_Vendor\Psr\Http\Message\ResponseInterface;
 use YoastSEO_Vendor\Psr\Http\Message\StreamInterface;
@@ -17,38 +14,6 @@ use YoastSEO_Vendor\Psr\Http\Message\StreamInterface;
  */
 final class EasyHandle
 {
-<<<<<<< HEAD
-    /** @var resource cURL resource */
-    public $handle;
-    /** @var StreamInterface Where data is being written */
-    public $sink;
-    /** @var array Received HTTP headers so far */
-    public $headers = [];
-    /** @var ResponseInterface Received response (if any) */
-    public $response;
-    /** @var RequestInterface Request being sent */
-    public $request;
-    /** @var array Request options */
-    public $options = [];
-    /** @var int cURL error number (if any) */
-    public $errno = 0;
-    /** @var \Exception Exception during on_headers (if any) */
-    public $onHeadersException;
-    /**
-     * Attach a response to the easy handle based on the received headers.
-     *
-     * @throws \RuntimeException if no headers have been received.
-     */
-    public function createResponse()
-    {
-        if (empty($this->headers)) {
-            throw new \RuntimeException('No headers have been received');
-        }
-        // HTTP-version SP status-code SP reason-phrase
-        $startLine = \explode(' ', \array_shift($this->headers), 3);
-        $headers = \YoastSEO_Vendor\GuzzleHttp\headers_from_lines($this->headers);
-        $normalizedKeys = \YoastSEO_Vendor\GuzzleHttp\normalize_header_keys($headers);
-=======
     /**
      * @var resource|\CurlHandle cURL resource
      */
@@ -95,7 +60,6 @@ final class EasyHandle
     {
         [$ver, $status, $reason, $headers] = \YoastSEO_Vendor\GuzzleHttp\Handler\HeaderProcessor::parseHeaders($this->headers);
         $normalizedKeys = \YoastSEO_Vendor\GuzzleHttp\Utils::normalizeHeaderKeys($headers);
->>>>>>> update
         if (!empty($this->options['decode_content']) && isset($normalizedKeys['content-encoding'])) {
             $headers['x-encoded-content-encoding'] = $headers[$normalizedKeys['content-encoding']];
             unset($headers[$normalizedKeys['content-encoding']]);
@@ -110,10 +74,6 @@ final class EasyHandle
             }
         }
         // Attach a response to the easy handle with the parsed headers.
-<<<<<<< HEAD
-        $this->response = new \YoastSEO_Vendor\GuzzleHttp\Psr7\Response($startLine[1], $headers, $this->sink, \substr($startLine[0], 5), isset($startLine[2]) ? (string) $startLine[2] : null);
-    }
-=======
         $this->response = new \YoastSEO_Vendor\GuzzleHttp\Psr7\Response($status, $headers, $this->sink, $ver, $reason);
     }
     /**
@@ -123,7 +83,6 @@ final class EasyHandle
      *
      * @throws \BadMethodCallException
      */
->>>>>>> update
     public function __get($name)
     {
         $msg = $name === 'handle' ? 'The EasyHandle has been released' : 'Invalid property: ' . $name;

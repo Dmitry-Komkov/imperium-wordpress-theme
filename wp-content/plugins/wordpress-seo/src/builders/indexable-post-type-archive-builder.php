@@ -3,15 +3,10 @@
 namespace Yoast\WP\SEO\Builders;
 
 use wpdb;
-<<<<<<< HEAD
-use Yoast\WP\SEO\Helpers\Options_Helper;
-use Yoast\WP\SEO\Helpers\Post_Helper;
-=======
 use Yoast\WP\SEO\Exceptions\Indexable\Post_Type_Not_Built_Exception;
 use Yoast\WP\SEO\Helpers\Options_Helper;
 use Yoast\WP\SEO\Helpers\Post_Helper;
 use Yoast\WP\SEO\Helpers\Post_Type_Helper;
->>>>>>> update
 use Yoast\WP\SEO\Models\Indexable;
 use Yoast\WP\SEO\Values\Indexables\Indexable_Builder_Versions;
 
@@ -37,19 +32,13 @@ class Indexable_Post_Type_Archive_Builder {
 	protected $version;
 
 	/**
-<<<<<<< HEAD
-	 * Holds the taxonomy helper instance.
-=======
 	 * Holds the post helper instance.
->>>>>>> update
 	 *
 	 * @var Post_Helper
 	 */
 	protected $post_helper;
 
 	/**
-<<<<<<< HEAD
-=======
 	 * Holds the post type helper instance.
 	 *
 	 * @var Post_Type_Helper
@@ -57,7 +46,6 @@ class Indexable_Post_Type_Archive_Builder {
 	protected $post_type_helper;
 
 	/**
->>>>>>> update
 	 * The WPDB instance.
 	 *
 	 * @var wpdb
@@ -67,31 +55,16 @@ class Indexable_Post_Type_Archive_Builder {
 	/**
 	 * Indexable_Post_Type_Archive_Builder constructor.
 	 *
-<<<<<<< HEAD
-	 * @param Options_Helper             $options     The options helper.
-	 * @param Indexable_Builder_Versions $versions    The latest version of each Indexable builder.
-	 * @param Post_Helper                $post_helper The post helper.
-	 * @param wpdb                       $wpdb        The WPDB instance.
-=======
 	 * @param Options_Helper             $options          The options helper.
 	 * @param Indexable_Builder_Versions $versions         The latest version of each Indexable builder.
 	 * @param Post_Helper                $post_helper      The post helper.
 	 * @param Post_Type_Helper           $post_type_helper The post type helper.
 	 * @param wpdb                       $wpdb             The WPDB instance.
->>>>>>> update
 	 */
 	public function __construct(
 		Options_Helper $options,
 		Indexable_Builder_Versions $versions,
 		Post_Helper $post_helper,
-<<<<<<< HEAD
-		wpdb $wpdb
-	) {
-		$this->options     = $options;
-		$this->version     = $versions->get_latest_version_for_type( 'post-type-archive' );
-		$this->post_helper = $post_helper;
-		$this->wpdb        = $wpdb;
-=======
 		Post_Type_Helper $post_type_helper,
 		wpdb $wpdb
 	) {
@@ -100,7 +73,6 @@ class Indexable_Post_Type_Archive_Builder {
 		$this->post_helper      = $post_helper;
 		$this->post_type_helper = $post_type_helper;
 		$this->wpdb             = $wpdb;
->>>>>>> update
 	}
 
 	/**
@@ -110,10 +82,6 @@ class Indexable_Post_Type_Archive_Builder {
 	 * @param Indexable $indexable The indexable to format.
 	 *
 	 * @return Indexable The extended indexable.
-<<<<<<< HEAD
-	 */
-	public function build( $post_type, Indexable $indexable ) {
-=======
 	 * @throws Post_Type_Not_Built_Exception Throws exception if the post type is excluded.
 	 */
 	public function build( $post_type, Indexable $indexable ) {
@@ -121,7 +89,6 @@ class Indexable_Post_Type_Archive_Builder {
 			throw Post_Type_Not_Built_Exception::because_not_indexable( $post_type );
 		}
 
->>>>>>> update
 		$indexable->object_type       = 'post-type-archive';
 		$indexable->object_sub_type   = $post_type;
 		$indexable->title             = $this->options->get( 'title-ptarchive-' . $post_type );

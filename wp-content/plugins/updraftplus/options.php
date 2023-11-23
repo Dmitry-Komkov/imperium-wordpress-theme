@@ -51,13 +51,8 @@ class UpdraftPlus_Options {
 	/**
 	 * Get the value for a specified option
 	 *
-<<<<<<< HEAD
-	 * @param String option
-	 * @param Mixed	 $default
-=======
 	 * @param String $option  option name
 	 * @param Mixed  $default default value of option
->>>>>>> update
 	 *
 	 * @return Mixed
 	 */

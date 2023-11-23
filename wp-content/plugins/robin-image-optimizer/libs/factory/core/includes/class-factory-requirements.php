@@ -12,13 +12,8 @@
  * @since         4.0.9
  */
 // @formatter:off
-<<<<<<< HEAD
-if ( ! class_exists( 'Wbcr_Factory450_Requirements' ) ) {
-	class Wbcr_Factory450_Requirements {
-=======
 if ( ! class_exists( 'Wbcr_Factory469_Requirements' ) ) {
 	class Wbcr_Factory469_Requirements {
->>>>>>> update
 
 		/**
 		 * Factory framework version
@@ -124,11 +119,7 @@ if ( ! class_exists( 'Wbcr_Factory469_Requirements' ) ) {
 			$this->plugin_file     = $plugin_file;
 			$this->plugin_abs_path = dirname( $plugin_file );
 			$this->plugin_basename = plugin_basename( $plugin_file );
-<<<<<<< HEAD
-			$this->plugin_url      = plugins_url( null, $plugin_file );
-=======
 			$this->plugin_url      = plugins_url( '', $plugin_file );
->>>>>>> update
 
 			$plugin_info = get_file_data( $this->plugin_file, array(
 				'Version'          => 'Version',
@@ -189,11 +180,7 @@ if ( ! class_exists( 'Wbcr_Factory469_Requirements' ) ) {
 				return;
 			}
 
-<<<<<<< HEAD
-			echo '<div class="notice notice-error"><p>' . $this->get_notice_text() . '</p></div>';
-=======
 			echo '<div class="notice notice-error"><p>' . wp_kses($this->get_notice_text(), 'default') . '</p></div>';
->>>>>>> update
 		}
 
 
@@ -255,11 +242,7 @@ if ( ! class_exists( 'Wbcr_Factory469_Requirements' ) ) {
 			$notice_text         = $notice_default_text = '';
 			$notice_default_text .= '<b>' . $this->plugin_title . ' ' . __( 'warning', '' ) . ':</b>' . '<br>';
 
-<<<<<<< HEAD
-			$notice_default_text .= sprintf( __( 'The %s plugin has stopped.', 'wbcr_factory_templates_102' ), $this->plugin_title ) . ' ';
-=======
 			$notice_default_text .= sprintf( __( 'The %s plugin has stopped.', 'wbcr_factory_templates_118' ), $this->plugin_title ) . ' ';
->>>>>>> update
 			$notice_default_text .= __( 'Possible reasons:', '' ) . ' <br>';
 
 			$has_one = false;
@@ -290,33 +273,21 @@ if ( ! class_exists( 'Wbcr_Factory469_Requirements' ) ) {
 		 * @return string
 		 */
 		protected function get_php_incompat_text() {
-<<<<<<< HEAD
-			return sprintf( __( 'You need to update the PHP version to %s or higher!', 'wbcr_factory_450' ), $this->required_php_version );
-=======
 			return sprintf( __( 'You need to update the PHP version to %s or higher!', 'wbcr_factory_469' ), $this->required_php_version );
->>>>>>> update
 		}
 
 		/**
 		 * @return string
 		 */
 		protected function get_wp_incompat_text() {
-<<<<<<< HEAD
-			return sprintf( __( 'You need to update WordPress to %s or higher!', 'wbcr_factory_450' ), $this->required_wp_version );
-=======
 			return sprintf( __( 'You need to update WordPress to %s or higher!', 'wbcr_factory_469' ), $this->required_wp_version );
->>>>>>> update
 		}
 
 		/**
 		 * @return string
 		 */
 		protected function get_plugin_already_activate_text() {
-<<<<<<< HEAD
-			return sprintf( __( 'Plugin %s is already activated, you are trying to activate it again.', 'wbcr_factory_450' ), $this->plugin_title );
-=======
 			return sprintf( __( 'Plugin %s is already activated, you are trying to activate it again.', 'wbcr_factory_469' ), $this->plugin_title );
->>>>>>> update
 		}
 	}
 }

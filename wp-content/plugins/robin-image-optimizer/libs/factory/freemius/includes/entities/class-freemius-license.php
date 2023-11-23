@@ -1,10 +1,6 @@
 <?php
 	
-<<<<<<< HEAD
-	namespace WBCR\Factory_Freemius_138\Entities;
-=======
 	namespace WBCR\Factory_Freemius_157\Entities;
->>>>>>> update
 	
 	use stdClass;
 	
@@ -18,11 +14,7 @@
 	 * @copyright (c) 2018 Webraftic Ltd, Freemius, Inc.
 	 * @version       1.0
 	 */
-<<<<<<< HEAD
-	class License extends Entity implements \WBCR\Factory_450\Premium\Interfaces\License {
-=======
 	class License extends Entity implements \WBCR\Factory_469\Premium\Interfaces\License {
->>>>>>> update
 		
 		/**
 		 * @var number

@@ -158,19 +158,6 @@ if ( ! class_exists( 'acf_third_party' ) ) :
 			// vars
 			$post_type = '';
 
-<<<<<<< HEAD
-			// check $_GET becuase it is too early to use functions / global vars
-			if ( ! empty( $_GET['post_type'] ) ) {
-
-				$post_type = $_GET['post_type'];
-
-			} elseif ( ! empty( $_GET['post'] ) ) {
-
-				$post_type = get_post_type( $_GET['post'] );
-
-			}
-
-=======
 			// phpcs:disable WordPress.Security.NonceVerification.Recommended -- Verified elsewhere.
 			// check $_GET because it is too early to use functions / global vars.
 			if ( ! empty( $_GET['post_type'] ) ) {
@@ -183,7 +170,6 @@ if ( ! class_exists( 'acf_third_party' ) ) :
 
 			}
 			// phpcs:enable WordPress.Security.NonceVerification.Recommended
->>>>>>> update
 			// check post type
 			if ( $post_type == 'acf-field-group' ) {
 

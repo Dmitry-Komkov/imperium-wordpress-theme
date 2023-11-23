@@ -84,9 +84,6 @@ class Installation_Integration implements Integration_Interface {
 	 * @return void
 	 */
 	public function install_and_activate_addons() {
-<<<<<<< HEAD
-		if ( \filter_input( \INPUT_GET, 'action' ) !== 'install' ) {
-=======
 		if ( ! isset( $_GET['action'] ) || ! \is_string( $_GET['action'] ) ) {
 			return;
 		}
@@ -94,7 +91,6 @@ class Installation_Integration implements Integration_Interface {
 		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Reason: We are only strictly comparing action below.
 		$action = \wp_unslash( $_GET['action'] );
 		if ( $action !== 'install' ) {
->>>>>>> update
 			return;
 		}
 

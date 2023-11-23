@@ -443,17 +443,10 @@ jQuery(function ($) {
         throwError: function (error_message) {
             this.stop();
 
-<<<<<<< HEAD
-            var noticeId = $.wbcr_factory_templates_102.app.showNotice(error_message, 'danger');
-
-            setTimeout(function () {
-                $.wbcr_factory_templates_102.app.hideNotice(noticeId);
-=======
             var noticeId = $.wbcr_factory_templates_118.app.showNotice(error_message, 'danger');
 
             setTimeout(function () {
                 $.wbcr_factory_templates_118.app.hideNotice(noticeId);
->>>>>>> update
             }, 10000);
         },
 

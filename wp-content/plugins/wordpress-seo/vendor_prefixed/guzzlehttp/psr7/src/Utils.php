@@ -1,9 +1,6 @@
 <?php
 
-<<<<<<< HEAD
-=======
 declare (strict_types=1);
->>>>>>> update
 namespace YoastSEO_Vendor\GuzzleHttp\Psr7;
 
 use YoastSEO_Vendor\Psr\Http\Message\RequestInterface;
@@ -15,28 +12,16 @@ final class Utils
     /**
      * Remove the items given by the keys, case insensitively from the data.
      *
-<<<<<<< HEAD
-     * @param iterable<string> $keys
-     *
-     * @return array
-     */
-    public static function caselessRemove($keys, array $data)
-=======
      * @param string[] $keys
      */
     public static function caselessRemove(array $keys, array $data) : array
->>>>>>> update
     {
         $result = [];
         foreach ($keys as &$key) {
             $key = \strtolower($key);
         }
         foreach ($data as $k => $v) {
-<<<<<<< HEAD
-            if (!\in_array(\strtolower($k), $keys)) {
-=======
             if (!\is_string($k) || !\in_array(\strtolower($k), $keys)) {
->>>>>>> update
                 $result[$k] = $v;
             }
         }
@@ -53,11 +38,7 @@ final class Utils
      *
      * @throws \RuntimeException on error.
      */
-<<<<<<< HEAD
-    public static function copyToStream(\YoastSEO_Vendor\Psr\Http\Message\StreamInterface $source, \YoastSEO_Vendor\Psr\Http\Message\StreamInterface $dest, $maxLen = -1)
-=======
     public static function copyToStream(\YoastSEO_Vendor\Psr\Http\Message\StreamInterface $source, \YoastSEO_Vendor\Psr\Http\Message\StreamInterface $dest, int $maxLen = -1) : void
->>>>>>> update
     {
         $bufferSize = 8192;
         if ($maxLen === -1) {
@@ -87,28 +68,15 @@ final class Utils
      * @param int             $maxLen Maximum number of bytes to read. Pass -1
      *                                to read the entire stream.
      *
-<<<<<<< HEAD
-     * @return string
-     *
-     * @throws \RuntimeException on error.
-     */
-    public static function copyToString(\YoastSEO_Vendor\Psr\Http\Message\StreamInterface $stream, $maxLen = -1)
-=======
      * @throws \RuntimeException on error.
      */
     public static function copyToString(\YoastSEO_Vendor\Psr\Http\Message\StreamInterface $stream, int $maxLen = -1) : string
->>>>>>> update
     {
         $buffer = '';
         if ($maxLen === -1) {
             while (!$stream->eof()) {
                 $buf = $stream->read(1048576);
-<<<<<<< HEAD
-                // Using a loose equality here to match on '' and false.
-                if ($buf == null) {
-=======
                 if ($buf === '') {
->>>>>>> update
                     break;
                 }
                 $buffer .= $buf;
@@ -118,12 +86,7 @@ final class Utils
         $len = 0;
         while (!$stream->eof() && $len < $maxLen) {
             $buf = $stream->read($maxLen - $len);
-<<<<<<< HEAD
-            // Using a loose equality here to match on '' and false.
-            if ($buf == null) {
-=======
             if ($buf === '') {
->>>>>>> update
                 break;
             }
             $buffer .= $buf;
@@ -141,17 +104,9 @@ final class Utils
      * @param string          $algo      Hash algorithm (e.g. md5, crc32, etc)
      * @param bool            $rawOutput Whether or not to use raw output
      *
-<<<<<<< HEAD
-     * @return string Returns the hash of the stream
-     *
-     * @throws \RuntimeException on error.
-     */
-    public static function hash(\YoastSEO_Vendor\Psr\Http\Message\StreamInterface $stream, $algo, $rawOutput = \false)
-=======
      * @throws \RuntimeException on error.
      */
     public static function hash(\YoastSEO_Vendor\Psr\Http\Message\StreamInterface $stream, string $algo, bool $rawOutput = \false) : string
->>>>>>> update
     {
         $pos = $stream->tell();
         if ($pos > 0) {
@@ -161,11 +116,7 @@ final class Utils
         while (!$stream->eof()) {
             \hash_update($ctx, $stream->read(1048576));
         }
-<<<<<<< HEAD
-        $out = \hash_final($ctx, (bool) $rawOutput);
-=======
         $out = \hash_final($ctx, $rawOutput);
->>>>>>> update
         $stream->seek($pos);
         return $out;
     }
@@ -186,15 +137,8 @@ final class Utils
      *
      * @param RequestInterface $request Request to clone and modify.
      * @param array            $changes Changes to apply.
-<<<<<<< HEAD
-     *
-     * @return RequestInterface
-     */
-    public static function modifyRequest(\YoastSEO_Vendor\Psr\Http\Message\RequestInterface $request, array $changes)
-=======
      */
     public static function modifyRequest(\YoastSEO_Vendor\Psr\Http\Message\RequestInterface $request, array $changes) : \YoastSEO_Vendor\Psr\Http\Message\RequestInterface
->>>>>>> update
     {
         if (!$changes) {
             return $request;
@@ -227,46 +171,26 @@ final class Utils
             $uri = $uri->withQuery($changes['query']);
         }
         if ($request instanceof \YoastSEO_Vendor\Psr\Http\Message\ServerRequestInterface) {
-<<<<<<< HEAD
-            $new = (new \YoastSEO_Vendor\GuzzleHttp\Psr7\ServerRequest(isset($changes['method']) ? $changes['method'] : $request->getMethod(), $uri, $headers, isset($changes['body']) ? $changes['body'] : $request->getBody(), isset($changes['version']) ? $changes['version'] : $request->getProtocolVersion(), $request->getServerParams()))->withParsedBody($request->getParsedBody())->withQueryParams($request->getQueryParams())->withCookieParams($request->getCookieParams())->withUploadedFiles($request->getUploadedFiles());
-=======
             $new = (new \YoastSEO_Vendor\GuzzleHttp\Psr7\ServerRequest($changes['method'] ?? $request->getMethod(), $uri, $headers, $changes['body'] ?? $request->getBody(), $changes['version'] ?? $request->getProtocolVersion(), $request->getServerParams()))->withParsedBody($request->getParsedBody())->withQueryParams($request->getQueryParams())->withCookieParams($request->getCookieParams())->withUploadedFiles($request->getUploadedFiles());
->>>>>>> update
             foreach ($request->getAttributes() as $key => $value) {
                 $new = $new->withAttribute($key, $value);
             }
             return $new;
         }
-<<<<<<< HEAD
-        return new \YoastSEO_Vendor\GuzzleHttp\Psr7\Request(isset($changes['method']) ? $changes['method'] : $request->getMethod(), $uri, $headers, isset($changes['body']) ? $changes['body'] : $request->getBody(), isset($changes['version']) ? $changes['version'] : $request->getProtocolVersion());
-=======
         return new \YoastSEO_Vendor\GuzzleHttp\Psr7\Request($changes['method'] ?? $request->getMethod(), $uri, $headers, $changes['body'] ?? $request->getBody(), $changes['version'] ?? $request->getProtocolVersion());
->>>>>>> update
     }
     /**
      * Read a line from the stream up to the maximum allowed buffer length.
      *
      * @param StreamInterface $stream    Stream to read from
      * @param int|null        $maxLength Maximum buffer length
-<<<<<<< HEAD
-     *
-     * @return string
-     */
-    public static function readLine(\YoastSEO_Vendor\Psr\Http\Message\StreamInterface $stream, $maxLength = null)
-=======
      */
     public static function readLine(\YoastSEO_Vendor\Psr\Http\Message\StreamInterface $stream, int $maxLength = null) : string
->>>>>>> update
     {
         $buffer = '';
         $size = 0;
         while (!$stream->eof()) {
-<<<<<<< HEAD
-            // Using a loose equality here to match on '' and false.
-            if (null == ($byte = $stream->read(1))) {
-=======
             if ('' === ($byte = $stream->read(1))) {
->>>>>>> update
                 return $buffer;
             }
             $buffer .= $byte;
@@ -307,30 +231,16 @@ final class Utils
      *   buffered and used in subsequent reads.
      *
      * @param resource|string|int|float|bool|StreamInterface|callable|\Iterator|null $resource Entity body data
-<<<<<<< HEAD
-     * @param array                                                                  $options  Additional options
-     *
-     * @return StreamInterface
-     *
-     * @throws \InvalidArgumentException if the $resource arg is not valid.
-     */
-    public static function streamFor($resource = '', array $options = [])
-=======
      * @param array{size?: int, metadata?: array}                                    $options  Additional options
      *
      * @throws \InvalidArgumentException if the $resource arg is not valid.
      */
     public static function streamFor($resource = '', array $options = []) : \YoastSEO_Vendor\Psr\Http\Message\StreamInterface
->>>>>>> update
     {
         if (\is_scalar($resource)) {
             $stream = self::tryFopen('php://temp', 'r+');
             if ($resource !== '') {
-<<<<<<< HEAD
-                \fwrite($stream, $resource);
-=======
                 \fwrite($stream, (string) $resource);
->>>>>>> update
                 \fseek($stream, 0);
             }
             return new \YoastSEO_Vendor\GuzzleHttp\Psr7\Stream($stream, $options);
@@ -341,26 +251,16 @@ final class Utils
                  * The 'php://input' is a special stream with quirks and inconsistencies.
                  * We avoid using that stream by reading it into php://temp
                  */
-<<<<<<< HEAD
-                $metaData = \stream_get_meta_data($resource);
-                if (isset($metaData['uri']) && $metaData['uri'] === 'php://input') {
-                    $stream = self::tryFopen('php://temp', 'w+');
-                    \fwrite($stream, \stream_get_contents($resource));
-=======
                 /** @var resource $resource */
                 if ((\stream_get_meta_data($resource)['uri'] ?? '') === 'php://input') {
                     $stream = self::tryFopen('php://temp', 'w+');
                     \stream_copy_to_stream($resource, $stream);
->>>>>>> update
                     \fseek($stream, 0);
                     $resource = $stream;
                 }
                 return new \YoastSEO_Vendor\GuzzleHttp\Psr7\Stream($resource, $options);
             case 'object':
-<<<<<<< HEAD
-=======
                 /** @var object $resource */
->>>>>>> update
                 if ($resource instanceof \YoastSEO_Vendor\Psr\Http\Message\StreamInterface) {
                     return $resource;
                 } elseif ($resource instanceof \Iterator) {
@@ -373,11 +273,7 @@ final class Utils
                         return $result;
                     }, $options);
                 } elseif (\method_exists($resource, '__toString')) {
-<<<<<<< HEAD
-                    return \YoastSEO_Vendor\GuzzleHttp\Psr7\Utils::streamFor((string) $resource, $options);
-=======
                     return self::streamFor((string) $resource, $options);
->>>>>>> update
                 }
                 break;
             case 'NULL':
@@ -401,16 +297,6 @@ final class Utils
      *
      * @throws \RuntimeException if the file cannot be opened
      */
-<<<<<<< HEAD
-    public static function tryFopen($filename, $mode)
-    {
-        $ex = null;
-        \set_error_handler(function () use($filename, $mode, &$ex) {
-            $ex = new \RuntimeException(\sprintf('Unable to open "%s" using mode "%s": %s', $filename, $mode, \func_get_args()[1]));
-            return \true;
-        });
-        try {
-=======
     public static function tryFopen(string $filename, string $mode)
     {
         $ex = null;
@@ -420,7 +306,6 @@ final class Utils
         });
         try {
             /** @var resource $handle */
->>>>>>> update
             $handle = \fopen($filename, $mode);
         } catch (\Throwable $e) {
             $ex = new \RuntimeException(\sprintf('Unable to open "%s" using mode "%s": %s', $filename, $mode, $e->getMessage()), 0, $e);
@@ -433,8 +318,6 @@ final class Utils
         return $handle;
     }
     /**
-<<<<<<< HEAD
-=======
      * Safely gets the contents of a given stream.
      *
      * When stream_get_contents fails, PHP normally raises a warning. This
@@ -469,7 +352,6 @@ final class Utils
         return $contents;
     }
     /**
->>>>>>> update
      * Returns a UriInterface for the given value.
      *
      * This function accepts a string or UriInterface and returns a
@@ -478,17 +360,9 @@ final class Utils
      *
      * @param string|UriInterface $uri
      *
-<<<<<<< HEAD
-     * @return UriInterface
-     *
-     * @throws \InvalidArgumentException
-     */
-    public static function uriFor($uri)
-=======
      * @throws \InvalidArgumentException
      */
     public static function uriFor($uri) : \YoastSEO_Vendor\Psr\Http\Message\UriInterface
->>>>>>> update
     {
         if ($uri instanceof \YoastSEO_Vendor\Psr\Http\Message\UriInterface) {
             return $uri;

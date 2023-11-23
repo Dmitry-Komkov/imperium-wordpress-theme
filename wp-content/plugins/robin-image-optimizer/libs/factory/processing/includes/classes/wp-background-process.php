@@ -1,10 +1,6 @@
 <?php
 
-<<<<<<< HEAD
-namespace WBCR\Factory_Processing_101;
-=======
 namespace WBCR\Factory_Processing_107;
->>>>>>> update
 /**
  * WP Background Process
  *

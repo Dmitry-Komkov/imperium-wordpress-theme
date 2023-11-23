@@ -7,24 +7,18 @@
 
 /**
  * VIP implementation of the Role Manager.
-<<<<<<< HEAD
-=======
  *
  * @deprecated 19.9
  * @codeCoverageIgnore
->>>>>>> update
  */
 final class WPSEO_Role_Manager_VIP extends WPSEO_Abstract_Role_Manager {
 
 	/**
 	 * Adds a role to the system.
 	 *
-<<<<<<< HEAD
-=======
 	 * @deprecated 19.9
 	 * @codeCoverageIgnore
 	 *
->>>>>>> update
 	 * @param string $role         Role to add.
 	 * @param string $display_name Name to display for the role.
 	 * @param array  $capabilities Capabilities to add to the role.
@@ -32,11 +26,8 @@ final class WPSEO_Role_Manager_VIP extends WPSEO_Abstract_Role_Manager {
 	 * @return void
 	 */
 	protected function add_role( $role, $display_name, array $capabilities = [] ) {
-<<<<<<< HEAD
-=======
 		_deprecated_function( __METHOD__, 'Yoast SEO 19.9' );
 
->>>>>>> update
 		$enabled_capabilities  = [];
 		$disabled_capabilities = [];
 
@@ -60,22 +51,16 @@ final class WPSEO_Role_Manager_VIP extends WPSEO_Abstract_Role_Manager {
 	/**
 	 * Removes a role from the system.
 	 *
-<<<<<<< HEAD
-=======
 	 * @deprecated 19.9
 	 * @codeCoverageIgnore
 	 *
->>>>>>> update
 	 * @param string $role Role to remove.
 	 *
 	 * @return void
 	 */
 	protected function remove_role( $role ) {
-<<<<<<< HEAD
-=======
 		_deprecated_function( __METHOD__, 'Yoast SEO 19.9' );
 
->>>>>>> update
 		remove_role( $role );
 	}
 }

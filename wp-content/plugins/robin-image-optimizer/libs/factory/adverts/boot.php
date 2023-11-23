@@ -1,10 +1,6 @@
 <?php
 
-<<<<<<< HEAD
-use WBCR\Factory_Adverts_128\Base;
-=======
 use WBCR\Factory_Adverts_146\Base;
->>>>>>> update
 
 /**
  * Factory Adverts
@@ -16,11 +12,7 @@ use WBCR\Factory_Adverts_146\Base;
  * @package       factory-ad-inserter
  * @copyright (c) 2019, Webcraftic Ltd
  *
-<<<<<<< HEAD
- * @version       1.2.4
-=======
  * @version       1.3.9
->>>>>>> update
  */
 
 // Exit if accessed directly
@@ -28,39 +20,11 @@ if( !defined('ABSPATH') ) {
 	exit;
 }
 
-<<<<<<< HEAD
-if( defined('FACTORY_ADVERTS_128_LOADED') || (defined('FACTORY_ADVERTS_BLOCK') && FACTORY_ADVERTS_BLOCK) ) {
-=======
 if( defined('FACTORY_ADVERTS_146_LOADED') || (defined('FACTORY_ADVERTS_BLOCK') && FACTORY_ADVERTS_BLOCK) ) {
->>>>>>> update
 	return;
 }
 
 # Устанавливаем константу, что модуль уже загружен
-<<<<<<< HEAD
-define('FACTORY_ADVERTS_128_LOADED', true);
-
-# Устанавливаем версию модуля
-define('FACTORY_ADVERTS_128_VERSION', '1.2.8');
-
-# Регистрируем тектовый домен, для интернализации интерфейса модуля
-load_plugin_textdomain('wbcr_factory_adverts_128', false, dirname(plugin_basename(__FILE__)) . '/langs');
-
-# Устанавливаем директорию модуля
-define('FACTORY_ADVERTS_128_DIR', dirname(__FILE__));
-
-# Устанавливаем url модуля
-define('FACTORY_ADVERTS_128_URL', plugins_url(null, __FILE__));
-
-require_once(FACTORY_ADVERTS_128_DIR . '/includes/class-rest-request.php');
-require_once(FACTORY_ADVERTS_128_DIR . '/includes/class-base.php');
-
-/**
- * @param Wbcr_Factory450_Plugin $plugin
- */
-add_action('wbcr_factory_adverts_128_plugin_created', function ($plugin) {
-	$plugin->set_adverts_manager("WBCR\Factory_Adverts_128\Base");
-=======
 define('FACTORY_ADVERTS_146_LOADED', true);
 
 # Устанавливаем версию модуля
@@ -83,5 +47,4 @@ require_once(FACTORY_ADVERTS_146_DIR . '/includes/class-base.php');
  */
 add_action('wbcr_factory_adverts_146_plugin_created', function ($plugin) {
 	$plugin->set_adverts_manager("WBCR\Factory_Adverts_146\Base");
->>>>>>> update
 });

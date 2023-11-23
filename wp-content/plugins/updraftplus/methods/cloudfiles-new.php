@@ -8,11 +8,7 @@ use OpenCloud\Rackspace;
 // New SDK - https://github.com/rackspace/php-opencloud and http://docs.rackspace.com/sdks/guide/content/php.html
 // Uploading: https://github.com/rackspace/php-opencloud/blob/master/docs/userguide/ObjectStore/Storage/Object.md
 
-<<<<<<< HEAD
-require_once(UPDRAFTPLUS_DIR.'/methods/openstack-base.php');
-=======
 updraft_try_include_file('methods/openstack-base.php', 'require_once');
->>>>>>> update
 
 class UpdraftPlus_BackupModule_cloudfiles_opencloudsdk extends UpdraftPlus_BackupModule_openstack_base {
 
@@ -31,11 +27,7 @@ class UpdraftPlus_BackupModule_cloudfiles_opencloudsdk extends UpdraftPlus_Backu
 		$authurl = $opts['authurl'];
 		$region = (!empty($opts['region'])) ? $opts['region'] : null;
 
-<<<<<<< HEAD
-		include_once(UPDRAFTPLUS_DIR.'/vendor/autoload.php');
-=======
 		updraft_try_include_file('vendor/autoload.php', 'include_once');
->>>>>>> update
 
 		// The new authentication APIs don't match the values we were storing before
 		$new_authurl = ('https://lon.auth.api.rackspacecloud.com' == $authurl || 'uk' == $authurl) ? Rackspace::UK_IDENTITY_ENDPOINT : Rackspace::US_IDENTITY_ENDPOINT;
@@ -90,24 +82,6 @@ class UpdraftPlus_BackupModule_cloudfiles_opencloudsdk extends UpdraftPlus_Backu
 			'region' => null
 		);
 	}
-<<<<<<< HEAD
-
-	/**
-	 * Get the pre configuration template
-	 *
-	 * @return String - the template
-	 */
-	public function get_pre_configuration_middlesection_template() {
-
-		global $updraftplus_admin;
-
-		if (!function_exists('json_last_error')) {
-			$updraftplus_admin->show_double_warning('<strong>'.__('Warning', 'updraftplus').':</strong> '.sprintf(__('Your web server\'s PHP installation does not included a required module (%s). Please contact your web hosting provider\'s support.', 'updraftplus'), 'json').' '.sprintf(__("UpdraftPlus's %s module <strong>requires</strong> %s. Please do not file any support requests; there is no alternative.", 'updraftplus'), 'Cloud Files', 'json'), 'cloudfiles', false);
-		}
-		echo '<p>' . __('Get your API key <a href="https://mycloud.rackspace.com/" target="_blank">from your Rackspace Cloud console</a> (<a href="http://www.rackspace.com/knowledge_center/article/rackspace-cloud-essentials-1-generating-your-api-key" target="_blank">read instructions here</a>), then pick a container name to use for storage. This container will be created for you if it does not already exist.', 'updraftplus').' <a href="'.apply_filters("updraftplus_com_link", "https://updraftplus.com/faqs/there-appear-to-be-lots-of-extra-files-in-my-rackspace-cloud-files-container/").'" target="_blank">'.__('Also, you should read this important FAQ.', 'updraftplus').'</a></p>';
-	}
-=======
->>>>>>> update
 	
 	/**
 	 * This gives the partial template string to the settings page for the CloudFiles  settings.
@@ -219,8 +193,6 @@ class UpdraftPlus_BackupModule_cloudfiles_opencloudsdk extends UpdraftPlus_Backu
 		if (is_array($opts) && isset($opts['user']) && '' != $opts['user'] && !empty($opts['apikey'])) return true;
 		return false;
 	}
-<<<<<<< HEAD
-=======
 
 	/**
 	 * Get the pre configuration template
@@ -328,5 +300,4 @@ class UpdraftPlus_BackupModule_cloudfiles_opencloudsdk extends UpdraftPlus_Backu
 		);
 		return wp_parse_args($properties, $this->get_persistent_variables_and_methods());
 	}
->>>>>>> update
 }

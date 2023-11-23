@@ -4,10 +4,7 @@ namespace Yoast\WP\SEO\Builders;
 
 use WP_Error;
 use WP_Post;
-<<<<<<< HEAD
-=======
 use Yoast\WP\SEO\Exceptions\Indexable\Post_Not_Built_Exception;
->>>>>>> update
 use Yoast\WP\SEO\Exceptions\Indexable\Post_Not_Found_Exception;
 use Yoast\WP\SEO\Helpers\Meta_Helper;
 use Yoast\WP\SEO\Helpers\Post_Helper;
@@ -100,18 +97,11 @@ class Indexable_Post_Builder {
 	 * @return bool|Indexable The extended indexable. False when unable to build.
 	 *
 	 * @throws Post_Not_Found_Exception When the post could not be found.
-<<<<<<< HEAD
-	 */
-	public function build( $post_id, $indexable ) {
-		if ( ! $this->post_helper->is_post_indexable( $post_id ) ) {
-			return false;
-=======
 	 * @throws Post_Not_Built_Exception When the post should not be indexed.
 	 */
 	public function build( $post_id, $indexable ) {
 		if ( ! $this->post_helper->is_post_indexable( $post_id ) ) {
 			throw Post_Not_Built_Exception::because_not_indexable( $post_id );
->>>>>>> update
 		}
 
 		$post = $this->post_helper->get_post( $post_id );
@@ -121,11 +111,7 @@ class Indexable_Post_Builder {
 		}
 
 		if ( $this->should_exclude_post( $post ) ) {
-<<<<<<< HEAD
-			return false;
-=======
 			throw Post_Not_Built_Exception::because_post_type_excluded( $post_id );
->>>>>>> update
 		}
 
 		$indexable->object_id       = $post_id;
@@ -140,11 +126,8 @@ class Indexable_Post_Builder {
 
 		$indexable->readability_score = (int) $this->meta->get_value( 'content_score', $post_id );
 
-<<<<<<< HEAD
-=======
 		$indexable->inclusive_language_score = (int) $this->meta->get_value( 'inclusive_language_score', $post_id );
 
->>>>>>> update
 		$indexable->is_cornerstone    = ( $this->meta->get_value( 'is_cornerstone', $post_id ) === '1' );
 		$indexable->is_robots_noindex = $this->get_robots_noindex(
 			(int) $this->meta->get_value( 'meta-robots-noindex', $post_id )
@@ -434,18 +417,6 @@ class Indexable_Post_Builder {
 	/**
 	 * Transforms an empty string into null. Leaves non-empty strings intact.
 	 *
-<<<<<<< HEAD
-	 * @param string $string The string.
-	 *
-	 * @return string|null The input string or null.
-	 */
-	protected function empty_string_to_null( $string ) {
-		if ( ! is_string( $string ) || $string === '' ) {
-			return null;
-		}
-
-		return $string;
-=======
 	 * @param string $text The string.
 	 *
 	 * @return string|null The input string or null.
@@ -456,6 +427,5 @@ class Indexable_Post_Builder {
 		}
 
 		return $text;
->>>>>>> update
 	}
 }

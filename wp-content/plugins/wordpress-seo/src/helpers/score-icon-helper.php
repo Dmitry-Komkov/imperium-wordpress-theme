@@ -46,8 +46,6 @@ class Score_Icon_Helper {
 	}
 
 	/**
-<<<<<<< HEAD
-=======
 	 * Creates a Score_Icon_Presenter for the inclusive language analysis.
 	 *
 	 * @param int    $score       The inclusive language analysis score.
@@ -66,7 +64,6 @@ class Score_Icon_Helper {
 	}
 
 	/**
->>>>>>> update
 	 * Creates a Score_Icon_Presenter for the SEO analysis from an indexable.
 	 *
 	 * @param Indexable|false $indexable      The Indexable.
@@ -84,11 +81,7 @@ class Score_Icon_Helper {
 		}
 		elseif ( empty( $indexable && $indexable->primary_focus_keyword ) ) {
 			$rank  = new WPSEO_Rank( WPSEO_Rank::BAD );
-<<<<<<< HEAD
-			$title = __( 'Focus keyphrase not set', 'wordpress-seo' );
-=======
 			$title = \__( 'Focus keyphrase not set', 'wordpress-seo' );
->>>>>>> update
 		}
 		else {
 			$rank  = WPSEO_Rank::from_numeric_score( ( $indexable ) ? $indexable->primary_focus_keyword_score : 0 );

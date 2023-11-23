@@ -21,12 +21,6 @@ if ( ! class_exists( 'acf_field_true_false' ) ) :
 		function initialize() {
 
 			// vars
-<<<<<<< HEAD
-			$this->name     = 'true_false';
-			$this->label    = __( 'True / False', 'acf' );
-			$this->category = 'choice';
-			$this->defaults = array(
-=======
 			$this->name          = 'true_false';
 			$this->label         = __( 'True / False', 'acf' );
 			$this->category      = 'choice';
@@ -34,7 +28,6 @@ if ( ! class_exists( 'acf_field_true_false' ) ) :
 			$this->preview_image = acf_get_url() . '/assets/images/field-type-previews/field-preview-true-false.png';
 			$this->doc_url       = acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/resources/true-false/', 'docs', 'field-type-selection' );
 			$this->defaults      = array(
->>>>>>> update
 				'default_value' => 0,
 				'message'       => '',
 				'ui'            => 0,
@@ -137,14 +130,7 @@ if ( ! class_exists( 'acf_field_true_false' ) ) :
 		*
 		*  @param   $field  - an array holding all the field's data
 		*/
-<<<<<<< HEAD
-
 		function render_field_settings( $field ) {
-
-			// message
-=======
-		function render_field_settings( $field ) {
->>>>>>> update
 			acf_render_field_setting(
 				$field,
 				array(
@@ -155,10 +141,6 @@ if ( ! class_exists( 'acf_field_true_false' ) ) :
 				)
 			);
 
-<<<<<<< HEAD
-			// default_value
-=======
->>>>>>> update
 			acf_render_field_setting(
 				$field,
 				array(
@@ -168,23 +150,6 @@ if ( ! class_exists( 'acf_field_true_false' ) ) :
 					'name'         => 'default_value',
 				)
 			);
-<<<<<<< HEAD
-
-			// ui
-			acf_render_field_setting(
-				$field,
-				array(
-					'label'        => __( 'Stylised UI', 'acf' ),
-					'instructions' => '',
-					'type'         => 'true_false',
-					'name'         => 'ui',
-					'ui'           => 1,
-					'class'        => 'acf-field-object-true-false-ui',
-				)
-			);
-
-			// on_text
-=======
 		}
 
 		/**
@@ -196,7 +161,6 @@ if ( ! class_exists( 'acf_field_true_false' ) ) :
 		 * @return void
 		 */
 		function render_field_presentation_settings( $field ) {
->>>>>>> update
 			acf_render_field_setting(
 				$field,
 				array(
@@ -213,10 +177,6 @@ if ( ! class_exists( 'acf_field_true_false' ) ) :
 				)
 			);
 
-<<<<<<< HEAD
-			// on_text
-=======
->>>>>>> update
 			acf_render_field_setting(
 				$field,
 				array(
@@ -233,11 +193,6 @@ if ( ! class_exists( 'acf_field_true_false' ) ) :
 				)
 			);
 
-<<<<<<< HEAD
-		}
-
-
-=======
 			acf_render_field_setting(
 				$field,
 				array(
@@ -251,7 +206,6 @@ if ( ! class_exists( 'acf_field_true_false' ) ) :
 			);
 		}
 
->>>>>>> update
 		/*
 		*  format_value()
 		*

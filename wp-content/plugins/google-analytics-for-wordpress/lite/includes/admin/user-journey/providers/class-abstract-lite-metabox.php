@@ -70,21 +70,13 @@ abstract class MonsterInsights_User_Journey_Lite_Metabox {
 								<?php
 								// Translators: strong tag to make text bold, link to website to learn more
 								echo sprintf(
-<<<<<<< HEAD
-									__( '%1$sPlus%2$s, upgrading to pro will unlock %3$sall%4$s of advanced reports, tracking, and integrations. <a target="_blank" href="%5$s" title="Upgrade">Learn more about Pro</a>', 'monsterinsights' ),
-=======
 									esc_html__('%1$sPlus%2$s, upgrading to pro will unlock %3$sall%4$s of advanced reports, tracking, and integrations. %5$sLearn more about Pro%6$s', 'monsterinsights'),
->>>>>>> update
 									'<strong>',
 									'</strong>',
 									'<strong>',
 									'</strong>',
-<<<<<<< HEAD
-									esc_url( $learn_more )
-=======
 									'<a target="_blank" href="' . esc_url($learn_more) . '" title="'.  esc_attr__('Upgrade', 'monsterinsights') .'">',
 									'</a>'
->>>>>>> update
 								); ?>
 							</p>
 							<a target="_blank" href="<?php echo esc_url( $upgrade_link ); ?>" title=""

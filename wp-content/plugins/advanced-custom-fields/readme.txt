@@ -265,7 +265,7 @@ From your WordPress dashboard
 * Fix - `acf_add_local_field_group()` now works with field group titles containing non-ASCII characters
 * Fix - Flexible Content field no longer has a missing icon for the “Duplicate” button
 * Fix - Clicking the “Add Field” button in a Flexible Content layout no longer adds an invalid field if there are other Flexible Content fields in the layout
-* Fix - Edit buttons for ACF blocks now behave correctly inside reusable blocks
+* Fix - Edit buttons for ACF blocks now behave correctly inside reusable blocks 
 * Fix - Field settings rendered as a select2 field now correctly reinitialize when changing between field types
 
 = 6.0.6 =
@@ -363,7 +363,7 @@ From your WordPress dashboard
 * Enhancement - Bulk actions for field groups now include "Activate" and "Deactivate" options
 * Fix - ACF will no longer perform a multisite database upgrade check on every admin load once each upgrade has been performed
 * Fix - ACF Blocks preloading now works for blocks saved in edit mode
-* Fix - ACF Blocks edit forms now behave correctly if they are not visible when loaded
+* Fix - ACF Blocks edit forms now behave correctly if they are not visible when loaded 
 * Fix - ACF Blocks now always fire `render_block_preview` events when a block preview is displayed or redisplayed
 * Fix - ACF Blocks with no fields now display advisory text and are selectable in the block editor. This message is filterable with the acf/blocks/no_fields_assigned_message filter, providing both the message to be displayed and the block name it's being displayed against
 * Fix - Accordions inside ACF Blocks now match the current native block styling
@@ -619,7 +619,7 @@ From your WordPress dashboard
 * Fix - Fixed guten-bug causing JS errors when editing with Elementor or Beaver Builder.
 * Fix - Fixed bug in Color Picker field causing JS error on front-end forms.
 * Fix - Fixed bug in Post Taxonomy location rule causing incomplete list of rule choices.
-* Fix - Reverted Local JSON "save to source path" enhancement due to DX feedback.
+* Fix - Reverted Local JSON "save to source path" enhancement due to DX feedback. 
 * i18n - Updated Indonesian translations thanks to Rio Bahtiar.
 * i18n - Updated Turkish translation thanks to Emre Erkan.
 

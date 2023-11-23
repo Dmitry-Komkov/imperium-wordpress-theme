@@ -24,14 +24,8 @@ class Postname_Permalink_Check extends Health_Check {
 	/**
 	 * Constructor.
 	 *
-<<<<<<< HEAD
-	 * @param  Postname_Permalink_Runner  $runner The object that implements the actual health check.
-	 * @param  Postname_Permalink_Reports $reports The object that generates WordPress-friendly results.
-	 * @return void
-=======
 	 * @param  Postname_Permalink_Runner  $runner  The object that implements the actual health check.
 	 * @param  Postname_Permalink_Reports $reports The object that generates WordPress-friendly results.
->>>>>>> update
 	 */
 	public function __construct(
 		Postname_Permalink_Runner $runner,
@@ -50,11 +44,7 @@ class Postname_Permalink_Check extends Health_Check {
 	 * @return string The human-readable label.
 	 */
 	public function get_test_label() {
-<<<<<<< HEAD
-		return __( 'Postname permalink', 'wordpress-seo' );
-=======
 		return \__( 'Postname permalink', 'wordpress-seo' );
->>>>>>> update
 	}
 
 	/**

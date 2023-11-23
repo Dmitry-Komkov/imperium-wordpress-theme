@@ -1,9 +1,6 @@
 <?php
 
-<<<<<<< HEAD
-=======
 declare (strict_types=1);
->>>>>>> update
 namespace YoastSEO_Vendor\GuzzleHttp\Psr7;
 
 use YoastSEO_Vendor\Psr\Http\Message\StreamInterface;
@@ -11,17 +8,6 @@ use YoastSEO_Vendor\Psr\Http\Message\StreamInterface;
  * Reads from multiple streams, one after the other.
  *
  * This is a read-only stream decorator.
-<<<<<<< HEAD
- *
- * @final
- */
-class AppendStream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInterface
-{
-    /** @var StreamInterface[] Streams being decorated */
-    private $streams = [];
-    private $seekable = \true;
-    private $current = 0;
-=======
  */
 final class AppendStream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInterface
 {
@@ -32,7 +18,6 @@ final class AppendStream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInte
     /** @var int */
     private $current = 0;
     /** @var int */
->>>>>>> update
     private $pos = 0;
     /**
      * @param StreamInterface[] $streams Streams to decorate. Each stream must
@@ -44,24 +29,16 @@ final class AppendStream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInte
             $this->addStream($stream);
         }
     }
-<<<<<<< HEAD
-    public function __toString()
-=======
     public function __toString() : string
->>>>>>> update
     {
         try {
             $this->rewind();
             return $this->getContents();
-<<<<<<< HEAD
-        } catch (\Exception $e) {
-=======
         } catch (\Throwable $e) {
             if (\PHP_VERSION_ID >= 70400) {
                 throw $e;
             }
             \trigger_error(\sprintf('%s::__toString exception: %s', self::class, (string) $e), \E_USER_ERROR);
->>>>>>> update
             return '';
         }
     }
@@ -72,11 +49,7 @@ final class AppendStream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInte
      *
      * @throws \InvalidArgumentException if the stream is not readable
      */
-<<<<<<< HEAD
-    public function addStream(\YoastSEO_Vendor\Psr\Http\Message\StreamInterface $stream)
-=======
     public function addStream(\YoastSEO_Vendor\Psr\Http\Message\StreamInterface $stream) : void
->>>>>>> update
     {
         if (!$stream->isReadable()) {
             throw new \InvalidArgumentException('Each stream must be readable');
@@ -87,25 +60,14 @@ final class AppendStream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInte
         }
         $this->streams[] = $stream;
     }
-<<<<<<< HEAD
-    public function getContents()
-=======
     public function getContents() : string
->>>>>>> update
     {
         return \YoastSEO_Vendor\GuzzleHttp\Psr7\Utils::copyToString($this);
     }
     /**
      * Closes each attached stream.
-<<<<<<< HEAD
-     *
-     * {@inheritdoc}
-     */
-    public function close()
-=======
      */
     public function close() : void
->>>>>>> update
     {
         $this->pos = $this->current = 0;
         $this->seekable = \true;
@@ -118,11 +80,6 @@ final class AppendStream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInte
      * Detaches each attached stream.
      *
      * Returns null as it's not clear which underlying stream resource to return.
-<<<<<<< HEAD
-     *
-     * {@inheritdoc}
-=======
->>>>>>> update
      */
     public function detach()
     {
@@ -134,11 +91,7 @@ final class AppendStream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInte
         $this->streams = [];
         return null;
     }
-<<<<<<< HEAD
-    public function tell()
-=======
     public function tell() : int
->>>>>>> update
     {
         return $this->pos;
     }
@@ -147,15 +100,8 @@ final class AppendStream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInte
      *
      * If any of the streams do not return a valid number, then the size of the
      * append stream cannot be determined and null is returned.
-<<<<<<< HEAD
-     *
-     * {@inheritdoc}
-     */
-    public function getSize()
-=======
      */
     public function getSize() : ?int
->>>>>>> update
     {
         $size = 0;
         foreach ($this->streams as $stream) {
@@ -167,33 +113,18 @@ final class AppendStream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInte
         }
         return $size;
     }
-<<<<<<< HEAD
-    public function eof()
-    {
-        return !$this->streams || $this->current >= \count($this->streams) - 1 && $this->streams[$this->current]->eof();
-    }
-    public function rewind()
-=======
     public function eof() : bool
     {
         return !$this->streams || $this->current >= \count($this->streams) - 1 && $this->streams[$this->current]->eof();
     }
     public function rewind() : void
->>>>>>> update
     {
         $this->seek(0);
     }
     /**
      * Attempts to seek to the given position. Only supports SEEK_SET.
-<<<<<<< HEAD
-     *
-     * {@inheritdoc}
-     */
-    public function seek($offset, $whence = \SEEK_SET)
-=======
      */
     public function seek($offset, $whence = \SEEK_SET) : void
->>>>>>> update
     {
         if (!$this->seekable) {
             throw new \RuntimeException('This AppendStream is not seekable');
@@ -219,15 +150,8 @@ final class AppendStream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInte
     }
     /**
      * Reads from all of the appended streams until the length is met or EOF.
-<<<<<<< HEAD
-     *
-     * {@inheritdoc}
-     */
-    public function read($length)
-=======
      */
     public function read($length) : string
->>>>>>> update
     {
         $buffer = '';
         $total = \count($this->streams) - 1;
@@ -240,18 +164,10 @@ final class AppendStream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInte
                 if ($this->current === $total) {
                     break;
                 }
-<<<<<<< HEAD
-                $this->current++;
-            }
-            $result = $this->streams[$this->current]->read($remaining);
-            // Using a loose comparison here to match on '', false, and null
-            if ($result == null) {
-=======
                 ++$this->current;
             }
             $result = $this->streams[$this->current]->read($remaining);
             if ($result === '') {
->>>>>>> update
                 $progressToNext = \true;
                 continue;
             }
@@ -261,24 +177,6 @@ final class AppendStream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInte
         $this->pos += \strlen($buffer);
         return $buffer;
     }
-<<<<<<< HEAD
-    public function isReadable()
-    {
-        return \true;
-    }
-    public function isWritable()
-    {
-        return \false;
-    }
-    public function isSeekable()
-    {
-        return $this->seekable;
-    }
-    public function write($string)
-    {
-        throw new \RuntimeException('Cannot write to an AppendStream');
-    }
-=======
     public function isReadable() : bool
     {
         return \true;
@@ -298,7 +196,6 @@ final class AppendStream implements \YoastSEO_Vendor\Psr\Http\Message\StreamInte
     /**
      * @return mixed
      */
->>>>>>> update
     public function getMetadata($key = null)
     {
         return $key ? null : [];

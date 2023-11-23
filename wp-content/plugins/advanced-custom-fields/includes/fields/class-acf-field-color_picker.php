@@ -21,12 +21,6 @@ if ( ! class_exists( 'acf_field_color_picker' ) ) :
 		function initialize() {
 
 			// vars
-<<<<<<< HEAD
-			$this->name     = 'color_picker';
-			$this->label    = __( 'Color Picker', 'acf' );
-			$this->category = 'jquery';
-			$this->defaults = array(
-=======
 			$this->name          = 'color_picker';
 			$this->label         = __( 'Color Picker', 'acf' );
 			$this->category      = 'advanced';
@@ -34,15 +28,10 @@ if ( ! class_exists( 'acf_field_color_picker' ) ) :
 			$this->preview_image = acf_get_url() . '/assets/images/field-type-previews/field-preview-color-picker.png';
 			$this->doc_url       = acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/resources/color-picker/', 'docs', 'field-type-selection' );
 			$this->defaults      = array(
->>>>>>> update
 				'default_value'  => '',
 				'enable_opacity' => false,
 				'return_format'  => 'string', // 'string'|'array'
 			);
-<<<<<<< HEAD
-
-=======
->>>>>>> update
 		}
 
 
@@ -79,21 +68,12 @@ if ( ! class_exists( 'acf_field_color_picker' ) ) :
 						'wp-color-picker',
 						'wpColorPickerL10n',
 						array(
-<<<<<<< HEAD
-							'clear'            => __( 'Clear' ),
-							'clearAriaLabel'   => __( 'Clear color' ),
-							'defaultString'    => __( 'Default' ),
-							'defaultAriaLabel' => __( 'Select default color' ),
-							'pick'             => __( 'Select Color' ),
-							'defaultLabel'     => __( 'Color value' ),
-=======
 							'clear'            => __( 'Clear', 'acf' ),
 							'clearAriaLabel'   => __( 'Clear color', 'acf' ),
 							'defaultString'    => __( 'Default', 'acf' ),
 							'defaultAriaLabel' => __( 'Select default color', 'acf' ),
 							'pick'             => __( 'Select Color', 'acf' ),
 							'defaultLabel'     => __( 'Color value', 'acf' ),
->>>>>>> update
 						)
 					);
 				}
@@ -135,16 +115,9 @@ if ( ! class_exists( 'acf_field_color_picker' ) ) :
 		*/
 
 		function render_field( $field ) {
-<<<<<<< HEAD
-
-			// vars
-			$text_input   = acf_get_sub_array( $field, array( 'id', 'class', 'name', 'value' ) );
-			$hidden_input = acf_get_sub_array( $field, array( 'name', 'value' ) );
-=======
 			$text_input                             = acf_get_sub_array( $field, array( 'id', 'class', 'name', 'value' ) );
 			$hidden_input                           = acf_get_sub_array( $field, array( 'name', 'value' ) );
 			$text_input['data-alpha-skip-debounce'] = true;
->>>>>>> update
 
 			// Color picker alpha library requires a specific data attribute to exist.
 			if ( $field['enable_opacity'] ) {
@@ -215,10 +188,6 @@ if ( ! class_exists( 'acf_field_color_picker' ) ) :
 					),
 				)
 			);
-<<<<<<< HEAD
-
-=======
->>>>>>> update
 		}
 
 		/**
@@ -252,12 +221,7 @@ if ( ! class_exists( 'acf_field_color_picker' ) ) :
 		 * @return array
 		 */
 		private function string_to_array( $value ) {
-<<<<<<< HEAD
-			// Trim Value
-			$value = trim( $value );
-=======
 			$value = is_string( $value ) ? trim( $value ) : '';
->>>>>>> update
 
 			// Match and collect r,g,b values from 6 digit hex code. If there are 4
 			// match-results, we have the values we need to build an r,g,b,a array.
@@ -320,10 +284,6 @@ if ( ! class_exists( 'acf_field_color_picker' ) ) :
 				'alpha' => (float) 0,
 			);
 		}
-<<<<<<< HEAD
-
-=======
->>>>>>> update
 	}
 
 	// initialize

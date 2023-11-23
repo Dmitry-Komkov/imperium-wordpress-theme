@@ -5,11 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! class_exists( 'acf_fields' ) ) :
-<<<<<<< HEAD
-
-=======
 	#[AllowDynamicProperties]
->>>>>>> update
 	class acf_fields {
 
 		/** @var array Contains an array of field type instances */
@@ -249,13 +245,6 @@ function acf_get_field_types_info( $args = array() ) {
 
 	// loop
 	foreach ( $field_types as $type ) {
-<<<<<<< HEAD
-		$data[ $type->name ] = array(
-			'label'    => $type->label,
-			'name'     => $type->name,
-			'category' => $type->category,
-			'public'   => $type->public,
-=======
 		$data[ $type->name ] = array_filter(
 			array(
 				'label'         => $type->label,
@@ -268,7 +257,6 @@ function acf_get_field_types_info( $args = array() ) {
 				'preview_image' => $type->preview_image,
 				'pro'           => $type->pro,
 			)
->>>>>>> update
 		);
 	}
 
@@ -350,22 +338,6 @@ function acf_field_type_exists( $type = '' ) {
 	return acf_is_field_type( $type );
 }
 
-<<<<<<< HEAD
-
-/*
-*  acf_get_grouped_field_types
-*
-*  Returns an multi-dimentional array of field types "name => label" grouped by category
-*
-*  @type    function
-*  @date    1/10/13
-*  @since   5.0.0
-*
-*  @param   n/a
-*  @return  (array)
-*/
-
-=======
 /**
  * Returns an array of localised field categories.
  *
@@ -396,24 +368,12 @@ function acf_get_field_categories_i18n() {
  *
  *  @return  array
  */
->>>>>>> update
 function acf_get_grouped_field_types() {
 
 	// vars
 	$types  = acf_get_field_types();
 	$groups = array();
-<<<<<<< HEAD
-	$l10n   = array(
-		'basic'      => __( 'Basic', 'acf' ),
-		'content'    => __( 'Content', 'acf' ),
-		'choice'     => __( 'Choice', 'acf' ),
-		'relational' => __( 'Relational', 'acf' ),
-		'jquery'     => __( 'jQuery', 'acf' ),
-		'layout'     => __( 'Layout', 'acf' ),
-	);
-=======
 	$l10n   = acf_get_field_categories_i18n();
->>>>>>> update
 
 	// loop
 	foreach ( $types as $type ) {
@@ -433,9 +393,6 @@ function acf_get_grouped_field_types() {
 	return $groups;
 }
 
-<<<<<<< HEAD
-
-=======
 /**
  *  Returns an array of tabs for a field type.
  *  We combine a list of default tabs with filtered tabs.
@@ -522,4 +479,3 @@ function acf_get_pro_field_types() {
 		),
 	);
 }
->>>>>>> update

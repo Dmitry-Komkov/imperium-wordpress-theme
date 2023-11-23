@@ -3,11 +3,7 @@
 namespace Yoast\WP\SEO\Integrations;
 
 use Closure;
-<<<<<<< HEAD
-use Yoast\WP\Lib\Model;
-=======
 use Yoast\WP\SEO\Repositories\Indexable_Cleanup_Repository;
->>>>>>> update
 
 /**
  * Adds cleanup hooks.
@@ -30,8 +26,6 @@ class Cleanup_Integration implements Integration_Interface {
 	const START_HOOK = 'wpseo_start_cleanup_indexables';
 
 	/**
-<<<<<<< HEAD
-=======
 	 * The cleanup repository.
 	 *
 	 * @var Indexable_Cleanup_Repository
@@ -48,7 +42,6 @@ class Cleanup_Integration implements Integration_Interface {
 	}
 
 	/**
->>>>>>> update
 	 * Initializes the integration.
 	 *
 	 * This is the place to register hooks and filters.
@@ -94,10 +87,7 @@ class Cleanup_Integration implements Integration_Interface {
 
 			// There are more items to delete for the current cleanup job, start a cronjob at the specified job.
 			$this->start_cron_job( $name );
-<<<<<<< HEAD
-=======
 
->>>>>>> update
 			return;
 		}
 	}
@@ -107,16 +97,6 @@ class Cleanup_Integration implements Integration_Interface {
 	 *
 	 * @return Closure[] The cleanup tasks.
 	 */
-<<<<<<< HEAD
-	protected function get_cleanup_tasks() {
-		return \array_merge(
-			[
-				'clean_indexables_with_object_type_and_object_sub_type_shop_order' => function( $limit ) {
-					return $this->clean_indexables_with_object_type_and_object_sub_type( 'post', 'shop_order', $limit );
-				},
-				'clean_indexables_by_post_status_auto-draft' => function( $limit ) {
-					return $this->clean_indexables_with_post_status( 'auto-draft', $limit );
-=======
 	public function get_cleanup_tasks() {
 		return \array_merge(
 			[
@@ -152,23 +132,11 @@ class Cleanup_Integration implements Integration_Interface {
 				},
 				'clean_orphaned_user_indexables_without_wp_term' => function ( $limit ) {
 					return $this->cleanup_repository->clean_indexables_for_object_type_and_source_table( 'terms', 'term_id', 'term', $limit );
->>>>>>> update
 				},
 			],
 			$this->get_additional_tasks(),
 			[
 				/* These should always be the last ones to be called. */
-<<<<<<< HEAD
-				'clean_orphaned_content_indexable_hierarchy' => function( $limit ) {
-					return $this->cleanup_orphaned_from_table( 'Indexable_Hierarchy', 'indexable_id', $limit );
-				},
-				'clean_orphaned_content_seo_links_indexable_id' => function( $limit ) {
-					return $this->cleanup_orphaned_from_table( 'SEO_Links', 'indexable_id', $limit );
-				},
-				'clean_orphaned_content_seo_links_target_indexable_id' => function( $limit ) {
-					return $this->cleanup_orphaned_from_table( 'SEO_Links', 'target_indexable_id', $limit );
-				},
-=======
 				'clean_orphaned_content_indexable_hierarchy' => function ( $limit ) {
 					return $this->cleanup_repository->cleanup_orphaned_from_table( 'Indexable_Hierarchy', 'indexable_id', $limit );
 				},
@@ -179,7 +147,6 @@ class Cleanup_Integration implements Integration_Interface {
 					return $this->cleanup_repository->cleanup_orphaned_from_table( 'SEO_Links', 'target_indexable_id', $limit );
 				},
 
->>>>>>> update
 			]
 		);
 	}
@@ -270,10 +237,7 @@ class Cleanup_Integration implements Integration_Interface {
 
 		if ( $current_task_name === false ) {
 			$this->reset_cleanup();
-<<<<<<< HEAD
-=======
 
->>>>>>> update
 			return;
 		}
 
@@ -298,10 +262,7 @@ class Cleanup_Integration implements Integration_Interface {
 
 			if ( $items_cleaned === false ) {
 				$this->reset_cleanup();
-<<<<<<< HEAD
-=======
 
->>>>>>> update
 				return;
 			}
 
@@ -309,109 +270,18 @@ class Cleanup_Integration implements Integration_Interface {
 				// Check if we are finished with all tasks.
 				if ( \next( $tasks ) === false ) {
 					$this->reset_cleanup();
-<<<<<<< HEAD
-=======
 
->>>>>>> update
 					return;
 				}
 
 				// Continue with the next task next time the cron job is run.
 				\update_option( self::CURRENT_TASK_OPTION, \key( $tasks ) );
-<<<<<<< HEAD
-				return;
-			}
-=======
 
 				return;
 			}
 
->>>>>>> update
 			// There were items deleted for the current task, continue with the same task next cron call.
 			return;
 		}
 	}
-<<<<<<< HEAD
-
-	/**
-	 * Deletes rows from the indexable table depending on the object_type and object_sub_type.
-	 *
-	 * @param string $object_type     The object type to query.
-	 * @param string $object_sub_type The object subtype to query.
-	 * @param int    $limit           The limit we'll apply to the delete query.
-	 *
-	 * @return int|bool The number of rows that was deleted or false if the query failed.
-	 */
-	protected function clean_indexables_with_object_type_and_object_sub_type( $object_type, $object_sub_type, $limit ) {
-		global $wpdb;
-
-		$indexable_table = Model::get_table_name( 'Indexable' );
-
-		// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Reason: There is no unescaped user input.
-		$sql = $wpdb->prepare( "DELETE FROM $indexable_table WHERE object_type = %s AND object_sub_type = %s ORDER BY id LIMIT %d", $object_type, $object_sub_type, $limit );
-		// phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Reason: Already prepared.
-		return $wpdb->query( $sql );
-	}
-
-	/**
-	 * Deletes rows from the indexable table depending on the post_status.
-	 *
-	 * @param string $post_status The post status to query.
-	 * @param int    $limit       The limit we'll apply to the delete query.
-	 *
-	 * @return int|bool The number of rows that was deleted or false if the query failed.
-	 */
-	protected function clean_indexables_with_post_status( $post_status, $limit ) {
-		global $wpdb;
-
-		$indexable_table = Model::get_table_name( 'Indexable' );
-
-		// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Reason: There is no unescaped user input.
-		$sql = $wpdb->prepare( "DELETE FROM $indexable_table WHERE object_type = 'post' AND post_status = %s ORDER BY id LIMIT %d", $post_status, $limit );
-		// phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Reason: Already prepared.
-		return $wpdb->query( $sql );
-	}
-
-	/**
-	 * Cleans orphaned rows from a yoast table.
-	 *
-	 * @param string $table  The table to clean up.
-	 * @param string $column The table column the cleanup will rely on.
-	 * @param int    $limit  The limit we'll apply to the queries.
-	 *
-	 * @return int|bool The number of deleted rows, false if the query fails.
-	 */
-	protected function cleanup_orphaned_from_table( $table, $column, $limit ) {
-		global $wpdb;
-
-		$table           = Model::get_table_name( $table );
-		$indexable_table = Model::get_table_name( 'Indexable' );
-
-		// Warning: If this query is changed, make sure to update the query in cleanup_orphaned_from_table in Premium as well.
-		// phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Reason: There is no unescaped user input.
-		$query = $wpdb->prepare(
-			"
-			SELECT table_to_clean.{$column}
-			FROM {$table} table_to_clean
-			LEFT JOIN {$indexable_table} AS indexable_table
-			ON table_to_clean.{$column} = indexable_table.id
-			WHERE indexable_table.id IS NULL
-			AND table_to_clean.{$column} IS NOT NULL
-			LIMIT %d",
-			$limit
-		);
-		// phpcs:enable
-
-		// phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Reason: Already prepared.
-		$orphans = $wpdb->get_col( $query );
-
-		if ( empty( $orphans ) ) {
-			return 0;
-		}
-
-		// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Reason: Already prepared.
-		return $wpdb->query( "DELETE FROM $table WHERE {$column} IN( " . \implode( ',', $orphans ) . ' )' );
-	}
-=======
->>>>>>> update
 }

@@ -6,8 +6,5 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-<<<<<<< HEAD
-=======
     'CyrToLat\\' => array($baseDir . '/src/php'),
->>>>>>> update
 );

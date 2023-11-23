@@ -360,16 +360,6 @@ ul.toolbar-block-dropdown span {
 }
 /* Block editor buttons end */
 
-<<<<<<< HEAD
-.classic-blocks-title-h4 {
-	margin: 40px 0 1.1em;
-}
-/*
-.tadv-submit-top {
-	margin: 0 -36px;
-}
-*/
-=======
 .yes-no-wrap .yes-no-text {
 
 }
@@ -399,7 +389,6 @@ ul.toolbar-block-dropdown span {
 	margin: 40px 0 1.1em;
 }
 
->>>>>>> update
 form#tadvadmin {
 	margin-top: 24px;
 }
@@ -743,21 +732,6 @@ div.tadv-error {
 	max-width: 650px;
 }
 
-<<<<<<< HEAD
-.tadv-mce-menu.tadv-block-editor.mce-menubar {
-	background-image: url(images/toolbar-actions.png);
-	background-position: right;
-	background-repeat: no-repeat;
-	background-size: 84px 37px;
-}
-
-.rtl .tadv-mce-menu.tadv-block-editor.mce-menubar {
-	background-image: url(images/toolbar-actions-rtl.png);
-	background-position: left;
-}
-
-=======
->>>>>>> update
 .tadv-block-editor .mce-menubtn {
 	margin: 7px 0 6px;
 }
@@ -801,18 +775,6 @@ div.tadv-error {
 	background-clip: content-box;
 }
 
-<<<<<<< HEAD
-.tadv-block-editor > div.mce-container-body {
-	margin-right: 80px;
-}
-
-.rtl .tadv-block-editor > div.mce-container-body {
-	margin-right: 0;
-	margin-left: 80px;
-}
-
-=======
->>>>>>> update
 .rtl .the-button {
 	direction: rtl;
 	text-align: right;

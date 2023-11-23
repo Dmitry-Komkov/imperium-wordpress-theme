@@ -13,11 +13,7 @@
 $contacts = get_field('contacts_group', '8');
 $phone_1 = $contacts['phone_1'];
 $phone_2 = $contacts['phone_2'];
-<<<<<<< HEAD
-$promo_bar = true;
-=======
 $promo_bar = false;
->>>>>>> update
 
 if (!empty($args) && !$args['promo_bar']) {
 	$promo_bar = false;

@@ -3,13 +3,9 @@
 namespace Yoast\WP\SEO\Builders;
 
 use wpdb;
-<<<<<<< HEAD
-use Yoast\WP\SEO\Helpers\Author_Archive_Helper;
-=======
 use Yoast\WP\SEO\Exceptions\Indexable\Author_Not_Built_Exception;
 use Yoast\WP\SEO\Helpers\Author_Archive_Helper;
 use Yoast\WP\SEO\Helpers\Options_Helper;
->>>>>>> update
 use Yoast\WP\SEO\Helpers\Post_Helper;
 use Yoast\WP\SEO\Models\Indexable;
 use Yoast\WP\SEO\Values\Indexables\Indexable_Builder_Versions;
@@ -38,8 +34,6 @@ class Indexable_Author_Builder {
 	protected $version;
 
 	/**
-<<<<<<< HEAD
-=======
 	 * Holds the options helper instance.
 	 *
 	 * @var Options_Helper
@@ -47,7 +41,6 @@ class Indexable_Author_Builder {
 	protected $options_helper;
 
 	/**
->>>>>>> update
 	 * Holds the taxonomy helper instance.
 	 *
 	 * @var Post_Helper
@@ -66,29 +59,20 @@ class Indexable_Author_Builder {
 	 *
 	 * @param Author_Archive_Helper      $author_archive The author archive helper.
 	 * @param Indexable_Builder_Versions $versions       The Indexable version manager.
-<<<<<<< HEAD
-=======
 	 * @param Options_Helper             $options_helper The options helper.
->>>>>>> update
 	 * @param Post_Helper                $post_helper    The post helper.
 	 * @param wpdb                       $wpdb           The WPDB instance.
 	 */
 	public function __construct(
 		Author_Archive_Helper $author_archive,
 		Indexable_Builder_Versions $versions,
-<<<<<<< HEAD
-=======
 		Options_Helper $options_helper,
->>>>>>> update
 		Post_Helper $post_helper,
 		wpdb $wpdb
 	) {
 		$this->author_archive = $author_archive;
 		$this->version        = $versions->get_latest_version_for_type( 'user' );
-<<<<<<< HEAD
-=======
 		$this->options_helper = $options_helper;
->>>>>>> update
 		$this->post_helper    = $post_helper;
 		$this->wpdb           = $wpdb;
 	}
@@ -100,10 +84,6 @@ class Indexable_Author_Builder {
 	 * @param Indexable $indexable The indexable to format.
 	 *
 	 * @return Indexable The extended indexable.
-<<<<<<< HEAD
-	 */
-	public function build( $user_id, Indexable $indexable ) {
-=======
 	 *
 	 * @throws Author_Not_Built_Exception When author is not built.
 	 */
@@ -113,7 +93,6 @@ class Indexable_Author_Builder {
 			throw $exception;
 		}
 
->>>>>>> update
 		$meta_data = $this->get_meta_data( $user_id );
 
 		$indexable->object_id              = $user_id;
@@ -230,8 +209,6 @@ class Indexable_Author_Builder {
 		// phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared -- We are using wpdb prepare.
 		return $this->wpdb->get_row( $this->wpdb->prepare( $sql, $replacements ) );
 	}
-<<<<<<< HEAD
-=======
 
 	/**
 	 * Checks if the user should be indexed.
@@ -264,5 +241,4 @@ class Indexable_Author_Builder {
 		 */
 		return \apply_filters( 'wpseo_should_build_and_save_user_indexable', $exception, $user_id );
 	}
->>>>>>> update
 }

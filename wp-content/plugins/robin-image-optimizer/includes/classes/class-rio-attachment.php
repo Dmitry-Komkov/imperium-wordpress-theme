@@ -175,19 +175,11 @@ class WIO_Attachment {
 		$nl   = PHP_EOL;
 
 		$error = sprintf( 'Error to optimize attachment (ID: #%s). Message: "%s"', $this->id, trim( $message ) ) . $nl;
-<<<<<<< HEAD
-		$error .= $char . sprintf( "Attachment optimized? %s", ( $this->isOptimized() ? 'Yes' : 'No' ) ) . $nl;
-		$error .= $char . sprintf( "Should be resized? %s", ( $this->isNeedResize() ? 'Yes' : 'No' ) ) . $nl;
-		$error .= $char . sprintf( "Original size: %sx%s", $this->attachment_meta['width'], $this->attachment_meta['height'] ) . $nl;
-		$error .= $char . sprintf( "Relative path: %s", $this->attachment_meta['file'] ) . $nl;
-		$error .= $char . sprintf( "Server used: %s", WRIO_Plugin::app()->getPopulateOption( 'image_optimization_server', 'server_1' ) ) . $nl;
-=======
 		$error .= $char . sprintf( 'Attachment optimized? %s', ( $this->isOptimized() ? 'Yes' : 'No' ) ) . $nl;
 		$error .= $char . sprintf( 'Should be resized? %s', ( $this->isNeedResize() ? 'Yes' : 'No' ) ) . $nl;
 		$error .= $char . sprintf( 'Original size: %sx%s', $this->attachment_meta['width'], $this->attachment_meta['height'] ) . $nl;
 		$error .= $char . sprintf( 'Relative path: %s', $this->attachment_meta['file'] ) . $nl;
 		$error .= $char . sprintf( 'Server used: %s', WRIO_Plugin::app()->getPopulateOption( 'image_optimization_server', 'server_1' ) ) . $nl;
->>>>>>> update
 
 		if ( ! empty( $this->attachment_meta['sizes'] ) ) {
 			$error .= $char . ' Additional sizes:' . $nl;
@@ -248,11 +240,7 @@ class WIO_Attachment {
 			$optimization_level = WRIO_Plugin::app()->getPopulateOption( 'image_optimization_level', 'normal' );
 		}
 
-<<<<<<< HEAD
-		if ( $optimization_level == 'custom' ) {
-=======
 		if ( $optimization_level === 'custom' ) {
->>>>>>> update
 			$custom_quality     = WRIO_Plugin::app()->getPopulateOption( 'image_optimization_level_custom', 100 );
 			$optimization_level = intval( $custom_quality );
 		}
@@ -367,11 +355,7 @@ class WIO_Attachment {
 		$results['final_mime_type']    = '';
 
 		// отложенная оптимизация
-<<<<<<< HEAD
-		if ( isset( $optimized_img_data['status'] ) && $optimized_img_data['status'] == 'processing' ) {
-=======
 		if ( isset( $optimized_img_data['status'] ) && $optimized_img_data['status'] === 'processing' ) {
->>>>>>> update
 			$results['result_status'] = 'processing';
 			$results['original_size'] = 0;
 			$results['final_size']    = 0;
@@ -477,11 +461,7 @@ class WIO_Attachment {
 		$image_processor   = WIO_OptimizationTools::getImageProcessor();
 		$optimization_data = $this->getOptimizationData();
 
-<<<<<<< HEAD
-		if ( $optimization_data->get_result_status() != 'processing' ) {
-=======
 		if ( $optimization_data->get_result_status() !== 'processing' ) {
->>>>>>> update
 			return false;
 		}
 
@@ -646,11 +626,7 @@ class WIO_Attachment {
 		$image_processor = WIO_OptimizationTools::getImageProcessor();
 		$quality         = WRIO_Plugin::app()->getPopulateOption( 'image_optimization_level', 'normal' );
 
-<<<<<<< HEAD
-		if ( $quality == 'custom' ) {
-=======
 		if ( $quality === 'custom' ) {
->>>>>>> update
 			$custom_quality = WRIO_Plugin::app()->getPopulateOption( 'image_optimization_level_custom', 100 );
 			$quality        = intval( $custom_quality );
 		}
@@ -814,21 +790,13 @@ class WIO_Attachment {
 
 		$image_body = curl_exec( $ch );
 		$http_code  = curl_getinfo( $ch, CURLINFO_HTTP_CODE );
-<<<<<<< HEAD
-		if ( $http_code != '200' ) {
-=======
 		if ( $http_code !== 200 ) {
->>>>>>> update
 			$image_body = false;
 		}
 		curl_close( $ch );
 
 		if ( $image_body === false ) {
-<<<<<<< HEAD
-			WRIO_Plugin::app()->logger->error( sprintf( 'Failed to get content of "%s" using curl_exec()', $url ) );
-=======
 			WRIO_Plugin::app()->logger->error( sprintf( 'Failed to get content of "%s" using curl_exec(). HTTP code: ' . $http_code, $url ) );
->>>>>>> update
 
 			return null;
 		}

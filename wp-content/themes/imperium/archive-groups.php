@@ -6,15 +6,10 @@
  *
  * @package imperiumchekhov
  */
-<<<<<<< HEAD
-
-get_header();
-=======
 $header_args = array(
   'promo_bar' => false,
 );
 get_header(null, $header_args);
->>>>>>> update
 ?>
 
 	<main id="primary" class="site-main">

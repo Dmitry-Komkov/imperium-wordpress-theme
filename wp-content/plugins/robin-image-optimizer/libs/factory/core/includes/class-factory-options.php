@@ -1,10 +1,6 @@
 <?php
 
-<<<<<<< HEAD
-namespace WBCR\Factory_450;
-=======
 namespace WBCR\Factory_469;
->>>>>>> update
 
 // Exit if accessed directly
 use Exception;
@@ -14,11 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
-<<<<<<< HEAD
- * Трейт используется для расширения базового класса плагина Wbcr_Factory450_Base, позволяя работать с опциями плагина.
-=======
  * Трейт используется для расширения базового класса плагина Wbcr_Factory469_Base, позволяя работать с опциями плагина.
->>>>>>> update
  *
  * Этот трейт является оберткой для Wordpress функций get_option, get_site_option, update_option, update_site_option,
  * delete_option, delete_site_option. Основная задача была получать, обновлять, удалять опции без использования префиксов,

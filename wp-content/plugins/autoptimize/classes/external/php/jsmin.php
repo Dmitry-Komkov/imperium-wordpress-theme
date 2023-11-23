@@ -138,22 +138,14 @@ class JSMin {
                     // in case of mbstring.func_overload & 2, must check for null b,
                     // otherwise mb_strpos will give WARNING
                 } elseif ($this->b === null
-<<<<<<< HEAD
-                          || (false === strpos('{[(+-!~', $this->b)
-=======
                           || (false === strpos('{[(+-!~#', $this->b)
->>>>>>> update
                               && ! $this->isAlphaNum($this->b))) {
                     $command = self::ACTION_DELETE_A;
                 }
             } elseif (! $this->isAlphaNum($this->a)) {
                 if ($this->b === ' '
                     || ($this->b === "\n"
-<<<<<<< HEAD
-                        && (false === strpos('}])+-"\'', $this->a)))) {
-=======
                         && (false === strpos('}])+-"\'`', $this->a)))) {
->>>>>>> update
                     $command = self::ACTION_DELETE_A_B;
                 }
             }

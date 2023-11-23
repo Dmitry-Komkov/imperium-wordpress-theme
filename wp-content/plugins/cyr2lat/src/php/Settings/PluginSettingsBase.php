@@ -5,15 +5,9 @@
  * @package cyr-to-lat
  */
 
-<<<<<<< HEAD
-namespace Cyr_To_Lat\Settings;
-
-use Cyr_To_Lat\Settings\Abstracts\SettingsBase;
-=======
 namespace CyrToLat\Settings;
 
 use CyrToLat\Settings\Abstracts\SettingsBase;
->>>>>>> update
 
 /**
  * Class PluginSettingsBase
@@ -23,8 +17,6 @@ use CyrToLat\Settings\Abstracts\SettingsBase;
 abstract class PluginSettingsBase extends SettingsBase {
 
 	/**
-<<<<<<< HEAD
-=======
 	 * Constructor.
 	 *
 	 * @param array|null $tabs Tabs of this settings page.
@@ -82,16 +74,11 @@ abstract class PluginSettingsBase extends SettingsBase {
 	}
 
 	/**
->>>>>>> update
 	 * Get plugin base name.
 	 *
 	 * @return string
 	 */
-<<<<<<< HEAD
-	protected function plugin_basename() {
-=======
 	protected function plugin_basename(): string {
->>>>>>> update
 		return plugin_basename( constant( 'CYR_TO_LAT_FILE' ) );
 	}
 
@@ -100,11 +87,7 @@ abstract class PluginSettingsBase extends SettingsBase {
 	 *
 	 * @return string
 	 */
-<<<<<<< HEAD
-	protected function plugin_url() {
-=======
 	protected function plugin_url(): string {
->>>>>>> update
 		return constant( 'CYR_TO_LAT_URL' );
 	}
 
@@ -113,11 +96,7 @@ abstract class PluginSettingsBase extends SettingsBase {
 	 *
 	 * @return string
 	 */
-<<<<<<< HEAD
-	protected function plugin_version() {
-=======
 	protected function plugin_version(): string {
->>>>>>> update
 		return constant( 'CYR_TO_LAT_VERSION' );
 	}
 
@@ -126,11 +105,7 @@ abstract class PluginSettingsBase extends SettingsBase {
 	 *
 	 * @return string
 	 */
-<<<<<<< HEAD
-	protected function settings_link_label() {
-=======
 	protected function settings_link_label(): string {
->>>>>>> update
 		return __( 'View Cyr To Lat settings', 'cyr2lat' );
 	}
 
@@ -139,11 +114,7 @@ abstract class PluginSettingsBase extends SettingsBase {
 	 *
 	 * @return string
 	 */
-<<<<<<< HEAD
-	protected function settings_link_text() {
-=======
 	protected function settings_link_text(): string {
->>>>>>> update
 		return __( 'Settings', 'cyr2lat' );
 	}
 
@@ -152,11 +123,6 @@ abstract class PluginSettingsBase extends SettingsBase {
 	 *
 	 * @return string
 	 */
-<<<<<<< HEAD
-	protected function text_domain() {
-		return 'cyr2lat';
-	}
-=======
 	protected function text_domain(): string {
 		return 'cyr2lat';
 	}
@@ -266,5 +232,4 @@ abstract class PluginSettingsBase extends SettingsBase {
 			CYR_TO_LAT_VERSION
 		);
 	}
->>>>>>> update
 }

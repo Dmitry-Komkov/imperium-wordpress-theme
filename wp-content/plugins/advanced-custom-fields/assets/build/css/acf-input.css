@@ -1,10 +1,7 @@
 /*!****************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./src/advanced-custom-fields-pro/assets/src/sass/acf-input.scss ***!
   \****************************************************************************************************************************************************************************************************************/
-<<<<<<< HEAD
-=======
 @charset "UTF-8";
->>>>>>> update
 /*--------------------------------------------------------------------------------------------
 *
 *	Vars
@@ -15,11 +12,6 @@
 /* responsive */
 /*--------------------------------------------------------------------------------------------
 *
-<<<<<<< HEAD
-*  Mixins
-*
-*--------------------------------------------------------------------------------------------*/
-=======
 *	ACF 6 ↓
 *
 *--------------------------------------------------------------------------------------------*/
@@ -141,7 +133,6 @@
   outline: 1px solid transparent;
 }
 
->>>>>>> update
 /*--------------------------------------------------------------------------------------------
 *
 *	acf-field
@@ -171,11 +162,7 @@
 }
 .acf-field .acf-label label {
   display: block;
-<<<<<<< HEAD
-  font-weight: bold;
-=======
   font-weight: 500;
->>>>>>> update
   margin: 0 0 3px;
   padding: 0;
 }
@@ -185,15 +172,10 @@
 .acf-field .acf-input {
   vertical-align: top;
 }
-<<<<<<< HEAD
-.acf-field .acf-input > p.description {
-  margin-top: 5px;
-=======
 .acf-field p.description {
   display: block;
   margin-top: 6px;
   color: #667085;
->>>>>>> update
 }
 .acf-field .acf-notice {
   margin: 0 0 15px;
@@ -216,12 +198,8 @@
   color: #bd4b0e;
   border-color: #d16226;
 }
-<<<<<<< HEAD
-td.acf-field, tr.acf-field {
-=======
 td.acf-field,
 tr.acf-field {
->>>>>>> update
   margin: 0;
 }
 
@@ -247,12 +225,8 @@ html[dir=rtl] .acf-field[data-width] + .acf-field[data-width] {
   border-left: none;
   border-right: 1px solid #eeeeee;
 }
-<<<<<<< HEAD
-td.acf-field[data-width], tr.acf-field[data-width] {
-=======
 td.acf-field[data-width],
 tr.acf-field[data-width] {
->>>>>>> update
   float: none;
 }
 
@@ -289,15 +263,10 @@ html[dir=rtl] .acf-field.-c0 {
 .acf-fields > .acf-field {
   position: relative;
   margin: 0;
-<<<<<<< HEAD
-  padding: 15px 12px;
-  border-top: #EEEEEE solid 1px;
-=======
   padding: 16px;
   border-top-width: 1px;
   border-top-style: solid;
   border-top-color: #EAECF0;
->>>>>>> update
 }
 .acf-fields > .acf-field:first-child {
   border-top: none;
@@ -345,13 +314,8 @@ td.acf-fields {
   display: block;
   position: absolute;
   z-index: 0;
-<<<<<<< HEAD
-  background: #F9F9F9;
-  border-color: #E1E1E1;
-=======
   background: #f9f9f9;
   border-color: #e1e1e1;
->>>>>>> update
   border-style: solid;
   border-width: 0 1px 0 0;
   top: 0;
@@ -434,21 +398,13 @@ html[dir=rtl] .acf-fields.-left > .acf-field > .acf-input {
 .acf-table tr.acf-field > td.acf-label {
   padding: 15px 12px;
   margin: 0;
-<<<<<<< HEAD
-  background: #F9F9F9;
-=======
   background: #f9f9f9;
->>>>>>> update
   width: 20%;
 }
 .acf-table tr.acf-field > td.acf-input {
   padding: 15px 12px;
   margin: 0;
-<<<<<<< HEAD
-  border-left-color: #E1E1E1;
-=======
   border-left-color: #e1e1e1;
->>>>>>> update
 }
 
 .acf-sortable-tr-helper {
@@ -465,15 +421,8 @@ html[dir=rtl] .acf-fields.-left > .acf-field > .acf-input {
   position: relative;
 }
 .acf-postbox > .inside {
-<<<<<<< HEAD
-  margin: 0 !important;
-  /* override WP style - do not delete - you have tried this before */
-  padding: 0 !important;
-  /* override WP style - do not delete - you have tried this before */
-=======
   margin: 0 !important; /* override WP style - do not delete - you have tried this before */
   padding: 0 !important; /* override WP style - do not delete - you have tried this before */
->>>>>>> update
 }
 .acf-postbox .acf-hndle-cog {
   color: #72777c;
@@ -523,12 +472,7 @@ html[dir=rtl] .acf-fields.-left > .acf-field > .acf-input {
   display: none !important;
 }
 .acf-postbox.seamless > .inside {
-<<<<<<< HEAD
-  display: block !important;
-  /* stop metabox from hiding when closed */
-=======
   display: block !important; /* stop metabox from hiding when closed */
->>>>>>> update
   margin-left: -12px !important;
   margin-right: -12px !important;
 }
@@ -553,19 +497,11 @@ html[dir=rtl] .acf-fields.-left > .acf-field > .acf-input {
   }
 }
 
-<<<<<<< HEAD
-/*---------------------------------------------------------------------------------------------
-*
-*  Inputs
-*
-*---------------------------------------------------------------------------------------------*/
-=======
 /*-----------------------------------------------------------------------------
 *
 *  Inputs
 *
 *-----------------------------------------------------------------------------*/
->>>>>>> update
 .acf-field input[type=text],
 .acf-field input[type=password],
 .acf-field input[type=date],
@@ -613,19 +549,11 @@ body.acf-browser-firefox .acf-field select {
   padding: 4px 5px;
 }
 
-<<<<<<< HEAD
-/*---------------------------------------------------------------------------------------------
-*
-*  Text
-*
-*---------------------------------------------------------------------------------------------*/
-=======
 /*-----------------------------------------------------------------------------
 *
 *  Text
 *
 *-----------------------------------------------------------------------------*/
->>>>>>> update
 .acf-input-prepend,
 .acf-input-append,
 .acf-input-wrap {
@@ -634,11 +562,7 @@ body.acf-browser-firefox .acf-field select {
 
 .acf-input-prepend,
 .acf-input-append {
-<<<<<<< HEAD
-  font-size: 14px;
-=======
   font-size: 13px;
->>>>>>> update
   line-height: 1.4;
   padding: 4px 8px;
   background: #f5f5f5;
@@ -669,17 +593,10 @@ body.acf-browser-firefox .acf-field select {
   overflow: hidden;
 }
 .acf-input-wrap .acf-is-prepended {
-<<<<<<< HEAD
-  border-radius: 0 3px 3px 0 !important;
-}
-.acf-input-wrap .acf-is-appended {
-  border-radius: 3px 0 0 3px !important;
-=======
   border-radius: 0 6px 6px 0 !important;
 }
 .acf-input-wrap .acf-is-appended {
   border-radius: 6px 0 0 6px !important;
->>>>>>> update
 }
 .acf-input-wrap .acf-is-prepended.acf-is-appended {
   border-radius: 0 !important;
@@ -712,19 +629,11 @@ html[dir=rtl] input.acf-is-prepended.acf-is-appended {
   border-radius: 0 !important;
 }
 
-<<<<<<< HEAD
-/*---------------------------------------------------------------------------------------------
-*
-*  Color Picker
-*
-*---------------------------------------------------------------------------------------------*/
-=======
 /*-----------------------------------------------------------------------------
 *
 *  Color Picker
 *
 *-----------------------------------------------------------------------------*/
->>>>>>> update
 .acf-color-picker .wp-color-result {
   border-color: #7e8993;
 }
@@ -736,19 +645,11 @@ html[dir=rtl] input.acf-is-prepended.acf-is-appended {
   z-index: 1;
 }
 
-<<<<<<< HEAD
-/*---------------------------------------------------------------------------------------------
-*
-*  Url
-*
-*---------------------------------------------------------------------------------------------*/
-=======
 /*-----------------------------------------------------------------------------
 *
 *  Url
 *
 *-----------------------------------------------------------------------------*/
->>>>>>> update
 .acf-url i {
   position: absolute;
   top: 5px;
@@ -763,14 +664,6 @@ html[dir=rtl] input.acf-is-prepended.acf-is-appended {
   opacity: 1;
 }
 
-<<<<<<< HEAD
-/*---------------------------------------------------------------------------------------------
-*
-*  Select2 (v3)
-*
-*---------------------------------------------------------------------------------------------*/
-.select2-container.-acf {
-=======
 /*-----------------------------------------------------------------------------
 *
 *  Select2 (v3)
@@ -778,7 +671,6 @@ html[dir=rtl] input.acf-is-prepended.acf-is-appended {
 *-----------------------------------------------------------------------------*/
 .select2-container.-acf {
   z-index: 1001;
->>>>>>> update
   /* open */
   /* single open */
 }
@@ -800,11 +692,7 @@ html[dir=rtl] input.acf-is-prepended.acf-is-appended {
 .select2-container.-acf .select2-choices .select2-search-choice.ui-sortable-helper {
   background: #5897fb;
   border-color: #3f87fa;
-<<<<<<< HEAD
-  color: #fff;
-=======
   color: #fff !important;
->>>>>>> update
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
 }
 .select2-container.-acf .select2-choices .select2-search-choice.ui-sortable-helper a {
@@ -825,39 +713,23 @@ html[dir=rtl] input.acf-is-prepended.acf-is-appended {
   padding: 5px 5px 5px 7px;
 }
 .select2-container.-acf .select2-choice {
-<<<<<<< HEAD
-  border-color: #BBBBBB;
-}
-.select2-container.-acf .select2-choice .select2-arrow {
-  background: transparent;
-  border-left-color: #DFDFDF;
-=======
   border-color: #bbbbbb;
 }
 .select2-container.-acf .select2-choice .select2-arrow {
   background: transparent;
   border-left-color: #dfdfdf;
->>>>>>> update
   padding-left: 1px;
 }
 .select2-container.-acf .select2-choice .select2-result-description {
   display: none;
 }
 .select2-container.-acf.select2-container-active .select2-choices, .select2-container.-acf.select2-dropdown-open .select2-choices {
-<<<<<<< HEAD
-  border-color: #5B9DD9;
-=======
   border-color: #5b9dd9;
->>>>>>> update
   border-radius: 3px 3px 0 0;
 }
 .select2-container.-acf.select2-dropdown-open .select2-choice {
   background: #fff;
-<<<<<<< HEAD
-  border-color: #5B9DD9;
-=======
   border-color: #5b9dd9;
->>>>>>> update
 }
 
 /* rtl */
@@ -893,19 +765,11 @@ html[dir=rtl] .select2-container.-acf .select2-choice .select2-arrow {
   opacity: 0.75;
 }
 
-<<<<<<< HEAD
-/*---------------------------------------------------------------------------------------------
-*
-*  Select2 (v4)
-*
-*---------------------------------------------------------------------------------------------*/
-=======
 /*-----------------------------------------------------------------------------
 *
 *  Select2 (v4)
 *
 *-----------------------------------------------------------------------------*/
->>>>>>> update
 .select2-container.-acf li {
   margin-bottom: 0;
 }
@@ -944,15 +808,9 @@ html[dir=rtl] .select2-container.-acf .select2-choice .select2-arrow {
   white-space: normal;
 }
 .select2-container.-acf .select2-selection--multiple .select2-selection__choice.ui-sortable-helper {
-<<<<<<< HEAD
-  background: #5897fb;
-  border-color: #3f87fa;
-  color: #fff;
-=======
   background: #0783BE;
   border-color: #066998;
   color: #fff !important;
->>>>>>> update
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
 }
 .select2-container.-acf .select2-selection--multiple .select2-selection__choice.ui-sortable-helper span {
@@ -964,13 +822,8 @@ html[dir=rtl] .select2-container.-acf .select2-choice .select2-arrow {
   padding: 0;
 }
 .select2-container.-acf .select2-selection--multiple .select2-selection__choice.ui-sortable-placeholder {
-<<<<<<< HEAD
-  background-color: #f7f7f7;
-  border-color: #f7f7f7;
-=======
   background-color: #F2F4F7;
   border-color: #F2F4F7;
->>>>>>> update
   visibility: visible !important;
 }
 .select2-container.-acf .select2-selection--multiple .select2-search__field {
@@ -984,8 +837,6 @@ html[dir=rtl] .select2-container.-acf .select2-choice .select2-arrow {
   white-space: normal;
 }
 
-<<<<<<< HEAD
-=======
 .acf-admin-single-field-group .select2-dropdown {
   border-color: #6BB5D8 !important;
   margin-top: -5px;
@@ -1010,7 +861,6 @@ html[dir=rtl] .select2-container.-acf .select2-choice .select2-arrow {
   background-color: #0783BE !important;
 }
 
->>>>>>> update
 .select2-dropdown .select2-results__option {
   margin-bottom: 0;
 }
@@ -1023,19 +873,11 @@ html[dir=rtl] .select2-container.-acf .select2-choice .select2-arrow {
   min-height: 0;
 }
 
-<<<<<<< HEAD
-/*---------------------------------------------------------------------------------------------
-*
-*  Link
-*
-*---------------------------------------------------------------------------------------------*/
-=======
 /*-----------------------------------------------------------------------------
 *
 *  Link
 *
 *-----------------------------------------------------------------------------*/
->>>>>>> update
 .acf-link .link-wrap {
   display: none;
   border: #ccd0d4 solid 1px;
@@ -1070,16 +912,6 @@ html[dir=rtl] .select2-container.-acf .select2-choice .select2-arrow {
   z-index: 900001 !important;
 }
 
-<<<<<<< HEAD
-/*---------------------------------------------------------------------------------------------
-*
-*  Radio
-*
-*---------------------------------------------------------------------------------------------*/
-ul.acf-radio-list,
-ul.acf-checkbox-list {
-  background: transparent;
-=======
 /*-----------------------------------------------------------------------------
 *
 *  Radio
@@ -1089,21 +921,17 @@ ul.acf-radio-list,
 ul.acf-checkbox-list {
   background: transparent;
   border: 1px solid transparent;
->>>>>>> update
   position: relative;
   padding: 1px;
   margin: 0;
   /* hl */
   /* rtl */
 }
-<<<<<<< HEAD
-=======
 ul.acf-radio-list:focus-within,
 ul.acf-checkbox-list:focus-within {
   border: 1px solid #A5D2E7;
   border-radius: 6px;
 }
->>>>>>> update
 ul.acf-radio-list li,
 ul.acf-checkbox-list li {
   font-size: 13px;
@@ -1151,19 +979,11 @@ html[dir=rtl] ul.acf-checkbox-list input[type=radio] {
   margin-right: 0;
 }
 
-<<<<<<< HEAD
-/*---------------------------------------------------------------------------------------------
-*
-*  Button Group
-*
-*---------------------------------------------------------------------------------------------*/
-=======
 /*-----------------------------------------------------------------------------
 *
 *  Button Group
 *
 *-----------------------------------------------------------------------------*/
->>>>>>> update
 .acf-button-group {
   display: inline-block;
   /* default (horizontal) */
@@ -1246,13 +1066,6 @@ html[dir=rtl] .acf-button-group label:last-child {
   border-color: #007cba;
 }
 
-<<<<<<< HEAD
-/*---------------------------------------------------------------------------------------------
-*
-*  Checkbox
-*
-*---------------------------------------------------------------------------------------------*/
-=======
 .acf-admin-page .acf-button-group {
   display: flex;
   align-items: stretch;
@@ -1330,24 +1143,15 @@ html[dir=rtl] .acf-button-group label:last-child {
 *  Checkbox
 *
 *-----------------------------------------------------------------------------*/
->>>>>>> update
 .acf-checkbox-list .button {
   margin: 10px 0 0;
 }
 
-<<<<<<< HEAD
-/*---------------------------------------------------------------------------------------------
-*
-*  True / False
-*
-*---------------------------------------------------------------------------------------------*/
-=======
 /*-----------------------------------------------------------------------------
 *
 *  True / False
 *
 *-----------------------------------------------------------------------------*/
->>>>>>> update
 .acf-switch {
   display: inline-block;
   border-radius: 5px;
@@ -1450,8 +1254,6 @@ html[dir=rtl] .acf-button-group label:last-child {
   margin: 0;
 }
 
-<<<<<<< HEAD
-=======
 .acf-admin-single-field-group .acf-true-false {
   border: 1px solid transparent;
 }
@@ -1460,7 +1262,6 @@ html[dir=rtl] .acf-button-group label:last-child {
   border-radius: 120px;
 }
 
->>>>>>> update
 /* in media modal */
 .compat-item .acf-true-false .message {
   float: none;
@@ -1471,11 +1272,7 @@ html[dir=rtl] .acf-button-group label:last-child {
 /*--------------------------------------------------------------------------
 *
 *	Google Map
-<<<<<<< HEAD
-*	
-=======
 *
->>>>>>> update
 *-------------------------------------------------------------------------*/
 .acf-google-map {
   position: relative;
@@ -1575,11 +1372,7 @@ html[dir=rtl] .pac-container .pac-item {
 /*--------------------------------------------------------------------------
 *
 *	Relationship
-<<<<<<< HEAD
-*	
-=======
 *
->>>>>>> update
 *-------------------------------------------------------------------------*/
 .acf-relationship {
   background: #fff;
@@ -1608,14 +1401,6 @@ html[dir=rtl] .pac-container .pac-item {
 .acf-relationship .filters .filter:first-child {
   padding-left: 7px;
 }
-<<<<<<< HEAD
-.acf-relationship .filters .filter input, .acf-relationship .filters .filter select {
-  margin: 0;
-  float: none;
-  /* potential fix for media popup? */
-}
-.acf-relationship .filters .filter input:focus, .acf-relationship .filters .filter input:active, .acf-relationship .filters .filter select:focus, .acf-relationship .filters .filter select:active {
-=======
 .acf-relationship .filters .filter input,
 .acf-relationship .filters .filter select {
   margin: 0;
@@ -1624,7 +1409,6 @@ html[dir=rtl] .pac-container .pac-item {
 .acf-relationship .filters .filter input:focus, .acf-relationship .filters .filter input:active,
 .acf-relationship .filters .filter select:focus,
 .acf-relationship .filters .filter select:active {
->>>>>>> update
   outline: none;
   box-shadow: none;
 }
@@ -1690,16 +1474,6 @@ html[dir=rtl] .pac-container .pac-item {
   max-height: 20px;
   margin-top: 1px;
 }
-<<<<<<< HEAD
-.acf-relationship .list .acf-rel-item:hover {
-  background: #3875D7;
-  color: #fff;
-}
-.acf-relationship .list .acf-rel-item:hover .thumbnail {
-  background: #a2bfec;
-}
-.acf-relationship .list .acf-rel-item:hover .thumbnail.-icon {
-=======
 .acf-relationship .list .acf-rel-item:hover, .acf-relationship .list .acf-rel-item.relationship-hover {
   background: #3875d7;
   color: #fff;
@@ -1708,7 +1482,6 @@ html[dir=rtl] .pac-container .pac-item {
   background: #a2bfec;
 }
 .acf-relationship .list .acf-rel-item:hover .thumbnail.-icon, .acf-relationship .list .acf-rel-item.relationship-hover .thumbnail.-icon {
->>>>>>> update
   background: #fff;
 }
 .acf-relationship .list .acf-rel-item.disabled {
@@ -1750,17 +1523,10 @@ html[dir=rtl] .pac-container .pac-item {
   float: left;
 }
 .acf-relationship .selection .choices {
-<<<<<<< HEAD
-  background: #F9F9F9;
-}
-.acf-relationship .selection .choices .list {
-  border-right: #DFDFDF solid 1px;
-=======
   background: #f9f9f9;
 }
 .acf-relationship .selection .choices .list {
   border-right: #dfdfdf solid 1px;
->>>>>>> update
 }
 .acf-relationship .selection .values .acf-icon {
   position: absolute;
@@ -1773,11 +1539,7 @@ html[dir=rtl] .acf-relationship .selection .values .acf-icon {
   right: auto;
   left: 7px;
 }
-<<<<<<< HEAD
-.acf-relationship .selection .values .acf-rel-item:hover .acf-icon {
-=======
 .acf-relationship .selection .values .acf-rel-item:hover .acf-icon, .acf-relationship .selection .values .acf-rel-item.relationship-hover .acf-icon {
->>>>>>> update
   display: block;
 }
 .acf-relationship .selection .values .acf-rel-item {
@@ -1798,11 +1560,7 @@ html[dir=rtl] .acf-relationship .selection .values .acf-icon {
 /*--------------------------------------------------------------------------
 *
 *	WYSIWYG
-<<<<<<< HEAD
-*	
-=======
 *
->>>>>>> update
 *-------------------------------------------------------------------------*/
 .acf-editor-wrap.delay .acf-editor-toolbar {
   content: "";
@@ -1836,19 +1594,11 @@ html[dir=rtl] .acf-relationship .selection .values .acf-icon {
   z-index: 900000 !important;
 }
 
-<<<<<<< HEAD
-/*---------------------------------------------------------------------------------------------
-*
-*	Tab
-*
-*---------------------------------------------------------------------------------------------*/
-=======
 /*-----------------------------------------------------------------------------
 *
 *	Tab
 *
 *-----------------------------------------------------------------------------*/
->>>>>>> update
 .acf-field-tab {
   display: none !important;
 }
@@ -1883,11 +1633,7 @@ html[dir=rtl] .acf-relationship .selection .values .acf-icon {
   transition: none;
 }
 .acf-tab-group li a:hover {
-<<<<<<< HEAD
-  background: #FFF;
-=======
   background: #fff;
->>>>>>> update
 }
 .acf-tab-group li a:focus {
   outline: none;
@@ -1900,11 +1646,7 @@ html[dir=rtl] .acf-tab-group li {
   margin: 0 0 0 0.5em;
 }
 .acf-tab-group li.active a {
-<<<<<<< HEAD
-  background: #F1F1F1;
-=======
   background: #f1f1f1;
->>>>>>> update
   color: #000;
   padding-bottom: 6px;
   margin-bottom: -1px;
@@ -1913,11 +1655,7 @@ html[dir=rtl] .acf-tab-group li {
 }
 
 .acf-fields > .acf-tab-wrap {
-<<<<<<< HEAD
-  background: #F9F9F9;
-=======
   background: #f9f9f9;
->>>>>>> update
 }
 .acf-fields > .acf-tab-wrap .acf-tab-group {
   position: relative;
@@ -1926,28 +1664,9 @@ html[dir=rtl] .acf-tab-group li {
   z-index: 2;
   margin-bottom: -1px;
 }
-<<<<<<< HEAD
-.acf-fields > .acf-tab-wrap .acf-tab-group li a {
-  background: #f1f1f1;
-  border-color: #ccd0d4;
-}
-.acf-fields > .acf-tab-wrap .acf-tab-group li a:hover {
-  background: #FFF;
-}
-.acf-fields > .acf-tab-wrap .acf-tab-group li.active a {
-  background: #FFFFFF;
-}
 .acf-admin-3-8 .acf-fields > .acf-tab-wrap .acf-tab-group {
   border-color: #dfdfdf;
 }
-.acf-fields > .acf-tab-wrap:first-child .acf-tab-group {
-  border-top: none;
-}
-=======
-.acf-admin-3-8 .acf-fields > .acf-tab-wrap .acf-tab-group {
-  border-color: #dfdfdf;
-}
->>>>>>> update
 
 .acf-fields.-left > .acf-tab-wrap .acf-tab-group {
   padding-left: 20%;
@@ -1975,12 +1694,7 @@ html[dir=rtl] .acf-fields.-left > .acf-tab-wrap .acf-tab-group {
   left: 0;
   width: 20%;
   border: 0 none;
-<<<<<<< HEAD
-  padding: 0 !important;
-  /* important overrides 'left aligned labels' */
-=======
   padding: 0 !important; /* important overrides 'left aligned labels' */
->>>>>>> update
   margin: 1px 0 0;
 }
 .acf-tab-wrap.-left .acf-tab-group li {
@@ -2003,11 +1717,7 @@ html[dir=rtl] .acf-fields.-left > .acf-tab-wrap .acf-tab-group {
   color: #00a0d2;
 }
 .acf-tab-wrap.-left .acf-tab-group li.active a {
-<<<<<<< HEAD
-  border-color: #DFDFDF;
-=======
   border-color: #dfdfdf;
->>>>>>> update
   color: #000;
   margin-right: -1px;
   background: #fff;
@@ -2026,13 +1736,8 @@ html[dir=rtl] .acf-tab-wrap.-left .acf-tab-group li.active a {
   position: relative;
   z-index: 1;
   height: 10px;
-<<<<<<< HEAD
-  border-top: #DFDFDF solid 1px;
-  border-bottom: #DFDFDF solid 1px;
-=======
   border-top: #dfdfdf solid 1px;
   border-bottom: #dfdfdf solid 1px;
->>>>>>> update
   margin-bottom: -1px;
 }
 .acf-tab-wrap.-left:first-child .acf-tab-group li:first-child a {
@@ -2054,24 +1759,15 @@ html[dir=rtl] .acf-tab-wrap.-left .acf-tab-group li.active a {
   left: 0;
   width: 20%;
   bottom: 0;
-<<<<<<< HEAD
-  border-right: #DFDFDF solid 1px;
-  background: #F9F9F9;
-=======
   border-right: #dfdfdf solid 1px;
   background: #f9f9f9;
->>>>>>> update
   z-index: 1;
 }
 html[dir=rtl] .acf-fields.-sidebar {
   padding: 0 20% 0 0 !important;
 }
 html[dir=rtl] .acf-fields.-sidebar:before {
-<<<<<<< HEAD
-  border-left: #DFDFDF solid 1px;
-=======
   border-left: #dfdfdf solid 1px;
->>>>>>> update
   border-right-width: 0;
   left: auto;
   right: 0;
@@ -2084,11 +1780,7 @@ html[dir=rtl] .acf-fields.-sidebar.-left {
   padding: 0 180px 0 0 !important;
 }
 .acf-fields.-sidebar.-left:before {
-<<<<<<< HEAD
-  background: #F1F1F1;
-=======
   background: #f1f1f1;
->>>>>>> update
   border-color: #dfdfdf;
   width: 180px;
 }
@@ -2099,11 +1791,7 @@ html[dir=rtl] .acf-fields.-sidebar.-left {
   border-color: #e4e4e4;
 }
 .acf-fields.-sidebar.-left > .acf-tab-wrap.-left .acf-tab-group li.active a {
-<<<<<<< HEAD
-  background: #F9F9F9;
-=======
   background: #f9f9f9;
->>>>>>> update
 }
 .acf-fields.-sidebar > .acf-field-tab + .acf-field {
   border-top: none;
@@ -2196,11 +1884,7 @@ html[dir=rtl] .acf-fields.-sidebar.-left {
 }
 
 .acf-gallery-side .acf-tab-group li.active a {
-<<<<<<< HEAD
-  background: #F9F9F9 !important;
-=======
   background: #f9f9f9 !important;
->>>>>>> update
 }
 
 /* withing widget */
@@ -2209,11 +1893,7 @@ html[dir=rtl] .acf-fields.-sidebar.-left {
 }
 
 .widget .acf-tab-group li a {
-<<<<<<< HEAD
-  background: #F1F1F1;
-=======
   background: #f1f1f1;
->>>>>>> update
 }
 
 .widget .acf-tab-group li.active a {
@@ -2223,11 +1903,7 @@ html[dir=rtl] .acf-fields.-sidebar.-left {
 /* media popup (edit image) */
 .media-modal.acf-expanded .compat-attachment-fields > tbody > tr.acf-tab-wrap .acf-tab-group {
   padding-left: 23%;
-<<<<<<< HEAD
-  border-bottom-color: #DDDDDD;
-=======
   border-bottom-color: #dddddd;
->>>>>>> update
 }
 
 /* table */
@@ -2273,11 +1949,7 @@ html[dir=rtl] .form-table > tbody > tr.acf-tab-wrap .acf-tab-group {
 .acf-oembed .canvas {
   position: relative;
   min-height: 250px;
-<<<<<<< HEAD
-  background: #F9F9F9;
-=======
   background: #f9f9f9;
->>>>>>> update
 }
 .acf-oembed .canvas .canvas-media {
   position: relative;
@@ -2403,11 +2075,7 @@ html[dir=rtl] .acf-image-uploader .image-wrap {
   left: 0;
   bottom: 0;
   padding: 10px;
-<<<<<<< HEAD
-  background: #F1F1F1;
-=======
   background: #f1f1f1;
->>>>>>> update
   border-right: #d5d9dd solid 1px;
 }
 .acf-file-uploader .file-icon img {
@@ -2435,11 +2103,7 @@ html[dir=rtl] .acf-image-uploader .image-wrap {
 html[dir=rtl] .acf-file-uploader .file-icon {
   left: auto;
   right: 0;
-<<<<<<< HEAD
-  border-left: #E5E5E5 solid 1px;
-=======
   border-left: #e5e5e5 solid 1px;
->>>>>>> update
   border-right: none;
 }
 html[dir=rtl] .acf-file-uploader .file-info {
@@ -2447,19 +2111,11 @@ html[dir=rtl] .acf-file-uploader .file-info {
   margin-left: 0;
 }
 
-<<<<<<< HEAD
-/*---------------------------------------------------------------------------------------------
-*
-*	Date Picker
-*
-*---------------------------------------------------------------------------------------------*/
-=======
 /*-----------------------------------------------------------------------------
 *
 *	Date Picker
 *
 *-----------------------------------------------------------------------------*/
->>>>>>> update
 .acf-ui-datepicker .ui-datepicker {
   z-index: 900000 !important;
 }
@@ -2483,19 +2139,11 @@ html[dir=rtl] .acf-file-uploader .file-info {
   color: #ffffff !important;
 }
 
-<<<<<<< HEAD
-/*---------------------------------------------------------------------------------------------
-*
-*	Separator field
-*
-*---------------------------------------------------------------------------------------------*/
-=======
 /*-----------------------------------------------------------------------------
 *
 *	Separator field
 *
 *-----------------------------------------------------------------------------*/
->>>>>>> update
 .acf-field-separator {
   /* fields */
 }
@@ -2516,19 +2164,11 @@ html[dir=rtl] .acf-file-uploader .file-info {
   z-index: 2;
 }
 
-<<<<<<< HEAD
-/*---------------------------------------------------------------------------------------------
-*
-*	Taxonomy
-*
-*---------------------------------------------------------------------------------------------*/
-=======
 /*-----------------------------------------------------------------------------
 *
 *	Taxonomy
 *
 *-----------------------------------------------------------------------------*/
->>>>>>> update
 .acf-taxonomy-field {
   position: relative;
   /* hover */
@@ -2555,19 +2195,11 @@ html[dir=rtl] .acf-file-uploader .file-info {
   margin: -9px;
 }
 
-<<<<<<< HEAD
-/*---------------------------------------------------------------------------------------------
-*
-*	Range
-*
-*---------------------------------------------------------------------------------------------*/
-=======
 /*-----------------------------------------------------------------------------
 *
 *	Range
 *
 *-----------------------------------------------------------------------------*/
->>>>>>> update
 .acf-range-wrap {
   /* rtl */
 }
@@ -2593,12 +2225,8 @@ html[dir=rtl] .acf-file-uploader .file-info {
 }
 .acf-range-wrap input[type=number] {
   display: inline-block;
-<<<<<<< HEAD
-  min-width: 3em;
-=======
   min-width: 5em;
   padding-right: 4px;
->>>>>>> update
   margin-left: 10px;
   vertical-align: middle;
 }
@@ -2613,19 +2241,11 @@ html[dir=rtl] .acf-range-wrap .acf-prepend {
   margin: 0 0 0 7px;
 }
 
-<<<<<<< HEAD
-/*---------------------------------------------------------------------------------------------
-*
-*  acf-accordion
-*
-*---------------------------------------------------------------------------------------------*/
-=======
 /*-----------------------------------------------------------------------------
 *
 *  acf-accordion
 *
 *-----------------------------------------------------------------------------*/
->>>>>>> update
 .acf-accordion {
   margin: -1px 0;
   padding: 0;
@@ -2796,19 +2416,11 @@ tr.acf-accordion + tr.acf-accordion {
   padding-bottom: 5px;
 }
 
-<<<<<<< HEAD
-/*---------------------------------------------------------------------------------------------
-*
-*	Block Editor
-*
-*---------------------------------------------------------------------------------------------*/
-=======
 /*-----------------------------------------------------------------------------
 *
 *	Block Editor
 *
 *-----------------------------------------------------------------------------*/
->>>>>>> update
 .block-editor .edit-post-sidebar .acf-postbox > .postbox-header,
 .block-editor .edit-post-sidebar .acf-postbox > .hndle {
   border-bottom-width: 0 !important;
@@ -2849,22 +2461,16 @@ tr.acf-accordion + tr.acf-accordion {
   padding: 15px;
 }
 .block-editor .edit-post-sidebar .acf-fields > .acf-field.acf-accordion .acf-accordion-title label {
-<<<<<<< HEAD
-  font-weight: bold;
-=======
   font-weight: 500;
   color: rgb(30, 30, 30);
 }
 .block-editor .edit-post-sidebar .acf-fields > .acf-field.acf-accordion .acf-accordion-title svg.acf-accordion-icon {
   right: 16px;
->>>>>>> update
 }
 .block-editor .edit-post-sidebar .acf-fields > .acf-field.acf-accordion .acf-accordion-content > .acf-fields {
   border-top-width: 0;
 }
 
-<<<<<<< HEAD
-=======
 /*-----------------------------------------------------------------------------
 *
 *  Prefix field label & prefix field names
@@ -2909,7 +2515,6 @@ tr.acf-accordion + tr.acf-accordion {
   background: #fff;
 }
 
->>>>>>> update
 /*--------------------------------------------------------------------------------------------
 *
 *	User
@@ -3281,11 +2886,7 @@ p.submit .acf-spinner {
     /* field */
   }
   .media-modal .setting span,
-<<<<<<< HEAD
-.media-modal .compat-attachment-fields > tbody > .acf-field > .acf-label {
-=======
   .media-modal .compat-attachment-fields > tbody > .acf-field > .acf-label {
->>>>>>> update
     width: 98%;
     float: none;
     text-align: left;
@@ -3293,13 +2894,8 @@ p.submit .acf-spinner {
     padding: 0;
   }
   .media-modal .setting input,
-<<<<<<< HEAD
-.media-modal .setting textarea,
-.media-modal .compat-attachment-fields > tbody > .acf-field > .acf-input {
-=======
   .media-modal .setting textarea,
   .media-modal .compat-attachment-fields > tbody > .acf-field > .acf-input {
->>>>>>> update
     float: none;
     height: auto;
     max-width: none;

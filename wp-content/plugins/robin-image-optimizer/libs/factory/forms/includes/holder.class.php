@@ -14,32 +14,20 @@
 		exit;
 	}
 
-<<<<<<< HEAD
-	if( !class_exists('Wbcr_FactoryForms447_Holder') ) {
-=======
 	if( !class_exists('Wbcr_FactoryForms466_Holder') ) {
->>>>>>> update
 
 		/**
 		 * The base class for control holders.
 		 *
 		 * @since 1.0.0
 		 */
-<<<<<<< HEAD
-		abstract class Wbcr_FactoryForms447_Holder extends Wbcr_FactoryForms447_FormElement {
-=======
 		abstract class Wbcr_FactoryForms466_Holder extends Wbcr_FactoryForms466_FormElement {
->>>>>>> update
 
 			/**
 			 * Holder Elements.
 			 *
 			 * @since 1.0.0
-<<<<<<< HEAD
-			 * @var Wbcr_FactoryForms447_Control[]
-=======
 			 * @var Wbcr_FactoryForms466_Control[]
->>>>>>> update
 			 */
 			protected $elements = array();
 
@@ -56,11 +44,7 @@
 			 *
 			 * @since 1.0.0
 			 * @param mixed[] $options A holder options.
-<<<<<<< HEAD
-			 * @param Wbcr_FactoryForms447_Form $form A parent form.
-=======
 			 * @param Wbcr_FactoryForms466_Form $form A parent form.
->>>>>>> update
 			 */
 			public function __construct($options, $form)
 			{
@@ -72,11 +56,7 @@
 			 * Returns holder elements.
 			 *
 			 * @since 1.0.0
-<<<<<<< HEAD
-			 * @return Wbcr_FactoryForms447_Control[].
-=======
 			 * @return Wbcr_FactoryForms466_Control[].
->>>>>>> update
 			 */
 			public function getElements()
 			{
@@ -104,11 +84,7 @@
 						$is_first_item = false;
 					}
 
-<<<<<<< HEAD
-					do_action('wbcr_factory_450_form_before_element_' . $element->getOption('name'));
-=======
 					do_action('wbcr_factory_469_form_before_element_' . $element->getOption('name'));
->>>>>>> update
 
 					// if a current item is a control holder
 					if( $element->is_holder ) {

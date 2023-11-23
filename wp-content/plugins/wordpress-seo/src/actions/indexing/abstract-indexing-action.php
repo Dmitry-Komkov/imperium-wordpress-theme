@@ -91,8 +91,6 @@ abstract class Abstract_Indexing_Action implements Indexation_Action_Interface, 
 
 		\set_transient( static::UNINDEXED_COUNT_TRANSIENT, $count, \DAY_IN_SECONDS );
 
-<<<<<<< HEAD
-=======
 		/**
 		 * Action: 'wpseo_indexables_unindexed_calculated' - sets an option to timestamp when there are no unindexed indexables left.
 		 *
@@ -100,7 +98,6 @@ abstract class Abstract_Indexing_Action implements Indexation_Action_Interface, 
 		 */
 		\do_action( 'wpseo_indexables_unindexed_calculated', static::UNINDEXED_COUNT_TRANSIENT, $count );
 
->>>>>>> update
 		return (int) $count;
 	}
 }

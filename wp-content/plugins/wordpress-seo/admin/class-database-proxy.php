@@ -73,13 +73,8 @@ class WPSEO_Database_Proxy {
 	/**
 	 * Inserts data into the database.
 	 *
-<<<<<<< HEAD
-	 * @param array $data   Data to insert.
-	 * @param null  $format Formats for the data.
-=======
 	 * @param array             $data   Data to insert.
 	 * @param array|string|null $format Formats for the data.
->>>>>>> update
 	 *
 	 * @return false|int Total amount of inserted rows or false on error.
 	 */
@@ -96,17 +91,10 @@ class WPSEO_Database_Proxy {
 	/**
 	 * Updates data in the database.
 	 *
-<<<<<<< HEAD
-	 * @param array $data         Data to update on the table.
-	 * @param array $where        Where condition as key => value array.
-	 * @param null  $format       Optional. Data prepare format.
-	 * @param null  $where_format Optional. Where prepare format.
-=======
 	 * @param array             $data         Data to update on the table.
 	 * @param array             $where        Where condition as key => value array.
 	 * @param array|string|null $format       Optional. Data prepare format.
 	 * @param array|string|null $where_format Optional. Where prepare format.
->>>>>>> update
 	 *
 	 * @return false|int False when the update request is invalid, int on number of rows changed.
 	 */
@@ -125,17 +113,10 @@ class WPSEO_Database_Proxy {
 	 *
 	 * Performs an insert into and if key is duplicate it will update the existing record.
 	 *
-<<<<<<< HEAD
-	 * @param array      $data         Data to update on the table.
-	 * @param array|null $where        Unused. Where condition as key => value array.
-	 * @param null       $format       Optional. Data prepare format.
-	 * @param null       $where_format Deprecated. Where prepare format.
-=======
 	 * @param array             $data         Data to update on the table.
 	 * @param array|null        $where        Unused. Where condition as key => value array.
 	 * @param array|string|null $format       Optional. Data prepare format.
 	 * @param array|string|null $where_format Optional. Where prepare format.
->>>>>>> update
 	 *
 	 * @return false|int False when the upsert request is invalid, int on number of rows changed.
 	 */
@@ -177,13 +158,8 @@ class WPSEO_Database_Proxy {
 	/**
 	 * Deletes a record from the database.
 	 *
-<<<<<<< HEAD
-	 * @param array      $where  Where clauses for the query.
-	 * @param array|null $format Formats for the data.
-=======
 	 * @param array             $where  Where clauses for the query.
 	 * @param array|string|null $format Formats for the data.
->>>>>>> update
 	 *
 	 * @return false|int
 	 */

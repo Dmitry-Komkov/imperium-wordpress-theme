@@ -32,15 +32,11 @@ function wpseo_set_option() {
 
 	check_ajax_referer( 'wpseo-setoption' );
 
-<<<<<<< HEAD
-	$option = sanitize_text_field( filter_input( INPUT_POST, 'option' ) );
-=======
 	if ( ! isset( $_POST['option'] ) || ! is_string( $_POST['option'] ) ) {
 		die( '-1' );
 	}
 
 	$option = sanitize_text_field( wp_unslash( $_POST['option'] ) );
->>>>>>> update
 	if ( $option !== 'page_comments' ) {
 		die( '-1' );
 	}
@@ -66,15 +62,11 @@ function wpseo_set_ignore() {
 
 	check_ajax_referer( 'wpseo-ignore' );
 
-<<<<<<< HEAD
-	$ignore_key = sanitize_text_field( filter_input( INPUT_POST, 'option' ) );
-=======
 	if ( ! isset( $_POST['option'] ) || ! is_string( $_POST['option'] ) ) {
 		die( '-1' );
 	}
 
 	$ignore_key = sanitize_text_field( wp_unslash( $_POST['option'] ) );
->>>>>>> update
 	WPSEO_Options::set( 'ignore_' . $ignore_key, true );
 
 	die( '1' );
@@ -108,11 +100,6 @@ add_action( 'wp_ajax_wpseo_save_metadesc', 'wpseo_save_description' );
 function wpseo_save_what( $what ) {
 	check_ajax_referer( 'wpseo-bulk-editor' );
 
-<<<<<<< HEAD
-	$new      = filter_input( INPUT_POST, 'new_value' );
-	$post_id  = intval( filter_input( INPUT_POST, 'wpseo_post_id' ) );
-	$original = filter_input( INPUT_POST, 'existing_value' );
-=======
 	if ( ! isset( $_POST['new_value'], $_POST['wpseo_post_id'], $_POST['existing_value'] ) || ! is_string( $_POST['new_value'] ) || ! is_string( $_POST['existing_value'] ) ) {
 		die( '-1' );
 	}
@@ -125,7 +112,6 @@ function wpseo_save_what( $what ) {
 	if ( $post_id === 0 ) {
 		die( '-1' );
 	}
->>>>>>> update
 
 	$results = wpseo_upsert_new( $what, $post_id, $new, $original );
 
@@ -142,11 +128,7 @@ function wpseo_save_what( $what ) {
  * @param string $meta_key        Meta key string.
  * @param string $return_key      Return key string to use in results.
  *
-<<<<<<< HEAD
- * @return string
-=======
  * @return array
->>>>>>> update
  */
 function wpseo_upsert_meta( $post_id, $new_meta_value, $orig_meta_value, $meta_key, $return_key ) {
 
@@ -281,25 +263,6 @@ function wpseo_upsert_new( $what, $post_id, $new_value, $original ) {
 }
 
 /**
-<<<<<<< HEAD
- * Retrieves the keyword for the keyword doubles.
- */
-function ajax_get_keyword_usage() {
-	$post_id = filter_input( INPUT_POST, 'post_id' );
-	$keyword = filter_input( INPUT_POST, 'keyword' );
-
-	if ( ! current_user_can( 'edit_post', $post_id ) ) {
-		die( '-1' );
-	}
-
-	wp_die(
-		// phpcs:ignore WordPress.Security.EscapeOutput -- Reason: WPSEO_Utils::format_json_encode is safe.
-		WPSEO_Utils::format_json_encode( WPSEO_Meta::keyword_usage( $keyword, $post_id ) )
-	);
-}
-
-add_action( 'wp_ajax_get_focus_keyword_usage', 'ajax_get_keyword_usage' );
-=======
  * Retrieves the post ids where the keyword is used before as well as the types of those posts.
  */
 function ajax_get_keyword_usage_and_post_types() {
@@ -340,17 +303,11 @@ function ajax_get_keyword_usage_and_post_types() {
 
 add_action( 'wp_ajax_get_focus_keyword_usage_and_post_types', 'ajax_get_keyword_usage_and_post_types' );
 
->>>>>>> update
 
 /**
  * Retrieves the keyword for the keyword doubles of the termpages.
  */
 function ajax_get_term_keyword_usage() {
-<<<<<<< HEAD
-	$post_id       = filter_input( INPUT_POST, 'post_id' );
-	$keyword       = filter_input( INPUT_POST, 'keyword' );
-	$taxonomy_name = filter_input( INPUT_POST, 'taxonomy' );
-=======
 	check_ajax_referer( 'wpseo-keyword-usage', 'nonce' );
 
 	if ( ! isset( $_POST['post_id'], $_POST['keyword'], $_POST['taxonomy'] ) || ! is_string( $_POST['keyword'] ) || ! is_string( $_POST['taxonomy'] ) ) {
@@ -366,7 +323,6 @@ function ajax_get_term_keyword_usage() {
 
 	$keyword       = sanitize_text_field( wp_unslash( $_POST['keyword'] ) );
 	$taxonomy_name = sanitize_text_field( wp_unslash( $_POST['taxonomy'] ) );
->>>>>>> update
 
 	$taxonomy = get_taxonomy( $taxonomy_name );
 
@@ -380,11 +336,7 @@ function ajax_get_term_keyword_usage() {
 
 	$usage = WPSEO_Taxonomy_Meta::get_keyword_usage( $keyword, $post_id, $taxonomy_name );
 
-<<<<<<< HEAD
-	// Normalize the result so it it the same as the post keyword usage AJAX request.
-=======
 	// Normalize the result so it is the same as the post keyword usage AJAX request.
->>>>>>> update
 	$usage = $usage[ $keyword ];
 
 	wp_die(
@@ -417,20 +369,6 @@ new WPSEO_Taxonomy_Columns();
 /* ********************* DEPRECATED FUNCTIONS ********************* */
 
 /**
-<<<<<<< HEAD
- * Hides the default tagline notice for a specific user.
- *
- * @deprecated 13.2
- * @codeCoverageIgnore
- */
-function wpseo_dismiss_tagline_notice() {
-	if ( ! current_user_can( 'manage_options' ) ) {
-		die( '-1' );
-	}
-
-	_deprecated_function( __FUNCTION__, 'WPSEO 13.2', 'This method is deprecated.' );
-	wpseo_ajax_json_echo_die( '' );
-=======
  * Retrieves the keyword for the keyword doubles.
  */
 function ajax_get_keyword_usage() {
@@ -454,5 +392,4 @@ function ajax_get_keyword_usage() {
 		// phpcs:ignore WordPress.Security.EscapeOutput -- Reason: WPSEO_Utils::format_json_encode is safe.
 		WPSEO_Utils::format_json_encode( WPSEO_Meta::keyword_usage( $keyword, $post_id ) )
 	);
->>>>>>> update
 }

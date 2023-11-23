@@ -1,10 +1,6 @@
 <?php
 
-<<<<<<< HEAD
-namespace WBCR\Factory_Freemius_138\Entities;
-=======
 namespace WBCR\Factory_Freemius_157\Entities;
->>>>>>> update
 
 use stdClass;
 

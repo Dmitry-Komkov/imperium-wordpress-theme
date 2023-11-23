@@ -40,14 +40,6 @@ class Wincher implements Integration_Interface {
 		\add_filter( 'wpseo_integration_toggles', [ $this, 'add_integration_toggle' ] );
 
 		/**
-<<<<<<< HEAD
-		 * Called in dashboard/integrations.php to put additional content after the toggle.
-		 */
-		\add_action( 'Yoast\WP\SEO\admin_integration_after', [ $this, 'after_integration_toggle' ] );
-
-		/**
-=======
->>>>>>> update
 		 * Add extra text after the network integration toggle if the toggle is disabled.
 		 */
 		\add_action( 'Yoast\WP\SEO\admin_network_integration_after', [ $this, 'after_network_integration_toggle' ] );
@@ -91,15 +83,6 @@ class Wincher implements Integration_Interface {
 	/**
 	 * Adds the disabled note when the integration toggle is disabled.
 	 *
-<<<<<<< HEAD
-	 * @param Yoast_Feature_Toggle $integration The integration toggle class.
-	 */
-	public function after_integration_toggle( $integration ) {
-		if ( $integration->setting === 'wincher_integration_active' ) {
-
-			require \WPSEO_PATH . 'admin/views/tabs/metas/paper-content/integrations/wincher.php';
-
-=======
 	 * @deprecated 20.3
 	 * @codeCoverageIgnore
 	 *
@@ -108,7 +91,6 @@ class Wincher implements Integration_Interface {
 	public function after_integration_toggle( $integration ) {
 		\_deprecated_function( __METHOD__, 'Yoast SEO 20.3' );
 		if ( $integration->setting === 'wincher_integration_active' ) {
->>>>>>> update
 			if ( \is_multisite() ) {
 				$this->get_disabled_note();
 			}

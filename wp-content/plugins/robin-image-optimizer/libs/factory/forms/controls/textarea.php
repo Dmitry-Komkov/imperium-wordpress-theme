@@ -20,15 +20,9 @@
 		exit;
 	}
 
-<<<<<<< HEAD
-	if( !class_exists('Wbcr_FactoryForms447_TextareaControl') ) {
-
-		class Wbcr_FactoryForms447_TextareaControl extends Wbcr_FactoryForms447_Control {
-=======
 	if( !class_exists('Wbcr_FactoryForms466_TextareaControl') ) {
 
 		class Wbcr_FactoryForms466_TextareaControl extends Wbcr_FactoryForms466_Control {
->>>>>>> update
 
 			public $type = 'textarea';
 

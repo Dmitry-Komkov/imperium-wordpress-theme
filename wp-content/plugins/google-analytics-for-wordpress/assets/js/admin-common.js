@@ -23,8 +23,6 @@ jQuery(document).ready(function ($) {
     }
 
   });
-<<<<<<< HEAD
-=======
 
   $('div.wp-menu-name > .monsterinsights-menu-notification-indicator').click(function (event) {
     event.preventDefault();
@@ -32,16 +30,10 @@ jQuery(document).ready(function ($) {
 
     location.href = monsterinsights.reports_url + '&open=monsterinsights_notification_sidebar';
   });
->>>>>>> update
 });
 
 var submenu_item = document.querySelector('.monsterinsights-upgrade-submenu');
 if (null !== submenu_item) {
-<<<<<<< HEAD
-  var li = submenu_item.parentNode.parentNode;
-  if (li) {
-    li.classList.add('monsterinsights-submenu-highlight');
-=======
   var anchorTag = submenu_item.parentNode;
 
   if ( anchorTag ) {
@@ -64,6 +56,5 @@ if (null !== automated_submenu_item) {
     anchorTag.setAttribute("target", "_blank");
     anchorTag.setAttribute("rel", "noopener");
     anchorTag.setAttribute("style", "color:#1da867");
->>>>>>> update
   }
 }

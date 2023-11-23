@@ -64,11 +64,7 @@ class Comment_Link_Fixer implements Integration_Interface {
 		}
 
 		// When users view a reply to a comment, this URL parameter is set. These should never be indexed separately.
-<<<<<<< HEAD
-		if ( $this->has_replytocom_parameter() ) {
-=======
 		if ( $this->get_replytocom_parameter() !== null ) {
->>>>>>> update
 			\add_filter( 'wpseo_robots_array', [ $this->robots, 'set_robots_no_index' ] );
 		}
 	}
@@ -78,12 +74,6 @@ class Comment_Link_Fixer implements Integration_Interface {
 	 *
 	 * @codeCoverageIgnore Wraps the filter input.
 	 *
-<<<<<<< HEAD
-	 * @return string The value of replytocom.
-	 */
-	protected function has_replytocom_parameter() {
-		return \filter_input( \INPUT_GET, 'replytocom' );
-=======
 	 * @return string|null The value of replytocom or null if it does not exist.
 	 */
 	protected function get_replytocom_parameter() {
@@ -93,7 +83,6 @@ class Comment_Link_Fixer implements Integration_Interface {
 			return \sanitize_text_field( \wp_unslash( $_GET['replytocom'] ) );
 		}
 		return null;
->>>>>>> update
 	}
 
 	/**

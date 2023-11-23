@@ -37,11 +37,7 @@ class WPSEO_Post_Type_Sitemap_Provider implements WPSEO_Sitemap_Provider {
 	 * Set up object properties for data reuse.
 	 */
 	public function __construct() {
-<<<<<<< HEAD
-		add_filter( 'save_post', [ $this, 'save_post' ] );
-=======
 		add_action( 'save_post', [ $this, 'save_post' ] );
->>>>>>> update
 
 		/**
 		 * Filter - Allows excluding images from the XML sitemap.
@@ -98,10 +94,6 @@ class WPSEO_Post_Type_Sitemap_Provider implements WPSEO_Sitemap_Provider {
 	 */
 	public function get_index_links( $max_entries ) {
 		global $wpdb;
-<<<<<<< HEAD
-
-=======
->>>>>>> update
 		$post_types          = WPSEO_Post_Type::get_accessible_post_types();
 		$post_types          = array_filter( $post_types, [ $this, 'is_valid_post_type' ] );
 		$last_modified_times = WPSEO_Sitemaps::get_last_modified_gmt( $post_types, true );
@@ -111,13 +103,10 @@ class WPSEO_Post_Type_Sitemap_Provider implements WPSEO_Sitemap_Provider {
 
 			$total_count = $this->get_post_type_count( $post_type );
 
-<<<<<<< HEAD
-=======
 			if ( $total_count === 0 ) {
 				continue;
 			}
 
->>>>>>> update
 			$max_pages = 1;
 			if ( $total_count > $max_entries ) {
 				$max_pages = (int) ceil( $total_count / $max_entries );
@@ -128,9 +117,6 @@ class WPSEO_Post_Type_Sitemap_Provider implements WPSEO_Sitemap_Provider {
 			if ( $max_pages > 1 ) {
 				$post_statuses = array_map( 'esc_sql', WPSEO_Sitemaps::get_post_statuses( $post_type ) );
 
-<<<<<<< HEAD
-				$sql = "
-=======
 				if ( version_compare( $wpdb->db_version(), '8.0', '>=' ) ) {
 					$sql = "
 					WITH ordering AS (SELECT ROW_NUMBER() OVER (ORDER BY post_modified_gmt) AS n, post_modified_gmt
@@ -144,7 +130,6 @@ class WPSEO_Post_Type_Sitemap_Provider implements WPSEO_Sitemap_Provider {
 				}
 				else {
 					$sql = "
->>>>>>> update
 				SELECT post_modified_gmt
 				    FROM ( SELECT @rownum:=0 ) init
 				    JOIN {$wpdb->posts} USE INDEX( type_status_date )
@@ -153,10 +138,7 @@ class WPSEO_Post_Type_Sitemap_Provider implements WPSEO_Sitemap_Provider {
 				      AND ( @rownum:=@rownum+1 ) %% %d = 0
 				    ORDER BY post_modified_gmt ASC
 				";
-<<<<<<< HEAD
-=======
 				}
->>>>>>> update
 
 				$all_dates = $wpdb->get_col( $wpdb->prepare( $sql, $post_type, $max_entries ) );
 			}
@@ -193,14 +175,8 @@ class WPSEO_Post_Type_Sitemap_Provider implements WPSEO_Sitemap_Provider {
 	 * @param int    $max_entries  Entries per sitemap.
 	 * @param int    $current_page Current page of the sitemap.
 	 *
-<<<<<<< HEAD
-	 * @return array
-	 *
-	 * @throws OutOfBoundsException When an invalid page is requested.
-=======
 	 * @throws OutOfBoundsException When an invalid page is requested.
 	 * @return array
->>>>>>> update
 	 */
 	public function get_sitemap_links( $type, $max_entries, $current_page ) {
 
@@ -453,9 +429,6 @@ class WPSEO_Post_Type_Sitemap_Provider implements WPSEO_Sitemap_Provider {
 			];
 		}
 
-<<<<<<< HEAD
-		return $links;
-=======
 		/**
 		 * Filters the first post type links.
 		 *
@@ -463,7 +436,6 @@ class WPSEO_Post_Type_Sitemap_Provider implements WPSEO_Sitemap_Provider {
 		 * @param string $post_type The post type this archive is for.
 		 */
 		return apply_filters( 'wpseo_sitemap_post_type_first_links', $links, $post_type );
->>>>>>> update
 	}
 
 	/**

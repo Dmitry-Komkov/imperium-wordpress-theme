@@ -1,10 +1,6 @@
 <?php
 
-<<<<<<< HEAD
-namespace WBCR\Factory_Templates_102;
-=======
 namespace WBCR\Factory_Templates_118;
->>>>>>> update
 
 /**
  * Class Search options

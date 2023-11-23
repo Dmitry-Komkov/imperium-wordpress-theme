@@ -17,8 +17,6 @@ if (!class_exists('Updraft_Checkout_Embed')) {
 		private static $version = '1.0.1';
 
 		/**
-<<<<<<< HEAD
-=======
 		 * The name of the plugin using the class
 		 *
 		 * @var string
@@ -54,7 +52,6 @@ if (!class_exists('Updraft_Checkout_Embed')) {
 		private $base_url;
 
 		/**
->>>>>>> update
 		 * Products list
 		 *
 		 * @var array

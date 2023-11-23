@@ -21,18 +21,12 @@ if ( ! class_exists( 'acf_field_textarea' ) ) :
 		function initialize() {
 
 			// vars
-<<<<<<< HEAD
-			$this->name     = 'textarea';
-			$this->label    = __( 'Text Area', 'acf' );
-			$this->defaults = array(
-=======
 			$this->name          = 'textarea';
 			$this->label         = __( 'Text Area', 'acf' );
 			$this->description   = __( 'A basic textarea input for storing paragraphs of text.', 'acf' );
 			$this->preview_image = acf_get_url() . '/assets/images/field-type-previews/field-preview-textarea.png';
 			$this->doc_url       = acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/resources/textarea/', 'docs', 'field-type-selection' );
 			$this->defaults      = array(
->>>>>>> update
 				'default_value' => '',
 				'new_lines'     => '',
 				'maxlength'     => '',
@@ -102,14 +96,7 @@ if ( ! class_exists( 'acf_field_textarea' ) ) :
 		*  @since   3.6
 		*  @date    23/01/13
 		*/
-<<<<<<< HEAD
-
 		function render_field_settings( $field ) {
-
-			// default_value
-=======
-		function render_field_settings( $field ) {
->>>>>>> update
 			acf_render_field_setting(
 				$field,
 				array(
@@ -119,21 +106,6 @@ if ( ! class_exists( 'acf_field_textarea' ) ) :
 					'name'         => 'default_value',
 				)
 			);
-<<<<<<< HEAD
-
-			// placeholder
-			acf_render_field_setting(
-				$field,
-				array(
-					'label'        => __( 'Placeholder Text', 'acf' ),
-					'instructions' => __( 'Appears within the input', 'acf' ),
-					'type'         => 'text',
-					'name'         => 'placeholder',
-				)
-			);
-
-			// maxlength
-=======
 		}
 
 		/**
@@ -145,7 +117,6 @@ if ( ! class_exists( 'acf_field_textarea' ) ) :
 		 * @return void
 		 */
 		function render_field_validation_settings( $field ) {
->>>>>>> update
 			acf_render_field_setting(
 				$field,
 				array(
@@ -155,10 +126,6 @@ if ( ! class_exists( 'acf_field_textarea' ) ) :
 					'name'         => 'maxlength',
 				)
 			);
-<<<<<<< HEAD
-
-			// rows
-=======
 		}
 
 		/**
@@ -171,7 +138,6 @@ if ( ! class_exists( 'acf_field_textarea' ) ) :
 		 */
 		function render_field_presentation_settings( $field ) {
 
->>>>>>> update
 			acf_render_field_setting(
 				$field,
 				array(
@@ -183,9 +149,6 @@ if ( ! class_exists( 'acf_field_textarea' ) ) :
 				)
 			);
 
-<<<<<<< HEAD
-			// formatting
-=======
 			acf_render_field_setting(
 				$field,
 				array(
@@ -196,7 +159,6 @@ if ( ! class_exists( 'acf_field_textarea' ) ) :
 				)
 			);
 
->>>>>>> update
 			acf_render_field_setting(
 				$field,
 				array(
@@ -211,15 +173,8 @@ if ( ! class_exists( 'acf_field_textarea' ) ) :
 					),
 				)
 			);
-<<<<<<< HEAD
-
 		}
 
-
-=======
-		}
-
->>>>>>> update
 		/*
 		*  format_value()
 		*

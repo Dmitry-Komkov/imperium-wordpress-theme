@@ -2,15 +2,9 @@
 Contributors: Viper007Bond
 Tags: thumbnail, thumbnails, post thumbnail, post thumbnails
 Requires at least: 4.7
-<<<<<<< HEAD
-Tested up to: 5.7
-Requires PHP: 5.2.4
-Stable tag: 3.1.5
-=======
 Tested up to: 6.3
 Requires PHP: 5.2.4
 Stable tag: 3.1.6
->>>>>>> update
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -78,11 +72,6 @@ This plugin does not log nor transmit any user data. Infact it doesn't even do a
 
 == ChangeLog ==
 
-<<<<<<< HEAD
-= Version 3.1.5 =
-
-* Fix: Don't overwrite 'All X Attachment' button label with featured images count.
-=======
 = Version 3.1.6 =
 
 * Fix: Respect "Skip regenerating existing correctly sized thumbnails" setting.
@@ -93,7 +82,6 @@ This plugin does not log nor transmit any user data. Infact it doesn't even do a
 * Fix: Don't overwrite 'All X Attachment' button label with featured images count.
 * Tested successfully with PHP 8.1.
 * Tested successfully with PHP 8.2.
->>>>>>> update
 
 = Version 3.1.4 =
 

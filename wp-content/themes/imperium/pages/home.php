@@ -9,15 +9,12 @@
  * @package imperiumchekhov
  */
 
-<<<<<<< HEAD
-=======
 $header_args = array(
   'promo_bar' => false,
 );
 
 get_header(null, $header_args);
 
->>>>>>> update
 $prices = get_field('club_cards_group');
 $month_1_price_new = $prices['1-month'];
 $month_1_price_old = $prices['1-month-up'];
@@ -32,11 +29,6 @@ $sale_group = get_field('sale_group');
 $sale_text = $sale_group['sale-text'];
 $sale_list = $sale_group['sale-content'];
 $sale_price = $sale_group['sale-price'];
-<<<<<<< HEAD
-
-get_header();
-=======
->>>>>>> update
 ?>
 
 <main id="primary" class="site-main">
@@ -71,11 +63,7 @@ get_header();
 	<section id="sale">
 		<div class="sale__container custom-pulse">
 			<div class="sale__inner">
-<<<<<<< HEAD
-				<p class="sale__number">40<small>%</small></p>
-=======
 				<p class="sale__number">20<small>%</small></p>
->>>>>>> update
 				<p class="sale__info">Приведи друга и получи <span class="text-uppercase font-weight-bold">скидку на
 						абонемент</span></p>
 			</div>
@@ -139,12 +127,7 @@ get_header();
 								тарифных плана</span> на посещение клуба</h2>
 					</div>
 					<div class="title-two-columns__item right right-anim-item">
-<<<<<<< HEAD
-						<p>Вы можете выбрать подходящий тариф, оставить заявку на сайте и при первом посещении
-							администратор оформит заявку за пару минут.</p>
-=======
 						<p>Вы можете выбрать подходящий тариф , оставить заявку на сайте и при первом посещении менеджер оформит клубную карту за пару минут.</p>
->>>>>>> update
 					</div>
 				</div>
 				<div class="cards-box">
@@ -181,17 +164,9 @@ get_header();
 							</div>
 							<div class="single-tab__info">
 								<ul class="info-list">
-<<<<<<< HEAD
-									<li class="info-item">1 персональная тренировка с тренером</li>
-									<li class="info-item">Все групповые программы по расписанию с тренером</li>
-									<li class="info-item">Безлимитное посещение клуба с 7:00 - 00:00</li>
-									<li class="info-item">3 гостевых визита для ваших друзей</li>
-									<li class="info-item opacity-0">Заморозка 2 недели</li>
-=======
 									<li class="info-item">Групповые программы по расписанию с тренером</li>
 									<li class="info-item">Безлимитное посещение клуба с 7:00 - 00:00</li>
 									<li class="info-item">3 гостевых визита для ваших друзей</li>
->>>>>>> update
 								</ul>
 							</div>
 							<div class="single-tab__footer">
@@ -212,17 +187,9 @@ get_header();
 							</div>
 							<div class="single-tab__info">
 								<ul class="info-list">
-<<<<<<< HEAD
-									<li class="info-item">1 персональная тренировка с тренером</li>
-									<li class="info-item">Все групповые программы по расписанию с тренером</li>
-									<li class="info-item">Безлимитное посещение клуба с 7:00 - 00:00</li>
-									<li class="info-item">3 гостевых визита для ваших друзей</li>
-									<li class="info-item opacity-0">Заморозка 2 недели</li>
-=======
 									<li class="info-item">Групповые программы по расписанию с тренером</li>
 									<li class="info-item">Безлимитное посещение клуба с 7:00 - 00:00</li>
 									<li class="info-item">3 гостевых визита для ваших друзей</li>
->>>>>>> update
 								</ul>
 							</div>
 							<div class="single-tab__footer">
@@ -243,18 +210,10 @@ get_header();
 							</div>
 							<div class="single-tab__info">
 								<ul class="info-list">
-<<<<<<< HEAD
-									<li class="info-item">1 персональная тренировка с тренером</li>
-									<li class="info-item">Все групповые программы по расписанию с тренером</li>
-									<li class="info-item">Безлимитное посещение клуба с 7:00 - 00:00</li>
-									<li class="info-item">3 гостевых визита для ваших друзей</li>
-									<li class="info-item">Заморозка 2 недели</li>
-=======
 									<li class="info-item">Групповые программы по расписанию с тренером</li>
 									<li class="info-item">Безлимитное посещение клуба с 7:00 - 00:00</li>
 									<li class="info-item">3 гостевых визита для ваших друзей</li>
 									<li class="info-item">Заморозка на 14 дней</li>
->>>>>>> update
 								</ul>
 							</div>
 							<div class="single-tab__footer">
@@ -275,18 +234,10 @@ get_header();
 							</div>
 							<div class="single-tab__info">
 								<ul class="info-list">
-<<<<<<< HEAD
-									<li class="info-item">1 персональная тренировка с тренером</li>
-									<li class="info-item">Все групповые программы по расписанию с тренером</li>
-									<li class="info-item">Безлимитное посещение клуба с 7:00 - 00:00</li>
-									<li class="info-item">3 гостевых визита для ваших друзей</li>
-									<li class="info-item">Заморозка 1 месяц</li>
-=======
 									<li class="info-item">Групповые программы по расписанию с тренером</li>
 									<li class="info-item">Безлимитное посещение клуба с 7:00 - 00:00</li>
 									<li class="info-item">3 гостевых визита для ваших друзей</li>
 									<li class="info-item">Заморозка 30 дней</li>
->>>>>>> update
 								</ul>
 							</div>
 							<div class="single-tab__footer">
@@ -497,13 +448,6 @@ get_header();
 					<div class="col-12 col-md-6 order-1 order-md-2">
 						<div class="video-container">
 							<div class="video-box">
-<<<<<<< HEAD
-								<picture>
-									<source srcset="<?php echo bloginfo('template_url'); ?>/assets/images/content/video-preview.png" media="(min-width: 768px)" />
-									<source srcset="<?php echo bloginfo('template_url'); ?>/assets/images/content/video-bg-mob.jpg" />
-									<img srcset="<?php echo bloginfo('template_url'); ?>/assets/images/content/video-bg-mob.jpg" alt="Видео" />
-								</picture>
-=======
 <!-- 								<picture>
 									<source srcset="<?php echo bloginfo('template_url'); ?>/assets/images/content/video-preview.png" media="(min-width: 768px)" />
 									<source srcset="<?php echo bloginfo('template_url'); ?>/assets/images/content/video-bg-mob.jpg" />
@@ -512,7 +456,6 @@ get_header();
 								<video controls poster="<?php echo bloginfo('template_url'); ?>/assets/images/content/video-bg-mob.jpg">
 									<source src="https://imperium-chekhov.ru/wp-content/uploads/2023/03/promo-video.mp4" type="video/mp4">
 								</video>
->>>>>>> update
 							</div>
 						</div>
 					</div>

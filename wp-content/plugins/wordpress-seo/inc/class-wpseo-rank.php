@@ -146,8 +146,6 @@ class WPSEO_Rank {
 	}
 
 	/**
-<<<<<<< HEAD
-=======
 	 * Returns an inclusive language label for this rank.
 	 * The only difference with get_label above is that we return "Potentially non-inclusive" for an OK rank.
 	 *
@@ -161,7 +159,6 @@ class WPSEO_Rank {
 	}
 
 	/**
->>>>>>> update
 	 * Returns a label for use in a drop down.
 	 *
 	 * @return mixed
@@ -226,8 +223,6 @@ class WPSEO_Rank {
 	}
 
 	/**
-<<<<<<< HEAD
-=======
 	 * Gets the drop down labels for the inclusive language score.
 	 *
 	 * @return string The inclusive language rank label.
@@ -255,7 +250,6 @@ class WPSEO_Rank {
 	}
 
 	/**
->>>>>>> update
 	 * Get the starting score for this rank.
 	 *
 	 * @return int The start score.
@@ -323,8 +317,6 @@ class WPSEO_Rank {
 	}
 
 	/**
-<<<<<<< HEAD
-=======
 	 * Returns a list of all possible Inclusive Language Ranks.
 	 *
 	 * @return WPSEO_Rank[]
@@ -334,7 +326,6 @@ class WPSEO_Rank {
 	}
 
 	/**
->>>>>>> update
 	 * Converts a numeric rank into a WPSEO_Rank object, for use in functional array_* functions.
 	 *
 	 * @param string $rank SEO Rank.

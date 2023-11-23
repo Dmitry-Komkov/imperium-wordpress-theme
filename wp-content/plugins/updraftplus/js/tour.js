@@ -582,11 +582,7 @@
 			// start tour
 			main_tour.start();
 
-<<<<<<< HEAD
-			// go back to fisrt tab
-=======
 			// go back to first tab
->>>>>>> update
 			if (updraftplus_tour_i18n.show_tab_on_load) {
 				$(updraftplus_tour_i18n.show_tab_on_load).trigger('click');
 			} else {

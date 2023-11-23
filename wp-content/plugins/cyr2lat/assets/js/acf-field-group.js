@@ -1,20 +1,3 @@
-<<<<<<< HEAD
-/**
- * ACF support.
- *
- * @package cyr-to-lat
- */
-( function( $, window, document, undefined ) {
-	'use strict';
-
-	var table   = window.CyrToLatAcfFieldGroup.table;
-	var convert = function( str ) {
-		$.each(
-			table,
-			function( k, v ) {
-				var regex = new RegExp( k, 'g' );
-				str       = str.replace( regex, v );
-=======
 /* global acf, CyrToLatAcfFieldGroup */
 
 /**
@@ -35,7 +18,6 @@
 			function( k, v ) {
 				const regex = new RegExp( k, 'g' );
 				str = str.replace( regex, v );
->>>>>>> update
 			}
 		);
 		str = str.replace( /[^\w\d\-_]/g, '' );
@@ -45,12 +27,8 @@
 
 		return str;
 	};
-<<<<<<< HEAD
-	window.acf.addFilter(
-=======
 
 	acf.addFilter(
->>>>>>> update
 		'generate_field_object_name',
 		function( val ) {
 			return convert( val );
@@ -61,24 +39,6 @@
 		'change',
 		'.acf-field .field-name',
 		function() {
-<<<<<<< HEAD
-			var $this = $( this );
-			var str   = '';
-
-			if ( $( this ).is( ':focus' ) ) {
-				return false;
-			} else {
-				str = $this.val();
-				str = convert( str );
-
-				if ( str !== $this.val() ) {
-					$this.val( str );
-				}
-			}
-		}
-	);
-} )( window.jQuery, window, document );
-=======
 			if ( $( this ).is( ':focus' ) ) {
 				return false;
 			}
@@ -93,4 +53,3 @@
 		}
 	);
 }( window.jQuery, window, document ) );
->>>>>>> update

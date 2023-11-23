@@ -3,10 +3,6 @@
 namespace Yoast\WP\SEO\Helpers;
 
 use wpdb;
-<<<<<<< HEAD
-use Yoast\WP\SEO\Helpers\Wpdb_Helper;
-=======
->>>>>>> update
 
 /**
  * The AIOSEO Helper.

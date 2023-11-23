@@ -62,11 +62,7 @@ class WPSEO_Sitemaps_Admin {
 			return;
 		}
 
-<<<<<<< HEAD
-		if ( wp_get_environment_type() !== 'production' ) {
-=======
 		if ( ! YoastSEO()->helpers->environment->is_production_mode() ) {
->>>>>>> update
 			return;
 		}
 

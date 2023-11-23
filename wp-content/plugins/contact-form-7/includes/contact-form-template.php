@@ -22,17 +22,10 @@ class WPCF7_ContactFormTemplate {
 		$template = sprintf(
 			'
 <label> %2$s
-<<<<<<< HEAD
-    [text* your-name] </label>
-
-<label> %3$s
-    [email* your-email] </label>
-=======
     [text* your-name autocomplete:name] </label>
 
 <label> %3$s
     [email* your-email autocomplete:email] </label>
->>>>>>> update
 
 <label> %4$s
     [text* your-subject] </label>
@@ -67,15 +60,9 @@ class WPCF7_ContactFormTemplate {
 			),
 			'body' =>
 				sprintf(
-<<<<<<< HEAD
-					/* translators: %s: [your-name] <[your-email]> */
-					__( 'From: %s', 'contact-form-7' ),
-					'[your-name] <[your-email]>'
-=======
 					/* translators: %s: [your-name] [your-email] */
 					__( 'From: %s', 'contact-form-7' ),
 					'[your-name] [your-email]'
->>>>>>> update
 				) . "\n"
 				. sprintf(
 					/* translators: %s: [your-subject] */
@@ -87,11 +74,7 @@ class WPCF7_ContactFormTemplate {
 				. '-- ' . "\n"
 				. sprintf(
 					/* translators: 1: blog name, 2: blog URL */
-<<<<<<< HEAD
-					__( 'This e-mail was sent from a contact form on %1$s (%2$s)', 'contact-form-7' ),
-=======
 					__( 'This is a notification that a contact form was submitted on your website (%1$s %2$s).', 'contact-form-7' ),
->>>>>>> update
 					'[_site_title]',
 					'[_site_url]'
 				),
@@ -125,11 +108,7 @@ class WPCF7_ContactFormTemplate {
 				. '-- ' . "\n"
 				. sprintf(
 					/* translators: 1: blog name, 2: blog URL */
-<<<<<<< HEAD
-					__( 'This e-mail was sent from a contact form on %1$s (%2$s)', 'contact-form-7' ),
-=======
 					__( 'This email is a receipt for your contact form submission on our website (%1$s %2$s) in which your email address was used. If that was not you, please ignore this message.', 'contact-form-7' ),
->>>>>>> update
 					'[_site_title]',
 					'[_site_url]'
 				),

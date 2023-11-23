@@ -5,24 +5,12 @@
  *
  * Uses mcrypt, if available, and an internal implementation, otherwise.
  *
-<<<<<<< HEAD
- * PHP versions 4 and 5
-=======
  * PHP version 5
->>>>>>> update
  *
  * Useful resources are as follows:
  *
  *  - {@link http://en.wikipedia.org/wiki/Blowfish_(cipher) Wikipedia description of Blowfish}
  *
-<<<<<<< HEAD
- * Here's a short example of how to use this library:
- * <code>
- * <?php
- *    include 'Crypt/Blowfish.php';
- *
- *    $blowfish = new Crypt_Blowfish();
-=======
  * # An overview of bcrypt vs Blowfish
  *
  * OpenSSH private keys use a customized version of bcrypt. Specifically, instead of
@@ -110,7 +98,6 @@
  *    include 'vendor/autoload.php';
  *
  *    $blowfish = new \phpseclib\Crypt\Blowfish();
->>>>>>> update
  *
  *    $blowfish->setKey('12345678901234567890123456789012');
  *
@@ -120,31 +107,8 @@
  * ?>
  * </code>
  *
-<<<<<<< HEAD
- * LICENSE: Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- *
- * @category  Crypt
- * @package   Crypt_Blowfish
-=======
  * @category  Crypt
  * @package   Blowfish
->>>>>>> update
  * @author    Jim Wigginton <terrafrost@php.net>
  * @author    Hans-Juergen Petrich <petrich@tronic-media.com>
  * @copyright 2007 Jim Wigginton
@@ -152,108 +116,31 @@
  * @link      http://phpseclib.sourceforge.net
  */
 
-<<<<<<< HEAD
-/**
- * Include Crypt_Base
- *
- * Base cipher class
- */
-if (!class_exists('Crypt_Base')) {
-    include_once 'Base.php';
-}
-
-/**#@+
- * @access public
- * @see self::encrypt()
- * @see self::decrypt()
- */
-/**
- * Encrypt / decrypt using the Counter mode.
- *
- * Set to -1 since that's what Crypt/Random.php uses to index the CTR mode.
- *
- * @link http://en.wikipedia.org/wiki/Block_cipher_modes_of_operation#Counter_.28CTR.29
- */
-define('CRYPT_BLOWFISH_MODE_CTR', CRYPT_MODE_CTR);
-/**
- * Encrypt / decrypt using the Electronic Code Book mode.
- *
- * @link http://en.wikipedia.org/wiki/Block_cipher_modes_of_operation#Electronic_codebook_.28ECB.29
- */
-define('CRYPT_BLOWFISH_MODE_ECB', CRYPT_MODE_ECB);
-/**
- * Encrypt / decrypt using the Code Book Chaining mode.
- *
- * @link http://en.wikipedia.org/wiki/Block_cipher_modes_of_operation#Cipher-block_chaining_.28CBC.29
- */
-define('CRYPT_BLOWFISH_MODE_CBC', CRYPT_MODE_CBC);
-/**
- * Encrypt / decrypt using the Cipher Feedback mode.
- *
- * @link http://en.wikipedia.org/wiki/Block_cipher_modes_of_operation#Cipher_feedback_.28CFB.29
- */
-define('CRYPT_BLOWFISH_MODE_CFB', CRYPT_MODE_CFB);
-/**
- * Encrypt / decrypt using the Cipher Feedback mode.
- *
- * @link http://en.wikipedia.org/wiki/Block_cipher_modes_of_operation#Output_feedback_.28OFB.29
- */
-define('CRYPT_BLOWFISH_MODE_OFB', CRYPT_MODE_OFB);
-/**#@-*/
-=======
 namespace phpseclib\Crypt;
->>>>>>> update
 
 /**
  * Pure-PHP implementation of Blowfish.
  *
-<<<<<<< HEAD
- * @package Crypt_Blowfish
-=======
  * @package Blowfish
->>>>>>> update
  * @author  Jim Wigginton <terrafrost@php.net>
  * @author  Hans-Juergen Petrich <petrich@tronic-media.com>
  * @access  public
  */
-<<<<<<< HEAD
-class Crypt_Blowfish extends Crypt_Base
-=======
 class Blowfish extends Base
->>>>>>> update
 {
     /**
      * Block Length of the cipher
      *
-<<<<<<< HEAD
-     * @see Crypt_Base::block_size
-=======
      * @see \phpseclib\Crypt\Base::block_size
->>>>>>> update
      * @var int
      * @access private
      */
     var $block_size = 8;
 
     /**
-<<<<<<< HEAD
-     * The namespace used by the cipher for its constants.
-     *
-     * @see Crypt_Base::const_namespace
-     * @var string
-     * @access private
-     */
-    var $const_namespace = 'BLOWFISH';
-
-    /**
-     * The mcrypt specific name of the cipher
-     *
-     * @see Crypt_Base::cipher_name_mcrypt
-=======
      * The mcrypt specific name of the cipher
      *
      * @see \phpseclib\Crypt\Base::cipher_name_mcrypt
->>>>>>> update
      * @var string
      * @access private
      */
@@ -262,19 +149,13 @@ class Blowfish extends Base
     /**
      * Optimizing value while CFB-encrypting
      *
-<<<<<<< HEAD
-     * @see Crypt_Base::cfb_init_len
-=======
      * @see \phpseclib\Crypt\Base::cfb_init_len
->>>>>>> update
      * @var int
      * @access private
      */
     var $cfb_init_len = 500;
 
     /**
-<<<<<<< HEAD
-=======
      * SHA512 Object
      *
      * @see self::bcrypt_pbkdf
@@ -284,7 +165,6 @@ class Blowfish extends Base
     var $sha512;
 
     /**
->>>>>>> update
      * The fixed subkeys boxes ($sbox0 - $sbox3) with 256 entries each
      *
      * S-Box 0
@@ -483,11 +363,7 @@ class Blowfish extends Base
     /**
      * The Key Length (in bytes)
      *
-<<<<<<< HEAD
-     * @see Crypt_Base::setKeyLength()
-=======
      * @see \phpseclib\Crypt\Base::setKeyLength()
->>>>>>> update
      * @var int
      * @access private
      * @internal The max value is 256 / 8 = 32, the min value is 128 / 8 = 16.  Exists in conjunction with $Nk
@@ -498,8 +374,6 @@ class Blowfish extends Base
     var $key_length = 16;
 
     /**
-<<<<<<< HEAD
-=======
      * Default Constructor.
      *
      * Determines whether or not the mcrypt extension should be used.
@@ -535,7 +409,6 @@ class Blowfish extends Base
     }
 
     /**
->>>>>>> update
      * Sets the key length.
      *
      * Key lengths can be between 32 and 448 bits.
@@ -559,24 +432,15 @@ class Blowfish extends Base
     /**
      * Test for engine validity
      *
-<<<<<<< HEAD
-     * This is mainly just a wrapper to set things up for Crypt_Base::isValidEngine()
-     *
-     * @see Crypt_Base::isValidEngine()
-=======
      * This is mainly just a wrapper to set things up for \phpseclib\Crypt\Base::isValidEngine()
      *
      * @see \phpseclib\Crypt\Base::isValidEngine()
->>>>>>> update
      * @param int $engine
      * @access public
      * @return bool
      */
     function isValidEngine($engine)
     {
-<<<<<<< HEAD
-        if ($engine == CRYPT_ENGINE_OPENSSL) {
-=======
         if ($engine == self::ENGINE_OPENSSL) {
             // quoting https://www.openssl.org/news/openssl-3.0-notes.html, OpenSSL 3.0.1
             // "Moved all variations of the EVP ciphers CAST5, BF, IDEA, SEED, RC2, RC4, RC5, and DES to the legacy provider"
@@ -584,7 +448,6 @@ class Blowfish extends Base
             if (defined('OPENSSL_VERSION_TEXT') && version_compare(preg_replace('#OpenSSL (\d+\.\d+\.\d+) .*#', '$1', OPENSSL_VERSION_TEXT), '3.0.1', '>=')) {
                 return false;
             }
->>>>>>> update
             if (version_compare(PHP_VERSION, '5.3.7') < 0 && $this->key_length != 16) {
                 return false;
             }
@@ -601,11 +464,7 @@ class Blowfish extends Base
     /**
      * Setup the key (expansion)
      *
-<<<<<<< HEAD
-     * @see Crypt_Base::_setupKey()
-=======
      * @see \phpseclib\Crypt\Base::_setupKey()
->>>>>>> update
      * @access private
      */
     function _setupKey()
@@ -630,10 +489,7 @@ class Blowfish extends Base
         // unpack binary string in unsigned chars
         $key  = array_values(unpack('C*', $this->key));
         $keyl = count($key);
-<<<<<<< HEAD
-=======
         // with bcrypt $keyl will always be 16 (because the key is the sha512 of the key you provide)
->>>>>>> update
         for ($j = 0, $i = 0; $i < 18; ++$i) {
             // xor P1 with the first 32-bits of the key, xor P2 with the second 32-bits ...
             for ($data = 0, $k = 0; $k < 4; ++$k) {
@@ -642,11 +498,7 @@ class Blowfish extends Base
                     $j = 0;
                 }
             }
-<<<<<<< HEAD
-            $this->bctx['p'][] = $this->parray[$i] ^ $data;
-=======
             $this->bctx['p'][] = $this->parray[$i] ^ intval($data);
->>>>>>> update
         }
 
         // encrypt the zero-string, replace P1 and P2 with the encrypted data,
@@ -667,8 +519,6 @@ class Blowfish extends Base
     }
 
     /**
-<<<<<<< HEAD
-=======
      * bcrypt
      *
      * @param string $sha2pass
@@ -893,7 +743,6 @@ class Blowfish extends Base
     }
 
     /**
->>>>>>> update
      * Encrypts a block
      *
      * @access private
@@ -913,20 +762,6 @@ class Blowfish extends Base
         $l = $in[1];
         $r = $in[2];
 
-<<<<<<< HEAD
-        for ($i = 0; $i < 16; $i+= 2) {
-            $l^= $p[$i];
-            $r^= $this->safe_intval(($this->safe_intval($sb_0[$l >> 24 & 0xff]  + $sb_1[$l >> 16 & 0xff]) ^
-                  $sb_2[$l >>  8 & 0xff]) +
-                  $sb_3[$l       & 0xff]);
-
-            $r^= $p[$i + 1];
-            $l^= $this->safe_intval(($this->safe_intval($sb_0[$r >> 24 & 0xff]  + $sb_1[$r >> 16 & 0xff]) ^
-                  $sb_2[$r >>  8 & 0xff]) +
-                  $sb_3[$r       & 0xff]);
-        }
-        return pack("N*", $r ^ $p[17], $l ^ $p[16]);
-=======
         list($r, $l) = PHP_INT_SIZE === 8 ?
             $this->_encryptBlockHelperFast($l, $r, $sb_0, $sb_1, $sb_2, $sb_3, $p) :
             $this->_encryptBlockHelperSlow($l, $r, $sb_0, $sb_1, $sb_2, $sb_3, $p);
@@ -1005,7 +840,6 @@ class Blowfish extends Base
         $x0^= $this->safe_intval(($this->safe_intval($sbox0[(($x1 & -16777216) >> 24) & 0xFF] + $sbox1[($x1 & 0xFF0000) >> 16]) ^ $sbox2[($x1 & 0xFF00) >> 8]) + $sbox3[$x1 & 0xFF]) ^ $p[16];
 
         return array($x1 ^ $p[17], $x0);
->>>>>>> update
     }
 
     /**
@@ -1044,26 +878,15 @@ class Blowfish extends Base
     /**
      * Setup the performance-optimized function for de/encrypt()
      *
-<<<<<<< HEAD
-     * @see Crypt_Base::_setupInlineCrypt()
-=======
      * @see \phpseclib\Crypt\Base::_setupInlineCrypt()
->>>>>>> update
      * @access private
      */
     function _setupInlineCrypt()
     {
-<<<<<<< HEAD
-        $lambda_functions =& Crypt_Blowfish::_getLambdaFunctions();
-
-        // We create max. 10 hi-optimized code for memory reason. Means: For each $key one ultra fast inline-crypt function.
-        // (Currently, for Crypt_Blowfish, one generated $lambda_function cost on php5.5@32bit ~100kb unfreeable mem and ~180kb on php5.5@64bit)
-=======
         $lambda_functions =& self::_getLambdaFunctions();
 
         // We create max. 10 hi-optimized code for memory reason. Means: For each $key one ultra fast inline-crypt function.
         // (Currently, for Blowfish, one generated $lambda_function cost on php5.5@32bit ~100kb unfreeable mem and ~180kb on php5.5@64bit)
->>>>>>> update
         // After that, we'll still create very fast optimized code but not the hi-ultimative code, for each $mode one.
         $gen_hi_opt_code = (bool)(count($lambda_functions) < 10);
 

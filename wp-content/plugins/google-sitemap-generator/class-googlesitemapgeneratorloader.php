@@ -9,10 +9,7 @@
  * @author Arne Brachhold
  * @package sitemap
  */
-<<<<<<< HEAD
-=======
 require_once trailingslashit( dirname( __FILE__ ) ) . 'class-googlesitemapgeneratorui.php';
->>>>>>> update
 
 /**
  * This class is for the sitemap loader
@@ -284,9 +281,6 @@ class GoogleSitemapGeneratorLoader {
 		$sg = GoogleSitemapGenerator::get_instance();
 		$sg->html_survey();
 	}
-<<<<<<< HEAD
-
-=======
 	/**
 	 * Hide banner info.
 	 */
@@ -898,7 +892,6 @@ class GoogleSitemapGeneratorLoader {
 		}
 		
 	}
->>>>>>> update
 	/**
 	 * Returns a nice icon for the Ozh Admin Menu if the {@param $hook} equals to the sitemap plugin
 	 *
@@ -1037,11 +1030,8 @@ class GoogleSitemapGeneratorLoader {
 	 */
 	public static function load_plugin() {
 
-<<<<<<< HEAD
-=======
 		$disable_functions = ini_get( 'disable_functions' );
 
->>>>>>> update
 		if ( ! class_exists( 'GoogleSitemapGenerator' ) ) {
 
 			$mem = abs( intval( ini_get( 'memory_limit' ) ) );
@@ -1051,13 +1041,9 @@ class GoogleSitemapGeneratorLoader {
 
 			$time = abs( intval( ini_get( 'max_execution_time' ) ) );
 			if ( 0 !== $time && 120 > $time ) {
-<<<<<<< HEAD
-				set_time_limit( 120 );
-=======
 				if ( strpos( $disable_functions, 'set_time_limit' ) === false ) {
 					set_time_limit( 120 );
 				}
->>>>>>> update
 			}
 
 			$path = trailingslashit( dirname( __FILE__ ) );
@@ -1123,10 +1109,7 @@ class GoogleSitemapGeneratorLoader {
 // Enable the plugin for the init hook, but only if WP is loaded. Calling this php file directly will do nothing.
 if ( defined( 'ABSPATH' ) && defined( 'WPINC' ) ) {
 	add_action( 'init', array( 'GoogleSitemapGeneratorLoader', 'Enable' ), 15, 0 );
-<<<<<<< HEAD
-=======
 	add_action( 'admin_notices', array( 'GoogleSitemapGeneratorLoader', 'beta_notice' ), 15, 0 );
->>>>>>> update
 	register_activation_hook( sm_get_init_file(), array( 'GoogleSitemapGeneratorLoader', 'activate_plugin' ) );
 	register_deactivation_hook( sm_get_init_file(), array( 'GoogleSitemapGeneratorLoader', 'deactivate_plugin' ) );
 

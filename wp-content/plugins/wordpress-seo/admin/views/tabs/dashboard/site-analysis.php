@@ -14,13 +14,6 @@ if ( ! defined( 'WPSEO_VERSION' ) ) {
 }
 
 /**
-<<<<<<< HEAD
- * Fires when displaying the site wide analysis tab.
- *
- * @param Yoast_Form $yform The yoast form object.
- */
-do_action( 'wpseo_settings_tab_site_analysis', $yform );
-=======
  * WARNING: This hook is intended for internal use only.
  * Don't use it in your code as it will be removed shortly.
  */
@@ -40,4 +33,3 @@ do_action_deprecated(
 	'',
 	'This action is going away with no replacement. If you want to add settings that interact with Yoast SEO, please create your own settings page.'
 );
->>>>>>> update

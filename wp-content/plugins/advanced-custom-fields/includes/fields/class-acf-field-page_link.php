@@ -21,12 +21,6 @@ if ( ! class_exists( 'acf_field_page_link' ) ) :
 		function initialize() {
 
 			// vars
-<<<<<<< HEAD
-			$this->name     = 'page_link';
-			$this->label    = __( 'Page Link', 'acf' );
-			$this->category = 'relational';
-			$this->defaults = array(
-=======
 			$this->name          = 'page_link';
 			$this->label         = __( 'Page Link', 'acf' );
 			$this->category      = 'relational';
@@ -34,7 +28,6 @@ if ( ! class_exists( 'acf_field_page_link' ) ) :
 			$this->preview_image = acf_get_url() . '/assets/images/field-type-previews/field-preview-page-link.png';
 			$this->doc_url       = acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/resources/page-link/', 'docs', 'field-type-selection' );
 			$this->defaults      = array(
->>>>>>> update
 				'post_type'      => array(),
 				'taxonomy'       => array(),
 				'allow_null'     => 0,
@@ -119,8 +112,6 @@ if ( ! class_exists( 'acf_field_page_link' ) ) :
 
 			}
 
-<<<<<<< HEAD
-=======
 			// post status
 			if ( ! empty( $options['post_status'] ) ) {
 
@@ -132,7 +123,6 @@ if ( ! class_exists( 'acf_field_page_link' ) ) :
 
 			}
 
->>>>>>> update
 			// create tax queries
 			if ( ! empty( $field['taxonomy'] ) ) {
 
@@ -464,14 +454,7 @@ if ( ! class_exists( 'acf_field_page_link' ) ) :
 		*
 		*  @param   $field  - an array holding all the field's data
 		*/
-<<<<<<< HEAD
-
 		function render_field_settings( $field ) {
-
-			// post_type
-=======
-		function render_field_settings( $field ) {
->>>>>>> update
 			acf_render_field_setting(
 				$field,
 				array(
@@ -487,9 +470,6 @@ if ( ! class_exists( 'acf_field_page_link' ) ) :
 				)
 			);
 
-<<<<<<< HEAD
-			// taxonomy
-=======
 			acf_render_field_setting(
 				$field,
 				array(
@@ -505,7 +485,6 @@ if ( ! class_exists( 'acf_field_page_link' ) ) :
 				)
 			);
 
->>>>>>> update
 			acf_render_field_setting(
 				$field,
 				array(
@@ -521,22 +500,6 @@ if ( ! class_exists( 'acf_field_page_link' ) ) :
 				)
 			);
 
-<<<<<<< HEAD
-			// allow_null
-			acf_render_field_setting(
-				$field,
-				array(
-					'label'        => __( 'Allow Null?', 'acf' ),
-					'instructions' => '',
-					'name'         => 'allow_null',
-					'type'         => 'true_false',
-					'ui'           => 1,
-				)
-			);
-
-			// allow_archives
-=======
->>>>>>> update
 			acf_render_field_setting(
 				$field,
 				array(
@@ -548,30 +511,16 @@ if ( ! class_exists( 'acf_field_page_link' ) ) :
 				)
 			);
 
-<<<<<<< HEAD
-			// multiple
-			acf_render_field_setting(
-				$field,
-				array(
-					'label'        => __( 'Select multiple values?', 'acf' ),
-					'instructions' => '',
-=======
 			acf_render_field_setting(
 				$field,
 				array(
 					'label'        => __( 'Select Multiple', 'acf' ),
 					'instructions' => 'Allow content editors to select multiple values',
->>>>>>> update
 					'name'         => 'multiple',
 					'type'         => 'true_false',
 					'ui'           => 1,
 				)
 			);
-<<<<<<< HEAD
-
-		}
-
-=======
 		}
 
 		/**
@@ -594,7 +543,6 @@ if ( ! class_exists( 'acf_field_page_link' ) ) :
 				)
 			);
 		}
->>>>>>> update
 
 		/*
 		*  format_value()

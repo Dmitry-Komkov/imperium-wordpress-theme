@@ -4,11 +4,7 @@
 	 * Url Control
 	 *
 	 * Main options:
-<<<<<<< HEAD
-	 * @see FactoryForms447_TextboxControl
-=======
 	 * @see FactoryForms466_TextboxControl
->>>>>>> update
 	 *
 	 * @author Alex Kovalev <alex.kovalevv@gmail.com>
 	 * @copyright (c) 2018, Webcraftic Ltd
@@ -22,15 +18,9 @@
 		exit;
 	}
 
-<<<<<<< HEAD
-	if( !class_exists('Wbcr_FactoryForms447_UrlControl') ) {
-
-		class Wbcr_FactoryForms447_UrlControl extends Wbcr_FactoryForms447_TextboxControl {
-=======
 	if( !class_exists('Wbcr_FactoryForms466_UrlControl') ) {
 
 		class Wbcr_FactoryForms466_UrlControl extends Wbcr_FactoryForms466_TextboxControl {
->>>>>>> update
 
 			public $type = 'url';
 

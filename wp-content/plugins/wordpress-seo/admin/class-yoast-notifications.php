@@ -78,12 +78,6 @@ class Yoast_Notifications {
 	 * Add hooks
 	 */
 	private function add_hooks() {
-<<<<<<< HEAD
-
-		$page = filter_input( INPUT_GET, 'page' );
-		if ( $page === self::ADMIN_PAGE ) {
-			add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_assets' ] );
-=======
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Reason: We are not processing form information.
 		if ( isset( $_GET['page'] ) && is_string( $_GET['page'] ) ) {
 			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Reason: We are not processing form information.
@@ -91,7 +85,6 @@ class Yoast_Notifications {
 			if ( $page === self::ADMIN_PAGE ) {
 				add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_assets' ] );
 			}
->>>>>>> update
 		}
 
 		// Needed for adminbar and Notifications page.
@@ -106,27 +99,9 @@ class Yoast_Notifications {
 	 * Enqueue assets.
 	 */
 	public function enqueue_assets() {
-<<<<<<< HEAD
-
-		$asset_manager = new WPSEO_Admin_Asset_Manager();
-		$asset_manager->enqueue_style( 'notifications' );
-	}
-
-	/**
-	 * Deprecated: Handle ajax request to dismiss a alert.
-	 * Renamed to ajax_dismiss_notification
-	 *
-	 * @deprecated 14.0
-	 *
-	 * @codeCoverageIgnore
-	 */
-	public function ajax_dismiss_alert() {
-		_deprecated_function( __METHOD__, 'WPSEO 14.0' );
-=======
 		$asset_manager = new WPSEO_Admin_Asset_Manager();
 
 		$asset_manager->enqueue_style( 'notifications' );
->>>>>>> update
 	}
 
 	/**
@@ -146,22 +121,6 @@ class Yoast_Notifications {
 	}
 
 	/**
-<<<<<<< HEAD
-	 * Deprecated: Handle ajax request to restore a notification.
-	 * Renamed to ajax_restore_notification
-	 *
-	 * @deprecated 14.0
-	 * @codeCoverageIgnore
-	 *
-	 * @return void
-	 */
-	public function ajax_restore_alert() {
-		_deprecated_function( __METHOD__, 'WPSEO 14.0' );
-	}
-
-	/**
-=======
->>>>>>> update
 	 * Handle ajax request to restore a notification.
 	 */
 	public function ajax_restore_notification() {
@@ -235,15 +194,6 @@ class Yoast_Notifications {
 	/**
 	 * Extract the Yoast Notification from the AJAX request.
 	 *
-<<<<<<< HEAD
-	 * @return Yoast_Notification|null
-	 */
-	private function get_notification_from_ajax_request() {
-
-		$notification_center = Yoast_Notification_Center::get();
-		$notification_id     = filter_input( INPUT_POST, 'notification' );
-
-=======
 	 * This function does not handle nonce verification.
 	 *
 	 * @return Yoast_Notification|null A Yoast_Notification on success, null on failure.
@@ -260,7 +210,6 @@ class Yoast_Notifications {
 			return null;
 		}
 		$notification_center = Yoast_Notification_Center::get();
->>>>>>> update
 		return $notification_center->get_notification_by_id( $notification_id );
 	}
 
@@ -309,23 +258,6 @@ class Yoast_Notifications {
 	}
 
 	/**
-<<<<<<< HEAD
-	 * Deprecated: Get the number of active notifications.
-	 * Renamed to get_active_notification_count
-	 *
-	 * @deprecated 14.0
-	 * @codeCoverageIgnore
-	 *
-	 * @return int
-	 */
-	public function get_active_alert_count() {
-		_deprecated_function( __METHOD__, 'WPSEO 14.0' );
-		return 0;
-	}
-
-	/**
-=======
->>>>>>> update
 	 * Get the number of active notifications.
 	 *
 	 * @return int
@@ -336,23 +268,6 @@ class Yoast_Notifications {
 	}
 
 	/**
-<<<<<<< HEAD
-	 * Deprecated: Filter out any non-errors. Renamed to filter_error_notifications
-	 *
-	 * @deprecated 14.0
-	 * @codeCoverageIgnore
-	 *
-	 * @param Yoast_Notification $notification Notification to test.
-	 * @return bool
-	 */
-	public function filter_error_alerts( Yoast_Notification $notification ) {
-		_deprecated_function( __METHOD__, 'WPSEO 14.0' );
-		return false;
-	}
-
-	/**
-=======
->>>>>>> update
 	 * Filter out any non-errors.
 	 *
 	 * @param Yoast_Notification $notification Notification to test.
@@ -365,23 +280,6 @@ class Yoast_Notifications {
 	}
 
 	/**
-<<<<<<< HEAD
-	 * Deprecated: Filter out any non-warnings. Renamed to filter_warning_notifications
-	 *
-	 * @deprecated 14.0
-	 * @codeCoverageIgnore
-	 *
-	 * @param Yoast_Notification $notification Notification to test.
-	 * @return bool
-	 */
-	public function filter_warning_alerts( Yoast_Notification $notification ) {
-		_deprecated_function( __METHOD__, 'WPSEO 14.0' );
-		return false;
-	}
-
-	/**
-=======
->>>>>>> update
 	 * Filter out any non-warnings.
 	 *
 	 * @param Yoast_Notification $notification Notification to test.
@@ -394,23 +292,6 @@ class Yoast_Notifications {
 	}
 
 	/**
-<<<<<<< HEAD
-	 * Deprecated: Filter out any dismissed notifications. Renamed to filter_dismissed_alerts.
-	 *
-	 * @deprecated 14.0
-	 * @codeCoverageIgnore
-	 *
-	 * @param Yoast_Notification $notification Notification to test.
-	 * @return bool
-	 */
-	public function filter_dismissed_alerts( Yoast_Notification $notification ) {
-		_deprecated_function( __METHOD__, 'WPSEO 14.0' );
-		return false;
-	}
-
-	/**
-=======
->>>>>>> update
 	 * Filter out any dismissed notifications.
 	 *
 	 * @param Yoast_Notification $notification Notification to test.

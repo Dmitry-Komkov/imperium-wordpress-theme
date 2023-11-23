@@ -75,15 +75,11 @@ function wpcf7_is_number( $text ) {
  * @link https://html.spec.whatwg.org/multipage/input.html#date-state-(type=date)
  */
 function wpcf7_is_date( $text ) {
-<<<<<<< HEAD
-	$result = preg_match( '/^([0-9]{4,})-([0-9]{2})-([0-9]{2})$/', $text, $matches );
-=======
 	$result = preg_match(
 		'/^([0-9]{4,})-([0-9]{2})-([0-9]{2})$/',
 		$text,
 		$matches
 	);
->>>>>>> update
 
 	if ( $result ) {
 		$result = checkdate( $matches[2], $matches[3], $matches[1] );
@@ -94,8 +90,6 @@ function wpcf7_is_date( $text ) {
 
 
 /**
-<<<<<<< HEAD
-=======
  * Checks whether the given text is a valid time.
  *
  * @link https://html.spec.whatwg.org/multipage/input.html#time-state-(type=time)
@@ -122,7 +116,6 @@ function wpcf7_is_time( $text ) {
 
 
 /**
->>>>>>> update
  * Checks whether the given text is a well-formed mailbox list.
  *
  * @param string|array $mailbox_list The subject to be checked.
@@ -260,20 +253,6 @@ function wpcf7_is_email_in_site_domain( $email ) {
  *              false otherwise.
  */
 function wpcf7_is_file_path_in_content_dir( $path ) {
-<<<<<<< HEAD
-	if ( $real_path = realpath( $path ) ) {
-		$path = $real_path;
-	} else {
-		return false;
-	}
-
-	if ( 0 === strpos( $path, realpath( WP_CONTENT_DIR ) ) ) {
-		return true;
-	}
-
-	if ( defined( 'UPLOADS' )
-	and 0 === strpos( $path, realpath( ABSPATH . UPLOADS ) ) ) {
-=======
 	if ( ! is_string( $path ) or '' === $path ) {
 		return false;
 	}
@@ -314,7 +293,6 @@ function wpcf7_is_file_path_in_content_dir( $path ) {
 		defined( 'WP_TEMP_DIR' ) and
 		call_user_func( $callback, $path, WP_TEMP_DIR )
 	) {
->>>>>>> update
 		return true;
 	}
 

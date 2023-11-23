@@ -3,23 +3,10 @@
 namespace YoastSEO_Vendor\GuzzleHttp;
 
 use YoastSEO_Vendor\GuzzleHttp\Promise\PromiseInterface;
-<<<<<<< HEAD
-use YoastSEO_Vendor\GuzzleHttp\Psr7;
-=======
->>>>>>> update
 use YoastSEO_Vendor\Psr\Http\Message\RequestInterface;
 /**
  * Prepares requests that contain a body, adding the Content-Length,
  * Content-Type, and Expect headers.
-<<<<<<< HEAD
- */
-class PrepareBodyMiddleware
-{
-    /** @var callable  */
-    private $nextHandler;
-    /**
-     * @param callable $nextHandler Next handler to invoke.
-=======
  *
  * @final
  */
@@ -31,23 +18,12 @@ class PrepareBodyMiddleware
     private $nextHandler;
     /**
      * @param callable(RequestInterface, array): PromiseInterface $nextHandler Next handler to invoke.
->>>>>>> update
      */
     public function __construct(callable $nextHandler)
     {
         $this->nextHandler = $nextHandler;
     }
-<<<<<<< HEAD
-    /**
-     * @param RequestInterface $request
-     * @param array            $options
-     *
-     * @return PromiseInterface
-     */
-    public function __invoke(\YoastSEO_Vendor\Psr\Http\Message\RequestInterface $request, array $options)
-=======
     public function __invoke(\YoastSEO_Vendor\Psr\Http\Message\RequestInterface $request, array $options) : \YoastSEO_Vendor\GuzzleHttp\Promise\PromiseInterface
->>>>>>> update
     {
         $fn = $this->nextHandler;
         // Don't do anything if the request has no body.
@@ -58,11 +34,7 @@ class PrepareBodyMiddleware
         // Add a default content-type if possible.
         if (!$request->hasHeader('Content-Type')) {
             if ($uri = $request->getBody()->getMetadata('uri')) {
-<<<<<<< HEAD
-                if ($type = \YoastSEO_Vendor\GuzzleHttp\Psr7\mimetype_from_filename($uri)) {
-=======
                 if (\is_string($uri) && ($type = \YoastSEO_Vendor\GuzzleHttp\Psr7\MimeType::fromFilename($uri))) {
->>>>>>> update
                     $modify['set_headers']['Content-Type'] = $type;
                 }
             }
@@ -78,33 +50,18 @@ class PrepareBodyMiddleware
         }
         // Add the expect header if needed.
         $this->addExpectHeader($request, $options, $modify);
-<<<<<<< HEAD
-        return $fn(\YoastSEO_Vendor\GuzzleHttp\Psr7\modify_request($request, $modify), $options);
-    }
-    /**
-     * Add expect header
-     *
-     * @return void
-     */
-    private function addExpectHeader(\YoastSEO_Vendor\Psr\Http\Message\RequestInterface $request, array $options, array &$modify)
-=======
         return $fn(\YoastSEO_Vendor\GuzzleHttp\Psr7\Utils::modifyRequest($request, $modify), $options);
     }
     /**
      * Add expect header
      */
     private function addExpectHeader(\YoastSEO_Vendor\Psr\Http\Message\RequestInterface $request, array $options, array &$modify) : void
->>>>>>> update
     {
         // Determine if the Expect header should be used
         if ($request->hasHeader('Expect')) {
             return;
         }
-<<<<<<< HEAD
-        $expect = isset($options['expect']) ? $options['expect'] : null;
-=======
         $expect = $options['expect'] ?? null;
->>>>>>> update
         // Return if disabled or if you're not using HTTP/1.1 or HTTP/2.0
         if ($expect === \false || $request->getProtocolVersion() < 1.1) {
             return;

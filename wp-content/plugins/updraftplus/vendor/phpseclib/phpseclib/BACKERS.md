@@ -4,11 +4,6 @@ phpseclib ongoing development is made possible by [Tidelift](https://tidelift.co
 
 ## Backers
 
-<<<<<<< HEAD
-- Zane Hooper
-- [Setasign](https://www.setasign.com/)
-- Allan Simon
-=======
 - Allan Simon
 - [ChargeOver](https://chargeover.com/)
 - Raghu Veer Dendukuri
@@ -19,4 +14,3 @@ phpseclib ongoing development is made possible by [Tidelift](https://tidelift.co
 - Tharyrok
 - [cjhaas](https://github.com/cjhaas)
 - [istiak-tridip](https://github.com/istiak-tridip)
->>>>>>> update

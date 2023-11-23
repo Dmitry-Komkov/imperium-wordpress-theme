@@ -101,12 +101,6 @@ class Yoast_Notification_Center {
 	 * Dismiss a notification.
 	 */
 	public static function ajax_dismiss_notification() {
-<<<<<<< HEAD
-
-		$notification_center = self::get();
-
-		$notification_id = filter_input( INPUT_POST, 'notification' );
-=======
 		$notification_center = self::get();
 
 		if ( ! isset( $_POST['notification'] ) || ! is_string( $_POST['notification'] ) ) {
@@ -115,19 +109,15 @@ class Yoast_Notification_Center {
 
 		$notification_id = sanitize_text_field( wp_unslash( $_POST['notification'] ) );
 
->>>>>>> update
 		if ( empty( $notification_id ) ) {
 			die( '-1' );
 		}
 
-<<<<<<< HEAD
-=======
 		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Reason: We are using the variable as a nonce.
 		if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( wp_unslash( $_POST['nonce'] ), $notification_id ) ) {
 			die( '-1' );
 		}
 
->>>>>>> update
 		$notification = $notification_center->get_notification_by_id( $notification_id );
 		if ( ( $notification instanceof Yoast_Notification ) === false ) {
 
@@ -317,11 +307,7 @@ class Yoast_Notification_Center {
 	 */
 	public function add_notification( Yoast_Notification $notification ) {
 
-<<<<<<< HEAD
-		$callback = [ $this, __METHOD__ ];
-=======
 		$callback = [ $this, __FUNCTION__ ];
->>>>>>> update
 		$args     = func_get_args();
 		if ( $this->queue_transaction( $callback, $args ) ) {
 			return;
@@ -428,11 +414,7 @@ class Yoast_Notification_Center {
 	 */
 	public function remove_notification( Yoast_Notification $notification, $resolve = true ) {
 
-<<<<<<< HEAD
-		$callback = [ $this, __METHOD__ ];
-=======
 		$callback = [ $this, __FUNCTION__ ];
->>>>>>> update
 		$args     = func_get_args();
 		if ( $this->queue_transaction( $callback, $args ) ) {
 			return;
@@ -543,16 +525,12 @@ class Yoast_Notification_Center {
 	 * AJAX display notifications.
 	 */
 	public function ajax_get_notifications() {
-<<<<<<< HEAD
-		$echo = filter_input( INPUT_POST, 'version' ) === '2';
-=======
 		$echo = false;
 		// phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Reason: We are not processing form data.
 		if ( isset( $_POST['version'] ) && is_string( $_POST['version'] ) ) {
 			// phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Reason: We are only comparing the variable in a condition.
 			$echo = wp_unslash( $_POST['version'] ) === '2';
 		}
->>>>>>> update
 
 		// Display the notices.
 		$this->display_notifications( $echo );
@@ -705,22 +683,6 @@ class Yoast_Notification_Center {
 	/**
 	 * Get information from the User input.
 	 *
-<<<<<<< HEAD
-	 * @param string $key Key to retrieve.
-	 *
-	 * @return mixed value of key if set.
-	 */
-	private static function get_user_input( $key ) {
-
-		$filter_input_type = INPUT_GET;
-		$request_method    = isset( $_SERVER['REQUEST_METHOD'] ) ? filter_var( wp_unslash( $_SERVER['REQUEST_METHOD'] ) ) : '';
-
-		if ( strtoupper( $request_method ) === 'POST' ) {
-			$filter_input_type = INPUT_POST;
-		}
-
-		return filter_input( $filter_input_type, $key );
-=======
 	 * Note that this function does not handle nonce verification.
 	 *
 	 * @param string $key Key to retrieve.
@@ -744,7 +706,6 @@ class Yoast_Notification_Center {
 		}
 		// phpcs:enable WordPress.Security.NonceVerification.Missing, WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 		return '';
->>>>>>> update
 	}
 
 	/**

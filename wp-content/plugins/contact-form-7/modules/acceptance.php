@@ -41,14 +41,6 @@ function wpcf7_acceptance_form_tag_handler( $tag ) {
 		'class' => trim( $class ),
 	);
 
-<<<<<<< HEAD
-	$item_atts = array();
-
-	$item_atts['type'] = 'checkbox';
-	$item_atts['name'] = $tag->name;
-	$item_atts['value'] = '1';
-	$item_atts['tabindex'] = $tag->get_option( 'tabindex', 'signed_int', true );
-=======
 	$item_atts = array(
 		'type' => 'checkbox',
 		'name' => $tag->name,
@@ -58,7 +50,6 @@ function wpcf7_acceptance_form_tag_handler( $tag ) {
 		'class' => $tag->get_class_option() ? $tag->get_class_option() : null,
 		'id' => $tag->get_id_option(),
 	);
->>>>>>> update
 
 	if ( $validation_error ) {
 		$item_atts['aria-invalid'] = 'true';
@@ -69,16 +60,6 @@ function wpcf7_acceptance_form_tag_handler( $tag ) {
 		$item_atts['aria-invalid'] = 'false';
 	}
 
-<<<<<<< HEAD
-	if ( $tag->has_option( 'default:on' ) ) {
-		$item_atts['checked'] = 'checked';
-	}
-
-	$item_atts['class'] = $tag->get_class_option();
-	$item_atts['id'] = $tag->get_id_option();
-
-=======
->>>>>>> update
 	$item_atts = wpcf7_format_atts( $item_atts );
 
 	$content = empty( $tag->content )
@@ -91,13 +72,6 @@ function wpcf7_acceptance_form_tag_handler( $tag ) {
 		if ( $tag->has_option( 'label_first' ) ) {
 			$html = sprintf(
 				'<span class="wpcf7-list-item-label">%2$s</span><input %1$s />',
-<<<<<<< HEAD
-				$item_atts, $content );
-		} else {
-			$html = sprintf(
-				'<input %1$s /><span class="wpcf7-list-item-label">%2$s</span>',
-				$item_atts, $content );
-=======
 				$item_atts,
 				$content
 			);
@@ -107,7 +81,6 @@ function wpcf7_acceptance_form_tag_handler( $tag ) {
 				$item_atts,
 				$content
 			);
->>>>>>> update
 		}
 
 		$html = sprintf(
@@ -118,12 +91,8 @@ function wpcf7_acceptance_form_tag_handler( $tag ) {
 	} else {
 		$html = sprintf(
 			'<span class="wpcf7-list-item"><input %1$s /></span>',
-<<<<<<< HEAD
-			$item_atts );
-=======
 			$item_atts
 		);
->>>>>>> update
 	}
 
 	$html = sprintf(

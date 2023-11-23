@@ -142,48 +142,6 @@ $generated_i18n_strings = array(
 	// Reference: src/blocks/popular-posts-widget/index.js:477
 	__( 'Display Comments', 'google-analytics-for-wordpress' ),
 
-<<<<<<< HEAD
-	// Reference: src/plugins/exclude-page-tracking/components/page-insights-Lite.js:21
-	__( 'Last 30 days', 'google-analytics-for-wordpress' ),
-
-	// Reference: src/plugins/exclude-page-tracking/components/page-insights-Lite.js:22
-	__( 'Yesterday', 'google-analytics-for-wordpress' ),
-
-	// Reference: src/plugins/exclude-page-tracking/components/page-insights-Lite.js:23
-	__( 'Bounce Rate', 'google-analytics-for-wordpress' ),
-
-	// Reference: src/plugins/exclude-page-tracking/components/page-insights-Lite.js:24
-	__( 'Time On Page', 'google-analytics-for-wordpress' ),
-
-	// Reference: src/plugins/exclude-page-tracking/components/page-insights-Lite.js:25
-	__( 'Load Time', 'google-analytics-for-wordpress' ),
-
-	// Reference: src/plugins/exclude-page-tracking/components/page-insights-Lite.js:26
-	__( 'Entrances', 'google-analytics-for-wordpress' ),
-
-	// Reference: src/plugins/exclude-page-tracking/components/page-insights-Lite.js:27
-	__( 'Page Views', 'google-analytics-for-wordpress' ),
-
-	// Reference: src/plugins/exclude-page-tracking/components/page-insights-Lite.js:28
-	__( 'Exits', 'google-analytics-for-wordpress' ),
-
-	// Reference: src/plugins/exclude-page-tracking/components/page-insights-hide-btn.js:8
-	__( 'Hide Page Insights', 'google-analytics-for-wordpress' ),
-
-	// Reference: src/plugins/exclude-page-tracking/components/page-insights-show-btn.js:8
-	__( 'Show Page Insights', 'google-analytics-for-wordpress' ),
-
-	// Reference: src/plugins/exclude-page-tracking/components/pro-badge.js:11
-	__( 'This is a PRO feature.', 'google-analytics-for-wordpress' ),
-
-	// Reference: src/plugins/exclude-page-tracking/components/pro-badge.js:12
-	__( 'Upgrade', 'google-analytics-for-wordpress' ),
-
-	// Reference: src/plugins/exclude-page-tracking/index.js:36
-	__( 'Toggle to prevent Google Analytics from tracking this page.', 'google-analytics-for-wordpress' ),
-
-	// Reference: src/plugins/exclude-page-tracking/index.js:37
-=======
 	// Reference: src/plugins/metabox/components/page-insights-Lite.js:20
 	__( 'Last 30 days', 'google-analytics-for-wordpress' ),
 
@@ -236,7 +194,6 @@ $generated_i18n_strings = array(
 	__( 'Toggle to prevent Google Analytics from tracking this page.', 'google-analytics-for-wordpress' ),
 
 	// Reference: src/plugins/metabox/index.js:50
->>>>>>> update
 	__( 'Exclude page from Google Analytics Tracking', 'google-analytics-for-wordpress' ),
 
 	// Reference: src/plugins/monsterinsights-Headline-Analyzer/components/HeadlinePanelCharacterCount.js:10
@@ -405,15 +362,6 @@ $generated_i18n_strings = array(
 	// Reference: src/plugins/monsterinsights-Headline-Analyzer/components/HeadlineWordsBlock.js:6
 	__( 'Goal: ', 'google-analytics-for-wordpress' ),
 
-<<<<<<< HEAD
-	// Reference: src/plugins/monsterinsights-Headline-Analyzer/index.js:21
-	__( 'Headline Analyzer', 'google-analytics-for-wordpress' ),
-
-	// Reference: src/plugins/monsterinsights-Headline-Analyzer/index.js:22
-	__( 'Write your post title to see the analyzer data. This Headline Analyzer tool enables you to write irresistible SEO headlines that drive traffic, shares, and rank better in search results.', 'google-analytics-for-wordpress' ),
-
-	// Reference: src/plugins/monsterinsights-Headline-Analyzer/index.js:27
-=======
 	// Reference: src/plugins/monsterinsights-Headline-Analyzer/index.js:24
 	__( 'Headline Analyzer', 'google-analytics-for-wordpress' ),
 
@@ -421,7 +369,6 @@ $generated_i18n_strings = array(
 	__( 'Write your post title to see the analyzer data. This Headline Analyzer tool enables you to write irresistible SEO headlines that drive traffic, shares, and rank better in search results.', 'google-analytics-for-wordpress' ),
 
 	// Reference: src/plugins/monsterinsights-Headline-Analyzer/index.js:30
->>>>>>> update
 	__( 'This headline analyzer is part of MonsterInsights to help you increase your traffic. See your %1swebsite traffic reports%2s.', 'google-analytics-for-wordpress' )
 );
 /* THIS IS THE END OF THE GENERATED FILE */

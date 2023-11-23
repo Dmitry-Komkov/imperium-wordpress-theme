@@ -43,13 +43,8 @@ class MonsterInsights_Lite_User_Journey_MemberPress_Metabox extends MonsterInsig
 		if ( ! $this->is_valid_array( $_GET, 'id', true ) ) {
 			return false;
 		}
-<<<<<<< HEAD
-
-		if ( 'memberpress-trans' !== $_GET['page'] && 'edit' !== $_GET['action'] ) {
-=======
 		
 		if ( 'memberpress-trans' !== $_GET['page'] && 'edit' !== $_GET['action'] ) { // phpcs:ignore
->>>>>>> update
 			return false;
 		}
 

@@ -85,13 +85,10 @@ abstract class UpdraftPlus_BackupModule {
 			'_instance_id' => $this->_instance_id,
 			'method_display_name' => $updraftplus->backup_methods[$this->get_id()],
 			'admin_page_url' => UpdraftPlus_Options::admin_page_url(),
-<<<<<<< HEAD
-=======
 			'storage_auth_nonce' =>wp_create_nonce('storage_auth_nonce'),
 			'input_select_folder_label' => __('Select existing folder', 'updraftplus'),
 			'input_confirm_label' => __('Confirm', 'updraftplus'),
 			'input_cancel_label' => __('Cancel', 'updraftplus'),
->>>>>>> update
 		);
 	}
 
@@ -108,11 +105,7 @@ abstract class UpdraftPlus_BackupModule {
 	/**
 	 * List all allowed HTML tags for content sanitisation
 	 *
-<<<<<<< HEAD
-	 * @return Array an associatve array keyed by name of the allowed HTML tags 
-=======
 	 * @return Array an associatve array keyed by name of the allowed HTML tags
->>>>>>> update
 	 */
 	protected function allowed_html_for_content_sanitisation() {
 		return array(
@@ -133,8 +126,6 @@ abstract class UpdraftPlus_BackupModule {
 	}
 
 	/**
-<<<<<<< HEAD
-=======
 	 * Get partial templates associated to the corresponding backup module (remote storage object)
 	 * N.B. This method would normally be over-ridden by the child.
 	 *
@@ -145,7 +136,6 @@ abstract class UpdraftPlus_BackupModule {
 	}
 	
 	/**
->>>>>>> update
 	 * Check whether options have been set up by the user, or not
 	 * This method would normally be over-ridden by the child.
 	 *
@@ -153,11 +143,7 @@ abstract class UpdraftPlus_BackupModule {
 	 *
 	 * @return Boolean
 	 */
-<<<<<<< HEAD
-	public function options_exist($opts) { // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable
-=======
 	public function options_exist($opts) { // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- Unused parameter is present because the caller uses 1 argument and normally this method will be over-ridden by the child class.
->>>>>>> update
 		return false;
 	}
 
@@ -259,11 +245,7 @@ abstract class UpdraftPlus_BackupModule {
 			$name = '['.$field.']';
 		}
 		
-<<<<<<< HEAD
-		$output = "id=\"updraft_${method_id}${id}_${instance_id}\" name=\"updraft_${method_id}[settings][${instance_id}]${name}\" ";
-=======
 		$output = "id=\"updraft_{$method_id}{$id}_{$instance_id}\" name=\"updraft_{$method_id}[settings][{$instance_id}]{$name}\" ";
->>>>>>> update
 
 		if ($return_instead_of_echo) {
 			return $output;
@@ -282,11 +264,7 @@ abstract class UpdraftPlus_BackupModule {
 	public function get_css_id($field) {
 		$method_id = $this->get_id();
 		$instance_id = $this->supports_feature('config_templates') ? '{{instance_id}}' : $this->_instance_id;
-<<<<<<< HEAD
-		return "updraft_${method_id}_${field}_${instance_id}";
-=======
 		return "updraft_{$method_id}_{$field}_{$instance_id}";
->>>>>>> update
 	}
 	
 	/**
@@ -313,11 +291,7 @@ abstract class UpdraftPlus_BackupModule {
 				$this->get_pre_configuration_template();
 				
 				if ($this->supports_feature('multi_storage')) {
-<<<<<<< HEAD
-					do_action('updraftplus_config_print_add_multi_storage', $this->get_id(), $this);
-=======
 				do_action('updraftplus_config_print_add_multi_storage', $this->get_id(), $this);
->>>>>>> update
 				}
 				
 			?>
@@ -673,13 +647,8 @@ abstract class UpdraftPlus_BackupModule {
 	/**
 	 * This function will build and return the authentication link
 	 *
-<<<<<<< HEAD
-	 * @param String $instance_id     - the instance id
-	 * @param String $text            - the link text
-=======
 	 * @param String $instance_id - the instance id
 	 * @param String $text        - the link text
->>>>>>> update
 	 *
 	 * @return String - the authentication link
 	 */
@@ -687,24 +656,16 @@ abstract class UpdraftPlus_BackupModule {
 		
 		$id = $this->get_id();
 		
-<<<<<<< HEAD
-		return '<a class="updraft_authlink" href="'.UpdraftPlus_Options::admin_page_url().'?&action=updraftmethod-'.$id.'-auth&page=updraftplus&updraftplus_'.$id.'auth=doit&updraftplus_instance='.$instance_id.'" data-instance_id="'.$instance_id.'" data-remote_method="'.$id.'">'.$text.'</a>';
-=======
 		if (!preg_match('/^[-A-Z0-9]+$/i', $instance_id)) return '';
 		
 		return '<a class="updraft_authlink" href="'.UpdraftPlus_Options::admin_page_url().'?&action=updraftmethod-'.$id.'-auth&page=updraftplus&updraftplus_'.$id.'auth=doit&nonce='.wp_create_nonce('storage_auth_nonce').'&updraftplus_instance='.$instance_id.'" data-instance_id="'.$instance_id.'" data-remote_method="'.$id.'">'.$text.'</a>';
->>>>>>> update
 	}
 	
 	/**
 	 * Check the authentication is valid before proceeding to call the authentication method
 	 */
 	public function action_authenticate_storage() {
-<<<<<<< HEAD
-		if (isset($_GET['updraftplus_'.$this->get_id().'auth']) && 'doit' == $_GET['updraftplus_'.$this->get_id().'auth'] && !empty($_GET['updraftplus_instance'])) {
-=======
 		if (isset($_GET['updraftplus_'.$this->get_id().'auth']) && 'doit' == $_GET['updraftplus_'.$this->get_id().'auth'] && !empty($_GET['updraftplus_instance']) && preg_match('/^[-A-Z0-9]+$/i', $_GET['updraftplus_instance']) && isset($_GET['nonce']) && wp_verify_nonce($_GET['nonce'], 'storage_auth_nonce')) {
->>>>>>> update
 			$this->authenticate_storage((string) $_GET['updraftplus_instance']);
 		}
 	}
@@ -747,11 +708,7 @@ abstract class UpdraftPlus_BackupModule {
 	 * Check the deauthentication is valid before proceeding to call the deauthentication method
 	 */
 	public function action_deauthenticate_storage() {
-<<<<<<< HEAD
-		if (isset($_GET['updraftplus_'.$this->get_id().'auth']) && 'deauth' == $_GET['updraftplus_'.$this->get_id().'auth'] && !empty($_GET['nonce']) && !empty($_GET['updraftplus_instance']) && wp_verify_nonce($_GET['nonce'], $this->get_id().'_deauth_nonce')) {
-=======
 		if (isset($_GET['updraftplus_'.$this->get_id().'auth']) && 'deauth' == $_GET['updraftplus_'.$this->get_id().'auth'] && !empty($_GET['nonce']) && !empty($_GET['updraftplus_instance']) && preg_match('/^[-A-Z0-9]+$/i', $_GET['updraftplus_instance']) && wp_verify_nonce($_GET['nonce'], $this->get_id().'_deauth_nonce')) {
->>>>>>> update
 			$this->deauthenticate_storage($_GET['updraftplus_instance']);
 		}
 	}
@@ -823,11 +780,7 @@ abstract class UpdraftPlus_BackupModule {
 	 * This function is a wrapper and will call $updraftplus->log(), the backup modules should use this so we can add information to the log lines to do with the remote storage and instance settings.
 	 *
 	 * @param string  $line       - the log line
-<<<<<<< HEAD
-	 * @param string  $level      - the log level: notice, warning, error. If suffixed with a hypen and a destination, then the default destination is changed too.
-=======
 	 * @param string  $level      - the log level: notice, warning, error. If suffixed with a hyphen and a destination, then the default destination is changed too.
->>>>>>> update
 	 * @param boolean $uniq_id    - each of these will only be logged once
 	 * @param boolean $skip_dblog - if true, then do not write to the database
 	 *
@@ -892,8 +845,6 @@ abstract class UpdraftPlus_BackupModule {
 
 		return $prefix;
 	}
-<<<<<<< HEAD
-=======
 
 	/**
 	 * This method will output any needed js for the JSTree.
@@ -913,5 +864,4 @@ abstract class UpdraftPlus_BackupModule {
 			$script_output[$id] = true;
 		}
 	}
->>>>>>> update
 }

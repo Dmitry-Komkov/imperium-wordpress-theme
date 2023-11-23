@@ -4,11 +4,7 @@ if (!defined('UPDRAFTPLUS_DIR')) die('No direct access allowed.');
 
 // Files can easily get too big for this method
 
-<<<<<<< HEAD
-if (!class_exists('UpdraftPlus_BackupModule')) require_once(UPDRAFTPLUS_DIR.'/methods/backup-module.php');
-=======
 if (!class_exists('UpdraftPlus_BackupModule')) updraft_try_include_file('methods/backup-module.php', 'require_once');
->>>>>>> update
 
 class UpdraftPlus_BackupModule_email extends UpdraftPlus_BackupModule {
 
@@ -31,11 +27,7 @@ class UpdraftPlus_BackupModule_email extends UpdraftPlus_BackupModule {
 			if (file_exists($fullpath) && filesize($fullpath) > UPDRAFTPLUS_WARN_EMAIL_SIZE) {
 				$size_in_mb_of_big_file = round(filesize($fullpath)/1048576, 1);
 				$toobig_hash = md5($file);
-<<<<<<< HEAD
-				$this->log($file.': '.sprintf(__('This backup archive is %s MB in size - the attempt to send this via email is likely to fail (few email servers allow attachments of this size). If so, you should switch to using a different remote storage method.', 'updraftplus'), $size_in_mb_of_big_file), 'warning', 'toobigforemail_'.$toobig_hash);
-=======
 				$this->log($file.': '.sprintf(__('This backup archive is %s MB in size - the attempt to send this via email is likely to fail (few email servers allow attachments of this size).', 'updraftplus'), $size_in_mb_of_big_file).' '.__('If so, you should switch to using a different remote storage method.', 'updraftplus'), 'warning', 'toobigforemail_'.$toobig_hash);
->>>>>>> update
 			}
 
 			$any_attempted = false;
@@ -126,11 +118,7 @@ class UpdraftPlus_BackupModule_email extends UpdraftPlus_BackupModule {
 		<?php
 	}
 
-<<<<<<< HEAD
-	public function delete($files, $data = null, $sizeinfo = array()) {// phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable
-=======
 	public function delete($files, $data = null, $sizeinfo = array()) {// phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- Unused parameter is present because the caller uses 3 arguments.
->>>>>>> update
 		return true;
 	}
 }

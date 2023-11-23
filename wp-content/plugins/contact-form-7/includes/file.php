@@ -189,11 +189,7 @@ function wpcf7_acceptable_filetypes( $types = 'default', $format = 'regex' ) {
 		);
 	} else {
 		$types = array_map(
-<<<<<<< HEAD
-			function ( $type ) {
-=======
 			static function ( $type ) {
->>>>>>> update
 				if ( is_string( $type ) ) {
 					return preg_split( '/[\s|,]+/', strtolower( $type ) );
 				}
@@ -207,11 +203,7 @@ function wpcf7_acceptable_filetypes( $types = 'default', $format = 'regex' ) {
 
 	if ( 'attr' === $format or 'attribute' === $format ) {
 		$types = array_map(
-<<<<<<< HEAD
-			function ( $type ) {
-=======
 			static function ( $type ) {
->>>>>>> update
 				if ( false === strpos( $type, '/' ) ) {
 					return sprintf( '.%s', trim( $type, '.' ) );
 				} elseif ( preg_match( '%^([a-z]+)/[*]$%i', $type, $matches ) ) {
@@ -233,11 +225,7 @@ function wpcf7_acceptable_filetypes( $types = 'default', $format = 'regex' ) {
 
 	} elseif ( 'regex' === $format ) {
 		$types = array_map(
-<<<<<<< HEAD
-			function ( $type ) {
-=======
 			static function ( $type ) {
->>>>>>> update
 				if ( false === strpos( $type, '/' ) ) {
 					return preg_quote( trim( $type, '.' ) );
 				} elseif ( $type = wpcf7_convert_mime_to_ext( $type ) ) {
@@ -272,11 +260,6 @@ function wpcf7_init_uploads() {
 	if ( is_dir( $dir ) and is_writable( $dir ) ) {
 		$htaccess_file = path_join( $dir, '.htaccess' );
 
-<<<<<<< HEAD
-		if ( ! file_exists( $htaccess_file )
-		and $handle = @fopen( $htaccess_file, 'w' ) ) {
-			fwrite( $handle, "Deny from all\n" );
-=======
 		if ( file_exists( $htaccess_file ) ) {
 			list( $first_line_comment ) = (array) file(
 				$htaccess_file,
@@ -299,7 +282,6 @@ function wpcf7_init_uploads() {
 			fwrite( $handle, "    Deny from all\n" );
 			fwrite( $handle, "</IfModule>\n" );
 
->>>>>>> update
 			fclose( $handle );
 		}
 	}

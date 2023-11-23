@@ -246,18 +246,11 @@ class WPSEO_Taxonomy_Sitemap_Provider implements WPSEO_Sitemap_Provider {
 				continue;
 			}
 
-<<<<<<< HEAD
-			$url['loc'] = WPSEO_Taxonomy_Meta::get_term_meta( $term, $term->taxonomy, 'canonical' );
-
-			if ( ! is_string( $url['loc'] ) || $url['loc'] === '' ) {
-				$url['loc'] = get_term_link( $term, $term->taxonomy );
-=======
 			$canonical  = WPSEO_Taxonomy_Meta::get_term_meta( $term, $term->taxonomy, 'canonical' );
 			$url['loc'] = get_term_link( $term, $term->taxonomy );
 
 			if ( is_string( $canonical ) && $canonical !== '' && $canonical !== $url['loc'] ) {
 				continue;
->>>>>>> update
 			}
 
 			$url['mod'] = $wpdb->get_var( $wpdb->prepare( $sql, $term->taxonomy, $term->term_id ) );
@@ -294,11 +287,7 @@ class WPSEO_Taxonomy_Sitemap_Provider implements WPSEO_Sitemap_Provider {
 			return false;
 		}
 
-<<<<<<< HEAD
-		if ( in_array( $taxonomy_name, [ 'link_category', 'nav_menu' ], true ) ) {
-=======
 		if ( in_array( $taxonomy_name, [ 'link_category', 'nav_menu', 'wp_pattern_category' ], true ) ) {
->>>>>>> update
 			return false;
 		}
 

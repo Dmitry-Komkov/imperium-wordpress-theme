@@ -9,11 +9,7 @@
 
 use function Bhittani\StarRating\functions\sanitize;
 /**
-<<<<<<< HEAD
- * $Id: sitemap-core.php 935247 2014-06-19 17:13:03Z arnee $
-=======
  * $Id: sitemap-core.php 2823802 2022-11-24 18:12:38Z auctollo $
->>>>>>> update
  */
 
 // Enable for dev! Good code doesn't generate any notices...
@@ -757,11 +753,7 @@ class GoogleSitemapGeneratorPrioByAverageProvider implements Google_Sitemap_Gene
 	public function get_post_priority( $post_id, $comment_count ) {
 
 		// Do not divide by zero !
-<<<<<<< HEAD
-		if ( 0 == $this->average ) {
-=======
 		if ( 0 === $this->average ) {
->>>>>>> update
 			if ( $comment_count > 0 ) {
 				$priority = 1;
 			} else {
@@ -1167,14 +1159,6 @@ final class GoogleSitemapGenerator {
 
 		$excludes = (array) $this->get_option( 'b_exclude' );
 
-<<<<<<< HEAD
-		// Exclude front page page if defined .
-		if ( get_option( 'show_on_front' ) === 'page' && get_option( 'page_on_front' ) ) {
-			$excludes[] = get_option( 'page_on_front' );
-			return $excludes;
-		}
-=======
->>>>>>> update
 		return array_filter( array_map( 'intval', $excludes ), array( $this, 'is_greater_zero' ) );
 	}
 
@@ -1371,10 +1355,7 @@ final class GoogleSitemapGenerator {
 		$this->options['sm_in_customtypes'] = array(); // Include custom post types .
 		$this->options['sm_in_lastmod']     = true; // Include the last modification date .
 		$this->options['sm_b_sitemap_name'] = 'sitemap'; // Name of custom sitemap.
-<<<<<<< HEAD
-=======
 		$this->options['sm_b_old_sm_name']  = 'sitemap'; // Name of previously defined sitemap.
->>>>>>> update
 		$this->options['sm_cf_home']        = 'daily'; // Change frequency of the homepage .
 		$this->options['sm_cf_posts']       = 'monthly'; // Change frequency of posts .
 		$this->options['sm_cf_pages']       = 'weekly'; // Change frequency of static pages .
@@ -1408,10 +1389,7 @@ final class GoogleSitemapGenerator {
 		$this->options['sm_i_supportfeed']       = true; // shows the support feed .
 		$this->options['sm_i_supportfeed_cache'] = 0; // Last refresh of support feed .
 		$this->options['sm_links_page']          = 10; // Link per page support with default value 10. .
-<<<<<<< HEAD
-=======
 		$this->options['sm_user_consent']        = false;
->>>>>>> update
 	}
 
 	/**
@@ -1477,10 +1455,6 @@ final class GoogleSitemapGenerator {
 		if ( 0 !== strpos( $key, 'sm_' ) ) {
 			$key = 'sm_' . $key;
 		}
-<<<<<<< HEAD
-
-=======
->>>>>>> update
 		$this->options[ $key ] = $value;
 	}
 
@@ -1724,24 +1698,13 @@ final class GoogleSitemapGenerator {
 		// Manual override for root URL .
 		$base_url_settings = $this->get_option( 'b_baseurl' );
 		$sm_sitemap_name   = $this->get_option( 'b_sitemap_name' );
-<<<<<<< HEAD
-=======
 		$old_sm_name       = $this->get_option( 'b_old_sm_name' );
->>>>>>> update
 		if ( ! empty( $base_url_settings ) ) {
 			$base_url = $base_url_settings;
 		} elseif ( defined( 'SM_BASE_URL' ) && SM_BASE_URL ) {
 			$base_url = SM_BASE_URL;
 		}
 		global $wp_rewrite;
-<<<<<<< HEAD
-		delete_option( 'sm_rewrite_done' );
-		wp_clear_scheduled_hook( 'sm_ping_daily' );
-		self::remove_rewrite_hooks();
-		$wp_rewrite->flush_rules( false );
-		self::setup_rewrite_hooks();
-		GoogleSitemapGeneratorLoader::activate_rewrite();
-=======
 		if ( $old_sm_name !== $sm_sitemap_name ) {
 			$this->set_option( 'sm_b_old_sm_name', $sm_sitemap_name );
 			delete_option( 'sm_rewrite_done' );
@@ -1751,7 +1714,6 @@ final class GoogleSitemapGenerator {
 			self::setup_rewrite_hooks();
 			GoogleSitemapGeneratorLoader::activate_rewrite();
 		}
->>>>>>> update
 		if ( $pl ) {
 			return trailingslashit( $base_url ) . ( '' === $sm_sitemap_name ? 'sitemap' : $sm_sitemap_name ) . ( $options ? '-' . $options : '' ) . ( $html
 				? '.html' : '.xml' ) . ( $zip ? '.gz' : '' );
@@ -1896,26 +1858,17 @@ final class GoogleSitemapGenerator {
 		$start_time    = microtime( true );
 		$start_queries = $GLOBALS['wpdb']->num_queries;
 		$start_memory  = memory_get_peak_usage( true );
-<<<<<<< HEAD
-=======
 		$disable_functions = ini_get( 'disable_functions' );
->>>>>>> update
 
 		// Raise memory and time limits .
 		if ( $this->get_option( 'b_memory' ) !== '' ) {
 			wp_raise_memory_limit( $this->get_option( 'b_memory' ) );
 
 		}
-<<<<<<< HEAD
-
-		if ( $this->get_option( 'b_time' ) !== -1 ) {
-			set_time_limit( $this->get_option( 'b_time' ) );
-=======
 		if ( $this->get_option( 'b_time' ) !== -1 && $this->get_option( 'b_time' ) !== null ) {
 			if ( strpos( $disable_functions, 'set_time_limit' ) === false ) {
 				set_time_limit( $this->get_option( 'b_time' ) );
 			}
->>>>>>> update
 		}
 
 		do_action( 'sm_init', $this );
@@ -2126,11 +2079,7 @@ final class GoogleSitemapGenerator {
 		if ( ! empty( $style_sheet ) ) {
 			$this->add_element( new GoogleSitemapGeneratorXmlEntry( '<' . '?xml-stylesheet type=\'text/xsl\' href=\'' . esc_url( $style_sheet ) . '\'?>' ) );
 		}
-<<<<<<< HEAD
-		$this->add_element( new GoogleSitemapGeneratorDebugEntry( 'sitemap-generator-url=\'https://auctollo.com\' sitemap-generator-version=\'' . $this->get_version() . '\'' ) );
-=======
 		$this->add_element( new GoogleSitemapGeneratorDebugEntry( 'sitemap-generator-url=\'http://www.arnebrachhold.de\' sitemap-generator-version=\'' . $this->get_version() . '\'' ) );
->>>>>>> update
 		$this->add_element( new GoogleSitemapGeneratorDebugEntry( 'generated-on=\'' . gmdate( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ) ) . '\'' ) );
 
 		switch ( $format ) {
@@ -2554,11 +2503,7 @@ final class GoogleSitemapGenerator {
 	 */
 	private function send_stats() {
 		global $wp_version, $wpdb;
-<<<<<<< HEAD
-		$post_count = $wpdb->get_var( 'SELECT COUNT(*) FROM {$wpdb->posts} p WHERE p.post_status=\'publish\'' ); // db call ok; no-cache ok.
-=======
 		$post_count = $wpdb->get_var( "SELECT COUNT(*) FROM {$wpdb->posts} p WHERE p.post_status='publish'" ); // db call ok; no-cache ok.
->>>>>>> update
 
 		// Send simple post count statistic to get an idea in which direction this plugin should be optimized .
 		// Only a rough number is required, so we are rounding things up .
@@ -2579,10 +2524,7 @@ final class GoogleSitemapGenerator {
 		} else {
 			$post_count = round( $post_count / 10000 ) * 10000;
 		}
-<<<<<<< HEAD
-=======
 		$user = wp_get_current_user();
->>>>>>> update
 
 		$post_data = array(
 			'v'   => 1,
@@ -2591,21 +2533,15 @@ final class GoogleSitemapGenerator {
 			'aip' => 1, // Anonymize .
 			't'   => 'event',
 			'ec'  => 'ping',
-<<<<<<< HEAD
-=======
 			'el'  => 'settings_saved',
->>>>>>> update
 			'ea'  => 'auto',
 			'ev'  => 1,
 			'cd1' => $wp_version,
 			'cd2' => $this->get_version(),
 			'cd3' => PHP_VERSION,
 			'cd4' => $post_count,
-<<<<<<< HEAD
-=======
 			'cd5' => $user->user_email,
 			'cd6' => 'https://' . $_SERVER['HTTP_HOST'],
->>>>>>> update
 			'ul'  => get_bloginfo( 'language' ),
 		);
 

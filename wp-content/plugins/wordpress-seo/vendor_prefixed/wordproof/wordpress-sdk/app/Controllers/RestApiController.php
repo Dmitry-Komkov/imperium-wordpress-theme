@@ -2,10 +2,7 @@
 
 namespace YoastSEO_Vendor\WordProof\SDK\Controllers;
 
-<<<<<<< HEAD
-=======
 use YoastSEO_Vendor\WordProof\SDK\Exceptions\ValidationException;
->>>>>>> update
 use YoastSEO_Vendor\WordProof\SDK\Helpers\OptionsHelper;
 use YoastSEO_Vendor\WordProof\SDK\Helpers\RestApiHelper;
 use YoastSEO_Vendor\WordProof\SDK\Helpers\PostMetaHelper;
@@ -170,8 +167,6 @@ class RestApiController
                     \YoastSEO_Vendor\WordProof\SDK\Helpers\PostMetaHelper::update($response->data->uid, $key, \json_decode($response->data->hash_input));
                     $this->setBlockchainTransaction($response->data);
                     break;
-<<<<<<< HEAD
-=======
                 case 'set_identity':
                     try {
                         (new \YoastSEO_Vendor\WordProof\SDK\Controllers\IdentityController())->store((array) $response->data);
@@ -183,7 +178,6 @@ class RestApiController
                     (new \YoastSEO_Vendor\WordProof\SDK\Controllers\IdentityController())->delete();
                     $data = (object) ['status' => 200, 'message' => 'success'];
                     return new \WP_REST_Response($data, $data->status);
->>>>>>> update
                 default:
                     break;
             }

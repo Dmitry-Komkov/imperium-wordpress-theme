@@ -1,14 +1,11 @@
 <?php
 
-<<<<<<< HEAD
-=======
 /**
  * Retrieves an associative array of languages to which
  * this plugin is translated.
  *
  * @return array Array of languages.
  */
->>>>>>> update
 function wpcf7_l10n() {
 	static $l10n = array();
 
@@ -42,9 +39,6 @@ function wpcf7_l10n() {
 	return $l10n;
 }
 
-<<<<<<< HEAD
-function wpcf7_is_valid_locale( $locale ) {
-=======
 
 /**
  * Returns true if the given locale code looks valid.
@@ -56,18 +50,14 @@ function wpcf7_is_valid_locale( $locale ) {
 		return false;
 	}
 
->>>>>>> update
 	$pattern = '/^[a-z]{2,3}(?:_[a-zA-Z_]{2,})?$/';
 	return (bool) preg_match( $pattern, $locale );
 }
 
-<<<<<<< HEAD
-=======
 
 /**
  * Returns true if the given locale is an RTL language.
  */
->>>>>>> update
 function wpcf7_is_rtl( $locale = '' ) {
 	static $rtl_locales = array(
 		'ar' => 'Arabic',
@@ -92,47 +82,6 @@ function wpcf7_is_rtl( $locale = '' ) {
 	return isset( $rtl_locales[$locale] );
 }
 
-<<<<<<< HEAD
-function wpcf7_load_textdomain( $locale = '' ) {
-	static $locales = array();
-
-	if ( empty( $locales ) ) {
-		$locales = array( determine_locale() );
-	}
-
-	$available_locales = array_merge(
-		array( 'en_US' ),
-		get_available_languages()
-	);
-
-	if ( ! in_array( $locale, $available_locales ) ) {
-		$locale = $locales[0];
-	}
-
-	if ( $locale === end( $locales ) ) {
-		return false;
-	} else {
-		$locales[] = $locale;
-	}
-
-	$domain = WPCF7_TEXT_DOMAIN;
-
-	if ( is_textdomain_loaded( $domain ) ) {
-		unload_textdomain( $domain );
-	}
-
-	$mofile = sprintf( '%s-%s.mo', $domain, $locale );
-
-	$domain_path = path_join( WPCF7_PLUGIN_DIR, 'languages' );
-	$loaded = load_textdomain( $domain, path_join( $domain_path, $mofile ) );
-
-	if ( ! $loaded ) {
-		$domain_path = path_join( WP_LANG_DIR, 'plugins' );
-		load_textdomain( $domain, path_join( $domain_path, $mofile ) );
-	}
-
-	return true;
-=======
 
 /**
  * Loads a translation file into the plugin's text domain.
@@ -204,5 +153,4 @@ function wpcf7_switch_locale( $locale, callable $callback, ...$args ) {
 	}
 
 	return $result;
->>>>>>> update
 }

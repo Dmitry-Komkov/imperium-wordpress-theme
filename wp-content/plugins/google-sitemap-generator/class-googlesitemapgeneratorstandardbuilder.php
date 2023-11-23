@@ -73,12 +73,6 @@ class GoogleSitemapGeneratorStandardBuilder {
 			return;
 		}
 
-<<<<<<< HEAD
-			$pts = strrpos( $params, '-', $pts - strlen( $params ) - 1 );
-
-			$post_type = substr( $params, 0, $pts );
-
-=======
 		$pts = strrpos( $params, '-', $pts - strlen( $params ) - 1 );
 
 		$param_length   = count( explode( '-', $params ) );
@@ -98,7 +92,6 @@ class GoogleSitemapGeneratorStandardBuilder {
 			$links_per_page = (int) 10;
 		}
 		$limit          = ( (int) $limits ) * $links_per_page;
->>>>>>> update
 		if ( ! $post_type || ! in_array( $post_type, $gsg->get_active_post_types(), true ) ) {
 			return;
 		}
@@ -159,11 +152,8 @@ class GoogleSitemapGeneratorStandardBuilder {
 					{$ex_cat_s_q_l}
 				ORDER BY
 					p.post_date_gmt DESC
-<<<<<<< HEAD
-=======
 				LIMIT
 					{$limit}
->>>>>>> update
 			";
 			// Query for counting all relevant posts for this post type.
 			$qsc = "
@@ -181,12 +171,8 @@ class GoogleSitemapGeneratorStandardBuilder {
 			// phpcs:disable
 			$q = $wpdb->prepare( $qs, $post_type, $year, $month );
 			// phpcs:enable
-<<<<<<< HEAD
-			$posts = $wpdb->get_results( $q ); // phpcs:ignore
-=======
 			$posts      = $wpdb->get_results( $q ); // phpcs:ignore
 			$posts      = array_slice( $posts, ( $limit - $links_per_page ) );
->>>>>>> update
 			$post_count = count( $posts );
 			if ( ( $post_count ) > 0 ) {
 				/**
@@ -322,11 +308,7 @@ class GoogleSitemapGeneratorStandardBuilder {
 				FROM
 					$wpdb->posts
 				WHERE
-<<<<<<< HEAD
-					post_date_gmt < %s
-=======
 					post_date_gmt < '%s'
->>>>>>> update
 					AND post_status = 'publish'
 					AND post_type = 'post'
 				GROUP BY
@@ -522,14 +504,6 @@ class GoogleSitemapGeneratorStandardBuilder {
 
 		$offset         = $taxonomy;
 		$links_per_page = $gsg->get_option( 'links_page' );
-<<<<<<< HEAD
-		if ( strpos( $taxonomy, '-' ) !== false ) {
-			$offset   = substr( $taxonomy, strrpos( $taxonomy, '-' ) + 1 );
-			$taxonomy = str_replace( '-' . $offset, '', $taxonomy );
-		}
-		$offset = ( --$offset ) * $links_per_page;
-
-=======
 		if ( gettype( $links_per_page ) !== 'integer' ) {
 			$links_per_page = (int) 10;
 		}
@@ -547,7 +521,6 @@ class GoogleSitemapGeneratorStandardBuilder {
 		} else {
 			$offset = ( --$offset ) * $links_per_page;
 		}
->>>>>>> update
 		$enabled_taxonomies = $this->get_enabled_taxonomies( $gsg );
 		if ( in_array( $taxonomy, $enabled_taxonomies, true ) ) {
 
@@ -626,12 +599,9 @@ class GoogleSitemapGeneratorStandardBuilder {
 	 */
 	public function build_product_tags( GoogleSitemapGenerator $gsg, $offset ) {
 		$links_per_page = $gsg->get_option( 'links_page' );
-<<<<<<< HEAD
-=======
 		if ( gettype( $links_per_page ) !== 'integer' ) {
 			$links_per_page = (int) 10;
 		}
->>>>>>> update
 		$offset         = ( --$offset ) * $links_per_page;
 
 		add_filter( 'get_terms_fields', array( $this, 'filter_terms_query' ), 20, 2 );
@@ -663,12 +633,9 @@ class GoogleSitemapGeneratorStandardBuilder {
 	 */
 	public function build_product_categories( GoogleSitemapGenerator $gsg, $offset ) {
 		$links_per_page = $gsg->get_option( 'links_page' );
-<<<<<<< HEAD
-=======
 		if ( gettype( $links_per_page ) !== 'integer' ) {
 			$links_per_page = (int) 10;
 		}
->>>>>>> update
 		$offset         = ( --$offset ) * $links_per_page;
 		$excludes       = array();
 		$excl_cats      = $gsg->get_option( 'b_exclude_cats' ); // Excluded cats.
@@ -755,18 +722,6 @@ class GoogleSitemapGeneratorStandardBuilder {
 			$excludes = $excl_cats;
 		}
 
-<<<<<<< HEAD
-		foreach ( $taxonomies as $tax ) {
-			if ( ! in_array( $tax, $taxonomies_to_exclude, true ) ) {
-				$step         = 1;
-				$taxs         = get_terms( $tax, array( 'exclude' => $excludes ) );
-				$size_of_taxs = count( $taxs );
-				for ( $tax_count = 0; $tax_count < $size_of_taxs; $tax_count++ ) {
-					if ( 0 === ( $tax_count % $links_per_page ) && '' !== $taxs[ $tax_count ]->taxonomy ) {
-						$gsg->add_sitemap( 'tax-' . $taxs[ $tax_count ]->taxonomy, $step, $blog_update );
-						$step = ++$step;
-					}
-=======
 		foreach ( $taxonomies as $taxonomy ) {
 			if ( ! in_array( $taxonomy, $taxonomies_to_exclude, true ) ) {
 				$step = 1;
@@ -778,7 +733,6 @@ class GoogleSitemapGeneratorStandardBuilder {
 						$step = ++$step;
 					}
 					$i++;
->>>>>>> update
 				}
 			}
 		}
@@ -825,11 +779,7 @@ class GoogleSitemapGeneratorStandardBuilder {
 		$pages = $gsg->get_pages();
 		if ( count( $pages ) > 0 ) {
 			foreach ( $pages as $page ) {
-<<<<<<< HEAD
-				$url = ! empty( $page->get_url() ) ? $page->get_url() : $page->_url;
-=======
 				$url = ! empty( $page->get_url() ) ? $page->get_url() : ( property_exists( $page, '_url' ) ? $page->_url : '' );
->>>>>>> update
 				if ( $page instanceof GoogleSitemapGeneratorPage && $url ) {
 					$gsg->add_sitemap( 'externals', null, $blog_update );
 					break;
@@ -872,11 +822,7 @@ class GoogleSitemapGeneratorStandardBuilder {
 						{$wpdb->posts} p
 					WHERE
 						p.post_password = ''
-<<<<<<< HEAD
-						AND p.post_type = %s
-=======
 						AND p.post_type = '%s'
->>>>>>> update
 						AND p.post_status = 'publish'
 						" . $ex_post_s_q_l . ""
 						. $ex_cat_s_q_l . "
@@ -892,13 +838,6 @@ class GoogleSitemapGeneratorStandardBuilder {
 					if ( 'post' === $post_type_custom ) {
 						$has_posts = true;
 					}
-<<<<<<< HEAD
-
-					$has_enabled_post_types_posts = true;
-
-					foreach ( $posts as $post ) {
-						$gsg->add_sitemap( 'pt', $post_type_custom . '-' . sprintf( '%04d-%02d', $post->year, $post->month ), $gsg->get_timestamp_from_my_sql( $post->last_mod ) );
-=======
 					$has_enabled_post_types_posts = true;
 					foreach ( $posts as $post ) {
 						$step = 1;
@@ -909,7 +848,6 @@ class GoogleSitemapGeneratorStandardBuilder {
 							}
 						}
 						// $gsg->add_sitemap( 'pt', $post_type_custom . '-' . sprintf( '%04d-%02d', $post->year, $post->month ), $gsg->get_timestamp_from_my_sql( $post->last_mod ) );
->>>>>>> update
 					}
 				}
 				// phpcs:enable

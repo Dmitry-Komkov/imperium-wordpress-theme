@@ -18,13 +18,8 @@ function wrio_doing_rest_api() {
 	$prefix     = rest_get_url_prefix();
 	$rest_route = WRIO_Plugin::app()->request->get( 'rest_route', null );
 	if ( ( defined( 'REST_REQUEST' ) && REST_REQUEST ) // (#1)
-<<<<<<< HEAD
-	     || ( ! is_null( $rest_route ) // (#2)
-	          && strpos( trim( $rest_route, '\\/' ), $prefix, 0 ) === 0 ) ) {
-=======
 		 || ( ! is_null( $rest_route ) // (#2)
 			  && strpos( trim( $rest_route, '\\/' ), $prefix, 0 ) === 0 ) ) {
->>>>>>> update
 		return true;
 	}
 
@@ -32,11 +27,7 @@ function wrio_doing_rest_api() {
 	$rest_url    = wp_parse_url( site_url( $prefix ) );
 	$current_url = wp_parse_url( add_query_arg( [] ) );
 
-<<<<<<< HEAD
-	return strpos( $current_url['path'], $rest_url['path'], 0 ) === 0;
-=======
 	return strpos( $current_url['path'] ?? '/', $rest_url['path'], 0 ) === 0;
->>>>>>> update
 }
 
 /**

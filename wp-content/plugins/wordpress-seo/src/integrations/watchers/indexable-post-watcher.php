@@ -9,10 +9,7 @@ use Yoast\WP\SEO\Builders\Indexable_Link_Builder;
 use Yoast\WP\SEO\Conditionals\Migrations_Conditional;
 use Yoast\WP\SEO\Helpers\Author_Archive_Helper;
 use Yoast\WP\SEO\Helpers\Post_Helper;
-<<<<<<< HEAD
-=======
 use Yoast\WP\SEO\Integrations\Cleanup_Integration;
->>>>>>> update
 use Yoast\WP\SEO\Integrations\Integration_Interface;
 use Yoast\WP\SEO\Loggers\Logger;
 use Yoast\WP\SEO\Models\Indexable;
@@ -152,10 +149,7 @@ class Indexable_Post_Watcher implements Integration_Interface {
 		$this->hierarchy_repository->clear_ancestors( $indexable->id );
 		$this->link_builder->delete( $indexable );
 		$indexable->delete();
-<<<<<<< HEAD
-=======
 		\do_action( 'wpseo_indexable_deleted', $indexable );
->>>>>>> update
 	}
 
 	/**
@@ -176,10 +170,6 @@ class Indexable_Post_Watcher implements Integration_Interface {
 		}
 
 		$this->update_relations( $post );
-<<<<<<< HEAD
-		$this->update_has_public_posts( $indexable );
-=======
->>>>>>> update
 
 		$indexable->save();
 	}
@@ -203,8 +193,6 @@ class Indexable_Post_Watcher implements Integration_Interface {
 
 			$post = $this->post->get_post( $post_id );
 
-<<<<<<< HEAD
-=======
 			/*
 			 * Update whether an author has public posts.
 			 * For example this post could be set to Draft or Private,
@@ -214,7 +202,6 @@ class Indexable_Post_Watcher implements Integration_Interface {
 				$this->update_has_public_posts( $indexable );
 			}
 
->>>>>>> update
 			// Build links for this post.
 			if ( $post && $indexable && \in_array( $post->post_status, $this->post->get_public_post_statuses(), true ) ) {
 				$this->link_builder->build( $indexable, $post->post_content );
@@ -235,11 +222,6 @@ class Indexable_Post_Watcher implements Integration_Interface {
 	protected function update_has_public_posts( $indexable ) {
 		// Update the author indexable's has public posts value.
 		try {
-<<<<<<< HEAD
-			$author_indexable                   = $this->repository->find_by_id_and_type( $indexable->author_id, 'user' );
-			$author_indexable->has_public_posts = $this->author_archive->author_has_public_posts( $author_indexable->object_id );
-			$author_indexable->save();
-=======
 			$author_indexable = $this->repository->find_by_id_and_type( $indexable->author_id, 'user' );
 			if ( $author_indexable ) {
 				$author_indexable->has_public_posts = $this->author_archive->author_has_public_posts( $author_indexable->object_id );
@@ -247,7 +229,6 @@ class Indexable_Post_Watcher implements Integration_Interface {
 
 				$this->reschedule_cleanup_if_author_has_no_posts( $author_indexable );
 			}
->>>>>>> update
 		} catch ( Exception $exception ) {
 			$this->logger->log( LogLevel::ERROR, $exception->getMessage() );
 		}
@@ -257,8 +238,6 @@ class Indexable_Post_Watcher implements Integration_Interface {
 	}
 
 	/**
-<<<<<<< HEAD
-=======
 	 * Reschedule indexable cleanup if the author does not have any public posts.
 	 * This should remove the author from the indexable table, since we do not
 	 * want to store authors without public facing posts in the table.
@@ -277,7 +256,6 @@ class Indexable_Post_Watcher implements Integration_Interface {
 	}
 
 	/**
->>>>>>> update
 	 * Updates the relations on post save or post status change.
 	 *
 	 * @param WP_Post $post The post that has been updated.
@@ -286,16 +264,11 @@ class Indexable_Post_Watcher implements Integration_Interface {
 		$related_indexables = $this->get_related_indexables( $post );
 
 		foreach ( $related_indexables as $indexable ) {
-<<<<<<< HEAD
-			$indexable->object_last_modified = \max( $indexable->object_last_modified, $post->post_modified_gmt );
-			$indexable->save();
-=======
 			// Ignore everything that is not an actual indexable.
 			if ( \is_a( $indexable, Indexable::class ) ) {
 				$indexable->object_last_modified = \max( $indexable->object_last_modified, $post->post_modified_gmt );
 				$indexable->save();
 			}
->>>>>>> update
 		}
 	}
 

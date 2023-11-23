@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 .wrap h1.ctl-settings-header {
 	font-size: 34px;
 	font-weight: bold;
@@ -12,7 +10,6 @@
 	margin: 10px 5px 10px 0;
 }
 
->>>>>>> update
 .ctl-settings-tabs {
 	line-height: 4.5em;
 	background: #fff;
@@ -36,9 +33,6 @@
 }
 
 .ctl-settings-tab.active {
-<<<<<<< HEAD
-	border-bottom: 2px solid #4f94d4;
-=======
 	border-bottom: 2px solid #2271b1;
 }
 
@@ -168,5 +162,4 @@
 	#ctl-options .helper {
 		z-index: 1;
 	}
->>>>>>> update
 }

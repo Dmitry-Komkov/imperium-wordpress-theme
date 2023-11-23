@@ -2,37 +2,13 @@
 
 namespace YoastSEO_Vendor\GuzzleHttp\Exception;
 
-<<<<<<< HEAD
-=======
 use YoastSEO_Vendor\Psr\Http\Client\NetworkExceptionInterface;
->>>>>>> update
 use YoastSEO_Vendor\Psr\Http\Message\RequestInterface;
 /**
  * Exception thrown when a connection cannot be established.
  *
  * Note that no response is present for a ConnectException
  */
-<<<<<<< HEAD
-class ConnectException extends \YoastSEO_Vendor\GuzzleHttp\Exception\RequestException
-{
-    public function __construct($message, \YoastSEO_Vendor\Psr\Http\Message\RequestInterface $request, \Exception $previous = null, array $handlerContext = [])
-    {
-        parent::__construct($message, $request, null, $previous, $handlerContext);
-    }
-    /**
-     * @return null
-     */
-    public function getResponse()
-    {
-        return null;
-    }
-    /**
-     * @return bool
-     */
-    public function hasResponse()
-    {
-        return \false;
-=======
 class ConnectException extends \YoastSEO_Vendor\GuzzleHttp\Exception\TransferException implements \YoastSEO_Vendor\Psr\Http\Client\NetworkExceptionInterface
 {
     /**
@@ -67,6 +43,5 @@ class ConnectException extends \YoastSEO_Vendor\GuzzleHttp\Exception\TransferExc
     public function getHandlerContext() : array
     {
         return $this->handlerContext;
->>>>>>> update
     }
 }

@@ -2,22 +2,13 @@
 
 if (!defined('UPDRAFTPLUS_DIR')) die('No direct access allowed.');
 
-<<<<<<< HEAD
-require_once(UPDRAFTPLUS_DIR.'/methods/s3.php');
-=======
 updraft_try_include_file('methods/s3.php', 'require_once');
->>>>>>> update
 
 /**
  * Converted to multi-options (Feb 2017-) and previous options conversion removed: Yes
  */
 class UpdraftPlus_BackupModule_s3generic extends UpdraftPlus_BackupModule_s3 {
 
-<<<<<<< HEAD
-	protected $use_v4 = false;
-	
-=======
->>>>>>> update
 	protected $provider_can_use_aws_sdk = false;
 	
 	protected $provider_has_regions = false;
@@ -90,27 +81,6 @@ class UpdraftPlus_BackupModule_s3generic extends UpdraftPlus_BackupModule_s3 {
 
 	/**
 	 * Get the pre configuration template
-<<<<<<< HEAD
-	 *
-	 * @return String - the template
-	 */
-	public function get_pre_configuration_template() {
-	
-		$opening_html = '<p>'.__('Examples of S3-compatible storage providers:', 'updraftplus').' <a href="https://updraftplus.com/use-updraftplus-digital-ocean-spaces/" target="_blank">DigitalOcean Spaces</a>, <a href="https://www.linode.com/products/object-storage/" target="_blank">Linode Object Storage</a>, <a href="https://www.cloudian.com" target="_blank">Cloudian</a>, <a href="https://www.mh.connectria.com/rp/order/cloud_storage_index" target="_blank">Connectria</a>, <a href="https://www.constant.com/cloud/storage/" target="_blank">Constant</a>, <a href="https://www.eucalyptus.cloud/" target="_blank">Eucalyptus</a>, <a href="http://cloud.nifty.com/storage/" target="_blank">Nifty</a>, <a href="http://www.ntt.com/business/services/cloud/iaas/cloudn.html" target="_blank">Cloudn</a>'.__('... and many more!', 'updraftplus').'</p>';
-		
-		$this->get_pre_configuration_template_engine('s3generic', 'S3', __('S3 (Compatible)', 'updraftplus'), 'S3', '', $opening_html);
-	}
-
-	/**
-	 * Get the configuration template
-	 *
-	 * @return String - the template, ready for substitutions to be carried out
-	 */
-	public function get_configuration_template() {
-		// 5th parameter = control panel URL
-		// 6th = image HTML
-		return $this->get_configuration_template_engine('s3generic', 'S3', __('S3 (Compatible)', 'updraftplus'), 'S3', '', '');
-=======
 	 */
 	public function get_pre_configuration_template() {
 		?>
@@ -169,7 +139,6 @@ class UpdraftPlus_BackupModule_s3generic extends UpdraftPlus_BackupModule_s3 {
 		<?php
 		$partial_templates['s3generic_additional_configuration_bottom'] = ob_get_clean();
 		return wp_parse_args(apply_filters('updraft_'.$this->get_id().'_partial_templates', $partial_templates), parent::get_partial_templates());
->>>>>>> update
 	}
 	
 	/**
@@ -180,8 +149,6 @@ class UpdraftPlus_BackupModule_s3generic extends UpdraftPlus_BackupModule_s3 {
 	 * @return Array - Modified handerbar template options
 	 */
 	public function transform_options_for_template($opts) {
-<<<<<<< HEAD
-=======
 		if (!empty($opts['instance_id']) && 'default' !== $opts['instance_id']) {
 			if (!isset($opts['signature_version'])) { // this check is to find out whether we're dealing with a pre-existing configuration or not
 				$opts['signature_version'] = 'v2'; // the pre-existing S3-Compatible configurations before signature_version was introduced by default use SigV2, so we wan't to keep it that way as we don't want to break what's already working
@@ -195,7 +162,6 @@ class UpdraftPlus_BackupModule_s3generic extends UpdraftPlus_BackupModule_s3 {
 			}
 			if (!$this->options_exist($opts)) $opts['signature_version'] = 'v4'; // if no pre-existing S3-Compatible configurations were setup, there would always be an initial instance id created with a blank configuration form (no access key, secret key, location, and endpoint), this initial instance id/form should use SigV4
 		}
->>>>>>> update
 		return $opts;
 	}
 	
@@ -211,28 +177,6 @@ class UpdraftPlus_BackupModule_s3generic extends UpdraftPlus_BackupModule_s3 {
 	}
 	
 	/**
-<<<<<<< HEAD
-	 * Get handlebar partial template string for endpoint of s3 compatible remote storage method. Other child class can extend it.
-	 *
-	 * @return String the partial template string
-	 */
-	protected function get_partial_configuration_template_for_endpoint() {
-		return '<tr class="'.$this->get_css_classes().'">
-					<th>'.sprintf(__('%s end-point', 'updraftplus'), 'S3').'</th>
-					<td>
-						<input data-updraft_settings_test="endpoint" type="text" class="updraft_input--wide" '.$this->output_settings_field_name_and_id('endpoint', true).' value="{{endpoint}}" />
-					</td>
-				</tr>
-				<tr class="'.$this->get_css_classes().'">
-					<th>'.__('Bucket access style', 'updraftplus').':<br><a aria-label="'.esc_attr__('Read more about bucket access style', 'updraftplus').'" href="https://updraftplus.com/faqs/what-is-the-different-between-path-style-and-bucket-style-access-to-an-s3-compatible-bucket/" target="_blank"><em>'.__('(Read more)', 'updraftplus').'</em></a></th>
-					<td>
-						<select data-updraft_settings_test="bucket_access_style" '.$this->output_settings_field_name_and_id('bucket_access_style', true).'>
-							<option value="path_style" {{#ifeq "path_style" bucket_access_style}}selected="selected"{{/ifeq}}>'.__('Path style', 'updraftplus').'</option>
-							<option value="virtual_host_style" {{#ifeq "virtual_host_style" bucket_access_style}}selected="selected"{{/ifeq}}>'.__('Virtual-host style', 'updraftplus').'</option>
-						</select>
-					</td>
-				</tr>';
-=======
 	 * Retrieve a list of template properties by taking all the persistent variables and methods of the parent class and combining them with the ones that are unique to this module, also the necessary HTML element attributes and texts which are also unique only to this backup module
 	 * NOTE: Please sanitise all strings that are required to be shown as HTML content on the frontend side (i.e. wp_kses()), or any other technique to prevent XSS attacks that could come via WP hooks
 	 *
@@ -267,29 +211,11 @@ class UpdraftPlus_BackupModule_s3generic extends UpdraftPlus_BackupModule_s3 {
 			'input_test_label' => sprintf(__('Test %s Settings', 'updraftplus'), $updraftplus->backup_methods[$this->get_id()]),
 		);
 		return wp_parse_args($properties, $this->get_persistent_variables_and_methods());
->>>>>>> update
 	}
 
 	/**
 	 * Use DNS bucket name if the remote storage is found to be using s3generic and its bucket access style is set to virtual-host
 	 *
-<<<<<<< HEAD
-	 * @param Object $storage S3 Name
-	 * @param Array  $config  an array of specific options for particular S3 remote storage module
-	 * @return Boolean true if currently processing s3generic remote storage that uses virtual-host style, false otherwise
-	 */
-	protected function maybe_use_dns_bucket_name($storage, $config) {
-		if ((!empty($config['endpoint']) && preg_match('/\.aliyuncs\.com$/i', $config['endpoint'])) || (!empty($config['bucket_access_style']) && 'virtual_host_style' === $config['bucket_access_style'])) {
-			// due to the recent merge of S3-generic bucket access style on March 2021, if virtual-host bucket access style is selected, connecting to an amazonaws bucket location where the user doesn't have an access to it will throw an S3 InvalidRequest exception. It requires the signature to be set to version 4
-			if (preg_match('/\.amazonaws\.com$/i', $config['endpoint'])) {
-				$this->use_v4 = true;
-				$storage->setSignatureVersion('v4');
-			}
-			return $this->use_dns_bucket_name($storage, '');
-		} else {
-			return false;
-		}
-=======
 	 * @param Object $storage - S3 Name
 	 * @param String $bucket  - storage path
 	 * @param Array  $config  - configuration - may not be complete at this stage, so be careful about which properties are used
@@ -309,6 +235,5 @@ class UpdraftPlus_BackupModule_s3generic extends UpdraftPlus_BackupModule_s3 {
 			return $this->use_dns_bucket_name($storage, '');
 		}
 		return false;
->>>>>>> update
 	}
 }

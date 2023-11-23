@@ -3,24 +3,14 @@
 /**
  * Pure-PHP implementation of SSHv1.
  *
-<<<<<<< HEAD
- * PHP versions 4 and 5
-=======
  * PHP version 5
->>>>>>> update
  *
  * Here's a short example of how to use this library:
  * <code>
  * <?php
-<<<<<<< HEAD
- *    include 'Net/SSH1.php';
- *
- *    $ssh = new Net_SSH1('www.domain.tld');
-=======
  *    include 'vendor/autoload.php';
  *
  *    $ssh = new \phpseclib\Net\SSH1('www.domain.tld');
->>>>>>> update
  *    if (!$ssh->login('username', 'password')) {
  *        exit('Login Failed');
  *    }
@@ -32,15 +22,9 @@
  * Here's another short example:
  * <code>
  * <?php
-<<<<<<< HEAD
- *    include 'Net/SSH1.php';
- *
- *    $ssh = new Net_SSH1('www.domain.tld');
-=======
  *    include 'vendor/autoload.php';
  *
  *    $ssh = new \phpseclib\Net\SSH1('www.domain.tld');
->>>>>>> update
  *    if (!$ssh->login('username', 'password')) {
  *        exit('Login Failed');
  *    }
@@ -54,216 +38,24 @@
  * More information on the SSHv1 specification can be found by reading
  * {@link http://www.snailbook.com/docs/protocol-1.5.txt protocol-1.5.txt}.
  *
-<<<<<<< HEAD
- * LICENSE: Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- *
- * @category  Net
- * @package   Net_SSH1
-=======
  * @category  Net
  * @package   SSH1
->>>>>>> update
  * @author    Jim Wigginton <terrafrost@php.net>
  * @copyright 2007 Jim Wigginton
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
  * @link      http://phpseclib.sourceforge.net
  */
 
-<<<<<<< HEAD
-/**#@+
- * Encryption Methods
- *
- * @see self::getSupportedCiphers()
- * @access public
- */
-/**
- * No encryption
- *
- * Not supported.
- */
-define('NET_SSH1_CIPHER_NONE',       0);
-/**
- * IDEA in CFB mode
- *
- * Not supported.
- */
-define('NET_SSH1_CIPHER_IDEA',       1);
-/**
- * DES in CBC mode
- */
-define('NET_SSH1_CIPHER_DES',        2);
-/**
- * Triple-DES in CBC mode
- *
- * All implementations are required to support this
- */
-define('NET_SSH1_CIPHER_3DES',       3);
-/**
- * TRI's Simple Stream encryption CBC
- *
- * Not supported nor is it defined in the official SSH1 specs.  OpenSSH, however, does define it (see cipher.h),
- * although it doesn't use it (see cipher.c)
- */
-define('NET_SSH1_CIPHER_BROKEN_TSS', 4);
-/**
- * RC4
- *
- * Not supported.
- *
- * @internal According to the SSH1 specs:
- *
- *        "The first 16 bytes of the session key are used as the key for
- *         the server to client direction.  The remaining 16 bytes are used
- *         as the key for the client to server direction.  This gives
- *         independent 128-bit keys for each direction."
- *
- *     This library currently only supports encryption when the same key is being used for both directions.  This is
- *     because there's only one $crypto object.  Two could be added ($encrypt and $decrypt, perhaps).
- */
-define('NET_SSH1_CIPHER_RC4',        5);
-/**
- * Blowfish
- *
- * Not supported nor is it defined in the official SSH1 specs.  OpenSSH, however, defines it (see cipher.h) and
- * uses it (see cipher.c)
- */
-define('NET_SSH1_CIPHER_BLOWFISH',   6);
-/**#@-*/
-
-/**#@+
- * Authentication Methods
- *
- * @see self::getSupportedAuthentications()
- * @access public
- */
-/**
- * .rhosts or /etc/hosts.equiv
- */
-define('NET_SSH1_AUTH_RHOSTS',     1);
-/**
- * pure RSA authentication
- */
-define('NET_SSH1_AUTH_RSA',        2);
-/**
- * password authentication
- *
- * This is the only method that is supported by this library.
- */
-define('NET_SSH1_AUTH_PASSWORD',   3);
-/**
- * .rhosts with RSA host authentication
- */
-define('NET_SSH1_AUTH_RHOSTS_RSA', 4);
-/**#@-*/
-
-/**#@+
- * Terminal Modes
- *
- * @link http://3sp.com/content/developer/maverick-net/docs/Maverick.SSH.PseudoTerminalModesMembers.html
- * @access private
- */
-define('NET_SSH1_TTY_OP_END',  0);
-/**#@-*/
-
-/**
- * The Response Type
- *
- * @see self::_get_binary_packet()
- * @access private
- */
-define('NET_SSH1_RESPONSE_TYPE', 1);
-
-/**
- * The Response Data
- *
- * @see self::_get_binary_packet()
- * @access private
- */
-define('NET_SSH1_RESPONSE_DATA', 2);
-
-/**#@+
- * Execution Bitmap Masks
- *
- * @see self::bitmap
- * @access private
- */
-define('NET_SSH1_MASK_CONSTRUCTOR', 0x00000001);
-define('NET_SSH1_MASK_CONNECTED',   0x00000002);
-define('NET_SSH1_MASK_LOGIN',       0x00000004);
-define('NET_SSH1_MASK_SHELL',       0x00000008);
-/**#@-*/
-
-/**#@+
- * @access public
- * @see self::getLog()
- */
-/**
- * Returns the message numbers
- */
-define('NET_SSH1_LOG_SIMPLE',  1);
-/**
- * Returns the message content
- */
-define('NET_SSH1_LOG_COMPLEX', 2);
-/**
- * Outputs the content real-time
- */
-define('NET_SSH1_LOG_REALTIME', 3);
-/**
- * Dumps the content real-time to a file
- */
-define('NET_SSH1_LOG_REALTIME_FILE', 4);
-/**#@-*/
-
-/**#@+
- * @access public
- * @see self::read()
- */
-/**
- * Returns when a string matching $expect exactly is found
- */
-define('NET_SSH1_READ_SIMPLE',  1);
-/**
- * Returns when a string matching the regular expression $expect is found
- */
-define('NET_SSH1_READ_REGEX', 2);
-/**#@-*/
-=======
 namespace phpseclib\Net;
 
 use phpseclib\Crypt\DES;
 use phpseclib\Crypt\Random;
 use phpseclib\Crypt\TripleDES;
 use phpseclib\Math\BigInteger;
->>>>>>> update
 
 /**
  * Pure-PHP implementation of SSHv1.
  *
-<<<<<<< HEAD
- * @package Net_SSH1
- * @author  Jim Wigginton <terrafrost@php.net>
- * @access  public
- */
-class Net_SSH1
-{
-=======
  * @package SSH1
  * @author  Jim Wigginton <terrafrost@php.net>
  * @access  public
@@ -433,7 +225,6 @@ class SSH1
     const READ_REGEX = 2;
     /**#@-*/
 
->>>>>>> update
     /**
      * The SSH identifier
      *
@@ -523,15 +314,6 @@ class SSH1
      * @access private
      */
     var $supported_ciphers = array(
-<<<<<<< HEAD
-        NET_SSH1_CIPHER_NONE       => 'No encryption',
-        NET_SSH1_CIPHER_IDEA       => 'IDEA in CFB mode',
-        NET_SSH1_CIPHER_DES        => 'DES in CBC mode',
-        NET_SSH1_CIPHER_3DES       => 'Triple-DES in CBC mode',
-        NET_SSH1_CIPHER_BROKEN_TSS => 'TRI\'s Simple Stream encryption CBC',
-        NET_SSH1_CIPHER_RC4        => 'RC4',
-        NET_SSH1_CIPHER_BLOWFISH   => 'Blowfish'
-=======
         self::CIPHER_NONE       => 'No encryption',
         self::CIPHER_IDEA       => 'IDEA in CFB mode',
         self::CIPHER_DES        => 'DES in CBC mode',
@@ -539,7 +321,6 @@ class SSH1
         self::CIPHER_BROKEN_TSS => 'TRI\'s Simple Stream encryption CBC',
         self::CIPHER_RC4        => 'RC4',
         self::CIPHER_BLOWFISH   => 'Blowfish'
->>>>>>> update
     );
 
     /**
@@ -552,17 +333,10 @@ class SSH1
      * @access private
      */
     var $supported_authentications = array(
-<<<<<<< HEAD
-        NET_SSH1_AUTH_RHOSTS     => '.rhosts or /etc/hosts.equiv',
-        NET_SSH1_AUTH_RSA        => 'pure RSA authentication',
-        NET_SSH1_AUTH_PASSWORD   => 'password authentication',
-        NET_SSH1_AUTH_RHOSTS_RSA => '.rhosts with RSA host authentication'
-=======
         self::AUTH_RHOSTS     => '.rhosts or /etc/hosts.equiv',
         self::AUTH_RSA        => 'pure RSA authentication',
         self::AUTH_PASSWORD   => 'password authentication',
         self::AUTH_RHOSTS_RSA => '.rhosts with RSA host authentication'
->>>>>>> update
     );
 
     /**
@@ -577,11 +351,7 @@ class SSH1
     /**
      * Protocol Flags
      *
-<<<<<<< HEAD
-     * @see self::Net_SSH1()
-=======
      * @see self::__construct()
->>>>>>> update
      * @var array
      * @access private
      */
@@ -594,11 +364,7 @@ class SSH1
      * @var array
      * @access private
      */
-<<<<<<< HEAD
-    var $protocol_flag_log = array();
-=======
     var $protocol_flags_log = array();
->>>>>>> update
 
     /**
      * Message Log
@@ -646,8 +412,6 @@ class SSH1
     var $interactiveBuffer = '';
 
     /**
-<<<<<<< HEAD
-=======
      * Current log size
      *
      * Should never exceed self::LOG_MAX_SIZE
@@ -660,7 +424,6 @@ class SSH1
     var $log_size;
 
     /**
->>>>>>> update
      * Timeout
      *
      * @see self::setTimeout()
@@ -703,11 +466,7 @@ class SSH1
     /**
      * Hostname
      *
-<<<<<<< HEAD
-     * @see self::Net_SSH1()
-=======
      * @see self::__construct()
->>>>>>> update
      * @see self::_connect()
      * @var string
      * @access private
@@ -717,11 +476,7 @@ class SSH1
     /**
      * Port Number
      *
-<<<<<<< HEAD
-     * @see self::Net_SSH1()
-=======
      * @see self::__construct()
->>>>>>> update
      * @see self::_connect()
      * @var int
      * @access private
@@ -736,11 +491,7 @@ class SSH1
      * however, is non-optional. There will be a timeout, whether or not you set it. If you don't it'll be
      * 10 seconds. It is used by fsockopen() in that function.
      *
-<<<<<<< HEAD
-     * @see self::Net_SSH1()
-=======
      * @see self::__construct()
->>>>>>> update
      * @see self::_connect()
      * @var int
      * @access private
@@ -750,11 +501,7 @@ class SSH1
     /**
      * Default cipher
      *
-<<<<<<< HEAD
-     * @see self::Net_SSH1()
-=======
      * @see self::__construct()
->>>>>>> update
      * @see self::_connect()
      * @var int
      * @access private
@@ -770,32 +517,11 @@ class SSH1
      * @param int $port
      * @param int $timeout
      * @param int $cipher
-<<<<<<< HEAD
-     * @return Net_SSH1
-     * @access public
-     */
-    function __construct($host, $port = 22, $timeout = 10, $cipher = NET_SSH1_CIPHER_3DES)
-    {
-        if (!class_exists('Math_BigInteger')) {
-            include_once 'Math/BigInteger.php';
-        }
-
-        // Include Crypt_Random
-        // the class_exists() will only be called if the crypt_random_string function hasn't been defined and
-        // will trigger a call to __autoload() if you're wanting to auto-load classes
-        // call function_exists() a second time to stop the include_once from being called outside
-        // of the auto loader
-        if (!function_exists('crypt_random_string') && !class_exists('Crypt_Random') && !function_exists('crypt_random_string')) {
-            include_once 'Crypt/Random.php';
-        }
-
-=======
      * @return \phpseclib\Net\SSH1
      * @access public
      */
     function __construct($host, $port = 22, $timeout = 10, $cipher = self::CIPHER_3DES)
     {
->>>>>>> update
         $this->protocol_flags = array(
             1  => 'NET_SSH1_MSG_DISCONNECT',
             2  => 'NET_SSH1_SMSG_PUBLIC_KEY',
@@ -824,24 +550,6 @@ class SSH1
     }
 
     /**
-<<<<<<< HEAD
-     * PHP4 compatible Default Constructor.
-     *
-     * @see self::__construct()
-     * @param string $host
-     * @param int $port
-     * @param int $timeout
-     * @param int $cipher
-     * @access public
-     */
-    function Net_SSH1($host, $port = 22, $timeout = 10, $cipher = NET_SSH1_CIPHER_3DES)
-    {
-        $this->__construct($host, $port, $timeout, $cipher);
-    }
-
-    /**
-=======
->>>>>>> update
      * Connect to an SSHv1 server
      *
      * @return bool
@@ -874,58 +582,11 @@ class SSH1
         fputs($this->fsock, $this->identifier."\r\n");
 
         $response = $this->_get_binary_packet();
-<<<<<<< HEAD
-        if ($response[NET_SSH1_RESPONSE_TYPE] != NET_SSH1_SMSG_PUBLIC_KEY) {
-=======
         if ($response[self::RESPONSE_TYPE] != NET_SSH1_SMSG_PUBLIC_KEY) {
->>>>>>> update
             user_error('Expected SSH_SMSG_PUBLIC_KEY');
             return false;
         }
 
-<<<<<<< HEAD
-        $anti_spoofing_cookie = $this->_string_shift($response[NET_SSH1_RESPONSE_DATA], 8);
-
-        $this->_string_shift($response[NET_SSH1_RESPONSE_DATA], 4);
-
-        if (strlen($response[NET_SSH1_RESPONSE_DATA]) < 2) {
-            return false;
-        }
-        $temp = unpack('nlen', $this->_string_shift($response[NET_SSH1_RESPONSE_DATA], 2));
-        $server_key_public_exponent = new Math_BigInteger($this->_string_shift($response[NET_SSH1_RESPONSE_DATA], ceil($temp['len'] / 8)), 256);
-        $this->server_key_public_exponent = $server_key_public_exponent;
-
-        if (strlen($response[NET_SSH1_RESPONSE_DATA]) < 2) {
-            return false;
-        }
-        $temp = unpack('nlen', $this->_string_shift($response[NET_SSH1_RESPONSE_DATA], 2));
-        $server_key_public_modulus = new Math_BigInteger($this->_string_shift($response[NET_SSH1_RESPONSE_DATA], ceil($temp['len'] / 8)), 256);
-        $this->server_key_public_modulus = $server_key_public_modulus;
-
-        $this->_string_shift($response[NET_SSH1_RESPONSE_DATA], 4);
-
-        if (strlen($response[NET_SSH1_RESPONSE_DATA]) < 2) {
-            return false;
-        }
-        $temp = unpack('nlen', $this->_string_shift($response[NET_SSH1_RESPONSE_DATA], 2));
-        $host_key_public_exponent = new Math_BigInteger($this->_string_shift($response[NET_SSH1_RESPONSE_DATA], ceil($temp['len'] / 8)), 256);
-        $this->host_key_public_exponent = $host_key_public_exponent;
-
-        if (strlen($response[NET_SSH1_RESPONSE_DATA]) < 2) {
-            return false;
-        }
-        $temp = unpack('nlen', $this->_string_shift($response[NET_SSH1_RESPONSE_DATA], 2));
-        $host_key_public_modulus = new Math_BigInteger($this->_string_shift($response[NET_SSH1_RESPONSE_DATA], ceil($temp['len'] / 8)), 256);
-        $this->host_key_public_modulus = $host_key_public_modulus;
-
-        $this->_string_shift($response[NET_SSH1_RESPONSE_DATA], 4);
-
-        // get a list of the supported ciphers
-        if (strlen($response[NET_SSH1_RESPONSE_DATA]) < 4) {
-            return false;
-        }
-        extract(unpack('Nsupported_ciphers_mask', $this->_string_shift($response[NET_SSH1_RESPONSE_DATA], 4)));
-=======
         $anti_spoofing_cookie = $this->_string_shift($response[self::RESPONSE_DATA], 8);
 
         $this->_string_shift($response[self::RESPONSE_DATA], 4);
@@ -970,7 +631,6 @@ class SSH1
         }
         extract(unpack('Nsupported_ciphers_mask', $this->_string_shift($response[self::RESPONSE_DATA], 4)));
 
->>>>>>> update
         foreach ($this->supported_ciphers as $mask => $name) {
             if (($supported_ciphers_mask & (1 << $mask)) == 0) {
                 unset($this->supported_ciphers[$mask]);
@@ -978,17 +638,10 @@ class SSH1
         }
 
         // get a list of the supported authentications
-<<<<<<< HEAD
-        if (strlen($response[NET_SSH1_RESPONSE_DATA]) < 4) {
-            return false;
-        }
-        extract(unpack('Nsupported_authentications_mask', $this->_string_shift($response[NET_SSH1_RESPONSE_DATA], 4)));
-=======
         if (strlen($response[self::RESPONSE_DATA]) < 4) {
             return false;
         }
         extract(unpack('Nsupported_authentications_mask', $this->_string_shift($response[self::RESPONSE_DATA], 4)));
->>>>>>> update
         foreach ($this->supported_authentications as $mask => $name) {
             if (($supported_authentications_mask & (1 << $mask)) == 0) {
                 unset($this->supported_authentications[$mask]);
@@ -997,11 +650,7 @@ class SSH1
 
         $session_id = pack('H*', md5($host_key_public_modulus->toBytes() . $server_key_public_modulus->toBytes() . $anti_spoofing_cookie));
 
-<<<<<<< HEAD
-        $session_key = crypt_random_string(32);
-=======
         $session_key = Random::string(32);
->>>>>>> update
         $double_encrypted_session_key = $session_key ^ str_pad($session_id, 32, chr(0));
 
         if ($server_key_public_modulus->compare($host_key_public_modulus) < 0) {
@@ -1036,11 +685,7 @@ class SSH1
             );
         }
 
-<<<<<<< HEAD
-        $cipher = isset($this->supported_ciphers[$this->cipher]) ? $this->cipher : NET_SSH1_CIPHER_3DES;
-=======
         $cipher = isset($this->supported_ciphers[$this->cipher]) ? $this->cipher : self::CIPHER_3DES;
->>>>>>> update
         $data = pack('C2a*na*N', NET_SSH1_CMSG_SESSION_KEY, $cipher, $anti_spoofing_cookie, 8 * strlen($double_encrypted_session_key), $double_encrypted_session_key, 0);
 
         if (!$this->_send_binary_packet($data)) {
@@ -1049,25 +694,6 @@ class SSH1
         }
 
         switch ($cipher) {
-<<<<<<< HEAD
-            //case NET_SSH1_CIPHER_NONE:
-            //    $this->crypto = new Crypt_Null();
-            //    break;
-            case NET_SSH1_CIPHER_DES:
-                if (!class_exists('Crypt_DES')) {
-                    include_once 'Crypt/DES.php';
-                }
-                $this->crypto = new Crypt_DES();
-                $this->crypto->disablePadding();
-                $this->crypto->enableContinuousBuffer();
-                $this->crypto->setKey(substr($session_key, 0, 8));
-                break;
-            case NET_SSH1_CIPHER_3DES:
-                if (!class_exists('Crypt_TripleDES')) {
-                    include_once 'Crypt/TripleDES.php';
-                }
-                $this->crypto = new Crypt_TripleDES(CRYPT_DES_MODE_3CBC);
-=======
             //case self::CIPHER_NONE:
             //    $this->crypto = new \phpseclib\Crypt\Null();
             //    break;
@@ -1079,21 +705,12 @@ class SSH1
                 break;
             case self::CIPHER_3DES:
                 $this->crypto = new TripleDES(TripleDES::MODE_3CBC);
->>>>>>> update
                 $this->crypto->disablePadding();
                 $this->crypto->enableContinuousBuffer();
                 $this->crypto->setKey(substr($session_key, 0, 24));
                 break;
-<<<<<<< HEAD
-            //case NET_SSH1_CIPHER_RC4:
-            //    if (!class_exists('Crypt_RC4')) {
-            //        include_once 'Crypt/RC4.php';
-            //    }
-            //    $this->crypto = new Crypt_RC4();
-=======
             //case self::CIPHER_RC4:
             //    $this->crypto = new RC4();
->>>>>>> update
             //    $this->crypto->enableContinuousBuffer();
             //    $this->crypto->setKey(substr($session_key, 0,  16));
             //    break;
@@ -1101,20 +718,12 @@ class SSH1
 
         $response = $this->_get_binary_packet();
 
-<<<<<<< HEAD
-        if ($response[NET_SSH1_RESPONSE_TYPE] != NET_SSH1_SMSG_SUCCESS) {
-=======
         if ($response[self::RESPONSE_TYPE] != NET_SSH1_SMSG_SUCCESS) {
->>>>>>> update
             user_error('Expected SSH_SMSG_SUCCESS');
             return false;
         }
 
-<<<<<<< HEAD
-        $this->bitmap = NET_SSH1_MASK_CONNECTED;
-=======
         $this->bitmap = self::MASK_CONNECTED;
->>>>>>> update
 
         return true;
     }
@@ -1129,23 +738,14 @@ class SSH1
      */
     function login($username, $password = '')
     {
-<<<<<<< HEAD
-        if (!($this->bitmap & NET_SSH1_MASK_CONSTRUCTOR)) {
-            $this->bitmap |= NET_SSH1_MASK_CONSTRUCTOR;
-=======
         if (!($this->bitmap & self::MASK_CONSTRUCTOR)) {
             $this->bitmap |= self::MASK_CONSTRUCTOR;
->>>>>>> update
             if (!$this->_connect()) {
                 return false;
             }
         }
 
-<<<<<<< HEAD
-        if (!($this->bitmap & NET_SSH1_MASK_CONNECTED)) {
-=======
         if (!($this->bitmap & self::MASK_CONNECTED)) {
->>>>>>> update
             return false;
         }
 
@@ -1161,17 +761,10 @@ class SSH1
         if ($response === true) {
             return false;
         }
-<<<<<<< HEAD
-        if ($response[NET_SSH1_RESPONSE_TYPE] == NET_SSH1_SMSG_SUCCESS) {
-            $this->bitmap |= NET_SSH1_MASK_LOGIN;
-            return true;
-        } elseif ($response[NET_SSH1_RESPONSE_TYPE] != NET_SSH1_SMSG_FAILURE) {
-=======
         if ($response[self::RESPONSE_TYPE] == NET_SSH1_SMSG_SUCCESS) {
             $this->bitmap |= self::MASK_LOGIN;
             return true;
         } elseif ($response[self::RESPONSE_TYPE] != NET_SSH1_SMSG_FAILURE) {
->>>>>>> update
             user_error('Expected SSH_SMSG_SUCCESS or SSH_SMSG_FAILURE');
             return false;
         }
@@ -1184,11 +777,7 @@ class SSH1
         }
 
         // remove the username and password from the last logged packet
-<<<<<<< HEAD
-        if (defined('NET_SSH1_LOGGING') && NET_SSH1_LOGGING == NET_SSH1_LOG_COMPLEX) {
-=======
         if (defined('NET_SSH1_LOGGING') && NET_SSH1_LOGGING == self::LOG_COMPLEX) {
->>>>>>> update
             $data = pack('CNa*', NET_SSH1_CMSG_AUTH_PASSWORD, strlen('password'), 'password');
             $this->message_log[count($this->message_log) - 1] = $data;
         }
@@ -1198,17 +787,10 @@ class SSH1
         if ($response === true) {
             return false;
         }
-<<<<<<< HEAD
-        if ($response[NET_SSH1_RESPONSE_TYPE] == NET_SSH1_SMSG_SUCCESS) {
-            $this->bitmap |= NET_SSH1_MASK_LOGIN;
-            return true;
-        } elseif ($response[NET_SSH1_RESPONSE_TYPE] == NET_SSH1_SMSG_FAILURE) {
-=======
         if ($response[self::RESPONSE_TYPE] == NET_SSH1_SMSG_SUCCESS) {
             $this->bitmap |= self::MASK_LOGIN;
             return true;
         } elseif ($response[self::RESPONSE_TYPE] == NET_SSH1_SMSG_FAILURE) {
->>>>>>> update
             return false;
         } else {
             user_error('Expected SSH_SMSG_SUCCESS or SSH_SMSG_FAILURE');
@@ -1239,11 +821,7 @@ class SSH1
      * {@link http://www.faqs.org/docs/bashman/bashref_65.html http://www.faqs.org/docs/bashman/bashref_65.html}
      * {@link http://www.faqs.org/docs/bashman/bashref_62.html http://www.faqs.org/docs/bashman/bashref_62.html}
      *
-<<<<<<< HEAD
-     * To execute further commands, a new Net_SSH1 object will need to be created.
-=======
      * To execute further commands, a new \phpseclib\Net\SSH1 object will need to be created.
->>>>>>> update
      *
      * Returns false on failure and the output, otherwise.
      *
@@ -1256,11 +834,7 @@ class SSH1
      */
     function exec($cmd, $block = true)
     {
-<<<<<<< HEAD
-        if (!($this->bitmap & NET_SSH1_MASK_LOGIN)) {
-=======
         if (!($this->bitmap & self::MASK_LOGIN)) {
->>>>>>> update
             user_error('Operation disallowed prior to login()');
             return false;
         }
@@ -1281,15 +855,9 @@ class SSH1
 
         if ($response !== false) {
             do {
-<<<<<<< HEAD
-                $output.= substr($response[NET_SSH1_RESPONSE_DATA], 4);
-                $response = $this->_get_binary_packet();
-            } while (is_array($response) && $response[NET_SSH1_RESPONSE_TYPE] != NET_SSH1_SMSG_EXITSTATUS);
-=======
                 $output.= substr($response[self::RESPONSE_DATA], 4);
                 $response = $this->_get_binary_packet();
             } while (is_array($response) && $response[self::RESPONSE_TYPE] != NET_SSH1_SMSG_EXITSTATUS);
->>>>>>> update
         }
 
         $data = pack('C', NET_SSH1_CMSG_EXIT_CONFIRMATION);
@@ -1299,11 +867,7 @@ class SSH1
 
         fclose($this->fsock);
 
-<<<<<<< HEAD
-        // reset the execution bitmap - a new Net_SSH1 object needs to be created.
-=======
         // reset the execution bitmap - a new \phpseclib\Net\SSH1 object needs to be created.
->>>>>>> update
         $this->bitmap = 0;
 
         return $output;
@@ -1322,11 +886,7 @@ class SSH1
         // connect using the sample parameters in protocol-1.5.txt.
         // according to wikipedia.org's entry on text terminals, "the fundamental type of application running on a text
         // terminal is a command line interpreter or shell".  thus, opening a terminal session to run the shell.
-<<<<<<< HEAD
-        $data = pack('CNa*N4C', NET_SSH1_CMSG_REQUEST_PTY, strlen('vt100'), 'vt100', 24, 80, 0, 0, NET_SSH1_TTY_OP_END);
-=======
         $data = pack('CNa*N4C', NET_SSH1_CMSG_REQUEST_PTY, strlen('vt100'), 'vt100', 24, 80, 0, 0, self::TTY_OP_END);
->>>>>>> update
 
         if (!$this->_send_binary_packet($data)) {
             user_error('Error sending SSH_CMSG_REQUEST_PTY');
@@ -1338,11 +898,7 @@ class SSH1
         if ($response === true) {
             return false;
         }
-<<<<<<< HEAD
-        if ($response[NET_SSH1_RESPONSE_TYPE] != NET_SSH1_SMSG_SUCCESS) {
-=======
         if ($response[self::RESPONSE_TYPE] != NET_SSH1_SMSG_SUCCESS) {
->>>>>>> update
             user_error('Expected SSH_SMSG_SUCCESS');
             return false;
         }
@@ -1354,11 +910,7 @@ class SSH1
             return false;
         }
 
-<<<<<<< HEAD
-        $this->bitmap |= NET_SSH1_MASK_SHELL;
-=======
         $this->bitmap |= self::MASK_SHELL;
->>>>>>> update
 
         //stream_set_blocking($this->fsock, 0);
 
@@ -1381,11 +933,7 @@ class SSH1
     /**
      * Returns the output of an interactive shell when there's a match for $expect
      *
-<<<<<<< HEAD
-     * $expect can take the form of a string literal or, if $mode == NET_SSH1_READ_REGEX,
-=======
      * $expect can take the form of a string literal or, if $mode == self::READ_REGEX,
->>>>>>> update
      * a regular expression.
      *
      * @see self::write()
@@ -1394,35 +942,21 @@ class SSH1
      * @return bool
      * @access public
      */
-<<<<<<< HEAD
-    function read($expect, $mode = NET_SSH1_READ_SIMPLE)
-    {
-        if (!($this->bitmap & NET_SSH1_MASK_LOGIN)) {
-=======
     function read($expect, $mode = self::READ_SIMPLE)
     {
         if (!($this->bitmap & self::MASK_LOGIN)) {
->>>>>>> update
             user_error('Operation disallowed prior to login()');
             return false;
         }
 
-<<<<<<< HEAD
-        if (!($this->bitmap & NET_SSH1_MASK_SHELL) && !$this->_initShell()) {
-=======
         if (!($this->bitmap & self::MASK_SHELL) && !$this->_initShell()) {
->>>>>>> update
             user_error('Unable to initiate an interactive shell session');
             return false;
         }
 
         $match = $expect;
         while (true) {
-<<<<<<< HEAD
-            if ($mode == NET_SSH1_READ_REGEX) {
-=======
             if ($mode == self::READ_REGEX) {
->>>>>>> update
                 preg_match($expect, $this->interactiveBuffer, $matches);
                 $match = isset($matches[0]) ? $matches[0] : '';
             }
@@ -1435,11 +969,7 @@ class SSH1
             if ($response === true) {
                 return $this->_string_shift($this->interactiveBuffer, strlen($this->interactiveBuffer));
             }
-<<<<<<< HEAD
-            $this->interactiveBuffer.= substr($response[NET_SSH1_RESPONSE_DATA], 4);
-=======
             $this->interactiveBuffer.= substr($response[self::RESPONSE_DATA], 4);
->>>>>>> update
         }
     }
 
@@ -1453,20 +983,12 @@ class SSH1
      */
     function interactiveWrite($cmd)
     {
-<<<<<<< HEAD
-        if (!($this->bitmap & NET_SSH1_MASK_LOGIN)) {
-=======
         if (!($this->bitmap & self::MASK_LOGIN)) {
->>>>>>> update
             user_error('Operation disallowed prior to login()');
             return false;
         }
 
-<<<<<<< HEAD
-        if (!($this->bitmap & NET_SSH1_MASK_SHELL) && !$this->_initShell()) {
-=======
         if (!($this->bitmap & self::MASK_SHELL) && !$this->_initShell()) {
->>>>>>> update
             user_error('Unable to initiate an interactive shell session');
             return false;
         }
@@ -1496,20 +1018,12 @@ class SSH1
      */
     function interactiveRead()
     {
-<<<<<<< HEAD
-        if (!($this->bitmap & NET_SSH1_MASK_LOGIN)) {
-=======
         if (!($this->bitmap & self::MASK_LOGIN)) {
->>>>>>> update
             user_error('Operation disallowed prior to login()');
             return false;
         }
 
-<<<<<<< HEAD
-        if (!($this->bitmap & NET_SSH1_MASK_SHELL) && !$this->_initShell()) {
-=======
         if (!($this->bitmap & self::MASK_SHELL) && !$this->_initShell()) {
->>>>>>> update
             user_error('Unable to initiate an interactive shell session');
             return false;
         }
@@ -1518,11 +1032,7 @@ class SSH1
         $write = $except = null;
         if (stream_select($read, $write, $except, 0)) {
             $response = $this->_get_binary_packet();
-<<<<<<< HEAD
-            return substr($response[NET_SSH1_RESPONSE_DATA], 4);
-=======
             return substr($response[self::RESPONSE_DATA], 4);
->>>>>>> update
         } else {
             return '';
         }
@@ -1565,15 +1075,9 @@ class SSH1
             /*
             $response = $this->_get_binary_packet();
             if ($response === true) {
-<<<<<<< HEAD
-                $response = array(NET_SSH1_RESPONSE_TYPE => -1);
-            }
-            switch ($response[NET_SSH1_RESPONSE_TYPE]) {
-=======
                 $response = array(self::RESPONSE_TYPE => -1);
             }
             switch ($response[self::RESPONSE_TYPE]) {
->>>>>>> update
                 case NET_SSH1_SMSG_EXITSTATUS:
                     $data = pack('C', NET_SSH1_CMSG_EXIT_CONFIRMATION);
                     break;
@@ -1673,13 +1177,8 @@ class SSH1
         }
 
         return array(
-<<<<<<< HEAD
-            NET_SSH1_RESPONSE_TYPE => $type,
-            NET_SSH1_RESPONSE_DATA => $data
-=======
             self::RESPONSE_TYPE => $type,
             self::RESPONSE_DATA => $data
->>>>>>> update
         );
     }
 
@@ -1702,11 +1201,7 @@ class SSH1
 
         $length = strlen($data) + 4;
 
-<<<<<<< HEAD
-        $padding = crypt_random_string(8 - ($length & 7));
-=======
         $padding = Random::string(8 - ($length & 7));
->>>>>>> update
 
         $orig = $data;
         $data = $padding . $data;
@@ -1856,35 +1351,18 @@ class SSH1
      * should be a number with the property that gcd($e, ($p - 1) * ($q - 1)) == 1.  Could just make anything that
      * calls this call modexp, instead, but I think this makes things clearer, maybe...
      *
-<<<<<<< HEAD
-     * @see self::Net_SSH1()
-     * @param Math_BigInteger $m
-     * @param array $key
-     * @return Math_BigInteger
-=======
      * @see self::__construct()
      * @param BigInteger $m
      * @param array $key
      * @return BigInteger
->>>>>>> update
      * @access private
      */
     function _rsa_crypt($m, $key)
     {
         /*
-<<<<<<< HEAD
-        if (!class_exists('Crypt_RSA')) {
-            include_once 'Crypt/RSA.php';
-        }
-
-        $rsa = new Crypt_RSA();
-        $rsa->loadKey($key, CRYPT_RSA_PUBLIC_FORMAT_RAW);
-        $rsa->setEncryptionMode(CRYPT_RSA_ENCRYPTION_PKCS1);
-=======
         $rsa = new RSA();
         $rsa->loadKey($key, RSA::PUBLIC_FORMAT_RAW);
         $rsa->setEncryptionMode(RSA::ENCRYPTION_PKCS1);
->>>>>>> update
         return $rsa->encrypt($m);
         */
 
@@ -1905,21 +1383,13 @@ class SSH1
         $length = strlen($modulus) - strlen($m) - 3;
         $random = '';
         while (strlen($random) != $length) {
-<<<<<<< HEAD
-            $block = crypt_random_string($length - strlen($random));
-=======
             $block = Random::string($length - strlen($random));
->>>>>>> update
             $block = str_replace("\x00", '', $block);
             $random.= $block;
         }
         $temp = chr(0) . chr(2) . $random . chr(0) . $m;
 
-<<<<<<< HEAD
-        $m = new Math_BigInteger($temp, 256);
-=======
         $m = new BigInteger($temp, 256);
->>>>>>> update
         $m = $m->modPow($key[0], $key[1]);
 
         return $m->toBytes();
@@ -1951,11 +1421,7 @@ class SSH1
     /**
      * Returns a log of the packets that have been sent and received.
      *
-<<<<<<< HEAD
-     * Returns a string if NET_SSH1_LOGGING == NET_SSH1_LOG_COMPLEX, an array if NET_SSH1_LOGGING == NET_SSH1_LOG_SIMPLE and false if !defined('NET_SSH1_LOGGING')
-=======
      * Returns a string if NET_SSH1_LOGGING == self::LOG_COMPLEX, an array if NET_SSH1_LOGGING == self::LOG_SIMPLE and false if !defined('NET_SSH1_LOGGING')
->>>>>>> update
      *
      * @access public
      * @return array|false|string
@@ -1967,17 +1433,10 @@ class SSH1
         }
 
         switch (NET_SSH1_LOGGING) {
-<<<<<<< HEAD
-            case NET_SSH1_LOG_SIMPLE:
-                return $this->message_number_log;
-                break;
-            case NET_SSH1_LOG_COMPLEX:
-=======
             case self::LOG_SIMPLE:
                 return $this->protocol_flags_log;
                 break;
             case self::LOG_COMPLEX:
->>>>>>> update
                 return $this->_format_log($this->message_log, $this->protocol_flags_log);
                 break;
             default:
@@ -2098,11 +1557,7 @@ class SSH1
      *
      * Just because a cipher is supported by an SSH1 server doesn't mean it's supported by this library. If $raw_output
      * is set to true, returns, instead, an array of constants.  ie. instead of array('Triple-DES in CBC mode'), you'll
-<<<<<<< HEAD
-     * get array(NET_SSH1_CIPHER_3DES).
-=======
      * get array(self::CIPHER_3DES).
->>>>>>> update
      *
      * @param bool $raw_output
      * @return array
@@ -2118,11 +1573,7 @@ class SSH1
      *
      * Just because a cipher is supported by an SSH1 server doesn't mean it's supported by this library. If $raw_output
      * is set to true, returns, instead, an array of constants.  ie. instead of array('password authentication'), you'll
-<<<<<<< HEAD
-     * get array(NET_SSH1_AUTH_PASSWORD).
-=======
      * get array(self::AUTH_PASSWORD).
->>>>>>> update
      *
      * @param bool $raw_output
      * @return array
@@ -2157,28 +1608,16 @@ class SSH1
     {
         switch (NET_SSH1_LOGGING) {
             // useful for benchmarks
-<<<<<<< HEAD
-            case NET_SSH1_LOG_SIMPLE:
-                $this->protocol_flags_log[] = $protocol_flags;
-                break;
-            // the most useful log for SSH1
-            case NET_SSH1_LOG_COMPLEX:
-=======
             case self::LOG_SIMPLE:
                 $this->protocol_flags_log[] = $protocol_flags;
                 break;
             // the most useful log for SSH1
             case self::LOG_COMPLEX:
->>>>>>> update
                 $this->protocol_flags_log[] = $protocol_flags;
                 $this->_string_shift($message);
                 $this->log_size+= strlen($message);
                 $this->message_log[] = $message;
-<<<<<<< HEAD
-                while ($this->log_size > NET_SSH1_LOG_MAX_SIZE) {
-=======
                 while ($this->log_size > self::LOG_MAX_SIZE) {
->>>>>>> update
                     $this->log_size-= strlen(array_shift($this->message_log));
                     array_shift($this->protocol_flags_log);
                 }
@@ -2186,25 +1625,11 @@ class SSH1
             // dump the output out realtime; packets may be interspersed with non packets,
             // passwords won't be filtered out and select other packets may not be correctly
             // identified
-<<<<<<< HEAD
-            case NET_SSH1_LOG_REALTIME:
-=======
             case self::LOG_REALTIME:
->>>>>>> update
                 echo "<pre>\r\n" . $this->_format_log(array($message), array($protocol_flags)) . "\r\n</pre>\r\n";
                 @flush();
                 @ob_flush();
                 break;
-<<<<<<< HEAD
-            // basically the same thing as NET_SSH1_LOG_REALTIME with the caveat that NET_SSH1_LOG_REALTIME_FILE
-            // needs to be defined and that the resultant log file will be capped out at NET_SSH1_LOG_MAX_SIZE.
-            // the earliest part of the log file is denoted by the first <<< START >>> and is not going to necessarily
-            // at the beginning of the file
-            case NET_SSH1_LOG_REALTIME_FILE:
-                if (!isset($this->realtime_log_file)) {
-                    // PHP doesn't seem to like using constants in fopen()
-                    $filename = NET_SSH1_LOG_REALTIME_FILE;
-=======
             // basically the same thing as self::LOG_REALTIME with the caveat that self::LOG_REALTIME_FILE
             // needs to be defined and that the resultant log file will be capped out at self::LOG_MAX_SIZE.
             // the earliest part of the log file is denoted by the first <<< START >>> and is not going to necessarily
@@ -2213,7 +1638,6 @@ class SSH1
                 if (!isset($this->realtime_log_file)) {
                     // PHP doesn't seem to like using constants in fopen()
                     $filename = self::LOG_REALTIME_FILE;
->>>>>>> update
                     $fp = fopen($filename, 'w');
                     $this->realtime_log_file = $fp;
                 }
@@ -2227,11 +1651,7 @@ class SSH1
                     fseek($this->realtime_log_file, ftell($this->realtime_log_file) - strlen($temp));
                 }
                 $this->realtime_log_size+= strlen($entry);
-<<<<<<< HEAD
-                if ($this->realtime_log_size > NET_SSH1_LOG_MAX_SIZE) {
-=======
                 if ($this->realtime_log_size > self::LOG_MAX_SIZE) {
->>>>>>> update
                     fseek($this->realtime_log_file, 0);
                     $this->realtime_log_size = strlen($entry);
                     $this->realtime_log_wrap = true;

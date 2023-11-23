@@ -1,28 +1,4 @@
 === Custom Post Type UI ===
-<<<<<<< HEAD
-Contributors: webdevstudios, pluginize, tw2113, vegasgeek, modemlooper, williamsba1
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3084056
-Tags: custom post types, CPT, CMS, post, types, post type, taxonomy, tax, custom, content types, post types
-Requires at least: 5.9
-Tested up to: 6.0
-Stable tag: 1.12.1
-License: GPL-2.0+
-Requires PHP: 5.6
-
-Admin UI for creating custom post types and custom taxonomies for WordPress
-
-== Description ==
-
-Custom Post Type UI provides an easy to use interface for registering and managing custom post types and taxonomies for your website.
-
-= Custom Post Type UI Extended =
-
-CPTUI helps create custom content types, but displaying that content can be a whole new challenge. We created [Custom Post Type UI Extended](https://pluginize.com/product/custom-post-type-ui-extended/?utm_source=cptui-desription&utm_medium=text&utm_campaign=wporg) to help with displaying your crafted content. [View our Layouts page](https://pluginize.com/cpt-ui-extended-features/?utm_source=cptui-description-examples&utm_medium=text&utm_campaign=wporg) to see available layout examples with Custom Post Type UI Extended.
-
-Beginning with version 1.7.0, Custom Post Type UI Extended has properly moved in to the Block editor experience and is working to get all the layouts available in the new "Custom Post Type UI Block". It's now even easier to start showing your content with the existing and future layouts available with Custom Post Type UI Extended.
-
-[Pluginize](https://pluginize.com/?utm_source=cptui&utm_medium=text&utm_campaign=wporg) was launched in 2016 by [WebDevStudios](https://webdevstudios.com/) to promote, support, and house all of their [WordPress products](https://pluginize.com/shop/?utm_source=cptui-&utm_medium=text&utm_campaign=wporg). Pluginize is not only [creating new products for WordPress, like CPTUI Extended](https://pluginize.com/product/custom-post-type-ui-extended/?utm_source=cptui&utm_medium=text&utm_campaign=wporg), but also provides ongoing support and development for WordPress community favorites like [CMB2](https://wordpress.org/plugins/cmb2/) and more.
-=======
 Contributors: webdevstudios, pluginize, tw2113, williamsba1
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3084056
 Tags: custom post types, post type, taxonomy, content types, CPT, CMS, post, types, custom
@@ -41,7 +17,6 @@ Custom Post Type UI provides an easy-to-use interface for registering and managi
 = Custom Post Type UI Extended =
 
 CPTUI helps create custom content types, but displaying that content can be a whole new challenge. [Custom Post Type UI Extended](https://pluginize.com/plugins/custom-post-type-ui-extended/?utm_source=cptui-desription&utm_medium=text&utm_campaign=wporg) was created to help with displaying your crafted content. [View our Layouts page](https://pluginize.com/cpt-ui-extended-features/?utm_source=cptui-description-examples&utm_medium=text&utm_campaign=wporg) to see available layout examples with Custom Post Type UI Extended.
->>>>>>> update
 
 = Plugin development =
 
@@ -57,8 +32,6 @@ Custom Post Type UI development is managed on GitHub, with official releases pub
 
 == Changelog ==
 
-<<<<<<< HEAD
-=======
 = 1.15.1 - 2023-11-08 =
 * Fixed: Fixed up some Right-to-Left language styling issues.
 * Fixed: Fixing forgot to update about page and some PHP constants for CPTUI version.
@@ -115,7 +88,6 @@ Custom Post Type UI development is managed on GitHub, with official releases pub
 * Updated: Code separation and quality cleanup.
 * Updated: Plugin branding.
 
->>>>>>> update
 = 1.12.1 - 2022-05-16 =
 * Fixed: JSON decoding issues around WP-CLI import.
 
@@ -145,24 +117,6 @@ Custom Post Type UI development is managed on GitHub, with official releases pub
 * Updated: Reserved post type slugs from recent WordPress releases.
 * Fixed: PHP warnings around foreach loops in cptui_published_post_format_fix()
 
-<<<<<<< HEAD
-= 1.10.2 - 2022-01-28 =
-* Updated: Confirmed compatibility with WordPress 5.9
-
-= 1.10.1 - 2021-12-07 =
-* Added: Filter to our PHP Global sanitization function for Extended usage.
-
-= 1.10.0 - 2021-10-04 =
-* Added: Dashicon picker with popup. - Props arshidkv12
-* Added: Tag Cloud widget support for custom taxonomies.
-* Added: Filters that allow developers to override the data fetched from our options, if they choose to.
-* Added: Ability to clear all filled in label values.
-* Fixed: Hardened up various parts of our code to ensure security.
-* Fixed: Incorrectly referenced variable from post types instead of taxonomies, for the rest_controller_class property.
-
-== Upgrade Notice ==
-
-=======
 == Upgrade Notice ==
 
 = 1.15.0 - 2023-11-06 =
@@ -217,7 +171,6 @@ Custom Post Type UI development is managed on GitHub, with official releases pub
 * Updated: Code separation and quality cleanup.
 * Updated: Plugin branding.
 
->>>>>>> update
 = 1.12.1 - 2022-05-16 =
 * Fixed: JSON decoding issues around WP-CLI import.
 
@@ -247,23 +200,6 @@ Custom Post Type UI development is managed on GitHub, with official releases pub
 * Updated: Reserved post type slugs from recent WordPress releases.
 * Fixed: PHP warnings around foreach loops in cptui_published_post_format_fix()
 
-<<<<<<< HEAD
-= 1.10.2 - 2022-01-28 =
-* Updated: Confirmed compatibility with WordPress 5.9
-
-= 1.10.1 - 2021-12-07 =
-* Added: Filter to our PHP Global sanitization function for Extended usage.
-
-= 1.10.0 - 2021-10-04 =
-* Added: Dashicon picker with popup. - Props arshidkv12
-* Added: Tag Cloud widget support for custom taxonomies.
-* Added: Filters that allow developers to override the data fetched from our options, if they choose to.
-* Added: Ability to clear all filled in label values.
-* Fixed: Hardened up various parts of our code to ensure security.
-* Fixed: Incorrectly referenced variable from post types instead of taxonomies, for the rest_controller_class property.
-
-=======
->>>>>>> update
 == Installation ==
 
 = Admin Installer via search =
@@ -288,11 +224,4 @@ That's it! Now you can easily start creating custom post types and taxonomies in
 == Frequently Asked Questions ==
 
 #### User documentation
-<<<<<<< HEAD
-Please see http://docs.pluginize.com/category/126-custom-post-type-ui
-
-#### Code/API documentation
-Please see http://codex.pluginize.com/cptui/
-=======
 Please see https://docs.pluginize.com/tutorials/custom-post-type-ui/
->>>>>>> update

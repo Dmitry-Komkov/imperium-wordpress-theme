@@ -134,10 +134,6 @@ class Meta_Surface {
 			return false;
 		}
 
-<<<<<<< HEAD
-
-=======
->>>>>>> update
 		return $this->build_meta( $this->context_memoizer->get( $indexable, 'Home_Page' ) );
 	}
 
@@ -189,10 +185,6 @@ class Meta_Surface {
 			return false;
 		}
 
-<<<<<<< HEAD
-
-=======
->>>>>>> update
 		return $this->build_meta( $this->context_memoizer->get( $indexable, 'Error_Page' ) );
 	}
 
@@ -227,12 +219,9 @@ class Meta_Surface {
 			return false;
 		}
 
-<<<<<<< HEAD
-=======
 		// Remove all false values.
 		$indexables = \array_filter( $indexables );
 
->>>>>>> update
 		return \array_map(
 			function( $indexable ) {
 				return $this->build_meta( $this->context_memoizer->get( $indexable, 'Post_Type' ) );
@@ -284,13 +273,10 @@ class Meta_Surface {
 	 * @return Meta|false The meta values. False if none could be found.
 	 */
 	public function for_indexable( $indexable, $page_type = null ) {
-<<<<<<< HEAD
-=======
 
 		if ( ! \is_a( $indexable, Indexable::class ) ) {
 			return false;
 		}
->>>>>>> update
 		if ( \is_null( $page_type ) ) {
 			$page_type = $this->indexable_helper->get_page_type_for_indexable( $indexable );
 		}

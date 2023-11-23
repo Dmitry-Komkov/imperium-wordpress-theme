@@ -2,10 +2,7 @@
 
 namespace Yoast\WP\SEO\Integrations;
 
-<<<<<<< HEAD
-=======
 use WP_HTML_Tag_Processor;
->>>>>>> update
 use WPSEO_Replace_Vars;
 use Yoast\WP\SEO\Conditionals\Front_End_Conditional;
 use Yoast\WP\SEO\Context\Meta_Tags_Context;
@@ -180,8 +177,6 @@ class Front_End_Integration implements Integration_Interface {
 	];
 
 	/**
-<<<<<<< HEAD
-=======
 	 * The next output.
 	 *
 	 * @var string
@@ -196,7 +191,6 @@ class Front_End_Integration implements Integration_Interface {
 	protected $prev;
 
 	/**
->>>>>>> update
 	 * Returns the conditionals based on which this loadable should be active.
 	 *
 	 * @return array The conditionals.
@@ -240,11 +234,8 @@ class Front_End_Integration implements Integration_Interface {
 	 * to avoid duplicate and/or mismatched metadata.
 	 */
 	public function register_hooks() {
-<<<<<<< HEAD
-=======
 		\add_filter( 'render_block', [ $this, 'query_loop_next_prev' ], 1, 2 );
 
->>>>>>> update
 		\add_action( 'wp_head', [ $this, 'call_wpseo_head' ], 1 );
 		// Filter the title for compatibility with other plugins and themes.
 		\add_filter( 'wp_title', [ $this, 'filter_title' ], 15 );
@@ -289,8 +280,6 @@ class Front_End_Integration implements Integration_Interface {
 	}
 
 	/**
-<<<<<<< HEAD
-=======
 	 * Filters the next and prev links in the query loop block.
 	 *
 	 * @param string $html  The HTML output.
@@ -357,7 +346,6 @@ class Front_End_Integration implements Integration_Interface {
 	}
 
 	/**
->>>>>>> update
 	 * Filters our robots presenter, but only when wp_robots is attached to the wp_head action.
 	 *
 	 * @param array $presenters The presenters for current page.
@@ -496,16 +484,10 @@ class Front_End_Integration implements Integration_Interface {
 		/**
 		 * Filter 'wpseo_frontend_presenter_classes' - Allow filtering presenters in or out of the request.
 		 *
-<<<<<<< HEAD
-		 * @api array List of presenters.
-		 */
-		$presenters = \apply_filters( 'wpseo_frontend_presenter_classes', $presenters );
-=======
 		 * @param array  $presenters List of presenters.
 		 * @param string $page_type  The current page type.
 		 */
 		$presenters = \apply_filters( 'wpseo_frontend_presenter_classes', $presenters, $page_type );
->>>>>>> update
 
 		return $presenters;
 	}
@@ -536,14 +518,11 @@ class Front_End_Integration implements Integration_Interface {
 			$presenters = \array_diff( $presenters, $this->singular_presenters );
 		}
 
-<<<<<<< HEAD
-=======
 		// Filter out `twitter:data` presenters for static home pages.
 		if ( $page_type === 'Static_Home_Page' ) {
 			$presenters = \array_diff( $presenters, $this->slack_presenters );
 		}
 
->>>>>>> update
 		return $presenters;
 	}
 
@@ -568,8 +547,6 @@ class Front_End_Integration implements Integration_Interface {
 	}
 
 	/**
-<<<<<<< HEAD
-=======
 	 * Whether the title presenter should be removed.
 	 *
 	 * @return bool True when the title presenter should be removed, false otherwise.
@@ -579,7 +556,6 @@ class Front_End_Integration implements Integration_Interface {
 	}
 
 	/**
->>>>>>> update
 	 * Checks if the Title presenter needs to be removed.
 	 *
 	 * @param string[] $presenters The presenters.
@@ -593,11 +569,7 @@ class Front_End_Integration implements Integration_Interface {
 		}
 
 		// Remove the title presenter if the theme is hardcoded to output a title tag so we don't have two title tags.
-<<<<<<< HEAD
-		if ( ! \get_theme_support( 'title-tag' ) && ! $this->options->get( 'forcerewritetitle', false ) ) {
-=======
 		if ( $this->should_title_presenter_be_removed() ) {
->>>>>>> update
 			$presenters = \array_diff( $presenters, [ 'Title' ] );
 		}
 

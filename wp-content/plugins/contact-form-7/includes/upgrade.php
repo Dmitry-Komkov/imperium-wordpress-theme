@@ -1,9 +1,5 @@
 <?php
 
-<<<<<<< HEAD
-add_action( 'wpcf7_upgrade', 'wpcf7_convert_to_cpt', 10, 2 );
-
-=======
 add_action( 'wpcf7_upgrade', 'wpcf7_upgrade_58', 10, 2 );
 
 /**
@@ -43,7 +39,6 @@ add_action( 'wpcf7_upgrade', 'wpcf7_convert_to_cpt', 10, 2 );
  *
  * @since 3.0.0 `wpcf7_contact_form` CPT is introduced.
  */
->>>>>>> update
 function wpcf7_convert_to_cpt( $new_ver, $old_ver ) {
 	global $wpdb;
 
@@ -86,13 +81,6 @@ function wpcf7_convert_to_cpt( $new_ver, $old_ver ) {
 		if ( $post_id ) {
 			update_post_meta( $post_id, '_old_cf7_unit_id', $row->cf7_unit_id );
 
-<<<<<<< HEAD
-			$metas = array( 'form', 'mail', 'mail_2', 'messages', 'additional_settings' );
-
-			foreach ( $metas as $meta ) {
-				update_post_meta( $post_id, '_' . $meta,
-					wpcf7_normalize_newline_deep( maybe_unserialize( $row->{$meta} ) ) );
-=======
 			$metas = array(
 				'form',
 				'mail',
@@ -105,23 +93,17 @@ function wpcf7_convert_to_cpt( $new_ver, $old_ver ) {
 				update_post_meta( $post_id, '_' . $meta,
 					wpcf7_normalize_newline_deep( maybe_unserialize( $row->{$meta} ) )
 				);
->>>>>>> update
 			}
 		}
 	}
 }
 
-<<<<<<< HEAD
-add_action( 'wpcf7_upgrade', 'wpcf7_prepend_underscore', 10, 2 );
-
-=======
 
 add_action( 'wpcf7_upgrade', 'wpcf7_prepend_underscore', 10, 2 );
 
 /**
  * Prepends an underscore to post meta keys.
  */
->>>>>>> update
 function wpcf7_prepend_underscore( $new_ver, $old_ver ) {
 	if ( version_compare( $old_ver, '3.0-dev', '<' ) ) {
 		return;

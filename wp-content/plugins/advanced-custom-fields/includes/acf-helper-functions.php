@@ -119,11 +119,7 @@ function acf_cache_key( $key = '' ) {
  */
 function acf_request_args( $args = array() ) {
 	foreach ( $args as $k => $v ) {
-<<<<<<< HEAD
-		$args[ $k ] = isset( $_REQUEST[ $k ] ) ? $_REQUEST[ $k ] : $args[ $k ];
-=======
 		$args[ $k ] = isset( $_REQUEST[ $k ] ) ? acf_sanitize_request_args( $_REQUEST[ $k ] ) : $args[ $k ]; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Verified elsewhere.
->>>>>>> update
 	}
 	return $args;
 }
@@ -139,11 +135,7 @@ function acf_request_args( $args = array() ) {
  * @return  mixed
  */
 function acf_request_arg( $name = '', $default = null ) {
-<<<<<<< HEAD
-	return isset( $_REQUEST[ $name ] ) ? $_REQUEST[ $name ] : $default;
-=======
 	return isset( $_REQUEST[ $name ] ) ? acf_sanitize_request_args( $_REQUEST[ $name ] ) : $default; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
->>>>>>> update
 }
 
 // Register store.
@@ -387,11 +379,7 @@ function acf_idify( $str = '' ) {
 function acf_slugify( $str = '', $glue = '-' ) {
 	$raw  = $str;
 	$slug = str_replace( array( '_', '-', '/', ' ' ), $glue, strtolower( remove_accents( $raw ) ) );
-<<<<<<< HEAD
-	$slug = preg_replace( "/[^A-Za-z0-9" . preg_quote( $glue ) . "]/", '', $slug );
-=======
 	$slug = preg_replace( '/[^A-Za-z0-9' . preg_quote( $glue ) . ']/', '', $slug );
->>>>>>> update
 
 	/**
 	 * Filters the slug created by acf_slugify().
@@ -507,12 +495,6 @@ function acf_doing_action( $action ) {
 function acf_get_current_url() {
 	// Ensure props exist to avoid PHP Notice during CLI commands.
 	if ( isset( $_SERVER['HTTP_HOST'], $_SERVER['REQUEST_URI'] ) ) {
-<<<<<<< HEAD
-		return ( is_ssl() ? 'https' : 'http' ) . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-	}
-	return '';
-}
-=======
 		return ( is_ssl() ? 'https' : 'http' ) . '://' . filter_var( $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'], FILTER_SANITIZE_URL );
 	}
 	return '';
@@ -697,4 +679,3 @@ function acf_maybe_unserialize( $data ) {
 function acf_is_pro() {
 	return defined( 'ACF_PRO' ) && ACF_PRO;
 }
->>>>>>> update

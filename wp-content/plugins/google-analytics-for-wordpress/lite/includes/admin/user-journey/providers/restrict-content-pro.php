@@ -44,11 +44,7 @@ class MonsterInsights_Lite_User_Journey_Restrict_Content_Pro_Metabox extends Mon
 			return false;
 		}
 
-<<<<<<< HEAD
-		if ( 'rcp-payments' !== $_GET['page'] && 'edit-payment' !== $_GET['view'] ) {
-=======
 		if ( 'rcp-payments' !== $_GET['page'] && 'edit-payment' !== $_GET['view'] ) { // phpcs:ignore
->>>>>>> update
 			return false;
 		}
 

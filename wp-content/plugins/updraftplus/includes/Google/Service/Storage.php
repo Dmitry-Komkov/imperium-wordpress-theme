@@ -43,15 +43,12 @@ class UDP_Google_Service_Storage extends UDP_Google_Service
   const DEVSTORAGE_READ_WRITE =
       "https://www.googleapis.com/auth/devstorage.read_write";
 
-<<<<<<< HEAD
-=======
 	/**
 	 * Google storage service name. The default value is drive.
 	 * @var String
 	 */
 	protected $serviceName;
 
->>>>>>> update
   public $bucketAccessControls;
   public $buckets;
   public $channels;

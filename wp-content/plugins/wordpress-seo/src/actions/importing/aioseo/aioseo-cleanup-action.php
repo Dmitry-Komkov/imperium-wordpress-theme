@@ -46,13 +46,8 @@ class Aioseo_Cleanup_Action extends Abstract_Aioseo_Importing_Action {
 	/**
 	 * Class constructor.
 	 *
-<<<<<<< HEAD
-	 * @param wpdb           $wpdb        The WordPress database instance.
-	 * @param Options_Helper $options     The options helper.
-=======
 	 * @param wpdb           $wpdb    The WordPress database instance.
 	 * @param Options_Helper $options The options helper.
->>>>>>> update
 	 */
 	public function __construct(
 		wpdb $wpdb,
@@ -114,10 +109,6 @@ class Aioseo_Cleanup_Action extends Abstract_Aioseo_Importing_Action {
 		$aioseo_table_truncate_done = $this->wpdb->query( $this->truncate_query() );
 		// phpcs:enable WordPress.DB.PreparedSQL.NotPrepared
 
-<<<<<<< HEAD
-
-=======
->>>>>>> update
 		if ( $meta_data === false && $aioseo_table_truncate_done === false ) {
 			return false;
 		}

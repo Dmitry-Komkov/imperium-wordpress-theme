@@ -41,11 +41,6 @@ class Image_Presenter extends Abstract_Indexable_Presenter {
 		}
 
 		$return = '';
-<<<<<<< HEAD
-		foreach ( $images as $image_index => $image_meta ) {
-			$image_url = $image_meta['url'];
-			$class     = \is_admin_bar_showing() ? ' class="yoast-seo-meta-tag"' : '';
-=======
 		foreach ( $images as $image_meta ) {
 			$image_url = $image_meta['url'];
 
@@ -55,7 +50,6 @@ class Image_Presenter extends Abstract_Indexable_Presenter {
 			}
 
 			$class = \is_admin_bar_showing() ? ' class="yoast-seo-meta-tag"' : '';
->>>>>>> update
 
 			$return .= '<meta property="og:image" content="' . \esc_url( $image_url, null, 'attribute' ) . '"' . $class . ' />';
 

@@ -21,12 +21,6 @@ if ( ! class_exists( 'acf_field_wysiwyg' ) ) :
 		function initialize() {
 
 			// vars
-<<<<<<< HEAD
-			$this->name     = 'wysiwyg';
-			$this->label    = __( 'Wysiwyg Editor', 'acf' );
-			$this->category = 'content';
-			$this->defaults = array(
-=======
 			$this->name          = 'wysiwyg';
 			$this->label         = __( 'WYSIWYG Editor', 'acf' );
 			$this->category      = 'content';
@@ -34,7 +28,6 @@ if ( ! class_exists( 'acf_field_wysiwyg' ) ) :
 			$this->preview_image = acf_get_url() . '/assets/images/field-type-previews/field-preview-wysiwyg.png';
 			$this->doc_url       = acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/resources/wysiwyg-editor/', 'docs', 'field-type-selection' );
 			$this->defaults      = array(
->>>>>>> update
 				'tabs'          => 'all',
 				'toolbar'       => 'full',
 				'media_upload'  => 1,
@@ -113,16 +106,6 @@ if ( ! class_exists( 'acf_field_wysiwyg' ) ) :
 			// mce buttons (Basic)
 			$teeny_mce_buttons = array( 'bold', 'italic', 'underline', 'blockquote', 'strikethrough', 'bullist', 'numlist', 'alignleft', 'aligncenter', 'alignright', 'undo', 'redo', 'link', 'fullscreen' );
 
-<<<<<<< HEAD
-			// WP < 4.7
-			if ( acf_version_compare( 'wp', '<', '4.7' ) ) {
-
-				$mce_buttons   = array( 'bold', 'italic', 'strikethrough', 'bullist', 'numlist', 'blockquote', 'hr', 'alignleft', 'aligncenter', 'alignright', 'link', 'unlink', 'wp_more', 'spellchecker', 'fullscreen', 'wp_adv' );
-				$mce_buttons_2 = array( 'formatselect', 'underline', 'alignjustify', 'forecolor', 'pastetext', 'removeformat', 'charmap', 'outdent', 'indent', 'undo', 'redo', 'wp_help' );
-			}
-
-=======
->>>>>>> update
 			// Full
 			$toolbars['Full'] = array(
 				1 => apply_filters( 'mce_buttons', $mce_buttons, $editor_id ),
@@ -278,11 +261,7 @@ if ( ! class_exists( 'acf_field_wysiwyg' ) ) :
 			);
 
 			?>
-<<<<<<< HEAD
-		<div <?php acf_esc_attr_e( $wrap ); ?>>
-=======
 		<div <?php echo acf_esc_attrs( $wrap ); ?>>
->>>>>>> update
 			<div id="wp-<?php echo esc_attr( $id ); ?>-editor-tools" class="wp-editor-tools hide-if-no-js">
 				<?php if ( $field['media_upload'] ) : ?>
 				<div id="wp-<?php echo esc_attr( $id ); ?>-media-buttons" class="wp-media-buttons">
@@ -325,12 +304,6 @@ if ( ! class_exists( 'acf_field_wysiwyg' ) ) :
 		*
 		*  @param   $field  - an array holding all the field's data
 		*/
-<<<<<<< HEAD
-
-		function render_field_settings( $field ) {
-
-			// vars
-=======
 		function render_field_settings( $field ) {
 			acf_render_field_setting(
 				$field,
@@ -353,7 +326,6 @@ if ( ! class_exists( 'acf_field_wysiwyg' ) ) :
 		 * @return void
 		 */
 		function render_field_presentation_settings( $field ) {
->>>>>>> update
 			$toolbars = $this->get_toolbars();
 			$choices  = array();
 
@@ -369,21 +341,6 @@ if ( ! class_exists( 'acf_field_wysiwyg' ) ) :
 				}
 			}
 
-<<<<<<< HEAD
-			// default_value
-			acf_render_field_setting(
-				$field,
-				array(
-					'label'        => __( 'Default Value', 'acf' ),
-					'instructions' => __( 'Appears when creating a new post', 'acf' ),
-					'type'         => 'textarea',
-					'name'         => 'default_value',
-				)
-			);
-
-			// tabs
-=======
->>>>>>> update
 			acf_render_field_setting(
 				$field,
 				array(
@@ -399,10 +356,6 @@ if ( ! class_exists( 'acf_field_wysiwyg' ) ) :
 				)
 			);
 
-<<<<<<< HEAD
-			// toolbar
-=======
->>>>>>> update
 			acf_render_field_setting(
 				$field,
 				array(
@@ -419,18 +372,10 @@ if ( ! class_exists( 'acf_field_wysiwyg' ) ) :
 				)
 			);
 
-<<<<<<< HEAD
-			// media_upload
-			acf_render_field_setting(
-				$field,
-				array(
-					'label'        => __( 'Show Media Upload Buttons?', 'acf' ),
-=======
 			acf_render_field_setting(
 				$field,
 				array(
 					'label'        => __( 'Show Media Upload Buttons', 'acf' ),
->>>>>>> update
 					'instructions' => '',
 					'name'         => 'media_upload',
 					'type'         => 'true_false',
@@ -438,18 +383,10 @@ if ( ! class_exists( 'acf_field_wysiwyg' ) ) :
 				)
 			);
 
-<<<<<<< HEAD
-			// delay
-			acf_render_field_setting(
-				$field,
-				array(
-					'label'        => __( 'Delay initialization?', 'acf' ),
-=======
 			acf_render_field_setting(
 				$field,
 				array(
 					'label'        => __( 'Delay Initialization', 'acf' ),
->>>>>>> update
 					'instructions' => __( 'TinyMCE will not be initialized until field is clicked', 'acf' ),
 					'name'         => 'delay',
 					'type'         => 'true_false',
@@ -461,10 +398,6 @@ if ( ! class_exists( 'acf_field_wysiwyg' ) ) :
 					),
 				)
 			);
-<<<<<<< HEAD
-
-=======
->>>>>>> update
 		}
 
 		/**

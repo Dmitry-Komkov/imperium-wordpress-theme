@@ -69,15 +69,6 @@ final class MonsterInsights_Report_Overview extends MonsterInsights_Report {
 		// Add GA links.
 		if ( ! empty( $data['data'] ) ) {
 			$data['data']['galinks'] = array(
-<<<<<<< HEAD
-				'countries' => $this->get_ga_report_url( 'visitors-geo', 'user-demographics-detail', $data['data'] ),
-				'referrals' => $this->get_ga_report_url( 'trafficsources-referrals', 'lifecycle-user-acquisition', $data['data'], '', '_r.explorerCard..seldim=["userAcquiredCampaignSource"]' ),
-				'topposts'  => $this->get_ga_report_url( 'content-pages', 'all-pages-and-screens', $data['data'] ),
-			);
-		}
-
-		return $data;
-=======
 				'countries' => $this->get_ga_report_url( 'user-demographics-detail', $data['data'] ),
 				'referrals' => $this->get_ga_report_url( 'lifecycle-user-acquisition', $data['data'], '_r.explorerCard..seldim=["userAcquiredCampaignSource"]' ),
 				'topposts'  => $this->get_ga_report_url( 'all-pages-and-screens', $data['data'] ),
@@ -151,6 +142,5 @@ final class MonsterInsights_Report_Overview extends MonsterInsights_Report {
 		if ( ! empty( $activated['connected_date_pro'] ) ) {
 			return $activated['connected_date_pro'];
 		}
->>>>>>> update
 	}
 }

@@ -2,29 +2,16 @@
 Contributors: futtta, optimizingmatters, zytzagoo, turl
 Tags: optimize, minify, performance, images, core web vitals, lazy-load, pagespeed, google fonts
 Donate link: http://blog.futtta.be/2013/10/21/do-not-donate-to-me/
-<<<<<<< HEAD
-Requires at least: 4.9
-Tested up to: 6.0
-Requires PHP: 5.6
-Stable tag: 3.1.1.1
-=======
 Requires at least: 5.3
 Tested up to: 6.4
 Requires PHP: 5.6
 Stable tag: 3.1.10
->>>>>>> update
 
 Autoptimize speeds up your website by optimizing JS, CSS, images (incl. lazy-load), HTML and Google Fonts, asyncing JS, removing emoji cruft and more.
 
 == Description ==
 
 Autoptimize makes optimizing your site really easy. It can aggregate, minify and cache scripts and styles, injects CSS in the page head by default but can also inline critical CSS and defer the aggregated full CSS, moves and defers scripts to the footer and minifies HTML. You can optimize and lazy-load images (with support for WebP and AVIF formats), optimize Google Fonts, async non-aggregated JavaScript, remove WordPress core emoji cruft and more. As such it can improve your site's performance even when already on HTTP/2! There is extensive API available to enable you to tailor Autoptimize to each and every site's specific needs.
-<<<<<<< HEAD
-If you consider performance important, you really should use one of the many caching plugins to do page caching. Some good candidates to complement Autoptimize that way are e.g. [Speed Booster pack](https://wordpress.org/plugins/speed-booster-pack/), [KeyCDN's Cache Enabler](https://wordpress.org/plugins/cache-enabler), [WP Super Cache](http://wordpress.org/plugins/wp-super-cache/) or if you use Cloudflare [WP Cloudflare Super Page Cache](https://wordpress.org/plugins/wp-cloudflare-page-cache/).
-
-> <strong>Premium Support</strong><br>
-> We provide great [Autoptimize Pro Support and Web Performance Optimization services](https://misc.optimizingmatters.com/partners/?from=partnertab&partner=autoptimizepro), check out our offering on [https://accelera.autoptimize.com/](https://misc.optimizingmatters.com/partners/?from=partnertab&partner=autoptimizepro)!
-=======
 If you think performance indeed is important, you should at least consider one of the many free page caching plugins (e.g. [Speed Booster pack](https://wordpress.org/plugins/speed-booster-pack/) or [KeyCDN's Cache Enabler](https://wordpress.org/plugins/cache-enabler)) to complement Autoptimize or even [consider Autoptimize Pro](https://misc.optimizingmatters.com/partners/?from=partnertab&partner=aopro) which not only has page caching but also image optimization, CDN, critical CSS and more!
 
 > <strong>Autoptimize Pro</strong><br>
@@ -32,7 +19,6 @@ If you think performance indeed is important, you should at least consider one o
 
 > <strong>Premium Support</strong><br>
 > We provide great [Premium Support and Web Performance Optimization services](https://misc.optimizingmatters.com/partners/?from=partnertab&partner=autoptimizepro), check out our offering on [https://accelera.site/](https://misc.optimizingmatters.com/partners/?from=partnertab&partner=autoptimizepro)!
->>>>>>> update
 
 (Speed-surfing image under creative commons [by LL Twistiti](https://www.flickr.com/photos/twistiti/818552808/))
 
@@ -315,10 +301,7 @@ The following great open source projects are used in Autoptimize in some form or
 * [jQuery unslider](https://github.com/idiot/unslider/) for the mini-slider in the top right corner on the main settings page (repo gone)
 * [JavaScript-md5](https://github.com/blueimp/JavaScript-MD5) for critical CSS rules editing
 * [Speed Booster Pack](https://wordpress.org/plugins/speed-booster-pack/) for advanced JS deferring
-<<<<<<< HEAD
-=======
 * [Disable Remove Google Fonts](https://wordpress.org/plugins/disable-remove-google-fonts/) for additional Google Font removal
->>>>>>> update
 
 = Where can I get help? =
 
@@ -336,8 +319,6 @@ Just [fork Autoptimize on Github](https://github.com/futtta/autoptimize) and cod
 
 == Changelog ==
 
-<<<<<<< HEAD
-=======
 = 3.1.10 =
 * improvement: with "don't aggregate but defer" and "also defer inline JS" on, also defer JS that had the async flag to avoid the (previously) asynced JS from executing before the inline JS has ran.
 * improvement: show option to disable the default on "compatibility logic".
@@ -398,7 +379,6 @@ Just [fork Autoptimize on Github](https://github.com/futtta/autoptimize) and cod
 * fix for 404 fallback bug (hat tip to Asif for finding & reporting)
 * Some other minor changes/ improvements/ filters, see the [GitHub commit log](https://github.com/futtta/autoptimize/commits/beta).
 
->>>>>>> update
 = 3.1.1.1 =
 * Quick workaround for an autoload conflict with JetFormBuilder (and maybe other Crocoblock plugins?) that causes a critical error on the AO settings page.
 

@@ -4,22 +4,14 @@
  * Overwrite Automattic Iris for enabled Alpha Channel in wpColorPicker
  * Only run in input and is defined data alpha in true
  *
-<<<<<<< HEAD
- * Version: 3.0.0
-=======
  * Version: 3.0.3
->>>>>>> update
  * https://github.com/kallookoo/wp-color-picker-alpha
  * Licensed under the GPLv2 license or later.
  */
 
 ( function ( $, undef ) {
 	var wpColorPickerAlpha = {
-<<<<<<< HEAD
-		version: 300,
-=======
 		'version': 302,
->>>>>>> update
 	};
 
 	// Always try to use the last version of this script.
@@ -40,11 +32,7 @@
 
 	// Create new method to replace the `Color.toString()` inside the scripts.
 	Color.fn.to_s = function ( type ) {
-<<<<<<< HEAD
-		type = type || 'hex';
-=======
 		type = ( type || 'hex' );
->>>>>>> update
 		// Change hex to rgba to return the correct color.
 		if ( 'hex' === type && this._alpha < 1 ) {
 			type = 'rgba';
@@ -129,11 +117,8 @@
 				alphaReset: false,
 				alphaColorType: 'hex',
 				alphaColorWithSpace: false,
-<<<<<<< HEAD
-=======
 				alphaSkipDebounce: false,
 				alphaDebounceTimeout: 100,
->>>>>>> update
 			} );
 
 			this._super();
@@ -148,10 +133,6 @@
 		 */
 		_addInputListeners: function ( input ) {
 			var self = this,
-<<<<<<< HEAD
-				debounceTimeout = 100,
-=======
->>>>>>> update
 				callback = function ( event ) {
 					var val = input.val(),
 						color = new Color( val ),
@@ -185,17 +166,11 @@
 					}
 				};
 
-<<<<<<< HEAD
-			input
-				.on( 'change', callback )
-				.on( 'keyup', self._debounce( callback, debounceTimeout ) );
-=======
 			input.on( 'change', callback );
 
 			if( ! self.alphaOptions.alphaSkipDebounce ) {
 				input.on( 'keyup', self._debounce( callback, self.alphaOptions.alphaDebounceTimeout ) );
 			}
->>>>>>> update
 
 			// If we initialized hidden, show on first focus. The rest is up to you.
 			if ( self.options.hide ) {
@@ -295,25 +270,13 @@
 				// The margin for the sliders
 				stripMargin = Math.round( stripWidth / 2 );
 				// The total width of the elements.
-<<<<<<< HEAD
-				totalWidth = Math.round(
-					squareWidth + stripWidth * 2 + stripMargin * 2
-				);
-=======
 				totalWidth = Math.round(squareWidth + ( stripWidth * 2 ) + ( stripMargin * 2 ) );
->>>>>>> update
 
 				// Check and change if necessary.
 				while ( totalWidth > innerWidth ) {
 					stripWidth = Math.round( stripWidth - 2 );
 					stripMargin = Math.round( stripMargin - 1 );
-<<<<<<< HEAD
-					totalWidth = Math.round(
-						squareWidth + stripWidth * 2 + stripMargin * 2
-					);
-=======
 					totalWidth = Math.round( squareWidth + ( stripWidth * 2 ) + ( stripMargin * 2 ) );
->>>>>>> update
 				}
 
 				square.css( 'margin', '0' );
@@ -337,33 +300,12 @@
 			self._super();
 
 			if ( self.alphaOptions.alphaEnabled ) {
-<<<<<<< HEAD
-				var controls = self.controls,
-					alpha = parseInt( self._color._alpha * 100 ),
-					color = self._color.toRgb(),
-					gradient = [
-						'rgb(' +
-							color.r +
-							',' +
-							color.g +
-							',' +
-							color.b +
-							') 0%',
-						'rgba(' +
-							color.r +
-							',' +
-							color.g +
-							',' +
-							color.b +
-							', 0) 100%',
-=======
 				var	controls = self.controls,
 					alpha = parseInt( self._color._alpha * 100 ),
 					color = self._color.toRgb(),
 					gradient = [
 						'rgb(' + color.r + ',' + color.g + ',' + color.b + ') 0%',
 						'rgba(' + color.r + ',' + color.g + ',' + color.b + ', 0) 100%'
->>>>>>> update
 					],
 					target = self.picker
 						.closest( '.wp-picker-container' )
@@ -371,31 +313,14 @@
 
 				self.options.color = self._getColor();
 				// Generate background slider alpha, only for CSS3.
-<<<<<<< HEAD
-				controls.stripAlpha.css( {
-					background:
-						'linear-gradient(to bottom, ' +
-						gradient.join( ', ' ) +
-						'), url(' +
-						backgroundImage +
-						')',
-				} );
-=======
 				controls.stripAlpha.css( {'background' : 'linear-gradient(to bottom, ' + gradient.join( ', ' ) + '), url(' + backgroundImage + ')' } );
->>>>>>> update
 				// Update alpha value
 				if ( active ) {
 					controls.stripAlphaSlider.slider( 'value', alpha );
 				}
 
 				if ( ! self._color.error ) {
-<<<<<<< HEAD
-					self.element
-						.removeClass( 'iris-error' )
-						.val( self.options.color );
-=======
 					self.element.removeClass( 'iris-error' ).val( self.options.color );
->>>>>>> update
 				}
 
 				self.picker
@@ -513,49 +438,25 @@
 		 */
 		_getAlphaOptions: function () {
 			var el = this.element,
-<<<<<<< HEAD
-				type = el.data( 'type' ) || this.options.type,
-				color = el.data( 'defaultColor' ) || el.val(),
-				options = {
-					alphaEnabled: el.data( 'alphaEnabled' ) || false,
-=======
 				type = ( el.data( 'type' ) || this.options.type ),
 				color = ( el.data( 'defaultColor' ) || el.val() ),
 				options = {
 					alphaEnabled: ( el.data( 'alphaEnabled' ) || false ),
->>>>>>> update
 					alphaCustomWidth: 130,
 					alphaReset: false,
 					alphaColorType: 'rgb',
 					alphaColorWithSpace: false,
-<<<<<<< HEAD
-				};
-
-			if ( options.alphaEnabled ) {
-				options.alphaEnabled = el.is( 'input' ) && 'full' === type;
-=======
 					alphaSkipDebounce: ( !!el.data( 'alphaSkipDebounce' ) || false ),
 				};
 
 			if ( options.alphaEnabled ) {
 				options.alphaEnabled = ( el.is( 'input' ) && 'full' === type );
->>>>>>> update
 			}
 
 			if ( ! options.alphaEnabled ) {
 				return options;
 			}
 
-<<<<<<< HEAD
-			options.alphaColorWithSpace = color && color.match( /\s/ );
-
-			$.each( options, function ( name, defaultValue ) {
-				var value = el.data( name ) || defaultValue;
-				switch ( name ) {
-					case 'alphaCustomWidth':
-						value = value ? parseInt( value, 10 ) : 0;
-						value = isNaN( value ) ? defaultValue : value;
-=======
 			options.alphaColorWithSpace = ( color && color.match( /\s/ ) );
 
 			$.each( options, function ( name, defaultValue ) {
@@ -564,7 +465,6 @@
 					case 'alphaCustomWidth':
 						value = ( value ? parseInt( value, 10 ) : 0 );
 						value = ( isNaN( value ) ? defaultValue : value );
->>>>>>> update
 						break;
 					case 'alphaColorType':
 						if ( ! value.match( /^(hex|(rgb|hsl)a?)$/ ) ) {
@@ -635,11 +535,7 @@
 			}
 
 			self.toggler.css( {
-<<<<<<< HEAD
-				position: 'relative',
-=======
 				'position': 'relative',
->>>>>>> update
 				'background-image': 'url(' + backgroundImage + ')',
 			} );
 
@@ -650,17 +546,10 @@
 			}
 
 			self.colorAlpha = self.toggler.find( 'span.color-alpha' ).css( {
-<<<<<<< HEAD
-				width: '30px',
-				height: '100%',
-				position: 'absolute',
-				top: 0,
-=======
 				'width': '30px',
 				'height': '100%',
 				'position': 'absolute',
 				'top': 0,
->>>>>>> update
 				'background-color': el.val(),
 			} );
 
@@ -669,21 +558,13 @@
 				self.colorAlpha.css( {
 					'border-bottom-left-radius': '2px',
 					'border-top-left-radius': '2px',
-<<<<<<< HEAD
-					left: 0,
-=======
 					'left': 0,
->>>>>>> update
 				} );
 			} else {
 				self.colorAlpha.css( {
 					'border-bottom-right-radius': '2px',
 					'border-top-right-radius': '2px',
-<<<<<<< HEAD
-					right: 0,
-=======
 					'right': 0,
->>>>>>> update
 				} );
 			}
 
@@ -709,11 +590,7 @@
 					} );
 
 					// fire change callback if we have one
-<<<<<<< HEAD
-					if ( $.isFunction( self.options.change ) ) {
-=======
 					if ( typeof self.options.change === 'function' ) {
->>>>>>> update
 						self.options.change.call( this, event, ui );
 					}
 				},
@@ -737,11 +614,7 @@
 			 *
 			 * @since 3.0.0
 			 */
-<<<<<<< HEAD
-			self.toggler.click( function () {
-=======
 			self.toggler.on( 'click', function () {
->>>>>>> update
 				if ( self.toggler.hasClass( 'wp-picker-open' ) ) {
 					self.close();
 				} else {
@@ -759,11 +632,7 @@
 			 *
 			 * @return {void}
 			 */
-<<<<<<< HEAD
-			el.change( function ( event ) {
-=======
 			el.on( 'change', function ( event ) {
->>>>>>> update
 				var val = $( this ).val();
 
 				if (
@@ -778,11 +647,7 @@
 					self.colorAlpha.css( 'background-color', '' );
 
 					// fire clear callback if we have one
-<<<<<<< HEAD
-					if ( $.isFunction( self.options.clear ) ) {
-=======
 					if ( typeof self.options.clear === 'function' ) {
->>>>>>> update
 						self.options.clear.call( this, event );
 					}
 				}
@@ -797,11 +662,7 @@
 			 *
 			 * @return {void}
 			 */
-<<<<<<< HEAD
-			self.button.click( function ( event ) {
-=======
 			self.button.on( 'click', function ( event ) {
->>>>>>> update
 				if ( $( this ).hasClass( 'wp-picker-default' ) ) {
 					el.val( self.options.defaultColor ).change();
 				} else if ( $( this ).hasClass( 'wp-picker-clear' ) ) {
@@ -813,11 +674,7 @@
 					self.colorAlpha.css( 'background-color', '' );
 
 					// fire clear callback if we have one
-<<<<<<< HEAD
-					if ( $.isFunction( self.options.clear ) ) {
-=======
 					if ( typeof self.options.clear === 'function' ) {
->>>>>>> update
 						self.options.clear.call( this, event );
 					}
 
@@ -826,8 +683,4 @@
 			} );
 		},
 	} );
-<<<<<<< HEAD
 } )( jQuery );
-=======
-} )( jQuery );
->>>>>>> update

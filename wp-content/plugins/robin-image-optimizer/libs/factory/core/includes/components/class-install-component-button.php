@@ -1,10 +1,6 @@
 <?php
 
-<<<<<<< HEAD
-namespace WBCR\Factory_450\Components;
-=======
 namespace WBCR\Factory_469\Components;
->>>>>>> update
 
 /**
  * This file groups the settings for quick setup
@@ -26,11 +22,7 @@ class Install_Button {
 
 	protected $classes = [
 		'button',
-<<<<<<< HEAD
-		'wfactory-450-process-button'
-=======
 		'wfactory-469-process-button'
->>>>>>> update
 	];
 	protected $data = [];
 	protected $base_path;
@@ -45,11 +37,7 @@ class Install_Button {
 	 * @throws \Exception
 	 * @since  4.3.3
 	 */
-<<<<<<< HEAD
-	public function __construct(\Wbcr_Factory450_Plugin $plugin, $type, $plugin_slug)
-=======
 	public function __construct(\Wbcr_Factory469_Plugin $plugin, $type, $plugin_slug)
->>>>>>> update
 	{
 		if( empty($type) || !is_string($plugin_slug) ) {
 			throw new \Exception('Empty type or plugin_slug attribute.');
@@ -79,11 +67,7 @@ class Install_Button {
 
 		// Set default data
 		$this->add_data('storage', $this->type);
-<<<<<<< HEAD
-		$this->add_data('i18n', \WBCR\Factory_Templates_102\Helpers::getEscapeJson($this->get_i18n()));
-=======
 		$this->add_data('i18n', \WBCR\Factory_Templates_118\Helpers::getEscapeJson($this->get_i18n()));
->>>>>>> update
 		$this->add_data('wpnonce', wp_create_nonce('updates'));
 	}
 
@@ -121,11 +105,7 @@ class Install_Button {
 	 */
 	public function renderLink()
 	{
-<<<<<<< HEAD
-		echo $this->get_link();
-=======
 		echo esc_html($this->get_link());
->>>>>>> update
 	}
 
 	/**
@@ -440,15 +420,6 @@ class Install_Button {
 	protected function get_i18n()
 	{
 		return [
-<<<<<<< HEAD
-			'activate' => __('Activate', 'wbcr_factory_450'),
-			'install' => __('Install', 'wbcr_factory_450'),
-			'deactivate' => __('Deactivate', 'wbcr_factory_450'),
-			'delete' => __('Delete', 'wbcr_factory_450'),
-			'loading' => __('Please wait...', 'wbcr_factory_450'),
-			'preparation' => __('Preparation...', 'wbcr_factory_450'),
-			'read' => __('Read more', 'wbcr_factory_450')
-=======
 			'activate' => __('Activate', 'wbcr_factory_469'),
 			'install' => __('Install', 'wbcr_factory_469'),
 			'deactivate' => __('Deactivate', 'wbcr_factory_469'),
@@ -456,7 +427,6 @@ class Install_Button {
 			'loading' => __('Please wait...', 'wbcr_factory_469'),
 			'preparation' => __('Preparation...', 'wbcr_factory_469'),
 			'read' => __('Read more', 'wbcr_factory_469')
->>>>>>> update
 		];
 	}
 

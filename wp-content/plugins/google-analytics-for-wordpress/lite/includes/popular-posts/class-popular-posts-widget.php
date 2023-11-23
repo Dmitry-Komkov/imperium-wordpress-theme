@@ -90,11 +90,7 @@ class MonsterInsights_Popular_Posts_Widget extends MonsterInsights_Popular_Posts
 
 		$label_text = '';
 		if ( isset( $theme_styles['styles']['label'] ) ) {
-<<<<<<< HEAD
-			$label_text = isset( $atts['label_text'] ) ? $atts['label_text'] : $theme_styles['styles']['label']['text'];
-=======
 			$label_text = isset( $atts['label_text'] ) ? esc_html($atts['label_text']) : esc_html($theme_styles['styles']['label']['text']);
->>>>>>> update
 		}
 
 		if ( isset( $atts['widget_title'] ) ) {
@@ -105,15 +101,9 @@ class MonsterInsights_Popular_Posts_Widget extends MonsterInsights_Popular_Posts
 			$title_text = $this->title_text;
 		}
 
-<<<<<<< HEAD
-		$html = '<div class="' . $this->get_wrapper_class( $atts ) . '">';
-		if ( $show_title ) {
-			$html .= '<h2 class="monsterinsights-widget-popular-posts-widget-title">' . wp_kses_post( $title_text ) . '</h2>';
-=======
 		$html = '<div class="' . esc_attr($this->get_wrapper_class( $atts )) . '">';
 		if ( $show_title ) {
 			$html .= '<h2 class="monsterinsights-widget-popular-posts-widget-title">' . esc_html( $title_text ) . '</h2>';
->>>>>>> update
 		}
 
 		$html .= '<ul class="monsterinsights-widget-popular-posts-list">';
@@ -125,13 +115,6 @@ class MonsterInsights_Popular_Posts_Widget extends MonsterInsights_Popular_Posts
 				break;
 			}
 			$this->set_post_shown( $post['id'] );
-<<<<<<< HEAD
-			$html .= '<li ' . $this->get_element_style( $theme, 'background', $atts ) . '>';
-			$html .= '<a href="' . $post['link'] . '">';
-			if ( ! empty( $theme_styles['image'] ) && ! empty( $post['image'] ) ) {
-				$html .= '<div class="monsterinsights-widget-popular-posts-image">';
-				$html .= '<img src="' . $post['image'] . '" srcset=" ' . $post['srcset'] . ' " alt="' . esc_attr( $post['title'] ) . '" />';
-=======
 			$html .= '<li ';
 			$html .= ! empty( $this->get_element_style( $theme, 'background', $atts ) ) ? 'style="' . esc_attr( $this->get_element_style( $theme, 'background', $atts ) ) . '"' : '';
 			$html .= '>';
@@ -139,17 +122,10 @@ class MonsterInsights_Popular_Posts_Widget extends MonsterInsights_Popular_Posts
 			if ( ! empty( $theme_styles['image'] ) && ! empty( $post['image'] ) ) {
 				$html .= '<div class="monsterinsights-widget-popular-posts-image">';
 				$html .= '<img src="' . esc_url($post['image']) . '" srcset=" ' . esc_attr($post['srcset']) . ' " alt="' . esc_attr( $post['title'] ) . '" />';
->>>>>>> update
 				$html .= '</div>';
 			}
 			$html .= '<div class="monsterinsights-widget-popular-posts-text">';
 			if ( isset( $theme_styles['styles']['label'] ) ) {
-<<<<<<< HEAD
-				$html .= '<span class="monsterinsights-widget-popular-posts-label" ' . $this->get_element_style( $theme, 'label', $atts ) . '>' . $label_text . '</span>';
-			}
-			$html .= '<span class="monsterinsights-widget-popular-posts-title" ' . $this->get_element_style( $theme, 'title', $atts ) . '>' . $post['title'] . '</span>';
-			$html .= '</div>';// monsterinsights-widget-popular-posts-text.
-=======
 				$html .= '<span class="monsterinsights-widget-popular-posts-label" ';
 				$html .= ! empty( $this->get_element_style( $theme, 'label', $atts ) ) ? 'style="' . esc_attr( $this->get_element_style( $theme, 'label', $atts ) ) . '"' : '';
 				$html .= '>' . esc_html( $label_text ) . '</span>';
@@ -158,7 +134,6 @@ class MonsterInsights_Popular_Posts_Widget extends MonsterInsights_Popular_Posts
 			$html .= ! empty( $this->get_element_style( $theme, 'title', $atts ) ) ? 'style="' . esc_attr( $this->get_element_style( $theme, 'title', $atts ) ) . '"' : '';
 			$html .= '>' . esc_html( $post['title'] ) . '</span>';
 			$html .= '</div>'; // monsterinsights-widget-popular-posts-text.
->>>>>>> update
 			$html .= '</a>';
 			$html .= '</li>';
 		}
@@ -180,15 +155,6 @@ class MonsterInsights_Popular_Posts_Widget extends MonsterInsights_Popular_Posts
 		foreach ( $themes as $theme_key => $theme_styles ) {
 
 			if ( ! empty( $theme_styles['background'] ) ) {
-<<<<<<< HEAD
-				$styles .= '.monsterinsights-popular-posts-styled.monsterinsights-widget-popular-posts.monsterinsights-widget-popular-posts-' . $theme_key . ' .monsterinsights-widget-popular-posts-list li {';
-
-				if ( ! empty( $theme_styles['background']['color'] ) ) {
-					$styles .= 'background-color:' . $theme_styles['background']['color'] . ';';
-				}
-				if ( ! empty( $theme_styles['background']['border'] ) ) {
-					$styles .= 'border-color:' . $theme_styles['background']['border'] . ';';
-=======
 				$styles .= '.monsterinsights-popular-posts-styled.monsterinsights-widget-popular-posts.monsterinsights-widget-popular-posts-' . esc_attr($theme_key) . ' .monsterinsights-widget-popular-posts-list li {';
 
 				if ( ! empty( $theme_styles['background']['color'] ) ) {
@@ -196,23 +162,12 @@ class MonsterInsights_Popular_Posts_Widget extends MonsterInsights_Popular_Posts
 				}
 				if ( ! empty( $theme_styles['background']['border'] ) ) {
 					$styles .= 'border-color:' . esc_attr($theme_styles['background']['border']) . ';';
->>>>>>> update
 				}
 
 				$styles .= '}';
 			}
 
 			if ( ! empty( $theme_styles['label'] ) ) {
-<<<<<<< HEAD
-				$styles .= '.monsterinsights-popular-posts-styled.monsterinsights-widget-popular-posts.monsterinsights-widget-popular-posts-' . $theme_key . ' .monsterinsights-widget-popular-posts-label {';
-
-				if ( ! empty( $theme_styles['label']['color'] ) ) {
-					$styles .= 'color:' . $theme_styles['label']['color'] . ';';
-				}
-
-				if ( ! empty( $theme_styles['label']['background'] ) ) {
-					$styles .= 'background-color:' . $theme_styles['label']['background'] . ';';
-=======
 				$styles .= '.monsterinsights-popular-posts-styled.monsterinsights-widget-popular-posts.monsterinsights-widget-popular-posts-' . esc_attr($theme_key) . ' .monsterinsights-widget-popular-posts-label {';
 
 				if ( ! empty( $theme_styles['label']['color'] ) ) {
@@ -221,22 +176,12 @@ class MonsterInsights_Popular_Posts_Widget extends MonsterInsights_Popular_Posts
 
 				if ( ! empty( $theme_styles['label']['background'] ) ) {
 					$styles .= 'background-color:' . esc_attr($theme_styles['label']['background']) . ';';
->>>>>>> update
 				}
 
 				$styles .= '}';
 			}
 
 			if ( ! empty( $theme_styles['title'] ) ) {
-<<<<<<< HEAD
-				$styles .= '.monsterinsights-popular-posts-styled.monsterinsights-widget-popular-posts.monsterinsights-widget-popular-posts-' . $theme_key . ' .monsterinsights-widget-popular-posts-list li .monsterinsights-widget-popular-posts-title {';
-
-				if ( ! empty( $theme_styles['title']['color'] ) ) {
-					$styles .= 'color:' . $theme_styles['title']['color'] . ';';
-				}
-				if ( ! empty( $theme_styles['title']['size'] ) ) {
-					$styles .= 'font-size:' . $theme_styles['title']['size'] . 'px;';
-=======
 				$styles .= '.monsterinsights-popular-posts-styled.monsterinsights-widget-popular-posts.monsterinsights-widget-popular-posts-' . esc_attr($theme_key) . ' .monsterinsights-widget-popular-posts-list li .monsterinsights-widget-popular-posts-title {';
 
 				if ( ! empty( $theme_styles['title']['color'] ) ) {
@@ -244,24 +189,16 @@ class MonsterInsights_Popular_Posts_Widget extends MonsterInsights_Popular_Posts
 				}
 				if ( ! empty( $theme_styles['title']['size'] ) ) {
 					$styles .= 'font-size:' . esc_attr($theme_styles['title']['size']) . 'px;';
->>>>>>> update
 				}
 
 				$styles .= '}';
 			}
 
 			if ( ! empty( $theme_styles['border'] ) ) {
-<<<<<<< HEAD
-				$styles .= '.monsterinsights-popular-posts-styled.monsterinsights-widget-popular-posts-' . $theme_key . ' .monsterinsights-inline-popular-posts-border {';
-
-				if ( ! empty( $theme_styles['border']['color'] ) ) {
-					$styles .= 'border-color:' . $theme_styles['border']['color'] . ';';
-=======
 				$styles .= '.monsterinsights-popular-posts-styled.monsterinsights-widget-popular-posts-' . esc_attr($theme_key) . ' .monsterinsights-inline-popular-posts-border {';
 
 				if ( ! empty( $theme_styles['border']['color'] ) ) {
 					$styles .= 'border-color:' . esc_attr($theme_styles['border']['color']) . ';';
->>>>>>> update
 				}
 
 				$styles .= '}';
@@ -329,11 +266,7 @@ class MonsterInsights_Popular_Posts_Widget extends MonsterInsights_Popular_Posts
 	 * @return mixed
 	 */
 	public function remove_widget_from_legacy_widgets( $widgets ) {
-<<<<<<< HEAD
-		$widgets[] = 'monsterinsights-popular-posts-widget';
-=======
 		// $widgets[] = 'monsterinsights-popular-posts-widget';
->>>>>>> update
 
 		return $widgets;
 	}

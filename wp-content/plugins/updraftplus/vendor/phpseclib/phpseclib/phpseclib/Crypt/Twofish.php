@@ -5,11 +5,7 @@
  *
  * Uses mcrypt, if available, and an internal implementation, otherwise.
  *
-<<<<<<< HEAD
- * PHP versions 4 and 5
-=======
  * PHP version 5
->>>>>>> update
  *
  * Useful resources are as follows:
  *
@@ -18,15 +14,9 @@
  * Here's a short example of how to use this library:
  * <code>
  * <?php
-<<<<<<< HEAD
- *    include 'Crypt/Twofish.php';
- *
- *    $twofish = new Crypt_Twofish();
-=======
  *    include 'vendor/autoload.php';
  *
  *    $twofish = new \phpseclib\Crypt\Twofish();
->>>>>>> update
  *
  *    $twofish->setKey('12345678901234567890123456789012');
  *
@@ -36,31 +26,8 @@
  * ?>
  * </code>
  *
-<<<<<<< HEAD
- * LICENSE: Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- *
- * @category  Crypt
- * @package   Crypt_Twofish
-=======
  * @category  Crypt
  * @package   Twofish
->>>>>>> update
  * @author    Jim Wigginton <terrafrost@php.net>
  * @author    Hans-Juergen Petrich <petrich@tronic-media.com>
  * @copyright 2007 Jim Wigginton
@@ -68,94 +35,22 @@
  * @link      http://phpseclib.sourceforge.net
  */
 
-<<<<<<< HEAD
-/**
- * Include Crypt_Base
- *
- * Base cipher class
- */
-if (!class_exists('Crypt_Base')) {
-    include_once 'Base.php';
-}
-
-/**#@+
- * @access public
- * @see self::encrypt()
- * @see self::decrypt()
- */
-/**
- * Encrypt / decrypt using the Counter mode.
- *
- * Set to -1 since that's what Crypt/Random.php uses to index the CTR mode.
- *
- * @link http://en.wikipedia.org/wiki/Block_cipher_modes_of_operation#Counter_.28CTR.29
- */
-define('CRYPT_TWOFISH_MODE_CTR', CRYPT_MODE_CTR);
-/**
- * Encrypt / decrypt using the Electronic Code Book mode.
- *
- * @link http://en.wikipedia.org/wiki/Block_cipher_modes_of_operation#Electronic_codebook_.28ECB.29
- */
-define('CRYPT_TWOFISH_MODE_ECB', CRYPT_MODE_ECB);
-/**
- * Encrypt / decrypt using the Code Book Chaining mode.
- *
- * @link http://en.wikipedia.org/wiki/Block_cipher_modes_of_operation#Cipher-block_chaining_.28CBC.29
- */
-define('CRYPT_TWOFISH_MODE_CBC', CRYPT_MODE_CBC);
-/**
- * Encrypt / decrypt using the Cipher Feedback mode.
- *
- * @link http://en.wikipedia.org/wiki/Block_cipher_modes_of_operation#Cipher_feedback_.28CFB.29
- */
-define('CRYPT_TWOFISH_MODE_CFB', CRYPT_MODE_CFB);
-/**
- * Encrypt / decrypt using the Cipher Feedback mode.
- *
- * @link http://en.wikipedia.org/wiki/Block_cipher_modes_of_operation#Output_feedback_.28OFB.29
- */
-define('CRYPT_TWOFISH_MODE_OFB', CRYPT_MODE_OFB);
-/**#@-*/
-=======
 namespace phpseclib\Crypt;
->>>>>>> update
 
 /**
  * Pure-PHP implementation of Twofish.
  *
-<<<<<<< HEAD
- * @package Crypt_Twofish
-=======
  * @package Twofish
->>>>>>> update
  * @author  Jim Wigginton <terrafrost@php.net>
  * @author  Hans-Juergen Petrich <petrich@tronic-media.com>
  * @access  public
  */
-<<<<<<< HEAD
-class Crypt_Twofish extends Crypt_Base
-{
-    /**
-     * The namespace used by the cipher for its constants.
-     *
-     * @see Crypt_Base::const_namespace
-     * @var string
-     * @access private
-     */
-    var $const_namespace = 'TWOFISH';
-
-    /**
-     * The mcrypt specific name of the cipher
-     *
-     * @see Crypt_Base::cipher_name_mcrypt
-=======
 class Twofish extends Base
 {
     /**
      * The mcrypt specific name of the cipher
      *
      * @see \phpseclib\Crypt\Base::cipher_name_mcrypt
->>>>>>> update
      * @var string
      * @access private
      */
@@ -164,11 +59,7 @@ class Twofish extends Base
     /**
      * Optimizing value while CFB-encrypting
      *
-<<<<<<< HEAD
-     * @see Crypt_Base::cfb_init_len
-=======
      * @see \phpseclib\Crypt\Base::cfb_init_len
->>>>>>> update
      * @var int
      * @access private
      */
@@ -478,8 +369,6 @@ class Twofish extends Base
     var $key_length = 16;
 
     /**
-<<<<<<< HEAD
-=======
      * Default Constructor.
      *
      * Determines whether or not the mcrypt extension should be used.
@@ -516,7 +405,6 @@ class Twofish extends Base
     }
 
     /**
->>>>>>> update
      * Sets the key length.
      *
      * Valid key lengths are 128, 192 or 256 bits
@@ -543,11 +431,7 @@ class Twofish extends Base
     /**
      * Setup the key (expansion)
      *
-<<<<<<< HEAD
-     * @see Crypt_Base::_setupKey()
-=======
      * @see \phpseclib\Crypt\Base::_setupKey()
->>>>>>> update
      * @access private
      */
     function _setupKey()
@@ -820,20 +704,12 @@ class Twofish extends Base
     /**
      * Setup the performance-optimized function for de/encrypt()
      *
-<<<<<<< HEAD
-     * @see Crypt_Base::_setupInlineCrypt()
-=======
      * @see \phpseclib\Crypt\Base::_setupInlineCrypt()
->>>>>>> update
      * @access private
      */
     function _setupInlineCrypt()
     {
-<<<<<<< HEAD
-        $lambda_functions =& Crypt_Twofish::_getLambdaFunctions();
-=======
         $lambda_functions =& self::_getLambdaFunctions();
->>>>>>> update
 
         // Max. 10 Ultra-Hi-optimized inline-crypt functions. After that, we'll (still) create very fast code, but not the ultimate fast one.
         // (Currently, for Crypt_Twofish, one generated $lambda_function cost on php5.5@32bit ~140kb unfreeable mem and ~240kb on php5.5@64bit)

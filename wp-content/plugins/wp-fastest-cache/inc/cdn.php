@@ -168,16 +168,10 @@
 				$hostname = preg_replace("/^(https?\:\/\/)?(www\d*\.)?/", "", $_SERVER["HTTP_HOST"]);
 			}
 
-<<<<<<< HEAD
-
-			if(function_exists("idn_to_utf8")){
-				$hostname = idn_to_utf8($hostname);
-=======
 			if(extension_loaded('intl')){
 				if(function_exists("idn_to_utf8")){
 					$hostname = idn_to_utf8($hostname);
 				}
->>>>>>> update
 			}
 			
 			$header = array("method" => "GET",
@@ -230,11 +224,7 @@
 
 				if(is_array($arr)){
 					foreach ($arr as $cdn_key => $cdn_value) {
-<<<<<<< HEAD
-						if($cdn_value->id == "cloudflare"){
-=======
 						if($cdn_value->id == "cloudflare" && isset($cdn_value->zone_id)){
->>>>>>> update
 							return unserialize($cdn_value->zone_id);
 						}
 					}
@@ -360,11 +350,7 @@
 					$_GET["url"] = preg_replace("/http\:\/\//i", "https://", $_GET["url"]);
 				}
 				
-<<<<<<< HEAD
-				$response = wp_remote_get($_GET["url"], array('timeout' => 20, 'user-agent' => "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36"));
-=======
 				$response = wp_safe_remote_get($_GET["url"], array('timeout' => 20, 'user-agent' => "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36"));
->>>>>>> update
 
 				$header = wp_remote_retrieve_headers($response);
 

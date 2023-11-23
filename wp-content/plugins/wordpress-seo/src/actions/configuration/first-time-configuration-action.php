@@ -3,11 +3,7 @@
 namespace Yoast\WP\SEO\Actions\Configuration;
 
 use Yoast\WP\SEO\Helpers\Options_Helper;
-<<<<<<< HEAD
-use Yoast\WP\SEO\Integrations\Admin\Social_Profiles_Helper;
-=======
 use Yoast\WP\SEO\Helpers\Social_Profiles_Helper;
->>>>>>> update
 
 /**
  * Class First_Time_Configuration_Action.
@@ -20,10 +16,7 @@ class First_Time_Configuration_Action {
 	const SITE_REPRESENTATION_FIELDS = [
 		'company_or_person',
 		'company_name',
-<<<<<<< HEAD
-=======
 		'website_name',
->>>>>>> update
 		'company_logo',
 		'company_logo_id',
 		'person_logo',
@@ -65,21 +58,6 @@ class First_Time_Configuration_Action {
 	 * @return object The response object.
 	 */
 	public function set_site_representation( $params ) {
-<<<<<<< HEAD
-		$failures = [];
-
-		foreach ( self::SITE_REPRESENTATION_FIELDS as $field_name ) {
-			if ( isset( $params[ $field_name ] ) ) {
-				if ( $field_name === 'description' && \current_user_can( 'manage_options' ) ) {
-					$result = \update_option( 'blogdescription', $params['description'] );
-					if ( ! $result && $params['description'] === \get_option( 'blogdescription' ) ) {
-						$result = true;
-					}
-				}
-				else {
-					$result = $this->options_helper->set( $field_name, $params[ $field_name ] );
-				}
-=======
 		$failures   = [];
 		$old_values = $this->get_old_values( self::SITE_REPRESENTATION_FIELDS );
 
@@ -87,7 +65,6 @@ class First_Time_Configuration_Action {
 			if ( isset( $params[ $field_name ] ) ) {
 				$result = $this->options_helper->set( $field_name, $params[ $field_name ] );
 
->>>>>>> update
 				if ( ! $result ) {
 					$failures[] = $field_name;
 				}
@@ -98,8 +75,6 @@ class First_Time_Configuration_Action {
 		$this->options_helper->set( 'company_logo_meta', false );
 		$this->options_helper->set( 'person_logo_meta', false );
 
-<<<<<<< HEAD
-=======
 		/**
 		 * Action: 'wpseo_post_update_site_representation' - Allows for Hiive event tracking.
 		 *
@@ -111,17 +86,13 @@ class First_Time_Configuration_Action {
 		 */
 		\do_action( 'wpseo_ftc_post_update_site_representation', $params, $old_values, $failures );
 
->>>>>>> update
 		if ( \count( $failures ) === 0 ) {
 			return (object) [
 				'success' => true,
 				'status'  => 200,
 			];
 		}
-<<<<<<< HEAD
-=======
 
->>>>>>> update
 		return (object) [
 			'success'  => false,
 			'status'   => 500,
@@ -138,9 +109,6 @@ class First_Time_Configuration_Action {
 	 * @return object The response object.
 	 */
 	public function set_social_profiles( $params ) {
-<<<<<<< HEAD
-		$failures = $this->social_profiles_helper->set_organization_social_profiles( $params );
-=======
 		$old_values = $this->get_old_values( \array_keys( $this->social_profiles_helper->get_organization_social_profile_fields() ) );
 		$failures   = $this->social_profiles_helper->set_organization_social_profiles( $params );
 
@@ -154,7 +122,6 @@ class First_Time_Configuration_Action {
 		 * @internal
 		 */
 		\do_action( 'wpseo_ftc_post_update_social_profiles', $params, $old_values, $failures );
->>>>>>> update
 
 		if ( empty( $failures ) ) {
 			return (object) [
@@ -181,17 +148,10 @@ class First_Time_Configuration_Action {
 	public function set_person_social_profiles( $params ) {
 		$social_profiles = \array_filter(
 			$params,
-<<<<<<< HEAD
-			function ( $key ) {
-				return $key !== 'user_id';
-			},
-			ARRAY_FILTER_USE_KEY
-=======
 			static function ( $key ) {
 				return $key !== 'user_id';
 			},
 			\ARRAY_FILTER_USE_KEY
->>>>>>> update
 		);
 
 		$failures = $this->social_profiles_helper->set_person_social_profiles( $params['user_id'], $social_profiles );
@@ -202,10 +162,7 @@ class First_Time_Configuration_Action {
 				'status'  => 200,
 			];
 		}
-<<<<<<< HEAD
-=======
 
->>>>>>> update
 		return (object) [
 			'success'  => false,
 			'status'   => 200,
@@ -217,11 +174,7 @@ class First_Time_Configuration_Action {
 	/**
 	 * Gets the values for the social profiles.
 	 *
-<<<<<<< HEAD
-	 * @param int $user_id the person id.
-=======
 	 * @param int $user_id The person ID.
->>>>>>> update
 	 *
 	 * @return object The response object.
 	 */
@@ -246,11 +199,6 @@ class First_Time_Configuration_Action {
 		$option_value = $this->options_helper->get( 'tracking' );
 
 		if ( $option_value !== $params['tracking'] ) {
-<<<<<<< HEAD
-			$success = $this->options_helper->set( 'tracking', $params['tracking'] );
-		}
-
-=======
 			$this->options_helper->set( 'toggled_tracking', true );
 			$success = $this->options_helper->set( 'tracking', $params['tracking'] );
 		}
@@ -267,17 +215,13 @@ class First_Time_Configuration_Action {
 		// $success is negated to be aligned with the other two actions which pass $failures.
 		\do_action( 'wpseo_ftc_post_update_enable_tracking', $params['tracking'], $option_value, ! $success );
 
->>>>>>> update
 		if ( $success ) {
 			return (object) [
 				'success' => true,
 				'status'  => 200,
 			];
 		}
-<<<<<<< HEAD
-=======
 
->>>>>>> update
 		return (object) [
 			'success' => false,
 			'status'  => 500,
@@ -293,11 +237,7 @@ class First_Time_Configuration_Action {
 	 * @return object The response object.
 	 */
 	public function check_capability( $user_id ) {
-<<<<<<< HEAD
-		if ( $this->social_profiles_helper->can_edit_profile( $user_id ) ) {
-=======
 		if ( $this->can_edit_profile( $user_id ) ) {
->>>>>>> update
 			return (object) [
 				'success' => true,
 				'status'  => 200,
@@ -359,11 +299,7 @@ class First_Time_Configuration_Action {
 	public function get_configuration_state() {
 		$configuration_option = $this->options_helper->get( 'configuration_finished_steps' );
 
-<<<<<<< HEAD
-		if ( ! is_null( $configuration_option ) ) {
-=======
 		if ( ! \is_null( $configuration_option ) ) {
->>>>>>> update
 			return (object) [
 				'success' => true,
 				'status'  => 200,
@@ -377,8 +313,6 @@ class First_Time_Configuration_Action {
 			'error'   => 'Could not get data from the database',
 		];
 	}
-<<<<<<< HEAD
-=======
 
 	/**
 	 * Checks if the current user has the capability to edit a specific user.
@@ -407,5 +341,4 @@ class First_Time_Configuration_Action {
 
 		return $old_values;
 	}
->>>>>>> update
 }

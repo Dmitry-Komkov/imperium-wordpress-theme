@@ -25,11 +25,7 @@ class UpdraftPlus_Storage_Methods_Interface {
 	
 		$method_class = 'UpdraftPlus_BackupModule_'.$method;
 		
-<<<<<<< HEAD
-		if (!class_exists($method_class)) include_once UPDRAFTPLUS_DIR.'/methods/'.$method.'.php';
-=======
 		if (!class_exists($method_class)) updraft_try_include_file('methods/'.$method.'.php', 'include_once');
->>>>>>> update
 		
 		if (!class_exists($method_class)) return new WP_Error('no_such_storage_class', "The specified storage method ($method) was not found");
 		
@@ -49,11 +45,7 @@ class UpdraftPlus_Storage_Methods_Interface {
 	
 		$storage_objects_and_ids = self::get_storage_objects_and_ids(array_keys($updraftplus->backup_methods));
 		$options = array();
-<<<<<<< HEAD
-		$templates = array();
-=======
 		$templates = $partial_templates = array();
->>>>>>> update
 
 		foreach ($storage_objects_and_ids as $method => $method_info) {
 
@@ -69,11 +61,8 @@ class UpdraftPlus_Storage_Methods_Interface {
 				$templates[$method] = $object->get_template();
 			}
 
-<<<<<<< HEAD
-=======
 			if (is_callable(array($object, 'get_partial_templates'))) $partial_templates[$method] = $object->get_partial_templates();
 
->>>>>>> update
 			if (isset($method_info['instance_settings'])) {
 				// Add the methods default settings so that we can add new instances
 				$method_info['instance_settings']['default'] = $object->get_default_options();
@@ -97,20 +86,13 @@ class UpdraftPlus_Storage_Methods_Interface {
 			}
 
 			// Get the list of template properties from the predefined storage method
-<<<<<<< HEAD
-			$options[$method]['template_properties'] =  $object->get_template_properties();
-=======
 			$options[$method]['template_properties'] = $object->get_template_properties();
->>>>>>> update
 		}
 
 		return array(
 			'options' => $options,
 			'templates' => $templates,
-<<<<<<< HEAD
-=======
 			'partial_templates' => $partial_templates,
->>>>>>> update
 		);
 	}
 	
@@ -356,11 +338,7 @@ class UpdraftPlus_Storage_Methods_Interface {
 						$updraftplus->log(__('Error', 'updraftplus'), 'notice-restore');
 					} else {
 						clearstatcache();
-<<<<<<< HEAD
-						if (0 === @filesize($fullpath)) @unlink($fullpath);// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
-=======
 						if (0 === @filesize($fullpath)) @unlink($fullpath);// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged -- Silenced to suppress errors that may arise if the file doesn't exist.
->>>>>>> update
 						$updraftplus->log('Remote fetch failed');
 					}
 				}
@@ -381,11 +359,7 @@ class UpdraftPlus_Storage_Methods_Interface {
 
 		global $updraftplus;
 	
-<<<<<<< HEAD
-		if (function_exists('set_time_limit')) @set_time_limit(UPDRAFTPLUS_SET_TIME_LIMIT);// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
-=======
 		if (function_exists('set_time_limit')) @set_time_limit(UPDRAFTPLUS_SET_TIME_LIMIT);// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged -- Silenced to suppress errors that may arise because of the function.
->>>>>>> update
 
 		$service = $service_object->get_id();
 		
@@ -415,11 +389,7 @@ class UpdraftPlus_Storage_Methods_Interface {
 			}
 		} else {
 			$updraftplus->log("Automatic backup restoration is not available with the method: $service.");
-<<<<<<< HEAD
-			$updraftplus->log("$file: ".sprintf(__("The backup archive for this file could not be found. The remote storage method in use (%s) does not allow us to retrieve files. To perform any restoration using UpdraftPlus, you will need to obtain a copy of this file and place it inside UpdraftPlus's working folder", 'updraftplus'), $service)." (".UpdraftPlus_Manipulation_Functions::prune_updraft_dir_prefix($updraftplus->backups_dir_location()).")", 'error');
-=======
 			$updraftplus->log("$file: ".__('The backup archive for this file could not be found.', 'updraftplus').' '.sprintf(__('The remote storage method in use (%s) does not allow us to retrieve files.', 'updraftplus'), $service).' '.__("To perform any restoration using UpdraftPlus, you will need to obtain a copy of this file and place it inside UpdraftPlus's working folder", 'updraftplus')." (".UpdraftPlus_Manipulation_Functions::prune_updraft_dir_prefix($updraftplus->backups_dir_location()).")", 'error');
->>>>>>> update
 			return false;
 		}
 

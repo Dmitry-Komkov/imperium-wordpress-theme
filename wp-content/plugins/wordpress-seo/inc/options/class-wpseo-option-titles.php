@@ -70,11 +70,7 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 		'breadcrumbs-home'                 => '', // Text field.
 		'breadcrumbs-prefix'               => '', // Text field.
 		'breadcrumbs-searchprefix'         => '', // Text field.
-<<<<<<< HEAD
-		'breadcrumbs-sep'                  => '&raquo;', // Text field.
-=======
 		'breadcrumbs-sep'                  => '»', // Text field.
->>>>>>> update
 
 		'website_name'                     => '',
 		'person_name'                      => '',
@@ -86,10 +82,7 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 		'company_logo_meta'                => false,
 		'person_logo_meta'                 => false,
 		'company_name'                     => '',
-<<<<<<< HEAD
-=======
 		'company_alternate_name'           => '',
->>>>>>> update
 		'company_or_person'                => 'company',
 		'company_or_person_user_id'        => false,
 
@@ -100,8 +93,6 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 		'open_graph_frontpage_image'       => '', // Text field.
 		'open_graph_frontpage_image_id'    => 0,
 
-<<<<<<< HEAD
-=======
 		'publishing_principles_id'         => 0,
 		'ownership_funding_info_id'        => 0,
 		'actionable_feedback_policy_id'    => 0,
@@ -110,7 +101,6 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 		'diversity_policy_id'              => 0,
 		'diversity_staffing_report_id'     => 0,
 
->>>>>>> update
 		/*
 		 * Uses enrich_defaults to add more along the lines of:
 		 * - 'title-' . $pt->name                => ''; // Text field.
@@ -349,13 +339,7 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 				$enriched_defaults[ 'social-image-url-tax-' . $tax->name ]   = ''; // Hidden input field.
 				$enriched_defaults[ 'social-image-id-tax-' . $tax->name ]    = 0; // Hidden input field.
 
-<<<<<<< HEAD
-				if ( ! $tax->_builtin ) {
-					$enriched_defaults[ 'taxonomy-' . $tax->name . '-ptparent' ] = 0; // Select box;.
-				}
-=======
 				$enriched_defaults[ 'taxonomy-' . $tax->name . '-ptparent' ] = 0; // Select box;.
->>>>>>> update
 			}
 		}
 
@@ -492,10 +476,7 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 				case 'metadesc-':
 				case 'bctitle-ptarchive-':
 				case 'company_name':
-<<<<<<< HEAD
-=======
 				case 'company_alternate_name':
->>>>>>> update
 				case 'person_name':
 				case 'social-description-':
 				case 'open_graph_frontpage_desc':
@@ -606,8 +587,6 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 				case 'person_logo_id':
 				case 'social-image-id-':
 				case 'open_graph_frontpage_image_id':
-<<<<<<< HEAD
-=======
 				case 'publishing_principles_id':
 				case 'ownership_funding_info_id':
 				case 'actionable_feedback_policy_id':
@@ -615,7 +594,6 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 				case 'ethics_policy_id':
 				case 'diversity_policy_id':
 				case 'diversity_staffing_report_id':
->>>>>>> update
 					if ( isset( $dirty[ $key ] ) ) {
 						$int = WPSEO_Utils::validate_int( $dirty[ $key ] );
 						if ( $int !== false && $int >= 0 ) {
@@ -629,10 +607,6 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 						}
 					}
 					break;
-<<<<<<< HEAD
-
-=======
->>>>>>> update
 				/* Separator field - Radio. */
 				case 'separator':
 					if ( isset( $dirty[ $key ] ) && $dirty[ $key ] !== '' ) {
@@ -804,19 +778,11 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 		}
 		unset( $old_option );
 
-<<<<<<< HEAD
-
-=======
->>>>>>> update
 		// Fix wrongness created by buggy version 1.2.2.
 		if ( isset( $option_value['title-home'] ) && $option_value['title-home'] === '%%sitename%% - %%sitedesc%% - 12345' ) {
 			$option_value['title-home-wpseo'] = '%%sitename%% - %%sitedesc%%';
 		}
 
-<<<<<<< HEAD
-
-=======
->>>>>>> update
 		/*
 		 * Renaming these options to avoid ever overwritting these if a (bloody stupid) user /
 		 * programmer would use any of the following as a custom post type or custom taxonomy:
@@ -845,10 +811,6 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 		}
 		unset( $rename, $old, $new );
 
-<<<<<<< HEAD
-
-=======
->>>>>>> update
 		/*
 		 * {@internal This clean-up action can only be done effectively once the taxonomies
 		 *            and post_types have been registered, i.e. at the end of the init action.}}
@@ -1002,19 +964,11 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 				'label'  => __( 'Dash', 'wordpress-seo' ),
 			],
 			'sc-ndash'  => [
-<<<<<<< HEAD
-				'option' => '&ndash;',
-				'label'  => __( 'En dash', 'wordpress-seo' ),
-			],
-			'sc-mdash'  => [
-				'option' => '&mdash;',
-=======
 				'option' => '&#8211;',
 				'label'  => __( 'En dash', 'wordpress-seo' ),
 			],
 			'sc-mdash'  => [
 				'option' => '&#8212;',
->>>>>>> update
 				'label'  => __( 'Em dash', 'wordpress-seo' ),
 			],
 			'sc-colon'  => [
@@ -1022,19 +976,11 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 				'label'  => __( 'Colon', 'wordpress-seo' ),
 			],
 			'sc-middot' => [
-<<<<<<< HEAD
-				'option' => '&middot;',
-				'label'  => __( 'Middle dot', 'wordpress-seo' ),
-			],
-			'sc-bull'   => [
-				'option' => '&bull;',
-=======
 				'option' => '&#183;',
 				'label'  => __( 'Middle dot', 'wordpress-seo' ),
 			],
 			'sc-bull'   => [
 				'option' => '&#8226;',
->>>>>>> update
 				'label'  => __( 'Bullet', 'wordpress-seo' ),
 			],
 			'sc-star'   => [
@@ -1054,21 +1000,6 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 				'label'  => __( 'Small tilde', 'wordpress-seo' ),
 			],
 			'sc-laquo'  => [
-<<<<<<< HEAD
-				'option' => '&laquo;',
-				'label'  => __( 'Left angle quotation mark', 'wordpress-seo' ),
-			],
-			'sc-raquo'  => [
-				'option' => '&raquo;',
-				'label'  => __( 'Right angle quotation mark', 'wordpress-seo' ),
-			],
-			'sc-lt'     => [
-				'option' => '&lt;',
-				'label'  => __( 'Less than sign', 'wordpress-seo' ),
-			],
-			'sc-gt'     => [
-				'option' => '&gt;',
-=======
 				'option' => '&#171;',
 				'label'  => __( 'Left angle quotation mark', 'wordpress-seo' ),
 			],
@@ -1082,7 +1013,6 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 			],
 			'sc-gt'     => [
 				'option' => '&#060;',
->>>>>>> update
 				'label'  => __( 'Greater than sign', 'wordpress-seo' ),
 			],
 		];

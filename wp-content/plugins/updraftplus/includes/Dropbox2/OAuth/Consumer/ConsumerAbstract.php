@@ -126,11 +126,7 @@ abstract class Dropbox_ConsumerAbstract
                 header('Location: ' . $url);
                 exit;
             } else {
-<<<<<<< HEAD
-                throw new Dropbox_Exception(sprintf(__('The %s authentication could not go ahead, because something else on your site is breaking it. Try disabling your other plugins and switching to a default theme. (Specifically, you are looking for the component that sends output (most likely PHP warnings/errors) before the page begins. Turning off any debugging settings may also help).', 'updraftplus'), 'Dropbox'));
-=======
                 throw new Dropbox_Exception(sprintf(__('The %s authentication could not go ahead, because something else on your site is breaking it.', 'updraftplus'), 'Dropbox').' '.__('Try disabling your other plugins and switching to a default theme.', 'updraftplus').' ('.__('Specifically, you are looking for the component that sends output (most likely PHP warnings/errors) before the page begins.', 'updraftplus').' '.__('Turning off any debugging settings may also help.', 'updraftplus').')');
->>>>>>> update
             }
             ?><?php
             return false;
@@ -274,15 +270,6 @@ abstract class Dropbox_ConsumerAbstract
 
         $access_token = $this->storage->get('access_token');
         
-<<<<<<< HEAD
-        $params = array(
-            'code' => 'ud_dropbox_code',
-            'refresh_token' => $access_token->refresh_token,
-            'headers' => apply_filters('updraftplus_auth_headers', ''),
-        );
-
-        $response = $this->fetch('POST', $this->callback, '' , $params);
-=======
         if ($this->callback == $this->callbackhome) {
             $url = UpdraftPlus_Dropbox_API::API_URL_V2 . self::ACCESS_TOKEN_METHOD;
 
@@ -303,7 +290,6 @@ abstract class Dropbox_ConsumerAbstract
         }
 
         $response = $this->fetch('POST', $url, '' , $params);
->>>>>>> update
         
         if ("200" != $response['code']) {
             $updraftplus->log('Failed to refresh access token error code: '.$response['code']);
@@ -315,12 +301,8 @@ abstract class Dropbox_ConsumerAbstract
             return;
         }
 
-<<<<<<< HEAD
-        $body = json_decode(base64_decode($response['body']));
-=======
         // If the request comes from the auth server (master app refreshing a token) then we need to decode the response into an object before we can use it.
         $body = is_object($response['body']) ? $response['body'] : json_decode(base64_decode($response['body']));
->>>>>>> update
 
         if (isset($body->access_token) && isset($body->expires_in)) {
             $access_token->oauth_token_secret = $body->access_token;
@@ -434,11 +416,8 @@ abstract class Dropbox_ConsumerAbstract
                     'headers' => $headers,
                 );
             }
-<<<<<<< HEAD
-=======
             // if grant_type is set and it's value is refresh_token, then this is a custom app trying to get a new access token using their refresh token. So we don't want to send an access token and break the request.
             if (isset($additional['grant_type']) && 'refresh_token' == $additional['grant_type']) unset($params['access_token']);
->>>>>>> update
         } else {
 	        // Generate a random string for the request
 	        $nonce = md5(microtime(true) . uniqid('', true));

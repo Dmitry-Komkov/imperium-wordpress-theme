@@ -53,45 +53,6 @@ class WPSEO_Metabox_Formatter {
 	 * @return array Default settings for the metabox.
 	 */
 	private function get_defaults() {
-<<<<<<< HEAD
-		$analysis_seo         = new WPSEO_Metabox_Analysis_SEO();
-		$analysis_readability = new WPSEO_Metabox_Analysis_Readability();
-		$schema_types         = new Schema_Types();
-		$is_wincher_active    = YoastSEO()->helpers->wincher->is_active();
-
-		return [
-			'author_name'                     => get_the_author_meta( 'display_name' ),
-			'site_name'                       => get_bloginfo( 'name' ),
-			'sitewide_social_image'           => WPSEO_Options::get( 'og_default_image' ),
-			'search_url'                      => '',
-			'post_edit_url'                   => '',
-			'base_url'                        => '',
-			'contentTab'                      => __( 'Readability', 'wordpress-seo' ),
-			'keywordTab'                      => __( 'Keyphrase:', 'wordpress-seo' ),
-			'removeKeyword'                   => __( 'Remove keyphrase', 'wordpress-seo' ),
-			'contentLocale'                   => get_locale(),
-			'userLocale'                      => \get_user_locale(),
-			'translations'                    => $this->get_translations(),
-			'keyword_usage'                   => [],
-			'title_template'                  => '',
-			'metadesc_template'               => '',
-			'contentAnalysisActive'           => $analysis_readability->is_enabled() ? 1 : 0,
-			'keywordAnalysisActive'           => $analysis_seo->is_enabled() ? 1 : 0,
-			'cornerstoneActive'               => WPSEO_Options::get( 'enable_cornerstone_content', false ) ? 1 : 0,
-			'semrushIntegrationActive'        => WPSEO_Options::get( 'semrush_integration_active', true ) ? 1 : 0,
-			'intl'                            => $this->get_content_analysis_component_translations(),
-			'isRtl'                           => is_rtl(),
-			'isPremium'                       => YoastSEO()->helpers->product->is_premium(),
-			'wordFormRecognitionActive'       => YoastSEO()->helpers->language->is_word_form_recognition_active( WPSEO_Language_Utils::get_language( get_locale() ) ),
-			'siteIconUrl'                     => get_site_icon_url(),
-			'countryCode'                     => WPSEO_Options::get( 'semrush_country_code', false ),
-			'SEMrushLoginStatus'              => WPSEO_Options::get( 'semrush_integration_active', true ) ? $this->get_semrush_login_status() : false,
-			'showSocial'                      => [
-				'facebook' => WPSEO_Options::get( 'opengraph', false ),
-				'twitter'  => WPSEO_Options::get( 'twitter', false ),
-			],
-			'schema'                          => [
-=======
 		$analysis_seo                = new WPSEO_Metabox_Analysis_SEO();
 		$analysis_readability        = new WPSEO_Metabox_Analysis_Readability();
 		$analysis_inclusive_language = new WPSEO_Metabox_Analysis_Inclusive_Language();
@@ -132,33 +93,21 @@ class WPSEO_Metabox_Formatter {
 				'twitter'  => WPSEO_Options::get( 'twitter', false ),
 			],
 			'schema'                             => [
->>>>>>> update
 				'displayFooter'      => WPSEO_Capability_Utils::current_user_can( 'wpseo_manage_options' ),
 				'pageTypeOptions'    => $schema_types->get_page_type_options(),
 				'articleTypeOptions' => $schema_types->get_article_type_options(),
 			],
-<<<<<<< HEAD
-			'twitterCardType'                 => YoastSEO()->helpers->options->get( 'twitter_card_type' ),
-=======
 			'twitterCardType'                    => 'summary_large_image',
->>>>>>> update
 
 			/**
 			 * Filter to determine if the markers should be enabled or not.
 			 *
 			 * @param bool $showMarkers Should the markers being enabled. Default = true.
 			 */
-<<<<<<< HEAD
-			'show_markers'                    => apply_filters( 'wpseo_enable_assessment_markers', true ),
-			'publish_box'                     => [
-				'labels' => [
-					'keyword' => [
-=======
 			'show_markers'                       => apply_filters( 'wpseo_enable_assessment_markers', true ),
 			'publish_box'                        => [
 				'labels' => [
 					'keyword'            => [
->>>>>>> update
 						'na'   => sprintf(
 							/* translators: %1$s expands to the opening anchor tag, %2$s to the closing anchor tag, %3$s to the SEO score. */
 							__( '%1$sSEO%2$s: %3$s', 'wordpress-seo' ),
@@ -188,11 +137,7 @@ class WPSEO_Metabox_Formatter {
 							'<strong>' . __( 'Good', 'wordpress-seo' ) . '</strong>'
 						),
 					],
-<<<<<<< HEAD
-					'content' => [
-=======
 					'content'            => [
->>>>>>> update
 						'na'   => sprintf(
 						/* translators: %1$s expands to the opening anchor tag, %2$s to the closing anchor tag, %3$s to the readability score. */
 							__( '%1$sReadability%2$s: %3$s', 'wordpress-seo' ),
@@ -222,20 +167,6 @@ class WPSEO_Metabox_Formatter {
 							'<strong>' . __( 'Good', 'wordpress-seo' ) . '</strong>'
 						),
 					],
-<<<<<<< HEAD
-				],
-			],
-			'markdownEnabled'                 => $this->is_markdown_enabled(),
-			'analysisHeadingTitle'            => __( 'Analysis', 'wordpress-seo' ),
-			'zapierIntegrationActive'         => WPSEO_Options::get( 'zapier_integration_active', false ) ? 1 : 0,
-			'zapierConnectedStatus'           => ! empty( WPSEO_Options::get( 'zapier_subscription', [] ) ) ? 1 : 0,
-			'wincherIntegrationActive'        => ( $is_wincher_active ) ? 1 : 0,
-			'wincherLoginStatus'              => ( $is_wincher_active ) ? YoastSEO()->helpers->wincher->login_status() : false,
-			'wincherWebsiteId'                => WPSEO_Options::get( 'wincher_website_id', '' ),
-			'wincherAutoAddKeyphrases'        => WPSEO_Options::get( 'wincher_automatically_add_keyphrases', false ),
-			'wordproofIntegrationActive'      => YoastSEO()->helpers->wordproof->is_active() ? 1 : 0,
-			'multilingualPluginActive'        => $this->multilingual_plugin_active(),
-=======
 					'inclusive-language' => [
 						'na'   => sprintf(
 						/* translators: %1$s expands to the opening anchor tag, %2$s to the closing anchor tag, %3$s to the inclusive language score. */
@@ -279,21 +210,16 @@ class WPSEO_Metabox_Formatter {
 			'wordproofIntegrationActive'         => YoastSEO()->helpers->wordproof->is_active() ? 1 : 0,
 			'multilingualPluginActive'           => $this->multilingual_plugin_active(),
 
->>>>>>> update
 			/**
 			 * Filter to determine whether the PreviouslyUsedKeyword assessment should run.
 			 *
 			 * @param bool $previouslyUsedKeywordActive Whether the PreviouslyUsedKeyword assessment should run.
 			 */
-<<<<<<< HEAD
-			'previouslyUsedKeywordActive'     => apply_filters( 'wpseo_previously_used_keyword_active', true ),
-=======
 			'previouslyUsedKeywordActive'        => apply_filters( 'wpseo_previously_used_keyword_active', true ),
 			'getJetpackBoostPrePublishLink'      => WPSEO_Shortlinker::get( 'https://yoa.st/jetpack-boost-get-prepublish?domain=' . $host ),
 			'upgradeJetpackBoostPrePublishLink'  => WPSEO_Shortlinker::get( 'https://yoa.st/jetpack-boost-upgrade-prepublish?domain=' . $host ),
 			'woocommerceUpsellSchemaLink'        => WPSEO_Shortlinker::get( 'https://yoa.st/product-schema-metabox' ),
 			'woocommerceUpsellGooglePreviewLink' => WPSEO_Shortlinker::get( 'https://yoa.st/product-google-preview-metabox' ),
->>>>>>> update
 		];
 	}
 
@@ -314,10 +240,7 @@ class WPSEO_Metabox_Formatter {
 			'content-analysis.highlight'                     => __( 'Highlight this result in the text', 'wordpress-seo' ),
 			'content-analysis.nohighlight'                   => __( 'Remove highlight from the text', 'wordpress-seo' ),
 			'content-analysis.disabledButton'                => __( 'Marks are disabled in current view', 'wordpress-seo' ),
-<<<<<<< HEAD
-=======
 			/* translators: Hidden accessibility text. */
->>>>>>> update
 			'a11yNotice.opensInNewTab'                       => __( '(Opens in a new browser tab)', 'wordpress-seo' ),
 		];
 	}
@@ -405,47 +328,4 @@ class WPSEO_Metabox_Formatter {
 
 		return ( $wpml_active || $polylang_active || $translatepress_active );
 	}
-<<<<<<< HEAD
-
-	/* ********************* DEPRECATED METHODS ********************* */
-
-	/**
-	 * Returns the translations for the Add Keyword modal.
-	 *
-	 * These strings are not escaped because they're meant to be used with React
-	 * which already takes care of that. If used in PHP, they should be escaped.
-	 *
-	 * @deprecated 15.5
-	 * @codeCoverageIgnore
-	 *
-	 * @return array Translated text strings for the Add Keyword modal.
-	 */
-	public function get_add_keyword_upsell_translations() {
-		_deprecated_function( __METHOD__, 'WPSEO 15.5' );
-
-		return [
-			'title'                    => __( 'Would you like to add more than one keyphrase?', 'wordpress-seo' ),
-			'intro'                    => sprintf(
-			/* translators: %s expands to a 'Yoast SEO Premium' text linked to the yoast.com website. */
-				__( 'Great news: you can, with %s!', 'wordpress-seo' ),
-				'{{link}}Yoast SEO Premium{{/link}}'
-			),
-			'link'                     => WPSEO_Shortlinker::get( 'https://yoa.st/pe-premium-page' ),
-			'other'                    => sprintf(
-			/* translators: %s expands to 'Yoast SEO Premium'. */
-				__( 'Other benefits of %s for you:', 'wordpress-seo' ),
-				'Yoast SEO Premium'
-			),
-			'buylink'                  => WPSEO_Shortlinker::get( 'https://yoa.st/add-keywords-popup' ),
-			'buy'                      => sprintf(
-			/* translators: %s expands to 'Yoast SEO Premium'. */
-				__( 'Get %s', 'wordpress-seo' ),
-				'Yoast SEO Premium'
-			),
-			'small'                    => __( '1 year free support and updates included!', 'wordpress-seo' ),
-			'a11yNotice.opensInNewTab' => __( '(Opens in a new browser tab)', 'wordpress-seo' ),
-		];
-	}
-=======
->>>>>>> update
 }

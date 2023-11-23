@@ -42,10 +42,7 @@ class Option_Wpseo_Watcher implements Integration_Interface {
 		\add_action( 'update_option_wpseo', [ $this, 'check_semrush_option_disabled' ], 10, 2 );
 		\add_action( 'update_option_wpseo', [ $this, 'check_wincher_option_disabled' ], 10, 2 );
 		\add_action( 'update_option_wpseo', [ $this, 'check_wordproof_option_disabled' ], 10, 2 );
-<<<<<<< HEAD
-=======
 		\add_action( 'update_option_wpseo', [ $this, 'check_toggle_usage_tracking' ], 10, 2 );
->>>>>>> update
 	}
 
 	/**
@@ -80,10 +77,7 @@ class Option_Wpseo_Watcher implements Integration_Interface {
 		if ( $disabled ) {
 			\YoastSEO()->helpers->options->set( 'wincher_website_id', '' );
 		}
-<<<<<<< HEAD
-=======
 
->>>>>>> update
 		return $disabled;
 	}
 
@@ -103,16 +97,11 @@ class Option_Wpseo_Watcher implements Integration_Interface {
 		if ( $disabled ) {
 			$this->wordproof->remove_site_options();
 		}
-<<<<<<< HEAD
-=======
 
->>>>>>> update
 		return $disabled;
 	}
 
 	/**
-<<<<<<< HEAD
-=======
 	 * Checks if the usage tracking feature is toggled; if so, set an option to stop us from messing with it.
 	 *
 	 * @param array $old_value The old value of the option.
@@ -133,7 +122,6 @@ class Option_Wpseo_Watcher implements Integration_Interface {
 	}
 
 	/**
->>>>>>> update
 	 * Checks if the passed integration is disabled; if so, deletes the tokens.
 	 *
 	 * We delete the tokens if the integration is disabled, no matter if
@@ -148,15 +136,10 @@ class Option_Wpseo_Watcher implements Integration_Interface {
 	protected function check_token_option_disabled( $integration_option, $target_option, $new_value ) {
 		if ( \array_key_exists( $integration_option, $new_value ) && $new_value[ $integration_option ] === false ) {
 			\YoastSEO()->helpers->options->set( $target_option, [] );
-<<<<<<< HEAD
-			return true;
-		}
-=======
 
 			return true;
 		}
 
->>>>>>> update
 		return false;
 	}
 }

@@ -2,11 +2,7 @@
 
 if (!defined('UPDRAFTPLUS_DIR')) die('No direct access allowed.');
 
-<<<<<<< HEAD
-require_once(UPDRAFTPLUS_DIR.'/methods/s3.php');
-=======
 updraft_try_include_file('methods/s3.php', 'require_once');
->>>>>>> update
 
 /**
  * Converted to multi-options (Feb 2017-) and previous options conversion removed: Yes
@@ -103,13 +99,6 @@ class UpdraftPlus_BackupModule_dreamobjects extends UpdraftPlus_BackupModule_s3 
 
 	/**
 	 * Get the pre configuration template
-<<<<<<< HEAD
-	 *
-	 * @return String - the template
-	 */
-	public function get_pre_configuration_template() {
-		$this->get_pre_configuration_template_engine('dreamobjects', 'DreamObjects', 'DreamObjects', 'DreamObjects', 'https://panel.dreamhost.com/index.cgi?tree=storage.dreamhostobjects', '<a href="https://dreamhost.com/cloud/dreamobjects/" target="_blank"><img alt="DreamObjects" src="'.UPDRAFTPLUS_URL.'/images/dreamobjects_logo-horiz-2013.png"></a>');
-=======
 	 */
 	public function get_pre_configuration_template() {
 		?>
@@ -128,7 +117,6 @@ class UpdraftPlus_BackupModule_dreamobjects extends UpdraftPlus_BackupModule_s3 
 			</td>
 		</tr>
 		<?php
->>>>>>> update
 	}
 
 	/**
@@ -137,28 +125,6 @@ class UpdraftPlus_BackupModule_dreamobjects extends UpdraftPlus_BackupModule_s3 
 	 * @return String - the template, ready for substitutions to be carried out
 	 */
 	public function get_configuration_template() {
-<<<<<<< HEAD
-		return $this->get_configuration_template_engine('dreamobjects', 'DreamObjects', 'DreamObjects', 'DreamObjects', 'https://panel.dreamhost.com/index.cgi?tree=storage.dreamhostobjects', '<a href="https://dreamhost.com/cloud/dreamobjects/" target="_blank"><img alt="DreamObjects" src="'.UPDRAFTPLUS_URL.'/images/dreamobjects_logo-horiz-2013.png"></a>');
-	}
-	
-	/**
-	 * Get handlebar partial template string for endpoint of s3 compatible remote storage method. Other child class can extend it.
-	 *
-	 * @return String the partial template string
-	 */
-	protected function get_partial_configuration_template_for_endpoint() {
-		// When new endpoint introduced in future, Please add it  as hard coded option for below  endpoint dropdown and also add as array value in private $dreamobjects_endpoints variable
-		return '<tr class="'.$this->get_css_classes().'">
-					<th>'.sprintf(__('%s end-point', 'updraftplus'), 'DreamObjects').'</th>
-					<td>
-						<select data-updraft_settings_test="endpoint" '.$this->output_settings_field_name_and_id('endpoint', true).' style="width: 360px">							
-							{{#each dreamobjects_endpoints as |description endpoint|}}
-								<option value="{{endpoint}}" {{#ifeq ../endpoint endpoint}}selected="selected"{{/ifeq}}>{{description}}</option>
-							{{/each}}
-						</select>
-					</td>
-				</tr>';
-=======
 		// return $this->get_configuration_template_engine('dreamobjects', 'DreamObjects', 'DreamObjects', 'DreamObjects', 'https://panel.dreamhost.com/index.cgi?tree=storage.dreamhostobjects', '<a href="https://dreamhost.com/cloud/dreamobjects/" target="_blank"><img alt="DreamObjects" src="'.UPDRAFTPLUS_URL.'/images/dreamobjects_logo-horiz-2013.png"></a>');
 		ob_start();
 		?>
@@ -187,7 +153,6 @@ class UpdraftPlus_BackupModule_dreamobjects extends UpdraftPlus_BackupModule_s3 
 		{{{get_template_test_button_html "DreamObjects"}}}
 		<?php
 		return ob_get_clean();
->>>>>>> update
 	}
 	
 	/**
@@ -201,8 +166,6 @@ class UpdraftPlus_BackupModule_dreamobjects extends UpdraftPlus_BackupModule_s3 
 		$opts['dreamobjects_endpoints'] = $this->dreamobjects_endpoints;
 		return $opts;
 	}
-<<<<<<< HEAD
-=======
 
 	/**
 	 * Retrieve a list of template properties by taking all the persistent variables and methods of the parent class and combining them with the ones that are unique to this module, also the necessary HTML element attributes and texts which are also unique only to this backup module
@@ -232,5 +195,4 @@ class UpdraftPlus_BackupModule_dreamobjects extends UpdraftPlus_BackupModule_s3 
 		);
 		return wp_parse_args($properties, $this->get_persistent_variables_and_methods());
 	}
->>>>>>> update
 }

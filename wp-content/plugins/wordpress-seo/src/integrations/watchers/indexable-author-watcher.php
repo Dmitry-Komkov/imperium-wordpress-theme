@@ -54,11 +54,7 @@ class Indexable_Author_Watcher implements Integration_Interface {
 	public function register_hooks() {
 		\add_action( 'user_register', [ $this, 'build_indexable' ], \PHP_INT_MAX );
 		\add_action( 'profile_update', [ $this, 'build_indexable' ], \PHP_INT_MAX );
-<<<<<<< HEAD
-		\add_action( 'deleted_user', [ $this, 'delete_indexable' ] );
-=======
 		\add_action( 'deleted_user', [ $this, 'handle_user_delete' ], 10, 2 );
->>>>>>> update
 	}
 
 	/**
@@ -76,10 +72,7 @@ class Indexable_Author_Watcher implements Integration_Interface {
 		}
 
 		$indexable->delete();
-<<<<<<< HEAD
-=======
 		\do_action( 'wpseo_indexable_deleted', $indexable );
->>>>>>> update
 	}
 
 	/**
@@ -98,8 +91,6 @@ class Indexable_Author_Watcher implements Integration_Interface {
 			$indexable->save();
 		}
 	}
-<<<<<<< HEAD
-=======
 
 	/**
 	 * Handles the case in which an author is deleted.
@@ -131,5 +122,4 @@ class Indexable_Author_Watcher implements Integration_Interface {
 			->where( 'author_id', $user_id )
 			->update_many();
 	}
->>>>>>> update
 }

@@ -107,11 +107,7 @@ class autoptimizeMetabox
         </p>
         <?php
         $_ao_meta_lazyload_style = '';
-<<<<<<< HEAD
-        if ( false === autoptimizeImages::should_lazyload_wrapper() ) {
-=======
         if ( false === autoptimizeImages::should_lazyload_wrapper( true ) ) {
->>>>>>> update
             $_ao_meta_lazyload_style = 'display:none;';
         }
         echo '<p class="ao_meta_sub" style="' . $_ao_meta_sub_opacity . $_ao_meta_lazyload_style . '">';
@@ -121,9 +117,6 @@ class autoptimizeMetabox
                  <?php _e( 'Lazyload images?', 'autoptimize' ); ?>
             </label>
         </p>
-<<<<<<< HEAD
-        <p class="ao_meta_sub" style="<?php echo $_ao_meta_sub_opacity; ?>">
-=======
         <?php
         $_ao_meta_preload_style = '';
         if ( false === autoptimizeImages::should_lazyload_wrapper() && false === autoptimizeImages::imgopt_active() ) {
@@ -132,7 +125,6 @@ class autoptimizeMetabox
         }
         ?>
         <p class="ao_meta_sub ao_meta_preload" style="<?php echo $_ao_meta_sub_opacity . $_ao_meta_preload_style; ?>">
->>>>>>> update
             <label for="autoptimize_post_preload">
                  <?php _e( 'LCP Image to preload', 'autoptimize' ); ?>
             </label>
@@ -145,12 +137,9 @@ class autoptimizeMetabox
             ?>
             <input type="text" id="autoptimize_post_preload" name="ao_post_preload" value="<?php echo $_preload_img; ?>">
         </p>
-<<<<<<< HEAD
-=======
         <?php
             echo apply_filters( 'autoptimize_filter_metabox_extra_ui', '');
         ?>
->>>>>>> update
         <p>&nbsp;</p>
         <p>
             <?php
@@ -200,8 +189,6 @@ class autoptimizeMetabox
                         jQuery("#generateccss:visible").fadeTo("fast",.33);
                     }
                 });
-<<<<<<< HEAD
-=======
                 <?php
                 if ( true === autoptimizeImages::should_lazyload_wrapper() && false === autoptimizeImages::imgopt_active() ) {
                 ?>
@@ -215,7 +202,6 @@ class autoptimizeMetabox
                 <?php
                 }
                 ?>
->>>>>>> update
                 jQuery("#generateccss").click(function(e){
                     e.preventDefault();
                     // disable button to avoid it being clicked several times.
@@ -284,16 +270,6 @@ class autoptimizeMetabox
 
         // OK, we can have a look at the actual data now.
         // Sanitize user input.
-<<<<<<< HEAD
-        foreach ( array( 'ao_post_optimize', 'ao_post_js_optimize', 'ao_post_css_optimize', 'ao_post_ccss', 'ao_post_lazyload', 'ao_post_preload' ) as $opti_type ) {
-            if ( ! isset( $_POST[ $opti_type ] ) ) {
-                $ao_meta_result[ $opti_type ] = '';
-            } else if ( 'on' === $_POST[ $opti_type ] ) {
-                $ao_meta_result[ $opti_type ] = 'on';
-            } else if ( in_array( $opti_type, array( 'ao_post_preload' ) ) ) {
-                $ao_meta_result[ $opti_type ] = $_POST[ $opti_type ];
-            }
-=======
         foreach ( apply_filters( 'autoptimize_filter_meta_valid_optims', array( 'ao_post_optimize', 'ao_post_js_optimize', 'ao_post_css_optimize', 'ao_post_ccss', 'ao_post_lazyload', 'ao_post_preload' ) ) as $opti_type ) {
             if ( in_array( $opti_type, apply_filters( 'autoptimize_filter_meta_optim_nonbool', array( 'ao_post_preload' ) ) ) ) {
                 if ( isset( $_POST[ $opti_type ] ) ) {
@@ -306,7 +282,6 @@ class autoptimizeMetabox
             } else if ( 'on' === $_POST[ $opti_type ] ) {
                 $ao_meta_result[ $opti_type ] = 'on';
             } 
->>>>>>> update
         }
 
         // Update the meta field in the database.

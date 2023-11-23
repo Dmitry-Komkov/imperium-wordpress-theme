@@ -73,10 +73,6 @@ class Akismet {
 		add_filter( 'frm_akismet_values', array( 'Akismet', 'prepare_custom_form_values' ) );
 
 		// Fluent Forms
-<<<<<<< HEAD
-		add_filter( 'fluentform_form_element_start', array( 'Akismet', 'output_custom_form_fields' ) );
-		add_filter( 'fluentform_akismet_fields', array( 'Akismet', 'prepare_custom_form_values' ), 10, 2 );
-=======
 		/*
 		 * The Fluent Forms  hook names were updated in version 5.0.0. The last version that supported
 		 * the original hook names was 4.3.25, and version 4.3.25 was tested up to WordPress version 6.1.
@@ -92,7 +88,6 @@ class Akismet {
 		// Current Fluent Form hooks.
 		add_filter( 'fluentform/form_element_start', array( 'Akismet', 'output_custom_form_fields' ) );
 		add_filter( 'fluentform/akismet_fields', array( 'Akismet', 'prepare_custom_form_values' ), 10, 2 );
->>>>>>> update
 
 		add_action( 'update_option_wordpress_api_key', array( 'Akismet', 'updated_option' ), 10, 2 );
 		add_action( 'add_option_wordpress_api_key', array( 'Akismet', 'added_option' ), 10, 2 );
@@ -104,8 +99,6 @@ class Akismet {
 		return apply_filters( 'akismet_get_api_key', defined('WPCOM_API_KEY') ? constant('WPCOM_API_KEY') : get_option('wordpress_api_key') );
 	}
 
-<<<<<<< HEAD
-=======
 	/**
 	 * Exchange the API key for a token that can only be used to access stats pages.
 	 *
@@ -123,7 +116,6 @@ class Akismet {
 		return $access_token;
 	}
 
->>>>>>> update
 	public static function check_key_status( $key, $ip = null ) {
 		return self::http_post( Akismet::build_query( array( 'key' => $key, 'blog' => get_option( 'home' ) ) ), 'verify-key', $ip );
 	}
@@ -270,8 +262,6 @@ class Akismet {
 		if ( ! is_null( $post ) ) {
 			// $post can technically be null, although in the past, it's always been an indicator of another plugin interfering.
 			$comment[ 'comment_post_modified_gmt' ] = $post->post_modified_gmt;
-<<<<<<< HEAD
-=======
 
 			// Tags and categories are important context in which to consider the comment.
 			$comment['comment_context'] = array();
@@ -291,7 +281,6 @@ class Akismet {
 					$comment['comment_context'][] = $category_name;
 				}
 			}
->>>>>>> update
 		}
 
 		$response = self::http_post( Akismet::build_query( $comment ), 'comment-check' );
@@ -492,11 +481,7 @@ class Akismet {
 			}
 
 			// Prepared as strings since comment_id is an unsigned BIGINT, and using %d will constrain the value to the maximum signed BIGINT.
-<<<<<<< HEAD
-			$format_string = implode( ", ", array_fill( 0, count( $comment_ids ), '%s' ) );
-=======
 			$format_string = implode( ', ', array_fill( 0, is_countable( $comment_ids ) ? count( $comment_ids ) : 0, '%s' ) );
->>>>>>> update
 
 			$wpdb->query( $wpdb->prepare( "DELETE FROM {$wpdb->comments} WHERE comment_id IN ( " . $format_string . " )", $comment_ids ) );
 			$wpdb->query( $wpdb->prepare( "DELETE FROM {$wpdb->commentmeta} WHERE comment_id IN ( " . $format_string . " )", $comment_ids ) );
@@ -507,11 +492,7 @@ class Akismet {
 			}
 
 			clean_comment_cache( $comment_ids );
-<<<<<<< HEAD
-			do_action( 'akismet_delete_comment_batch', count( $comment_ids ) );
-=======
 			do_action( 'akismet_delete_comment_batch', is_countable( $comment_ids ) ? count( $comment_ids ) : 0 );
->>>>>>> update
 		}
 
 		if ( apply_filters( 'akismet_optimize_table', ( mt_rand(1, 5000) == 11), $wpdb->comments ) ) // lucky number
@@ -541,11 +522,7 @@ class Akismet {
 				do_action( 'akismet_batch_delete_count', __FUNCTION__ );
 			}
 
-<<<<<<< HEAD
-			do_action( 'akismet_delete_commentmeta_batch', count( $comment_ids ) );
-=======
 			do_action( 'akismet_delete_commentmeta_batch', is_countable( $comment_ids ) ? count( $comment_ids ) : 0 );
->>>>>>> update
 		}
 
 		if ( apply_filters( 'akismet_optimize_table', ( mt_rand(1, 5000) == 11), $wpdb->commentmeta ) ) // lucky number
@@ -1187,10 +1164,7 @@ class Akismet {
 
 	// return a comma-separated list of role names for the given user
 	public static function get_user_roles( $user_id ) {
-<<<<<<< HEAD
-=======
 		$comment_user = null;
->>>>>>> update
 		$roles = false;
 
 		if ( !class_exists('WP_User') )
@@ -1199,11 +1173,7 @@ class Akismet {
 		if ( $user_id > 0 ) {
 			$comment_user = new WP_User( $user_id );
 			if ( isset( $comment_user->roles ) )
-<<<<<<< HEAD
-				$roles = join( ',', $comment_user->roles );
-=======
 				$roles = implode( ',', $comment_user->roles );
->>>>>>> update
 		}
 
 		if ( is_multisite() && is_super_admin( $user_id ) ) {
@@ -1211,11 +1181,7 @@ class Akismet {
 				$roles = 'super_admin';
 			} else {
 				$comment_user->roles[] = 'super_admin';
-<<<<<<< HEAD
-				$roles = join( ',', $comment_user->roles );
-=======
 				$roles = implode( ',', $comment_user->roles );
->>>>>>> update
 			}
 		}
 
@@ -1302,22 +1268,12 @@ class Akismet {
 		$akismet_ua = sprintf( 'WordPress/%s | Akismet/%s', $GLOBALS['wp_version'], constant( 'AKISMET_VERSION' ) );
 		$akismet_ua = apply_filters( 'akismet_ua', $akismet_ua );
 
-<<<<<<< HEAD
-		$content_length = strlen( $request );
-
-		$api_key   = self::get_api_key();
-		$host      = self::API_HOST;
-
-		if ( !empty( $api_key ) )
-			$host = $api_key.'.'.$host;
-=======
 		$host      = self::API_HOST;
 		$api_key   = self::get_api_key();
 
 		if ( $api_key ) {
 			$request = add_query_arg( 'api_key', $api_key, $request );
 		}
->>>>>>> update
 
 		$http_host = $host;
 		// use a specific IP if provided
@@ -1484,14 +1440,11 @@ class Akismet {
 	}
 
 	public static function output_custom_form_fields( $post_id ) {
-<<<<<<< HEAD
-=======
 		if ( 'fluentform/form_element_start' === current_filter() && did_action( 'fluentform_form_element_start' ) ) {
 			// Already did this via the legacy filter.
 			return;
 		}
 
->>>>>>> update
 		// phpcs:ignore WordPress.Security.EscapeOutput
 		echo self::get_akismet_form_fields();
 	}
@@ -1517,14 +1470,11 @@ class Akismet {
 	 * @return array $form
 	 */
 	public static function prepare_custom_form_values( $form, $data = null ) {
-<<<<<<< HEAD
-=======
 		if ( 'fluentform/akismet_fields' === current_filter() && did_filter( 'fluentform_akismet_fields' ) ) {
 			// Already updated the form fields via the legacy filter.
 			return $form;
 		}
 
->>>>>>> update
 		if ( is_null( $data ) ) {
 			// phpcs:ignore WordPress.Security.NonceVerification.Missing
 			$data = $_POST;
@@ -1666,10 +1616,7 @@ p {
 	}
 
 	public static function pre_check_pingback( $method ) {
-<<<<<<< HEAD
-=======
 		$pingback_args = array();
->>>>>>> update
 		if ( $method !== 'pingback.ping' )
 			return;
 
@@ -1694,11 +1641,7 @@ p {
 
 			if ( 0 === $call_count ) {
 				// Only pass along the number of entries in the multicall the first time we see it.
-<<<<<<< HEAD
-				$multicall_count = count( $wp_xmlrpc_server->message->params );
-=======
 				$multicall_count = is_countable( $wp_xmlrpc_server->message->params ) ? count( $wp_xmlrpc_server->message->params ) : 0;
->>>>>>> update
 			}
 
 			/*

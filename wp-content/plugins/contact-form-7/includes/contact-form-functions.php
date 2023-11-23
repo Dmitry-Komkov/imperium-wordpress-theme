@@ -7,13 +7,8 @@
 /**
  * Wrapper function of WPCF7_ContactForm::get_instance().
  *
-<<<<<<< HEAD
- * @param int|WP_Post $post Post ID or post object.
- * @return WPCF7_ContactForm Contact form object.
-=======
  * @param WPCF7_ContactForm|WP_Post|int $post Object or post ID.
  * @return WPCF7_ContactForm|null Contact form object. Null if unset.
->>>>>>> update
  */
 function wpcf7_contact_form( $post ) {
 	return WPCF7_ContactForm::get_instance( $post );
@@ -39,8 +34,6 @@ function wpcf7_get_contact_form_by_old_id( $old_id ) {
 
 
 /**
-<<<<<<< HEAD
-=======
  * Searches for a contact form by a hash string.
  *
  * @param string $hash Part of a hash string.
@@ -67,22 +60,12 @@ function wpcf7_get_contact_form_by_hash( $hash ) {
 
 
 /**
->>>>>>> update
  * Searches for a contact form by title.
  *
  * @param string $title Title of contact form.
  * @return WPCF7_ContactForm|null Contact form object if found, null otherwise.
  */
 function wpcf7_get_contact_form_by_title( $title ) {
-<<<<<<< HEAD
-	$page = get_page_by_title( $title, OBJECT, WPCF7_ContactForm::post_type );
-
-	if ( $page ) {
-		return wpcf7_contact_form( $page->ID );
-	}
-
-	return null;
-=======
 	if ( ! is_string( $title ) or '' === $title ) {
 		return null;
 	}
@@ -95,7 +78,6 @@ function wpcf7_get_contact_form_by_title( $title ) {
 	if ( $contact_forms ) {
 		return wpcf7_contact_form( reset( $contact_forms ) );
 	}
->>>>>>> update
 }
 
 
@@ -210,22 +192,6 @@ function wpcf7_get_message( $status ) {
  */
 function wpcf7_form_controls_class( $type, $default_classes = '' ) {
 	$type = trim( $type );
-<<<<<<< HEAD
-	$default_classes = array_filter( explode( ' ', $default_classes ) );
-
-	$classes = array_merge( array( 'wpcf7-form-control' ), $default_classes );
-
-	$typebase = rtrim( $type, '*' );
-	$required = ( '*' == substr( $type, -1 ) );
-
-	$classes[] = 'wpcf7-' . $typebase;
-
-	if ( $required ) {
-		$classes[] = 'wpcf7-validates-as-required';
-	}
-
-	$classes = array_unique( $classes );
-=======
 
 	if ( is_string( $default_classes ) ) {
 		$default_classes = explode( ' ', $default_classes );
@@ -242,7 +208,6 @@ function wpcf7_form_controls_class( $type, $default_classes = '' ) {
 
 	$classes = array_merge( $classes, $default_classes );
 	$classes = array_filter( array_unique( $classes ) );
->>>>>>> update
 
 	return implode( ' ', $classes );
 }
@@ -256,15 +221,6 @@ function wpcf7_contact_form_tag_func( $atts, $content = null, $code = '' ) {
 		return '[contact-form-7]';
 	}
 
-<<<<<<< HEAD
-	if ( 'contact-form-7' == $code ) {
-		$atts = shortcode_atts(
-			array(
-				'id' => 0,
-				'title' => '',
-				'html_id' => '',
-				'html_name' => '',
-=======
 	if ( 'contact-form-7' === $code ) {
 		$atts = shortcode_atts(
 			array(
@@ -273,19 +229,12 @@ function wpcf7_contact_form_tag_func( $atts, $content = null, $code = '' ) {
 				'html_id' => '',
 				'html_name' => '',
 				'html_title' => '',
->>>>>>> update
 				'html_class' => '',
 				'output' => 'form',
 			),
 			$atts, 'wpcf7'
 		);
 
-<<<<<<< HEAD
-		$id = (int) $atts['id'];
-		$title = trim( $atts['title'] );
-
-		if ( ! $contact_form = wpcf7_contact_form( $id ) ) {
-=======
 		$id = trim( $atts['id'] );
 		$title = trim( $atts['title'] );
 
@@ -296,7 +245,6 @@ function wpcf7_contact_form_tag_func( $atts, $content = null, $code = '' ) {
 		}
 
 		if ( ! $contact_form ) {
->>>>>>> update
 			$contact_form = wpcf7_get_contact_form_by_title( $title );
 		}
 
@@ -311,14 +259,6 @@ function wpcf7_contact_form_tag_func( $atts, $content = null, $code = '' ) {
 
 	if ( ! $contact_form ) {
 		return sprintf(
-<<<<<<< HEAD
-			'[contact-form-7 404 "%s"]',
-			esc_html( __( 'Not Found', 'contact-form-7' ) )
-		);
-	}
-
-	return $contact_form->form_html( $atts );
-=======
 			'<p class="wpcf7-contact-form-not-found"><strong>%1$s</strong> %2$s</p>',
 			esc_html( __( 'Error:', 'contact-form-7' ) ),
 			esc_html( __( "Contact form not found.", 'contact-form-7' ) )
@@ -338,7 +278,6 @@ function wpcf7_contact_form_tag_func( $atts, $content = null, $code = '' ) {
 	do_action( 'wpcf7_shortcode_callback', $contact_form, $atts );
 
 	return $output;
->>>>>>> update
 }
 
 
@@ -514,8 +453,6 @@ function wpcf7_sanitize_additional_settings( $input, $default_template = '' ) {
 	$output = trim( $input );
 	return $output;
 }
-<<<<<<< HEAD
-=======
 
 
 /**
@@ -532,4 +469,3 @@ function wpcf7_generate_contact_form_hash( $post_id ) {
 		home_url(),
 	) ) );
 }
->>>>>>> update

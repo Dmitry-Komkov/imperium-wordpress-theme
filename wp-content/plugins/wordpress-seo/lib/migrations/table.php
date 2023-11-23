@@ -224,10 +224,6 @@ class Table {
 	 * @return string The SQL.
 	 */
 	private function columns_to_str() {
-<<<<<<< HEAD
-		$str    = '';
-=======
->>>>>>> update
 		$fields = [];
 		$len    = \count( $this->columns );
 		for ( $i = 0; $i < $len; $i++ ) {

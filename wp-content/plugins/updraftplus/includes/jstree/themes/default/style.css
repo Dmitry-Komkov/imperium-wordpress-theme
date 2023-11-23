@@ -421,11 +421,7 @@
   background-repeat: repeat-y;
 }
 .jstree-default .jstree-last {
-<<<<<<< HEAD
-  background: transparent;
-=======
   background-image: none;
->>>>>>> update
 }
 .jstree-default .jstree-open > .jstree-ocl {
   background-position: -132px -4px;
@@ -496,11 +492,7 @@
   background-repeat: repeat-y;
 }
 .jstree-default.jstree-rtl .jstree-last {
-<<<<<<< HEAD
-  background: transparent;
-=======
   background-image: none;
->>>>>>> update
 }
 .jstree-default.jstree-rtl .jstree-open > .jstree-ocl {
   background-position: -132px -36px;
@@ -565,11 +557,7 @@
   overflow: hidden;
 }
 .jstree-default .jstree-ellipsis .jstree-anchor {
-<<<<<<< HEAD
-  width: calc(100% - 29px);
-=======
   width: calc(100% - 24px + 5px);
->>>>>>> update
   text-overflow: ellipsis;
   overflow: hidden;
 }
@@ -577,11 +565,7 @@
   background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAACAQMAAAB49I5GAAAABlBMVEUAAAAdHRvEkCwcAAAAAXRSTlMAQObYZgAAAAxJREFUCNdjAAMOBgAAGAAJMwQHdQAAAABJRU5ErkJggg==");
 }
 .jstree-default.jstree-rtl .jstree-last {
-<<<<<<< HEAD
-  background: transparent;
-=======
   background-image: none;
->>>>>>> update
 }
 .jstree-default-small .jstree-node {
   min-height: 18px;
@@ -618,11 +602,7 @@
   background-repeat: repeat-y;
 }
 .jstree-default-small .jstree-last {
-<<<<<<< HEAD
-  background: transparent;
-=======
   background-image: none;
->>>>>>> update
 }
 .jstree-default-small .jstree-open > .jstree-ocl {
   background-position: -135px -7px;
@@ -693,11 +673,7 @@
   background-repeat: repeat-y;
 }
 .jstree-default-small.jstree-rtl .jstree-last {
-<<<<<<< HEAD
-  background: transparent;
-=======
   background-image: none;
->>>>>>> update
 }
 .jstree-default-small.jstree-rtl .jstree-open > .jstree-ocl {
   background-position: -135px -39px;
@@ -762,11 +738,7 @@
   overflow: hidden;
 }
 .jstree-default-small .jstree-ellipsis .jstree-anchor {
-<<<<<<< HEAD
-  width: calc(100% - 23px);
-=======
   width: calc(100% - 18px + 5px);
->>>>>>> update
   text-overflow: ellipsis;
   overflow: hidden;
 }
@@ -774,11 +746,7 @@
   background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAACAQMAAABv1h6PAAAABlBMVEUAAAAdHRvEkCwcAAAAAXRSTlMAQObYZgAAAAxJREFUCNdjAAMHBgAAiABBI4gz9AAAAABJRU5ErkJggg==");
 }
 .jstree-default-small.jstree-rtl .jstree-last {
-<<<<<<< HEAD
-  background: transparent;
-=======
   background-image: none;
->>>>>>> update
 }
 .jstree-default-large .jstree-node {
   min-height: 32px;
@@ -815,11 +783,7 @@
   background-repeat: repeat-y;
 }
 .jstree-default-large .jstree-last {
-<<<<<<< HEAD
-  background: transparent;
-=======
   background-image: none;
->>>>>>> update
 }
 .jstree-default-large .jstree-open > .jstree-ocl {
   background-position: -128px 0px;
@@ -890,11 +854,7 @@
   background-repeat: repeat-y;
 }
 .jstree-default-large.jstree-rtl .jstree-last {
-<<<<<<< HEAD
-  background: transparent;
-=======
   background-image: none;
->>>>>>> update
 }
 .jstree-default-large.jstree-rtl .jstree-open > .jstree-ocl {
   background-position: -128px -32px;
@@ -959,11 +919,7 @@
   overflow: hidden;
 }
 .jstree-default-large .jstree-ellipsis .jstree-anchor {
-<<<<<<< HEAD
-  width: calc(100% - 37px);
-=======
   width: calc(100% - 32px + 5px);
->>>>>>> update
   text-overflow: ellipsis;
   overflow: hidden;
 }
@@ -971,11 +927,7 @@
   background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAACAQMAAAAD0EyKAAAABlBMVEUAAAAdHRvEkCwcAAAAAXRSTlMAQObYZgAAAAxJREFUCNdjgIIGBgABCgCBvVLXcAAAAABJRU5ErkJggg==");
 }
 .jstree-default-large.jstree-rtl .jstree-last {
-<<<<<<< HEAD
-  background: transparent;
-=======
   background-image: none;
->>>>>>> update
 }
 @media (max-width: 768px) {
   #jstree-dnd.jstree-dnd-responsive {
@@ -1126,11 +1078,7 @@
     background-repeat: repeat-y;
   }
   .jstree-default-responsive .jstree-last {
-<<<<<<< HEAD
-    background: transparent;
-=======
     background-image: none;
->>>>>>> update
   }
   .jstree-default-responsive .jstree-leaf > .jstree-ocl {
     background-position: -40px -120px;

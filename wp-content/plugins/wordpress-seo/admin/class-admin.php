@@ -5,11 +5,7 @@
  * @package WPSEO\Admin
  */
 
-<<<<<<< HEAD
-use Yoast\WP\SEO\Helpers\Wordpress_Helper;
-=======
 use Yoast\WP\SEO\Integrations\Settings_Integration;
->>>>>>> update
 
 /**
  * Class that holds most of the admin functionality for Yoast SEO.
@@ -90,12 +86,8 @@ class WPSEO_Admin {
 		}
 
 		$this->admin_features = [
-<<<<<<< HEAD
-			'dashboard_widget' => new Yoast_Dashboard_Widget(),
-=======
 			'dashboard_widget'         => new Yoast_Dashboard_Widget(),
 			'wincher_dashboard_widget' => new Wincher_Dashboard_Widget(),
->>>>>>> update
 		];
 
 		if ( WPSEO_Metabox::is_post_overview( $pagenow ) || WPSEO_Metabox::is_post_edit( $pagenow ) ) {
@@ -148,13 +140,9 @@ class WPSEO_Admin {
 	 * Register assets needed on admin pages.
 	 */
 	public function enqueue_assets() {
-<<<<<<< HEAD
-		if ( filter_input( INPUT_GET, 'page' ) === 'wpseo_licenses' ) {
-=======
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Reason: We are not processing form data.
 		$page = isset( $_GET['page'] ) && is_string( $_GET['page'] ) ? sanitize_text_field( wp_unslash( $_GET['page'] ) ) : '';
 		if ( $page === 'wpseo_licenses' ) {
->>>>>>> update
 			$asset_manager = new WPSEO_Admin_Asset_Manager();
 			$asset_manager->enqueue_style( 'extensions' );
 		}
@@ -181,11 +169,7 @@ class WPSEO_Admin {
 		// phpcs:ignore WordPress.Security -- The variable is only used in strpos and thus safe to not unslash or sanitize.
 		$option_page = ! empty( $_POST['option_page'] ) ? $_POST['option_page'] : '';
 
-<<<<<<< HEAD
-		if ( strpos( $option_page, 'yoast_wpseo' ) === 0 ) {
-=======
 		if ( strpos( $option_page, 'yoast_wpseo' ) === 0 || strpos( $option_page, Settings_Integration::PAGE ) === 0 ) {
->>>>>>> update
 			add_filter( 'option_page_capability_' . $option_page, [ $this, 'get_manage_options_cap' ] );
 		}
 	}
@@ -230,11 +214,8 @@ class WPSEO_Admin {
 	 * @return array
 	 */
 	public function add_action_link( $links, $file ) {
-<<<<<<< HEAD
-=======
 		$first_time_configuration_notice_helper = \YoastSEO()->helpers->first_time_configuration_notice;
 
->>>>>>> update
 		if ( $file === WPSEO_BASENAME && WPSEO_Capability_Utils::current_user_can( 'wpseo_manage_options' ) ) {
 			if ( is_network_admin() ) {
 				$settings_url = network_admin_url( 'admin.php?page=' . self::PAGE_IDENTIFIER );
@@ -250,8 +231,6 @@ class WPSEO_Admin {
 		$faq_link = '<a href="' . esc_url( WPSEO_Shortlinker::get( 'https://yoa.st/1yc' ) ) . '" target="_blank">' . __( 'FAQ', 'wordpress-seo' ) . '</a>';
 		array_unshift( $links, $faq_link );
 
-<<<<<<< HEAD
-=======
 		if ( $first_time_configuration_notice_helper->first_time_configuration_not_finished() && ! is_network_admin() ) {
 			$configuration_title = ( ! $first_time_configuration_notice_helper->should_show_alternate_message() ) ? 'first-time configuration' : 'SEO configuration';
 			/* translators: CTA to finish the first time configuration. %s: Either first-time SEO configuration or SEO configuration. */
@@ -260,7 +239,6 @@ class WPSEO_Admin {
 			array_unshift( $links, $ftc_link );
 		}
 
->>>>>>> update
 		$addon_manager = new WPSEO_Addon_Manager();
 		if ( YoastSEO()->helpers->product->is_premium() ) {
 
@@ -286,11 +264,7 @@ class WPSEO_Admin {
 		}
 
 		// Add link to premium landing page.
-<<<<<<< HEAD
-		$premium_link = '<a style="font-weight: bold;" href="' . esc_url( WPSEO_Shortlinker::get( 'https://yoa.st/1yb' ) ) . '" target="_blank">' . __( 'Get Premium', 'wordpress-seo' ) . '</a>';
-=======
 		$premium_link = '<a style="font-weight: bold;" href="' . esc_url( WPSEO_Shortlinker::get( 'https://yoa.st/1yb' ) ) . '" target="_blank" data-action="load-nfd-ctb" data-ctb-id="f6a84663-465f-4cb5-8ba5-f7a6d72224b2">' . __( 'Get Premium', 'wordpress-seo' ) . '</a>';
->>>>>>> update
 		array_unshift( $links, $premium_link );
 
 		return $links;
@@ -341,21 +315,8 @@ class WPSEO_Admin {
 	 * Log the updated timestamp for user profiles when theme is changed.
 	 */
 	public function switch_theme() {
-<<<<<<< HEAD
-		$wordpress_helper  = new Wordpress_Helper();
-		$wordpress_version = $wordpress_helper->get_wordpress_version();
-
-		// Capability queries were only introduced in WP 5.9.
-		if ( version_compare( $wordpress_version, '5.8.99', '<' ) ) {
-			$users = get_users( [ 'who' => 'authors' ] );
-		}
-		else {
-			$users = get_users( [ 'capability' => [ 'edit_posts' ] ] );
-		}
-=======
 
 		$users = get_users( [ 'capability' => [ 'edit_posts' ] ] );
->>>>>>> update
 
 		if ( is_array( $users ) && $users !== [] ) {
 			foreach ( $users as $user ) {
@@ -374,11 +335,7 @@ class WPSEO_Admin {
 			[
 				'isRtl'                   => is_rtl(),
 				'variable_warning'        => sprintf(
-<<<<<<< HEAD
-					/* translators: %1$s: '%%term_title%%' variable used in titles and meta's template that's not compatible with the given template, %2$s: expands to 'HelpScout beacon' */
-=======
 				/* translators: %1$s: '%%term_title%%' variable used in titles and meta's template that's not compatible with the given template, %2$s: expands to 'HelpScout beacon' */
->>>>>>> update
 					__( 'Warning: the variable %1$s cannot be used in this template. See the %2$s for more info.', 'wordpress-seo' ),
 					'<code>%s</code>',
 					'HelpScout beacon'

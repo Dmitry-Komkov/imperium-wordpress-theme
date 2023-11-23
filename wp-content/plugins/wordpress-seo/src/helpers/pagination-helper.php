@@ -67,9 +67,6 @@ class Pagination_Helper {
 	public function get_paginated_url( $url, $page, $add_pagination_base = true, $pagination_query_name = 'page' ) {
 		$wp_rewrite = $this->wp_rewrite_wrapper->get();
 
-<<<<<<< HEAD
-		if ( $wp_rewrite->using_permalinks() ) {
-=======
 		$key_query_loop = $this->get_key_query_loop();
 		if ( $key_query_loop ) {
 			$pagination_query_name = $key_query_loop;
@@ -93,7 +90,6 @@ class Pagination_Helper {
 				return \add_query_arg( $query_parts, \user_trailingslashit( $url . $page ) );
 			}
 
->>>>>>> update
 			$url = \trailingslashit( $url );
 			if ( $add_pagination_base ) {
 				$url .= \trailingslashit( $wp_rewrite->pagination_base );
@@ -122,11 +118,6 @@ class Pagination_Helper {
 	 * @return int The current archive page.
 	 */
 	public function get_current_archive_page_number() {
-<<<<<<< HEAD
-		$wp_query = $this->wp_query_wrapper->get_main_query();
-
-		return (int) $wp_query->get( 'paged' );
-=======
 		$wp_query    = $this->wp_query_wrapper->get_main_query();
 		$page_number = (int) $wp_query->get( 'paged' );
 		if ( $page_number > 1 ) {
@@ -139,7 +130,6 @@ class Pagination_Helper {
 			return $query_loop_page_number;
 		}
 		return 0;
->>>>>>> update
 	}
 
 	/**
@@ -150,15 +140,12 @@ class Pagination_Helper {
 	public function get_current_post_page_number() {
 		$wp_query = $this->wp_query_wrapper->get_main_query();
 
-<<<<<<< HEAD
-=======
 		$query_loop_page_number = $this->get_page_number_from_query_loop();
 
 		if ( $query_loop_page_number ) {
 			return $query_loop_page_number;
 		}
 
->>>>>>> update
 		return (int) $wp_query->get( 'page' );
 	}
 
@@ -174,11 +161,6 @@ class Pagination_Helper {
 			return $page_number;
 		}
 
-<<<<<<< HEAD
-		// Get the page number for a page in a paginated post.
-		return \get_query_var( 'page', 1 );
-	}
-=======
 		$query_loop_page_number = $this->get_page_number_from_query_loop();
 
 		if ( $query_loop_page_number ) {
@@ -222,5 +204,4 @@ class Pagination_Helper {
 		}
 		return '';
 	}
->>>>>>> update
 }

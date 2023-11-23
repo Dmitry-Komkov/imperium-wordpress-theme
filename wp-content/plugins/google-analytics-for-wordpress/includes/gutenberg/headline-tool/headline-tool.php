@@ -61,26 +61,18 @@ class MonsterInsightsHeadlineToolPlugin {
 				array( 'html' => $content, 'analysed' => false )
 			);
 		} else {
-<<<<<<< HEAD
-
-=======
 			if(!isset($_REQUEST['q'])){
 				wp_send_json_error(
 					array( 'html' => '', 'analysed' => false )
 				);
 			}
 			$q = (isset($_REQUEST['q'])) ? sanitize_text_field($_REQUEST['q']) : '';
->>>>>>> update
 			// send the response
 			wp_send_json_success(
 				array(
 					'result'   => $result,
 					'analysed' => ! $result->err,
-<<<<<<< HEAD
-					'sentence' => ucwords( wp_unslash( sanitize_text_field( $_REQUEST['q'] ) ) ),
-=======
 					'sentence' => ucwords( wp_unslash( $q ) ),
->>>>>>> update
 					'score'    => ( isset( $result->score ) && ! empty( $result->score ) ) ? $result->score : 0
 				)
 			);
@@ -97,9 +89,6 @@ class MonsterInsightsHeadlineToolPlugin {
 		foreach ( $words as $wrd ) {
 			// check if $wrd is a phrase
 			if ( strpos( $wrd, ' ' ) !== false ) {
-<<<<<<< HEAD
-				if ( strpos( $sentence, $wrd ) !== false ) {
-=======
 				$word_position = strpos( $sentence, $wrd );
 
 				// Word not found in the sentence.
@@ -115,7 +104,6 @@ class MonsterInsightsHeadlineToolPlugin {
 
 				// If it is a phrase then the next character must end of sentence or a space.
 				if ( $is_end || $is_space ) {
->>>>>>> update
 					$ret[] = $wrd;
 				}
 			} // if $wrd is a single word
@@ -134,11 +122,7 @@ class MonsterInsightsHeadlineToolPlugin {
 	 * @return Object
 	 */
 	function get_headline_scores() {
-<<<<<<< HEAD
-		$input = sanitize_text_field( @$_REQUEST['q'] );
-=======
 		$input = (isset($_REQUEST['q'])) ? sanitize_text_field($_REQUEST['q']) : '';
->>>>>>> update
 
 		// init the result array
 		$result                   = new \stdClass();
@@ -382,21 +366,12 @@ class MonsterInsightsHeadlineToolPlugin {
 
 		if ( ! empty( $_SERVER['HTTP_CLIENT_IP'] ) ) {
 			//check ip from share internet
-<<<<<<< HEAD
-			$ip = $_SERVER['HTTP_CLIENT_IP'];
-		} elseif ( ! empty( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) {
-			//to check ip is pass from proxy
-			$ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
-		} elseif ( ! empty( $_SERVER['REMOTE_ADDR'] ) ) {
-			$ip = $_SERVER['REMOTE_ADDR'];
-=======
 			$ip = sanitize_text_field(wp_unslash($_SERVER['HTTP_CLIENT_IP']));
 		} elseif ( ! empty( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) {
 			//to check ip is pass from proxy
 			$ip = sanitize_text_field(wp_unslash($_SERVER['HTTP_X_FORWARDED_FOR']));
 		} elseif ( ! empty( $_SERVER['REMOTE_ADDR'] ) ) {
 			$ip = sanitize_text_field(wp_unslash($_SERVER['REMOTE_ADDR']));
->>>>>>> update
 		}
 
 		// Fix potential CSV returned from $_SERVER variables

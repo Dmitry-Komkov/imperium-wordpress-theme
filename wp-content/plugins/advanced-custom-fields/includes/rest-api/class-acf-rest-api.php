@@ -237,8 +237,6 @@ class ACF_Rest_Api {
 			}
 		}
 
-<<<<<<< HEAD
-=======
 		/**
 		 * Reset the store so that REST API values (which may be preloaded
 		 * by WP core and have different values than standard values) aren't
@@ -246,7 +244,6 @@ class ACF_Rest_Api {
 		 */
 		acf_get_store( 'values' )->reset();
 
->>>>>>> update
 		return $fields;
 	}
 

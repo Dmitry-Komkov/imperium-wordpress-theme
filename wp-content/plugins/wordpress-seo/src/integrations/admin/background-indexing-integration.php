@@ -11,13 +11,9 @@ use Yoast\WP\SEO\Actions\Indexing\Post_Link_Indexing_Action;
 use Yoast\WP\SEO\Actions\Indexing\Term_Link_Indexing_Action;
 use Yoast\WP\SEO\Conditionals\Get_Request_Conditional;
 use Yoast\WP\SEO\Conditionals\Migrations_Conditional;
-<<<<<<< HEAD
-use Yoast\WP\SEO\Conditionals\Yoast_Admin_And_Dashboard_Conditional;
-=======
 use Yoast\WP\SEO\Conditionals\WP_CRON_Enabled_Conditional;
 use Yoast\WP\SEO\Conditionals\Yoast_Admin_And_Dashboard_Conditional;
 use Yoast\WP\SEO\Helpers\Indexable_Helper;
->>>>>>> update
 use Yoast\WP\SEO\Helpers\Indexing_Helper;
 use Yoast\WP\SEO\Integrations\Integration_Interface;
 
@@ -85,8 +81,6 @@ class Background_Indexing_Integration implements Integration_Interface {
 	protected $indexing_helper;
 
 	/**
-<<<<<<< HEAD
-=======
 	 * An object that checks if we are on the Yoast admin or on the dashboard page.
 	 *
 	 * @var Yoast_Admin_And_Dashboard_Conditional
@@ -115,36 +109,19 @@ class Background_Indexing_Integration implements Integration_Interface {
 	private $indexable_helper;
 
 	/**
->>>>>>> update
 	 * Returns the conditionals based on which this integration should be active.
 	 *
 	 * @return array The array of conditionals.
 	 */
 	public static function get_conditionals() {
 		return [
-<<<<<<< HEAD
-			Yoast_Admin_And_Dashboard_Conditional::class,
 			Migrations_Conditional::class,
-			Get_Request_Conditional::class,
-=======
-			Migrations_Conditional::class,
->>>>>>> update
 		];
 	}
 
 	/**
 	 * Shutdown_Indexing_Integration constructor.
 	 *
-<<<<<<< HEAD
-	 * @param Indexable_Post_Indexation_Action              $post_indexation              The post indexing action.
-	 * @param Indexable_Term_Indexation_Action              $term_indexation              The term indexing action.
-	 * @param Indexable_Post_Type_Archive_Indexation_Action $post_type_archive_indexation The post type archive indexing action.
-	 * @param Indexable_General_Indexation_Action           $general_indexation           The general indexing action.
-	 * @param Indexable_Indexing_Complete_Action            $complete_indexation_action   The complete indexing action.
-	 * @param Post_Link_Indexing_Action                     $post_link_indexing_action    The post indexing action.
-	 * @param Term_Link_Indexing_Action                     $term_link_indexing_action    The term indexing action.
-	 * @param Indexing_Helper                               $indexing_helper              The indexing helper.
-=======
 	 * @param Indexable_Post_Indexation_Action              $post_indexation                       The post indexing action.
 	 * @param Indexable_Term_Indexation_Action              $term_indexation                       The term indexing action.
 	 * @param Indexable_Post_Type_Archive_Indexation_Action $post_type_archive_indexation          The post type archive indexing action.
@@ -157,7 +134,6 @@ class Background_Indexing_Integration implements Integration_Interface {
 	 * @param Yoast_Admin_And_Dashboard_Conditional         $yoast_admin_and_dashboard_conditional An object that checks if we are on the Yoast admin or on the dashboard page.
 	 * @param Get_Request_Conditional                       $get_request_conditional               An object that checks if we are handling a GET request.
 	 * @param WP_CRON_Enabled_Conditional                   $wp_cron_enabled_conditional           An object that checks if WP_CRON is enabled.
->>>>>>> update
 	 */
 	public function __construct(
 		Indexable_Post_Indexation_Action $post_indexation,
@@ -167,18 +143,6 @@ class Background_Indexing_Integration implements Integration_Interface {
 		Indexable_Indexing_Complete_Action $complete_indexation_action,
 		Post_Link_Indexing_Action $post_link_indexing_action,
 		Term_Link_Indexing_Action $term_link_indexing_action,
-<<<<<<< HEAD
-		Indexing_Helper $indexing_helper
-	) {
-		$this->post_indexation              = $post_indexation;
-		$this->term_indexation              = $term_indexation;
-		$this->post_type_archive_indexation = $post_type_archive_indexation;
-		$this->general_indexation           = $general_indexation;
-		$this->complete_indexation_action   = $complete_indexation_action;
-		$this->post_link_indexing_action    = $post_link_indexing_action;
-		$this->term_link_indexing_action    = $term_link_indexing_action;
-		$this->indexing_helper              = $indexing_helper;
-=======
 		Indexing_Helper $indexing_helper,
 		Indexable_Helper $indexable_helper,
 		Yoast_Admin_And_Dashboard_Conditional $yoast_admin_and_dashboard_conditional,
@@ -197,16 +161,12 @@ class Background_Indexing_Integration implements Integration_Interface {
 		$this->yoast_admin_and_dashboard_conditional = $yoast_admin_and_dashboard_conditional;
 		$this->get_request_conditional               = $get_request_conditional;
 		$this->wp_cron_enabled_conditional           = $wp_cron_enabled_conditional;
->>>>>>> update
 	}
 
 	/**
 	 * Register hooks.
 	 */
 	public function register_hooks() {
-<<<<<<< HEAD
-		\add_action( 'admin_init', [ $this, 'register_shutdown_indexing' ], 10 );
-=======
 		\add_action( 'admin_init', [ $this, 'register_shutdown_indexing' ] );
 		\add_action( 'wpseo_indexable_index_batch', [ $this, 'index' ] );
 		// phpcs:ignore WordPress.WP.CronInterval -- The sniff doesn't understand values with parentheses. https://github.com/WordPress/WordPress-Coding-Standards/issues/2025
@@ -227,7 +187,6 @@ class Background_Indexing_Integration implements Integration_Interface {
 		\add_filter( 'wpseo_term_indexation_limit', [ $this, 'throttle_cron_indexing' ] );
 		\add_filter( 'wpseo_prominent_words_indexation_limit', [ $this, 'throttle_cron_indexing' ] );
 		\add_filter( 'wpseo_link_indexing_limit', [ $this, 'throttle_cron_link_indexing' ] );
->>>>>>> update
 	}
 
 	/**
@@ -237,11 +196,7 @@ class Background_Indexing_Integration implements Integration_Interface {
 	 */
 	public function register_shutdown_indexing() {
 		if ( $this->should_index_on_shutdown( $this->get_shutdown_limit() ) ) {
-<<<<<<< HEAD
-			\register_shutdown_function( [ $this, 'index' ] );
-=======
 			$this->register_shutdown_function( 'index' );
->>>>>>> update
 		}
 	}
 
@@ -251,24 +206,18 @@ class Background_Indexing_Integration implements Integration_Interface {
 	 * @return void
 	 */
 	public function index() {
-<<<<<<< HEAD
-=======
 		if ( \wp_doing_cron() && ! $this->should_index_on_cron() ) {
 			$this->unschedule_cron_indexing();
 
 			return;
 		}
 
->>>>>>> update
 		$this->post_indexation->index();
 		$this->term_indexation->index();
 		$this->general_indexation->index();
 		$this->post_type_archive_indexation->index();
 		$this->post_link_indexing_action->index();
 		$this->term_link_indexing_action->index();
-<<<<<<< HEAD
-		$this->complete_indexation_action->complete();
-=======
 
 		if ( $this->indexing_helper->get_limited_filtered_unindexed_count_background( 1 ) === 0 ) {
 			// We set this as complete, even though prominent words might not be complete. But that's the way we always treated that.
@@ -403,7 +352,6 @@ class Background_Indexing_Integration implements Integration_Interface {
 		}
 
 		return true;
->>>>>>> update
 	}
 
 	/**
@@ -421,18 +369,6 @@ class Background_Indexing_Integration implements Integration_Interface {
 	}
 
 	/**
-<<<<<<< HEAD
-	 * Determine whether background indexation should be performed.
-	 *
-	 * @param int $shutdown_limit The shutdown limit used to determine whether indexation should be run.
-	 *
-	 * @return bool Should background indexation be performed.
-	 */
-	public function should_index_on_shutdown( $shutdown_limit ) {
-		$total = $this->indexing_helper->get_limited_filtered_unindexed_count( $shutdown_limit );
-
-		return ( $total > 0 && $total < $shutdown_limit );
-=======
 	 * Removes the cron indexing job from the scheduled event queue.
 	 *
 	 * @return void
@@ -454,6 +390,5 @@ class Background_Indexing_Integration implements Integration_Interface {
 	 */
 	protected function register_shutdown_function( $method_name ) {
 		\register_shutdown_function( [ $this, $method_name ] );
->>>>>>> update
 	}
 }

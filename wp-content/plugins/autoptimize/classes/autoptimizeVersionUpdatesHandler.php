@@ -64,15 +64,12 @@ class autoptimizeVersionUpdatesHandler
                     $this->upgrade_from_2_9_before_compatibility();
                 }
                 $major_update = false;
-<<<<<<< HEAD
-=======
                 // No break, intentionally, so all upgrades are ran during a single request...
             case '3.0':
                 // nothing.
             case '3.1':
                 $this->upgrade_from_3_1();
                 $major_update = false;
->>>>>>> update
         }
 
         if ( true === $major_update ) {
@@ -290,8 +287,6 @@ class autoptimizeVersionUpdatesHandler
     private function upgrade_from_2_9_before_compatibility() {
         autoptimizeOptionWrapper::update_option( 'autoptimize_installed_before_compatibility', true );
     }
-<<<<<<< HEAD
-=======
 
     /**
      * If the 404 handler is active, delete the current PHP-file so it can be re-created to fix the double underscore bug.
@@ -302,5 +297,4 @@ class autoptimizeVersionUpdatesHandler
             @unlink( $_fallback_php ); // @codingStandardsIgnoreLine
         }
     }
->>>>>>> update
 }

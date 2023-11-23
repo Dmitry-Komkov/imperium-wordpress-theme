@@ -2,11 +2,8 @@
 
 namespace Yoast\WP\SEO\Helpers;
 
-<<<<<<< HEAD
-=======
 use WP_Post_Type;
 
->>>>>>> update
 /**
  * A helper object for post types.
  */
@@ -46,8 +43,6 @@ class Post_Type_Helper {
 	}
 
 	/**
-<<<<<<< HEAD
-=======
 	 * Checks if the request post type has the Yoast Metabox enabled.
 	 *
 	 * @param string $post_type_name The name of the post type to lookup.
@@ -59,7 +54,6 @@ class Post_Type_Helper {
 	}
 
 	/**
->>>>>>> update
 	 * Returns an array with the public post types.
 	 *
 	 * @codeCoverageIgnore It only wraps a WordPress function.
@@ -106,17 +100,10 @@ class Post_Type_Helper {
 	 */
 	public function get_excluded_post_types_for_indexables() {
 		/**
-<<<<<<< HEAD
-		 * Filter: 'wpseo_indexable_excluded_post_types' - Allow developers to prevent posts of a certain post
-		 * type from being saved to the indexable table.
-		 *
-		 * @param array $excluded_post_types The currently excluded post types.
-=======
 		 * Filter: 'wpseo_indexable_excluded_post_types' - Allows excluding posts of a certain post
 		 * type from being saved to the indexable table.
 		 *
 		 * @api array $excluded_post_types The currently excluded post types that indexables will not be created for.
->>>>>>> update
 		 */
 		$excluded_post_types = \apply_filters( 'wpseo_indexable_excluded_post_types', [] );
 
@@ -142,11 +129,7 @@ class Post_Type_Helper {
 	/**
 	 * Checks if the post type with the given name has an archive page.
 	 *
-<<<<<<< HEAD
-	 * @param \WP_Post_Type|string $post_type The name of the post type to check.
-=======
 	 * @param WP_Post_Type|string $post_type The name of the post type to check.
->>>>>>> update
 	 *
 	 * @return bool True when the post type has an archive page.
 	 */
@@ -157,8 +140,6 @@ class Post_Type_Helper {
 
 		return ( ! empty( $post_type->has_archive ) );
 	}
-<<<<<<< HEAD
-=======
 
 	/**
 	 * Returns the post types that should be indexed.
@@ -267,5 +248,4 @@ class Post_Type_Helper {
 
 		return $post_type_objects;
 	}
->>>>>>> update
 }

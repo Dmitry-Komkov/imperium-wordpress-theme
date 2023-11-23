@@ -23,11 +23,8 @@ if ( ! class_exists( 'ACF_Admin' ) ) :
 			add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 			add_action( 'admin_body_class', array( $this, 'admin_body_class' ) );
 			add_action( 'current_screen', array( $this, 'current_screen' ) );
-<<<<<<< HEAD
-=======
 			add_filter( 'parent_file', array( $this, 'ensure_menu_selection' ) );
 			add_filter( 'submenu_file', array( $this, 'ensure_submenu_selection' ) );
->>>>>>> update
 		}
 
 		/**
@@ -35,16 +32,8 @@ if ( ! class_exists( 'ACF_Admin' ) ) :
 		 *
 		 * @date    28/09/13
 		 * @since   5.0.0
-<<<<<<< HEAD
-		 *
-		 * @param   void
-		 * @return  void
-		 */
-		function admin_menu() {
-=======
 		 */
 		public function admin_menu() {
->>>>>>> update
 
 			// Bail early if ACF is hidden.
 			if ( ! acf_get_setting( 'show_admin' ) ) {
@@ -52,21 +41,11 @@ if ( ! class_exists( 'ACF_Admin' ) ) :
 			}
 
 			// Vars.
-<<<<<<< HEAD
-			$slug = 'edit.php?post_type=acf-field-group';
-			$cap  = acf_get_setting( 'capability' );
-
-			// Add menu items.
-			add_menu_page( __( 'Custom Fields', 'acf' ), __( 'Custom Fields', 'acf' ), $cap, $slug, false, 'dashicons-welcome-widgets-menus', 80 );
-			add_submenu_page( $slug, __( 'Field Groups', 'acf' ), __( 'Field Groups', 'acf' ), $cap, $slug );
-			add_submenu_page( $slug, __( 'Add New', 'acf' ), __( 'Add New', 'acf' ), $cap, 'post-new.php?post_type=acf-field-group' );
-=======
 			$cap         = acf_get_setting( 'capability' );
 			$parent_slug = 'edit.php?post_type=acf-field-group';
 
 			// Add menu items.
 			add_menu_page( __( 'ACF', 'acf' ), __( 'ACF', 'acf' ), $cap, $parent_slug, false, 'dashicons-welcome-widgets-menus', 80 );
->>>>>>> update
 		}
 
 		/**
@@ -91,11 +70,7 @@ if ( ! class_exists( 'ACF_Admin' ) ) :
 		 * @param   string $classes Space-separated list of CSS classes.
 		 * @return  string
 		 */
-<<<<<<< HEAD
-		function admin_body_class( $classes ) {
-=======
 		public function admin_body_class( $classes ) {
->>>>>>> update
 			global $wp_version;
 
 			// Determine body class version.
@@ -107,11 +82,7 @@ if ( ! class_exists( 'ACF_Admin' ) ) :
 			}
 
 			// Add browser for specific CSS.
-<<<<<<< HEAD
-			$classes .= ' acf-browser-' . acf_get_browser();
-=======
 			$classes .= ' acf-browser-' . esc_attr( acf_get_browser() );
->>>>>>> update
 
 			// Return classes.
 			return $classes;
@@ -126,15 +97,6 @@ if ( ! class_exists( 'ACF_Admin' ) ) :
 		 * @param   void
 		 * @return  void
 		 */
-<<<<<<< HEAD
-		function current_screen( $screen ) {
-
-			// Determine if the current page being viewed is "ACF" related.
-			if ( isset( $screen->post_type ) && $screen->post_type === 'acf-field-group' ) {
-				add_action( 'in_admin_header', array( $this, 'in_admin_header' ) );
-				add_filter( 'admin_footer_text', array( $this, 'admin_footer_text' ) );
-				$this->setup_help_tab();
-=======
 		public function current_screen( $screen ) {
 			// Determine if the current page being viewed is "ACF" related.
 			if ( isset( $screen->post_type ) && in_array( $screen->post_type, acf_get_internal_post_types(), true ) ) {
@@ -143,7 +105,6 @@ if ( ! class_exists( 'ACF_Admin' ) ) :
 				add_filter( 'update_footer', array( $this, 'admin_footer_version_text' ) );
 				$this->setup_help_tab();
 				$this->maybe_show_import_from_cptui_notice();
->>>>>>> update
 			}
 		}
 
@@ -169,11 +130,7 @@ if ( ! class_exists( 'ACF_Admin' ) ) :
 						'<p>' . __( 'The Advanced Custom Fields plugin provides a visual form builder to customize WordPress edit screens with extra fields, and an intuitive API to display custom field values in any theme template file.', 'acf' ) . '</p>' .
 						'<p>' . sprintf(
 							__( 'Before creating your first Field Group, we recommend first reading our <a href="%s" target="_blank">Getting started</a> guide to familiarize yourself with the plugin\'s philosophy and best practises.', 'acf' ),
-<<<<<<< HEAD
-							'https://www.advancedcustomfields.com/resources/getting-started-with-acf/'
-=======
 							acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/resources/getting-started-with-acf/', 'docs', 'help-tab' )
->>>>>>> update
 						) . '</p>' .
 						'<p>' . __( 'Please use the Help & Support tab to get in touch should you find yourself requiring assistance.', 'acf' ) . '</p>' .
 						'',
@@ -191,17 +148,6 @@ if ( ! class_exists( 'ACF_Admin' ) ) :
 						'<ul>' .
 							'<li>' . sprintf(
 								__( '<a href="%s" target="_blank">Documentation</a>. Our extensive documentation contains references and guides for most situations you may encounter.', 'acf' ),
-<<<<<<< HEAD
-								'https://www.advancedcustomfields.com/resources/'
-							) . '</li>' .
-							'<li>' . sprintf(
-								__( '<a href="%s" target="_blank">Discussions</a>. We have an active and friendly community on our Community Forums who may be able to help you figure out the ‘how-tos’ of the ACF world.', 'acf' ),
-								'https://support.advancedcustomfields.com/'
-							) . '</li>' .
-							'<li>' . sprintf(
-								__( '<a href="%s" target="_blank">Help Desk</a>. The support professionals on our Help Desk will assist with your more in depth, technical challenges.', 'acf' ),
-								'https://www.advancedcustomfields.com/support/'
-=======
 								acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/resources/', 'docs', 'help-tab' )
 							) . '</li>' .
 							'<li>' . sprintf(
@@ -211,7 +157,6 @@ if ( ! class_exists( 'ACF_Admin' ) ) :
 							'<li>' . sprintf(
 								__( '<a href="%s" target="_blank">Help Desk</a>. The support professionals on our Help Desk will assist with your more in depth, technical challenges.', 'acf' ),
 								acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/support/', 'docs', 'help-tab' )
->>>>>>> update
 							) . '</li>' .
 						'</ul>',
 				)
@@ -222,18 +167,12 @@ if ( ! class_exists( 'ACF_Admin' ) ) :
 				'<p><strong>' . __( 'Information', 'acf' ) . '</strong></p>' .
 				'<p><span class="dashicons dashicons-admin-plugins"></span> ' . sprintf( __( 'Version %s', 'acf' ), ACF_VERSION ) . '</p>' .
 				'<p><span class="dashicons dashicons-wordpress"></span> <a href="https://wordpress.org/plugins/advanced-custom-fields/" target="_blank">' . __( 'View details', 'acf' ) . '</a></p>' .
-<<<<<<< HEAD
-				'<p><span class="dashicons dashicons-admin-home"></span> <a href="https://www.advancedcustomfields.com/" target="_blank" target="_blank">' . __( 'Visit website', 'acf' ) . '</a></p>' .
-=======
 				'<p><span class="dashicons dashicons-admin-home"></span> <a href="' . acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/', 'docs', 'help-tab' ) . '" target="_blank" target="_blank">' . __( 'Visit website', 'acf' ) . '</a></p>' .
->>>>>>> update
 				''
 			);
 		}
 
 		/**
-<<<<<<< HEAD
-=======
 		 * Shows a notice to import post types and taxonomies from CPTUI if that plugin is active.
 		 *
 		 * @since 6.1
@@ -261,7 +200,6 @@ if ( ! class_exists( 'ACF_Admin' ) ) :
 		}
 
 		/**
->>>>>>> update
 		 * Renders the admin navigation element.
 		 *
 		 * @date    27/3/20
@@ -271,9 +209,6 @@ if ( ! class_exists( 'ACF_Admin' ) ) :
 		 * @return  void
 		 */
 		function in_admin_header() {
-<<<<<<< HEAD
-			acf_get_view( 'html-admin-navigation' );
-=======
 			acf_get_view( 'global/navigation' );
 
 			$screen = get_current_screen();
@@ -283,7 +218,6 @@ if ( ! class_exists( 'ACF_Admin' ) ) :
 			}
 
 			do_action( 'acf/in_admin_header' );
->>>>>>> update
 		}
 
 		/**
@@ -292,14 +226,6 @@ if ( ! class_exists( 'ACF_Admin' ) ) :
 		 * @date    7/4/20
 		 * @since   5.9.0
 		 *
-<<<<<<< HEAD
-		 * @param   string $text The admin footer text.
-		 * @return  string
-		 */
-		function admin_footer_text( $text ) {
-			// Use RegExp to append "ACF" after the <a> element allowing translations to read correctly.
-			return preg_replace( '/(<a[\S\s]+?\/a>)/', '$1 ' . __( 'and', 'acf' ) . ' <a href="https://www.advancedcustomfields.com" target="_blank">ACF</a>', $text, 1 );
-=======
 		 * @param   string $text The current admin footer text.
 		 * @return  string
 		 */
@@ -376,7 +302,6 @@ if ( ! class_exists( 'ACF_Admin' ) ) :
 				return str_replace( 'post-new', 'edit', $submenu_file );
 			}
 			return $submenu_file;
->>>>>>> update
 		}
 
 	}

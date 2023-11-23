@@ -21,12 +21,6 @@ if ( ! class_exists( 'acf_field_link' ) ) :
 		function initialize() {
 
 			// vars
-<<<<<<< HEAD
-			$this->name     = 'link';
-			$this->label    = __( 'Link', 'acf' );
-			$this->category = 'relational';
-			$this->defaults = array(
-=======
 			$this->name          = 'link';
 			$this->label         = __( 'Link', 'acf' );
 			$this->category      = 'relational';
@@ -34,7 +28,6 @@ if ( ! class_exists( 'acf_field_link' ) ) :
 			$this->preview_image = acf_get_url() . '/assets/images/field-type-previews/field-preview-link.png';
 			$this->doc_url       = acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/resources/link/', 'docs', 'field-type-selection' );
 			$this->defaults      = array(
->>>>>>> update
 				'return_format' => 'array',
 			);
 
@@ -127,11 +120,7 @@ if ( ! class_exists( 'acf_field_link' ) ) :
 			echo esc_textarea('<a href="'.$link['url'].'" target="'.$link['target'].'">'.$link['title'].'</a>');
 			?></textarea>*/
 			?>
-<<<<<<< HEAD
-<div <?php acf_esc_attr_e( $div ); ?>>
-=======
 <div <?php echo acf_esc_attrs( $div ); ?>>
->>>>>>> update
 	
 	<div class="acf-hidden">
 		<a class="link-node" href="<?php echo esc_url( $link['url'] ); ?>" target="<?php echo esc_attr( $link['target'] ); ?>"><?php echo esc_html( $link['title'] ); ?></a>
@@ -174,14 +163,7 @@ if ( ! class_exists( 'acf_field_link' ) ) :
 		*
 		*  @param   $field  - an array holding all the field's data
 		*/
-<<<<<<< HEAD
-
 		function render_field_settings( $field ) {
-
-			// return_format
-=======
-		function render_field_settings( $field ) {
->>>>>>> update
 			acf_render_field_setting(
 				$field,
 				array(
@@ -199,10 +181,6 @@ if ( ! class_exists( 'acf_field_link' ) ) :
 
 		}
 
-<<<<<<< HEAD
-
-=======
->>>>>>> update
 		/*
 		*  format_value()
 		*

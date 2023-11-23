@@ -1,14 +1,8 @@
 <?php
 
-<<<<<<< HEAD
-namespace YoastSEO_Vendor\GuzzleHttp\Promise;
-
-use Exception;
-=======
 declare (strict_types=1);
 namespace YoastSEO_Vendor\GuzzleHttp\Promise;
 
->>>>>>> update
 use Generator;
 use Throwable;
 /**
@@ -32,11 +26,7 @@ use Throwable;
  *         $value = (yield createPromise('a'));
  *         try {
  *             $value = (yield createPromise($value . 'b'));
-<<<<<<< HEAD
- *         } catch (\Exception $e) {
-=======
  *         } catch (\Throwable $e) {
->>>>>>> update
  *             // The promise was rejected.
  *         }
  *         yield $value . 'c';
@@ -49,11 +39,7 @@ use Throwable;
  *
  * @return Promise
  *
-<<<<<<< HEAD
- * @link https://github.com/petkaantonov/bluebird/blob/master/API.md#generators inspiration
-=======
  * @see https://github.com/petkaantonov/bluebird/blob/master/API.md#generators inspiration
->>>>>>> update
  */
 final class Coroutine implements \YoastSEO_Vendor\GuzzleHttp\Promise\PromiseInterface
 {
@@ -72,62 +58,19 @@ final class Coroutine implements \YoastSEO_Vendor\GuzzleHttp\Promise\PromiseInte
     public function __construct(callable $generatorFn)
     {
         $this->generator = $generatorFn();
-<<<<<<< HEAD
-        $this->result = new \YoastSEO_Vendor\GuzzleHttp\Promise\Promise(function () {
-=======
         $this->result = new \YoastSEO_Vendor\GuzzleHttp\Promise\Promise(function () : void {
->>>>>>> update
             while (isset($this->currentPromise)) {
                 $this->currentPromise->wait();
             }
         });
         try {
             $this->nextCoroutine($this->generator->current());
-<<<<<<< HEAD
-        } catch (\Exception $exception) {
-            $this->result->reject($exception);
-=======
->>>>>>> update
         } catch (\Throwable $throwable) {
             $this->result->reject($throwable);
         }
     }
     /**
      * Create a new coroutine.
-<<<<<<< HEAD
-     *
-     * @return self
-     */
-    public static function of(callable $generatorFn)
-    {
-        return new self($generatorFn);
-    }
-    public function then(callable $onFulfilled = null, callable $onRejected = null)
-    {
-        return $this->result->then($onFulfilled, $onRejected);
-    }
-    public function otherwise(callable $onRejected)
-    {
-        return $this->result->otherwise($onRejected);
-    }
-    public function wait($unwrap = \true)
-    {
-        return $this->result->wait($unwrap);
-    }
-    public function getState()
-    {
-        return $this->result->getState();
-    }
-    public function resolve($value)
-    {
-        $this->result->resolve($value);
-    }
-    public function reject($reason)
-    {
-        $this->result->reject($reason);
-    }
-    public function cancel()
-=======
      */
     public static function of(callable $generatorFn) : self
     {
@@ -158,27 +101,18 @@ final class Coroutine implements \YoastSEO_Vendor\GuzzleHttp\Promise\PromiseInte
         $this->result->reject($reason);
     }
     public function cancel() : void
->>>>>>> update
     {
         $this->currentPromise->cancel();
         $this->result->cancel();
     }
-<<<<<<< HEAD
-    private function nextCoroutine($yielded)
-=======
     private function nextCoroutine($yielded) : void
->>>>>>> update
     {
         $this->currentPromise = \YoastSEO_Vendor\GuzzleHttp\Promise\Create::promiseFor($yielded)->then([$this, '_handleSuccess'], [$this, '_handleFailure']);
     }
     /**
      * @internal
      */
-<<<<<<< HEAD
-    public function _handleSuccess($value)
-=======
     public function _handleSuccess($value) : void
->>>>>>> update
     {
         unset($this->currentPromise);
         try {
@@ -188,11 +122,6 @@ final class Coroutine implements \YoastSEO_Vendor\GuzzleHttp\Promise\PromiseInte
             } else {
                 $this->result->resolve($value);
             }
-<<<<<<< HEAD
-        } catch (\Exception $exception) {
-            $this->result->reject($exception);
-=======
->>>>>>> update
         } catch (\Throwable $throwable) {
             $this->result->reject($throwable);
         }
@@ -200,22 +129,13 @@ final class Coroutine implements \YoastSEO_Vendor\GuzzleHttp\Promise\PromiseInte
     /**
      * @internal
      */
-<<<<<<< HEAD
-    public function _handleFailure($reason)
-=======
     public function _handleFailure($reason) : void
->>>>>>> update
     {
         unset($this->currentPromise);
         try {
             $nextYield = $this->generator->throw(\YoastSEO_Vendor\GuzzleHttp\Promise\Create::exceptionFor($reason));
             // The throw was caught, so keep iterating on the coroutine
             $this->nextCoroutine($nextYield);
-<<<<<<< HEAD
-        } catch (\Exception $exception) {
-            $this->result->reject($exception);
-=======
->>>>>>> update
         } catch (\Throwable $throwable) {
             $this->result->reject($throwable);
         }

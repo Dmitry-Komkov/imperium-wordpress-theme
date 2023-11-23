@@ -101,11 +101,7 @@ class autoptimizeExtra
         add_filter( 'tiny_mce_plugins', array( $this, 'filter_disable_emojis_tinymce' ) );
 
         // Removes emoji dns-preftech.
-<<<<<<< HEAD
-        add_filter( 'wp_resource_hints', array( $this, 'filter_remove_emoji_dns_prefetch' ), 10, 2 );
-=======
         add_filter( 'emoji_svg_url', '__return_false' );
->>>>>>> update
     }
 
     public function filter_disable_emojis_tinymce( $plugins )
@@ -121,11 +117,7 @@ class autoptimizeExtra
     {
         if ( strpos( $src, '?ver=' ) ) {
             $src = remove_query_arg( 'ver', $src );
-<<<<<<< HEAD
-        } else if ( strpos( $src, '?v=' ) ) {
-=======
         } elseif ( strpos( $src, '?v=' ) ) {
->>>>>>> update
             $src = remove_query_arg( 'v', $src );
         }
 
@@ -186,8 +178,6 @@ class autoptimizeExtra
             add_filter( 'wp_resource_hints', array( $this, 'filter_remove_gfonts_dnsprefetch' ), 10, 2 );
             add_filter( 'autoptimize_html_after_minify', array( $this, 'filter_optimize_google_fonts' ), 10, 1 );
             add_filter( 'autoptimize_extra_filter_tobepreconn', array( $this, 'filter_preconnect_google_fonts' ), 10, 1 );
-<<<<<<< HEAD
-=======
 
             if ( '2' === $options['autoptimize_extra_radio_field_4'] ) {
                 // remove Google Fonts, adding filters to also remove Google Fonts from 3rd party themes/ plugins.
@@ -197,7 +187,6 @@ class autoptimizeExtra
                 add_filter( 'elementor/frontend/print_google_fonts', '__return_false' ); // Elementor.
                 add_filter( 'fl_builder_google_fonts_pre_enqueue', '__return_empty_array' ); // Beaver Builder.
             }
->>>>>>> update
         }
 
         // Preconnect!
@@ -216,16 +205,6 @@ class autoptimizeExtra
         }
     }
 
-<<<<<<< HEAD
-    public function filter_remove_emoji_dns_prefetch( $urls, $relation_type )
-    {
-        $emoji_svg_url = apply_filters( 'emoji_svg_url', 'https://s.w.org/images/core/emoji/' );
-
-        return $this->filter_remove_dns_prefetch( $urls, $relation_type, $emoji_svg_url );
-    }
-
-=======
->>>>>>> update
     public function filter_remove_gfonts_dnsprefetch( $urls, $relation_type )
     {
         return $this->filter_remove_dns_prefetch( $urls, $relation_type, 'fonts.googleapis.com' );
@@ -325,11 +304,7 @@ class autoptimizeExtra
                 } else {
                     $rel_string = 'rel="stylesheet"';
                 }
-<<<<<<< HEAD
-                $fonts_markup = '<link ' . $rel_string . ' id="ao_optimized_gfonts" href="https://fonts.googleapis.com/css?family=' . $fonts_string . '" />';
-=======
                 $fonts_markup = '<link ' . $rel_string . ' id="ao_optimized_gfonts" href="https://fonts.googleapis.com/css?family=' . $fonts_string . '">';
->>>>>>> update
             }
         } elseif ( '4' === $options['autoptimize_extra_radio_field_4'] ) {
             // Aggregate & load async (webfont.js impl.)!
@@ -511,8 +486,6 @@ class autoptimizeExtra
                 }
             );
         }
-<<<<<<< HEAD
-=======
 
         if ( true === apply_filters( 'autoptimize_filter_extra_remove_woocommerce_block_css', true ) ) {
             add_action(
@@ -522,7 +495,6 @@ class autoptimizeExtra
                 }
             );
         }
->>>>>>> update
     }
 
     public function admin_menu()
